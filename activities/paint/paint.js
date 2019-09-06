@@ -27,15 +27,6 @@
 		dev			: false,
         debug       : true                                     // Debug mode
     };
-
-
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
-    ];
     
     var sources = {
         db16 : [["1","","#140c1c","white"],["2","","#442434","white"],["3","","#30346d","white"],["4","","#4e4a4f","white"],["5","","#854c30","white"],["6","","#346524","white"],["7","","#d04648","white"],["8","","#757161","white"],["9","","#597dce","white"],["a","","#d27d2c","white"],["b","","#8595a1","white"],["c","","#6daa2c","white"],["d","","#d2aa99","white"],["e","","#6dc2ca","white"],["f","","#dad45e","white"],["g","","#deeed6","white"]],
@@ -63,17 +54,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -109,10 +93,10 @@
                 
                 if (settings.url.indexOf(".html")!=-1) {
                     var templatepath = settings.url+debug;
-                    $this.find("#board").load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
+                    $this.find("#ptboard").load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
                 }
                 else if (settings.url.indexOf(".svg")!=-1) {
-                    var elt= $("<div id='svg'></div>").appendTo($this.find("#board"));
+                    var elt= $("<div id='svg'></div>").appendTo($this.find("#ptboard"));
                     elt.svg();
                     settings.svg = elt.svg('get');
 
@@ -121,7 +105,7 @@
                     });
                 }
                 else {
-                    $this.find("#board").html(settings.url);
+                    $this.find("#ptboard").html(settings.url);
                     helpers.loader.build($this);
                 }
             },
@@ -143,7 +127,7 @@
                 
                 if (source && $.isArray(source[0])) {
                     $this.addClass("full");
-                    $this.find("#sources").html("");
+                    $this.find("#ptsources").html("");
                     for (var i=0; i<source.length; i++) {
                         var s = source[i];
                         var $html;
@@ -156,13 +140,13 @@
                         else {
                             $html = $("<div id='s"+s[0]+"' style='color:"+s[3]+";background-color:"+s[2]+";'>"+s[1]+"</div>");
                         }
-                        $this.find("#sources").append($html);
+                        $this.find("#ptsources").append($html);
                         
                         $html.bind('touchstart mousedown', function(event) {
                             var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
                             if (settings.interactive) {
-                                $this.find("#sources>div").removeClass("s");
+                                $this.find("#ptsources>div").removeClass("s");
                                 $(this).attr("class","s");
                                 settings.color = [$(this).attr("id").substr(1),-1];
                             }
@@ -172,7 +156,7 @@
                     }
                     
                     if (typeof(settings.selected) != "undefined") {
-                        $("#sources #s"+settings.selected).addClass("s");
+                        $("#ptsources #s"+settings.selected).addClass("s");
                         settings.color = [settings.selected,-1];
                     }
                 }
@@ -199,10 +183,10 @@
                     }
                 }
 
-                $this.find("#board").bind('touchstart mousedown', function(_event) { settings.down=true; _event.preventDefault();})
+                $this.find("#ptboard").bind('touchstart mousedown', function(_event) { settings.down=true; _event.preventDefault();})
                                     .bind('touchend touchleave mouseup mouseleave', function(_event) { settings.elt=0; settings.down=false; _event.preventDefault();});
 
-                $this.find("#exercice #content").css("font-size",settings.fontex+"em");
+                $this.find("#instructions #content").css("font-size",0.5*settings.fontex+"em");
                 helpers.build($this);
 
                 // Locale handling
@@ -231,7 +215,7 @@
                         html+="<div><div class='label' style='font-size:"+font+"em;height:"+(1.2/font)+"em;'>"+val+"</div><div class='c'></div></div>";
                     }
                 }
-                $this.find("#board").addClass("text")
+                $this.find("#ptboard").addClass("text")
                      .html("<div id='canvas'  style='font-size:"+settings.boardsize+"em;'>"+html+"</div></div>");
             }
         },
@@ -303,10 +287,10 @@
                 if ($.isArray(legend)) { legend = legend[settings.id%legend.length]; }
                 var html="";
                 for (var i in legend) {
-                    html+="<div><div class='label'>"+i+"</div><div class='value'>"+helpers.format(legend[i])+"</div></div>";
+                    html+="<div><div class='label'>"+i+"</div><div class='value'>"+jtools.format(legend[i])+"</div></div>";
                 }
                 
-                $this.find("#legend").html(html).draggable({axis:'y',containment:'parent'}).show();
+                $this.find("#ptlegend").html(html).draggable({axis:'y',containment:'parent'}).show();
             }
 
             var o = settings.o;
@@ -325,7 +309,7 @@
 
             // UNBIND
             if (settings.svg) { $("."+settings.toggle, settings.svg.root()).unbind('touchmove mousemove'); }
-            else              { $this.find("#board ."+settings.toggle).unbind('touchmove mousemove'); }
+            else              { $this.find("#ptboard ."+settings.toggle).unbind('touchmove mousemove'); }
             
             // HANDLE CANVAS
             var canvas = settings.canvas;
@@ -336,13 +320,13 @@
             }
             else              {
                 if (settings.lastcanvas) {$("#"+settings.lastcanvas, settings.svg.root()).css("display","none"); }
-                $this.find("#board #"+canvas).css("display","inherit");
+                $this.find("#ptboard #"+canvas).css("display","inherit");
             }
             settings.lastcanvas = canvas;
             
             var toggles = settings.svg?
                 $("#"+canvas+" ."+settings.toggle, settings.svg.root()):
-                $this.find("#board #"+canvas+" ."+settings.toggle);
+                $this.find("#ptboard #"+canvas+" ."+settings.toggle);
                 
             toggles.each(function(_index) {
                     $(this).unbind('touchmove mousemove touchstart mousedown');
@@ -394,21 +378,17 @@
             
             if (!exercice && settings.values) { exercice = settings.values[settings.id].exercice; }
             if (exercice) {
-                if ($.isArray(exercice)) {
-                    var html=""; for (var i in exercice) { html+="<div>"+helpers.format(exercice[i])+"</div>"; }
-                    $this.find("#exercice #content").html(html);
-                }
-                else { $this.find("#exercice #content").html(helpers.format(exercice)); }
-                $this.find("#exercice").show();
-            }
-            if (tag) {
-                if (tag.indexOf(".svg")!=-1) { tag="<div class='char'><img src='"+tag+"' alt=''/></div>"; }
-                else                         { tag="<div style='font-size:"+settings.tagsize+"em;'>"+tag+"</div>"; }
-                $this.find("#exercice #tag").html(tag).show();
-            }
+				$this.find("#instructions #content").html(jtools.instructions(exercice));
+				$this.find("#instructions").show();
+				if (tag) {
+					if (tag.indexOf(".svg")!=-1) { tag="<div class='char'><img src='"+tag+"' alt=''/></div>"; }
+					else                         { tag="<div style='font-size:"+settings.tagsize+"em;'>"+tag+"</div>"; }
+					$this.find("#instructions #tag").html(tag).show();
+				}
+			}
 
-            $this.find("#submit>img").hide(); $this.find("#subvalid").show();
-            $this.find("#effects>div").hide(); $this.find("#effects").hide();
+            $this.find("#submit").removeClass();
+            $this.find("#effects").removeClass();
 
         },
         result: function($this) {
@@ -416,7 +396,7 @@
             var canvas = $.isArray(settings.canvas)?settings.canvas[settings.id%settings.canvas.length]:settings.canvas;
             var $elts;
             if (settings.svg) { $elts = $("#"+canvas+" ."+settings.toggle, settings.svg.root()); }
-            else              { $elts = $this.find("#board #"+canvas+" ."+settings.toggle); }
+            else              { $elts = $this.find("#ptboard #"+canvas+" ."+settings.toggle); }
             $elts.each(function(_index) {
                 var vClass = $(this).attr("class"), val;
                 if (vClass==settings.toggle) { val=" "; } else { val = vClass.substr(-1); }
@@ -505,7 +485,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -513,7 +493,7 @@
             },
             tag: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.interactive && settings.legend) { $this.find("#legend").toggle(); }
+                if (settings.interactive && settings.legend) { $this.find("#ptlegend").toggle(); }
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -551,7 +531,7 @@
                             if (r[i]!=result[i]) {
                                 var $elt;
                                 if (settings.svg) { $elt = $("#"+canvas+" #c"+i, settings.svg.root()); }
-                                else              { $elt = $this.find("#board #"+canvas+" #c"+i); }
+                                else              { $elt = $this.find("#ptboard #"+canvas+" #c"+i); }
                                 $elt.attr("class", $elt.attr("class")+" wrong");
                                 nbErrors++;
                             }
@@ -560,27 +540,18 @@
 					
                     settings.score-=nbErrors*settings.errratio;
                     
-                    $this.find("#legend").hide();
+                    $this.find("#ptlegend").hide();
 
                     // DISPLAY ALERT
-                    $this.find("#effects>div").hide();
-                    $this.find("#board").addClass(nbErrors?"wrong":"good");
-                    
-                    
-                    if (nbErrors) {
-                        $this.find("#submit>img").hide(); $this.find("#subwrong").show();
-                        if (settings.effects) { $this.find("#effects #wrong").show(); $this.find("#effects").show(); }
-                        }
-                    else {
-                        $this.find("#submit>img").hide(); $this.find("#subgood").show();
-                        if (settings.effects) { $this.find("#effects #good").show(); $this.find("#effects").show(); }
-                    }
+                    $this.find("#ptboard").addClass(nbErrors?"wrong":"good");
+                    $this.find("#submit").addClass(nbErrors?"wrong":"good");
+                    if (settings.effects) {  $this.find("#effects").addClass(nbErrors?"wrong":"good"); }
 
                     if (settings.score<0) { settings.score = 0; }
                     if (++settings.id<settings.number) {
                         setTimeout(function() { settings.interactive=true; helpers.build($this); }, nbErrors?3000:1500);
                     }
-                    else  { setTimeout(function() { helpers.end($this); }, nbErrors?3000:1500); }
+                    else  { setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, nbErrors?3000:1500); }
                 }
             }
         };

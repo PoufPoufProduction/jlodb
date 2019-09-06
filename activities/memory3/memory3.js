@@ -33,10 +33,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -103,7 +103,7 @@
                         html+="<p style='top:"+(Math.round(10*(1-settings.font)/(2.5*settings.font))/10-0.1)+"em;width:"+(1/settings.font)+"em;font-size:"+settings.font+"em;'>"+settings.cards[i].src+"</p>"; }
                     html+="<div class='icon'><img src='res/img/svginventoryicons/background/border/card03.svg'/></div>";
                     html+="</div></div>";
-                    $this.find("#board").append(html);
+                    $this.find("#m3board").append(html);
                 }
                 
 
@@ -164,40 +164,44 @@
                     if (settings.show.length==2) {
                         settings.interactive = false;
                         setTimeout(function() {
+							$this.find("#effects").removeClass();
+							
                             if (settings.cards[settings.show[0]].val == settings.cards[settings.show[1]].val) {
-                                $this.find("#board #"+settings.show[0]).css("opacity",0);
-                                $this.find("#board #"+settings.show[1]).css("opacity",0);
-                                if (--settings.still<=0) { helpers.end($this); }
+                                $this.find("#m3board #"+settings.show[0]).css("opacity",0);
+                                $this.find("#m3board #"+settings.show[1]).css("opacity",0);
+                                if (--settings.still<=0) {
+									settings.interactive = false;
+									setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000);
+								}
                             }
-                            else { $this.find("#wrong").hide(); }
                             settings.show=[];
-                            $this.find("#board").find(".content").hide();
-                            helpers.settings($this).interactive = true; }, 1000);
+                            $this.find("#m3board").find(".content").hide();
+                            settings.interactive = true; }, 1000);
 
                         if ((settings.cards[settings.show[0]].val != settings.cards[settings.show[1]].val) && 
                             (settings.cards[settings.show[0]].nb++ | settings.cards[settings.show[1]].nb++ )) {
-                            $this.find("#wrong").show();
+                            $this.find("#effects").addClass("wrong");
                             if (settings.score) { settings.score--; }
                         }
                         
                         if (settings.cards[settings.show[0]].val == settings.cards[settings.show[1]].val)
                         {
-                            var first = $this.find("#board #"+settings.show[0]).offset();
-                            var second = $this.find("#board #"+settings.show[1]).offset();
+                            var first = $this.find("#m3board #"+settings.show[0]).offset();
+                            var second = $this.find("#m3board #"+settings.show[1]).offset();
                             var board = $this.offset();
-                            $this.find("#first>div").addClass("running").parent()
+                            $this.find("#m3first>div").addClass("running").parent()
                                 .css("left",(first.left-board.left)+"px")
                                 .css("top",(first.top-board.top)+"px")
                                 .show();
                                 
-                            $this.find("#second>div").addClass("running").parent()
+                            $this.find("#m3second>div").addClass("running").parent()
                                 .css("left",(second.left-board.left)+"px")
                                 .css("top",(second.top-board.top)+"px")
                                 .show();
                             
                             setTimeout(function(){
-                                $this.find("#first>div").removeClass("running").parent().hide();
-                                $this.find("#second>div").removeClass("running").parent().hide();
+                                $this.find("#m3first>div").removeClass("running").parent().hide();
+                                $this.find("#m3second>div").removeClass("running").parent().hide();
                             },800);
                         }
                     }
@@ -206,7 +210,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

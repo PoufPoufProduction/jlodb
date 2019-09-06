@@ -19,17 +19,6 @@
         debug       : true                  // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                  "<b>$1</b>",
-        "[*]",                                      "×",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -51,10 +40,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
+            settings.context.onquit($this, _args);
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -99,7 +88,7 @@
                 
 
                 // Base and nbdec
-                $this.find("#base").toggle(settings.base!=10).find("span").html(settings.base);
+                $this.find("#onbase").toggle(settings.base!=10).find("span").html(settings.base);
                 $this.find("#nbdec").toggle(settings.nbdec!=0).find("span").html(settings.nbdec);
 
                 // Keypad
@@ -108,7 +97,7 @@
                     var r = settings.base>10?2:1.8;
                     for (var i=0; i<nb; i++) {
                         settings.$keys.push(
-                            $this.find("#keypad #key"+i).css("top",(r*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                            $this.find("#onkeypad #key"+i).css("top",(r*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
                                 .css("left",(r*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
                                 .addClass(settings.base>10?"small":"normal")
                                 .show()
@@ -117,7 +106,7 @@
                     nb=settings.base - 10;
                     if (nb>0) for (var i=0; i<nb; i++) {
                         settings.$keys.push(
-                            $this.find("#keypad #key"+(i+10)).css("top",(1.2*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                            $this.find("#onkeypad #key"+(i+10)).css("top",(1.2*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
                                 .css("left",(1.2*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
                                 .addClass(settings.base>10?"small":"normal")
                                 .show()
@@ -125,14 +114,7 @@
                     }
                 },100);
 
-                // exercice
-                if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice>div").html("");
-                    for (var i in settings.exercice) {
-                        $this.find("#exercice>div").append("<p>"+
-                            (settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
-                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
+                $this.find("#instructions").html(jtools.instructions(settings.exercice)).css("font-size",0.9*settings.fontex+"em");
 
                 // Locale handling
 
@@ -154,7 +136,7 @@
                     elt.$elt.html("<div>"+v[j]+"</div>");
 
                     if ( settings.op[i].alpha[1].length && j==settings.op[i].alpha[0].length-1) {
-                        $this.find("#data").append($("<div class='dec decop s' style='top:"+elt.pos[1]+"em;left:"+elt.pos[0]+"em;'><div></div></div>"));
+                        $this.find("#ondata").append($("<div class='dec decop s' style='top:"+elt.pos[1]+"em;left:"+elt.pos[0]+"em;'><div></div></div>"));
                     }
 
                 }
@@ -163,10 +145,9 @@
         // Build the response table regarding the question
         build:function($this) {
             var settings = helpers.settings($this);
-            var $board = $this.find("#data").html("");
-            $this.find("#effects").hide();
-            $this.find("#effects>div").hide();
-            $this.find("#submit").removeClass("wrong").removeClass("good");
+            var $board = $this.find("#ondata").html("");
+            $this.find("#effects").removeClass()
+            $this.find("#submit").removeClass()
 
             // Get the operation
             var vOpTmp;
@@ -410,15 +391,15 @@
             $this.find(".active").bind("mousedown touchstart", function(event) { helpers.mousedown(this, event, false); });
 
             $this.bind("mouseup mouseleave touchend touchleave", function(event) {
-                var settings = helpers.settings($this), $keypad = $this.find("#keypad"), vVal = "";
+                var settings = helpers.settings($this), $keypad = $this.find("#onkeypad"), vVal = "";
 
                 if (settings.key!=-1 && settings.keypad) {
                     vVal = settings.$keys[settings.key].text();
                     settings.keypad.html("<div>"+((settings.keypad.html()==vVal&&settings.keypad.html().length)?"":vVal)+"</div>");
 
                     $this.find("#fill>div").addClass("running").parent()
-                                .css("left",(settings.keypad.offset().left-$this.find("#board").offset().left)+"px")
-                                .css("top",(settings.keypad.offset().top-$this.find("#board").offset().top)+"px")
+                                .css("left",(settings.keypad.offset().left-$this.find("#onboard").offset().left)+"px")
+                                .css("top",(settings.keypad.offset().top-$this.find("#onboard").offset().top)+"px")
                                 .show();
                     setTimeout(function(){ $this.find("#fill>div").removeClass("running").parent().hide(); },500);
                 }
@@ -440,7 +421,7 @@
             });
 
             $this.bind("mousemove touchmove", function(event) {
-                var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                var settings = helpers.settings($this), $keypad = $this.find("#onkeypad");
                 if (settings.keypad) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
                                   event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
@@ -499,8 +480,8 @@
 
         },
         mousedown: function(_this, event, _fromtarget) {
-            var $this = $(_this).closest(".operation") , settings = helpers.settings($this), $keypad = $this.find("#keypad");
-            $this.find("#keypad .k").removeClass("s");
+            var $this = $(_this).closest(".operation") , settings = helpers.settings($this), $keypad = $this.find("#onkeypad");
+            $this.find("#onkeypad .k").removeClass("s");
 
             if (settings.target && settings.targetid<settings.target.length && settings.target[settings.targetid].block && !_fromtarget) {
                 // Not targeted cell are blocked
@@ -534,7 +515,7 @@
             var settings = helpers.settings($this);
 
             if (settings.target && settings.targetid<settings.target.length) {
-                var $data = $this.find("#data");
+                var $data = $this.find("#ondata");
 
                 // TARGET POSITION
                 if (typeof settings.target[settings.targetid].index != "undefined") {
@@ -632,13 +613,12 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#exercice").show();
                 helpers.build($(this));
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             move: function(elt, _side) {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -719,14 +699,12 @@
 
                     settings.score-=error*settings.ratioerr;
                     if (settings.score<0) { settings.score = 0; }
-                    $this.find("#effects").toggleClass("division", settings.type=="/").show();
-                    $this.find("#good").toggle(!error);
-                    $this.find("#wrong").toggle(error);
+                    $this.find("#effects").toggleClass("division", settings.type=="/").addClass(error?"wrong":"good");
                     $this.find("#submit").addClass(error?"wrong":"good");
 
                     settings.count++;
 
-                    if (settings.count>=settings.number) { setTimeout(function() { helpers.end($this); }, 1000 ); }
+                    if (settings.count>=settings.number) { setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000 ); }
                     else                                 { setTimeout(function() { helpers.build($this);},1000 ); }
 
                 }

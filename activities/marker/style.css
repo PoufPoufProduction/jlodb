@@ -1,60 +1,30 @@
-.marker                                 { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-
-.marker div#splashex                  { background-image:url("../../res/img/banners/marker.svg"); }
-.marker div#splashex h1               { position:absolute; top:15%; left:62%; font-size:1.6em;
-                                        width:35%; padding:.2em 1em; background-color:white; border-radius:.5em;
-                                        border:.1em solid black; }
-.marker div#splashex #guide           { position:absolute; top:32%; left:62%; font-size:0.8em; width:30%; font-style:italic;
-                                 padding:.4em 2em; background-color:white; border-radius:1em;
-                                 border:.2em solid black; text-align:justify; }
-.marker div#board                       { margin-top:.5em; height:12em; }
-.marker div#data                        { width:19em; height:10.5em; overflow:hidden; background-repeat:repeat; font-size:0.8em;
-                            border:1px solid black; border-width:1px 0 1px 0; padding:0.1em 0.5em 0.1em 0.5em;
-                            background-image:url("../../res/img/default/pattern/line01.svg"); font-style:italic; }
-.marker div#data>div                    { text-align:justify; line-height:1.1em; }
-.marker div#data p                      { margin:.2em 0; overflow:visible; }
-.marker div#data p span                 { display:inline-block; overflow:visible; }
-.marker div#data p span.wrong           { color:white; background-color:red !important;}
-.marker div#data p span.s0              { color:blue; background-color:#5577FF;}
-.marker div#data p span.s1              { color:#660000; background-color:#DD5555;}
-.marker div#data p span.s2              { color:#004400; background-color:#44BB66;}
-.marker div#data p span.c1              { border-radius:.25em 0 0 .25em; }
-.marker div#data p span.c2              { border-radius:0 .25em .25em 0; }
-.marker div#data p span.c3              { border-radius:.25em; }
-.marker div#menu                        { width:12em; height:3.8em; background-color:white; border-radius:.5em 0 0 .5em;
-                                          margin-top:.25em; margin-left:15%; font-size:.7em; float:left;}
-.marker div#menu>div                    { height:1.2em; background-color:white; padding:.05em 0; clear:both; cursor:pointer;}
-.marker div#menu>div.odd                { background-color:#DDD; }
-.marker #menu .color                    { padding:.1em; border-radius:.25em; float:left; margin-left:.5em;}
-.marker #menu .color.s                  { background-color:black; }
-.marker #menu .color>div                { width:0.9em; height:0.9em; border-radius:.25em;  }
-.marker #menu #c1 .color>div            { background-color:blue;  }
-.marker #menu #c2 .color>div            { background-color:red;}
-.marker #menu #c3 .color>div            { background-color:green; }
-.marker #menu .legend                   { margin-left:.25em; float:left;  }
-.marker.e05 #menu .legend               { margin-left:.5em; font-size:.5em; }
-
-.marker div#exercice                     { width:7em; height:3.8em; background-color:#333; border-radius:0 .5em .5em 0;
-                                          margin-top:.25em; font-size:.7em; float:left;}
-.marker div#exercice>div                { margin:0.5em; color:white; font-size:.5em; text-align:justify; }
-
-.marker div#submit                      { font-size:1.5em; height:1em;width:1em; cursor:pointer;
-                                          position:absolute; top:7em; left:0em; z-index:3; }
-.marker div#submit>img                  { display:none; }
-.marker div#submit #subvalid            { display:inline; }
-.marker div#submit.good #subvalid       { display:none; }
-.marker div#submit.wrong #subvalid      { display:none; }
-.marker div#submit.good #subgood        { display:inline; }
-.marker div#submit.wrong #subwrong      { display:inline; }
-
-.marker div#valid                       { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
-                                          display:none; top:1em; left:3em; border-radius:.25em; }
-.marker div#valid div.button            { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
-
-
-
-.marker #effects                       { display:none; width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:20;}
-.marker #effects>div                   { font-size:5em; width:1em; height:1em; display:none;}
+.marker                             { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.marker #splashex                   { background-image:url("../../res/img/banners/marker.svg"); }
+.marker #mrboard                    { margin-top:.5em; height:12em; }
+.marker #mrdata                     { width:19em; height:10.5em; overflow:hidden; background-repeat:repeat; font-size:0.8em; border:1px solid black; border-width:1px 0 1px 0; padding:0.1em 0.5em 0.1em 0.5em; background-image:url("../../res/img/default/pattern/line01.svg"); font-style:italic; }
+.marker #mrdata>div                 { text-align:justify; line-height:1.1em; }
+.marker #mrdata p                   { margin:.2em 0; overflow:visible; }
+.marker #mrdata p span              { display:inline-block; overflow:visible; }
+.marker #mrdata p span.wrong        { color:white; background-color:red !important;}
+.marker #mrdata p span.s0           { color:blue; background-color:#5577FF;}
+.marker #mrdata p span.s1           { color:#660000; background-color:#DD5555;}
+.marker #mrdata p span.s2           { color:#004400; background-color:#44BB66;}
+.marker #mrdata p span.c1           { border-radius:.25em 0 0 .25em; }
+.marker #mrdata p span.c2           { border-radius:0 .25em .25em 0; }
+.marker #mrdata p span.c3           { border-radius:.25em; }
+.marker #mrmenu                     { width:12em; height:3.8em; background-color:white; border-radius:.5em 0 0 .5em;margin-top:.25em; margin-left:15%; font-size:.7em; float:left;}
+.marker #mrmenu>div                 { height:1.2em; background-color:white; padding:.05em 0; clear:both; cursor:pointer;}
+.marker #mrmenu>div.odd             { background-color:#DDD; }
+.marker #mrmenu .color              { padding:.1em; border-radius:.25em; float:left; margin-left:.5em;}
+.marker #mrmenu .color.s            { background-color:black; }
+.marker #mrmenu .color>div          { width:0.9em; height:0.9em; border-radius:.25em;  }
+.marker #mrmenu #c1 .color>div      { background-color:blue;  }
+.marker #mrmenu #c2 .color>div      { background-color:red;}
+.marker #mrmenu #c3 .color>div      { background-color:green; }
+.marker #mrmenu .legend             { margin-left:.25em; float:left;  }
+.marker.e05 #mrmenu .legend         { margin-left:.5em; font-size:.5em; }
+.marker #exercice                   { width:7em; height:3.8em; background-color:#333; border-radius:0 .5em .5em 0; margin-top:.25em; font-size:.7em; float:left;}
+.marker #exercice>div               { margin:0.5em; color:white; font-size:.5em; text-align:justify; }
 
 /*============ EDITOR PANEL =============*/
 

@@ -10,6 +10,7 @@
         score       : 1,                    // The score (from 1 to 5)
         level       : 3,                    // The beginning level
         inclevel    : true,                 // Increase the level after each success
+        background  : "",
         debug       : true                 // Debug mode
     };
 
@@ -34,10 +35,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -70,7 +71,7 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // Locale handling
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
                 var n = settings.level;
@@ -183,7 +184,7 @@
                             if (settings.inclevel) { settings.level++; }
                             if (settings.level>25 || (!settings.inclevel && settings.count>=5)) {
                                 settings.score = helpers.score(settings.level, settings.count, settings.inclevel, settings.error);
-                                setTimeout(function() { helpers.end($this); }, 1000);
+                                setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000);
                             }
                             else {
                                 setTimeout(function() { $this.memory('next')}, 500);
@@ -206,8 +207,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

@@ -1,8 +1,8 @@
 <div>
 
-    <div id="board">
-        <div id="data"><div></div></div>
-        <div id="menu">
+    <div id="mrboard">
+        <div id="mrdata"><div></div></div>
+        <div id="mrmenu">
             <div id="c1" ontouchstart="$(this).closest('.marker').marker('color',0);event.preventDefault();"
                                    onclick="$(this).closest('.marker').marker('color',0);">
                 <div class="color"><div></div></div>
@@ -24,9 +24,9 @@
 
     <div id="submit" ontouchstart="$(this).closest('.marker').marker('valid');event.preventDefault();"
                      onclick="$(this).closest('.marker').marker('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
     </div>
     
     <div id="effects">

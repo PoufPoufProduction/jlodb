@@ -22,21 +22,24 @@ shuffle = function(a) {
 jtools = {
 	format: function(_text, _regexp) {
 		var vRegExp = _regexp || [
-			"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-            "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
-			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-			"\\\[br\\\]",                               "<br/>",
-            "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",          "<span style='opacity:0.5'>$1</span>",
-            "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",          "<span style='opacity:0.1'>$1</span>",
-			"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:0.5em'>$1</span>",
-			"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-			"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-			"\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
-			"\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",  "<span style='color:purple'>$1</span>",
-			"\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",  "<span style='color:orange'>$1</span>",
-			"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='t_svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
-			"\\\[code\\\](.+)\\\[/code\\\]",            "<div class='t_code'>$1</div>",
-			"\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='t_strong'>$1</div>"
+            "[*]",                                          "×",
+			"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                "<b>$1</b>",
+            "\\\[bb\\\](.+)\\\[/bb\\\]",                    "<b>$1</b>",
+			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                "<i>$1</i>",
+			"\\\[br\\\]",                                   "<br/>",
+            "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",              "<span style='opacity:0.5'>$1</span>",
+            "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",              "<span style='opacity:0.1'>$1</span>",
+			"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",        "<span style='font-size:0.5em'>$1</span>",
+			"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",          "<span style='color:blue'>$1</span>",
+			"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",            "<span style='color:red'>$1</span>",
+			"\\\[green\\\]([^\\\[]+)\\\[/green\\\]",        "<span style='color:green'>$1</span>",
+			"\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",      "<span style='color:purple'>$1</span>",
+			"\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",      "<span style='color:orange'>$1</span>",
+			"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",            "<div class='t_svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
+			"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",            "<div class='img'><img src='$1.svg'/></div>",
+		    "\\\[icon ([^\\\]]+)]([^\\\[]+)\\\[/icon\\\]",  "<div class='icon' style='font-size:$1em;float:left'><img src='$2.svg'/></div>",
+			"\\\[code\\\](.+)\\\[/code\\\]",                "<div class='t_code'>$1</div>",
+			"\\\[strong\\\](.+)\\\[/strong\\\]",            "<div class='t_strong'>$1</div>"
 		];
 		var vTxt = _text?_text.toString():"";
 		if (vTxt.length) {

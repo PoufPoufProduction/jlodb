@@ -21,6 +21,7 @@ table td                        { margin:0; padding:0; }
 textarea                        { resize:none;  }
 ul                              { list-style:none; }
 
+.g_pointer                      { cursor:pointer; }
 .overflow						{ overflow:visible; }
 .overflow *						{ overflow:visible; }
 .left                           { float:left; }
@@ -59,7 +60,8 @@ ul                              { list-style:none; }
 #effects.good>#good				{ display:inline; }
 #effects.wrong					{ display:inline; }
 #effects.wrong>#wrong			{ display:inline; }
-#instructions                   { position:absolute; padding:1%; width:88%; height:20%; top:84%; left:10%; border-radius:1em 0 0 0;  background-image:url("../res/img/default/pattern/line01.svg"); background-repeat:repeat; border:.1em solid white;}
+#instructions                   { position:absolute; padding:0.5% 1%; width:88%; height:20%; top:84%; left:10%; border-radius:1em 0 0 0;  background-image:url("../res/img/default/pattern/line01.svg"); background-repeat:repeat; border:.1em solid white;}
+#instructions.low				{ top:87.5%; }
 #tip                            { position:relative; }
 #tip>div                        { position:absolute; font-size:.25em; top:2.6em; left:2.6em; background-color:#444; color:white; width:1.2em; height:1.2em; text-align:center; border-radius:.5em; overflow:visible;}
 #ptip                           { position:absolute;top:0;left:0; width:16em; height:12em;background-color:rgba(0,0,0,0.5); z-index:100; display:none; }

@@ -1,27 +1,27 @@
 <div>
-    <div id="mhboard"><div></div></div>
+    <div id="mgboard"><div></div></div>
     
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 	
-	<div id="mhshuffle" class="icon"><div class="icon"><img src="res/img/svginventoryicons/misc/dice01.svg" alt=""/></div></div>
+	<div id="mgshuffle" class="icon"><div class="icon"><img src="res/img/svginventoryicons/misc/dice01.svg" alt=""/></div></div>
 	
-	<div id="mhfx1" class="mhfx anim12 quick noloop"><div><img src="res/img/asset/anim/boom02.svg" alt=""/></div></div>
-	<div id="mhfx2" class="mhfx anim12 quick noloop"><div><img src="res/img/asset/anim/boom02.svg" alt=""/></div></div>
+	<div id="mgfx1" class="mgfx anim12 quick noloop"><div><img src="res/img/asset/anim/boom02.svg" alt=""/></div></div>
+	<div id="mgfx2" class="mgfx anim12 quick noloop"><div><img src="res/img/asset/anim/boom02.svg" alt=""/></div></div>
     
-    <div id="mhhelp" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
+    <div id="mghelp" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
                                 onclick="$(this).next().show();">
         <img src="res/img/default/white/about.svg" alt="?"/>
     </div>
-    <div id="mhmask"><div>
+    <div id="mgmask"><div>
         <div id="hint"></div>
         <div>
             <div class="icon" ontouchstart="$(this).closest('.mahjong').mahjong('hint');event.preventDefault();"
                               onclick="$(this).closest('.mahjong').mahjong('hint');"><img src="res/img/default/white/valid.svg" alt=""/></div>
-            <div class="icon" ontouchstart="$(this).closest('#mhmask').hide();event.preventDefault();"
-                              onclick="$(this).closest('#mhmask').hide();"><img src="res/img/default/white/cancel.svg" alt=""/></div>
+            <div class="icon" ontouchstart="$(this).closest('#mgmask').hide();event.preventDefault();"
+                              onclick="$(this).closest('#mgmask').hide();"><img src="res/img/default/white/cancel.svg" alt=""/></div>
         </div>
     </div></div>
 

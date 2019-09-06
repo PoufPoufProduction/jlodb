@@ -1,16 +1,18 @@
 <div>
-    <div id="board">
+    <div id="m3board">
     </div>
     
-    <div id="first" class="anim12 quick noloop card"><div><img src="res/img/default/anim/target01.svg"/></div></div>
-    <div id="second" class="anim12 quick noloop card"><div><img src="res/img/default/anim/target01.svg"/></div></div>
+    <div id="m3first" class="anim12 quick noloop card"><div><img src="res/img/default/anim/target01.svg"/></div></div>
+    <div id="m3second" class="anim12 quick noloop card"><div><img src="res/img/default/anim/target01.svg"/></div></div>
 
-    <div id="effects"><div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div></div>
-
+    <div id="effects">
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
+	
     <div id="splashex" ontouchstart="$(this).hide().closest('.memory3').memory3('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.memory3').memory3('next');"><div>
-            <h1 id="label">memory3</h1>
-            <p id="guide"></p>
+            <h1 id="label"></h1>
             <div id="exercice"><div></div></div>
     </div></div>
 </div>

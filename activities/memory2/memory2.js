@@ -33,10 +33,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -68,7 +68,7 @@
             svg: function($this) {
                 var settings = helpers.settings($this), debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div id='svg'></div>").appendTo($this.find("#mem2"));
+                var elt= $("<div id='svg'></div>").appendTo($this.find("#m2board"));
                 elt.svg();
                 settings.svg = elt.svg('get');
                 $(settings.svg).attr("class",settings["class"]);
@@ -228,7 +228,7 @@
                                 settings.score=5-Math.floor((settings.good[0]-settings.sequence.length)/settings.good[1]);
                                 if (settings.score>5) { settings.score = 5; }
                                 if (settings.score<0) { settings.score = 0; }
-                                setTimeout(function() { helpers.end($this); }, 1500);
+                                setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1500);
                             }
                             else                   { setTimeout(function() { settings.count=0; helpers.sequence($this); }, 1500); }
                         }
@@ -238,7 +238,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

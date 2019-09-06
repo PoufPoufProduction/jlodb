@@ -1,68 +1,34 @@
-.paint>div                     { height:100%; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; }
-
-.paint div#splashex                     { background-image:url("../../res/img/banners/paint.svg");}
-.paint.picross div#splashex             { background-image:url("../../res/img/banners/picross.svg");}
-.paint div#splashex #picross            { display:none; }
-.paint.picross div#splashex #picross    { display:inherit; }
-.paint.picross div#splashex #default    { display:none; }
-
-.paint div#splashex  h1                 { position:absolute; top:10%; left:60%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.paint div#splashex .guide   { position:absolute; top:65%; left:68%; width:26%; height:26%; text-align:justify; font-size:.8em;
-                                          background-color:#ccc; color:#333;
-                                          background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;
-                                          border-radius:.5em; border:.7em solid white;
-                                          padding:.5em; font-style:italic; font-weight:bold; }
-
-.paint div#exercice                   {  position:absolute; width:28em; height:3em; top:21em; left:4em; border-radius:1em 0 0 0;
-                               background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
-                               display:none; font-size:.5em; border:.2em solid white;}
-.paint div#exercice #content          { margin:0 1em; text-align:justify; font-style:italic; }
-.paint div#exercice #tag            { font-size:2em; float:right; width:2.0em; height:1.2em; font-weight:bold;
-                                 color:white; background-color:black; border-radius:.2em; text-align:center;
-                                 margin:0 .15em; display:none; cursor:pointer; }
-.paint div#exercice #tag .char  { margin-left:.4em; }
-.paint div#board                      { position:absolute; top:0; width:16em; height:12em; }
-.paint.full div#board                    { font-size:0.8em; top:5%; left:18%; border:.1em solid white;}
-.paint div#sources                  { display:none; width:2.7em; height:9.7em; margin-top:5%; overflow:visible; }
-
-.paint div#sources>div          { font-size:0.5em; width:5em; height:1.4em; border:.2em solid white; text-align:center; margin:.1em; cursor:pointer; float:left;}
-.paint.full div#sources .val1       { background-color:black; color:white; height:1.4em; }
-.paint.full div#sources .val2       { float:right; width:2em; height:1.4em; }
-.paint.square div#sources>div { font-size:2em; width:1.2em; height:1.2em; border-width:0.05em; margin:0.02em; }
-.paint div#sources>div.s { border-color:red; }
-.paint div#sources>div.s .val1  { background-color:red; }
-.paint.full div#sources         { display:inherit; }
-.paint.small div#sources        { font-size:.5em; width:6em; height:19.4em; }
-.paint.tiny div#sources         { font-size:.32em; width:9.5em; height:40em; }
-.paint div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute;
-                                        top:7em; left:0em; z-index:3; }
-.paint div#submit>img                 { display:none; }
-.paint div#submit #subvalid           { display:inline; }
-.paint div#submit.good #subvalid      { display:none; }
-.paint div#submit.wrong #subvalid     { display:none; }
-.paint div#submit.good #subgood       { display:inline; }
-.paint div#submit.wrong #subwrong     { display:inline; }
-
-.paint #effects                     { position:absolute; font-size:6em; top:2%; left:60%; width:1em; height:1em; display:none; }
-.paint #effects>div                 { width:1em; height:1em; display:none; }
-
-
-.paint #legend                     { position:absolute; font-size:.4em; top:2%; left:0; width:100%; height:30%; opacity:0.95; z-index:4;
-                                     background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; 
-                                     padding:.1em 1em; border:.2em solid white; border-width:.2em 0 .2em 0; display:none; cursor:move; }
-                                     
-.paint #legend>div          { height:1.2em; margin-bottom:.1em; float:left; }
-.paint #legend .label       { background-color:gray; color:white; width:3em; text-align:center; float:left; }
-.paint #legend .value       { float:left; width:35em; margin-left:.5em; }
-.paint.legend2 #legend .value{ width:15em; }
-
-.paint #board.text            { background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat; }
-.paint #board .word             { float:left; margin-right:1em; }
-.paint #board .word>div         { float:left; margin:.1em; border:.05em solid black; height:2.4em; width:1em; border-radius:.2em; color:white; }
-.paint #board .word>div .label  { background-color:black; height:1.2em; text-align:center; }
-.paint #board .word>div .c      { background-color:gray;  height:1.2em; text-align:center; cursor:pointer; }
-.paint #board .word>div .c.wrong{ background-color:red; }
+.paint>div                          { height:100%; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; }
+.paint #splashex                    { background-image:url("../../res/img/banners/paint.svg");}
+.paint.picross #splashex            { background-image:url("../../res/img/banners/picross.svg");}
+.paint #splashex #picross           { display:none; }
+.paint.picross #splashex #picross   { display:inherit; }
+.paint.picross #splashex #default   { display:none; }
+.paint #instructions				{ display:none; }
+.paint #instructions #content       { margin:0 1em; text-align:justify; font-style:italic; }
+.paint #instructions #tag           { font-size:1em; float:right; width:2.0em; height:1.2em; font-weight:bold; color:white; background-color:black; border-radius:.2em; text-align:center; margin:0 .15em; display:none; cursor:pointer; }
+.paint div#instructions #tag .char  { margin-left:.4em; }
+.paint div#ptboard                  { position:absolute; top:0; width:16em; height:12em; }
+.paint.full div#ptboard             { font-size:0.8em; top:5%; left:18%; border:.1em solid white;}
+.paint div#ptsources                { display:none; width:2.7em; height:9.7em; margin-top:5%; overflow:visible; }
+.paint div#ptsources>div            { font-size:0.5em; width:5em; height:1.4em; border:.2em solid white; text-align:center; margin:.1em; cursor:pointer; float:left;}
+.paint.full div#ptsources .val1     { background-color:black; color:white; height:1.4em; }
+.paint.full div#ptsources .val2     { float:right; width:2em; height:1.4em; }
+.paint.square div#ptsources>div     { font-size:2em; width:1.2em; height:1.2em; border-width:0.05em; margin:0.02em; }
+.paint div#ptsources>div.s          { border-color:red; }
+.paint div#ptsources>div.s .val1    { background-color:red; }
+.paint.full div#ptsources           { display:inherit; }
+.paint.small div#ptsources          { font-size:.5em; width:6em; height:19.4em; }
+.paint.tiny div#ptsources           { font-size:.32em; width:9.5em; height:40em; }
+.paint div#submit                   { z-index:3; }
+.paint #ptlegend                    { position:absolute; font-size:.4em; top:2%; left:0; width:100%; height:30%; opacity:0.95; z-index:4; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;  padding:.1em 1em; border:.2em solid white; border-width:.2em 0 .2em 0; display:none; cursor:move; }
+.paint #ptlegend>div                { height:1.2em; margin-bottom:.1em; float:left; }
+.paint #ptlegend .label             { background-color:gray; color:white; width:3em; text-align:center; float:left; }
+.paint #ptlegend .value             { float:left; width:35em; margin-left:.5em; }
+.paint.legend2 #ptlegend .value     { width:15em; }
+.paint #ptboard.text                { background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat; }
+.paint #ptboard .word               { float:left; margin-right:1em; }
+.paint #ptboard .word>div           { float:left; margin:.1em; border:.05em solid black; height:2.4em; width:1em; border-radius:.2em; color:white; }
+.paint #ptboard .word>div .label    { background-color:black; height:1.2em; text-align:center; }
+.paint #ptboard .word>div .c        { background-color:gray;  height:1.2em; text-align:center; cursor:pointer; }
+.paint #ptboard .word>div .c.wrong  { background-color:red; }

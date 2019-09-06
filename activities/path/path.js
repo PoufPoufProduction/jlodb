@@ -29,7 +29,7 @@
         debug       : true                                     // Debug mode
     };
 
-    var regExp = [
+    var gRegExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
@@ -65,17 +65,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -108,13 +101,13 @@
             svg:function($this) {
                 var settings = helpers.settings($this),debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $this.find("#board");
+                var elt= $this.find("#ptboard");
                 elt.svg();
                 settings.svg = elt.svg('get');
 
                 settings.svg.load('res/img/'+settings.url+ debug,
                     { addTo: true, changeSize: true, onLoad:function() {
-                        $this.find("#board>svg").attr("class",settings["class"]);
+                        $this.find("#ptboard>svg").attr("class",settings["class"]);
                         helpers.loader.build($this);
                     }
                 });
@@ -347,16 +340,16 @@
 
                         if (good) {
                             for (var i=0; i<ff.length; i++) { $("#c"+i,settings.svg.root()).hide(); }
-                            $this.find("#board>svg").attr("class",settings["class"]+" done");
+                            $this.find("#ptboard>svg").attr("class",settings["class"]+" done");
                             if (settings.effects) {
-                                $this.find("#goal").css("left","110%").show().delay(400).animate({left:"60%"},300);
-                                setTimeout(function() { $this.find("#effects").show(); }, 1000);
+                                $this.find("#ptgoal").css("left","110%").show().delay(400).animate({left:"60%"},300);
+                                setTimeout(function() { $this.find("#effects").addClass("good"); }, 1000);
                             }
                             if ($("#flags", settings.svg.root()).length) {
                                 $($("#flags>*", settings.svg.root()).get(rr[rr.length-1])).show();
                             }
                             settings.interactive = false;
-                            setTimeout(function() { helpers.end($this);}, 2000);
+                            setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score});}, 2000);
                         }
                     }
                         _event.preventDefault();
@@ -444,8 +437,8 @@
                     if ($.isArray(settings.exercice)) {
                         $this.find("#exercice>div").css("font-size",settings.fontex+"em").html("").parent().show();
                         for (var i in settings.exercice) { $this.find("#exercice>div").append(
-                            "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                    } else { $this.find("#exercice>div").css("font-size",settings.fontex+"em").html(helpers.format(settings.exercice)).parent().show(); }
+                            "<p>"+(settings.exercice[i].length?jtools.format(settings.exercice[i], gRegExp):"&#xA0;")+"</p>"); }
+                    } else { $this.find("#exercice>div").css("font-size",settings.fontex+"em").html(jtools.format(settings.exercice, gRegExp)).parent().show(); }
                 }
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -517,11 +510,11 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             showhelp: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.tipid<settings.tips.length) { $this.find("#mask").show(); }
+                if (settings.tipid<settings.tips.length) { $this.find("#ptmask").show(); }
             },
             help: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -542,7 +535,7 @@
                     
                     $this.find("#tip>div").html(settings.tips.length-settings.tipid);
                 }
-                $this.find("#mask").hide();
+                $this.find("#ptmask").hide();
             }
         };
 

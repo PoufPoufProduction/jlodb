@@ -615,10 +615,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this,_args);
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -686,7 +686,7 @@
                         var isFilled = $root&&$root.filled();
                         $this.find("#toinventory").toggleClass("s",$root&&$root.type=="op"&&isFilled);
                         $this.find("#exec").toggleClass("s",$root&&$root.type=="action"&&isFilled);
-                        $this.find("#submit").toggleClass("s", isFilled);
+                        $this.find("#mtsubmit").toggleClass("s", isFilled);
                     },
                     getnode:function($editor, _val) {
                         return typeof(_val)=="object"?nodetype[_val.id]:helpers.settings($this).cvalues[_val];
@@ -702,30 +702,30 @@
                     if (!ret) { for (var i in _a) { if (_a[i]==_id) ret = true; } }
                     return ret;
                 }
-                $this.find("#book #b").html("");
+                $this.find("#mtbook #b").html("");
                 for (var i in settings.locale.databook) {
                     var e=settings.locale.databook[i], vTValid=vIsValid(settings.a,"t"+e.id);
                     var $html=$("<h1 id='t"+i+"' class='"+(vTValid?" valid":" disabled")+"'>"+e.t+"</h1>");
-                    $this.find("#book #b").append($html);
+                    $this.find("#mtbook #b").append($html);
                     $html.bind("mousedown touchstart", function(event) {
                       if (!$(this).hasClass("disabled")) {
                         var vId = parseInt($(this).attr("id").substr(1));
                         if ($(this).hasClass("s")) {
                             $(this).removeClass("s");
-                            $this.find("#book #b h2.t"+vId).animate({"margin-left":"-20em"},500,function() { $(this).hide(); } );
+                            $this.find("#mtbook #b h2.t"+vId).animate({"margin-left":"-20em"},500,function() { $(this).hide(); } );
                             setTimeout(function() {
-                                $this.find("#book #b h1").each(function(_index) {
+                                $this.find("#mtbook #b h1").each(function(_index) {
                                     if (_index!=vId) { $(this).show().animate({"margin-left":"-0.5em"},500); }
                                 });
                             }, 500);
                         }
                         else {
                             $(this).addClass("s");
-                            $this.find("#book #b h1").each(function(_index) {
+                            $this.find("#mtbook #b h1").each(function(_index) {
                                 if (_index!=vId) { $(this).animate({"margin-left":"-16em"},500,function() { $(this).hide(); }); }
                             });
                             setTimeout(function() {
-                                $this.find("#book #b h2.t"+vId).css("margin-left","-20em").show().animate({"margin-left":"-0.5em"},500);
+                                $this.find("#mtbook #b h2.t"+vId).css("margin-left","-20em").show().animate({"margin-left":"-0.5em"},500);
                                 }, 500);
                         }
                       }
@@ -735,7 +735,7 @@
                     if (e.c) for (var j in e.c) {
                         var vBValid=vTValid&vIsValid(settings.a,"b"+e.c[j].id);
                         var $html2 = $("<h2 id='b"+e.c[j].id+"' class='t"+i+(vBValid?" valid":" disabled")+"'>"+e.c[j].t+"</h2>");
-                        $this.find("#book #b").append($html2);
+                        $this.find("#mtbook #b").append($html2);
                         $html2.bind("mousedown touchstart", function(event) {
                           if (!$(this).hasClass("disabled")) {
                             var vId = parseInt($(this).attr("class").substr(1));
@@ -744,25 +744,25 @@
                                 $(this).removeClass("s");
                                 settings.bookid=0;
                                 $this.find("#editor").editor("mathml");
-                                $this.find("#book #b #list").animate({"opacity":0},500, function(){$(this).html("").hide();});
+                                $this.find("#mtbook #b #list").animate({"opacity":0},500, function(){$(this).html("").hide();});
                                 setTimeout(function() {
-                                    $this.find("#book #b h1#t"+vId).show().animate({"margin-left":"-0.5em"},500);
-                                    $this.find("#book #b h2.t"+vId).each(function(_index) {
+                                    $this.find("#mtbook #b h1#t"+vId).show().animate({"margin-left":"-0.5em"},500);
+                                    $this.find("#mtbook #b h2.t"+vId).each(function(_index) {
                                         if ($(this).attr("id")!="b"+vBook) { $(this).show().animate({"margin-left":"-0.5em"},500); }
                                     });
                                 }, 500);
                             }
                             else {
                                 $(this).addClass("s");
-                                $this.find("#book #b h1#t"+vId).animate({"margin-left":"-16em"},500,function() { $(this).hide(); } );
-                                $this.find("#book #b h2.t"+vId).each(function(_index) {
+                                $this.find("#mtbook #b h1#t"+vId).animate({"margin-left":"-16em"},500,function() { $(this).hide(); } );
+                                $this.find("#mtbook #b h2.t"+vId).each(function(_index) {
                                     if ($(this).attr("id")!="b"+vBook) {
                                         $(this).animate({"margin-left":"-20em"},500,function() { $(this).hide(); });
                                     }
                                 });
                                 setTimeout(function() {
-                                    $this.find("#book #b #list").html("").show();
-                                    var vBValid= $this.find("#book h2#b"+vBook).hasClass("valid");
+                                    $this.find("#mtbook #b #list").html("").show();
+                                    var vBValid= $this.find("#mtbook h2#b"+vBook).hasClass("valid");
                                     settings.booknode = {};
                                     for (var k in settings.locale.action) {
                                         var a = settings.locale.action[k];
@@ -773,7 +773,7 @@
                                             var vClass=(vBValid && vIsValid(settings.a,k))?"":" disabled";
                                             var $elt=$("<div class='icon ea action"+vClass+"' id='a"+k+"'><div class='label'>"+
                                                     vNode.label()+"</div></div>");
-                                            $this.find("#book #b #list").append($elt);
+                                            $this.find("#mtbook #b #list").append($elt);
                                             
                                             $elt.bind("mousedown touchstart", function(event) {
                                                 if (!$(this).hasClass("disabled")) {
@@ -784,7 +784,7 @@
                                             });
                                         }
                                     }
-                                    $this.find("#book #b #list").animate({"opacity":1},500,function(){$(this).show(); });
+                                    $this.find("#mtbook #b #list").animate({"opacity":1},500,function(){$(this).show(); });
                                 },500);
                             }
                           }
@@ -792,7 +792,7 @@
                         });
                     }
                 }
-                $this.find("#book #b").append("<div id='list'></div>");
+                $this.find("#mtbook #b").append("<div id='list'></div>");
 
                 if (settings.data) { settings.number = settings.data.length; }
                 if (settings.gen) {
@@ -993,11 +993,11 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.interactive && $this.find("#submit").hasClass("s")) {
+                if (settings.interactive && $this.find("#mtsubmit").hasClass("s")) {
                     settings.interactive = false;
                     var result = (settings.data?settings.data[settings.dataid].result:settings.result);
                     if (!$.isArray(result)) { result = [ result ]; }
@@ -1009,15 +1009,15 @@
                     
                     for (var i in values) for (var j in result ) { min = Math.min (min,helpers.levenshtein(values[i], result[j].toString())); }
                     min = Math.min(5,min*settings.errratio);
-                    $this.find("#escreen").addClass("s"+min);
+                    $this.find("#mtscreen").addClass("s"+min);
 
-                    if (settings.devmode) { alert($this.find("#escreen>div").html()+"\n"+values[0]); }
+                    if (settings.devmode) { alert($this.find("#mtscreen>div").html()+"\n"+values[0]); }
 
                     settings.wrongs+=min;
 
                     if (settings.dataid<settings.number) {
                         setTimeout(function(){
-                            $this.find("#escreen").removeClass();
+                            $this.find("#mtscreen").removeClass();
                             settings.interactive = true;
                             helpers.build($this);
                         }, 1000);
@@ -1025,7 +1025,7 @@
                     else {
                         settings.score = 5 - settings.wrongs;
                         if (settings.score<0) { settings.score = 0; }
-                        setTimeout(function(){helpers.end($this);}, 1000);
+                        setTimeout(function(){helpers.end($this, {'status':'success','score':settings.score});}, 1000);
                     }
                 }
             },
@@ -1061,7 +1061,7 @@
                 settings.bookid=0;
                 $this.find("#clear").animate({opacity:0},500, function() { $(this).hide(); });
                 $this.find("#glossary").animate({opacity:0},500, function() { $(this).hide(); });
-                $this.find("#book").css("opacity",0).show().animate({opacity:1},500);
+                $this.find("#mtbook").css("opacity",0).show().animate({opacity:1},500);
             },
             execute: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -1082,14 +1082,14 @@
             },
             closebook: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#book").animate({opacity:0}, 500, function() { $(this).hide(); });
+                $this.find("#mtbook").animate({opacity:0}, 500, function() { $(this).hide(); });
                 settings.bookid=0;
                 $this.find("#editor").editor("mathml");
             },
             onscreen: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.bookid) {
-                    $this.find("#book").animate({opacity:0}, 500, function() { $(this).hide(); });
+                    $this.find("#mtbook").animate({opacity:0}, 500, function() { $(this).hide(); });
                     $this.find("#editor").editor("value", settings.booknode[settings.bookid], true );
                     settings.bookid=0;
                 }
@@ -1100,11 +1100,11 @@
                 if (root && root.type=="action") {
 
                     root.children[_id-1].$html.addClass("over");
-                    $this.find("#escreen #l"+_id).addClass(root.check(_id-1)?"good":"wrong");
+                    $this.find("#mtscreen #l"+_id).addClass(root.check(_id-1)?"good":"wrong");
 
                     setTimeout(function() {
                         $this.find("#editor .ed").removeClass("over");
-                        $this.find("#escreen .link").removeClass("wrong").removeClass("good");
+                        $this.find("#mtscreen .link").removeClass("wrong").removeClass("good");
                     }, 800);
                 }
             }

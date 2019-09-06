@@ -12,14 +12,6 @@
         debug       : true                                     // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
 
     // private methods
     var helpers = {
@@ -42,17 +34,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score,'data':settings.data});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -123,7 +108,7 @@
             }
 
             if (settings.glossary && settings.glossary[ret]) { ret = settings.glossary[ret]; }
-            return helpers.format(ret);
+            return jtools.format(ret);
         },
         init: function($this) {
             var settings = helpers.settings($this);
@@ -321,7 +306,7 @@
                                 var callback=elt.attr.onclick.split(' ');
                                 settings.keys[e[0]]=callback;
                                 $elt.find("img").attr("id",callback[0]);
-                                $elt.addClass("pointer");
+                                $elt.addClass("g_pointer");
                                 $elt.bind("mousedown touchstart", function(_event) {
                                     var dest = $(this).find("img").attr("id"), reg = new RegExp("[$]","g");
                                     if (settings.content.story[dest]) {
@@ -331,7 +316,7 @@
                                     _event.preventDefault();
                                 });
                             }
-                            else { $elt.removeClass("pointer"); }
+                            else { $elt.removeClass("g_pointer"); }
 
                             if (elt.attr&&elt.attr.anim) {
                                 var anim = elt.attr.anim.split(" ");
@@ -377,7 +362,7 @@
                         if (!settings.dev)
                         {
                             if (settings.score<0) { settings.score = 0; }
-                            setTimeout(function(){helpers.end($this);}, 500);
+                            setTimeout(function(){helpers.end($this, {'status':'success','score':settings.score,'data':settings.data});}, 500);
                         }
                     }
                 }
@@ -415,7 +400,7 @@
             }
                             
             elt = "<div "+(_attr&&_attr["class"]?"class='"+_attr["class"]+"' ":"")+"id='elt"+_id+"'"+
-                    (style?" style='"+style+"'":"")+">"+helpers.format(value)+"</div>";
+                    (style?" style='"+style+"'":"")+">"+jtools.format(value)+"</div>";
             return elt;
             
         },
@@ -1014,8 +999,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                helpers.unbind($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             devcon: function() {
                 var $this = $(this) , settings = helpers.settings($this);

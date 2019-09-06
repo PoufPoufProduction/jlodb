@@ -1,8 +1,7 @@
 <div>
-
-    <div id="sources"></div>
-    <div id="board"></div>
-    <div id="exercice"><div>
+    <div id="ptsources"></div>
+    <div id="ptboard"></div>
+    <div id="instructions" class="low"><div>
         <div id="tag" ontouchstart="$(this).closest('.paint').paint('tag');event.preventDefault();"
                       onclick="$(this).closest('.paint').paint('tag');"></div>
         <div id="content"></div>
@@ -15,12 +14,12 @@
 
     <div id="submit" ontouchstart="$(this).closest('.paint').paint('valid');event.preventDefault();"
                      onclick="$(this).closest('.paint').paint('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
     </div>
     
-    <div id="legend"></div>
+    <div id="ptlegend"></div>
 
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.paint').paint('next');event.preventDefault();"

@@ -1,30 +1,17 @@
-.path                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-
-.path div#splashex          { background-image:url("../../res/img/banners/path.svg"); }
-.path  div#splashex h1      { position:absolute; top:12%; left:56%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-
-.path div#exercice               { position:absolute;width:12em;height:16em;top:40%;left:1%;background-repeat:repeat; font-size:.4em;
-                                   background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; padding:.2em;
-                                    border:1px solid black; display:none; opacity:0.95; }
-.path.largeex div#exercice       { top:10%; height:25em; }
-.path div#exercice .strong       { clear:both; color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-.path div#exercice .h1          { clear:both; font-weight:bold; font-size:2em; text-align:center; }
-.path div#exercice .small          { clear:both; font-style:italic; font-size:0.8em;  }
-.path div#board                  { height:70%; font-size:.6em; }
-
-.path div#effects               { position:absolute; top:0%; left:47%; width:1em; height:1em; font-size:5em; display:none;}
-.path div#goal                  { position:absolute; top:2%; left:60%; width:1em; height:1em; font-size:7em; display:none;}
-
-
-.path #mask     { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); display:none; }
-.path #mask>div { font-size:0.5em; background-color:rgba(255,255,255,0.9); border:1px solid black; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:35%; margin:20% auto; }
-.path #mask .icon { font-size:4em; float:left; margin:.1em .5em; cursor:pointer;  }
-.path #mask #help { height:3.6em; }
-.path #mask #illus { position:absolute; top:40%; left:70%; font-size:8em; width:1em; height:1em; }
-
+.path                       { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.path #splashex             { background-image:url("../../res/img/banners/path.svg"); }
+.path #exercice             { position:absolute;width:12em;height:16em;top:40%;left:1%;background-repeat:repeat; font-size:.4em; background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; padding:.2em; border:1px solid black; display:none; opacity:0.95; }
+.path.largeex #exercice     { top:10%; height:25em; }
+.path #exercice .strong     { clear:both; color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
+.path #exercice .h1         { clear:both; font-weight:bold; font-size:2em; text-align:center; }
+.path #exercice .small      { clear:both; font-style:italic; font-size:0.8em;  }
+.path #ptboard              { height:70%; font-size:.6em; }
+.path #effects              { top:0%; left:47%;}
+.path #ptgoal               { position:absolute; top:2%; left:60%; width:1em; height:1em; font-size:7em; display:none;}
+.path #ptmask               { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); display:none; }
+.path #ptmask>div           { font-size:0.5em; background-color:rgba(255,255,255,0.9); border:1px solid black; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:35%; margin:20% auto; }
+.path #ptmask .icon         { font-size:4em; float:left; margin:.1em .5em; cursor:pointer;  }
+.path #ptmask #help         { height:3.6em; }
+.path #ptmask #illus        { position:absolute; top:40%; left:70%; font-size:8em; width:1em; height:1em; }
 .path #tip                  { position:absolute; top:1%; left:93%; cursor:help; width:1em; height:1em; display:none; }
 

@@ -1,21 +1,14 @@
-.memory                               { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-.memory>div                           { width:100%; height:100%; }
-.memory table                         { margin:0 auto; border:2px solid rgb(53,34,34); margin-top:2%;
-                                        border-collapse:collapse; border-spacing:0; font-size:1.8em; }
-.memory table#board td                { width:1.2em; height:1.2em; color:rgb(30,63,128); text-align:center;
-                                        background-size: 100%; background-repeat:no-repeat; 
-                                        background-color:rgba(255,252,246,0.8); }
-.memory table#board td div            { width:1.2em; height:1.2em; margin:0 auto; color: rgba(53,34,34,0.8);}
-.memory table#board td.active         { background-color:rgba(255,220,162,0.8); }
-.memory table#board td.false          { background-color:rgba(255,80,65,1.0); }
-.memory table#board td.good           { background-color:rgba(80,255,65,1.0); }
-.memory.active #board td.active div   { cursor:pointer; }
-.memory div#splashex                  { font-size:.2em; background-image:url("../../res/img/banners/memory.svg");
-                                        background-color:rgba(0,0,0,0.2); }
-.memory div#splashex h1               { position:absolute; top:11%; left:66%; text-align:center; width:30%;
-                                        font-size:1.4em; color:#310; }
-.memory div#splashex #explanation     { position:absolute; top:18%; left:69%; font-size:1.1em; width:25%; font-style:italic;
-                                        text-align:justify; }
-.memory div#splashex table              { margin-top:4em; font-size:.8em; border:0; background-color:none; }
-.memory div#splashex #number_l          { width:14em; }
-.memory div#splashex #number_v          { width:2em; }
+.memory                                 { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.memory>div                             { width:100%; height:100%; }
+.memory table                           { margin:0 auto; border:2px solid rgb(53,34,34); margin-top:2%; font-size:1.8em; }
+.memory #myboard td                     { width:1.2em; height:1.2em; color:rgb(30,63,128); text-align:center; background-size: 100%; background-repeat:no-repeat; background-color:rgba(255,252,246,0.8); }
+.memory #myboard td div                 { width:1.2em; height:1.2em; margin:0 auto; color: rgba(53,34,34,0.8);}
+.memory #myboard td.active              { background-color:rgba(255,220,162,0.8); }
+.memory #myboard td.false               { background-color:rgba(255,80,65,1.0); }
+.memory #myboard td.good                { background-color:rgba(80,255,65,1.0); }
+.memory.active #myboard td.active div   { cursor:pointer; }
+.memory #splashex                       { background-image:url("../../res/img/banners/memory.svg"); background-color:rgba(0,0,0,0.2); }
+.memory #splashex #explanation          { position:absolute; top:40%; left:69%; font-size:.6em; width:25%; font-style:italic; text-align:justify; }
+.memory #splashex table                 { margin-top:1em; font-size:.8em; border:0; background-color:none; }
+.memory #splashex #number_l             { width:14em; }
+.memory #splashex #number_v             { width:2em; }

@@ -75,8 +75,8 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.find("#mhboard>div").css("font-size", settings.font+"em");
-				$this.find(".mhfx").css("font-size", (settings.font*3)+"em");
+                $this.find("#mgboard>div").css("font-size", settings.font+"em");
+				$this.find(".mgfx").css("font-size", (settings.font*3)+"em");
                 $this.find(".target").css("font-size",(Math.floor(1.4*settings.font*10)/10)+"em");
 
                 // Locale handling
@@ -178,7 +178,7 @@
 		// DISPLAY TILES ACCORDING TO THEIR POSITION
         display: function($this,_clear) {
             var settings = helpers.settings($this);
-            if (_clear) { $this.find("#mhboard>div").html(""); }
+            if (_clear) { $this.find("#mgboard>div").html(""); }
 			settings.elts.sort(function(_a,_b) { return (_a.pos[0]>_b.pos[0]); });
             for (var i in settings.elts)
             {
@@ -190,7 +190,7 @@
 							 .css("left",(elt.pos[0]*1.75+elt.pos[2]*0.25+settings.offset[0])+"em")
 							 .css("z-index",elt.zindex);
 					if (settings.mask) { elt.$html.toggleClass("blocked", !elt.free); }
-					if (_clear) {  $this.find("#mhboard>div").append(elt.$html); }
+					if (_clear) {  $this.find("#mgboard>div").append(elt.$html); }
 				}
             }
 		},
@@ -255,13 +255,13 @@
 					do { nb++; helpers.setpos($this, helpers.getpos($this), true); } while ( !helpers.simulation($this) && nb<10);
 					if (nb<10) {
 						gameover = false;
-						$this.find("#mhshuffle").css("opacity",0).show().animate({opacity:1},300, function() {
-							$this.find(".mhtile").css("opacity",1).animate({opacity:0},500);
+						$this.find("#mgshuffle").css("opacity",0).show().animate({opacity:1},300, function() {
+							$this.find(".mgtile").css("opacity",1).animate({opacity:0},500);
 							setTimeout(function() {
-								$this.find("#mhshuffle").animate({opacity:0},500, function() {
+								$this.find("#mgshuffle").animate({opacity:0},500, function() {
 									$(this).hide();
 									helpers.endturn($this);
-									$this.find(".mhtile").css("opacity",0).animate({opacity:1},500);
+									$this.find(".mgtile").css("opacity",0).animate({opacity:1},500);
 								});
 							},800);
 						});
@@ -305,7 +305,7 @@
 				}
             };
             
-            ret.$html=$("<div class='mhtile' id='"+ret.id+"'>"+
+            ret.$html=$("<div class='mgtile' id='"+ret.id+"'>"+
                             "<img src='res/img/asset/mahjong/"+(_data.src?_data.src:"void")+".svg' alt='' />"+
                             "<div class='img'></div>"+
                             "<div class='txt'><div></div></div>"+
@@ -339,16 +339,16 @@
                                     settings.selected.active = false;
                                     elt.active = false;
 									
-									$this.find("#mhfx1>div").addClass("running").parent()
+									$this.find("#mgfx1>div").addClass("running").parent()
 									     .css("top",  settings.selected.$html.offset().top - $this.offset().top)
 										 .css("left", settings.selected.$html.offset().left - $this.offset().left)
 										 .show();
-									$this.find("#mhfx2>div").addClass("running").parent()
+									$this.find("#mgfx2>div").addClass("running").parent()
 									     .css("top",  elt.$html.offset().top - $this.offset().top)
 										 .css("left", elt.$html.offset().left - $this.offset().left)
 										 .show();
 									setTimeout(function() {
-										$this.find(".mhfx>div").removeClass("running").parent().hide();
+										$this.find(".mgfx>div").removeClass("running").parent().hide();
 									},800);
 										 
                                     setTimeout(function() {
@@ -384,7 +384,7 @@
         },
         clean : function($this) {
             var settings = helpers.settings($this);
-            $this.find(".mhtile.s").removeClass("s");
+            $this.find(".mgtile.s").removeClass("s");
             settings.selected=0;
 			settings.interactive = true;
         }
@@ -445,7 +445,7 @@
                         break;
                     }
                 }
-                $this.find("#mhmask").hide();
+                $this.find("#mgmask").hide();
             }
         };
 

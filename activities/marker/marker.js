@@ -12,14 +12,6 @@
         debug       : true                                     // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -41,17 +33,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         loader: {
             css: function($this) {
@@ -86,13 +71,13 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
                 
-                $this.find("#menu>div").hide();
+                $this.find("#mrmenu>div").hide();
                 for (var i in settings.questions) {
-                    $this.find("#menu #c"+(parseInt(i)+1)+" .legend").html(settings.questions[i].label);
-                    $this.find("#menu #c"+(parseInt(i)+1)).show();
+                    $this.find("#mrmenu #c"+(parseInt(i)+1)+" .legend").html(settings.questions[i].label);
+                    $this.find("#mrmenu #c"+(parseInt(i)+1)).show();
                 }
 
-				var $content = $this.find("#data>div").css("font-size",settings.font+"em").html("");
+				var $content = $this.find("#mrdata>div").css("font-size",settings.font+"em").html("");
                 var reg = new RegExp("[ ]", "g");
                 var t = -1, tnext;
                 var word = "";
@@ -154,7 +139,7 @@
                 $this.bind("mouseup mouseleave touchend touchleave", function() { helpers.mouseup($this); });
 				$this.bind("mousedown touchstart", function(_event) { _event.preventDefault(); });
 				
-                if (settings.exercice) { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+                if (settings.exercice) { $this.find("#exercice>div").html(jtools.format(settings.exercice)); }
 
                 // Locale handling
 
@@ -265,8 +250,8 @@
         color: function($this, _color) {
             var settings = helpers.settings($this);
             settings.color = _color;
-            $this.find("#menu .color").removeClass("s");
-            $this.find("#menu #c"+(settings.color+1)+" .color").addClass("s");
+            $this.find("#mrmenu .color").removeClass("s");
+            $this.find("#mrmenu #c"+(settings.color+1)+" .color").addClass("s");
         },
         update: function($this) {
             var settings = helpers.settings($this);
@@ -361,16 +346,14 @@
 						
 						
                     }
-                    $this.find("#good").toggle(nbErrors==0);
-                    $this.find("#wrong").toggle(nbErrors>0);
-                    $this.find("#effects").show();
+                    $this.find("#effects").addClass(nbErrors?"wrong":"good");
                     $this.find("#submit").addClass(nbErrors?"wrong":"good");
 					
 					if (settings.edit) {
 						setTimeout(function() {
-							$this.find("#effects").hide();
-							$this.find("#submit").removeClass("wrong").removeClass("good");
-							$this.find("#data span").removeClass("wrong");
+							$this.find("#effects").removeClass();
+							$this.find("#submit").removeClass();
+							$this.find("#mrdata span").removeClass("wrong");
 							settings.interactive = true;
 						}, 1500);
 					}
@@ -378,15 +361,14 @@
 						settings.score = 5 - nbErrors;
 						if (settings.score<0) { settings.score = 0; }
 						$(this).find("#valid").hide();
-						setTimeout(function() { helpers.end($this); }, (settings.score!=5)?3000:500);
+						setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, (settings.score!=5)?3000:500);
 					}
                 }
             },
             color: function(_val) { helpers.color($(this), _val); },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.interactive = false;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
 			e_get: function() {
                 var $this = $(this) , settings = helpers.settings($this);

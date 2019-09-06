@@ -1,5 +1,5 @@
 <div>
-    <table id="board">
+    <table id="myboard">
         <tr><td ontouchstart="$(this).closest('.memory').memory('click', this,  1);event.preventDefault();"
                 onclick="$(this).closest('.memory').memory('click', this,  1);"
                 style="background-image:url('res/img/svginventoryicons/background/border/square01.svg')"><div></div></td>
@@ -78,15 +78,15 @@
     </table>
     <div id="splashex" ontouchstart="$(this).hide().closest('.memory').memory('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.memory').memory('next');"><div>
-            <h1 id="label">memory</h1>
             <div id="explanation">
                 <div id="guide"></div>
                 <table>
-                    <tr><td id="number_l">number</td><td id="number_v"></td></tr>
-                    <tr><td id="exposure_l">exposure</td><td id="exposure_v"></td></tr>
-                    <tr><td id="error_l">error(s)</td><td id="error_v"></td></tr>
+                    <tr><td id="number_l"></td><td id="number_v"></td></tr>
+                    <tr><td id="exposure_l"></td><td id="exposure_v"></td></tr>
+                    <tr><td id="error_l">(s)</td><td id="error_v"></td></tr>
                 </table>
             </div>
+            <h1 id="label"></h1>
     </div></div>
 </div>
 

@@ -1,9 +1,10 @@
 <div>
 
-    <div id="board"></div>
+    <div id="ptboard"></div>
     <div id="exercice"><div></div></div>
 
-    <div id="goal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
+    <div id="ptgoal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
+	
     <div id="effects"><img src="res/img/default/popup/good01.svg" alt=""/></div>
     
     <div id="tip" ontouchstart="$(this).closest('.path').path('showhelp');event.preventDefault();"
@@ -12,20 +13,20 @@
         <div>0</div>
     </div>
     
-    <div id="mask"><div>
+    <div id="ptmask"><div>
         <div id="help"></div>
         <div>
             <div class="icon" ontouchstart="$(this).closest('.path').path('help');event.preventDefault();"
                               onclick="$(this).closest('.path').path('help');"><img src="res/img/default/icon/valid01.svg" alt=""/></div>
-            <div class="icon" ontouchstart="$(this).closest('#mask').hide();event.preventDefault();"
-                              onclick="$(this).closest('#mask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+            <div class="icon" ontouchstart="$(this).closest('#ptmask').hide();event.preventDefault();"
+                              onclick="$(this).closest('#ptmask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
         </div>
         <div id="illus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
     </div></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.path').path('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.path').path('next');"><div>
-        <h1 id="label">path</h1>
+        <h1 id="label"></h1>
     </div></div>
 
 </div>

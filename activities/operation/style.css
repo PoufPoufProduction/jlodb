@@ -1,96 +1,51 @@
 .operation                          { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .operation>div                      { width:16em;height:12em; }
-
-.operation div#splashex             { font-size:.2em; background-image:url("../../res/img/banners/operation.svg"); }
-.operation div#splashex  h1                 { position:absolute; top:15%; left:55%; font-size:4em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.operation div.tab                  { width:1em; height:1em; background-color:rgba(255,255,255,0.5); position:absolute;
-                                      font-size:1.8em; color:rgb(53,34,34);  text-align:center; }
+.operation #splashex                { background-image:url("../../res/img/banners/operation.svg"); }
+.operation div.tab                  { width:1em; height:1em; background-color:rgba(255,255,255,0.5); position:absolute; font-size:1.8em; color:rgb(53,34,34);  text-align:center; }
 .operation div.tab span             { font-size:.8em; top:-.2em; position:relative;}
-.operation div#base                 { border-radius:0 0.5em 0.5em 0; top:1.2em; }
+.operation #onbase                  { border-radius:0 0.5em 0.5em 0; top:1.2em; }
 .operation div.tab .label           { font-size:.2em; height:.5em; overflow:visible; text-align:left; margin-left:.5em; }
 .operation div#nbdec                { border-radius:0 0.5em 0.5em 0; top:2.4em; }
-
-.operation #board                   { width:16em; height:12em; position:absolute; top:0; left:0;}
-
-
-.operation div#exercice         {  position:absolute; width:90%; height:20%; top:88%; left:10%; border-radius:0.5em 0 0 0;
-                               background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
-                               display:none; font-size:0.9em; border:.1em solid white;}
-.operation div#exercice>div           { margin:0 1em; text-align:justify; font-style:italic; }
-
-.operation #data                    { position:relative; margin:0; width:86%; height:86%; overflow:visible;}
-.operation #data>div                { position:absolute;  z-index:1; background-color:#dcd6d2;}
-.operation #data .active            { cursor:pointer; }
-.operation #data .red        		{ background-color:rgb(255,64,64) !important; color:rgb(64,0,0) !important;}
-.operation #data .green      		{ background-color:rgb(64,255,64) !important; color:rgb(0,64,0) !important;}
-.operation #data .blue       		{ background-color:rgb(128,128,225) !important; color:rgb(0,0,128) !important; }
-.operation #data .bg                { background-color:rgb(53,34,34); z-index:0;}
-.operation #data .op                { width:0.75em; height:1em; background-color:inherit; font-weight:bold;color:rgb(53,34,34); }
-.operation #data .l2                { background-color:rgb(255,231,184); }
-.operation #data .l3                { background-color:rgb(255,220,162); }
-
-.operation #data .move              { width:0.25em; height:1em; 
-									  background-image:url("../../res/img/icon/cell/cell14.svg");}
-.operation #data .move.ml			{ cursor:pointer; background-image:url("../../res/img/icon/cell/cell14l.svg");}
-.operation #data .move.mr			{ cursor:pointer; background-image:url("../../res/img/icon/cell/cell14r.svg");}
-.operation #data .move.s			{ background-color:rgba(255,255,0,0.8); }
-
-.operation #data .corner            { width:0.25em; height:0.5em; background-color:rgb(53,34,34);  }
-.operation #data .corner p          { font-size:0.5em; color:white;  }
-.operation #data .carry             { width:1em; height:0.5em; background-color:rgb(255,220,162);
-                                      background-image:url("../../res/img/icon/cell/cell21.svg"); background-size:100%; }
-.operation #data .carry>div         { margin-top:.2em; font-size:0.3em; text-align:center; width:100%; height:100%; color:rgb(50,40,20); }
-.operation #data .value             { width:1em; height:1em; text-align:center; color:rgb(53,34,34); background-size:100%;
-									  background-image:url("../../res/img/svginventoryicons/background/border/square01.svg"); }
-.operation #data .value>div        { font-size:0.8em; }
-.operation #data .value.s1          { background-image:url("../../res/img/svginventoryicons/background/border/square02.svg"); }
-.operation #data .value.wrong       { background-color:rgb(200,100,100); color:red;}
-.operation #data .dec               { overflow:visible; background-color:red;  z-index:10; width:0; height:0; }
-.operation #data .dec>div           { margin-top:0.70em; margin-left:0.85em; width:.3em; height:.3em;
-                                      background-color:rgba(53,34,34,0.25); border-radius:.15em; cursor:pointer;  }
-.operation #data .dec.s>div         { background-color:rgb(53,34,34); cursor:auto; }
-.operation #data .dec.wrong>div     { background-color:red; cursor:auto; }
-
-.operation #keypad                  { position:absolute; overflow:visible; display:none; font-weight:bold; z-index:20;}
-.operation #keypad div.k            { width:1.2em; height:1.2em; overflow:hidden; text-align:center;
-                                      background-image:url("../../res/img/asset/fx/target01.svg"); border-radius:0.5em;
-                                      background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer;
-                                      position:absolute; display:none; background-color:rgba(200,235,235,0.8);}
-.operation #keypad div.k.small      { font-size:.7em; }
-.operation #keypad div.k.s          { background-color:rgba(17,95,130,0.8); color:rgb(200,235,235); }
-.operation #keypad #bg1             { background-image:url("../../res/img/asset/fx/target02.svg");
-                                      font-size:3em; position:absolute; width:1em; height:1em;
-                                      top:-0.47em; left:-0.47em; font-size:3em; }
-
-.operation div#submit                   { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute;
-                                          top:7em; left:0em; z-index:3; }
-.operation div#submit>img               { display:none; }
-.operation div#submit #subvalid         { display:inline; }
-.operation div#submit.good #subvalid    { display:none; }
-.operation div#submit.wrong #subvalid   { display:none; }
-.operation div#submit.good #subgood     { display:inline; }
-.operation div#submit.wrong #subwrong   { display:inline; }
-
-.operation #effects                     { width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:20;}
-.operation #effects.division            { top:5em;}
-.operation #effects>div                 { font-size:5em; width:1em; height:1em; display:none;}
-
-
-.operation #target                      { cursor:pointer; z-index:3; width:1em; height:1em; position:absolute; top:0; left:0;  }
-.operation #fill                        { z-index:3;}
-.operation #box                         { position:absolute; top:0; left:0; width:1em; height:2em; z-index:2; border:.1em solid red;
-                                          display:none; }
-                                          
-                                          
-.operation #help                 { position:absolute; font-size:.8em; cursor:pointer; width:1em; height:1em; top:80%; left:94.5%; z-index:99; display:none; }
-.operation #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
-                                      z-index:2002; cursor:pointer; display:none; }
-.operation #phelp>div            { width:40%; height:98%; margin-top:.2em; margin-left:59%; background-color:rgba(255,255,255,0.8); }
-.operation #phelp #hquit         { cursor:pointer;}
-.operation #phelp .elt           { margin:.1em; font-size:.75em;  }
-.operation #phelp .elt .label    { float:left; width:4em; background-color:white; text-align:center; }
-.operation #phelp .elt .result    { float:left; width:4em; background-color:gray; color:white; text-align:center; }
+.operation #onboard                 { width:16em; height:12em; position:absolute; top:0; left:0;}
+.operation #ondata                  { position:relative; margin:0; width:86%; height:86%; overflow:visible;}
+.operation #ondata>div              { position:absolute;  z-index:1; background-color:#dcd6d2;}
+.operation #ondata .active          { cursor:pointer; }
+.operation #ondata .red        		{ background-color:rgb(255,64,64) !important; color:rgb(64,0,0) !important;}
+.operation #ondata .green      		{ background-color:rgb(64,255,64) !important; color:rgb(0,64,0) !important;}
+.operation #ondata .blue       		{ background-color:rgb(128,128,225) !important; color:rgb(0,0,128) !important; }
+.operation #ondata .bg              { background-color:rgb(53,34,34); z-index:0;}
+.operation #ondata .op              { width:0.75em; height:1em; background-color:inherit; font-weight:bold;color:rgb(53,34,34); }
+.operation #ondata .l2              { background-color:rgb(255,231,184); }
+.operation #ondata .l3              { background-color:rgb(255,220,162); }
+.operation #ondata .move            { width:0.25em; height:1em; background-image:url("../../res/img/icon/cell/cell14.svg");}
+.operation #ondata .move.ml			{ cursor:pointer; background-image:url("../../res/img/icon/cell/cell14l.svg");}
+.operation #ondata .move.mr			{ cursor:pointer; background-image:url("../../res/img/icon/cell/cell14r.svg");}
+.operation #ondata .move.s			{ background-color:rgba(255,255,0,0.8); }
+.operation #ondata .corner          { width:0.25em; height:0.5em; background-color:rgb(53,34,34);  }
+.operation #ondata .corner p        { font-size:0.5em; color:white;  }
+.operation #ondata .carry           { width:1em; height:0.5em; background-color:rgb(255,220,162); background-image:url("../../res/img/icon/cell/cell21.svg"); background-size:100%; }
+.operation #ondata .carry>div       { margin-top:.2em; font-size:0.3em; text-align:center; width:100%; height:100%; color:rgb(50,40,20); }
+.operation #ondata .value           { width:1em; height:1em; text-align:center; color:rgb(53,34,34); background-size:100%; background-image:url("../../res/img/svginventoryicons/background/border/square01.svg"); }
+.operation #ondata .value>div       { font-size:0.8em; }
+.operation #ondata .value.s1        { background-image:url("../../res/img/svginventoryicons/background/border/square02.svg"); }
+.operation #ondata .value.wrong     { background-color:rgb(200,100,100); color:red;}
+.operation #ondata .dec             { overflow:visible; background-color:red;  z-index:10; width:0; height:0; }
+.operation #ondata .dec>div         { margin-top:0.70em; margin-left:0.85em; width:.3em; height:.3em; background-color:rgba(53,34,34,0.25); border-radius:.15em; cursor:pointer;  }
+.operation #ondata .dec.s>div       { background-color:rgb(53,34,34); cursor:auto; }
+.operation #ondata .dec.wrong>div   { background-color:red; cursor:auto; }
+.operation #onkeypad                { position:absolute; overflow:visible; display:none; font-weight:bold; z-index:20;}
+.operation #onkeypad div.k          { width:1.2em; height:1.2em; overflow:hidden; text-align:center; background-image:url("../../res/img/asset/fx/target01.svg"); border-radius:0.5em; background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer; position:absolute; display:none; background-color:rgba(200,235,235,0.8);}
+.operation #onkeypad div.k.small    { font-size:.7em; }
+.operation #onkeypad div.k.s        { background-color:rgba(17,95,130,0.8); color:rgb(200,235,235); }
+.operation #onkeypad #bg1           { background-image:url("../../res/img/asset/fx/target02.svg"); font-size:3em; position:absolute; width:1em; height:1em; top:-0.47em; left:-0.47em; font-size:3em; }
+.operation #effects.division        { top:5em;}
+.operation #target                  { cursor:pointer; z-index:3; width:1em; height:1em; position:absolute; top:0; left:0;  }
+.operation #fill                    { z-index:3;}
+.operation #box                     { position:absolute; top:0; left:0; width:1em; height:2em; z-index:2; border:.1em solid red; display:none; }
+.operation #help                    { position:absolute; font-size:.8em; cursor:pointer; width:1em; height:1em; top:80%; left:94.5%; z-index:99; display:none; }
+.operation #phelp                   { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5); z-index:2002; cursor:pointer; display:none; }
+.operation #phelp>div               { width:40%; height:98%; margin-top:.2em; margin-left:59%; background-color:rgba(255,255,255,0.8); }
+.operation #phelp #hquit            { cursor:pointer;}
+.operation #phelp .elt              { margin:.1em; font-size:.75em;  }
+.operation #phelp .elt .label       { float:left; width:4em; background-color:white; text-align:center; }
+.operation #phelp .elt .result      { float:left; width:4em; background-color:gray; color:white; text-align:center; }
