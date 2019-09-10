@@ -5,22 +5,20 @@
 .paint.picross #splashex #picross   { display:inherit; }
 .paint.picross #splashex #default   { display:none; }
 .paint #instructions				{ display:none; }
-.paint #instructions #content       { margin:0 1em; text-align:justify; font-style:italic; }
-.paint #instructions #tag           { font-size:1em; float:right; width:2.0em; height:1.2em; font-weight:bold; color:white; background-color:black; border-radius:.2em; text-align:center; margin:0 .15em; display:none; cursor:pointer; }
-.paint div#instructions #tag .char  { margin-left:.4em; }
-.paint div#ptboard                  { position:absolute; top:0; width:16em; height:12em; }
-.paint.full div#ptboard             { font-size:0.8em; top:5%; left:18%; border:.1em solid white;}
-.paint div#ptsources                { display:none; width:2.7em; height:9.7em; margin-top:5%; overflow:visible; }
-.paint div#ptsources>div            { font-size:0.5em; width:5em; height:1.4em; border:.2em solid white; text-align:center; margin:.1em; cursor:pointer; float:left;}
-.paint.full div#ptsources .val1     { background-color:black; color:white; height:1.4em; }
-.paint.full div#ptsources .val2     { float:right; width:2em; height:1.4em; }
-.paint.square div#ptsources>div     { font-size:2em; width:1.2em; height:1.2em; border-width:0.05em; margin:0.02em; }
-.paint div#ptsources>div.s          { border-color:red; }
-.paint div#ptsources>div.s .val1    { background-color:red; }
-.paint.full div#ptsources           { display:inherit; }
-.paint.small div#ptsources          { font-size:.5em; width:6em; height:19.4em; }
-.paint.tiny div#ptsources           { font-size:.32em; width:9.5em; height:40em; }
-.paint div#submit                   { z-index:3; }
+.paint #instructions #tag .char     { margin-left:.4em; }
+.paint #ptboard                     { position:absolute; top:0; width:16em; height:12em; }
+.paint.full #ptboard                { font-size:0.8em; top:5%; left:18%; border:.1em solid white;}
+.paint #ptsources                   { display:none; width:2.7em; height:9.7em; margin-top:5%; overflow:visible; }
+.paint #ptsources>div               { font-size:0.5em; width:5em; height:1.4em; border:.2em solid white; text-align:center; margin:.1em; cursor:pointer; float:left;}
+.paint.full #ptsources .val1        { background-color:black; color:white; height:1.4em; }
+.paint.full #ptsources .val2        { float:right; width:2em; height:1.4em; }
+.paint.square #ptsources>div        { font-size:2em; width:1.2em; height:1.2em; border-width:0.05em; margin:0.02em; }
+.paint #ptsources>div.s             { border-color:red; }
+.paint #ptsources>div.s .val1       { background-color:red; }
+.paint.full #ptsources              { display:inherit; }
+.paint.small #ptsources             { font-size:.5em; width:6em; height:19.4em; }
+.paint.tiny #ptsources              { font-size:.32em; width:9.5em; height:40em; }
+.paint #submit                      { z-index:3; }
 .paint #ptlegend                    { position:absolute; font-size:.4em; top:2%; left:0; width:100%; height:30%; opacity:0.95; z-index:4; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;  padding:.1em 1em; border:.2em solid white; border-width:.2em 0 .2em 0; display:none; cursor:move; }
 .paint #ptlegend>div                { height:1.2em; margin-bottom:.1em; float:left; }
 .paint #ptlegend .label             { background-color:gray; color:white; width:3em; text-align:center; float:left; }

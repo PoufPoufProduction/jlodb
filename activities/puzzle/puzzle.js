@@ -29,20 +29,6 @@
     };
 
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='float:left'><img src='$1'/></div>",
-        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='float:left;font-size:2em;'><img src='$1'/></div>",
-        "\\\[icon3\\\]([^\\\[]+)\\\[/icon3\\\]",    "<div class='icon' style='float:left;font-size:3em;'><img src='$1'/></div>",
-        "\\\[icon4\\\]([^\\\[]+)\\\[/icon4\\\]",    "<div class='icon' style='float:left;font-size:4em;'><img src='$1'/></div>",
-        "\\\[code](.+)\\\[/code]",                  "<div class='code'>$1</div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -64,17 +50,11 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+			if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -106,7 +86,7 @@
             svg:function($this) {
                 var settings = helpers.settings($this), debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div id='svg'></div>").appendTo($this.find("#board"));
+                var elt= $("<div id='svg'></div>").appendTo($this.find("#peboard"));
                 elt.svg();
                 settings.svg = elt.svg('get');
                 settings.svg.load( 'res/img/'+settings.url + debug,
@@ -136,11 +116,15 @@
                 }
                 
                 // LOCALE HANDLING
-
+                if (settings.locale) { $.each(settings.locale, function(id,value) {
+                    if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
+                    else { $this.find("#"+id).html(value); }
+                }); }
+				
                 if (settings.exercice) {
-                    $this.find("#exercice #content").html(helpers.format(settings.exercice)).css("font-size",settings.fontex+"em");
-                    if (settings.labelex) { $this.find("#exercice #label").html(settings.labelex).show(); }
-                    $this.find("#exercice").show();
+                    $this.find("#instructions #content").html(jtools.format(settings.exercice)).css("font-size",0.5*settings.fontex+"em");
+                    if (settings.labelex) { $this.find("#instructions #tag").html(settings.labelex).show(); }
+                    $this.find("#instructions").show();
                 }
                 
                 // HANDLE BACKGROUND
@@ -188,7 +172,7 @@
             var settings = helpers.settings($this);
             settings.elts             = {};
             $this.find("#submit").removeClass();
-            $this.find("#effects").hide();
+            $this.find("#effects").removeClass();
             $this.find(".t").hide();
             var inituse               = [];
             var ids                   = [];
@@ -220,17 +204,9 @@
             }
 
             // HANDLE THE TEMPLATE IMAGE AND TEXTS
-            $this.find("#ttext").removeClass("legend");
-            if (settings.timg) {
-                var img = $.isArray(settings.timg)?settings.timg[settings.puzzleid]:settings.timg;
-                if (img) {
-					if (img.indexOf(".svg")!=-1) 	{ $this.find("#timg").html("<img src='"+img+"'/>").show(); }
-					else							{ $this.find("#timg").html(img).show(); }
-                    $this.find("#ttext").addClass("legend"); }
-            }
             if (settings.ttxt) {
                 var txt = $.isArray(settings.ttxt)?settings.ttxt[settings.puzzleid]:settings.ttxt;
-                if (txt) { $this.find("#ttxt").html(helpers.format(txt.toString())).parent().show(); }
+                if (txt) { $this.find("#petxt>div").html(jtools.format(txt.toString())).parent().show(); }
             }
 
             // HIDE AND SHOW ELEMENT
@@ -355,7 +331,7 @@
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                 event.originalEvent.touches[0]:event;
                                 
-                        settings.ratio = $this.find("#board").width()/settings.width;
+                        settings.ratio = $this.find("#peboard").width()/settings.width;
 
                         if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
                         if (settings.interactive) {
@@ -638,25 +614,12 @@
                     if (wrong) { wrongs++; elt.$elt.attr("class","wrong"); }
                 }
 
-                
-                
-                
                 settings.wrongs+=wrongs;
                 settings.puzzleid++;
 
-                if (wrongs) {
-					$this.find("#submit").addClass("wrong");
-					$(settings.svg.root()).attr("class", $(settings.svg.root()).attr("class")+" wrong");
-				} else {
-					$this.find("#submit").addClass("good");
-					$(settings.svg.root()).attr("class", $(settings.svg.root()).attr("class")+" good");
-				}
-				
-				
-                $this.find("#effects>div").hide();
-                if (!wrongs) { $this.find("#effects #good").css("opacity",0).show().animate({opacity:1},500); }
-                else         { $this.find("#effects #wrong").css("opacity",0).show().animate({opacity:1},500); }
-                $this.find("#effects").show();
+				$(settings.svg.root()).attr("class", $(settings.svg.root()).attr("class")+(wrongs?" wrong":" good"));
+				$this.find("#submit").addClass(wrongs?"wrong":"good");
+                $this.find("#effects").addClass(wrongs?"wrong":"good");
 					
                 
                 if ( settings.puzzleid<settings.number ) {
@@ -668,7 +631,7 @@
                     settings.score = 5-Math.ceil(settings.errratio*settings.wrongs);
                     if (settings.score<0) { settings.score = 0; }
                     clearTimeout(settings.timer.id);
-                    setTimeout(function() { helpers.end($this); }, wrongs?settings.delay[1]:settings.delay[0]);
+                    setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, wrongs?settings.delay[1]:settings.delay[0]);
                 }
             }
         },
@@ -740,9 +703,7 @@
             submit: function() { helpers.submit($(this)); },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
-                settings.interactive = false;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);

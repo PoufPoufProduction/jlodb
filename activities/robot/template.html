@@ -1,17 +1,17 @@
 <div>
-    <div id="leftpart">
-        <div id="board">
-            <div id="effects">
+    <div id="rtleft">
+        <div id="rtboard">
+            <div id="rtfx">
                 <div id="warnfx"><img src="res/img/effects/alertrobot01.svg" alt=""/></div>
                 <div id="robotfx"><img src="res/img/tileset/iso/robot/draft1.svg" alt=""/></div>
                 <div id="tilefx"><img src="res/img/tileset/iso/set1/000.svg" alt=""/></div>
             </div>
-            <div id="bg"><img src="res/img/background/gears01.svg" alt=""/></div>
-            <div id="tiles"></div>
-            <div id="fg"></div>
+            <div id="rtbg"><img src="res/img/background/gears01.svg" alt=""/></div>
+            <div id="rttiles"></div>
+            <div id="rtfg"></div>
         </div>
         
-        <div id="buttons">
+        <div id="rtbuttons">
             <div id="help"  ontouchstart="$(this).closest('.robot').find('#phelp').show();event.preventDefault();"
                             onclick="$(this).closest('.robot').find('#phelp').show();">
                 <img src="res/img/control/about.svg" alt=""/>
@@ -36,22 +36,22 @@
         </div>
     </div>
 	
-	<div id="htomain" class="icon help"><img src="res/img/help/robot/htomain01.svg" alt=""/></div>
-	<div id="hrun" class="icon help"><img src="res/img/help/robot/hrun01.svg" alt=""/></div>
+	<div id="htomain" class="icon rthelp"><img src="res/img/help/robot/htomain01.svg" alt=""/></div>
+	<div id="hrun" class="icon rthelp"><img src="res/img/help/robot/hrun01.svg" alt=""/></div>
         
-    <div id="menu">
-        <div id="action">
-            <div id="tab">
-                <div id="r1" ontouchstart="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t1').show();event.preventDefault();"
-                              onclick="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t1').show();">1</div>
-                <div id="r2" ontouchstart="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find'.robot #tabs #t2').show();event.preventDefault();"
-                              onclick="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t2').show();">2</div>
-                <div id="r3" ontouchstart="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t3').show();event.preventDefault();"
-                              onclick="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t3').show();">3</div>
-                <div id="r4" ontouchstart="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t4').show();event.preventDefault();"
-                              onclick="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t4').show();">4</div>
+    <div id="rtmenu">
+        <div id="rtaction">
+            <div id="rttab">
+                <div id="r1" ontouchstart="$(this).closest('.robot').find('#rttabs>div').hide();$(this).closest('.robot').find('#rttabs #t1').show();event.preventDefault();"
+                              onclick="$(this).closest('.robot').find('#rttabs>div').hide();$(this).closest('.robot').find('#rttabs #t1').show();">1</div>
+                <div id="r2" ontouchstart="$(this).closest('.robot').find('#rttabs>div').hide();$(this).closest('.robot').find'.robot #rttabs #t2').show();event.preventDefault();"
+                              onclick="$(this).closest('.robot').find('#rttabs>div').hide();$(this).closest('.robot').find('#rttabs #t2').show();">2</div>
+                <div id="r3" ontouchstart="$(this).closest('.robot').find('#rttabs>div').hide();$(this).closest('.robot').find('#rttabs #t3').show();event.preventDefault();"
+                              onclick="$(this).closest('.robot').find('#rttabs>div').hide();$(this).closest('.robot').find('#rttabs #t3').show();">3</div>
+                <div id="r4" ontouchstart="$(this).closest('.robot').find('#rttabs>div').hide();$(this).closest('.robot').find('#rttabs #t4').show();event.preventDefault();"
+                              onclick="$(this).closest('.robot').find('#rttabs>div').hide();$(this).closest('.robot').find('#rttabs #t4').show();">4</div>
             </div>
-            <div id="tabs">
+            <div id="rttabs">
                 <div class="both" id="t1">
                     <div class="source"><div>
                         <div class="slider">
@@ -622,7 +622,7 @@
                 </div>
             </div>
         </div>
-        <div id="cache"></div>
+        <div id="rtcache"></div>
     </div>
 
     <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"><div>
@@ -806,12 +806,6 @@
         </div>
 
     </div></div>
-
-    <div id="course" ontouchstart="$(this).closest('.robot').robot('course');event.preventDefault();"
-                     onclick="$(this).closest('.robot').robot('course');"><div class="panel">
-        <div id="art"><img src="res/img/background/asset/robot01.svg" alt=""/></div>
-        <div id="pre"></div>
-    </div></div>
     
     <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
         <div id="tippopup"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
@@ -838,19 +832,10 @@
     </div></div>
 
     
-    <div id="goal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
+    <div id="rtgoal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
     
-    <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
+    <div id="rttouch" class="anim12 center noloop quick"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
     
-    
-    <div id="devmode" ontouchstart="$(this).closest('.robot').robot('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.robot').robot('devmode');" ><img src="res/img/default/white/snapshot.svg" alt=""/></div>
-                      
-    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
-        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
-                  onclick="$(this).focus();event.stopPropagation();"></textarea>
-    </div>
-
     <div id="splashex" ontouchstart="$(this).hide().closest('.robot').robot('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.robot').robot('next');"><div>
         <h1 id="label"></h1>

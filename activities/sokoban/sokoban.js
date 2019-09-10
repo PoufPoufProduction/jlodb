@@ -14,15 +14,6 @@
         background  : "",                                       // Background
         debug       : true                                      // Debug mode
     };
-
-    
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
-    ];
     
     // private methods
     var helpers = {
@@ -45,17 +36,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         loader: {
             css: function($this) {
@@ -109,7 +93,7 @@
                 // +8 : 4 for the tile thickness, 4 for the robot head in the top of the board
                 var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
                 settings.scale=(21.8/(vv+settings.margin*2));
-                $this.find("#tiles").css("font-size", settings.scale+"em");
+                $this.find("#sntiles").css("font-size", settings.scale+"em");
 
                 settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,
                                  1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
@@ -124,7 +108,7 @@
                 settings.tiles.size=[settings.board[0].length,settings.board.length];
                 
                 // COMMENT
-                if (settings.comment) { $this.find("#comment").html(helpers.format(settings.comment)).show(); }
+                if (settings.comment) { $this.find("#sncomment").html(jtools.format(settings.comment)).show(); }
 
                 // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
@@ -258,7 +242,7 @@
         togglerobot: function($this, _id) {
             var settings = helpers.settings($this);
             settings.robotid = _id%settings.robots.length;
-            $this.find("#keypad").attr("class","r"+settings.robotid);
+            $this.find("#snkeypad").attr("class","r"+settings.robotid);
         },
         // UPDATE ROBOT POSITION
         updrobot : function($this, _id, _anim) {
@@ -327,7 +311,7 @@
         build: function($this) {
             var settings = helpers.settings($this);
 
-            $this.find("#tiles").html("");
+            $this.find("#sntiles").html("");
 
             for (var j=0; j<settings.board.length; j++) for (var i=0; i<settings.board[j].length; i++) if (settings.board[j][i]) {
                 // TURN OFF THE LIGHT
@@ -357,7 +341,7 @@
                     }
                 };
 
-                $this.find("#tiles").append(tile.html());
+                $this.find("#sntiles").append(tile.html());
                 settings.tiles.data.push(settings.board[j][i]);
             }
             else { settings.tiles.data.push(0); }
@@ -366,7 +350,7 @@
             for (var i in settings.robots) {
                 var html="<div class='engine' id='robot"+i+"'><div id='img'><img src=''/></div><div id='invert'>"+
                          "<img src='res/img/tileset/iso/robot/statinvert.svg'/></div></div>";
-                $this.find("#tiles").append(html);
+                $this.find("#sntiles").append(html);
                 settings.robots[i].pos = [ settings.robots[i].origin[0], settings.robots[i].origin[1], settings.robots[i].origin[2]];
                 settings.robots[i].update       = helpers.updrobot;
                 settings.robots[i].isrobot      = true;
@@ -388,7 +372,7 @@
                 settings.boxes[i].state  = settings.boxes[i].value;
                 var html="<div class='box' id='b"+i+"'>";
                 html+="<img src=''/></div>";
-                $this.find("#tiles").append(html);
+                $this.find("#sntiles").append(html);
                 settings.boxes[i].isrobot   = false;
                 settings.boxes[i].id        = i;
                 settings.boxes[i].speed     = -1;
@@ -448,10 +432,10 @@
                     if (settings.tiles.tile9[j]!=on23) {
                         settings.tiles.tile9[j]=on23;
                         if (on23) {
-                            $("#tiles .t"+j+"09 img").attr("src","res/img/tileset/iso/set1/"+j+"01.svg");
+                            $("#sntiles .t"+j+"09 img").attr("src","res/img/tileset/iso/set1/"+j+"01.svg");
                         }
                         else {
-                            $("#tiles .t"+j+"09 img").attr("src","res/img/tileset/iso/set1/"+j+"09.svg");
+                            $("#sntiles .t"+j+"09 img").attr("src","res/img/tileset/iso/set1/"+j+"09.svg");
                             // IS A ROBOT OR A BOX ON A DISAPPEARING TILES?
                             // IF YES, ADD DELAY FOR THE FALLING ANIMATION
                             for (var i in settings.robots) {
@@ -498,8 +482,8 @@
                     }
                     if (settings.score>5) { settings.score = 5; }
                     if (settings.score<0) { settings.score = 0; }
-					$this.find("#goal").css("left","110%").show().animate({left:"60%"},500);
-                    setTimeout(function() { helpers.end($this); }, 10*settings.delay);
+					$this.find("#sngoal").css("left","110%").show().animate({left:"60%"},500);
+                    setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 10*settings.delay);
                 }
                 else {
                     // WAIT FOR USER INPUT
@@ -627,10 +611,10 @@
                 else if (_value==40 || _value=="down") { k="down"; helpers.togglerobot($this, settings.robotid+1); }
 
                 if (k) {
-                    $this.find("#keypad .s").removeClass("s"); 
-                    $this.find("#keypad #"+k).addClass("s");
+                    $this.find("#snkeypad .s").removeClass("s"); 
+                    $this.find("#snkeypad #"+k).addClass("s");
                     if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
-                    settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
+                    settings.keytimerid = setTimeout(function() { $this.find("#snkeypad .s").removeClass("s"); }, 300 );
                 }
             }
             else if ($this.find("#intro").is(":visible")) { $this.sokoban('next'); }
@@ -687,7 +671,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);

@@ -1,9 +1,9 @@
 <div>
-	<div id="background"></div>
-    <div id="board">
-        <div id="header" class="bar"></div>
-        <div id="footer" class="bar"></div>
-        <div id="people">
+	<div id="spbg"></div>
+    <div id="spboard">
+        <div id="spheader" class="spbar"></div>
+        <div id="spfooter" class="spbar"></div>
+        <div id="sppeople">
             <div id="postman" class="dealer"><img src="res/img/ppvc/postman01.svg" alt=""/></div>
             <div id="client01" class="dealer"><img src="res/img/ppvc/cyclist01.svg" alt=""/></div>
             <div id="client02" class="dealer"><img src="res/img/ppvc/weirdo01.svg" alt=""/></div>
@@ -14,14 +14,14 @@
             <div id="client07" class="dealer"><img src="res/img/ppvc/lizzie01.svg" alt=""/></div>
             <div id="client08" class="dealer"><img src="res/img/ppvc/lottie01.svg" alt=""/></div>
         </div>
-        <div id="psketchbook" class="pstack">
+        <div id="spsketchbook" class="spstack">
             <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 640" style="display:inline"><defs><style>path {stroke:black;fill:none;stroke-width:2;}circle {fill:black;}</style></defs></svg>
             <div id="clear" ontouchstart="$(this).closest('.shop').shop('clear');event.preventDefault();event.stopPropagation();"
                             onmousedown="$(this).closest('.shop').shop('clear');event.stopPropagation();">
                 <img src="res/img/svginventoryicons/pencil/eraser01.svg" alt=""/></div>
         </div>
 
-        <div id="pinvoice" class="pstack"><div>
+        <div id="spinvoice" class="spstack"><div>
             <div class="header">
                 <div id="slabel">Produit</div>
                 <div id="sprice">Prix</div>
@@ -39,15 +39,15 @@
                         onclick="$(this).closest('.shop').shop('confirm');"><div><img src="res/img/default/icon/valid02.svg" alt=""/></div></div>
         </div></div>
 
-        <div id="clientsales"></div>
+        <div id="spclientsales"></div>
 
-        <div id="pwallet" class="panel wallet pstack"><div></div></div>
-        <div id="pchange" class="panel wallet pstack"><div><div id="pmask"></div></div></div>
-        <div id="pmoney" class="panel wallet pstack"><div>
+        <div id="spwallet" class="panel wallet spstack"><div></div></div>
+        <div id="spchange" class="panel wallet spstack"><div><div id="pmask"></div></div></div>
+        <div id="spmoney" class="panel wallet spstack"><div>
             <div id="pvalid" ontouchstart="$(this).closest('.shop').shop('valid');event.preventDefault();"
                         onclick="$(this).closest('.shop').shop('valid');"><img src="res/img/default/icon/valid02.svg" alt=""/></div>
         </div></div>
-        <div id="pcalculator" class="panel pstack">
+        <div id="spcalculator" class="panel spstack">
             <table>
                 <tr><td colspan="3"><div id="screen" class="movepanel">0</div></td></tr>
                 <tr>
@@ -93,7 +93,7 @@
             </table>
         </div>
 
-        <div id="pbill" class="pstack"><div>
+        <div id="spbill" class="spstack"><div>
             <div class="header f"></div>
             <div class="title f"></div>
             <div class="date f"></div>
@@ -103,7 +103,7 @@
         </div></div>
 
 
-        <div id="menu">
+        <div id="spmenu">
             <div id="calculator" class="tab" onclick="$(this).closest('.shop').shop('menu','calculator');"
                     ontouchstart="$(this).closest('.shop').shop('menu','calculator');event.preventDefault();" >
                 <img src="res/img/svginventoryicons/hardware/calculator01.svg" alt=""/></div>
@@ -123,10 +123,10 @@
         </div>
 
 
-        <div id="bubbles" class="overflow" onclick="$(this).closest('.shop').shop('bubbles');"
+        <div id="spbubbles" class="overflow" onclick="$(this).closest('.shop').shop('bubbles');"
                           ontouchstart="$(this).closest('.shop').shop('bubbles');event.preventDefault();">
-            <div id="owner" class="talk"><div id="pre"></div></div>
-            <div id="client" class="talk"><div id="pre"></div></div>
+            <div id="spowner" class="sptalk"><div></div></div>
+            <div id="spclient" class="sptalk"><div></div></div>
         </div>
 		
 		<div id="good" class="fx icon"><img src="res/img/default/popup/good01.svg" alt=""/></div>
@@ -184,7 +184,7 @@
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.shop').shop('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.shop').shop('next');"><div>
-        <h1 id="label">shop</h1>
+        <h1 id="label"></h1>
     </div></div>
 
 </div>

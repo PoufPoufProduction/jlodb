@@ -1123,7 +1123,8 @@ $(window).ready(function() {
     var a = location.search.substring(1).split('&');
     for (var i in a) { var p= a[i].split('='); tibibo.args[p[0]]=p[1]; }
     
-	$(window).resize();
+	$(window).resize(); setTimeout(function() { $(window).resize(); }, 1000);
+	
 	$.ajaxSetup({ mimeType: "text/plain" });
 	$("#bomain").show();
 

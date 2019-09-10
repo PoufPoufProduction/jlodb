@@ -1,112 +1,66 @@
 .robot .both *                      { overflow:visible; }
 .robot                              { background-image:url("../../res/img/background/landscape/grayboard01.svg"); }
-
-.robot div#splashex                  { background-image:url("../../res/img/banners/robot.svg"); color:lime; }
-.robot div#splashex  h1                 { position:absolute; top:10%; left:57%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.robot #leftpart                    { float:left; width:9em; margin:0.5em 0 0 .25em; }
-
-
-.robot #buttons               { width:9em; height:2.1em; background-color:gray;
-                                      border-radius:0 0 .25em .25em;
-                                      background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
-.robot #buttons>div           { width:1em; height:1em; float:left; font-size:1.46em; cursor:pointer; margin:.2em .1em; }
-
-.robot #board                       { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; height:9em; border-radius:.2em .2em 0 0; position:relative; }
-.robot #board>div                   { position:absolute; top:0; left:0; }
-.robot #board #effects              { width:3em; height:3em; left:6em; z-index:2000; }
-.robot #board #effects>div          { display:none; }
-.robot #board #tiles                { width:100%; height:100%; }
-.robot #board #tiles .tile          { width:4em; height:3em; position:absolute; }
-.robot #board #tiles .tile.s1       { height:11em; margin-top:-8em;}
-.robot #board #tiles .engine        { position:absolute; overflow:visible; }
-.robot #board #tiles .engine #invert{ width:1em; height:1em; font-size:1.5em; margin-top:-2.7em;margin-left:0.9em;
-                                      position:relative; z-index:20; display:none; }
-.robot #board #tiles .engine #img   { width:1em; height:1em; font-size:3.2em; margin-top:-.4em;margin-left:.1em; position:relative; }
+.robot #splashex                    { background-image:url("../../res/img/banners/robot.svg"); color:lime; }
+.robot #rtleft                      { float:left; width:9em; margin:0.5em 0 0 .25em; }
+.robot #rtbuttons                   { width:9em; height:2.1em; background-color:gray; border-radius:0 0 .25em .25em; background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
+.robot #rtbuttons>div               { width:1em; height:1em; float:left; font-size:1.46em; cursor:pointer; margin:.2em .1em; }
+.robot #rtboard                     { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; height:9em; border-radius:.2em .2em 0 0; position:relative; }
+.robot #rtboard>div                 { position:absolute; top:0; left:0; }
+.robot #rtboard #rtfx               { width:3em; height:3em; left:6em; z-index:2000; }
+.robot #rtboard #rtfx>div           { display:none; }
+.robot #rttiles                     { width:100%; height:100%; }
+.robot #rttiles .tile               { width:4em; height:3em; position:absolute; }
+.robot #rttiles .tile.s1            { height:11em; margin-top:-8em;}
+.robot #rttiles .engine             { position:absolute; overflow:visible; }
+.robot #rttiles .engine #invert     { width:1em; height:1em; font-size:1.5em; margin-top:-2.7em;margin-left:0.9em; position:relative; z-index:20; display:none; }
+.robot #rttiles .engine #img        { width:1em; height:1em; font-size:3.2em; margin-top:-.4em;margin-left:.1em; position:relative; }
 .robot .rtcode                      { background-image:none; float:right; width:5em; margin-right:0.05em; }
-.robot #board #fg                   { z-index:99; font-size:.3em; font-family:Courier New, Courier, monospace;}
-.robot #board #bg                   {  width:11em; height:11em; 
-                                       background-image:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)); }
-.robot #cache                       { width:6.4em; height:11em; position:absolute; top:0.75em; left:.25em; z-index:100;
-                                      background-color:rgba(0,0,0,0.5); display:none; }
-
-.robot #menu                        { font-size:1em; width:6.7em; height:18em; float:left; position:relative; }
-.robot #menu #action                { width:6.4em; border-radius:.5em .5em 0 0; margin:.25em 0 0 .25em; }
-.robot #action #tab                 { width:100%; height:1em; font-size:.5em; }
-.robot #action #tab>div             { width:25%; height:1em; float:left; cursor:pointer; border-radius:.5em .5em 0 0;
-                                      text-align:center; font-weight:bold; }
-.robot #action #tab #r1             { background-color:#90cce0; color:#cdf4f9;}
-.robot #action #tab #r2             { background-color:#e09090; color:#f9cdcd;}
-.robot #action #tab #r3             { background-color:#82ca82; color:#cae7ca;}
-.robot #action #tab #r4             { background-color:#ca82ca; color:#e7cae7;}
-
-.robot #action #tabs .both          { position:relative; }
-.robot #action #tabs .target        { width:1.4em; height:1.4em; position:absolute; display:none; z-index:100; }
-
-.robot #action #tabs>div            { display:none;  color:white; font-weight:bold;
-                                      text-align:right; position:relative;}
-.robot #action #tabs #t1            { display:block; width:100%; height:11em; background-color:#90cce0;}
-.robot #action #tabs #t2            { width:100%; height:11em; background-color:#e09090; }
-.robot #action #tabs #t3            { width:100%; height:11em; background-color:#82ca82; }
-.robot #action #tabs #t4            { width:100%; height:11em; background-color:#ca82ca; }
-
-.robot #action #tabs .source        { width:6em; height:3em; background-color:rgba(255,255,255,0.5); margin:.2em;
-                                      background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-.robot #action #tabs .source>div    { width:6.5em; margin-left:-0.5em; }
-.robot #action #tabs .dest>*        { position:relative; }
-.robot #action #tabs .dest .label   { position:absolute; font-size:2em; font-weight:bold; color:rgba(255,255,255,0.3); top:-0.2em;width:100%; text-align:center; }
-.robot #action #tabs .f0            { width:6em; height:3em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em;
-                                      background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-.robot #action #tabs .f0 .label     { top:0.1em; }
-.robot #action #tabs .f1            { width:6em; height:2em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em;
-                                      background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-.robot #action #tabs .f2            { width:6em; height:2em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em;
-                                      background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-
-.robot #action #tabs table          { font-size:1em; border-collapse:collapse; border-spacing:0;}
-.robot #action #tabs .z             { width:1em; height:1em; background-image:url("../../res/img/icon/cell/cell01.svg");
-                                      background-size:100%; }
-
+.robot #rtboard #rtfg               { z-index:99; font-size:.3em; font-family:Courier New, Courier, monospace;}
+.robot #rtboard #rtbg               { width:11em; height:11em; background-image:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)); }
+.robot #rtcache                     { width:6.4em; height:11em; position:absolute; top:0.75em; left:.25em; z-index:100; background-color:rgba(0,0,0,0.5); display:none; }
+.robot #rtmenu                      { font-size:1em; width:6.7em; height:18em; float:left; position:relative; }
+.robot #rtaction                    { width:6.4em; border-radius:.5em .5em 0 0; margin:.25em 0 0 .25em; }
+.robot #rttab                       { width:100%; height:1em; font-size:.5em; }
+.robot #rttab>div                   { width:25%; height:1em; float:left; cursor:pointer; border-radius:.5em .5em 0 0; text-align:center; font-weight:bold; }
+.robot #rttab #r1                   { background-color:#90cce0; color:#cdf4f9;}
+.robot #rttab #r2                   { background-color:#e09090; color:#f9cdcd;}
+.robot #rttab #r3                   { background-color:#82ca82; color:#cae7ca;}
+.robot #rttab #r4                   { background-color:#ca82ca; color:#e7cae7;}
+.robot #rttabs .both                { position:relative; }
+.robot #rttabs .target              { width:1.4em; height:1.4em; position:absolute; display:none; z-index:100; }
+.robot #rttabs>div                  { display:none;  color:white; font-weight:bold; text-align:right; position:relative;}
+.robot #rttabs #t1                  { display:block; width:100%; height:11em; background-color:#90cce0;}
+.robot #rttabs #t2                  { width:100%; height:11em; background-color:#e09090; }
+.robot #rttabs #t3                  { width:100%; height:11em; background-color:#82ca82; }
+.robot #rttabs #t4                  { width:100%; height:11em; background-color:#ca82ca; }
+.robot #rttabs .source              { width:6em; height:3em; background-color:rgba(255,255,255,0.5); margin:.2em; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.robot #rttabs .source>div          { width:6.5em; margin-left:-0.5em; }
+.robot #rttabs .dest>*              { position:relative; }
+.robot #rttabs .dest .label         { position:absolute; font-size:2em; font-weight:bold; color:rgba(255,255,255,0.3); top:-0.2em;width:100%; text-align:center; }
+.robot #rttabs .f0                  { width:6em; height:3em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.robot #rttabs .f0 .label           { top:0.1em; }
+.robot #rttabs .f1                  { width:6em; height:2em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.robot #rttabs .f2                  { width:6em; height:2em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.robot #rttabs table                { font-size:1em; border-collapse:collapse; border-spacing:0;}
+.robot #rttabs .z                   { width:1em; height:1em; background-image:url("../../res/img/icon/cell/cell01.svg"); background-size:100%; }
 .robot .source .slider              { width:0.9em; height:3em; float:right; background-color:rgba(255,255,255,0.5); border-radius:.5em; }
 .robot .source .slider>div          { font-size:0.9em; width:1em; height:1em; cursor:pointer;}
 .robot .source .slider .down        { margin-top:1.33em; }
 .robot .a                           { width:1em; height:1em; cursor:crosshair; }
-
 .robot #ptip .cc                    { background-color:rgba(0,40,0,0.4); color:#444; padding:.1em; margin:.2em 0; font-size:2em;height:1em;  }
 .robot #ptip .cc>.icon              { float:left; }
 .robot #ptip .cc>.icon.o1           { opacity:0.5; }
 .robot #ptip .cc>.icon.o2           { opacity:0.1; }
-
-.robot #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
-                                      z-index:2002; cursor:pointer; display:none; }
-.robot #phelp>div                   { font-size:.3em; width:98%; height:98%; margin:.2em auto;
-                                      background-color:rgba(255,255,255,0.8); border:.2em solid white; }
-.robot #phelp .h1                   { clear:both; font-size:1.5em; padding-left:5em; margin-top:.5em; border:1px solid black;
-                                      border-width:0 0 1px 0;}
-.robot #phelp .elt                  { float:left; width:24em; height:1.4em; padding:.1em; margin:.1em .5em;
-                                      background-color:rgb(50,100,160); border-radius:.2em; }
+.robot #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5); z-index:2002; cursor:pointer; display:none; }
+.robot #phelp>div                   { font-size:.3em; width:98%; height:98%; margin:.2em auto; background-color:rgba(255,255,255,0.8); border:.2em solid white; }
+.robot #phelp .h1                   { clear:both; font-size:1.5em; padding-left:5em; margin-top:.5em; border:1px solid black; border-width:0 0 1px 0;}
+.robot #phelp .elt                  { float:left; width:24em; height:1.4em; padding:.1em; margin:.1em .5em; background-color:rgb(50,100,160); border-radius:.2em; }
 .robot #phelp .elt>.icon            { float:left; font-size:1.4em; }
 .robot #phelp .elt>.label           { margin-left:.5em; margin-top:.1em; color:white; float:left; font-size:.8em;}
-
-.robot #course                      { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
-                                      z-index:100; cursor:pointer; display:none; }
-.robot #course>div                  { font-size:.5em; width:100%; height:30%; margin:4em 0;border:1px solid white;border-width:.25em 0 .25em 0;
-                                      background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat; }
-.robot #course>div #art             { float:left; width:10em; height:7.5em; }
-.robot #course>div #pre        { float:left; width:60%; overflow:visible; margin-left:1em; font-size:.7em; color:#222;}
-.robot #course>div #pre div  { display:inline-block; white-space: pre;}
-
-.robot #touch01                     { top:0; left:0; font-size:2em; z-index:100;}
-
-.robot #devmode                     { top:87%; left:63%; }
-.robot #devoutput                { z-index:100; }
-.robot #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:50%; }
-
-.robot .help					{ position:absolute; z-index:100; font-size:4em; cursor:auto; display:none;  }
-.robot #htomain					{ top:10%; left:35%; }
-.robot.htomain #htomain			{ display:inherit; }
-.robot #hrun					{ top:50%; left:35%; }
-.robot.hrun #hrun				{ display:inherit; }
+.robot #rttouch                     { top:0; left:0; font-size:2em; z-index:100;}
+.robot #rtgoal					    { z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:50%; }
+.robot .rthelp					    { position:absolute; z-index:100; font-size:4em; cursor:auto; display:none;  }
+.robot #htomain					    { top:10%; left:35%; }
+.robot #hrun					    { top:50%; left:35%; }
+.robot.htomain #htomain			    { display:inherit; }
+.robot.hrun #hrun				    { display:inherit; }

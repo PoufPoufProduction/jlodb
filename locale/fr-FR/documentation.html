@@ -49,12 +49,16 @@
 <li><b>prefix</b> sert à préfixer les noms des différentes tables du projet <b>jLoDb</b>, ce qui est particulièrement utile dans le cas d'une base de données partagées.</li>
 <br/>
 <li><b>[dev]</b> est une section assez technique, sans grand cohérence pour l'instant.</li>
-<li><b>url</b> est le chemin d'accès au projet <b>jlodbPlus</b> qui va fournir les différentes captures d'écrans.</li> 
-<li><b>password</b> est un mot de passe haché en <b>MD5</b> qui permettra à n'importe quel utilisateur identifié d'accéder à des outils d'édition comme la possibilité d'éditer des cahiers d'exercices. Par défaut, le mot de passe est <i>dadada</i>.</li>
+<li><b>url</b> est le chemin d'accès au projet <b>jlodbPlus</b> qui va fournir les différentes captures d'écrans <i>(voir le paragraphe <b>jLoDbPlus</b> plus bas)</i>.</li> 
+<li><b>password</b> est un mot de passe haché en <b>MD5</b> qui permettra à n'importe quel utilisateur identifié d'accéder à des outils d'édition comme la possibilité d'éditer des cahiers d'exercices depuis <b>Tibibo</b>. Par défaut, le mot de passe est <i>dadada</i>. Pour l'instant, les utilisateurs n'étant pas différenciés dans la base, seul l'accès à ce mot de passe permet de distinguer les rôles de rédacteurs et d'utilisateurs. Il est probable que cette non-différenciation soit amenée à disparaître à l'avenir pour laisser place à des rôles mieux définis.</li>
 </ul>
 
 <br/><h3>Installation</h3>
 <p>Une fois le fichier de configuration mis à jour, l'installation se fait depuis la page principale du projet jLoDb. L'icône en forme de clé anglaise en haut à droite de l'écran permet d'accéder à la section d'administration du site. L'identification se fait en fournissant les informations telles qu'elles sont définies dans le fichier de configuration. Le haut de page devient plus sombre une fois connecté en tant qu'administrateur. Il suffit alors d'utiliser le bouton d'installation pour créer la base de données d'exercices numériques. Lors de cette installation, une langue est demandée, car si toutes les données statiques sont multi-langues, les instances de serveur, elles, sont localisées.</p>
+
+<br/><h3>jLoDbPlus</h3>
+<p>jLoDbPlus est une bibliothèque de captures d'écrans des exercices de jLoDb. Elle est disponible depuis le compte GitHub à l'adresse suivante <a href="https://github.com/PoufPoufProduction/jlodbPlus">https://github.com/PoufPoufProduction/jlodbPlus</a>. Elle est facultative et n'est utile que dans l'optique de pouvoir créer ses propres séquences pédagogiques. Une fois jLoDbPlus récupéré, il suffit de configurer le paramètre <b>[dev]url</b> du fichier de configuration de jLoDb (<i>conf/jlodb.ini</i>) afin de pointer vers le chemin d'installation (qui peut être renommé ou non). Ainsi le projet peut retrouver ces captures d'écrans et enrichir la liste de résultats de son navigateur.</p>
+<p>Cette séparation entre le projet jLoDb et cette bibliothèque de captures d'écrans est motivée par la taille importante de cette dernière qui n'apporte qu'une amélioration de l'interface tout à fait dispensable dans le cas d'une utilisation cliente simple.</p>
 
 <br/><h2>Présentation technique</h2>
 <br/><h3>Architecture du projet</h3>

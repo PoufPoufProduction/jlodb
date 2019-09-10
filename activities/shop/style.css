@@ -1,190 +1,120 @@
-.shop                            { background-image:url("../../res/img/background/landscape/shop01.svg");}
-.shop div#splashex               { background-image:url("../../res/img/banners/operation.svg"); }
-.shop div#splashex  h1                 { position:absolute; top:15%; left:55%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.shop div#board                  { height:20em; font-size:.6em; }
-
-.shop .bar                      { position:absolute; left:0; top:0; width:100%; background-color:rgba(0,0,0,0.7); }
-.shop #header                   { top:0; height:6%; }
-.shop #footer                   { top:85%; height:15%; }
-.shop #background				{ position:absolute; left:0; top:0; width:16em; height:12em; display:none; } 
-
-.shop #people                     { position:absolute; overflow:visible;font-size:6.2em; }
-.shop #people>div                 { width:1em; height:1em; position:absolute; top:0.6em; display:none; }
-
-.shop .cell                         { width:5em; height:1.2em; border:1px solid #600; text-align:center; font-weight:bold; color:#600;
-                                    float:right; margin-right:0.2em; background-color:rgba(255,255,255,0.2); }
-
-.shop #pbill                       { position:absolute; width:33%; background-color:white; border:.25em solid black;
-                                     display:none; top:2%; left:2%; font-size:.4em; }
-.shop #pbill>div                    {  }
-.shop #pbill .header                { color:#004; text-align:right; margin-right:0.5em; }
-.shop #pbill .title                 { font-size:2em; padding-left:10%; }
-.shop #pbill .date                  { font-size:0.8em; padding-left:10%; border:1px solid black; border-width:0 0 0.1em 0; margin-bottom:1em; }
-.shop #pbill .topay                 { float:left; margin-left:1em; font-size:1.5em; color:red; }
-.shop #pbill #billval               { font-size:2em;   }
-.shop #pbill .footer                { padding:1em 0 0 1em; clear:both; font-size:.8em; color:#004; }
-.shop #pbill #payed					{ background-color:red; color:white; position:absolute;top:10%;left:50%; font-size:2em; padding:0 1em; -ms-transform: rotate(20deg); -webkit-transform: rotate(20deg); transform: rotate(20deg); display:none; }
-
-.shop #pbill.bill2                  { background-color:#99CCDD; }
-.shop #pbill.bill2 .header          { color:white; font-style:italic; }
-.shop #pbill.bill2 .title           { font-size:1.5em; text-align:right; padding-right:5%; }
-.shop #pbill.bill2 .date            { color:#444; text-align:right; padding-right:5%; }
-.shop #pbill.bill2 .topay           { color:#600; }
-
-
-.shop .panel                      { display:none; background-color:rgba(255,255,255,0.8); border:.1em solid black;
-                                    border-radius:.25em; overflow:visible; width:8em; height:8em; padding:.06em;}
-.shop .pstack                     { opacity:0; }
-.shop .wallet>div                 { overflow:visible;  width:8em; height:8em; background-color:rgba(255,255,255,0.4); border-radius:.25em; }
-.shop .wallet.over                { background-color:rgba(255,255,0,0.8); }
-
-.shop #pmoney                     { position:absolute; top:2%; left:38%; background-image:url("../../res/img/background/shop/money.svg"); }
-.shop #pmoney #pvalid             { position:absolute; top:3.5em; left:3.5em; font-size:2em; width:1em; height:1em;
-                                    background-color:rgba(255,255,255,0.8); border-radius:0.5em; cursor:pointer;}
-.shop .wallet.good                { background-color:rgba(0,255,0,0.8); }
-.shop .wallet.wrong               { background-color:rgba(255,0,0,0.8); }
-.shop #pchange                    { position:absolute; top:45%; left:38%; }
-.shop #pchange>div                { background-image:url("../../res/img/background/shop/change.svg"); }
-.shop #pchange #pmask             { position:absolute; width:8em; height:8em; background-color:rgb(0,255,0); border-radius:.25em;
-                                    z-index:100;display:none;}
-
-.shop #pwallet                    { position:absolute; top:45%; left:5%;  }
-.shop #pwallet>div                { background-image:url("../../res/img/background/shop/wallet.svg"); }
-.shop .coin                       { cursor:move; top:0; left:0; position:absolute;overflow:visible;}
-.shop .bill                       { cursor:move; top:0; left:0; position:absolute;overflow:visible; }
-.shop .coin>div                       { width:1em; height:1em; cursor:move; top:0; left:0; }
-.shop .bill>div                       { width:2em; height:1em; cursor:move; top:0; left:0; font-size:1.5em; }
-.shop .coin.v0>div                    { font-size:1em; }
-.shop .coin.v1>div                    { font-size:1.2em; }
-.shop .coin.v2>div                    { font-size:1.4em; }
-.shop .coin.v3>div                    { font-size:1.2em; }
-.shop .coin.v4>div                    { font-size:1.6em; }
-.shop .coin.v5>div                    { font-size:2em; }
-.shop .coin.v6>div                    { font-size:1.8em; }
-.shop .coin.v7>div                    { font-size:2em; }
-
-
-.shop #pcalculator                { position:absolute; top:2%; left:5%; width:5.2em; height:8.2em; padding:0; z-index:300; }
-.shop #pcalculator td             { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
-                            color:rgb(220,231,241); border-radius:.25em; }
-
-.shop #menu                             { font-size:2em; position:absolute; left:5%; top:88%; width:90%; }
-.shop #menu>*                           { width:1em; height:1em; float:left; margin-left:.1em; }
-.shop #menu .tab                        { background-image:url("../../res/img/icon/tab/tab00.svg");
-                                    background-color:rgba(0,0,0,0.8); cursor:pointer; border-radius:.5em ; overflow:visible;}
-.shop #menu .tab.s                      { background-color:rgba(255,0,0,0.8); }
-
-.shop div#help		{ width:100%; height:100%; background-color:rgba(0,0,0,0.5);position:absolute;top:0;left:0; display:none; z-index:500; }
-.shop div#help>div	{ background-color:rgba(255,255,255,0.9); width:80%; height:80%; margin:5% 10%; font-size:0.5em; border:.2em solid white; cursor:pointer; }
-.shop div#help .ehelp { width:46%; border:.1em solid black; margin:.2em; float:left; height:5em; }
-.shop div#help .ehelp .icon { float:left; font-size:5em; margin-right:.1em;  }
-.shop div#help .ehelp .label { margin-left:.5em; font-size:.7em; }
-.shop div#help #hwar { clear:both; }
-
-
-
-/* SKETCHBOOK PANEL */
-.shop #psketchbook                 { width:16em; height:16em;  background-color:white; display:none; left:2%; top:1%; position:absolute;
-                                    border:2px solid black; }
-.shop #psketchbook #clear           { font-size:2em; width:1em; height:1em; position:absolute; top:7em; left:7em; cursor:pointer; }
-
-/* SALES */
-.shop .sales                    { width:4.5em; height:2em; background-color:rgba(255,255,220,0.9); border:2px solid black;
-                                  border-radius:.25em; position:absolute; top:88%; cursor:move; }
+.shop                           { background-image:url("../../res/img/background/landscape/shop01.svg");}
+.shop #splashex                 { background-image:url("../../res/img/banners/operation.svg"); }
+.shop #splashex h1              { font-size:2em; }
+.shop #spboard                  { height:20em; font-size:.6em; }
+.shop .spbar                    { position:absolute; left:0; top:0; width:100%; background-color:rgba(0,0,0,0.7); }
+.shop #spheader                 { top:0; height:6%; }
+.shop #spfooter                 { top:85%; height:15%; }
+.shop #spbg				        { position:absolute; left:0; top:0; width:16em; height:12em; display:none; } 
+.shop #sppeople                 { position:absolute; overflow:visible;font-size:6.2em; }
+.shop #sppeople>div             { width:1em; height:1em; position:absolute; top:0.6em; display:none; }
+.shop .cell                     { width:5em; height:1.2em; border:1px solid #600; text-align:center; font-weight:bold; color:#600; float:right; margin-right:0.2em; background-color:rgba(255,255,255,0.2); }
+.shop #spbill                   { position:absolute; width:33%; background-color:white; border:.25em solid black; display:none; top:2%; left:2%; font-size:.4em; }
+.shop #spbill>div               {  }
+.shop #spbill .header           { color:#004; text-align:right; margin-right:0.5em; }
+.shop #spbill .title            { font-size:2em; padding-left:10%; }
+.shop #spbill .date             { font-size:0.8em; padding-left:10%; border:1px solid black; border-width:0 0 0.1em 0; margin-bottom:1em; }
+.shop #spbill .topay            { float:left; margin-left:1em; font-size:1.5em; color:red; }
+.shop #spbill #billval          { font-size:2em;   }
+.shop #spbill .footer           { padding:1em 0 0 1em; clear:both; font-size:.8em; color:#004; }
+.shop #spbill #payed            { background-color:red; color:white; position:absolute;top:10%;left:50%; font-size:2em; padding:0 1em; -ms-transform: rotate(20deg); -webkit-transform: rotate(20deg); transform: rotate(20deg); display:none; }
+.shop #spbill.bill2             { background-color:#99CCDD; }
+.shop #spbill.bill2 .header     { color:white; font-style:italic; }
+.shop #spbill.bill2 .title      { font-size:1.5em; text-align:right; padding-right:5%; }
+.shop #spbill.bill2 .date       { color:#444; text-align:right; padding-right:5%; }
+.shop #spbill.bill2 .topay      { color:#600; }
+.shop .panel                    { display:none; background-color:rgba(255,255,255,0.8); border:.1em solid black; border-radius:.25em; overflow:visible; width:8em; height:8em; padding:.06em;}
+.shop .wallet>div               { overflow:visible;  width:8em; height:8em; background-color:rgba(255,255,255,0.4); border-radius:.25em; }
+.shop .wallet.over              { background-color:rgba(255,255,0,0.8); }
+.shop #spmoney                  { position:absolute; top:2%; left:38%; background-image:url("../../res/img/background/shop/money.svg"); }
+.shop #spmoney #pvalid          { position:absolute; top:3.5em; left:3.5em; font-size:2em; width:1em; height:1em; background-color:rgba(255,255,255,0.8); border-radius:0.5em; cursor:pointer;}
+.shop .wallet.good              { background-color:rgba(0,255,0,0.8); }
+.shop .wallet.wrong             { background-color:rgba(255,0,0,0.8); }
+.shop #spchange                 { position:absolute; top:45%; left:38%; }
+.shop #spchange>div             { background-image:url("../../res/img/background/shop/change.svg"); }
+.shop #spchange #pmask          { position:absolute; width:8em; height:8em; background-color:rgb(0,255,0); border-radius:.25em; z-index:100;display:none;}
+.shop #spwallet                 { position:absolute; top:45%; left:5%;  }
+.shop #spwallet>div             { background-image:url("../../res/img/background/shop/wallet.svg"); }
+.shop .coin                     { cursor:move; top:0; left:0; position:absolute;overflow:visible;}
+.shop .bill                     { cursor:move; top:0; left:0; position:absolute;overflow:visible; }
+.shop .coin>div                 { width:1em; height:1em; cursor:move; top:0; left:0; }
+.shop .bill>div                 { width:2em; height:1em; cursor:move; top:0; left:0; font-size:1.5em; }
+.shop .coin.v0>div              { font-size:1em; }
+.shop .coin.v1>div              { font-size:1.2em; }
+.shop .coin.v2>div              { font-size:1.4em; }
+.shop .coin.v3>div              { font-size:1.2em; }
+.shop .coin.v4>div              { font-size:1.6em; }
+.shop .coin.v5>div              { font-size:2em; }
+.shop .coin.v6>div              { font-size:1.8em; }
+.shop .coin.v7>div              { font-size:2em; }
+.shop #spcalculator             { position:absolute; top:2%; left:5%; width:5.2em; height:8.2em; padding:0; z-index:300; }
+.shop #spcalculator td          { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold; color:rgb(220,231,241); border-radius:.25em; }
+.shop #spmenu                   { font-size:2em; position:absolute; left:5%; top:88%; width:90%; }
+.shop #spmenu>*                 { width:1em; height:1em; float:left; margin-left:.1em; }
+.shop #spmenu .tab              { background-image:url("../../res/img/icon/tab/tab00.svg"); background-color:rgba(0,0,0,0.8); cursor:pointer; border-radius:.5em ; overflow:visible;}
+.shop #spmenu .tab.s            { background-color:rgba(255,0,0,0.8); }
+.shop div#help                  { width:100%; height:100%; background-color:rgba(0,0,0,0.5);position:absolute;top:0;left:0; display:none; z-index:500; }
+.shop div#help>div              { background-color:rgba(255,255,255,0.9); width:80%; height:80%; margin:5% 10%; font-size:0.5em; border:.2em solid white; cursor:pointer; }
+.shop div#help .ehelp           { width:46%; border:.1em solid black; margin:.2em; float:left; height:5em; }
+.shop div#help .ehelp .icon     { float:left; font-size:5em; margin-right:.1em;  }
+.shop div#help .ehelp .label    { margin-left:.5em; font-size:.7em; }
+.shop div#help #hwar            { clear:both; }
+.shop #spsketchbook             { width:16em; height:16em;  background-color:white; display:none; left:2%; top:1%; position:absolute; border:2px solid black; }
+.shop #spsketchbook #clear      { font-size:2em; width:1em; height:1em; position:absolute; top:7em; left:7em; cursor:pointer; }
+.shop .sales                    { width:4.5em; height:2em; background-color:rgba(255,255,220,0.9); border:2px solid black; border-radius:.25em; position:absolute; top:88%; cursor:move; }
 .shop .sales .icon              { font-size:2em; float:left; }
 .shop .sales .label             { font-size:.9em; float:right; color:#A00; font-weight:bold; margin-right:.2em; }
 .shop .sales .label:before      { content:"-"; }
 .shop .sales .label:after       { content:"☆"; }
 .shop .sales .label.type0:after { content:"%"; }
-.shop .sales .cond              { clear:right; float:right; width:3em; background-color:#A00; font-size:.6em;
-                                  border-radius:.5em 0 0 .5em; text-align:center; color:white; }
+.shop .sales .cond              { clear:right; float:right; width:3em; background-color:#A00; font-size:.6em; border-radius:.5em 0 0 .5em; text-align:center; color:white; }
 .shop .sales .cond.s            { background-color:#0A0; }
 .shop .sales .cond:before       { content:">"; }
 .shop .sales .cond.s:after      { content:"☆"; }
 .shop .sales.ui-draggable-dragging  { opacity:0.7; cursor:none !important; }
-
-.shop #clientsales              { position:absolute; width:5em; height:6.9em; top:48%; left:3%; overflow:visible; display:none;
-                                  background-color:rgba(255,255,255,0.4); border-radius:.2em; border:2px solid black; }
-
-/* INVOICE PANEL */
-.shop #pinvoice                 { width:7.5em; background-color:white; display:none; left:70%; top:2%; position:absolute; padding:.1em;
-                                  background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
-                                  border:2px solid black; }
-.shop #pinvoice .header         { font-size:.4em; border:1px solid black; border-width:0 0 1px 0;}
-.shop #pinvoice .header>div     { float:left; width:4em; text-align:center; overflow:visible; }
-.shop #pinvoice .footer         { margin-top:.2em; }
-.shop #pinvoice .line           { margin:.1em 0 0 0; background-color:rgba(0,140,255,0.2); }
-.shop #pinvoice .line.s         { background-color:rgba(150,150,150,0.2); }
-.shop #pinvoice .line.s>*       { opacity:0.7; }
-.shop #pinvoice .line.over      { background-color:rgba(255,140,140,0.6) !important; }
-.shop #pinvoice .line>div       { float:left; text-align:center; }
-.shop #pinvoice .line .label    { width:1em; height:1em; font-size:1.5em; }
-.shop #pinvoice .line .price    { font-size:0.6em; width:2.6em; margin-top:.5em; }
-.shop #pinvoice .line .quantity { font-size:0.5em; width:3.6em; margin-top:.7em; margin-left:.25em; background-color:red;
-                                  border-radius:.5em; color:white; overflow:visible; }
-.shop #pinvoice .line .quantity.hide    { opacity: 0; }
-.shop #pinvoice .line .quantity:before { content:"×"; }
-.shop #pinvoice .cell           { font-size:0.6em; margin-left:.2em; margin-top:.5em; width:3.5em; }
-.shop #pinvoice .cell.a         { cursor:pointer; }
-.shop #pinvoice .cell.s         { background-color:yellow; cursor:auto; }
-.shop #pinvoice .cell.highlight { background-color:red; }
-.shop #pinvoice .total          { color:#256; font-size:.8em; width:6.1em; text-align:right !important; margin-right:.2em; }
-.shop #pinvoice .footer .cell   { margin-top:0.1em; }
-.shop #pinvoice #svalid.s       { opacity:1; cursor:pointer; }
-.shop #pinvoice #svalid         { height:1em; font-size:1em; opacity:0.2; background-color:rgba(0,0,0,0.1); padding:.1em; margin-top:.1em; }
-.shop #pinvoice #svalid>div     { width:1em; height:1em; margin:0 auto;  }
-.shop #pinvoice #svalid.good    { background-color:rgba(0,255,0,0.4); }
-.shop #pinvoice .wrong          { background-color:rgba(255,0,0,0.4) !important; }
-
-
-.shop #pinvoice .lineplus .sale { background-color:rgba(150,150,150,0.2); }
-.shop #pinvoice .lineplus .sale>* { float:left; }
-.shop #pinvoice .lineplus .sale .icon   { background-color:gray; border-radius:0 0.5em 0.5em 0; cursor:pointer; }
-.shop #pinvoice .lineplus .sale .label  { width:4em; }
-.shop #pinvoice .lineplus .sale .label>div  { margin-left:3.6em; background-color:#0A0; color:white; border-radius:0.5em;
-                                             font-size:0.6em; width:3em; margin-top:.2em; text-align:center;}
-.shop #pinvoice .lineplus .sale .label>div:after { content:"%"; }
-.shop #pinvoice .lineplus .cell   { margin-top:0.2em !important; }
-.shop #pinvoice .lineplus .line { margin-top:0; }
-
-
-
-/* CALCULATOR PANEL */
-.shop #pcalculator               { height:auto; }
-.shop #pcalculator #screen       { font-size:1.5em; width:3em; border-radius:.25em; cursor:move;
-                                   text-align:center; color:#0F0; font-weight:bold;
-                                   padding:.2em; background-color:#030;
-                                   background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-.shop .bluekeypad                { background-color:rgba(84,137,184,0.9);
-                                   -webkit-transition: background-color 1000ms ease-in;
-                                   -moz-transition: background-color 1000ms ease-in;
-                                   -o-transition: background-color 1000ms ease-in;
-                                   -ms-transition: background-color 1000ms ease-in;
-                                   transition: background-color 1000ms ease-in; }
-.shop .bluekeypad.touch          { background-color:rgba(256,220,50,0.9);
-                                   -webkit-transition: none;
-                                   -moz-transition: none;
-                                   -o-transition: none;
-                                   -ms-transition: none;
-                                   transition: none; }
-
-/* DIALOG BUBBLES */
-.shop #bubbles                  { position:absolute; top:0; left:0%; width:30em; height:20em; color:#310;  display:none;}
-.shop #bubbles .talk            { position:absolute; border-radius: .5em; opacity:0.9; display:none;
-                                  padding:.2em .5em; font-size:.6em; cursor:pointer; }
-
-.shop #bubbles #owner           { width:14em; height:14em; font-size:1em; left:38%; top:0; background-image:url("../../res/img/asset/fx/dialog02.svg"); background-repeat:no-repeat; }
-.shop #bubbles #client          { width:10em; height:10em; left:1%; top:0; background-image:url("../../res/img/asset/fx/dialog03.svg"); background-repeat:no-repeat; font-size:1em; }
-
-.shop #bubbles #pre	{ font-size:.7em; margin-left:2em; margin-top:1em; width:80%; }
-.shop #bubbles #client #pre		{ margin-top:.5em; margin-left:1.5em; }
-.shop #bubbles #pre div  { display:inline-block; white-space: pre;  }
-
-
-/* EFFECTS */
-.shop .fx						{ position:absolute; top:1%; left:55%; font-size:6em; display:none; z-index:300; }
+.shop #spclientsales            { position:absolute; width:5em; height:6.9em; top:48%; left:3%; overflow:visible; display:none; background-color:rgba(255,255,255,0.4); border-radius:.2em; border:2px solid black; }
+.shop #spinvoice                { width:7.5em; background-color:white; display:none; left:70%; top:2%; position:absolute; padding:.1em; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; border:2px solid black; }
+.shop #spinvoice .header         { font-size:.4em; border:1px solid black; border-width:0 0 1px 0;}
+.shop #spinvoice .header>div     { float:left; width:4em; text-align:center; overflow:visible; }
+.shop #spinvoice .footer         { margin-top:.2em; }
+.shop #spinvoice .line           { margin:.1em 0 0 0; background-color:rgba(0,140,255,0.2); }
+.shop #spinvoice .line.s         { background-color:rgba(150,150,150,0.2); }
+.shop #spinvoice .line.s>*       { opacity:0.7; }
+.shop #spinvoice .line.over      { background-color:rgba(255,140,140,0.6) !important; }
+.shop #spinvoice .line>div       { float:left; text-align:center; }
+.shop #spinvoice .line .label    { width:1em; height:1em; font-size:1.5em; }
+.shop #spinvoice .line .price    { font-size:0.6em; width:2.6em; margin-top:.5em; }
+.shop #spinvoice .line .quantity { font-size:0.5em; width:3.6em; margin-top:.7em; margin-left:.25em; background-color:red; border-radius:.5em; color:white; overflow:visible; }
+.shop #spinvoice .line .quantity.hide    { opacity: 0; }
+.shop #spinvoice .line .quantity:before  { content:"×"; }
+.shop #spinvoice .cell           { font-size:0.6em; margin-left:.2em; margin-top:.5em; width:3.5em; }
+.shop #spinvoice .cell.a         { cursor:pointer; }
+.shop #spinvoice .cell.s         { background-color:yellow; cursor:auto; }
+.shop #spinvoice .cell.highlight { background-color:red; }
+.shop #spinvoice .total          { color:#256; font-size:.8em; width:6.1em; text-align:right !important; margin-right:.2em; }
+.shop #spinvoice .footer .cell   { margin-top:0.1em; }
+.shop #spinvoice #svalid.s       { opacity:1; cursor:pointer; }
+.shop #spinvoice #svalid         { height:1em; font-size:1em; opacity:0.2; background-color:rgba(0,0,0,0.1); padding:.1em; margin-top:.1em; }
+.shop #spinvoice #svalid>div     { width:1em; height:1em; margin:0 auto;  }
+.shop #spinvoice #svalid.good    { background-color:rgba(0,255,0,0.4); }
+.shop #spinvoice .wrong          { background-color:rgba(255,0,0,0.4) !important; }
+.shop #spinvoice .lineplus .sale { background-color:rgba(150,150,150,0.2); }
+.shop #spinvoice .lineplus .sale>*                { float:left; }
+.shop #spinvoice .lineplus .sale .icon            { background-color:gray; border-radius:0 0.5em 0.5em 0; cursor:pointer; }
+.shop #spinvoice .lineplus .sale .label           { width:4em; }
+.shop #spinvoice .lineplus .sale .label>div       { margin-left:3.6em; background-color:#0A0; color:white; border-radius:0.5em; font-size:0.6em; width:3em; margin-top:.2em; text-align:center;}
+.shop #spinvoice .lineplus .sale .label>div:after { content:"%"; }
+.shop #spinvoice .lineplus .cell                  { margin-top:0.2em !important; }
+.shop #spinvoice .lineplus .line                  { margin-top:0; }
+.shop #spcalculator              { height:auto; }
+.shop #spcalculator #screen      { font-size:1.5em; width:3em; border-radius:.25em; cursor:move; text-align:center; color:#0F0; font-weight:bold; padding:.2em; background-color:#030; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.shop .bluekeypad                { }
+.shop #spbubbles                 { position:absolute; top:0; left:0%; width:30em; height:20em; color:#310;  display:none;}
+.shop #spbubbles .sptalk         { position:absolute; border-radius: .5em; opacity:0.9; display:none; padding:.2em .5em; font-size:.6em; cursor:pointer; }
+.shop #spowner                   { width:14em; height:14em; font-size:1em; left:38%; top:0; background-image:url("../../res/img/asset/fx/dialog02.svg"); background-repeat:no-repeat; }
+.shop #spclient                  { width:10em; height:10em; left:1%; top:0; background-image:url("../../res/img/asset/fx/dialog03.svg"); background-repeat:no-repeat; font-size:1em; }
+.shop .sptalk>div	             { font-size:.7em; margin-left:2em; margin-top:1em; width:80%; }
+.shop #spclient .sptalk>div		 { margin-top:.5em; margin-left:1.5em; }
+.shop .sptalk>div div            { display:inline-block; white-space: pre;  }
+.shop .fx						 { position:absolute; top:1%; left:55%; font-size:6em; display:none; z-index:300; }
 

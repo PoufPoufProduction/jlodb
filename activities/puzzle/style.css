@@ -1,52 +1,15 @@
-.puzzle                                 { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-.puzzle>div                             { position:relative; width:100%; height:100%; }
-.puzzle div#splashex            { background-image:url("../../res/img/banners/puzzle.svg"); }
-.puzzle div#splashex  h1                 { position:absolute; top:10%; left:60%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.puzzle div#splashex #guide     { display:none; }
-                                  
-                                  
-.puzzle div#timg                        { position:absolute; width:1em; height:1em; font-size:7.5em; top:.05em; left:.1em;
-                                          border:.01em solid white; background-color:rgba(255,255,255,0.5);
-                                          display:none; overflow:hidden;}
-.puzzle div#ttext                       { position:absolute; width:9em; height:9em; font-size:0.75em; top:.5em; left:1em;
-                                          border:.1em solid white; background-color:rgba(255,255,255,0.5);
-                                          overflow:hidden; padding:.5em; display:none;}
-.puzzle.smalltxt div#ttext #ttxt         { font-size:.5em; }
-.puzzle div#ttext.legend        { top:8em; height:auto; border-radius:0; border-width:.1em; padding:.1em .5em; text-align:center; background-color:rgba(255,255,255,0.8); }
-.puzzle .code               { color:#AFA; background-color:#040; border:1px solid black; padding:0 .5em;  }
+.puzzle                         { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.puzzle>div                     { position:relative; width:100%; height:100%; }
+.puzzle #splashex               { background-image:url("../../res/img/banners/puzzle.svg"); }
+.puzzle #petxt                  { position:absolute; width:10em; height:10em; font-size:0.75em; top:.5em; left:1em; border:.1em solid white;  overflow:hidden; display:none;}
+.puzzle #petxt>div			    { width:100%; height:100%; background-color:rgba(255,255,255,0.5); }
+.puzzle.smalltxt #petxt>div     { font-size:.5em; }
+.puzzle #petxt .user            { position:absolute; top:8em; height:auto; width:100%; border-radius:0; border:.1em solid white; border-width:.1em 0; padding:.1em .5em; text-align:center; background-color:rgba(255,255,255,0.8); }
+.puzzle #petxt .icon            { float:left; }
+.puzzle #instructions           { display: none; }
+.puzzle.exup #instructions      { z-index:3;  } 
+.puzzle #peboard                { position:relative; z-index:2;}
+.puzzle.norot div#norot         { display:inline; }
+.puzzle.norot div#instructions  { width:12.5em; left:3.5em; }
 
-
-.puzzle div#exercice                    { position:absolute; width:87.5%; height:12.5%; top:87.5%; left:12.5%; border-radius:1em 0 0 0;
-                               background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
-                               display:none; font-size:.5em; border:.3em solid white;}
-.puzzle.exup div#exercice       { z-index:3;  } 
-.puzzle div#exercice #content         { margin:0 1em; text-align:justify; font-style:italic; }
-.puzzle div#exercice #label           { font-size:2em; float:right; width:2.0em; height:1.2em; font-weight:bold;
-                                 color:white; background-color:black; border-radius:.2em; text-align:center;
-                                 margin:0 .15em; display:none; }
-
-.puzzle div#board                       { position:relative; z-index:2;}
-.puzzle div#submit                      { font-size:1.5em; height:1em;width:1em; cursor:pointer;
-                                          position:absolute; top:7em; left:0em; z-index:3; }
-.puzzle div#submit>img                  { display:none; }
-.puzzle div#submit #subvalid            { display:inline; }
-.puzzle div#submit.good #subvalid       { display:none; }
-.puzzle div#submit.wrong #subvalid      { display:none; }
-.puzzle div#submit.good #subgood        { display:inline; }
-.puzzle div#submit.wrong #subwrong      { display:inline; }
-.puzzle div#valid                       { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
-                                          display:none; top:1em; left:3em;  border-radius:.25em; z-index:5; }
-.puzzle div#valid div.button            { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
-.puzzle #touch01                        { top:0; left:0; font-size:2em; z-index:3;}
-
-
-.puzzle.norot div#norot                 { display:inline; }
-.puzzle.norot div#exercice                    { width:12.5em; left:3.5em; }
-
-
-.puzzle #effects                      { width:60%; height:60%; position:absolute; top:5%; left:60%; z-index:3; display:none;  }
-.puzzle #effects>div                  { font-size:6em; width:1em; height:1em;  display:none;}
 

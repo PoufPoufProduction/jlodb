@@ -1,8 +1,8 @@
 <div>
-    <div id="board">
-		<div id="grid"></div>
-		<div id="hints">
-			<div id="hintmenu">
+    <div id="qzboard">
+		<div id="qzgrid"></div>
+		<div id="qzhints">
+			<div id="qzhintmenu">
 			
 				<div class='icon'
 					ontouchstart="$(this).closest('.quizz').quizz('mask',this);event.preventDefault();"
@@ -18,13 +18,13 @@
 						<img src="ext/noto/svg/emoji_u2753.svg" alt=""/></div>
 			
 			</div>
-			<div id="hintlist"></div>
-			<div id="hinttabs"></div>
+			<div id="qzhintlist"></div>
+			<div id="qzhinttabs"></div>
 		</div>
     </div>
 	
 	
-	<div id="menu">
+	<div id="qzmenu">
         <div id="fillmode" class="icon s" ontouchstart="$(this).closest('.quizz').quizz('fill',this);event.preventDefault();"
                          onclick="$(this).closest('.quizz').quizz('fill',this);">
             <img src="ext/noto/svg/emoji_u1f58b.svg" alt=""/>
@@ -33,25 +33,24 @@
                          onclick="$(this).closest('.quizz').quizz('hint',this);">
                 <img src="ext/noto/svg/emoji_u270f.svg" alt=""/>
         </div>
-        <div class="icon" id="bcheck" ontouchstart="$(this).addClass('s').closest('.quizz').find('#mask').show();event.preventDefault();"
-                 onclick="$(this).addClass('s').closest('.quizz').find('#mask').show();"><img src="ext/noto/svg/emoji_u1f58d.svg" alt=""/>
+        <div class="icon" id="bcheck" ontouchstart="$(this).addClass('s').closest('.quizz').find('#qzmask').show();event.preventDefault();"
+                 onclick="$(this).addClass('s').closest('.quizz').find('#qzmask').show();"><img src="ext/noto/svg/emoji_u1f58d.svg" alt=""/>
         </div>
     </div>
-
-    <div id="effects"><img src="res/img/default/popup/good01.svg" alt=""/></div>
 	
-	<div id="keypad">
-		<div id="bg1"></div>
-	</div>
+    <div id="effects">
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+    </div>
 	
+	<div id="qzkeypad"><div id="qzbg"></div></div>
 	
-	<div id="mask"><div>
+	<div id="qzmask"><div>
 		<div id="help"></div>
 		<div>
 			<div class="icon" ontouchstart="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('.quizz').quizz('help');event.preventDefault();"
 							  onclick="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('.quizz').quizz('help');"><img src="res/img/default/icon/valid01.svg" alt=""/></div>
-			<div class="icon" ontouchstart="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('#mask').hide();event.preventDefault();"
-							  onclick="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('#mask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+			<div class="icon" ontouchstart="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('#qzmask').hide();event.preventDefault();"
+							  onclick="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('#qzmask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
 		</div>
 		<div id="illus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
 	</div></div>

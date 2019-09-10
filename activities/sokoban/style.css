@@ -1,44 +1,28 @@
 .sokoban .both *                        { overflow:visible; }
 .sokoban                                { background-image:url("../../res/img/background/landscape/blueboard01.svg"); background-repeat:repeat;}
-
-.sokoban div#splashex                  { background-image:url("../../res/img/banners/sokoban.svg"); color:lime; }
-.sokoban div#splashex  h1                 { position:absolute; top:12%; left:58%; font-size:1.7em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.sokoban div#splashex #light           { position:absolute; top:0; left:1%; font-size:9em; width:1em; height:1em; display:none; }
-.sokoban.light div#splashex #light      { display:inherit; }
-.sokoban #board                         { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
-                                          width:11em; height:11em; border-radius:.5em; margin:0.5em 0 0 .25em;
-                                          position:relative; float:left; }
-.sokoban #board #comment                { position:absolute; top:80%; left:0; font-size:.4em; width:98%; height:20%; padding:1%; display:none; z-index:100; background-color:rgba(255,255,255,0.3); }
-.sokoban #board #tiles                  { width:100%; height:100%; }
-.sokoban #board #tiles .tile            { width:4em; height:3em; position:absolute; }
-.sokoban #board #tiles .tile.s1         { height:11em; margin-top:-8em;}
-.sokoban #board #tiles .box             { width:4em; height:5.33em; position:absolute; }
-.sokoban #board #tiles .engine          { position:absolute; overflow:visible; }
-.sokoban #board #tiles .engine #invert  { width:1em; height:1em; font-size:1.5em; margin-top:-2.7em;margin-left:0.9em;
-                                          position:relative; z-index:20;}
-.sokoban #board #tiles .engine #img     { width:1em; height:1em; font-size:3.2em; margin-top:-.4em;margin-left:.1em;
-                                          position:relative; }
-.sokoban #menu                          { width:4.3em; height:12em; float:left; position:relative; margin:0.5em 0 0 .25em; }
-.sokoban #menu #banner                  { height:7.95em; background-color:white; border-radius:.5em .5em 0 0;
-                                          position:relative; color:#444444; opacity:0.7;}
-.sokoban #menu #banner #reset           { width:1em; height:1em; cursor:pointer; font-size:1em; border-radius:.5em; }
-.sokoban #menu #banner #sokoscore       { font-size:.4em; background-color:rgba(0,0,0,0.5); color:white; height:2.8em; }
-.sokoban #menu #banner .label           { clear:both; float:left; width:7em; text-align:right; margin-right:.5em; }
-.sokoban #menu #banner .value           { float:left; }
-.sokoban #menu #keypad                  { border-radius:0 0 .5em .5em; background-image:url("../../res/img/default/pattern/line03.svg") }
-.sokoban #menu #keypad.r0               { background-color:#90cce0; }
-.sokoban #menu #keypad.r1               { background-color:#e09090; }
-.sokoban #menu #keypad.r2               { background-color:#82ca82; }
-.sokoban #menu #keypad.r3               { background-color:#ca82ca; }
-.sokoban #menu table                    { margin:.2em auto; }
-.sokoban #menu table div                { width:1em; height:1em; overflow:hidden; text-align:center; background-size: 1em;
-                                          font-size:1.3em; background-repeat:no-repeat; cursor:pointer; }
-.sokoban #menu #keypad .down            { display:none; }
-.sokoban #menu #keypad .s .up           { display:none; }
-.sokoban #menu #keypad .s .down         { display:inherit; }
-
-.sokoban #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:0; left:60%; }
+.sokoban #splashex                      { background-image:url("../../res/img/banners/sokoban.svg"); color:lime; }
+.sokoban #snlight                       { position:absolute; top:0; left:1%; font-size:9em; width:1em; height:1em; display:none; }
+.sokoban.light #snlight                 { display:inherit; }
+.sokoban #snboard                       { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; width:11em; height:11em; border-radius:.5em; margin:0.5em 0 0 .25em; position:relative; float:left; }
+.sokoban #sncomment                     { position:absolute; top:80%; left:0; font-size:.4em; width:98%; height:20%; padding:1%; display:none; z-index:100; background-color:rgba(255,255,255,0.3); }
+.sokoban #sntiles                       { width:100%; height:100%; }
+.sokoban #sntiles .tile                 { width:4em; height:3em; position:absolute; }
+.sokoban #sntiles .tile.s1              { height:11em; margin-top:-8em;}
+.sokoban #sntiles .box                  { width:4em; height:5.33em; position:absolute; }
+.sokoban #sntiles .engine               { position:absolute; overflow:visible; }
+.sokoban #sntiles .engine #invert       { width:1em; height:1em; font-size:1.5em; margin-top:-2.7em;margin-left:0.9em; position:relative; z-index:20;}
+.sokoban #sntiles .engine #img          { width:1em; height:1em; font-size:3.2em; margin-top:-.4em;margin-left:.1em; position:relative; }
+.sokoban #snmenu                        { width:4.3em; height:12em; float:left; position:relative; margin:0.5em 0 0 .25em; }
+.sokoban #snbanner                      { height:7.95em; background-color:white; border-radius:.5em .5em 0 0; position:relative; color:#444444; opacity:0.7;}
+.sokoban #snscore                       { font-size:.4em; background-color:rgba(0,0,0,0.5); color:white; height:2.8em; }
+.sokoban #snbanner .snlabel             { clear:both; float:left; width:7em; text-align:right; margin-right:.5em; }
+.sokoban #snbanner .snvalue             { float:left; }
+.sokoban #snkeypad                      { border-radius:0 0 .5em .5em; background-image:url("../../res/img/default/pattern/line03.svg") }
+.sokoban #snkeypad.r0                   { background-color:#90cce0; }
+.sokoban #snkeypad.r1                   { background-color:#e09090; }
+.sokoban #snkeypad.r2                   { background-color:#82ca82; }
+.sokoban #snkeypad.r3                   { background-color:#ca82ca; }
+.sokoban #snmenu table                  { margin:.2em auto; }
+.sokoban #snmenu table div              { width:1em; height:1em; overflow:hidden; text-align:center; background-size: 1em; font-size:1.3em; background-repeat:no-repeat; cursor:pointer; }
+.sokoban #sngoal				        { z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:0; left:60%; }
 

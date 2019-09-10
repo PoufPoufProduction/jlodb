@@ -24,22 +24,6 @@
         debug       : true                      // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
-        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
-        "\\\[dice\\\]([^\\\[]+)\\\[/dice\\\]",      "<div class='dice'>$1</div>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
-        "\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",        "<div class='icon' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
-        "\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
-        "\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>",
-        "\\\[math\\\]([^\\\[]+)\\\[/math\\\]",      "<div class='math'><math>$1</math></div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -61,17 +45,12 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+			if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
+            settings.finish = true;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -106,7 +85,7 @@
                 if (settings.input && settings.input.svg) {
                     var debug = "";
                     if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                    var elt= $("<div id='svg' style='width:100%; height:100%'></div>").appendTo($this.find("#keypad"));
+                    var elt= $("<div id='svg' style='width:100%; height:100%'></div>").appendTo($this.find("#sekeypad"));
                     elt.svg();
                     settings.svg = elt.svg('get');
                     settings.svg.load( settings.input.svg + debug,
@@ -139,6 +118,22 @@
             },
             build: function($this) {
                 var settings = helpers.settings($this);
+				
+				var vRegExp = [
+					"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+					"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+					"\\\[br\\\]",                               "<br/>",
+					"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+					"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+					"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
+					"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
+					"\\\[dice\\\]([^\\\[]+)\\\[/dice\\\]",      "<div class='dice'>$1</div>",
+					"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
+					"\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",        "<div class='icon' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
+					"\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
+					"\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>",
+					"\\\[math\\\]([^\\\[]+)\\\[/math\\\]",      "<div class='math'><math>$1</math></div>"
+				];
 
                 // Build the response if need
                 if (settings.input && settings.input.values) {
@@ -153,7 +148,7 @@
                                 vLabel = settings.input.values[_index];
                                 vValue = settings.input.values[_index];
                             }
-                            $(this).html(helpers.format(vLabel.toString())).addClass("bluekeypad").bind("click touchstart",function(event) {
+                            $(this).html(jtools.format(vLabel.toString(),vRegExp)).addClass("bluekeypad").bind("click touchstart",function(event) {
                                 $this.sequence('key',vValue, this); event.preventDefault(); });
                                
                             if (settings.input.attr) {
@@ -169,7 +164,7 @@
                 // Build the questions
                 var vLast = -1, vNew;
                 var vRegexp = (settings.regexp&&settings.regexp.input)?new RegExp(settings.regexp.input.from, "g"):0;
-                var $ul = $this.find("#values ul").css("font-size",settings.font+"em").hide();
+                var $ul = $this.find("#sevalues ul").css("font-size",settings.font+"em").hide();
 
                 // Fill the UL list
                 var vValueArray = [];
@@ -198,8 +193,8 @@
                     vValue.question = vValue.question.toString().replace(vRegExpMult,"×");
 
                     // Fill the dom element, use a regexp if needed
-                    if (vRegexp)    { $li.html(helpers.format(vValue.question.replace(vRegexp, settings.regexp.input.to))); }
-                    else            { $li.html(helpers.format(vValue.question)); }
+                    if (vRegexp)    { $li.html(jtools.format(vValue.question.replace(vRegexp, settings.regexp.input.to), vRegExp)); }
+                    else            { $li.html(jtools.format(vValue.question), vRegExp); }
 
                     // Store the question
                     settings.questions.push(vValue);
@@ -207,16 +202,16 @@
                 }
 
                 // Handle some elements
-                $this.find("#screen>div").html("&#xA0;");
+                $this.find("#sescreen>div").html("&#xA0;");
                 $this.find("#guide_number").html(settings.number);
                 if (!settings.time) {
-                    $this.find("#timeval").html("&#xA0;");
+                    $this.find("#setimeval").html("&#xA0;");
                     $this.find("#guide_time").hide();
                 }
                 else {
-                    var vTime = helpers.formattime(
+                    var vTime = jtools.time.milli2mmssmm(
                         Math.floor(settings.time*(settings.timemode?1:settings.number))*1000);
-                    $this.find("#timeval").html(vTime);
+                    $this.find("#setimeval").html(vTime);
                     $this.find("#guide_time").show();
                 }
 
@@ -228,47 +223,33 @@
                 // Locale handling
 
                 if (settings.comment && !settings.exercice ) { settings.exercice = settings.comment; } // OLD DEFINITION (TO REMOVE IN DATA)
-                if (settings.exercice) {
-                    if ($.isArray(settings.exercice)) {
-                        $this.find("#exercice>div").html("");
-                        for (var i in settings.exercice) { $this.find("#exercice>div").append("<p>"+helpers.format(settings.exercice[i])+"</p>"); }
-                    }
-                    else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
-                }
-                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
+                if (settings.exercice) { $this.find("#seexercice>div").html(jtools.instructions(settings.exercice)); }
+                $this.find("#seexercice>div").css("font-size",settings.fontex+"em");
                 
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
-                setTimeout(function() { $this.find("#values ul").show(); helpers.move($this, true);}, 500);
+                setTimeout(function() { $this.find("#sevalues ul").show(); helpers.move($this, true);}, 500);
 				
 				if (settings.edit) { helpers.unbind($this); }
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
-        formattime: function(_val) {
-            _val=Math.floor(_val/100);
-            var vMS = _val%10;
-            var vS  = Math.floor(_val/10)%100;
-            var vM  = Math.floor(_val/1000);
-            if (vM>59) { vMS=9; vS=99; vM=59; }
-            return (vM<10?"0":"")+vM+(vS<10?":0":":")+vS+"."+vMS;
-        },
         // Update the timer
         timer:function($this) {
             var settings = helpers.settings($this);
             if (settings.time) {
-                var $time   = $this.find("#timeval");
+                var $time   = $this.find("#setimeval");
                 var delay   = Date.now() - settings.timer.begin;
                 var ref     = settings.time*(settings.timemode==0?settings.number:1);
                 var diff    = ref*1000 - delay;
-                $time.text(helpers.formattime(Math.abs(diff)));
+                $time.text(jtools.time.milli2mmssmm(Math.abs(diff)));
                 $time.parent().toggleClass("late", (diff<0));
                 if (diff>=0) {
                     var ratio = 100-(diff/(ref*10));
-                    $this.find("#timeslider").width(ratio+"%");
+                    $this.find("#setimeslider").width(ratio+"%");
                 }
                 else {
-                    $this.find("#timeslider").width("100%");
+                    $this.find("#setimeslider").width("100%");
                     if (settings.timemode==1) { helpers.timeout($this); }
                 }
             }
@@ -278,18 +259,18 @@
         },
         move: function($this, _anim) {
             var settings = helpers.settings($this);
-            var vHeight=Math.floor(($this.find("#values").height()-$this.find("#values li").height())/settings.vertical);
-            $this.find("#values li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
-            if (_anim)  { $this.find("#values ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
-            else        { $this.find("#values ul").css("top", vHeight+"px"); }
+            var vHeight=Math.floor(($this.find("#sevalues").height()-$this.find("#sevalues li").height())/settings.vertical);
+            $this.find("#sevalues li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
+            if (_anim)  { $this.find("#sevalues ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
+            else        { $this.find("#sevalues ul").css("top", vHeight+"px"); }
             
             if (settings.timemode==1) { settings.timer.begin = Date.now(); }
         },
-        hidefx: function($this) { $this.find("#effects>div").hide(); },
+        hidefx: function($this) { $this.find("#seeffects>div").hide(); },
         next: function($this) {
             var settings = helpers.settings($this);
-            $($this.find("#values li").get(settings.it)).addClass("select");
-            if (settings.screenc) { $this.find("#screen>div").html("&#xA0;"); }
+            $($this.find("#sevalues li").get(settings.it)).addClass("select");
+            if (settings.screenc) { $this.find("#sescreen>div").html("&#xA0;"); }
             setTimeout(function() { helpers.hidefx($this); }, 200 );
         },
         // Handle the key input
@@ -341,7 +322,7 @@
                             settings.response.value += value.toString(); settings.response.digit++;
                         }
                     }
-                    $this.find("#screen>div").html(settings.response.digit?settings.response.value:"&#xA0;");
+                    $this.find("#sescreen>div").html(settings.response.digit?settings.response.value:"&#xA0;");
                     if (value!=settings.erase) {
                             if (!helpers.check($this, (settings.input.speed==0)))
                             {
@@ -390,7 +371,7 @@
                 if (vRet || force) {
 
                     // Update the question
-                    var vQuestion = $this.find("#values li").get(settings.it);
+                    var vQuestion = $this.find("#sevalues li").get(settings.it);
                     if (settings.regexp && settings.regexp.output) {
                         var vReg = new RegExp(settings.regexp.output, "g");
                         var value = settings.response.value;
@@ -407,23 +388,23 @@
                     if (vRet) {
                         settings.combo++;
                         if (settings.combo==1 || settings.combo==2 || settings.combo==5 || settings.combo==10 || settings.combo==20 ) {
-                            $this.find("#effects #good"+settings.combo).show();
+                            $this.find("#seeffects #good"+settings.combo).show();
                         }
                     }
                     else {
                         settings.wrong++;
                         settings.combo = 0;
-                        $this.find("#effects #wrong").show();
+                        $this.find("#seeffects #wrong").show();
                     }
                     if (++settings.it==settings.number) {
                         settings.interactive = false;
                         clearTimeout(settings.timer.id);
                         
                         settings.score = 5 - settings.wrong;
-                        if (settings.timemode==0 && $this.find("#time").hasClass("late")) { settings.score--; }
+                        if (settings.timemode==0 && $this.find("#setime").hasClass("late")) { settings.score--; }
                         if (settings.score<0) { settings.score = 0; }
       
-                        setTimeout(function() { helpers.end($this); }, 1000);
+                        setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000);
                     }
                     settings.response.digit = 0;
                     settings.response.value = "";
@@ -494,10 +475,7 @@
             click: function(value) { helpers.key($(this), value, false); },
             quit: function() {
                 var $this = $(this), settings = helpers.settings($this);
-                if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
-                helpers.unbind($this);
-                settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

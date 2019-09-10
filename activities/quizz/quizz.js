@@ -48,15 +48,6 @@
         debug       : true                                      // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -78,22 +69,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        // End all timers
-        quit: function($this) {
-            var settings = helpers.settings($this);
-            // if (settings.timerid) { clearTimeout(settings.timerid); }
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         loader: {
             css: function($this) {
@@ -131,7 +110,7 @@
                 // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
-                    else { $this.find("#"+id).html(helpers.format(value)); }
+                    else { $this.find("#"+id).html(jtools.format(value)); }
                 }); }
                 
                 // HANDLE BACKGROUND
@@ -142,7 +121,7 @@
 				helpers.tips($this);
 				
 				// BUILD BOARD
-				$this.find("#grid").html("");
+				$this.find("#qzgrid").html("");
 				for (var i=0; i<settings.board[0].value.length; i++) {
 					var $col=$("<div class='col'></div>");
 					$col.css("left",(i*1.4+0.5)+"em");
@@ -174,7 +153,7 @@
 						$col.append($elt);
 					}
 					
-					$this.find("#grid").append($col);
+					$this.find("#qzgrid").append($col);
 				}
 				$this.find(".click").bind("mousedown touchstart", function(_event) {
 					var vEvent = (_event && _event.originalEvent &&
@@ -192,12 +171,12 @@
 						if (no && $this.find("#fillmode").hasClass("s")) {
 							settings.current.cell.value = settings.current.value;
 							settings.current.cell.$elt.html("<img src='"+settings.res[settings.current.type][settings.current.value-1]+"' alt=''/>").show().next().hide().closest(".elt").removeClass("wrong");
-							$this.find("#keypad").hide(); settings.current = 0; settings.keys = 0;
+							$this.find("#qzkeypad").hide(); settings.current = 0; settings.keys = 0;
 							
 							if (helpers.check($this)==0) {
 								settings.interactive = false;
-								$this.find("#effects").css("opacity",0).show().animate({opacity:1},500);
-								setTimeout(function() { helpers.end($this); }, 1500);
+								$this.find("#effects").addClass("good");
+								setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1500);
 							}
 							
 						}
@@ -211,7 +190,7 @@
 							var s = 3/Math.pow(nb,0.5);
 							var l = 1.4/s;
 							
-							$this.find("#keypad .k").detach();
+							$this.find("#qzkeypad .k").detach();
 							settings.keys = [];
 							for (var i=0; i<nb; i++) {
 								var $r = $("<div class='k' id='k"+values[i]+"'></div>");
@@ -221,13 +200,13 @@
 								  .html("<img src='"+settings.res[line.type][values[i]-1]+"' alt=''/>");
 								  
 								settings.keys.push($r);
-								$this.find("#keypad").append($r);
+								$this.find("#qzkeypad").append($r);
 							}
 							
 							
 							var vTop = vEvent.clientY - $this.offset().top;
 							var vLeft = vEvent.clientX - $this.offset().left;
-							$this.find("#keypad").css("top", vTop+"px").css("left", vLeft+"px").show();
+							$this.find("#qzkeypad").css("top", vTop+"px").css("left", vLeft+"px").show();
 						}
 						
 					}
@@ -236,7 +215,7 @@
 				});
 				
                 $this.bind("mousemove touchmove", function(event) {
-                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                    var settings = helpers.settings($this), $keypad = $this.find("#qzkeypad");
                     if (settings.current) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
                                     event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
@@ -267,8 +246,8 @@
 							
 							if (helpers.check($this)==0) {
 								settings.interactive = false;
-								$this.find("#effects").css("opacity",0).show().animate({opacity:1},500);
-								setTimeout(function() { helpers.end($this); }, 1500);
+								$this.find("#effects").addClass("good");
+								setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1500);
 							}
 					
 							
@@ -284,19 +263,19 @@
 							
 						}
 					}
-					$this.find("#keypad").hide(); settings.current = 0; settings.keys = 0;
+					$this.find("#qzkeypad").hide(); settings.current = 0; settings.keys = 0;
                     event.preventDefault();
 				});
 				
 				
 				$this.bind("mouseleave touchleave", function(event) {
-					$this.find("#keypad").hide(); settings.current = 0; settings.keys = 0;
+					$this.find("#qzkeypad").hide(); settings.current = 0; settings.keys = 0;
                     event.preventDefault();
 				});
 				
 				
 				var sz = Math.round(120/Math.max(settings.board[0].value.length*1.4+1,settings.board.length*1.5))/10;
-				$this.find("#grid").css("font-size",sz+"em");
+				$this.find("#qzgrid").css("font-size",sz+"em");
 				
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -305,11 +284,11 @@
 			var settings 	= helpers.settings($this);
 			settings.tippage = _page;
 			
-			$this.find("#hintlist .page").hide();
-			$this.find("#hintlist .page#p"+settings.tippage).show();
+			$this.find("#qzhintlist .page").hide();
+			$this.find("#qzhintlist .page#p"+settings.tippage).show();
 			
-			$this.find("#hinttabs .icon").removeClass("s");
-			$this.find("#hinttabs .icon#t"+settings.tippage).addClass("s");
+			$this.find("#qzhinttabs .icon").removeClass("s");
+			$this.find("#qzhinttabs .icon#t"+settings.tippage).addClass("s");
 		},
 		tips: function($this) {
 			var settings 	= helpers.settings($this);
@@ -327,8 +306,8 @@
 			else { nbmax = settings.smalltips?24:6; }
 			
 			
-			$this.find("#hintlist").html("").toggleClass("small",settings.smalltips);
-			$this.find("#hinttabs").html("");
+			$this.find("#qzhintlist").html("").toggleClass("small",settings.smalltips);
+			$this.find("#qzhinttabs").html("");
 			
 			for (var i=0; i<settings.tips.length; i++) {
 				var t = settings.tips[i];
@@ -352,9 +331,9 @@
 							helpers.tippage($this,$(this).attr("id").substr(1));
 							_event.preventDefault();
 						});
-						$this.find("#hinttabs").append($tab);
+						$this.find("#qzhinttabs").append($tab);
 						nbpage++;
-						$this.find("#hintlist").append($page);
+						$this.find("#qzhintlist").append($page);
 					}
 					
 					
@@ -367,7 +346,7 @@
 						"</div>"+(legend?"<div class='legend'></div>":"")+"<div class='mask'></div></div>");
 					
 					if (legend && settings.glossary.length>i) {
-						$elt.find(".legend").html(helpers.format(settings.glossary[i]));
+						$elt.find(".legend").html(jtools.format(settings.glossary[i]));
 					}
 					if (!settings.states[i]) { $elt.find(".mask").show(); }
 					$elt.bind("mousedown touchstart", function(_event) {
@@ -414,7 +393,7 @@
 			}
 			
 			// SHOW PAGE
-			if (nbpage<=1) { $this.find("#hinttabs .icon").hide(); } else { $this.find("#hinttabs .icon").show(); }
+			if (nbpage<=1) { $this.find("#qzhinttabs .icon").hide(); } else { $this.find("#qzhinttabs .icon").show(); }
 			helpers.tippage($this, Math.min(settings.tippage, Math.max(0,nbpage-1)));
 		},
 		check: function($this, _color) {
@@ -477,8 +456,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                helpers.quit($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
 			mask: function(_elt) {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -513,7 +491,7 @@
 			},
 			fill: function(_elt) {
                 var $this   = $(this) , settings = helpers.settings($this);
-				$this.find("#menu .icon").removeClass("s");
+				$this.find("#qzmenu .icon").removeClass("s");
 				$(_elt).addClass("s");
 				
 				for (var i in settings.cells) {
@@ -526,7 +504,7 @@
 			},
 			hint: function(_elt) {
                 var $this   = $(this) , settings = helpers.settings($this);
-				$this.find("#menu .icon").removeClass("s");
+				$this.find("#qzmenu .icon").removeClass("s");
 				$(_elt).addClass("s");
 				
 				for (var i in settings.cells) {
@@ -538,7 +516,7 @@
                 var $this   = $(this) , settings = helpers.settings($this);
 				settings.score=Math.max(0,settings.score-1);
 				helpers.check($this, true);
-				$this.find("#mask").hide();
+				$this.find("#qzmask").hide();
 				
 			}
 					

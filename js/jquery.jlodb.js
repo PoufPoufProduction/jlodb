@@ -3,12 +3,16 @@ document.ontouchmove = function(e) { e.preventDefault(); }
 
 // IS A CSS ALTERNATIVE POSSIBLE ?
 $(window).resize(function() {
-    var x = $(window).width()/16;
-    var y = $(window).height()/12;
-    var r = 0.1;
-    var font=Math.floor(Math.min(x,y)/r)*r;
-    $("body").css("font-size", font+"px");
-    $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px");
+    var x    = $(window).width()/16;
+    var y    = $(window).height()/12;
+    var r    = 0.1;
+    var font = Math.floor(Math.min(x,y)/r)*r;
+	var current = $("body").css("font-size");
+	current = parseFloat(current.substr(0, current.length-2));
+	if (font && font!=current) {
+		$("body").css("font-size", font+"px");
+		$("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px");
+	}
 });
 
 shuffle = function(a) {
@@ -22,24 +26,25 @@ shuffle = function(a) {
 jtools = {
 	format: function(_text, _regexp) {
 		var vRegExp = _regexp || [
-            "[*]",                                          "×",
-			"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                "<b>$1</b>",
-            "\\\[bb\\\](.+)\\\[/bb\\\]",                    "<b>$1</b>",
-			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                "<i>$1</i>",
-			"\\\[br\\\]",                                   "<br/>",
-            "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",              "<span style='opacity:0.5'>$1</span>",
-            "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",              "<span style='opacity:0.1'>$1</span>",
-			"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",        "<span style='font-size:0.5em'>$1</span>",
-			"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",          "<span style='color:blue'>$1</span>",
-			"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",            "<span style='color:red'>$1</span>",
-			"\\\[green\\\]([^\\\[]+)\\\[/green\\\]",        "<span style='color:green'>$1</span>",
-			"\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",      "<span style='color:purple'>$1</span>",
-			"\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",      "<span style='color:orange'>$1</span>",
-			"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",            "<div class='t_svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
-			"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",            "<div class='img'><img src='$1.svg'/></div>",
-		    "\\\[icon ([^\\\]]+)]([^\\\[]+)\\\[/icon\\\]",  "<div class='icon' style='font-size:$1em;float:left'><img src='$2.svg'/></div>",
-			"\\\[code\\\](.+)\\\[/code\\\]",                "<div class='t_code'>$1</div>",
-			"\\\[strong\\\](.+)\\\[/strong\\\]",            "<div class='t_strong'>$1</div>"
+            "[*]",                                                      "×",
+			"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                            "<b>$1</b>",
+            "\\\[bb\\\](.+)\\\[/bb\\\]",                                "<b>$1</b>",
+			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                            "<i>$1</i>",
+			"\\\[br\\\]",                                               "<br/>",
+			"\\\[op[ ]*([^\\\]]+)]([^\\\[]+)\\\[/op([^\\\]]*)\\\]",     "<span style='opacity:$1;'>$2</span>",
+			"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",                    "<span style='font-size:0.5em'>$1</span>",
+			"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",                      "<span style='color:blue'>$1</span>",
+			"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",                        "<span style='color:red'>$1</span>",
+			"\\\[green\\\]([^\\\[]+)\\\[/green\\\]",                    "<span style='color:green'>$1</span>",
+			"\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",                  "<span style='color:purple'>$1</span>",
+			"\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",                  "<span style='color:orange'>$1</span>",
+			"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",                        "<div class='t_svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
+			"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",                        "<div class='img'><img src='$1'/></div>",
+			"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",                      "<div class='icon'><img src='$2'/></div>",
+		    "\\\[icon[ ]*([^\\\]]+)]([^\\\[]+)\\\[/icon([^\\\]]*)\\\]", "<div class='icon' style='font-size:$1em'><img src='$2'/></div>",
+			"\\\[code\\\](.+)\\\[/code\\\]",                            "<div class='t_code'>$1</div>",
+			"\\\[strong\\\](.+)\\\[/strong\\\]",                        "<div class='t_strong'>$1</div>",
+			"\\\[user\\\](.+)\\\[/user\\\]",                            "<div class='user'>$1</div>"
 		];
 		var vTxt = _text?_text.toString():"";
 		if (vTxt.length) {
@@ -64,7 +69,15 @@ jtools = {
 			var m=Math.floor(_seconds/60)%60;
 			var s=_seconds%60;
 			return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s;
-		}
+		},
+		milli2mmssmm: function(_val) {
+            _val=Math.floor(_val/100);
+            var vMS = _val%10;
+            var vS  = Math.floor(_val/10)%100;
+            var vM  = Math.floor(_val/1000);
+            if (vM>59) { vMS=9; vS=99; vM=59; }
+            return (vM<10?"0":"")+vM+(vS<10?":0":":")+vS+"."+vMS;
+        },
 	}
 }
 
