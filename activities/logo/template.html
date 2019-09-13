@@ -156,8 +156,8 @@
       <div id="lobuttons">
         <div id="help" ontouchstart="$(this).closest('.logo').find('#phelp').show();event.preventDefault();"
                   onclick="$(this).closest('.logo').find('#phelp').show();" class="icon"><img src="res/img/control/about.svg" alt=""/></div>
-        <div id="tip"  ontouchstart="$(this).closest('.logo').find('#ptip').show();event.preventDefault();"
-                            onclick="$(this).closest('.logo').find('#ptip').show();" class="icon">
+        <div id="g_tbutton"  ontouchstart="$(this).closest('.logo').find('#g_tip').show();event.preventDefault();"
+                            onclick="$(this).closest('.logo').find('#g_tip').show();" class="icon">
             <img src="res/img/control/tip.svg" alt=""/>
             <div>0</div>
         </div>
@@ -259,7 +259,7 @@
     </div>
   </div></div>
 
-  <div id="lotouch" class="anim12 center quick noloop"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
+  <div id="lotouch" class="g_anim12 g_acenter g_aquick g_anoloop"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
 
   <div class="lomask"></div>
   
@@ -269,9 +269,9 @@
         <div id="dialog"><div></div></div>
     </div></div>
   
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
     
     <div id="continue">
@@ -279,21 +279,21 @@
                           onclick="$(this).closest('.logo').logo('cont');"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
     </div>
   
-    <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
-        <div id="tippopup"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
-        <div class="tip tip1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+    <div id="g_tip" ontouchstart="$(this).hide().find('#g_tvalid').hide();event.preventDefault();" onclick="$(this).hide().find('#g_tvalid').hide();"><div>
+        <div id="g_tpop"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+        <div class="g_tline g_tnum1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">1</div>
             <div id="tipc1" class="content"></div>
         </div>
-        <div class="tip tip2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+        <div class="g_tline g_tnum2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">2</div>
             <div id="tipc2" class="content"></div>
         </div>
-        <div class="tip tip3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+        <div class="g_tline g_tnum3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">3</div>
             <div id="tipc3" class="content"></div>
         </div>
-        <div id="tipconfirm">
+        <div id="g_tvalid">
             <div class="icon"
                 ontouchstart="$(this).closest('.logo').logo('tip');event.stopPropagation();event.preventDefault();"
                 onclick="$(this).closest('.logo').logo('tip');event.stopPropagation();">
@@ -307,7 +307,7 @@
     <div id="loexport" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"></div>
                 
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.logo').logo('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.logo').logo('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.logo').logo('next');"><div>
             <h1 id="label"></h1>
     </div></div>

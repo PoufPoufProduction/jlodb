@@ -136,7 +136,7 @@
                 
                 if (settings.showgame) { $this.find("#csuserguide").show(); }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         processclick: function() {
@@ -165,11 +165,11 @@
                             
                         }
                         if (good) {
-                            $this.find("#fx>div").addClass("running").parent()
+                            $this.find("#fx>div").addClass("g_arunning").parent()
                                 .css("left",($(this).offset().left-$this.find("#csboard").offset().left)+"px")
                                 .css("top",($(this).offset().top-$this.find("#csboard").offset().top)+"px")
                                 .show();
-                            setTimeout(function(){ $this.find("#fx>div").removeClass("running").parent().hide(); },500);
+                            setTimeout(function(){ $this.find("#fx>div").removeClass("g_arunning").parent().hide(); },500);
                                 
                             stock.cards.pop();
                             settings.elts[good].cards.push(card);
@@ -341,11 +341,11 @@
                             to.update();
                             from.update();
                             
-                            $this.find("#fx>div").addClass("running").parent()
+                            $this.find("#fx>div").addClass("g_arunning").parent()
                                 .css("left",($(this).offset().left-$this.find("#csboard").offset().left)+"px")
                                 .css("top",($(this).offset().top-$this.find("#csboard").offset().top)+"px")
                                 .show();
-                            setTimeout(function(){ $this.find("#fx>div").removeClass("running").parent().hide(); },500);
+                            setTimeout(function(){ $this.find("#fx>div").removeClass("g_arunning").parent().hide(); },500);
                             
                             helpers.check($this);
                     
@@ -549,7 +549,7 @@
             }
             
             if (success) {
-				$this.find("#effects").addClass(success?"good":"wrong");
+				$this.find("#g_effects").addClass(success?"good":"wrong");
                 setTimeout(function() { helpers.end($this,{'status':'success','score':5}); }, 2000);
             }
         }

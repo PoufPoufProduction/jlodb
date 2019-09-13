@@ -148,7 +148,7 @@
                                 vLabel = settings.input.values[_index];
                                 vValue = settings.input.values[_index];
                             }
-                            $(this).html(jtools.format(vLabel.toString(),vRegExp)).addClass("bluekeypad").bind("click touchstart",function(event) {
+                            $(this).html(jtools.format(vLabel.toString(),vRegExp)).addClass("g_bluekey").bind("click touchstart",function(event) {
                                 $this.sequence('key',vValue, this); event.preventDefault(); });
                                
                             if (settings.input.attr) {
@@ -231,7 +231,7 @@
                 setTimeout(function() { $this.find("#sevalues ul").show(); helpers.move($this, true);}, 500);
 				
 				if (settings.edit) { helpers.unbind($this); }
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // Update the timer
@@ -466,8 +466,8 @@
             key: function(value, _elt) {
                 var $this = $(this), settings = helpers.settings($this);
                 if (_elt) {
-                    $(_elt).attr("class", $(_elt).attr("class")+" touch");
-                    setTimeout(function() { $(_elt).attr("class", $(_elt).attr("class").replace(" touch","")); },
+                    $(_elt).attr("class", $(_elt).attr("class")+" g_ktouch");
+                    setTimeout(function() { $(_elt).attr("class", $(_elt).attr("class").replace(" g_ktouch","")); },
                                (settings.input && settings.input.svg)?500:50);
                 }
                 helpers.key($(this), value, false);

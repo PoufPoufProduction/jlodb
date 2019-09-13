@@ -1,11 +1,11 @@
 .paint>div                          { height:100%; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; }
-.paint #splashex                    { background-image:url("../../res/img/banners/paint.svg");}
-.paint.picross #splashex            { background-image:url("../../res/img/banners/picross.svg");}
-.paint #splashex #picross           { display:none; }
-.paint.picross #splashex #picross   { display:inherit; }
-.paint.picross #splashex #default   { display:none; }
-.paint #instructions				{ display:none; }
-.paint #instructions #tag .char     { margin-left:.4em; }
+.paint #g_splash                    { background-image:url("../../res/img/banners/paint.svg");}
+.paint.picross #g_splash            { background-image:url("../../res/img/banners/picross.svg");}
+.paint #g_splash #picross           { display:none; }
+.paint.picross #g_splash #picross   { display:inherit; }
+.paint.picross #g_splash #default   { display:none; }
+.paint #g_instructions				{ display:none; }
+.paint #g_instructions #tag .char     { margin-left:.4em; }
 .paint #ptboard                     { position:absolute; top:0; width:16em; height:12em; }
 .paint.full #ptboard                { font-size:0.8em; top:5%; left:18%; border:.1em solid white;}
 .paint #ptsources                   { display:none; width:2.7em; height:9.7em; margin-top:5%; overflow:visible; }
@@ -18,7 +18,7 @@
 .paint.full #ptsources              { display:inherit; }
 .paint.small #ptsources             { font-size:.5em; width:6em; height:19.4em; }
 .paint.tiny #ptsources              { font-size:.32em; width:9.5em; height:40em; }
-.paint #submit                      { z-index:3; }
+.paint #g_submit                      { z-index:3; }
 .paint #ptlegend                    { position:absolute; font-size:.4em; top:2%; left:0; width:100%; height:30%; opacity:0.95; z-index:4; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;  padding:.1em 1em; border:.2em solid white; border-width:.2em 0 .2em 0; display:none; cursor:move; }
 .paint #ptlegend>div                { height:1.2em; margin-bottom:.1em; float:left; }
 .paint #ptlegend .label             { background-color:gray; color:white; width:3em; text-align:center; float:left; }

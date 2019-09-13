@@ -232,13 +232,13 @@
 
                 // Exercice
                 if ($.isArray(settings.exercice)) {
-                    $this.find("#instructions").html("");
-                    for (var i in settings.exercice) { $this.find("#instructions").append(
+                    $this.find("#g_instructions").html("");
+                    for (var i in settings.exercice) { $this.find("#g_instructions").append(
                         "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#instructions").html(helpers.format(settings.exercice)); }
-                $this.find("#instructions").css("font-size",(0.4*settings.fontex)+"em");
+                } else { $this.find("#g_instructions").html(helpers.format(settings.exercice)); }
+                $this.find("#g_instructions").css("font-size",(0.4*settings.fontex)+"em");
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         build: function($this) {
@@ -252,8 +252,8 @@
             
                 // HANDLE THE TIPS
                 if (settings.tips) {
-                    $this.find("#tip>div").html(settings.tips.length).parent().show();
-                    $this.find("#ptip .tip1").addClass("s");
+                    $this.find("#g_tbutton>div").html(settings.tips.length).parent().show();
+                    $this.find("#g_tip .g_tnum1").addClass("s");
                 }
             
                 // the bars
@@ -942,8 +942,8 @@
             },
             key: function(value, _elt) {
                 var $this = $(this);
-                if (_elt) { $(_elt).addClass("touch");
-                    setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                if (_elt) { $(_elt).addClass("g_ktouch");
+                    setTimeout(function() { $(_elt).removeClass("g_ktouch"); }, 50);
                 }
                 helpers.key($(this), value, false);
             },
@@ -1070,8 +1070,8 @@
                                 }
                             }
                         }
-						$this.find("#submit").addClass(error==0?"good":"wrong");
-						$this.find("#effects").addClass(error==0?"good":"wrong");
+						$this.find("#g_submit").addClass(error==0?"good":"wrong");
+						$this.find("#g_effects").addClass(error==0?"good":"wrong");
 
                         settings.score = 5 - error*settings.errratio - settings.wrong;
                         if (settings.score<0) { settings.score = 0; }
@@ -1083,14 +1083,14 @@
             tip: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.tipid<settings.tips.length) {
-                    $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
+                    $this.find("#g_tip .g_tnum"+(settings.tipid+1)).removeClass("s").addClass("f")
                          .find(".content").html(helpers.format(settings.tips[settings.tipid]));
                          
                     settings.tipid++;
-                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
-                    if (settings.tipid<settings.tips.length) { $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s"); }
-                    $this.find("#tipconfirm").hide();
-                    $this.find("#tippopup").css("opacity",1).show()
+                    $this.find("#g_tbutton>div").html(settings.tips.length-settings.tipid);
+                    if (settings.tipid<settings.tips.length) { $this.find("#g_tip .g_tnum"+(settings.tipid+1)).addClass("s"); }
+                    $this.find("#g_tvalid").hide();
+                    $this.find("#g_tpop").css("opacity",1).show()
                          .animate({opacity:0},1000,function() { $(this).hide(); });
                     settings.wrong++;
                 }

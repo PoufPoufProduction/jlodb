@@ -242,7 +242,7 @@
                 }); }
 
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         clean: function($this) {

@@ -26,25 +26,29 @@ shuffle = function(a) {
 jtools = {
 	format: function(_text, _regexp) {
 		var vRegExp = _regexp || [
-            "[*]",                                                      "×",
-			"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                            "<b>$1</b>",
-            "\\\[bb\\\](.+)\\\[/bb\\\]",                                "<b>$1</b>",
-			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                            "<i>$1</i>",
-			"\\\[br\\\]",                                               "<br/>",
-			"\\\[op[ ]*([^\\\]]+)]([^\\\[]+)\\\[/op([^\\\]]*)\\\]",     "<span style='opacity:$1;'>$2</span>",
-			"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",                    "<span style='font-size:0.5em'>$1</span>",
-			"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",                      "<span style='color:blue'>$1</span>",
-			"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",                        "<span style='color:red'>$1</span>",
-			"\\\[green\\\]([^\\\[]+)\\\[/green\\\]",                    "<span style='color:green'>$1</span>",
-			"\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",                  "<span style='color:purple'>$1</span>",
-			"\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",                  "<span style='color:orange'>$1</span>",
-			"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",                        "<div class='t_svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
-			"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",                        "<div class='img'><img src='$1'/></div>",
-			"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",                      "<div class='icon'><img src='$2'/></div>",
-		    "\\\[icon[ ]*([^\\\]]+)]([^\\\[]+)\\\[/icon([^\\\]]*)\\\]", "<div class='icon' style='font-size:$1em'><img src='$2'/></div>",
-			"\\\[code\\\](.+)\\\[/code\\\]",                            "<div class='t_code'>$1</div>",
-			"\\\[strong\\\](.+)\\\[/strong\\\]",                        "<div class='t_strong'>$1</div>",
-			"\\\[user\\\](.+)\\\[/user\\\]",                            "<div class='user'>$1</div>"
+            "[*]",                                                          "×",
+			"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                                "<b>$1</b>",
+            "\\\[bb\\\](.+)\\\[/bb\\\]",                                    "<b>$1</b>",
+			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                                "<i>$1</i>",
+			"\\\[br\\\]",                                                   "<br/>",
+			"\\\[op[ ]*([^\\\]]+)]([^\\\[]+)\\\[/op([^\\\]]*)\\\]",         "<span style='opacity:$1;'>$2</span>",
+			"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",                        "<span class='small'>$1</span>",
+			"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",                          "<span style='color:blue'>$1</span>",
+			"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",                            "<span style='color:red'>$1</span>",
+			"\\\[green\\\]([^\\\[]+)\\\[/green\\\]",                        "<span style='color:green'>$1</span>",
+			"\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",                      "<span style='color:purple'>$1</span>",
+			"\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",                      "<span style='color:orange'>$1</span>",
+			"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",                            "<div class='t_svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
+			"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",                            "<div class='img'><img src='$1'/></div>",
+			"\\\[char\\\]([^\\\[]+)\\\[/char\\\]",                          "<div class='char'><img src='$1'/></div>",
+			"\\\[char[ ]*([\\\.0-9]+)]([^\\\[]+)\\\[/char([^\\\]]*)\\\]",   "<div class='char' style='font-size:$1em'><img src='$2'/></div>",
+			"\\\[char[ ]+([^\\\.]+\\\.svg)\\\]([^\\\[]+)\\\[/char\\\]",     "<div class='char' style='background-image:url(\"$1\")'><img src='$2'/></div>",
+			"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",                          "<div class='icon'><img src='$1'/></div>",
+		    "\\\[icon[ ]*([\\\.0-9]+)]([^\\\[]+)\\\[/icon([^\\\]]*)\\\]",   "<div class='icon' style='font-size:$1em'><img src='$2'/></div>",
+			"\\\[icon[ ]+([^\\\.]+\\\.svg)\\\]([^\\\[]+)\\\[/icon\\\]",     "<div class='icon' style='background-image:url(\"$1\")'><img src='$2'/></div>",
+			"\\\[code\\\](.+)\\\[/code\\\]",                                "<div class='t_code'>$1</div>",
+			"\\\[strong\\\](.+)\\\[/strong\\\]",                            "<div class='t_strong'>$1</div>",
+			"\\\[user\\\](.+)\\\[/user\\\]",                                "<div class='user'>$1</div>"
 		];
 		var vTxt = _text?_text.toString():"";
 		if (vTxt.length) {
@@ -61,6 +65,116 @@ jtools = {
             for (var i in _txt) { vRet+="<p>"+jtools.format(_txt[i])+"</p>"; }
         } else { vRet = "<p>"+jtools.format(_txt)+"<p>"; }
 		return vRet;
+	},
+	math: {
+		svg: { font: [7,12], y: 8 },
+		symbology : {
+			"par" : { ty:"re", pr:5, va:"//",    tt:"$1//$2",   op:[null,null] },
+			"per" : { ty:"re", pr:5, va:"⊥",     tt:"$1⊥$2",    op:[null,null] },
+			"sqrt": { ty:"op", pr:0, va:"√",     tt:"√$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sqrt(r[0]);} },
+			"cos" : { ty:"op", pr:0, va:"cos",   tt:"cos$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.cos(r[0]);} },
+			"sin" : { ty:"op", pr:0, va:"sin",   tt:"sin$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sin(r[0]);} },
+			"+"   : { ty:"op", pr:5, va:"+",     tt:"$1+$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]+r[1]);} },
+			"-"   : { ty:"op", pr:5, va:"-",     tt:"$1-$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]-r[1]);} },
+			"*"   : { ty:"op", pr:2, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]*r[1]);} },
+			"×"   : { ty:"op", pr:2, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]*r[1]);} },
+			"/"   : { ty:"op", pr:2, va:"/",     tt:"$1/$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]==0?NaN:(r[0]/r[1]));},
+				svg : function() {
+					var s   = [];
+					var max = [0,1];
+					var ret = "";
+					var sp = 0.5;
+					for (var i=0; i<this.op.length; i++) { s.push(this.op[i]?this.op[i].svg():{si:[2,1],va:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>"}); }
+					for (var i in s) for (var j=0; j<2; j++) { max[j] = Math.max(max[j], s[i].si[j]); }
+					ret += "<g transform='translate("+(((max[0]-s[0].si[0])/2)*jtools.math.svg.font[0])+",0)'>"+s[0].va+"</g>";
+					ret += "<path d='m 0,"+ ((s[0].si[1]+sp)*jtools.math.svg.font[0]+1)+" l "+(max[0]*jtools.math.svg.font[0])+",0'/>";
+					ret += "<g transform='translate("+(((max[0]-s[1].si[0])/2)*jtools.math.svg.font[0])+","+((s[0].si[1]+2*sp)*jtools.math.svg.font[0])+")'>"+s[1].va+"</g>";
+					return { si:[max[0], s[0].si[1]+s[1].si[1]+2*sp], off:[0, s[0].si[1]+sp], va:ret};
+				}},
+			"pi"  : { ty:"va", pr:1, va:"π",     tt:"π",        op:[],               eq: function(_a) { return Math.PI; } },
+			
+			get : function(_string) {
+				var ret;
+				var base = {
+					_eq : function(_a) { var ret=[]; for (var i in this.op) { ret.push(this.op[i]?this.op[i].eq(_a):NaN); } return ret; },
+					eq  : function(_a) { return NaN; },
+					out : function() {
+						var ret=this.tt;
+						for (var i=0;i<this.op.length;i++) {
+							if (this.op[i]) {
+								var v=this.op[i].out();
+								if (this.pr<=this.op[i].pr) { v = "("+v+")"; }
+								ret=ret.replace("$"+(i+1),v);
+							}
+						}
+						return ret;
+					},
+					svg : function() {
+						var s   = [];
+						var max = [0,1];
+						var off = 0;
+						var ret = "";
+						for (var i=0; i<this.op.length; i++) { s.push(this.op[i]?this.op[i].svg():{si:[2,1],va:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>"}); }
+						for (var i in s) for (var j=0; j<2; j++) { max[j] = Math.max(max[j], s[i].si[j]); }
+						var ix = 0;
+						if (this.op.length==2) {
+							if (this.pr<=this.op[ix].pr) {
+								ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'><text y='"+jtools.math.svg.y+"'>(</text></g>";
+								off += 1;
+							}
+							ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-s[ix].si[1])/2)*jtools.math.svg.font[0])+")'>"+s[ix].va+"</g>";
+							off += s[ix].si[0];
+							if (this.pr<=this.op[ix].pr) {
+								ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'><text y='"+jtools.math.svg.y+"'>)</text></g>";
+								off += 1;
+							}
+							ix++;
+						}
+						ret += "<text y='"+jtools.math.svg.y+"' transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'>"+this.va+"</text>";
+						off += this.va.length;
+							
+						if (ix<this.op.length) {
+							if (this.pr<=this.op[ix].pr) {
+								ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'><text y='"+jtools.math.svg.y+"'>(</text></g>";
+								off += 1;
+							}
+							ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-s[ix].si[1])/2)*jtools.math.svg.font[0])+")'>"+s[ix].va+"</g>";
+							off += s[ix].si[0];
+							if (this.pr<=this.op[ix].pr) {
+								ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'><text y='"+jtools.math.svg.y+"'>)</text></g>";
+								off += 1;
+							}
+						}
+						return { si:[off, max[1]], va:ret };
+					}
+				};
+				if (jtools.math.symbology[_string]) { ret = jtools.math.symbology[_string];	}
+				else { ret = { ty:"va", pr:1, va:_string, tt:_string, op:[], eq:function(_a) { return isNaN(_string)?((_a&&_a[_string])?_a[_string]:_string):parseFloat(_string); } }; }
+				return $.extend(true, {}, base, ret);
+			}
+		},
+		pol2tree: function(_txt) {
+			var ret = [];
+			if (typeof(_txt)=="string") { _txt=_txt.split(" "); }
+			for (var elt in _txt) {
+				var newElt = jtools.math.symbology.get(_txt[elt]);
+				for (var i in newElt.op) { if (ret.length) { newElt.op[i]=ret.pop(); } }
+				ret.push(newElt);
+			}
+			return ret[0];
+		},
+		tree2svg: function(_node) {
+			var svg = _node.svg();
+			return "<svg xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' height:'100%' "+
+					"viewBox='0 0 "+(svg.si[0]*jtools.math.svg.font[0])+" "+(svg.si[1]*jtools.math.svg.font[1])+"'>"+
+					"<def><style>text { font-family: monospace; font-size:"+jtools.math.svg.font[1]+"px; } path {fill:none; stroke-width:.4; stroke:black; }</style></def>"+
+					svg.va+
+					"</svg>";
+		}
+	},
+	gen: {
+		maze: function(_args) {
+		}
 	},
 	time: {
 		seconds2hhmmss: function(_seconds) {
@@ -325,31 +439,31 @@ jlodbmaze.prototype = {
             var settings = helpers.settings($this);
             $this.html("");
             
-            $this.append("<div class='value'></div>");
+            $this.append("<div class='g_svalue'></div>");
             
-            $this.append("<div id='star1' class='star anim12 noloop'><div><img src='res/img/default/anim/star01.svg'/></div></div>");
-            $this.append("<div id='star2' class='star anim12 noloop'><div><img src='res/img/default/anim/star02.svg'/></div></div>");
-            $this.append("<div id='star3' class='star anim12 noloop'><div><img src='res/img/default/anim/star03.svg'/></div></div>");
+            $this.append("<div id='g_sstar1' class='g_sstar g_anim12 g_anoloop'><div><img src='res/img/default/anim/star01.svg'/></div></div>");
+            $this.append("<div id='g_sstar2' class='g_sstar g_anim12 g_anoloop'><div><img src='res/img/default/anim/star02.svg'/></div></div>");
+            $this.append("<div id='g_sstar3' class='g_sstar g_anim12 g_anoloop'><div><img src='res/img/default/anim/star03.svg'/></div></div>");
             
             
-            $this.append("<div id='fire1' class='fire anim12'><div><img src='res/img/default/anim/fireworks01.svg'/></div></div>");
-            $this.append("<div id='fire2' class='fire anim12'><div><img src='res/img/default/anim/fireworks02.svg'/></div></div>");
-            $this.append("<div id='fire3' class='fire anim12'><div><img src='res/img/default/anim/fireworks01.svg'/></div></div>");
+            $this.append("<div id='g_sfire1' class='g_sfire g_anim12'><div><img src='res/img/default/anim/fireworks01.svg'/></div></div>");
+            $this.append("<div id='g_sfire2' class='g_sfire g_anim12'><div><img src='res/img/default/anim/fireworks02.svg'/></div></div>");
+            $this.append("<div id='g_sfire3' class='g_sfire g_anim12'><div><img src='res/img/default/anim/fireworks01.svg'/></div></div>");
             
             if (settings.onreload) {
-                var $reload = $("<div class='icon' id='reload'><img src='res/img/default/icon/action_reload01.svg' alt=''/></div>");
+                var $reload = $("<div class='icon' id='g_sreload'><img src='res/img/default/icon/action_reload01.svg' alt=''/></div>");
                 $reload.bind("touchstart mousedown", function(_event) { $this.score("reload"); _event.preventDefault(); });
                 $this.append($reload);
             }
             
             if (settings.onmenu) {
-                var $menu = $("<div class='icon' id='menu'><img src='res/img/default/icon/action_menu01.svg' alt=''/></div>");
+                var $menu = $("<div class='icon' id='g_smenu'><img src='res/img/default/icon/action_menu01.svg' alt=''/></div>");
                 $menu.bind("touchstart mousedown", function(_event) { $this.score("menu"); _event.preventDefault(); });
                 $this.append($menu);
             }
             
             if (settings.onnext) {
-                var $next = $("<div class='icon' id='next'><img src='res/img/default/icon/action_next01.svg' alt=''/></div>");
+                var $next = $("<div class='icon' id='g_snext'><img src='res/img/default/icon/action_next01.svg' alt=''/></div>");
                 $next.bind("touchstart mousedown", function(_event) { $this.score("next"); _event.preventDefault(); });
                 $this.append($next);
             }
@@ -396,28 +510,28 @@ jlodbmaze.prototype = {
             hide: function(_args) {
                 var $this=$(this), settings = helpers.settings($this);
                 for (var i=0; i<10; i++) { $this.removeClass("s"+i); }
-                $this.find(".star>div").removeClass("running").parent().hide();
-                $this.find(".fire>div").removeClass("running").parent().hide();
+                $this.find(".g_sstar>div").removeClass("g_arunning").parent().hide();
+                $this.find(".g_sfire>div").removeClass("g_arunning").parent().hide();
                 $this.hide();
             },
             show: function(_score, _args) {
                 var $this=$(this), settings = helpers.settings($this);
                 var time = 100;
                 settings.interactive = false;
-                $this.find(".star>div").removeClass("running").parent().hide();
-                $this.find(".fire>div").removeClass("running").parent().hide();
+                $this.find(".g_sstar>div").removeClass("g_arunning").parent().hide();
+                $this.find(".g_sfire>div").removeClass("g_arunning").parent().hide();
                 $this.show();
-                if (_score>2) { setTimeout(function() { $this.find("#star1>div").addClass("running").parent().show(); }, time); time+=300; }
-                if (_score>3) { setTimeout(function() { $this.find("#star2>div").addClass("running").parent().show(); }, time); time+=300; }
-                if (_score>4) { setTimeout(function() { $this.find("#star3>div").addClass("running").parent().show(); }, time); time+=300; }
+                if (_score>2) { setTimeout(function() { $this.find("#g_sstar1>div").addClass("g_arunning").parent().show(); }, time); time+=300; }
+                if (_score>3) { setTimeout(function() { $this.find("#g_sstar2>div").addClass("g_arunning").parent().show(); }, time); time+=300; }
+                if (_score>4) { setTimeout(function() { $this.find("#g_sstar3>div").addClass("g_arunning").parent().show(); }, time); time+=300; }
                 setTimeout(function() {
-                    $this.addClass("s"+_score);
+                    $this.attr("class","g_s"+_score);
                     settings.interactive=true;
                     
                     if (_score==5) {
-                        setTimeout(function() { $this.find("#fire1>div").addClass("running").parent().show(); }, 100);
-                        setTimeout(function() { $this.find("#fire2>div").addClass("running").parent().show(); }, 300);
-                        setTimeout(function() { $this.find("#fire3>div").addClass("running").parent().show(); }, 500);
+                        setTimeout(function() { $this.find("#g_sfire1>div").addClass("g_arunning").parent().show(); }, 100);
+                        setTimeout(function() { $this.find("#g_sfire2>div").addClass("g_arunning").parent().show(); }, 300);
+                        setTimeout(function() { $this.find("#g_sfire3>div").addClass("g_arunning").parent().show(); }, 500);
                     }
                 }, time);
                 

@@ -222,10 +222,10 @@
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
                         $this.find("#rttouch>div")
-							.addClass("running").parent()
+							.addClass("g_arunning").parent()
 							.css("left",event.clientX-$this.offset().left)
                             .css("top",event.clientY-$this.offset().top).show();
-                        setTimeout(function(){$this.find("#rttouch>div").removeClass("running").parent().hide(); },800);
+                        setTimeout(function(){$this.find("#rttouch>div").removeClass("g_arunning").parent().hide(); },800);
 
 
                         if ($(this).children().size()) { $(this).children().detach().appendTo(ui.draggable.parent()); }
@@ -235,8 +235,8 @@
                 
                 // HANDLE THE TIPS
                 if (settings.tips) {
-                    $this.find("#tip>div").html(settings.tips.length);
-                    $this.find("#ptip .tip1").addClass("s");
+                    $this.find("#g_tbutton>div").html(settings.tips.length);
+                    $this.find("#g_tip .g_tnum1").addClass("s");
                 }
 				
                 // LOCALE
@@ -246,7 +246,7 @@
                 }); }
                 
                 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // GET THE DELAY ACCORDING TO THE SPEED VALUE
@@ -1140,14 +1140,14 @@
 					];
 	
 					
-                    $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
+                    $this.find("#g_tip .g_tnum"+(settings.tipid+1)).removeClass("s").addClass("f")
                          .find(".content").html(jtools.format(settings.tips[settings.tipid],vRegExp));
                          
                     settings.tipid++;
-                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
-                    if (settings.tipid<settings.tips.length) { $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s"); }
-                    $this.find("#tipconfirm").hide();
-                    $this.find("#tippopup").css("opacity",1).show()
+                    $this.find("#g_tbutton>div").html(settings.tips.length-settings.tipid);
+                    if (settings.tipid<settings.tips.length) { $this.find("#g_tip .g_tnum"+(settings.tipid+1)).addClass("s"); }
+                    $this.find("#g_tvalid").hide();
+                    $this.find("#g_tpop").css("opacity",1).show()
                          .animate({opacity:0},1000,function() { $(this).hide(); });
                     settings.wrong++;
                 }

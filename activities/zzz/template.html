@@ -1,10 +1,21 @@
 <div>
+    <div id="g_instructions" class="g_ilarge"></div>
+    <div id="board">PoufPouf Production Boilerplate</div>
 
-    <div id="exercice"></div>
-    <div id="board">hello world</div>
+	<div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.boilerplate').boilerplate('next');event.preventDefault();"
-                     onclick="$(this).hide().closest('.boilerplate').boilerplate('next');"><div>
+    <div id="g_submit" ontouchstart="$(this).closest('.zzz').zzz('valid');event.preventDefault();"
+                     onclick="$(this).closest('.zzz').zzz('valid');">
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
+    </div>
+	
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.zzz').zzz('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.zzz').zzz('next');"><div>
         <h1 id="label"></h1>
     </div></div>
 

@@ -255,9 +255,9 @@ if [ $deb -eq 1 ] ; then
 
 	output="export/var/www/tibibo/$tibibo/doc"
 	mkdir -p $output/chrome
-	cp -f bin/prefs.js $output
+	cp -f bin/export/prefs.js $output
 	chmod 644 $output/prefs.js
-	cp -f bin/userChrome.css $output/chrome
+	cp -f bin/export/userChrome.css $output/chrome
 	chmod 644 $output/chrome/*
 
 	output="export/DEBIAN"

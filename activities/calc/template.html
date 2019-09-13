@@ -10,13 +10,13 @@
 	
 	</div>
 
-    <div id="instructions"></div>
+    <div id="g_instructions" class="g_ilarge"></div>
 
-    <div id="submit" ontouchstart="$(this).closest('.calc').calc('submit');event.preventDefault();"
+    <div id="g_submit" ontouchstart="$(this).closest('.calc').calc('submit');event.preventDefault();"
                      onclick="$(this).closest('.calc').calc('submit');">
-        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
 
 
@@ -31,35 +31,35 @@
                             onclick="$(this).closest('.calc').calc('key', 'c', this);"></div></td></tr>
                     <tr>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 7, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 7, this);" class="bluekeypad"><div>7</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 7, this);" class="g_bluekey"><div>7</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 8, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 8, this);" class="bluekeypad"><div>8</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 8, this);" class="g_bluekey"><div>8</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 9, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 9, this);" class="bluekeypad"><div>9</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 9, this);" class="g_bluekey"><div>9</div></td>
                     </tr>
                     <tr>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 4, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 4, this);" class="bluekeypad"><div>4</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 4, this);" class="g_bluekey"><div>4</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 5, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 5, this);" class="bluekeypad"><div>5</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 5, this);" class="g_bluekey"><div>5</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 6, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 6, this);" class="bluekeypad"><div>6</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 6, this);" class="g_bluekey"><div>6</div></td>
                     </tr>
                     <tr>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 1, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 1, this);" class="bluekeypad"><div>1</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 1, this);" class="g_bluekey"><div>1</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 2, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 2, this);" class="bluekeypad"><div>2</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 2, this);" class="g_bluekey"><div>2</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 3, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 3, this);" class="bluekeypad"><div>3</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 3, this);" class="g_bluekey"><div>3</div></td>
                     </tr>
                     <tr>
                         <td ontouchstart="$(this).closest('.calc').calc('key', '.', this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', '.', this);" class="bluekeypad" id="paddec"><div>.</div></td>
+                            onclick="$(this).closest('.calc').calc('key', '.', this);" class="g_bluekey" id="paddec"><div>.</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 0, this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', 0, this);" class="bluekeypad"><div>0</div></td>
+                            onclick="$(this).closest('.calc').calc('key', 0, this);" class="g_bluekey"><div>0</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', '-', this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', '-', this);" class="bluekeypad" id="padneg"><div>-</div></td>
+                            onclick="$(this).closest('.calc').calc('key', '-', this);" class="g_bluekey" id="padneg"><div>-</div></td>
                     </tr>
                 </table>
             </div>
@@ -138,32 +138,32 @@
         </div>
     </div>
 
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
     
-    <div id="tip"  ontouchstart="$(this).next().show();event.preventDefault();"
+    <div id="g_tbutton"  ontouchstart="$(this).next().show();event.preventDefault();"
                    onclick="$(this).next().show();">
         <img src="res/img/control/tip.svg" alt=""/>
         <div>0</div>
     </div>
             
-    <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
-        <div id="tippopup"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
-        <div class="tip tip1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+    <div id="g_tip" ontouchstart="$(this).hide().find('#g_tvalid').hide();event.preventDefault();" onclick="$(this).hide().find('#g_tvalid').hide();"><div>
+        <div id="g_tpop"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+        <div class="g_tline g_tnum1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">1</div>
             <div id="tipc1" class="content"></div>
         </div>
-        <div class="tip tip2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+        <div class="g_tline g_tnum2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">2</div>
             <div id="tipc2" class="content"></div>
         </div>
-        <div class="tip tip3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+        <div class="g_tline g_tnum3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">3</div>
             <div id="tipc3" class="content"></div>
         </div>
-        <div id="tipconfirm">
+        <div id="g_tvalid">
             <div class="icon"
                 ontouchstart="$(this).closest('.calc').calc('tip');event.stopPropagation();event.preventDefault();"
                 onclick="$(this).closest('.calc').calc('tip');event.stopPropagation();">
@@ -173,7 +173,7 @@
         </div>
     </div></div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.calc').calc('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.calc').calc('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.calc').calc('next');"><div>
         <h1 id="label"></h1>
     </div></div>

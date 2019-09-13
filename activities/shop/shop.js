@@ -258,7 +258,7 @@
                     else { $this.find("#"+id).html(jtools.format(value)); }
                 }); }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         debug: function($this, _txt) { $this.find("#output").append("<p>"+_txt+"</p>"); },
@@ -736,8 +736,8 @@
             },
             key: function(value, _elt) {
                 var $this = $(this);
-                if (_elt) { $(_elt).addClass("touch");
-                    setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                if (_elt) { $(_elt).addClass("g_ktouch");
+                    setTimeout(function() { $(_elt).removeClass("g_ktouch"); }, 50);
                 }
                 helpers.key($(this), value, false);
             },

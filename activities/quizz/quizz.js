@@ -175,7 +175,7 @@
 							
 							if (helpers.check($this)==0) {
 								settings.interactive = false;
-								$this.find("#effects").addClass("good");
+								$this.find("#g_effects").addClass("good");
 								setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1500);
 							}
 							
@@ -246,7 +246,7 @@
 							
 							if (helpers.check($this)==0) {
 								settings.interactive = false;
-								$this.find("#effects").addClass("good");
+								$this.find("#g_effects").addClass("good");
 								setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1500);
 							}
 					
@@ -277,7 +277,7 @@
 				var sz = Math.round(120/Math.max(settings.board[0].value.length*1.4+1,settings.board.length*1.5))/10;
 				$this.find("#qzgrid").css("font-size",sz+"em");
 				
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
 		tippage:function($this, _page) {

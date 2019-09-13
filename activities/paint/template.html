@@ -1,28 +1,28 @@
 <div>
     <div id="ptsources"></div>
     <div id="ptboard"></div>
-    <div id="instructions" class="low"><div>
+    <div id="g_instructions"><div>
         <div id="tag" ontouchstart="$(this).closest('.paint').paint('tag');event.preventDefault();"
                       onclick="$(this).closest('.paint').paint('tag');"></div>
         <div id="content"></div>
     </div></div>
 
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="submit" ontouchstart="$(this).closest('.paint').paint('valid');event.preventDefault();"
+    <div id="g_submit" ontouchstart="$(this).closest('.paint').paint('valid');event.preventDefault();"
                      onclick="$(this).closest('.paint').paint('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
     
     <div id="ptlegend"></div>
 
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.paint').paint('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.paint').paint('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.paint').paint('next');"><div>
         <div class="text" id="default">
             <h1 id="label">paint</h1>

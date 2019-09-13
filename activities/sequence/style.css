@@ -14,11 +14,11 @@
 .sequence #setime.late>#setimeslider    { background-color:red; }
 .sequence .svg #setime                  { font-size:1em; width:100%; text-align:right; position:absolute; z-index:2000;}
 .sequence .template #setime             { font-size:1em; width:100%; text-align:right; }
-.sequence #splashex                     { background-image:url("../../res/img/banners/sequence.svg"); }
-.sequence #splashex h1					{ font-size:.9em; }
-.sequence #splashex #guide_time         { width:1em; height:1em; position:absolute; top:50%; left:0; font-size:7em; display:none; }
-.sequence #splashex #guide_number:before{ content:"×" }
-.sequence #splashex #guide_number       { position:absolute; top:71%; left:68%; font-size:3em; color:red; font-weight:bold; width:1.5em; overflow:visible; text-align:center; }
+.sequence #g_splash                     { background-image:url("../../res/img/banners/sequence.svg"); }
+.sequence #g_splash h1					{ font-size:.9em; }
+.sequence #g_splash #guide_time         { width:1em; height:1em; position:absolute; top:50%; left:0; font-size:7em; display:none; }
+.sequence #g_splash #guide_number:before{ content:"×" }
+.sequence #g_splash #guide_number       { position:absolute; top:71%; left:68%; font-size:3em; color:red; font-weight:bold; width:1.5em; overflow:visible; text-align:center; }
 .sequence .keypad #sevalues             { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
 .sequence .keypad #seboard              { }
 .sequence .svg                          { position:relative; }
@@ -87,7 +87,7 @@
 .sequence.h60     #sevalues li          { height:6em; }
 .sequence.comment #comment              { font-size:1em; }
 .sequence         #sevalues li .bg      { background-color: rgba(84,137,184,0.9); }
-.sequence .bluekeypad.disable           { background-color: gray; }
+.sequence .g_bluekey.disable           { background-color: gray; }
 
 
 

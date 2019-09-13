@@ -2,26 +2,26 @@
 
     <div id="board">
         <div id="data"></div>
-        <div id="exercice"><div><div id="tag"><div></div></div><div id="content"></div></div></div>
+        <div id="g_instructions"><div><div id="tag"><div></div></div><div id="content"></div></div></div>
     </div>
     
     <div id="timer">00:00:00</div>
 
-    <div id="submit" ontouchstart="$(this).closest('.toggleswitch').toggleswitch('valid');event.preventDefault();"
+    <div id="g_submit" ontouchstart="$(this).closest('.toggleswitch').toggleswitch('valid');event.preventDefault();"
                      onclick="$(this).closest('.toggleswitch').toggleswitch('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
 
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
     
     <div id="error"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.toggleswitch').toggleswitch('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.toggleswitch').toggleswitch('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.toggleswitch').toggleswitch('next');"><div>
         <div id="default">
             <h1 id="label">toggleswitch</h1>
@@ -32,7 +32,7 @@
         <div id="diff7">
             <h1 id="label_diff7">differences</h1>
         </div>
-        <div id="timeattack"><img src="res/img/asset/misc/pocketwatch01.svg" alt=""/></div>
+        <div id="thtimeattack"><img src="res/img/asset/misc/pocketwatch01.svg" alt=""/></div>
     </div>
 
 </div>

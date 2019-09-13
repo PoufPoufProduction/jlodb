@@ -1,6 +1,6 @@
 <div>
 
-	<div class="e_column e_elt" id="e_editor">
+	<div class="j_ecol j_epart" id="e_editor">
 		<div id="e_data">
 			<select id="e_mode" class="eph_value"><option value="0" id="e_mode0"></option><option value="1" id="e_mode1"></option><option value="2" id="e_mode2"></option></select>
 			<input type="text" value="" class="eph_value" id="eph_nbsteps"/>
@@ -12,31 +12,31 @@
 			<div id="e_goal"></div>
 			<input type="text" value="" class="eph_value" id="eph_color"/>
 		</div>
-		<div class="l bluekeypad" 
+		<div class="l g_bluekey" 
 			ontouchstart="$(this).closest('.board_editor').board_editor('valid',this);event.preventDefault();"
 			onclick="$(this).closest('.board_editor').board_editor('valid',this);">OK</div>
 	</div>
 
-	<div class="e_column e_elt" id="e_control"><div>
+	<div class="j_ecol j_epart" id="e_control"><div>
 		<textarea id='e_export' class='export' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>
-		<div class='l bluekeypad'
+		<div class='l g_bluekey'
 			ontouchstart="$(this).closest('.board_editor').board_editor('import',this);event.preventDefault();"
 			onclick="$(this).closest('.board_editor').board_editor('import',this);">
 			OK
 		</div>
 	</div></div>
 	
-	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+	<div class="j_epanel j_epart" id="e_screen"><div></div></div>
 
 
-	<div class="e_panel e_elt" id="e_menu"><div>
-		<div id="e_get" class="l bluekeypad"
+	<div class="j_epanel j_epart" id="e_menu"><div>
+		<div id="e_get" class="l g_bluekey"
 			ontouchstart="$(this).closest('.board_editor').board_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.board_editor').board_editor('edit',this);"></div>
-		<div id="e_import" class="l bluekeypad"
+		<div id="e_import" class="l g_bluekey"
 			ontouchstart="$(this).closest('.board_editor').board_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.board_editor').board_editor('edit',this);"></div>
-		<div id="e_submit" class="l bluekeypad"
+		<div id="e_submit" class="l g_bluekey"
 			ontouchstart="$(this).closest('.board_editor').board_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.board_editor').board_editor('edit',this);">→ jLoDb</div>
 	</div></div>

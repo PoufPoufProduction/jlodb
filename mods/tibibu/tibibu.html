@@ -301,11 +301,11 @@ var tibibu = {
                 state   : state,
                 onupdate: function($this, _state) {},
                 onclick : function($this, _args)  {
-                    $("#waiting").show().find("div").addClass("running");
+                    $("#waiting").show().find("div").addClass("g_arunning");
                     $("#activity").jlodb({
                             onstart:    function($this) {
                                 $("#buexercices").hide(); $this.parent().show();
-                                $("#waiting").hide().find("div").removeClass("running"); },
+                                $("#waiting").hide().find("div").removeClass("g_arunning"); },
                             onfinish:   function($this, _hide) {
                                 if (_hide) { $("#buexercices").show(); $this.parent().hide(); }
                             },
@@ -863,11 +863,11 @@ var tibibu = {
                         state   : ".....",
                         onupdate: function($this, _state) {},
                         onclick : function($this, _args)  {
-                            $("#waiting").show().find("div").addClass("running");
+                            $("#waiting").show().find("div").addClass("g_arunning");
                             $("#activity").jlodb({
                                     onstart:    function($this) {
                                         $("#buexercices").hide(); $this.parent().show();
-                                        $("#waiting").hide().find("div").removeClass("running"); },
+                                        $("#waiting").hide().find("div").removeClass("g_arunning"); },
                                     onfinish:   function($this, _hide) {
                                         if (_hide) { $("#buexercices").show(); $this.parent().hide(); } },
                                     onscore:    function($this, _ret) {
@@ -993,8 +993,8 @@ $(window).ready(function() {
             // USER HANDLER INITIALISATION
             user.waiting    = "#waiting";
             
-            user.onrequest = function() { $(user.waiting+" div").addClass("running"); $(user.waiting).show(); };
-            user.onreply = function() { $(user.waiting+" div").removeClass("running"); $(user.waiting).hide(); };
+            user.onrequest = function() { $(user.waiting+" div").addClass("g_arunning"); $(user.waiting).show(); };
+            user.onreply = function() { $(user.waiting+" div").removeClass("g_arunning"); $(user.waiting).hide(); };
             user.onuser = function(_user, _args, _elt) {
                 if (_args.type=="list") {
                     var $html=$("<div class='icon mail'><img src='res/img/default/white/mail.svg'/></div>");
@@ -1250,7 +1250,7 @@ $(window).ready(function() {
                       ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"></textarea>
         </div></div>
 
-        <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg"/></div></div>
+        <div id="waiting" class="g_anim12"><div><img src="res/img/default/anim/waiting_red.svg"/></div></div>
 
     </div></div>
 </body>

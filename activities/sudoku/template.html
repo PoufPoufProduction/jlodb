@@ -1,7 +1,7 @@
 <div>
-    <div id="menu">
-        <div id="comment"><div></div></div>
-        <div id="buttons">
+    <div id="sumenu">
+        <div id="sucomment"><div></div></div>
+        <div id="subuttons">
             <div class="icon s" ontouchstart="$(this).closest('.sudoku').sudoku('fill',this);event.preventDefault();"
                          onclick="$(this).closest('.sudoku').sudoku('fill',this);">
                 <img src="ext/noto/svg/emoji_u1f58b.svg" alt=""/>
@@ -10,18 +10,18 @@
                          onclick="$(this).closest('.sudoku').sudoku('hint',this);">
                 <img src="ext/noto/svg/emoji_u270f.svg" alt=""/>
             </div>
-            <div class="icon" id="bcheck" ontouchstart="$(this).addClass('s').closest('.sudoku').find('#mask').show();event.preventDefault();"
-                 onclick="$(this).addClass('s').closest('.sudoku').find('#mask').show();"><img src="ext/noto/svg/emoji_u1f58d.svg" alt=""/>
+            <div class="icon" id="bcheck" ontouchstart="$(this).addClass('s').closest('.sudoku').find('#sumask').show();event.preventDefault();"
+                 onclick="$(this).addClass('s').closest('.sudoku').find('#sumask').show();"><img src="ext/noto/svg/emoji_u1f58d.svg" alt=""/>
             </div>
         </div>
-        <div id="time" class="time" ontouchstart="$(this).closest('.sudoku').sudoku('pause');event.preventDefault();"
+        <div id="sutime" class="time" ontouchstart="$(this).closest('.sudoku').sudoku('pause');event.preventDefault();"
                                     onclick="$(this).closest('.sudoku').sudoku('pause');">00:00:00</div>
     </div>
 
-<div id="grid" class="f"></div>
+<div id="sugrid" class="f"></div>
 
-<div id="keypad">
-    <div id="bg1"></div>
+<div id="sukeypad">
+    <div id="subg"></div>
     <div class="k" id="key0">0</div>
     <div class="k" id="key1">1</div>
     <div class="k" id="key2">2</div>
@@ -34,20 +34,20 @@
     <div class="k" id="key9">9</div>
 </div>
 
-<div id="mask"><div>
+<div id="sumask"><div>
     <div id="help"></div>
     <div>
         <div class="icon" ontouchstart="$(this).closest('.sudoku').find('#bcheck').removeClass('s');$(this).closest('.sudoku').sudoku('help');event.preventDefault();"
                           onclick="$(this).closest('.sudoku').find('#bcheck').removeClass('s');$(this).closest('.sudoku').sudoku('help');"><img src="res/img/default/icon/valid01.svg" alt=""/></div>
-        <div class="icon" ontouchstart="$(this).closest('.sudoku').find('#bcheck').removeClass('s');$(this).closest('#mask').hide();event.preventDefault();"
-                          onclick="$(this).closest('.sudoku').find('#bcheck').removeClass('s');$(this).closest('#mask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+        <div class="icon" ontouchstart="$(this).closest('.sudoku').find('#bcheck').removeClass('s');$(this).closest('#sumask').hide();event.preventDefault();"
+                          onclick="$(this).closest('.sudoku').find('#bcheck').removeClass('s');$(this).closest('#sumask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
     </div>
-    <div id="illus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+    <div id="suillus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
 </div></div>
 
-<div id="effects"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+<div id="g_effects"><img id="g_egood" src="res/img/default/popup/good01.svg" alt=""/></div>
 
-<div id="splashex" ontouchstart="$(this).hide().closest('.sudoku').sudoku('next');event.preventDefault();"
+<div id="g_splash" ontouchstart="$(this).hide().closest('.sudoku').sudoku('next');event.preventDefault();"
                  onclick="$(this).hide().closest('.sudoku').sudoku('next');"><div>
         <h1 id="label"></h1>
 </div></div>

@@ -1,31 +1,32 @@
 <div>
-    <div id="board"><div>
-    </div></div>
+    <div id="tmboard"><div></div></div>
 
-    <div id="menu">
-        <div id="buttons">
-            <div id="nbmoves"><div class="label" id="mlabel"></div><div class="value d"><div></div></div></div>
-            <div id="nbfinal"><div class="label" id="olabel"></div><div class="value d"><div></div></div></div>
-            <div id="back" ontouchstart="$(this).closest('.trafficjam').trafficjam('back');event.preventDefault();"
+    <div id="tmmenu">
+        <div id="tmbuttons">
+            <div id="tmnbmoves"><div class="tmlabel" id="mlabel"></div><div class="tmvalue tmdefault"><div></div></div></div>
+            <div id="tmnbfinal"><div class="tmlabel" id="olabel"></div><div class="tmvalue tmdefault"><div></div></div></div>
+            <div id="tmback" ontouchstart="$(this).closest('.trafficjam').trafficjam('back');event.preventDefault();"
                            onclick="$(this).closest('.trafficjam').trafficjam('back');">
-                <div class="label" id="clabel"></div><div class="value i">
-                    <div class="icon" id="left1"><img src="res/img/default/control/left02.svg" alt="X"/></div>
-                    <div class="icon" id="left2"><img src="res/img/default/control/left02a.svg" alt="X"/></div>
-                </div></div>
+                <div class="tmlabel" id="clabel"></div>
+				<div class="tmvalue g_control" id="tmforward">
+                    <div class="g_cup"><img src="res/img/default/control/left02.svg" alt="X"/></div>
+                    <div class="g_cdown"><img src="res/img/default/control/left02a.svg" alt="X"/></div>
+                </div>
+			</div>
         </div>
     </div>
 
-    <div id="illustration"><img src="res/img/svginventoryicons/misc/pressure01.svg" alt=""/></div>
+    <div id="tmillustration"><img src="res/img/svginventoryicons/misc/pressure01.svg" alt=""/></div>
     
-    <div id="exercice"><div></div></div>
+    <div id="tmexercice"><div></div></div>
 
-    <div id="goal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
-    <div id="good" class="alert"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+    <div id="tmgoal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
+    <div id="tmgood" class="tmalert"><img src="res/img/default/popup/good01.svg" alt=""/></div>
     
-    <div id="splashex" ontouchstart="$(this).hide().closest('.trafficjam').trafficjam('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.trafficjam').trafficjam('next');event.preventDefault();"
                        onclick="$(this).hide().closest('.trafficjam').trafficjam('next');">
     <div>
-        <h1 id="label">trafficjam</h1>
+        <h1 id="label"></h1>
     </div></div>
 
 </div>

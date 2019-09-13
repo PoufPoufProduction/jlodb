@@ -19,15 +19,6 @@
         fontex      : 1,                                        // Exercice font
         debug       : true                                      // Debug mode
     };
-    
-    
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
-    ];
 
     // private methods
     var helpers = {
@@ -50,17 +41,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -95,23 +79,23 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.find("#nbfinal .value>div").html(settings.objective);
+                $this.find("#tmnbfinal .tmvalue>div").html(settings.objective);
                 
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
-                if (settings.board)      { $this.find("#board").css("background-image","url("+settings.board+")"); }
-                if (settings.illustration) { $this.find("#illustration img").attr("src",settings.illustration); }
+                if (settings.board)      { $this.find("#tmboard").css("background-image","url("+settings.board+")"); }
+                if (settings.illustration) { $this.find("#tmillustration img").attr("src",settings.illustration); }
                 
                 if (settings.exercice) {
-                    $this.find("#exercice>div").css("font-size",settings.fontex+"em").html(helpers.format(settings.exercice));
+                    $this.find("#tmexercice>div").css("font-size",settings.fontex+"em").html(jtools.format(settings.exercice));
                 }
                 
-                $this.find("#board").bind("mousedown touchstart", function(event){
+                $this.find("#tmboard").bind("mousedown touchstart", function(event){
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                   event.originalEvent.touches[0]:event;
 
                     if (settings.interactive) {
-                        settings.width = $this.find("#board").width()*settings.size[2]/12;
+                        settings.width = $this.find("#tmboard").width()*settings.size[2]/12;
                         
                         var ii = Math.floor((vEvent.clientX-$(this).offset().left)/settings.width
                                  - settings.offelt[0] - settings.offclic[0]);
@@ -142,7 +126,7 @@
                 });
                     
                                 
-                $this.find("#board").bind("mouseup mouseleave touchend touchleave", function(event) {
+                $this.find("#tmboard").bind("mouseup mouseleave touchend touchleave", function(event) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                   event.originalEvent.touches[0]:event;
 
@@ -220,21 +204,21 @@
                 
                 setTimeout(function(){helpers.build($this);},100);
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         build: function($this) {
             var settings = helpers.settings($this);
           
-                var vBoardSize = $this.find("#board").width();
+                var vBoardSize = $this.find("#tmboard").width();
                                 
-                $this.find("#board>div").css("font-size",settings.size[2]+"em").html("");
+                $this.find("#tmboard>div").css("font-size",settings.size[2]+"em").html("");
 
                 if (settings.cars) {
                     settings.elts=[];
                     settings.offclic=[0,0.2],
                     
-                    $this.find("#board>div").load( "activities/"+settings.name+"/trafficjam.html",
+                    $this.find("#tmboard>div").load( "activities/"+settings.name+"/trafficjam.html",
                         function(response, status, xhr) {  
 
                         for (var i in settings.cars) {
@@ -257,7 +241,7 @@
                                        "<img src='res/img/tileset/ortho/traffic/"+settings.cars[i][0]+".svg'/></div>");
                             settings.cars[i].$car = elt.$elt;
                             settings.elts.push(elt);
-                            $this.find("#board>div").append(elt.$elt);
+                            $this.find("#tmboard>div").append(elt.$elt);
                         }
                         helpers.update($this);  
                     });
@@ -270,7 +254,7 @@
                             "<img src='"+elt.url+"'/></div>") : 0);
                         
                         if (elt.background && elt.$elt) { elt.$elt.css("background-image","url("+elt.background+")"); }
-                        if (elt.$elt) { $this.find("#board>div").append(elt.$elt); }
+                        if (elt.$elt) { $this.find("#tmboard>div").append(elt.$elt); }
                     }
                     helpers.update($this);  
                 }
@@ -290,8 +274,8 @@
             }
             var vBoard = helpers.board($this);
 
-            $this.find("#nbmoves .value>div").html(settings.moves.length);
-            $this.find("#nbmoves").toggleClass("wrong", settings.moves.length>settings.objective);
+            $this.find("#tmnbmoves .tmvalue>div").html(settings.moves.length);
+            $this.find("#tmnbmoves").toggleClass("wrong", settings.moves.length>settings.objective);
 
             var vOk = true;
             
@@ -309,13 +293,13 @@
                 settings.score = 5 - Math.ceil((settings.moves.length-settings.objective)/2);
                 if (settings.score<2) { settings.score = 2; }
                 if (settings.score>5) { settings.score = 5; }
-                $this.find("#goal").css("left","110%").show().animate({left:"55%"},500, function() {
+                $this.find("#tmgoal").css("left","110%").show().animate({left:"55%"},500, function() {
                     for (var i in settings.anim) {
                         var a = settings.anim[i];
                         settings.elts[a.id].$elt.animate(a.args,1000);
                     }
                 });
-                setTimeout(function() { $this.find("#goal").animate({left:"110%"},1000); helpers.end($this); }, 2000);
+                setTimeout(function() { $this.find("#tmgoal").animate({left:"110%"},1000); helpers.end($this, {'status':'success','score':settings.score}); }, 2000);
             }
         },
         board: function($this) {
@@ -405,8 +389,8 @@
             },
             back: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#left1").hide();
-                setTimeout(function() { $this.find("#left1").show(); }, 300);
+                $this.find("#tmforward").addClass("s");
+                setTimeout(function() { $this.find("#tmforward").removeClass("s"); }, 300);
                 if (settings.moves.length) {
                     var sav = settings.moves.pop();
                     for (var i=0; i<settings.elts.length; i++) {
@@ -418,7 +402,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

@@ -3,11 +3,11 @@
     <div id="nbdec" class="tab"><div id="lnbdec" class="label">DEC</div><span></span></div>
     <div id="onboard">
         <div id="ondata"></div>
-        <div id="fill" class="anim12 flash noloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
-        <div id="target" class="anim12">
+        <div id="fill" class="g_anim12 g_aflash g_anoloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
+        <div id="target" class="g_anim12">
             <div><img src="res/img/default/anim/target01.svg" alt=""/></div></div>
         <div id="box"></div>
-        <div id="instructions" class="low"></div>
+        <div id="g_instructions"></div>
     </div>
 
 
@@ -31,11 +31,11 @@
         <div class="k" id="key15">f</div>
     </div>
 
-    <div id="submit" ontouchstart="$(this).closest('.operation').operation('valid');event.preventDefault();"
+    <div id="g_submit" ontouchstart="$(this).closest('.operation').operation('valid');event.preventDefault();"
                      onclick="$(this).closest('.operation').operation('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
     
     
@@ -45,12 +45,12 @@
     <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"><div>
     </div></div>
     
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.operation').operation('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.operation').operation('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.operation').operation('next');"><div>
             <h1 id="label"></h1>
     </div></div>

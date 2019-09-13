@@ -1,6 +1,6 @@
 .robot .both *                      { overflow:visible; }
 .robot                              { background-image:url("../../res/img/background/landscape/grayboard01.svg"); }
-.robot #splashex                    { background-image:url("../../res/img/banners/robot.svg"); color:lime; }
+.robot #g_splash                    { background-image:url("../../res/img/banners/robot.svg"); color:lime; }
 .robot #rtleft                      { float:left; width:9em; margin:0.5em 0 0 .25em; }
 .robot #rtbuttons                   { width:9em; height:2.1em; background-color:gray; border-radius:0 0 .25em .25em; background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
 .robot #rtbuttons>div               { width:1em; height:1em; float:left; font-size:1.46em; cursor:pointer; margin:.2em .1em; }
@@ -47,10 +47,10 @@
 .robot .source .slider>div          { font-size:0.9em; width:1em; height:1em; cursor:pointer;}
 .robot .source .slider .down        { margin-top:1.33em; }
 .robot .a                           { width:1em; height:1em; cursor:crosshair; }
-.robot #ptip .cc                    { background-color:rgba(0,40,0,0.4); color:#444; padding:.1em; margin:.2em 0; font-size:2em;height:1em;  }
-.robot #ptip .cc>.icon              { float:left; }
-.robot #ptip .cc>.icon.o1           { opacity:0.5; }
-.robot #ptip .cc>.icon.o2           { opacity:0.1; }
+.robot #g_tip .cc                    { background-color:rgba(0,40,0,0.4); color:#444; padding:.1em; margin:.2em 0; font-size:2em;height:1em;  }
+.robot #g_tip .cc>.icon              { float:left; }
+.robot #g_tip .cc>.icon.o1           { opacity:0.5; }
+.robot #g_tip .cc>.icon.o2           { opacity:0.1; }
 .robot #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5); z-index:2002; cursor:pointer; display:none; }
 .robot #phelp>div                   { font-size:.3em; width:98%; height:98%; margin:.2em auto; background-color:rgba(255,255,255,0.8); border:.2em solid white; }
 .robot #phelp .h1                   { clear:both; font-size:1.5em; padding-left:5em; margin-top:.5em; border:1px solid black; border-width:0 0 1px 0;}

@@ -1,6 +1,6 @@
 .code .both *                               { overflow:visible; }
 .code                                       { background-color:#AAA;}
-.code #splashex                             { background-image:url("../../res/img/banners/code.svg"); }
+.code #g_splash                             { background-image:url("../../res/img/banners/code.svg"); }
 .code #ceboard                              { font-size:.5em; width:105%; }
 .code #ceboard>div                          { float:left; }
 .code #cedetail				                { width:22%; }
@@ -55,15 +55,13 @@
 .code #cekeypad #a                          { top:1em; left:4.5em; }
 .code #cekeypad #b                          { top:2.5em; left:4.5em; }
 .code #cescreens #controls                  { width:12em; height:5.5em; background-color:#AAA; background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
-.code #cescreens #controls.running          { background-color:#5BB; }
+.code #cescreens #controls.g_arunning       { background-color:#5BB; }
 .code #cescreens.s2 #controls               { height:9.5em; }
 .code #cescreens.s3 #controls               { height:6.7em; }
 .code #cescreens #buttons                   { margin-left:1.2em; margin-top:.3em; }
 .code #cescreens #buttons .icon             { font-size:2em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
 .code #cescreens #buttons #lbut             { width:4.9em; float:left; }
 .code #cescreens #buttons #play             { font-size:4.4em; margin:.05em; }
-.code #effects                              { position:absolute; top:45%; left:10%; display:none; z-index:2; }
-.code #effects>div                          { font-size:5em; width:1em; height:1em; display:none; }
 .code #mask                                 { width:71%; height:100%; position:absolute; left:0; top:0; background-color:rgba(0,0,0,0); display:none; }
 .code #binary                               { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8); display:none;}
 .code #binary>div                           { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0; font-weight:bold; font-size:.35em;  border-radius:.5em; overflow:auto; cursor:pointer;  }
@@ -114,6 +112,6 @@
 .code #phelp .linst                         { background-color:#468; color:white; width:14em; padding:.1em; float:left; margin-right:.2em; }
 .code #phelp .linst.ex                      { background-color:#555; color:#EEE; }
 .code #phelp .arg                           { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
-.code #ptip .t_code                         { padding:.1em .5em; font-size:.6em; background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
+.code #g_tip .t_code                         { padding:.1em .5em; font-size:.6em; background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
 
 

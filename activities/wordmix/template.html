@@ -1,13 +1,18 @@
 <div>
 
-    <div id="board"><div></div></div>
-    <div id="legend">
-        <div id="exercice"></div>
-        <div id="values">
+    <div id="wxboard"><div></div></div>
+    <div id="wxlegend">
+        <div id="wxexercice"></div>
+        <div id="wxvalues">
         </div>
     </div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.wordmix').wordmix('next');event.preventDefault();"
+	<div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
+	
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.wordmix').wordmix('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.wordmix').wordmix('next');"><div>
         <h1 id="label"></h1>
     </div></div>

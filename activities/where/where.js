@@ -17,15 +17,6 @@
         debug       : true                     // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -47,17 +38,11 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
-        },
-        format: function(_text) {
-            if (_text) for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+			if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -90,7 +75,7 @@
             svg:function($this) {
                 var settings = helpers.settings($this),debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div id='svg'></div>").appendTo($this.find("#keypad"));
+                var elt= $("<div id='svg'></div>").appendTo($this.find("#wekeypad"));
                 elt.svg();
                 settings.svg = elt.svg('get');
                 $(settings.svg).attr("class",settings["class"]);
@@ -102,8 +87,8 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                var vWidth = Math.floor($this.find("#values").width());
-                $this.find("#values").css("font-size", settings.font+"em");
+                var vWidth = Math.floor($this.find("#wevalues").width());
+                $this.find("#wevalues").css("font-size", settings.font+"em");
                 
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
@@ -128,7 +113,7 @@
                 // LOCALE HANDLING
 
                 $this.find("#guide").html(settings.guide);
-                $this.find("#comment>div").html(helpers.format(settings.comment))
+                $this.find("#wecomment>div").html(jtools.format(settings.comment))
                                           .css("font-size",settings.fontex+"em");
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
 
@@ -309,7 +294,7 @@
                 // BUILD THE QUESTIONS
                 var vLast = -1, vNew;
                 var vRegexp = (settings.regexp)?new RegExp(settings.regexp.from, "g"):0;
-                var $ul = $this.find("#values ul").hide();
+                var $ul = $this.find("#wevalues ul").hide();
 
                 // FILL THE UL LIST
                 for (var i=0; i<settings.number; i++) {
@@ -338,7 +323,7 @@
                     vLast = vNew;
                 }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // Update the timer
@@ -355,9 +340,9 @@
         move: function($this, _anim) {
             var settings = helpers.settings($this);
             var vHeight=0;
-            $this.find("#values li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
-            if (_anim)  { $this.find("#values ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
-            else        { $this.find("#values ul").css("top", vHeight+"px"); }
+            $this.find("#wevalues li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
+            if (_anim)  { $this.find("#wevalues ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
+            else        { $this.find("#wevalues ul").css("top", vHeight+"px"); }
 
             if (settings.it<settings.questions.length && settings.questions[settings.it] && settings.questions[settings.it][2]) {
                 for (var i in settings.questions[settings.it][2]) {
@@ -372,11 +357,11 @@
         },
         next: function($this) {
             var settings = helpers.settings($this);
-            $($this.find("#values li").get(settings.it)).addClass("select");
+            $($this.find("#wevalues li").get(settings.it)).addClass("select");
         },
         createEffects: function($this, value) {
             var settings = helpers.settings($this);
-            var $group = $("#effects", settings.svg.root());
+            var $group = $("#g_effects", settings.svg.root());
             for (var i in settings.cursors) {
                 var vCursor = settings.cursors[i];
                 if (vCursor.center) {
@@ -421,13 +406,13 @@
             var settings = helpers.settings($this);
 
             // REMOVE EFFECTS
-            $this.find("#submit>img").hide(); $this.find("#subvalid").show();
+            $this.find("#g_submit").removeClass();
+            $this.find("#g_effects").removeClass();
             while (settings.effects.length) {
                 settings.svg.remove(settings.effects[0]);
                 settings.effects.shift();
             };
-            $this.find("#values").attr("class","");
-            $this.find("#effects>div").hide();
+            $this.find("#wevalues").attr("class","");
             settings.interactive = true;
 
             // GO TO NEXT QUESTION IF ANY
@@ -444,7 +429,7 @@
                 if (score>=settings.evaluation[0]-3*settings.evaluation[1])     { settings.score = 2; } else
                 if (score>=settings.evaluation[0]-4*settings.evaluation[1])     { settings.score = 1; } else
                                                                                 { settings.score = 0; }
-                setTimeout(function() { helpers.end($this); }, 1000);
+                setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000);
             }
             helpers.move($this, true);
         },
@@ -553,20 +538,19 @@
                 $this.find("#show").hide();
 
                 // DISPLAY ALERT
-                $this.find("#effects>div").hide();
-                if (Math.floor(vScore/it)==5) {
-                    $this.find("#submit>img").hide(); $this.find("#subgood").show();
-                    $this.find("#effects #good").show();
+                if (Math.floor(vScore/it)>3) {
+                    $this.find("#g_submit").addClass("good");
+                    $this.find("#g_effects").addClass("good");
                 }
-                if (Math.floor(vScore/it)==0) {
-                    $this.find("#submit>img").hide(); $this.find("#subwrong").show();
-                    $this.find("#effects #wrong").show();
+                if (Math.floor(vScore/it)<2) {
+                    $this.find("#g_submit").addClass("wrong");
+                    $this.find("#g_effects").addClass("wrong");
                 }
 
                 // COMPUTE SCORE AND SHOW EFFECTS
                 settings.score += vScore;
 
-                $this.find("#values").attr("class","nh s"+Math.floor(vScore/it));
+                $this.find("#wevalues").attr("class","nh s"+Math.floor(vScore/it));
 				if (settings.fx) {
 					setTimeout(function() { helpers.createEffects($this, 4); }, 100 );
 					setTimeout(function() { helpers.createEffects($this, 3); }, 250 );
@@ -627,15 +611,14 @@
             },
             next: function() {
                 var settings = $(this).data("settings");
-                $(this).find("#values ul").show();
+                $(this).find("#wevalues ul").show();
                 settings.interactive=true;
                 helpers.move($(this), true);
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             submit: function() { helpers.submit($(this)); }
         };

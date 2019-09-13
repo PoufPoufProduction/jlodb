@@ -104,7 +104,7 @@
                 // Locale handling
 
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         stop: function($this, _i) {

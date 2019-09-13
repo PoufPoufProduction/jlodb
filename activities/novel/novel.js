@@ -227,7 +227,7 @@
                             $html.addClass(value);
                         }
                         for (var i in elt.value) {
-                            var m = "<div class='bluekeypad' id='r"+i+"'";
+                            var m = "<div class='g_bluekey' id='r"+i+"'";
                             m+=" onclick='$(this).closest(\".novel\").novel(\"menu\",this,"+i+");'";
                             m+=" ontouchstart='$(this).closest(\".novel\").novel(\"menu\",this,"+i+");event.preventDefault();'";
                             m+=">"+helpers.text($this,elt.value[i].text)+"</div>";
@@ -980,7 +980,7 @@
             menu: function(_elt, _index) {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
-                    $(_elt).addClass("touch"); setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                    $(_elt).addClass("g_ktouch"); setTimeout(function() { $(_elt).removeClass("g_ktouch"); }, 50);
 
                     var pc          = settings.pc[settings.pc.length-1];
                     if (pc.p<pc.story.length) {

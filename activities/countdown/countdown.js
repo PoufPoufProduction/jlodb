@@ -116,7 +116,7 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         newline: function($this) {
@@ -166,10 +166,10 @@
                         $this.find(".t#"+$elt.attr("id")).addClass("tt").draggable({disabled:true})
                         helpers.computable($this);
 
-                        $this.find("#cntouch>div").addClass("running").parent()
+                        $this.find("#cntouch>div").addClass("g_arunning").parent()
 							.css("left", vEvent.clientX-$this.offset().left)
                             .css("top", vEvent.clientY-$this.offset().top).show();
-                        setTimeout(function(){$this.find("#cntouch>div").removeClass("running").parent().hide(); },800);
+                        setTimeout(function(){$this.find("#cntouch>div").removeClass("g_arunning").parent().hide(); },800);
 
                     }});
 
@@ -206,7 +206,7 @@
         },
         build: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects").removeClass();
+            $this.find("#g_effects").removeClass();
             $this.find("#cnboard #cnlines").html("");
             $this.find("#cnheader #cnresult>div").text(settings.data[settings.id].result);
             $this.find("#cnheader #cnvalues").html("");
@@ -329,13 +329,13 @@
                     if (id<104) { $t.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#cnboard") }); }
                     $(_elt).parent().removeClass("cc").addClass("s").append($t);
 					
-					$this.find("#cnfx>div").addClass("running").parent()
+					$this.find("#cnfx>div").addClass("g_arunning").parent()
 						.css("top", $line.offset().top - $this.offset().top)
 						.show();
-					setTimeout(function(){ $this.find("#cnfx>div").removeClass("running").parent().hide(); }, 500);
+					setTimeout(function(){ $this.find("#cnfx>div").removeClass("g_arunning").parent().hide(); }, 500);
 
                     if (settings.compute == settings.data[settings.id].result) {
-                        $this.find("#effects").addClass("good");
+                        $this.find("#g_effects").addClass("good");
 						settings.interactive = false;
                         if (++settings.id < settings.data.length) { setTimeout(function() {helpers.build($this);}, 1000); }
                         else                                      { setTimeout(function() {helpers.end($this, {'status':'success','score':settings.score});}, 2000); }

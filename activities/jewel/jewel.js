@@ -221,7 +221,7 @@
                     _event.preventDefault();
                 });
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         goals: {
@@ -239,8 +239,8 @@
                             txt = txt.replace("$1","<span class='jll'>"+(settings.goals[i].value)+"</span>");
                             break;
                     }
-                    $this.find("#splashex ul").append("<li>"+txt+"</li>");
-                    $this.find("#splashex #goals").show();
+                    $this.find("#g_splash ul").append("<li>"+txt+"</li>");
+                    $this.find("#g_splash #goals").show();
                 }
             },
             // return s.normal, s.success or s.failure
@@ -543,12 +543,12 @@
 			var finish = false;
 			
 			if (goal==s.success) {
-				setTimeout(function() { $this.find("#effects").addClass("good"); }, 500);
+				setTimeout(function() { $this.find("#g_effects").addClass("good"); }, 500);
 				settings.score = 5;
 				finish = true;
 			}
 			else if (goal==s.failed || (helpers.blocked($this)&&settings.blocked)) {
-				setTimeout(function() { $this.find("#effects").addClass("wrong"); }, 1000);
+				setTimeout(function() { $this.find("#g_effects").addClass("wrong"); }, 1000);
 				setTimeout(function() { helpers.clear($this); }, 2000);
 				settings.score = settings.goals?0:5;
 				finish = true;
@@ -599,7 +599,7 @@
                 settings.timer.id = 0;
 				settings.score = 0;
 				settings.interactive = false;
-				setTimeout(function() { $this.find("#effects").addClass("wrong"); }, 1000);
+				setTimeout(function() { $this.find("#g_effects").addClass("wrong"); }, 1000);
 				setTimeout(function() { helpers.clear($this); }, 2000);
 				setTimeout(function() { helpers.end($this);}, 2500);
 			}

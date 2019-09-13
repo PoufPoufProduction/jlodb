@@ -111,13 +111,13 @@
                 if (settings.data && $.isArray(settings.data[0])) { settings.number = settings.data.length; }
 
                 setTimeout(function() { helpers.build($this);}, 100);
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         build:function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects").removeClass();
-            $this.find("#submit").removeClass();
+            $this.find("#g_effects").removeClass();
+            $this.find("#g_submit").removeClass();
 
             $this.find("#cd_"+settings.keypad).show();
 
@@ -171,7 +171,7 @@
                     var value=(settings.values[row][col]==settings.empty)?0:Math.floor(Math.random()*2)+1;
                     html+="<td><div class='cd_bg cd_bg"+value+(settings.horiz?" horiz":"")+"' id='"+col+"x"+row+"'>";
                     if (value!=0) {
-						html+="<div class='anim12 noloop'><div><img src='res/img/asset/anim/bluelight0"+Math.floor(Math.random()*4+1)+".svg' alt=''/></div></div>";
+						html+="<div class='g_anim12 g_anoloop'><div><img src='res/img/asset/anim/bluelight0"+Math.floor(Math.random()*4+1)+".svg' alt=''/></div></div>";
                         html+="<div class='cd_v'";
                         html+=" onclick='$(this).closest(\".crossword\").crossword(\"click\","+col+","+row+");'";
                         html+=" ontouchstart='$(this).closest(\".crossword\").crossword(\"click\","+col+","+row+");";
@@ -221,8 +221,8 @@
 							if (vElt.find(".cd_v").html()!=_val[0]) {
 								vElt.find(".cd_v").css("opacity",0).html(_val[0]).animate({opacity:1},800);
 							}
-							vElt.find(".anim12>div").addClass("running").parent().show();
-							setTimeout(function() { vElt.find(".anim12>div").removeClass("running").parent().hide(); }, 1000);
+							vElt.find(".g_anim12>div").addClass("g_arunning").parent().show();
+							setTimeout(function() { vElt.find(".g_anim12>div").removeClass("g_arunning").parent().hide(); }, 1000);
 							
                             // MOVE TO THE NEXT CHARACTER
                             if (settings.move) {
@@ -365,8 +365,8 @@
 							$(_hint).closest(".cd_hint").hide();
 							var vElt = $(_hint).closest(".cd_bg");
 							vElt.find(".cd_v").css("opacity",0).show().html($(_hint).html()).animate({opacity:1},800);
-							vElt.find(".anim12>div").addClass("running").parent().show();
-							setTimeout(function() { vElt.find(".anim12>div").removeClass("running").parent().hide(); }, 1000);
+							vElt.find(".g_anim12>div").addClass("g_arunning").parent().show();
+							setTimeout(function() { vElt.find(".g_anim12>div").removeClass("g_arunning").parent().hide(); }, 1000);
 						}
                         else {
                             $(_hint).addClass("s");
@@ -377,8 +377,8 @@
                 }
             },
             key: function(_elt) { 
-                if (_elt) { $(_elt).addClass("touch");
-                    setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                if (_elt) { $(_elt).addClass("g_ktouch");
+                    setTimeout(function() { $(_elt).removeClass("g_ktouch"); }, 50);
                 }
                 helpers.key($(this), $(_elt).text()); },
             next: function()    { helpers.settings($(this)).interactive = true; },
@@ -404,8 +404,8 @@
                     }
                 }
                 settings.score=Math.max(0,settings.score-error*settings.errratio);
-                $this.find("#effects").addClass(error==0?"good":"wrong");
-				$this.find("#submit").addClass(error==0?"good":"wrong");
+                $this.find("#g_effects").addClass(error==0?"good":"wrong");
+				$this.find("#g_submit").addClass(error==0?"good":"wrong");
 
                 if (++settings.id<settings.number) {
                     setTimeout(function() { helpers.build($this); }, 1000);

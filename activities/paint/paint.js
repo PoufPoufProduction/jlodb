@@ -186,7 +186,7 @@
                 $this.find("#ptboard").bind('touchstart mousedown', function(_event) { settings.down=true; _event.preventDefault();})
                                     .bind('touchend touchleave mouseup mouseleave', function(_event) { settings.elt=0; settings.down=false; _event.preventDefault();});
 
-                $this.find("#instructions #content").css("font-size",0.5*settings.fontex+"em");
+                $this.find("#g_instructions #content").css("font-size",0.5*settings.fontex+"em");
                 helpers.build($this);
 
                 // Locale handling
@@ -194,7 +194,7 @@
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 $this.children().show()
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         board: {
@@ -378,17 +378,17 @@
             
             if (!exercice && settings.values) { exercice = settings.values[settings.id].exercice; }
             if (exercice) {
-				$this.find("#instructions #content").html(jtools.instructions(exercice));
-				$this.find("#instructions").show();
+				$this.find("#g_instructions #content").html(jtools.instructions(exercice));
+				$this.find("#g_instructions").show();
 				if (tag) {
 					if (tag.indexOf(".svg")!=-1) { tag="<div class='char'><img src='"+tag+"' alt=''/></div>"; }
 					else                         { tag="<div style='font-size:"+settings.tagsize+"em;'>"+tag+"</div>"; }
-					$this.find("#instructions #tag").html(tag).show();
+					$this.find("#g_instructions #tag").html(tag).show();
 				}
 			}
 
-            $this.find("#submit").removeClass();
-            $this.find("#effects").removeClass();
+            $this.find("#g_submit").removeClass();
+            $this.find("#g_effects").removeClass();
 
         },
         result: function($this) {
@@ -544,8 +544,8 @@
 
                     // DISPLAY ALERT
                     $this.find("#ptboard").addClass(nbErrors?"wrong":"good");
-                    $this.find("#submit").addClass(nbErrors?"wrong":"good");
-                    if (settings.effects) {  $this.find("#effects").addClass(nbErrors?"wrong":"good"); }
+                    $this.find("#g_submit").addClass(nbErrors?"wrong":"good");
+                    if (settings.effects) {  $this.find("#g_effects").addClass(nbErrors?"wrong":"good"); }
 
                     if (settings.score<0) { settings.score = 0; }
                     if (++settings.id<settings.number) {

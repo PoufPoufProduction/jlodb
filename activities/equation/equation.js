@@ -125,7 +125,7 @@
                 // EXERCICE AND FIGURE
                 if (settings.figure && settings.figure.length) { $this.find("#enfigure").html("<img src='res/img/"+settings.figure+"'/>").show(); }
                 if (settings.exercice) {
-					$this.find("#instructions").css("font-size",(0.4*settings.fontex)+"em")
+					$this.find("#g_instructions").css("font-size",(0.4*settings.fontex)+"em")
 						.html(jtools.instructions(settings.exercice));
                 }
 
@@ -965,7 +965,7 @@ helpers.equations.get($this).label();
                     });
                 }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         element: function() {
@@ -1654,8 +1654,8 @@ helpers.equations.get($this).label();
                                            settings.data[j].$svg.attr("class", "equ s"+settings.data[j].dist); }
 	
             settings.score=total>5?0:5-total;
-            $this.find("#submit").addClass(total?"wrong":"good");
-            $this.find("#effects").addClass(total?"wrong":"good");
+            $this.find("#g_submit").addClass(total?"wrong":"good");
+            $this.find("#g_effects").addClass(total?"wrong":"good");
 
             setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score})}, 1000);
         },

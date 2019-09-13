@@ -144,7 +144,7 @@
                 // Locale handling
 
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         word: function($this, _word,_t) {
@@ -346,13 +346,13 @@
 						
 						
                     }
-                    $this.find("#effects").addClass(nbErrors?"wrong":"good");
-                    $this.find("#submit").addClass(nbErrors?"wrong":"good");
+                    $this.find("#g_effects").addClass(nbErrors?"wrong":"good");
+                    $this.find("#g_submit").addClass(nbErrors?"wrong":"good");
 					
 					if (settings.edit) {
 						setTimeout(function() {
-							$this.find("#effects").removeClass();
-							$this.find("#submit").removeClass();
+							$this.find("#g_effects").removeClass();
+							$this.find("#g_submit").removeClass();
 							$this.find("#mrdata span").removeClass("wrong");
 							settings.interactive = true;
 						}, 1500);

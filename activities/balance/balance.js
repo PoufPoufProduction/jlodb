@@ -196,11 +196,11 @@
 								helpers.legends($this, false);
 							}
 							
-							$this.find(".anim12>div").addClass("running").parent()
+							$this.find(".g_anim12>div").addClass("g_arunning").parent()
 								.css("top", e.clientY-$this.offset().top)
 								.css("left", e.clientX-$this.offset().left)
 								.show(); 
-							setTimeout(function(){ $this.find(".anim12>div").removeClass("running").parent().hide(); }, 500);
+							setTimeout(function(){ $this.find(".g_anim12>div").removeClass("g_arunning").parent().hide(); }, 500);
 						
 							
                         }
@@ -242,7 +242,7 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
 		legends: function($this, _show) {
@@ -266,13 +266,13 @@
         next: function($this) {
             var settings = helpers.settings($this);
             settings.interactive = false;
-			$this.find("#effects").addClass("good");
+			$this.find("#g_effects").addClass("good");
             if (++settings.id<settings.number)  { setTimeout(function(){ helpers.build($this); }, 2500); }
             else                                { setTimeout(function(){ helpers.end($this,{'status':'success','score':settings.score}); }, 2500); }
         },
         build: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects").removeClass();
+            $this.find("#g_effects").removeClass();
 
             $this.find("#becalc").removeClass("s").removeClass("available");
             $this.find("#becalculator").hide();
@@ -408,8 +408,8 @@
                     else {
                         settings.interactive = false;
                         settings.score--;
-                        setTimeout(function(){ $this.find("#effects").addClass("wrong"); },0);
-                        setTimeout(function(){ $this.find("#effects").removeClass(); settings.interactive =true; },1000);
+                        setTimeout(function(){ $this.find("#g_effects").addClass("wrong"); },0);
+                        setTimeout(function(){ $this.find("#g_effects").removeClass(); settings.interactive =true; },1000);
                     }
                 }
             }
@@ -469,7 +469,7 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#splashex").hide();
+                $this.find("#g_splash").hide();
                 helpers.build($this);
             },
             quit: function() {
@@ -494,8 +494,8 @@
             key: function(value, _elt) {
                 var $this = $(this) , settings = helpers.settings($this);
 				if (settings.interactive) {
-					if (_elt) { $(_elt).addClass("touch");
-						setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+					if (_elt) { $(_elt).addClass("g_ktouch");
+						setTimeout(function() { $(_elt).removeClass("g_ktouch"); }, 50);
 					}
 					helpers.key($(this), value, false);
 				}

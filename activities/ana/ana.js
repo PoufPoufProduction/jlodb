@@ -112,7 +112,7 @@
 						var l = settings.board[i][j];
 						if (l!=' ') {
 							var $elt = $("<div id='"+j+"x"+i+"' class='icon'><div class='aaval'></div></div>");
-							$elt.append("<div class='anim12 noloop'><div><img src='res/img/asset/anim/bluelight0"+
+							$elt.append("<div class='g_anim12 g_anoloop'><div><img src='res/img/asset/anim/bluelight0"+
 								Math.floor(Math.random()*4+1)+".svg' alt=''/></div></div>");
 							$elt.css("top", (i+0.5)+"em").css("left", (j+0.5)+"em");
 							$this.find("#aaboard>div").append($elt);
@@ -257,12 +257,12 @@
 								var $cell = $this.find("#"+(ww[0]+i*side[ww[2]][0])+"x"+(ww[1]+i*side[ww[2]][1]));
 								$cell.find(".aaval").html(settings.nav.word[i]);
 								if (!settings.done[settings.nav.word]) {
-									$cell.find(".anim12>div").addClass("running").parent().show();
+									$cell.find(".g_anim12>div").addClass("g_arunning").parent().show();
 								}
 							}
 							if (!settings.done[settings.nav.word]) {
-								if (imgfx) { $this.find("#aafx>div").addClass("running").parent().show(); }
-								setTimeout(function() { $this.find(".running").removeClass("running").parent().hide(); }, 1000);
+								if (imgfx) { $this.find("#aafx>div").addClass("g_arunning").parent().show(); }
+								setTimeout(function() { $this.find(".g_arunning").removeClass("g_arunning").parent().hide(); }, 1000);
 							}
 							
 						}
@@ -282,7 +282,7 @@
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
 		get: function($this, _pos) {
@@ -333,7 +333,7 @@
             var settings = helpers.settings($this);
 			settings.interactive = false;
 			setTimeout(function() {
-				$this.find("#effects").addClass("good");
+				$this.find("#g_effects").addClass("good");
 				setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1500);
 			},500);
 		}

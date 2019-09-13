@@ -38,10 +38,11 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
+			if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }    
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -115,7 +116,7 @@
                     }
                     html+='</tr>';
                 }
-                $this.find("#grid").addClass("s"+settings.nbelts).html("<table>"+html+"</table>");
+                $this.find("#sugrid").addClass("s"+settings.nbelts).html("<table>"+html+"</table>");
                 
                 
                 // UPDATE THE GRID
@@ -141,12 +142,12 @@
                         break;
                         case "box":
                             for (var j=0; j<settings.nbelts; j++) {
-                                $($this.find("#grid.f td.cell").get(j+settings.highlight[i][1]*settings.nbelts))
+                                $($this.find("#sugrid.f td.cell").get(j+settings.highlight[i][1]*settings.nbelts))
                                     .addClass(settings.highlight[i][2]).addClass("hl"+i);
                             }
                         break;
                         case "cell":
-                                $($this.find("#grid.f td.cell").get(settings.highlight[i][1]))
+                                $($this.find("#sugrid.f td.cell").get(settings.highlight[i][1]))
                                     .addClass(settings.highlight[i][2]).addClass("hl"+i);
                         break;
                     }
@@ -168,7 +169,7 @@
                         $(this).bind("mousedown touchstart",function(event) {
                             var id=$(this).attr("id"), vX=parseInt(id[1]), vY=parseInt(id[2]);
                             if (settings.interactive) {
-                                var $keypad = $this.find("#keypad");
+                                var $keypad = $this.find("#sukeypad");
                                 var vEvent = (event && event.originalEvent &&
                                             event.originalEvent.touches && event.originalEvent.touches.length)?
                                                 event.originalEvent.touches[0]:event;
@@ -185,11 +186,11 @@
                                 var vTop = vEvent.clientY - $this.offset().top;
                                 var vLeft = vEvent.clientX - $this.offset().left;
 
-                                $this.find("#keypad .k").removeClass("s");
+                                $this.find("#sukeypad .k").removeClass("s");
                                 settings.keypad = $(this);
                                 settings.key    = -1;
 
-                                var tmp = $this.find("#bg1").height()/1.5;
+                                var tmp = $this.find("#subg").height()/1.5;
                                 if (vTop<tmp)   { vTop = tmp; }
                                 if (vLeft<tmp)  { vLeft = tmp; }
                                 if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
@@ -201,7 +202,7 @@
 
                         $(this).next().find("div").each(function(_index) { $(this).bind("mousedown touchstart",function(event) {
                             if (settings.interactive) {
-                                var mode = $this.find("#grid").hasClass("f");
+                                var mode = $this.find("#sugrid").hasClass("f");
                                 if (mode) {
                                     $(this).closest("td.cell").removeClass("wrong");
                                     $(this).closest('.hint').hide().prev().html($(this).html()).show();
@@ -209,14 +210,13 @@
                                     $(this).closest('.cell').removeClass("h");
                                     if (helpers.check($this)) {
                                         settings.interactive = false;
-                                        if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                                         settings.score = helpers.score(settings.level, settings.timer.value, settings.help);
-                                        setTimeout(function() { helpers.end($this); }, 1000);
+                                        setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000);
                                     }
                                 }
                                 else {
 
-                                    var $keypad = $this.find("#keypad");
+                                    var $keypad = $this.find("#sukeypad");
                                     var vEvent = (event && event.originalEvent &&
                                                 event.originalEvent.touches && event.originalEvent.touches.length)?
                                                     event.originalEvent.touches[0]:event;
@@ -224,11 +224,11 @@
                                     var vTop = vEvent.clientY - $this.offset().top;
                                     var vLeft = vEvent.clientX - $this.offset().left;
 
-                                    $this.find("#keypad .k").removeClass("s");
+                                    $this.find("#sukeypad .k").removeClass("s");
                                     settings.keypad = $(this);
                                     settings.key    = -1;
 
-                                    var tmp = $this.find("#bg1").height()/1.5;
+                                    var tmp = $this.find("#subg").height()/1.5;
                                     if (vTop<tmp)   { vTop = tmp; }
                                     if (vLeft<tmp)  { vLeft = tmp; }
                                     if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
@@ -243,7 +243,7 @@
                 });
 
                 $this.bind("mousemove touchmove", function(event) {
-                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                    var settings = helpers.settings($this), $keypad = $this.find("#sukeypad");
                     if (settings.keypad) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
                                     event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
@@ -266,7 +266,7 @@
                 });
 
                 $this.bind("mouseup mouseleave touchend touchleave", function(event) {
-                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                    var settings = helpers.settings($this), $keypad = $this.find("#sukeypad");
 
                     if (settings.key!=-1 && settings.keypad) {
                         var vVal,vOld;
@@ -288,12 +288,12 @@
                                     if (settings.highlight[i].length>3) {
                                         var done = true;
                                         for (var j in settings.highlight[i][3]) {
-                                            if (!$($this.find("#grid.f td.cell .fill").get(settings.highlight[i][3][j])).html()) {
+                                            if (!$($this.find("#sugrid.f td.cell .fill").get(settings.highlight[i][3][j])).html()) {
                                                 done = false;
                                             }
                                         }
                                         if (done) {
-                                            $this.find("#grid.f .hl"+i).removeClass(".hl"+i).removeClass(settings.highlight[i][2]);
+                                            $this.find("#sugrid.f .hl"+i).removeClass(".hl"+i).removeClass(settings.highlight[i][2]);
                                         }
                                     }
                                 }
@@ -301,8 +301,7 @@
                                 if (helpers.check($this)) {
                                     settings.interactive = false;
                                     settings.score = helpers.score(settings.level, settings.timer.value, settings.help);
-                                    if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
-                                    setTimeout(function() { helpers.end($this); }, 1000);
+                                    setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000);
                                 }
                             }
                             else
@@ -324,15 +323,15 @@
 
                 // COMMENT
                 if ($.isArray(settings.comment)) {
-                    $this.find("#comment>div").html("");
+                    $this.find("#sucomment>div").html("");
                     for (var i in settings.comment) {
-                        $this.find("#comment>div").append("<p>"+(settings.comment[i].length?settings.comment[i]:"&#xA0;")+"</p>"); }
-                } else { $this.find("#comment>div").html(settings.comment); }
+                        $this.find("#sucomment>div").append("<p>"+(settings.comment[i].length?settings.comment[i]:"&#xA0;")+"</p>"); }
+                } else { $this.find("#sucomment>div").html(settings.comment); }
 
                 // LOCALE HANDLING
 
                 if (settings.locale) {$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });}
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // Highlight the row, the col and the subgrid which contain the selected cell
@@ -375,19 +374,17 @@
                 var elt = settings.data[vY*settings.nbelts+vX];
                 if (mapping[elt] != vVal) { finish= false; }
             });
-            if (finish) { $this.find("#effects").show(); }
+            if (finish) { $this.find("#g_effects").addClass("good"); }
             return finish;
         },
         // Update the timer
         timer:function($this) {
             var settings = helpers.settings($this);
-            var vS = settings.timer.value%60;
-            var vM = Math.floor(settings.timer.value/60)%60;
-            var vH = Math.floor(settings.timer.value/3600);
-            if (vH>99) { vS=99; vM=99; vH=99; }
-            $this.find("#time").text((vH<10?"0":"")+vH+(vM<10?":0":":")+vM+(vS<10?":0":":")+vS);
-            settings.timer.value++;
-            settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
+			if (settings.interactive) {
+				$this.find("#sutime").text(jtools.time.seconds2hhmmss(settings.timer.value));
+				settings.timer.value++;
+				settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
+			}
         },
         // compute the score regarding the time and the grid level
         score:function(level, time, help) {
@@ -446,19 +443,19 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) {
                     clearTimeout(settings.timer.id); settings.timer.id=0;
-                    $this.find("#grid>table").hide();
+                    $this.find("#sugrid>table").hide();
                 }
                 else {
                     helpers.timer($this);
-                    $this.find("#grid>table").show();
+                    $this.find("#sugrid>table").show();
                 }
             },
             fill: function(_elt) {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
-                    $this.find("#buttons .s").removeClass("s");
+                    $this.find("#subuttons .s").removeClass("s");
                     $(_elt).addClass("s");
-                    $this.find("#grid").addClass("f");
+                    $this.find("#sugrid").addClass("f");
                     $this.find("div.fill").each(function(index) {
                         var vHintEmpty = true;
                         $(this).next().find("div").each(function(_index) {
@@ -469,10 +466,9 @@
             hint: function(_elt) {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
-                    $this.find("#buttons .s").removeClass("s");
+                    $this.find("#subuttons .s").removeClass("s");
                     $(_elt).addClass("s");
-                    $this.find("#grid").removeClass("f");
-                    $this.find("#toggle>img").attr("src", "res/img/svginventoryicons/pencil/pencil01.svg");
+                    $this.find("#sugrid").removeClass("f");
                     helpers.highlight($this, -1,-1);
                     $this.find("div.fill").each(function(index) { if (!$(this).html().length) { $(this).hide().next().show(); } });
                 }
@@ -480,16 +476,16 @@
             // Close the help and display the grid
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#grid>table").show();
+                $(this).find("#sugrid>table").show();
 
                 // Keypad
                 var nb = settings.nbelts;
                 var l = 1.9;
-                $this.find("#keypad").addClass("s"+settings.nbelts);
+                $this.find("#sukeypad").addClass("s"+settings.nbelts);
                 if (settings.nbelts==4) { l=1; } else
                 if (settings.nbelts==6) { l=1.4; }
                 for (var i=0; i<nb; i++) {
-                    settings.$keys.push($this.find("#keypad #key"+i).css("top",(l*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                    settings.$keys.push($this.find("#sukeypad #key"+i).css("top",(l*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
                                        .css("left",(l*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
                                        .html(helpers.display($this,i+1))
                                        .show());
@@ -502,12 +498,11 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = false;
-                if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             help: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#mask").hide();
+                $this.find("#sumask").hide();
                 settings.help++;
                 
                 $this.find("div.fill").each(function(index) {

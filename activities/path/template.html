@@ -5,9 +5,9 @@
 
     <div id="ptgoal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
 	
-    <div id="effects"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+    <div id="g_effects"><img id="g_egood" src="res/img/default/popup/good01.svg" alt=""/></div>
     
-    <div id="tip" ontouchstart="$(this).closest('.path').path('showhelp');event.preventDefault();"
+    <div id="g_tbutton" ontouchstart="$(this).closest('.path').path('showhelp');event.preventDefault();"
                   onclick="$(this).closest('.path').path('showhelp');">
         <img src="res/img/control/tip.svg" alt=""/>
         <div>0</div>
@@ -24,7 +24,7 @@
         <div id="illus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
     </div></div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.path').path('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.path').path('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.path').path('next');"><div>
         <h1 id="label"></h1>
     </div></div>

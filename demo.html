@@ -18,14 +18,14 @@
 var options = {order:"rand",limit:1};
 var standalone = false;
 var jlodb = function() {
-    $("#score").score('hide');
+    $("#g_score").score('hide');
     $("#activity").jlodb({
         standalone : standalone,
         onexercice: function($this, _id, _activity) { document.title = "jLoDb ["+_id+"]"; },
-        onfinish:   function($this, _hide)          { $("#score").score('hide'); },
+        onfinish:   function($this, _hide)          { $("#g_score").score('hide'); },
         onscore:    function($this, _ret)           {
             if (window.top.document.title != document.title) { window.top.postMessage(_ret, '*'); }
-            $("#score").score('show',_ret.score);
+            $("#g_score").score('show',_ret.score);
             return true;
         }
     }, options);
@@ -47,15 +47,21 @@ $(window).ready(function() {
     if (args.nosplash)   { $("body").addClass("nosplash"); }
     if (args.standalone) { standalone = true; }
     
-    $("#score").score(args.nonext?{}:{
+    $("#g_score").score(args.nonext?{}:{
         onreload    : function($this) { $('#activity').jlodb('reload'); },
         onnext      : function($this) { jlodb(); } 
     });
 
     // LAUNCH EXERCICE
     jlodb();
+	
+	
+	// var tree = jtools.math.pol2tree("3 1 / 3 5 1 + 4 / / * 15 3 2 / + / 1 + cos");
+	// $("#toto").html(jtools.math.tree2svg(tree));
 
 });
+
+
 
 //]]>
 </script>
@@ -64,8 +70,12 @@ $(window).ready(function() {
 <body><div>
 <div class="jlodb" style="display:inherit;">
     <div id="activity"></div>
-    <div id="score"></div>
+    <div id="g_score"></div>
 </div>
+
+<!--
+<div style="position:absolute; top:0; left:0; width:10em; height:10em; background-color:white; z-index:2000" id="toto"></div>
+-->
 
 </div>
 </body>

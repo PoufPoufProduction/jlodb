@@ -112,7 +112,7 @@
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
                 if (settings.exercice) { $this.find("#exercice").show().find(">div").html(settings.exercice); }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         }
     };
@@ -164,7 +164,7 @@
                     if (settings.show.length==2) {
                         settings.interactive = false;
                         setTimeout(function() {
-							$this.find("#effects").removeClass();
+							$this.find("#g_effects").removeClass();
 							
                             if (settings.cards[settings.show[0]].val == settings.cards[settings.show[1]].val) {
                                 $this.find("#m3board #"+settings.show[0]).css("opacity",0);
@@ -180,7 +180,7 @@
 
                         if ((settings.cards[settings.show[0]].val != settings.cards[settings.show[1]].val) && 
                             (settings.cards[settings.show[0]].nb++ | settings.cards[settings.show[1]].nb++ )) {
-                            $this.find("#effects").addClass("wrong");
+                            $this.find("#g_effects").addClass("wrong");
                             if (settings.score) { settings.score--; }
                         }
                         
@@ -189,19 +189,19 @@
                             var first = $this.find("#m3board #"+settings.show[0]).offset();
                             var second = $this.find("#m3board #"+settings.show[1]).offset();
                             var board = $this.offset();
-                            $this.find("#m3first>div").addClass("running").parent()
+                            $this.find("#m3first>div").addClass("g_arunning").parent()
                                 .css("left",(first.left-board.left)+"px")
                                 .css("top",(first.top-board.top)+"px")
                                 .show();
                                 
-                            $this.find("#m3second>div").addClass("running").parent()
+                            $this.find("#m3second>div").addClass("g_arunning").parent()
                                 .css("left",(second.left-board.left)+"px")
                                 .css("top",(second.top-board.top)+"px")
                                 .show();
                             
                             setTimeout(function(){
-                                $this.find("#m3first>div").removeClass("running").parent().hide();
-                                $this.find("#m3second>div").removeClass("running").parent().hide();
+                                $this.find("#m3first>div").removeClass("g_arunning").parent().hide();
+                                $this.find("#m3second>div").removeClass("g_arunning").parent().hide();
                             },800);
                         }
                     }

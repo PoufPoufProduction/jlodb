@@ -16,8 +16,8 @@
                             onclick="$(this).closest('.robot').find('#phelp').show();">
                 <img src="res/img/control/about.svg" alt=""/>
             </div>
-            <div id="tip"  ontouchstart="$(this).closest('.robot').find('#ptip').show();event.preventDefault();"
-                            onclick="$(this).closest('.robot').find('#ptip').show();">
+            <div id="g_tbutton"  ontouchstart="$(this).closest('.robot').find('#g_tip').show();event.preventDefault();"
+                            onclick="$(this).closest('.robot').find('#g_tip').show();">
                 <img src="res/img/control/tip.svg" alt=""/>
                 <div>0</div>
             </div>
@@ -807,21 +807,21 @@
 
     </div></div>
     
-    <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
-        <div id="tippopup"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
-        <div class="tip tip1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+    <div id="g_tip" ontouchstart="$(this).hide().find('#g_tvalid').hide();event.preventDefault();" onclick="$(this).hide().find('#g_tvalid').hide();"><div>
+        <div id="g_tpop"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+        <div class="g_tline g_tnum1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">1</div>
             <div id="tipc1" class="content"></div>
         </div>
-        <div class="tip tip2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+        <div class="g_tline g_tnum2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">2</div>
             <div id="tipc2" class="content"></div>
         </div>
-        <div class="tip tip3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+        <div class="g_tline g_tnum3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#g_tvalid').show();event.stopPropagation();">
             <div class="label">3</div>
             <div id="tipc3" class="content"></div>
         </div>
-        <div id="tipconfirm">
+        <div id="g_tvalid">
             <div class="icon"
                 ontouchstart="$(this).closest('.robot').robot('tip');event.stopPropagation();event.preventDefault();"
                 onclick="$(this).closest('.robot').robot('tip');event.stopPropagation();">
@@ -834,9 +834,9 @@
     
     <div id="rtgoal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
     
-    <div id="rttouch" class="anim12 center noloop quick"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
+    <div id="rttouch" class="g_anim12 g_acenter g_anoloop g_aquick"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
     
-    <div id="splashex" ontouchstart="$(this).hide().closest('.robot').robot('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.robot').robot('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.robot').robot('next');"><div>
         <h1 id="label"></h1>
     </div></div>

@@ -114,12 +114,12 @@
                     }
                 },100);
 
-                $this.find("#instructions").html(jtools.instructions(settings.exercice)).css("font-size",0.9*settings.fontex+"em");
+                $this.find("#g_instructions").html(jtools.instructions(settings.exercice)).css("font-size",0.9*settings.fontex+"em");
 
                 // Locale handling
 
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // PLACE THE OPERANDS ACCORDING TO THE MOVE POSITION
@@ -146,8 +146,8 @@
         build:function($this) {
             var settings = helpers.settings($this);
             var $board = $this.find("#ondata").html("");
-            $this.find("#effects").removeClass()
-            $this.find("#submit").removeClass()
+            $this.find("#g_effects").removeClass()
+            $this.find("#g_submit").removeClass()
 
             // Get the operation
             var vOpTmp;
@@ -397,11 +397,11 @@
                     vVal = settings.$keys[settings.key].text();
                     settings.keypad.html("<div>"+((settings.keypad.html()==vVal&&settings.keypad.html().length)?"":vVal)+"</div>");
 
-                    $this.find("#fill>div").addClass("running").parent()
+                    $this.find("#fill>div").addClass("g_arunning").parent()
                                 .css("left",(settings.keypad.offset().left-$this.find("#onboard").offset().left)+"px")
                                 .css("top",(settings.keypad.offset().top-$this.find("#onboard").offset().top)+"px")
                                 .show();
-                    setTimeout(function(){ $this.find("#fill>div").removeClass("running").parent().hide(); },500);
+                    setTimeout(function(){ $this.find("#fill>div").removeClass("g_arunning").parent().hide(); },500);
                 }
 
                 $this.find(".active").removeClass("s");
@@ -473,7 +473,7 @@
                             $this.find(".active,.value").get(settings.target[settings.targetid].index),
                             event, true); });
 
-                setTimeout(function() { $this.find("#target>div").addClass("running"); },0);
+                setTimeout(function() { $this.find("#target>div").addClass("g_arunning"); },0);
             }
 
             settings.interactive = true;
@@ -699,8 +699,8 @@
 
                     settings.score-=error*settings.ratioerr;
                     if (settings.score<0) { settings.score = 0; }
-                    $this.find("#effects").toggleClass("division", settings.type=="/").addClass(error?"wrong":"good");
-                    $this.find("#submit").addClass(error?"wrong":"good");
+                    $this.find("#g_effects").toggleClass("division", settings.type=="/").addClass(error?"wrong":"good");
+                    $this.find("#g_submit").addClass(error?"wrong":"good");
 
                     settings.count++;
 

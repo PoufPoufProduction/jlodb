@@ -20,27 +20,27 @@
         <div id="snkeypad">
             <table>
                 <tr><td></td><td>
-                    <div id="up" class="control" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'up');event.preventDefault();"
+                    <div id="up" class="g_control" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'up');event.preventDefault();"
                                  onclick="$(this).closest('.sokoban').sokoban('click', 'up');">
-                        <img src="res/img/default/control/up02.svg" alt="" class="up"/>
-                        <img src="res/img/default/control/up02a.svg" alt="" class="down"/>
+                        <img src="res/img/default/control/up02.svg" alt="" class="g_cup"/>
+                        <img src="res/img/default/control/up02a.svg" alt="" class="g_cdown"/>
                     </div>
                 </td><td></td></tr>
                 <tr>
-                    <td><div id="left" class="control" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'left');event.preventDefault();"
+                    <td><div id="left" class="g_control" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'left');event.preventDefault();"
                                        onclick="$(this).closest('.sokoban').sokoban('click', 'left');">
-                        <img src="res/img/default/control/left02.svg" alt="" class="up"/>
-                        <img src="res/img/default/control/left02a.svg" alt="" class="down"/>
+                        <img src="res/img/default/control/left02.svg" alt="" class="g_cup"/>
+                        <img src="res/img/default/control/left02a.svg" alt="" class="g_cdown"/>
                         </div></td>
-                    <td><div id="down" class="control" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'down');event.preventDefault();"
+                    <td><div id="down" class="g_control" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'down');event.preventDefault();"
                                        onclick="$(this).closest('.sokoban').sokoban('click', 'down');">
-                        <img src="res/img/default/control/none02.svg" alt="" class="up"/>
-                        <img src="res/img/default/control/none02a.svg" alt="" class="down"/>
+                        <img src="res/img/default/control/none02.svg" alt="" class="g_cup"/>
+                        <img src="res/img/default/control/none02a.svg" alt="" class="g_cdown"/>
                         </div></td>
-                    <td><div id="right" class="control" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'right');event.preventDefault();"
+                    <td><div id="right" class="g_control" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'right');event.preventDefault();"
                                        onclick="$(this).closest('.sokoban').sokoban('click', 'right');">
-                        <img src="res/img/default/control/right02.svg" alt="" class="up"/>
-                        <img src="res/img/default/control/right02a.svg" alt="" class="down"/>
+                        <img src="res/img/default/control/right02.svg" alt="" class="g_cup"/>
+                        <img src="res/img/default/control/right02a.svg" alt="" class="g_cdown"/>
                         </div></td>
                 </tr>
             </table>
@@ -49,7 +49,7 @@
 
     <div id="sngoal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
 	
-    <div id="splashex" ontouchstart="$(this).hide().closest('.sokoban').sokoban('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.sokoban').sokoban('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.sokoban').sokoban('next');"><div>
             <h1 id="label"></h1>
             <div id="snlight"><img src="res/img/asset/misc/goal02.svg" alt=""/></div>

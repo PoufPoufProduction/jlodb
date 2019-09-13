@@ -79,7 +79,7 @@
                 $this.find("#number_v").html(n);
                 $this.find("#exposure_v").html(settings.delay/1000);
                 $this.find("#error_v").html(settings.attempt);
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         hide: function($this) {

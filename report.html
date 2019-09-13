@@ -31,7 +31,7 @@
 var options = {order:"rand",limit:1};
 var standalone = false;
 var jlodb = function() {
-    $("#score").score('hide');
+    $("#g_score").score('hide');
     $("#activity").jlodb({
         standalone : standalone,
 		onstart: function() {
@@ -48,10 +48,10 @@ var jlodb = function() {
 			$("#re_right>*").removeClass("d");
 			$("#re_submit").removeClass("s");
 		},
-        onfinish:   function($this, _hide)          { $("#score").score('hide'); },
+        onfinish:   function($this, _hide)          { $("#g_score").score('hide'); },
         onscore:    function($this, _ret)           {
             if (window.top.document.title != document.title) { window.top.postMessage(_ret, '*'); }
-            $("#score").score('show',_ret.score);
+            $("#g_score").score('show',_ret.score);
             return true;
         }
     }, options);
@@ -100,7 +100,7 @@ $(window).ready(function() {
     if (args.nosplash)   { $("body").addClass("nosplash"); }
     if (args.standalone) { standalone = true; }
     
-    $("#score").score(args.nonext?{}:{
+    $("#g_score").score(args.nonext?{}:{
         onreload    : function($this) { $('#activity').jlodb('reload'); },
         onnext      : function($this) { jlodb(); } 
     });
@@ -145,7 +145,7 @@ $(window).ready(function() {
 <div class="jlodb" style="display:inherit;">
 	<div id="re_board">
 		<div id="activity"></div>
-		<div id="score"></div>
+		<div id="g_score"></div>
 	</div>
 	<div id="re_right">
 		<div id="re_id"></div>

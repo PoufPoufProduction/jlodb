@@ -216,11 +216,11 @@
                                 var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
                                 var x           = vEvent.clientX-$this.offset().left;
                                 var y           = vEvent.clientY-$this.offset().top;
-                                $this.find("#asfx>div").addClass("running").parent()
+                                $this.find("#asfx>div").addClass("g_arunning").parent()
                                     .css("left",Math.floor(x)+"px")
                                     .css("top",Math.floor(y)+"px")
                                     .show();
-                                setTimeout(function(){$this.find("#asfx>div").removeClass("running").parent().hide(); },500);
+                                setTimeout(function(){$this.find("#asfx>div").removeClass("g_arunning").parent().hide(); },500);
                             }
                         
                         }
@@ -231,10 +231,10 @@
                     }
                 });
 
-				$this.find("#instructions").css("font-size",(settings.fontex*0.4)+"em")
+				$this.find("#g_instructions").css("font-size",(settings.fontex*0.4)+"em")
 					 .html(jtools.instructions(settings.exercice));
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         update:function($this) {
@@ -279,8 +279,8 @@
         next: function($this, _reset) {
             var settings = helpers.settings($this);
             $(".val text", settings.svg.root()).text("");
-            $this.find("#effects").removeClass();
-            $this.find("#submit").removeClass();
+            $this.find("#g_effects").removeClass();
+            $this.find("#g_submit").removeClass();
             settings.ballid = 0;
 
             var data = settings.data[settings.id], val, i;
@@ -383,8 +383,8 @@
 					settings.id++;
 					settings.wrongs+=wrongs;
 
-					$this.find("#effects").addClass(wrongs?"wrong":"good");
-					$this.find("#submit").addClass(wrongs?"wrong":"good");
+					$this.find("#g_effects").addClass(wrongs?"wrong":"good");
+					$this.find("#g_submit").addClass(wrongs?"wrong":"good");
 
 					if (settings.id<settings.data.length) {
 						setTimeout(function() { helpers.next($this, settings.reset); }, wrong?2000:500);

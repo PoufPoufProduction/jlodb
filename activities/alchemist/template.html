@@ -1,6 +1,6 @@
 <div>
-    <div id="atbanner" ontouchstart="$(this).parent().find('#splashex').show();event.preventDefault();"
-                     onclick="$(this).parent().find('#splashex').show();"><img src='res/img/background/asset/potion01.svg' alt=''/></div>
+    <div id="atbanner" ontouchstart="$(this).parent().find('#g_splash').show();event.preventDefault();"
+                     onclick="$(this).parent().find('#g_splash').show();"><img src='res/img/background/asset/potion01.svg' alt=''/></div>
     
     <div id="atboard">
         <div id="atarea"></div>
@@ -30,27 +30,27 @@
         <div id="atkeypad">
             <table>
                 <tr><td></td><td>
-                    <div id="up" class="control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'up');event.preventDefault();"
+                    <div id="up" class="g_control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'up');event.preventDefault();"
                                  onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/control/up02.svg" alt="" class="up"/>
-                        <img src="res/img/default/control/up02a.svg" alt="" class="down"/>
+                        <img src="res/img/default/control/up02.svg" alt="" class="g_cup"/>
+                        <img src="res/img/default/control/up02a.svg" alt="" class="g_cdown"/>
                     </div>
                 </td><td></td></tr>
                 <tr>
-                    <td><div id="left" class="control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'left');event.preventDefault();"
+                    <td><div id="left" class="g_control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'left');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                            <img src="res/img/default/control/left02.svg" alt="" class="up"/>
-                            <img src="res/img/default/control/left02a.svg" alt="" class="down"/>
+                            <img src="res/img/default/control/left02.svg" alt="" class="g_cup"/>
+                            <img src="res/img/default/control/left02a.svg" alt="" class="g_cdown"/>
                         </div></td>
-                    <td><div id="down" class="control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'down');event.preventDefault();"
+                    <td><div id="down" class="g_control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'down');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                            <img src="res/img/default/control/down02.svg" alt="" class="up"/>
-                            <img src="res/img/default/control/down02a.svg" alt="" class="down"/>
+                            <img src="res/img/default/control/down02.svg" alt="" class="g_cup"/>
+                            <img src="res/img/default/control/down02a.svg" alt="" class="g_cdown"/>
                         </div></td>
-                    <td><div id="right" class="control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'right');event.preventDefault();"
+                    <td><div id="right" class="g_control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'right');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                            <img src="res/img/default/control/right02.svg" alt="" class="up"/>
-                            <img src="res/img/default/control/right02a.svg" alt="" class="down"/>
+                            <img src="res/img/default/control/right02.svg" alt="" class="g_cup"/>
+                            <img src="res/img/default/control/right02a.svg" alt="" class="g_cdown"/>
                         </div></td>
                 </tr>
             </table>
@@ -68,16 +68,16 @@
     </div>
     
     <div id="atneweltfx">
-        <div id="atstar05fx" class="anim12 noloop"><div><img src="res/img/default/anim/star05.svg"/></div></div>
-        <div id="atstar04fx" class="anim12 noloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
+        <div id="atstar05fx" class="g_anim12 g_anoloop"><div><img src="res/img/default/anim/star05.svg"/></div></div>
+        <div id="atstar04fx" class="g_anim12 g_anoloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
     </div>
     
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 	
-    <div id="splashex" ontouchstart="$(this).hide().closest('.alchemist').alchemist('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.alchemist').alchemist('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.alchemist').alchemist('next');"><div>
         <h1 id="label"></h1>
         <div id="goals">

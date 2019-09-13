@@ -1,42 +1,21 @@
-.where     { font-family:"Century Gothic", sans-serif; }
-.where.active                       { cursor:none; }
-.where>div                          { height:100%; }
-.where div#splashex            { background-image:url("../../res/img/banners/where.svg"); }
-.where div#splashex  h1                 { position:absolute; top:15%; left:55%; font-size:1.5em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.where div#splashex #guide_number:before { content:"×" }
-.where div#splashex #guide_number    { position:absolute; top:25%; left:42%; font-size:4em; color:red;
-                                          font-weight:bold; width:1.5em; overflow:visible; text-align:center; }
-.where                              { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;
-                       position:relative;}
-.where #keypad #svg                 { width:100%; height:100%; position:absolute; top:0; left:0; }
-.where #board                       { width:100%; height:1.4em; font-size:.5em; overflow:hidden; }
-.where.novalues #values             { display:none; }
-.where #values                      { text-align:center; overflow:hidden;
-                                      width:100%; height:1.2em; }
-.where #values ul                   { list-style-type:none; position:relative; top:0; left:0; padding:0;
-                                      -webkit-margin-before: 0em; background-image:url("../../res/img/default/pattern/line01.svg");
-                                      background-repeat:repeat; opacity:.9;}
-.where #values li                   { height:1.2em; overflow:visible; white-space:nowrap; color:rgb(53,34,34); cursor:pointer; }
-.where #comment                     { font-size:.4em; background-color:rgba(255,255,255,0.9);
-                           position:relative; top:0; left:0; z-index:200; text-align:center; width:100%; }
-.where #effects                     { position:absolute; z-index:500; font-size:4em; top:2%; left:75%;}
-.where #effects>div                 { width:1em; height:1em; display:none; }
-
-
-.where.h17 #values                  { height:1.7em; }
-.where.h17 #values li               { height:1.7em; }
-
-.where div#submit                   { font-size:1.5em; height:1em;width:1em; cursor:pointer;
-                                      position:absolute; top:7em; left:0em; z-index:3; }
-.where div#submit>img               { display:none; }
-.where div#submit #subvalid         { display:inline; }
-
-.where #values.s5 li                { background-color:limegreen; color:white;}
-.where #values.s4 li                { background-color:greenyellow; color:white;}
-.where #values.s3 li                { background-color:yellow; color:white;}
-.where #values.s2 li                { background-color:orange; color:white;}
-.where #values.s1 li                { background-color:red; color:white;}
-.where #values.s0 li                { background-color:purple; color:white;}
+.where                                      { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; position:relative;}
+.where.active                               { cursor:none; }
+.where>div                                  { height:100%; }
+.where div#g_splash                         { background-image:url("../../res/img/banners/where.svg"); }
+.where div#g_splash #guide_number:before    { content:"×" }
+.where div#g_splash #guide_number           { position:absolute; top:25%; left:42%; font-size:4em; color:red; font-weight:bold; width:1.5em; overflow:visible; text-align:center; }
+.where #wekeypad #svg                       { width:100%; height:100%; position:absolute; top:0; left:0; }
+.where.novalues #wevalues                   { display:none; }
+.where #wevalues                            { text-align:center; overflow:hidden; width:100%; height:1.2em; }
+.where #wevalues ul                         { list-style-type:none; position:relative; top:0; left:0; padding:0; -webkit-margin-before: 0em; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; opacity:.9;}
+.where #wevalues li                         { height:1.2em; overflow:visible; white-space:nowrap; color:rgb(53,34,34); cursor:pointer; }
+.where #wecomment                           { font-size:.4em; background-color:rgba(255,255,255,0.9); position:relative; top:0; left:0; z-index:200; text-align:center; width:100%; }
+.where.h17 #wevalues                        { height:1.7em; }
+.where.h17 #wevalues li                     { height:1.7em; }
+.where #wevalues.s5 li                      { background-color:limegreen; color:white;}
+.where #wevalues.s4 li                      { background-color:greenyellow; color:white;}
+.where #wevalues.s3 li                      { background-color:yellow; color:white;}
+.where #wevalues.s2 li                      { background-color:orange; color:white;}
+.where #wevalues.s1 li                      { background-color:red; color:white;}
+.where #wevalues.s0 li                      { background-color:purple; color:white;}
+.where #g_effects                             { z-index:500; }

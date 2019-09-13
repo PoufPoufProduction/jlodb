@@ -1,26 +1,26 @@
 <div>
 
-    <div id="sg_board">
-		<div id="sg_mask"></div>
-        <div id="sg_exercice"><div></div></div>
-        <div id="sg_interactive">
-            <div id="sg_question"></div>
-            <div id="sg_response"></div>
+    <div id="sgboard">
+		<div id="sgmask"></div>
+        <div id="sgexercice"><div></div></div>
+        <div id="sginteractive">
+            <div id="sgquestion"></div>
+            <div id="sgresponse"></div>
         </div>
     </div>
 	
-    <div id="submit" ontouchstart="$(this).closest('.sorting').sorting('check');event.preventDefault();" onclick="$(this).closest('.sorting').sorting('check');">
-        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
+    <div id="g_submit" ontouchstart="$(this).closest('.sorting').sorting('check');event.preventDefault();" onclick="$(this).closest('.sorting').sorting('check');">
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
     
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.sorting').sorting('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.sorting').sorting('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.sorting').sorting('next');"><div>
             <h1 id="label"></h1>
     </div></div>

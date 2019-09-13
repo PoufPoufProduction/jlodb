@@ -152,7 +152,7 @@
 					helpers.endturn($this);
 				}
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
 		// PROVIDE RANDOMLY CHOSEN POSITION TO AVAILABLE TILES
@@ -270,7 +270,7 @@
 				
 				if (gameover) {
 					settings.score=0;
-					$this.find("#effects").addClass("wrong");
+					$this.find("#g_effects").addClass("wrong");
 					setTimeout(function() {helpers.end($this, {'status':'success','score':settings.score});}, 1000);
 				}
             }
@@ -339,16 +339,16 @@
                                     settings.selected.active = false;
                                     elt.active = false;
 									
-									$this.find("#mgfx1>div").addClass("running").parent()
+									$this.find("#mgfx1>div").addClass("g_arunning").parent()
 									     .css("top",  settings.selected.$html.offset().top - $this.offset().top)
 										 .css("left", settings.selected.$html.offset().left - $this.offset().left)
 										 .show();
-									$this.find("#mgfx2>div").addClass("running").parent()
+									$this.find("#mgfx2>div").addClass("g_arunning").parent()
 									     .css("top",  elt.$html.offset().top - $this.offset().top)
 										 .css("left", elt.$html.offset().left - $this.offset().left)
 										 .show();
 									setTimeout(function() {
-										$this.find(".mgfx>div").removeClass("running").parent().hide();
+										$this.find(".mgfx>div").removeClass("g_arunning").parent().hide();
 									},800);
 										 
                                     setTimeout(function() {
@@ -361,7 +361,7 @@
 										for (var i in settings.elts) { if (settings.elts[i].active) { finish=false; } }
 										if (finish) {
 											settings.interactive = false;
-											$this.find("#effects").addClass("good");
+											$this.find("#g_effects").addClass("good");
 											setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1000); }
 										else        { helpers.endturn($this); }
                                     

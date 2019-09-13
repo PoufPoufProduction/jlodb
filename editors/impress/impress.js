@@ -66,7 +66,7 @@
 
 			$this.find("#e_control").html($control);
 			
-			var $valid = $("<div class='l bluekeypad'>OK</div>");
+			var $valid = $("<div class='l g_bluekey'>OK</div>");
 			$this.find("#e_control").append($valid);
 			$valid.bind("mousedown touchstart", function(_event) { helpers.valid($this, _args); });
 		},
@@ -116,7 +116,7 @@
 
                     var $settings = $.extend({}, defaults, options, settings);
                     $this.removeClass();
-                    helpers.settings($this.addClass(defaults.name+"_editor").addClass("jlodb_editor"), $settings);
+                    helpers.settings($this.addClass(defaults.name+"_editor").addClass("j_editor"), $settings);
                     helpers.load($this, options.args);
                 });
             },
@@ -165,7 +165,7 @@
 						case 'e_export':
 							if (settings.editpanel) {
 								var $export = $("<textarea id='e_export' class='export'></textarea>");
-								var $button = $("<div class='l bluekeypad'>OK</div>");
+								var $button = $("<div class='l g_bluekey'>OK</div>");
 								$export.val(JSON.stringify(data.slides));
 								$this.find("#e_control").html($export).append($button);
 								$button.bind("touchstart mousedown", function(_event) {

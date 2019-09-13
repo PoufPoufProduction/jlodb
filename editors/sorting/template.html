@@ -1,5 +1,5 @@
 <div>
-	<div class="e_column e_elt" id="e_editor">
+	<div class="j_ecol j_epart" id="e_editor">
 		<div id="e_data">
 			<textarea id="eph_exercice" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 			<input type="text" value="" id="eph_size" class="eph_value"/>
@@ -36,28 +36,28 @@
 				<textarea id="e_page6" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 			</div>
 		</div>
-		<div class="l bluekeypad" 
+		<div class="l g_bluekey" 
 			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('valid',this);event.preventDefault();"
 			onclick="$(this).closest('.sorting_editor').sorting_editor('valid',this);">OK</div>
 	</div>
 	
-	<div class="e_column e_elt" id="e_control"><div>
+	<div class="j_ecol j_epart" id="e_control"><div>
 		<textarea id='e_export' class='export' autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-		<div class='l bluekeypad'
+		<div class='l g_bluekey'
 			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('import',this);event.preventDefault();"
 			onclick="$(this).closest('.sorting_editor').sorting_editor('import',this);">
 			OK
 		</div>
 	</div></div>
 	
-	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+	<div class="j_epanel j_epart" id="e_screen"><div></div></div>
 
 
-	<div class="e_panel e_elt" id="e_menu"><div>
-		<div id="e_import" class="l bluekeypad"
+	<div class="j_epanel j_epart" id="e_menu"><div>
+		<div id="e_import" class="l g_bluekey"
 			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.sorting_editor').sorting_editor('edit',this);"></div>
-		<div id="e_submit" class="l bluekeypad"
+		<div id="e_submit" class="l g_bluekey"
 			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.sorting_editor').sorting_editor('edit',this);">→ jLoDb</div>
 	</div></div>

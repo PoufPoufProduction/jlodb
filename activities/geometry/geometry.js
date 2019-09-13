@@ -143,7 +143,7 @@
                 // CANCEL2 BUTTON
                 if (settings.withcancel) { $this.find("#cancel2").show(); }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         update: function($this, _anim) {
@@ -151,8 +151,8 @@
             $this.find("#nbelts").html(settings.histo.length+"/"+settings.number);
             $this.find("#info").toggleClass("wrong",settings.histo.length>settings.number);
             if (_anim) {
-                $this.find("#info").addClass("touch");
-                setTimeout(function() { $this.find("#info").removeClass("touch"); }, 50);
+                $this.find("#info").addClass("g_ktouch");
+                setTimeout(function() { $this.find("#info").removeClass("g_ktouch"); }, 50);
             }
         },
         // Check if a new element matches an objective

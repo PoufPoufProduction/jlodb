@@ -343,7 +343,7 @@
                             $this.find("#ptboard>svg").attr("class",settings["class"]+" done");
                             if (settings.effects) {
                                 $this.find("#ptgoal").css("left","110%").show().delay(400).animate({left:"60%"},300);
-                                setTimeout(function() { $this.find("#effects").addClass("good"); }, 1000);
+                                setTimeout(function() { $this.find("#g_effects").addClass("good"); }, 1000);
                             }
                             if ($("#flags", settings.svg.root()).length) {
                                 $($("#flags>*", settings.svg.root()).get(rr[rr.length-1])).show();
@@ -381,7 +381,7 @@
 					
 					
 					
-                    $this.find("#tip>div").html(settings.tips.length).parent().show();
+                    $this.find("#g_tbutton>div").html(settings.tips.length).parent().show();
                 }
                 
                 // LOCALE HANDLING
@@ -440,7 +440,7 @@
                             "<p>"+(settings.exercice[i].length?jtools.format(settings.exercice[i], gRegExp):"&#xA0;")+"</p>"); }
                     } else { $this.find("#exercice>div").css("font-size",settings.fontex+"em").html(jtools.format(settings.exercice, gRegExp)).parent().show(); }
                 }
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         isreachable: function (_x1,_y1,_x2,_y2,_limit) {
@@ -524,7 +524,7 @@
                     for (var i=1; i<tip.length; i++) {
                         var end=tip[i];
                         
-                        settings.svg.line( $("#tips", settings.svg.root()),
+                        settings.svg.line( $("#g_tbuttons", settings.svg.root()),
                             settings.nodes[begin][0], settings.nodes[begin][1],
                             settings.nodes[end][0], settings.nodes[end][1] );
                         
@@ -533,7 +533,7 @@
                     settings.score--;
                     settings.tipid++;
                     
-                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
+                    $this.find("#g_tbutton>div").html(settings.tips.length-settings.tipid);
                 }
                 $this.find("#ptmask").hide();
             }

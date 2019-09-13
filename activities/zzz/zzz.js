@@ -1,25 +1,16 @@
 (function($) {
     // Activity default options
     var defaults = {
-        name        : "boilerplate",                            // The activity name
-        label       : "Boilerplate",                            // The activity label
-        template    : "template.html",                          // Activity's html template
-        css         : "style.css",                              // Activity's css style sheet
-        lang        : "en-US",                                  // Current localization
-        exercice    : [],                                       // Exercice
-        background  : "",
-		edit		: false,									// Editor mode
-        debug       : false                                     // Debug mode
+        name        : "zzz",                            // The activity name
+        label       : "zzz",                            // The activity label
+        template    : "template.html",                  // Activity's html template
+        css         : "style.css",                      // Activity's css style sheet
+        lang        : "en-US",                          // Current localization
+        exercice    : [],                               // Exercice
+        background  : "",								// Background
+		edit		: false,							// Editor mode
+        debug       : false                             // Debug mode
     };
-
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
 
     // private methods
     var helpers = {
@@ -42,22 +33,12 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
+			settings.interactive = false;
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        // End all timers
-        quit: function($this) {
-            var settings = helpers.settings($this);
-            // if (settings.timerid) { clearTimeout(settings.timerid); }
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+			// if (settings.timerid) { clearTimeout(settings.timerid); }
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -104,15 +85,15 @@
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // Exercice
-                $this.find("#exercice").html(helpers.format(settings.exercice));
+                $this.find("#g_instructions").html(jtools.instructions(settings.exercice));
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         }
     };
 
     // The plugin
-    $.fn.boilerplate = function(method) {
+    $.fn.zzz = function(method) {
 
         // public methods
         var methods = {
@@ -145,14 +126,20 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                helpers.quit($this);
-                settings.context.onquit($this,{'status':'abort'});
-            }
+                helpers.end($this,{'status':'abort'});
+            },
+			valid: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+				$this.find("#g_submit").addClass("good");
+				$this.find("#g_effects").addClass("good");
+                settings.interactive = false;
+				setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1000);
+			}
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 
         else if (typeof method === 'object' || !method) { return methods.init.apply(this, arguments); }
-        else { $.error( 'Method "' +  method + '" does not exist in boilerplate plugin!'); }
+        else { $.error( 'Method "' +  method + '" does not exist in zzz plugin!'); }
     };
 })(jQuery);
 

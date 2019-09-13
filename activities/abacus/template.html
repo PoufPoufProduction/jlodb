@@ -1,22 +1,22 @@
 <div>
     <div id="asboard"></div>
-    <div id="instructions"></div>
+    <div id="g_instructions" class="g_ilarge"></div>
 	
-	<div id="submit" ontouchstart="$(this).closest('.abacus').abacus('valid');event.preventDefault();"
+	<div id="g_submit" ontouchstart="$(this).closest('.abacus').abacus('valid');event.preventDefault();"
                      onclick="$(this).closest('.abacus').abacus('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
     
-    <div id="asfx" class="anim12 flash noloop center"><div><img src="res/img/default/anim/touch01.svg"/></div></div>
+    <div id="asfx" class="g_anim12 g_aflash g_anoloop g_acenter"><div><img src="res/img/default/anim/touch01.svg"/></div></div>
     
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.abacus').abacus('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.abacus').abacus('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.abacus').abacus('next');"><div>
         <h1 id="label"></h1>
     </div></div>

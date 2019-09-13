@@ -1,46 +1,28 @@
-.trafficjam>div                     { height:100%; background-image:url("../../res/img/background/landscape/blueboard01.svg"); background-repeat:repeat; }
-.trafficjam div#splashex                 { background-color:rgba(0,0,0,0.3); background-image:url("../../res/img/banners/trafficjam.svg");
-                                       }
-.trafficjam div#splashex  h1        { position:absolute; top:14%; left:50%; font-size:1.4em; background-color:red;
-                                width:65%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                border:.3em solid white;
-                -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-
-.trafficjam div#board               { width:12em; height:12em; float:left; cursor:move; }
-.trafficjam div#board>div           { height:100%; position:relative;}
-
-.trafficjam div#board .r            { position:absolute; width:1em; height:1em; }
-.trafficjam div#board .b            { position:absolute; width:1em; height:1.67em; }
-.trafficjam div#board .n            { position:absolute; width:2em; height:2em;}
-.trafficjam div#board .c            { position:absolute; }
-.trafficjam div#board .c.h2         { width:2em; height:1.67em; }
-.trafficjam div#board .c.h3         { width:3em; height:1.67em; }
-.trafficjam div#board .c.v2         { width:1em; height:2.67em; }
-.trafficjam div#board .c.v3         { width:1em; height:3.67em; }
-
-.trafficjam div#menu                { width:3.9em; height:12em;
-                                      background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
-                                     border:.1em solid black; border-width:0 0 0 .1em;}
-.trafficjam div#buttons             { font-size:.5em; }
-.trafficjam div#buttons>div         { width:7em; height:1em; overflow:visible; margin:.8em .5em;
-                                      background-color:rgba(100,200,255,0.8); border-radius:.25em;
-                                      border:.1em solid rgb(50,100,128); }
-.trafficjam div#buttons #back       { cursor:pointer; }
-.trafficjam div#buttons .label       { margin-left:.5em; float:left; width:5.8em; font-size:.7em; color:rgb(20,80,100);}
-.trafficjam div#buttons .value      { position:relative; font-size:1.5em; top:-.2em; left:.4em; background-color:rgb(50,100,128);
-                                      border-radius:.25em; width:1.2em; height:1em; }
-.trafficjam div#buttons .value.d>div { position:relative; font-weight:bold; width:1.4em; font-size:0.9em; text-align:center; top:-.1em; color:rgb(200,240,255); }
-.trafficjam div#buttons .value.i  { background-color:transparent; font-size:1.8em; top:-.3em; }
-
-
-
-.trafficjam div#buttons>div.wrong .value { background-color:rgb(128,50,50); }
-.trafficjam div#buttons>div.wrong .value>div { color:rgb(255,200,200); }
-
-.trafficjam div#illustration            { position:absolute; z-index:100; width:1em; height:1em; top:1.9em; left:2.8em; font-size:4em; }
-.trafficjam div#exercice            { position:absolute; top:27%; left:77%; width:22%; height:35%; font-size:.35em; }
-.trafficjam .alert					{ z-index:102; display:none; position:absolute; font-size:3em; width:1em; height:1em; top:48%; left:80%; }
-.trafficjam #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:55%; }
+.trafficjam>div                             { height:100%; background-image:url("../../res/img/background/landscape/blueboard01.svg"); background-repeat:repeat; }
+.trafficjam #g_splash                       { background-image:url("../../res/img/banners/trafficjam.svg");}
+.trafficjam #tmboard                        { width:12em; height:12em; float:left; cursor:move; }
+.trafficjam #tmboard>div                    { height:100%; position:relative;}
+.trafficjam #tmboard .r                     { position:absolute; width:1em; height:1em; }
+.trafficjam #tmboard .b                     { position:absolute; width:1em; height:1.67em; }
+.trafficjam #tmboard .n                     { position:absolute; width:2em; height:2em;}
+.trafficjam #tmboard .c                     { position:absolute; }
+.trafficjam #tmboard .c.h2                  { width:2em; height:1.67em; }
+.trafficjam #tmboard .c.h3                  { width:3em; height:1.67em; }
+.trafficjam #tmboard .c.v2                  { width:1em; height:2.67em; }
+.trafficjam #tmboard .c.v3                  { width:1em; height:3.67em; }
+.trafficjam #tmmenu                         { width:3.9em; height:12em;background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; border:.1em solid black; border-width:0 0 0 .1em;}
+.trafficjam #tmbuttons                      { font-size:.5em; }
+.trafficjam #tmbuttons>div                  { width:7em; height:1em; overflow:visible; margin:.8em .5em; background-color:rgba(100,200,255,0.8); border-radius:.25em; border:.1em solid rgb(50,100,128); }
+.trafficjam #tmbuttons #tmback              { cursor:pointer; }
+.trafficjam #tmbuttons .tmlabel             { margin-left:.5em; float:left; width:5.8em; font-size:.7em; color:rgb(20,80,100);}
+.trafficjam #tmbuttons .tmvalue             { position:relative; font-size:1.5em; top:-.2em; left:.4em; background-color:rgb(50,100,128); border-radius:.25em; width:1.2em; height:1em; }
+.trafficjam #tmbuttons .tmdefault>div       { position:relative; font-weight:bold; width:1.4em; font-size:0.9em; text-align:center; top:-.1em; color:rgb(200,240,255); }
+.trafficjam #tmbuttons #tmforward           { background-color:transparent; font-size:1.6em; top:-.3em; float:left; overflow:inherit;}
+.trafficjam #tmbuttons>.wrong .tmvalue      { background-color:rgb(128,50,50); }
+.trafficjam #tmbuttons>.wrong .tmvalue>div  { color:rgb(255,200,200); }
+.trafficjam #tmillustration                 { position:absolute; z-index:100; width:1em; height:1em; top:1.9em; left:2.8em; font-size:4em; }
+.trafficjam #tmexercice                     { position:absolute; top:27%; left:77%; width:22%; height:35%; font-size:.35em; }
+.trafficjam .tmalert                        { z-index:102; display:none; position:absolute; font-size:3em; width:1em; height:1em; top:48%; left:80%; }
+.trafficjam #tmgoal					        { z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:55%; }
 
 

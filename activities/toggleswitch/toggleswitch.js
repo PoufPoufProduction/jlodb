@@ -86,10 +86,11 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+			if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id = 0; }    
+            settings.context.onquit($this, _args);
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -106,6 +107,8 @@
                 $("head").find("link").each(function() {
                     if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
                 });
+				
+				if (settings.automatic) { $this.addClass("automatic"); }
 
                 if(cssAlreadyLoaded) { helpers.loader.template($this); }
                 else {
@@ -137,7 +140,7 @@
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
                 setTimeout(function() { helpers.build($this); }, 500);
                 if (settings.time) { $this.addClass("timeattack"); }
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // REFRESH A TOGGLE ELEMENT
@@ -273,8 +276,8 @@
         // Build the question
         build: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#submit").removeClass("good").removeClass("wrong");
-            $this.find("#effects").hide();
+            $this.find("#g_submit").removeClass()
+            $this.find("#g_effects").removeClass()
             $this.removeClass("end");
 
             if (!settings.number)   { settings.number = (settings.values)?settings.values.length:1; }
@@ -295,37 +298,31 @@
             if (settings.exercice && settings.exercice.tag)     { settings.current.tag    = settings.exercice.tag;}
 			
             // HANDLE THE EXERCICE
+			$this.find("#g_instructions #content").css("font-size",0.5*settings.fontex+"em");
             if (settings.exercice) {
                 if ($.type(settings.exercice)=="string") {
-                    $this.find("#exercice #content").html(helpers.format(settings.exercice));
-					$this.find("#exercice #content").css("font-size",settings.fontex+"em");
+                    $this.find("#g_instructions #content").html(helpers.format(settings.exercice));
                 } else {
-                    $this.find("#exercice #content").html(helpers.format(settings.exercice.value));
+                    $this.find("#g_instructions #content").html(helpers.format(settings.exercice.value));
                     if (settings.current.tag) {
                         if ($.isArray(settings.current.tag)) {
-                            $this.find("#exercice #tag>div").html(settings.current.tag[settings.it%settings.current.tag.length]).parent().show();
+                            $this.find("#g_instructions #tag>div").html(settings.current.tag[settings.it%settings.current.tag.length]).parent().show();
                         }
                         else {
-                            $this.find("#exercice #tag>div").html(settings.current.tag).parent().show();
+                            $this.find("#g_instructions #tag>div").html(settings.current.tag).parent().show();
                         }
-                        $this.find("#exercice #tag>div").css("font-size",settings.fonttag+"em");
+                        $this.find("#g_instructions #tag>div").css("font-size",settings.fonttag+"em");
                     }
-                    if (settings.exercice.font) { $this.find("#exercice #content").css("font-size",settings.exercice.font+"em");
+                    if (settings.exercice.font) { $this.find("#g_instructions #content").css("font-size",settings.exercice.font+"em");
                     }
                 }
-                $this.find("#exercice").show();
+                $this.find("#g_instructions").show();
             } else
             if (settings.current.exercice) {
-                $this.find("#exercice #content").html(settings.current.comment);
-                $this.find("#exercice").show();
-				$this.find("#exercice #content").css("font-size",settings.fontex+"em");
+                $this.find("#g_instructions #content").html(settings.current.comment);
+                $this.find("#g_instructions").show();
 			}
-            else { $this.find("#exercice").hide(); }
-			
-			// AUTOMATIC VALIDATION
-			if (settings.automatic) {
-				$this.addClass("automatic");
-			}
+            else { $this.find("#g_instructions").hide(); }
 
             if (settings.current.template) {
                 var debug = "";
@@ -477,22 +474,18 @@
                     for (var i in settings.current.elts) { helpers.refresh($this, settings.current.elts[i]); }
 
                     var value = wrongs?"wrong":"good";
-                    $this.find("#submit").addClass(value);
+                    $this.find("#g_submit").addClass(value);
+                    $this.find("#g_effects").addClass(value);
                     settings.wrongs+=settings.errratio*wrongs;
                     settings.it++;
                     $this.addClass("end");
-
-                    $this.find("#effects>div").hide();
-                    if (!wrongs) { $this.find("#effects #good").css("opacity",0).show().animate({opacity:1},500); }
-                    else         { $this.find("#effects #wrong").css("opacity",0).show().animate({opacity:1},500); }
-                    $this.find("#effects").show();
 
                     if (settings.it>=settings.number) {
 
                         settings.score = 5-settings.wrongs;
                         if (settings.score<0) { settings.score = 0; }
                         $(this).find("#valid").hide();
-                        setTimeout(function() { helpers.end($this); }, wrongs?2000:1000);
+                        setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, wrongs?2000:1000);
                     }
                     else {
                         setTimeout(function() {
@@ -505,8 +498,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive 	= false;
-				if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id = 0; }
-                settings.context.onquit($this,{'status':'abort'});
+				helpers.end($this,{'status':'abort'});
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -515,7 +507,7 @@
                     settings.timer.begin = Date.now();
                     settings.timer.id = setTimeout(function() { helpers.timer($this); },200);
                 }
-                if (!settings.automatic) { $(this).find("#submit").show(); }
+                if (!settings.automatic) { $(this).find("#g_submit").show(); }
             },
             refresh: function() {
                 var $this = $(this) , settings = helpers.settings($this);

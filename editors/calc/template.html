@@ -1,5 +1,5 @@
 <div>
-	<div class="e_column e_elt" id="e_editor">
+	<div class="j_ecol j_epart" id="e_editor">
 		<div id="e_data">
 			<div id="e_tabs">
 				<div onclick="$(this).closest('#e_data').find('#e_tabs>div').removeClass('s');$(this).addClass('s').closest('#e_data').find('.e_tab').hide();$(this).closest('#e_data').find('#e_tab1').show();" class="s">1</div>
@@ -53,32 +53,32 @@
 			</div>
 			
 		</div>
-		<div class="l bluekeypad" 
+		<div class="l g_bluekey" 
 			ontouchstart="$(this).closest('.calc_editor').calc_editor('valid',this);event.preventDefault();"
 			onclick="$(this).closest('.calc_editor').calc_editor('valid',this);">OK</div>
 	</div>
 
 
-	<div class="e_column e_elt" id="e_control"><div>
+	<div class="j_ecol j_epart" id="e_control"><div>
 		<textarea id='e_export' class='export' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>
-		<div class='l bluekeypad'
+		<div class='l g_bluekey'
 			ontouchstart="$(this).closest('.calc_editor').calc_editor('import',this);event.preventDefault();"
 			onclick="$(this).closest('.calc_editor').calc_editor('import',this);">
 			OK
 		</div>
 	</div></div>
 	
-	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+	<div class="j_epanel j_epart" id="e_screen"><div></div></div>
 
 
-	<div class="e_panel e_elt" id="e_menu"><div>
-		<div id="e_cell" class="l bluekeypad"
+	<div class="j_epanel j_epart" id="e_menu"><div>
+		<div id="e_cell" class="l g_bluekey"
 			ontouchstart="$(this).closest('.calc_editor').calc_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.calc_editor').calc_editor('edit',this);"></div>
-		<div id="e_import" class="l bluekeypad"
+		<div id="e_import" class="l g_bluekey"
 			ontouchstart="$(this).closest('.calc_editor').calc_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.calc_editor').calc_editor('edit',this);"></div>
-		<div id="e_submit" class="l bluekeypad"
+		<div id="e_submit" class="l g_bluekey"
 			ontouchstart="$(this).closest('.calc_editor').calc_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.calc_editor').calc_editor('edit',this);">→ jLoDb</div>
 	</div></div>

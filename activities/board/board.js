@@ -330,7 +330,7 @@
                 // Optional devmode
                 if (settings.dev) { $this.find("#devmode").show(); }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         brush: function($this, _id) {
@@ -381,7 +381,7 @@
 				}
 				for (var j=0; j<size[1]; j++) for (var i=0; i<size[0]; i++) {
 					if (settings.bitmap[j][i]) {
-						var $elt=$("<div class='t alphakeypad' style='top:"+j+"em;left:"+i+"em;'/></div>");
+						var $elt=$("<div class='t g_alphakey' style='top:"+j+"em;left:"+i+"em;'/></div>");
 						var b=[
 							(j==0||!settings.bitmap[j-1][i]),
 							(i==size[0]-1||!settings.bitmap[j][i+1]),
@@ -432,7 +432,7 @@
                 helpers.save($this);
                 
                 settings.interactive = false;
-                $this.find("#bdboard .t").addClass("touch");
+                $this.find("#bdboard .t").addClass("g_ktouch");
                
                 for (var j=0; j<settings.bitmap.length; j++) for (var i=0; i<settings.bitmap[j].length; i++) {
                     if (settings.bitmap[j][i]) {
@@ -461,7 +461,7 @@
 						.show();
 				}
 				setTimeout(function() {
-					$this.find("#bdboard .t").removeClass("touch");
+					$this.find("#bdboard .t").removeClass("g_ktouch");
                     settings.interactive = true;
 					$this.find(".bd_splash").animate({opacity:0}, 200, function() { $(this).hide(); });
 				}, 400);
@@ -622,8 +622,8 @@
 						}
 					}
 		
-                    $this.find("#submit").addClass(nberrors?"wrong":"good");
-					$this.find("#effects").addClass(nberrors?"wrong":"good");
+                    $this.find("#g_submit").addClass(nberrors?"wrong":"good");
+					$this.find("#g_effects").addClass(nberrors?"wrong":"good");
                     
                     if (settings.stack.length>settings.nbsteps) { nberrors++; }
                     settings.score = Math.max(0, Math.round(5 - nberrors*settings.errratio));

@@ -1,6 +1,6 @@
 .asm .both *                        { overflow:visible; }
 .asm                                { background-color:#CEF;}
-.asm #splashex                      { background-image:url("../../res/img/banners/asm.svg"); }
+.asm #g_splash                      { background-image:url("../../res/img/banners/asm.svg"); }
 .asm #amboard                       { font-size:.5em; width:105%; }
 .asm #amboard>div                   { float:left; }
 .asm #amscreens>*                   { font-size:.75em; margin-left:.2em; }
@@ -20,7 +20,7 @@
 .asm #amkeypad #b                   { top:2.5em; left:4.5em; }
 .asm #amcontrols                    { position:relative; width:12em; height:5.5em; background-color:#AAA; background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
 .asm #amcontrols.running            { background-color:#5BB; }
-.asm #amcontrols .anim12			{ font-size:12em; margin-top:-.1em; opacity:0.2; }
+.asm #amcontrols .g_anim12			{ font-size:12em; margin-top:-.1em; opacity:0.2; }
 .asm #amscreens.s2 #amcontrols      { height:9.5em; }
 .asm #amscreens.s3 #amcontrols      { height:6.7em; }
 .asm #ambuttons                     { margin-left:1.2em; margin-top:.3em; position:absolute; top:0; }
@@ -44,7 +44,7 @@
 .asm.large #amcentral #amcode       { height:20em; }
 .asm.huge #amcentral #exercice      { height:21.4em; }
 .asm.huge #amcentral #amcode        { height:17em; }
-.asm .tip .t_code					{ padding:.1em .5em; font-size:.6em; }
+.asm #g_tip .t_code                 { padding:.1em .5em; font-size:.6em; }
 .asm #amdetail				        { width:22%; }
 .asm #amdetail>*                    { font-size:.75em; margin-left:.1em; width:100%; }
 .asm #amsource                      { height:25em; background-color:#112211; margin-top:.1em;  background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
@@ -52,7 +52,7 @@
 .asm #amsource .a                   { float:left; }
 .asm #amheader                      { font-size:2em; height:1em;}
 .asm #amheader .icon                { float:right; cursor:pointer; margin:.1em; font-size:.8em; }
-.asm  #amops                        { background-color:gray; padding-left:1%; width:110%; }
+.asm #amops                         { background-color:gray; padding-left:1%; width:110%; }
 .asm.smallsource #amsource #args	{ font-size:.65em; }
 .asm #amsource #args                { background-color:#666; height:40%; width:110%; }
 .asm #amsource .a                   { padding:0;  }

@@ -119,7 +119,7 @@
                 txt = txt.replace("$1","<span class='l'>"+settings.number+"</span>");
                 $this.find("#guide").html(txt);
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // Display the discovered elements
@@ -467,8 +467,8 @@
                             }
                         break;
                     }
-                    $this.find("#splashex ul").append("<li>"+txt+"</li>");
-                    $this.find("#splashex #goals").show();
+                    $this.find("#g_splash ul").append("<li>"+txt+"</li>");
+                    $this.find("#g_splash #goals").show();
                 }
             },
             // return s.normal, s.success or s.failure
@@ -604,12 +604,12 @@
                         settings.level++;
                         $this.find("#atneweltfx").css("top",(0.05+Math.floor(settings.level/3))+"em")
                                                 .css("left",(5.08+settings.level%3)+"em").show();
-                        $this.find("#atneweltfx>div>div").addClass("running");
+                        $this.find("#atneweltfx>div>div").addClass("g_arunning");
                         helpers.overview($this,settings.level);
                         helpers.alchemist($this,"happy");
                         setTimeout(function() {
                             $this.find("#atneweltfx").hide();
-                            $this.find("#atneweltfx>div>div").removeClass("running");
+                            $this.find("#atneweltfx>div>div").removeClass("g_arunning");
                             } , 1000);
                     }
 
@@ -644,10 +644,10 @@
                 if (d) { settings.waitend=500; }
 				if (l==0) {
                     transmut = true;
-                    $this.find("#effects").addClass("wrong");
+                    $this.find("#g_effects").addClass("wrong");
                     setTimeout(function(){helpers.alchemist($this,"lost")},d);
                 } else {
-                    $this.find("#effects").addClass("good");
+                    $this.find("#g_effects").addClass("good");
                     setTimeout(function(){helpers.alchemist($this,"win")},d);
                 }
                 if (l==5 && settings.ref) {
@@ -662,7 +662,7 @@
                 if (l>5) { l=5; }
                 if (l<0) { l=0; }
 				
-                $this.find("#effects").addClass("wrong");
+                $this.find("#g_effects").addClass("wrong");
                 
                 setTimeout(function(){helpers.alchemist($this,"lost")},d);
             }
@@ -750,7 +750,7 @@
                 });
             },
             click: function(elt) {
-                $(elt).addClass("touch");
+                $(elt).addClass("g_ktouch");
                 helpers.key($(this), $(elt).attr("id"));
             },
             next: function() {

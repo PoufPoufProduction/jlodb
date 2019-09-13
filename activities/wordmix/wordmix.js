@@ -12,15 +12,6 @@
         debug       : true                                     // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -42,17 +33,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -104,14 +88,14 @@
                         var legend = settings.legend[i];
                         if ($.isArray(legend)) { settings.result.push(legend[1]); legend = legend[0]; }
                         else                   { settings.result.push(legend); }
-                        $this.find("#values").append("<div id='l"+i+"' class='txt'>"+legend+"</div>");
+                        $this.find("#wxvalues").append("<div id='l"+i+"' class='txt'>"+legend+"</div>");
                     }
                 }
                 else
                 if (settings.illustration) {
                     for (var i in settings.illustration) {
                         settings.result.push(settings.illustration[i][1]);
-                        $this.find("#values").append("<div id='l"+i+"' class='icon'><img src='res/img/"+
+                        $this.find("#wxvalues").append("<div id='l"+i+"' class='icon'><img src='res/img/"+
                                                      settings.prefix+settings.illustration[i][0]+".svg'/></div>");
                     }
                 }
@@ -143,7 +127,7 @@
                 svgContent += "</g>";
 
                 svgContent += "</svg>";
-                var $board = $this.find("#board>div");
+                var $board = $this.find("#wxboard>div");
 
                 settings.data = { sx:sx, sy:sy, s:s, ss:ss, offset:offset, pos:0 };
 
@@ -156,21 +140,17 @@
 
                 // Exercice
                 if (settings.exercice) {
-                    if ($.isArray(settings.exercice)) {
-                        $this.find("#exercice").html("");
-                        for (var i in settings.exercice) { $this.find("#exercice").append(
-                            "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                    } else { $this.find("#exercice").html(helpers.format(settings.exercice)); }
-                    setTimeout(function() { $this.find("#exercice").show(); }, 100);
+					$this.find("#wxexercice").html(jtools.instructions(settings.exercice));
+                    setTimeout(function() { $this.find("#wxexercice").show(); }, 100);
                 }
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         handle: function($this) {
             var settings = helpers.settings($this);
 
-            var $board = $this.find("#board>div");
+            var $board = $this.find("#wxboard>div");
             settings.data.$group = $("#lines", settings.board.root());
 
             $board.bind("mousedown touchstart", function(event) {
@@ -246,8 +226,8 @@
                         }
                         for (var i = 0; i<settings.result.length; i++) {
                             if (settings.result[i]==w || settings.result[i]==rw) {
-                                if (!$this.find("#values #l"+i).hasClass("s")) {
-                                    $this.find("#values #l"+i).addClass("s");
+                                if (!$this.find("#wxvalues #l"+i).hasClass("s")) {
+                                    $this.find("#wxvalues #l"+i).addClass("s");
                                     settings.board.line(settings.data.$group, settings.data.pos[0]+0.5, settings.data.pos[1]+0.5,
                                                                           settings.data.pos[2]+0.5, settings.data.pos[3]+0.5, {});
                                 }
@@ -263,14 +243,15 @@
 
 
                     var finish = true;
-                    $this.find("#values>div").each(function() {
+                    $this.find("#wxvalues>div").each(function() {
                         if (!$(this).hasClass("s")) { finish = false; }
                     });
                     if (finish) {
                         settings.interactive = false;
                         settings.score = 5;
                         $this.addClass("done");
-                        setTimeout(function() { helpers.end($this); }, 2000);
+						$this.find("#g_effects").addClass("good");
+                        setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 2000);
                     }
 
 
@@ -316,7 +297,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

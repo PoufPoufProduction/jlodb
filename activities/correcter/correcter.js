@@ -173,10 +173,10 @@
                     if (settings.elt) {
                         var t = $this.find("#crpopup div.s").text();
                         if (t&&t.length) { settings.elt.html(t).css("opacity",0).animate({opacity:1},300); }
-						$this.find(".anim12>div").addClass("running").parent()
+						$this.find(".g_anim12>div").addClass("g_arunning").parent()
 						     .css("top",settings.elt.offset().top-$this.offset().top+settings.elt.height()/2)
 							 .css("left",settings.elt.offset().left-$this.offset().left+settings.elt.width()/2).show();
-						setTimeout(function(){ $this.find(".anim12>div").removeClass("running").parent().hide(); }, 500);
+						setTimeout(function(){ $this.find(".g_anim12>div").removeClass("g_arunning").parent().hide(); }, 500);
                     }
                     settings.elt = 0;
                     $this.find("#crpopup").hide();
@@ -213,7 +213,7 @@
                 $this.children().show();
 				helpers.highlight($this, settings.highlight);
 				
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
 		highlight: function($this, _value) {
@@ -375,16 +375,16 @@
                         }
                     });
                     
-                    $this.find("#effects").addClass(nbErrors?"wrong":"good");
-                    $this.find("#submit").addClass(nbErrors?"wrong":"good");
+                    $this.find("#g_effects").addClass(nbErrors?"wrong":"good");
+                    $this.find("#g_submit").addClass(nbErrors?"wrong":"good");
                     
                     var score = Math.max(0,5-nbErrors*settings.errratio);
                     $(this).find("#valid").hide();
 					if (settings.edit) {
 						setTimeout(function() {
 							$this.find("#crdata span").removeClass("wrong");
-							$this.find("#effects").removeclass();
-							$this.find("#submit").removeClass();
+							$this.find("#g_effects").removeclass();
+							$this.find("#g_submit").removeClass();
 							settings.interactive = true;
 						}, 1500);
 					}

@@ -21,19 +21,6 @@
         background  : ""
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
-        "\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'><img src='$1'/></div>",
-        "\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='background-image:url(\"$1\")'><img src='$2'/></div>",
-        "\\\[char ([^\\\]]+)\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char' style='background-image:url(\"$1\")'><img src='$2'/></div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -57,16 +44,8 @@
         // Quit the activity by calling the context callback
         end: function($this,_args) {
             var settings = helpers.settings($this);
-		    if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
-            helpers.unbind($this);
+		    helpers.unbind($this);
             settings.context.onquit($this,_args);
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
         },
         loader: {
             css: function($this) {
@@ -100,13 +79,13 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // RESIZE THE TEMPLATE
-                $this.find("#sg_board").addClass(settings.type);
-                $this.find("#splashex").addClass(settings.type);
-                $this.find("#sg_interactive>div").css("font-size",settings.font+"em");
+                $this.find("#sgboard").addClass(settings.type);
+                $this.find("#g_splash").addClass(settings.type);
+                $this.find("#sginteractive>div").css("font-size",settings.font+"em");
 
                 // DISPLAY STUFF
-                if (settings.exercice) { $this.find("#sg_exercice>div").html(helpers.format(settings.exercice)); }
-                $this.find("#sg_exercice>div").css("font-size",settings.fontex+"em").show();
+                if (settings.exercice) { $this.find("#sgexercice>div").html(jtools.format(settings.exercice)); }
+                $this.find("#sgexercice>div").css("font-size",settings.fontex+"em").show();
 
                 // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
@@ -114,7 +93,7 @@
                 // ADD BACKGROUND
                 if (settings.background) { $this.css("background-image","url("+settings.background+")"); }
                 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         build:function($this) {
@@ -122,8 +101,8 @@
             settings.elts   = [];
             settings.labels = [];
 
-            $this.find("#submit").removeClass();
-            $this.find("#effects").removeClass();
+            $this.find("#g_submit").removeClass();
+            $this.find("#g_effects").removeClass();
 
             // IS THERE MORE THAN ONE PAGE
             var vValues = settings.values;
@@ -189,36 +168,36 @@
                 settings.elts[vSecond] = vTmp;
             }
 
-            $this.find("#sg_question").html("");
+            $this.find("#sgquestion").html("");
             for (var i=0; i<settings.elts.length; i++) {
                 var vLabel = settings.labels[i][0];
                 if (vRegexpQuest) { vLabel=vLabel.replace(vRegexpQuest, settings.regexp.question.to); }
-                var html = "<div class='sg_q' style='background-color:"+settings.bgcolor[0]+";color:"+settings.color[0]+";";
+                var html = "<div class='sgq' style='background-color:"+settings.bgcolor[0]+";color:"+settings.color[0]+";";
                 if (settings.bg[0].length) { html+="background-image:url("+settings.bg[0]+");" }
                 if (settings.len) { html+="width:"+settings.len+"em;"}
-                html+="'>"+helpers.format(vLabel.toString())+"</div>";
-                $this.find("#sg_question").append(html);
+                html+="'>"+jtools.format(vLabel.toString())+"</div>";
+                $this.find("#sgquestion").append(html);
             }
 
-            $this.find("#sg_response").html("");
+            $this.find("#sgresponse").html("");
             for (var i=0; i<settings.elts.length; i++) {
                 var vValue = settings.elts[i][1];
                 if (vRegexpResp) { vValue=vValue.replace(vRegexpResp, settings.regexp.response.to); }
-                var html = "<div class='sg_r' id='"+i+"'>"+
-                           "<div class='sg_content' style='background-color:"+settings.bgcolor[1]+";color:"+settings.color[1]+";";
+                var html = "<div class='sgr' id='"+i+"'>"+
+                           "<div class='sgcontent' style='background-color:"+settings.bgcolor[1]+";color:"+settings.color[1]+";";
                 if (settings.bg[1].length) { html+="background-image:url("+settings.bg[1]+");" }
-                html+="'>"+helpers.format(vValue.toString())+"</div><div class='sg_mask'></div></div>";
-                $this.find("#sg_response").append(html);
+                html+="'>"+jtools.format(vValue.toString())+"</div><div class='sgmask'></div></div>";
+                $this.find("#sgresponse").append(html);
 
                 settings.elts[i][2] = i;
             }
 
-            $this.find(".sg_r").draggable({containment:"parent", scroll:false, axis:"y", stack:".sg_r",helper:"clone",
+            $this.find(".sgr").draggable({containment:"parent", scroll:false, axis:"y", stack:".sgr",helper:"clone",
                 start:function(event, ui) { $(this).addClass("switch"); },
                 stop:function(event, ui) { $(this).removeClass("switch"); }
             });
 
-            $this.find(".sg_r").droppable({
+            $this.find(".sgr").droppable({
                 drop:function(e, ui) {
                     var eltId   = parseInt(ui.draggable.attr("id"));
                     var dropId  = parseInt($(this).attr("id"));
@@ -230,15 +209,15 @@
                         settings.elts[eltId][2] = settings.elts[dropId][2];
                         settings.elts[dropId][2] = posId;
 						
-						$(this).find(".sg_mask").css("opacity",1).show();
-						$(ui.draggable).find(".sg_mask").css("opacity",1).show();
+						$(this).find(".sgmask").css("opacity",1).show();
+						$(ui.draggable).find(".sgmask").css("opacity",1).show();
 						
-                        var html=$(this).find(".sg_content").html();
-                        $(this).attr("id",eltId).find(".sg_content").html(ui.draggable.find(".sg_content").html());
-                        ui.draggable.attr("id",dropId).find(".sg_content").html(html);
+                        var html=$(this).find(".sgcontent").html();
+                        $(this).attr("id",eltId).find(".sgcontent").html(ui.draggable.find(".sgcontent").html());
+                        ui.draggable.attr("id",dropId).find(".sgcontent").html(html);
 						
-						$(this).find(".sg_mask").animate({opacity:0},500,function() { $(this).hide(); } );
-						$(ui.draggable).find(".sg_mask").animate({opacity:0},500,function() { $(this).hide(); } );
+						$(this).find(".sgmask").animate({opacity:0},500,function() { $(this).hide(); } );
+						$(ui.draggable).find(".sgmask").animate({opacity:0},500,function() { $(this).hide(); } );
                     }
 
                     else {
@@ -247,32 +226,32 @@
                             var moveup = (parentId>posId), min = moveup?posId:parentId+1, max = moveup?parentId-1:posId;
                             var vIds = [];
 							
-                            $this.find(".sg_r").each(function() { vIds.push(parseInt($(this).attr("id"))); });
+                            $this.find(".sgr").each(function() { vIds.push(parseInt($(this).attr("id"))); });
 							
                             for (var i=min; i<=max; i++) {
-								var $moved = $($this.find(".sg_r").get(i));
+								var $moved = $($this.find(".sgr").get(i));
 								var vId = vIds[i+(moveup?1:-1)];
                                 $moved.attr("id", vId);
 								
-								$moved.find(".sg_mask").css("opacity",1).css("background-color","orange").show();
-								$moved.find(".sg_content").html(helpers.format(settings.elts[vId][1]));
+								$moved.find(".sgmask").css("opacity",1).css("background-color","orange").show();
+								$moved.find(".sgcontent").html(jtools.format(settings.elts[vId][1]));
 								settings.elts[vId][2] = i;
-								$moved.find(".sg_mask").animate({opacity:0},500,function() { $(this).hide(); } );
+								$moved.find(".sgmask").animate({opacity:0},500,function() { $(this).hide(); } );
                             }
 							
-							var $moved = $($this.find(".sg_r").get(parentId));
+							var $moved = $($this.find(".sgr").get(parentId));
                             $moved.attr("id",eltId);
-							$moved.find(".sg_mask").css("opacity",1).css("background-color","yellow").show();
-							$moved.find(".sg_content").html(helpers.format(settings.elts[eltId][1]));
+							$moved.find(".sgmask").css("opacity",1).css("background-color","yellow").show();
+							$moved.find(".sgcontent").html(jtools.format(settings.elts[eltId][1]));
 							settings.elts[eltId][2] = parentId;
-							$moved.find(".sg_mask").animate({opacity:0},500,function() { $(this).hide(); } );
+							$moved.find(".sgmask").animate({opacity:0},500,function() { $(this).hide(); } );
 
                         }
                     }
                 },
                 hoverClass: "switch"
             });
-			$this.find("#sg_mask").hide();
+			$this.find("#sgmask").hide();
             settings.interactive = true;
         }
     };
@@ -318,7 +297,7 @@
                 if (settings.interactive) {
 
                     for (var i in settings.elts) {
-                        var elt = $this.find(".sg_r").get(i);
+                        var elt = $this.find(".sgr").get(i);
                         var id =  $(elt).attr("id");
                         // COMPARAISON IS DONE ON VALUES NOT ON INDEX BECAUSE VALUES MAY BE NOT UNIQUE
                         if (settings.labels[i][1]!=settings.elts[id][1]) {
@@ -329,10 +308,10 @@
                         else { $(elt).css("background-color","").addClass("good"); }
                     }
 
-                    $this.find("#submit").addClass(vGood?"good":"wrong");
-                    $this.find("#effects").addClass(vGood?"good":"wrong");
+                    $this.find("#g_submit").addClass(vGood?"good":"wrong");
+                    $this.find("#g_effects").addClass(vGood?"good":"wrong");
                     settings.interactive = false;
-					$this.find("#sg_mask").show();
+					$this.find("#sgmask").show();
 					
                     if (++settings.it >= settings.number) {
                         settings.score = Math.floor(5-settings.errratio*settings.wrong);
@@ -349,7 +328,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = false;
-				$this.find("#sg_mask").show();
+				$this.find("#sgmask").show();
                 helpers.end($this,{'status':'abort'});
             }
         };

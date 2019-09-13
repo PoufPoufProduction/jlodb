@@ -1,20 +1,21 @@
 <div class="svg">
-    <div id="keypad"></div>
-    <div id="comment"><div></div></div>
-    <div id="values"><ul></ul></div>
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="wekeypad"></div>
+    <div id="wecomment"><div></div></div>
+    <div id="wevalues"><ul></ul></div>
+	
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="submit" ontouchstart="$(this).closest('.where').where('submit');event.preventDefault();"
+    <div id="g_submit" ontouchstart="$(this).closest('.where').where('submit');event.preventDefault();"
                      onclick="$(this).closest('.where').where('submit');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg"  id="subgood" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.where').where('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.where').where('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.where').where('next');"><div>
             <h1 id="label"></h1>
             <div id="guide_number"></div>

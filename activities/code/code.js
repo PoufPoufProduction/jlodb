@@ -79,8 +79,8 @@
                 
                 // HANDLE THE TIPS
                 if (settings.tips) {
-                    $this.find("#tip>div").html(settings.tips.length);
-                    $this.find("#ptip .tip1").addClass("s");
+                    $this.find("#g_tbutton>div").html(settings.tips.length);
+                    $this.find("#g_tip .g_tnum1").addClass("s");
                 }
 
                 // Add specific value
@@ -113,7 +113,7 @@
 
 				$this.find("#exercice #ex").html(jtools.instructions(settings.exercice));
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
             speed: function($this) {
                 var settings = helpers.settings($this);
@@ -290,11 +290,11 @@
                     helpers.dropvalue($this, $elt);
 
                     $this.find("#cetouch>div")
-						.addClass("running").parent()
+						.addClass("g_arunning").parent()
 						.css("left",event.clientX-$this.offset().left)
                         .css("top",event.clientY-$this.offset().top)
                         .show();
-                    setTimeout(function(){$this.find("#cetouch>div").removeClass("running").parent().hide(); },800);
+                    setTimeout(function(){$this.find("#cetouch>div").removeClass("g_arunning").parent().hide(); },800);
                   }
             }});
         },
@@ -316,11 +316,11 @@
                     if (ok) {
                         $(this).html($e);
                         $this.find("#cetouch>div")
-							.addClass("running").parent()
+							.addClass("g_arunning").parent()
 							.css("left",event.clientX-$this.offset().left)
 							.css("top",event.clientY-$this.offset().top)
 							.show();
-						setTimeout(function(){$this.find("#cetouch>div").removeClass("running").parent().hide(); },800);
+						setTimeout(function(){$this.find("#cetouch>div").removeClass("g_arunning").parent().hide(); },800);
 
                         $this.find("#cecode").scrollTop(500);
 
@@ -736,7 +736,7 @@
         finish: function($this, _stopped) {
             var settings = helpers.settings($this);
             $this.find("#mask").hide();
-            $this.find("#controls").removeClass("running");
+            $this.find("#controls").removeClass("g_arunning");
             $this.find("#controls #play img").attr("src","res/img/control/play.svg");
             settings.data.running = false;
             settings.data.paused = false;
@@ -767,7 +767,7 @@
             }
 
             $this.find("#it .it").hide();
-            $this.find("#effects").addClass(good?"good":"wrong");
+            $this.find("#g_effects").addClass(good?"good":"wrong");
             if (good) {
                 $this.find("#it #itgood").show();
                 $this.find("#it>div").css("left","110%").animate({left:"30%"},500, function() {
@@ -818,11 +818,11 @@
                 
                 
             }
-            $this.find("#effects").show();
+            $this.find("#g_effects").show();
         },
         clean: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects").removeClass();
+            $this.find("#g_effects").removeClass();
             $this.find("#continue").hide();
             $this.find("#dialog>div").html("").parent().hide();
             $this.find("#cecode #celines .line").removeClass("s");
@@ -922,7 +922,7 @@
                     }
                     else {
                         $this.find(".mask").show();
-                        $this.find("#controls").addClass("running");
+                        $this.find("#controls").addClass("g_arunning");
                         $this.find("#controls #play img").attr("src","res/img/control/pause.svg");
                         settings.data.running = true;
                         settings.data.paused = false;
@@ -977,14 +977,14 @@
             tip: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.tipid<settings.tips.length) {
-                    $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
+                    $this.find("#g_tip .g_tnum"+(settings.tipid+1)).removeClass("s").addClass("f")
                          .find(".content").html(jtools.format(settings.tips[settings.tipid]));
                          
                     settings.tipid++;
-                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
-                    if (settings.tipid<settings.tips.length) { $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s"); }
-                    $this.find("#tipconfirm").hide();
-                    $this.find("#tippopup").css("opacity",1).show()
+                    $this.find("#g_tbutton>div").html(settings.tips.length-settings.tipid);
+                    if (settings.tipid<settings.tips.length) { $this.find("#g_tip .g_tnum"+(settings.tipid+1)).addClass("s"); }
+                    $this.find("#g_tvalid").hide();
+                    $this.find("#g_tpop").css("opacity",1).show()
                          .animate({opacity:0},1000,function() { $(this).hide(); });
                     settings.wrong++;
                 }

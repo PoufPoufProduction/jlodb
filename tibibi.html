@@ -104,17 +104,17 @@ var tibibi = {
                                 {value:_state, course:$("#bigcourses").val(), tibibi:$("#biggroups").val()}, "", function(_data) {});
                     } },
                     onclick : function($this, _args) {
-                        $("#waiting").show().find("div").addClass("running");
+                        $("#waiting").show().find("div").addClass("g_arunning");
                         $("#activity").jlodb({
                             onstart:    function($this) { $("#rmenu").hide(); $this.parent().show();
-                                                          $("#waiting").hide().find("div").removeClass("running"); },
+                                                          $("#waiting").hide().find("div").removeClass("g_arunning"); },
                             onfinish:   function($this, _hide) { if (_hide) { $("#rmenu").show(); $this.parent().hide(); }
-                                                                 $("#score").score('hide'); },
+                                                                 $("#g_score").score('hide'); },
                             onscore:    function($this, _ret) {
                                 var isnext = false;
                                 if (_ret.score>=2) { isnext = $("#bimenu").menu('score', _ret.score).menu('more'); }
-                                $("#score #next").toggle(isnext);
-                                $("#score").score('show',_ret.score);
+                                $("#g_score #next").toggle(isnext);
+                                $("#g_score").score('show',_ret.score);
                                 return true; } },_args);
                     }
                 });
@@ -422,11 +422,11 @@ var tibibi = {
         }
     },
     run : function(_args) {
-        $("#waiting").show().find("div").addClass("running");
+        $("#waiting").show().find("div").addClass("g_arunning");
         $("#activity").jlodb({ onstart: function($this) { $("#bicontent").hide(); $this.parent().show();
-                                                          $("#waiting").hide().find("div").removeClass("running"); },
+                                                          $("#waiting").hide().find("div").removeClass("g_arunning"); },
                                onfinish:function($this) { $("#bicontent").show(); $this.parent().hide();
-                                                          $("#score").score('hide'); }},_args);
+                                                          $("#g_score").score('hide'); }},_args);
     },
     qtimer : 0,
     quit : function() {
@@ -487,7 +487,7 @@ $(window).ready(function() {
         }
     });
     
-    $("#score").score({
+    $("#g_score").score({
         onreload:function($this) { $('#activity').jlodb('reload'); },
         onmenu:  function($this) { $('#activity').jlodb('close', true); },
         onnext:  function($this) { $('#activity').jlodb('close',false);$('#bimenu').menu('next'); } 
@@ -554,9 +554,9 @@ $(window).ready(function() {
                 <div id="bibrowser"></div></div>
         </div>
 
-        <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg" alt=""/></div></div>
+        <div id="waiting" class="g_anim12"><div><img src="res/img/default/anim/waiting_red.svg" alt=""/></div></div>
 
-        <div id="score"></div>
+        <div id="g_score"></div>
 
         <div id="biscreen">
             <div id="list"></div>
@@ -565,7 +565,7 @@ $(window).ready(function() {
         </div>
  
         <div class="jlodb">
-            <div id="quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+            <div id="g_quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
                            onclick="$('#activity').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
             <div id="activity"></div>
         </div>

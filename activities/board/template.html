@@ -18,21 +18,21 @@
 				<div id="bdslider"></div>
 				<div id="bdvalue"></div>
 			</div>
-			<div id="bdback" class="control" ontouchstart="$(this).closest('.board').board('back');event.preventDefault();"
+			<div id="bdback" class="g_control" ontouchstart="$(this).closest('.board').board('back');event.preventDefault();"
 							   onclick="$(this).closest('.board').board('back');">
-				<div class="icon up" id="left1"><img src="res/img/default/control/left02.svg" alt="X"/></div>
-				<div class="icon down" id="left2"><img src="res/img/default/control/left02a.svg" alt="X"/></div>
+				<div class="icon g_cup" id="left1"><img src="res/img/default/control/left02.svg" alt="X"/></div>
+				<div class="icon g_cdown" id="left2"><img src="res/img/default/control/left02a.svg" alt="X"/></div>
 			</div>
 		</div>
 		<div id="bdmodel" class="bdgoal"></div>
 		<div id="bdcomment" class="bdgoal"><div></div></div>
     </div></div>
     
-    <div id="submit" ontouchstart="$(this).closest('.board').board('valid');event.preventDefault();"
+    <div id="g_submit" ontouchstart="$(this).closest('.board').board('valid');event.preventDefault();"
                      onclick="$(this).closest('.board').board('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
     
     <div id="bdpaint" ontouchstart="$(this).closest('.board').board('paint');event.preventDefault();"
@@ -45,12 +45,12 @@
 	<div class="bd_splash" id="bd_splash3"><img src="res/img/asset/splashes/green01.svg" alt=""/></div>
 	<div class="bd_splash" id="bd_splash4"><img src="res/img/asset/splashes/yellow01.svg" alt=""/></div>
     
-    <div id="effects">
-		<div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+		<div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
     
-    <div id="splashex" ontouchstart="$(this).hide().closest('.board').board('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.board').board('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.board').board('next');"><div>
         <h1 id="label"></h1>
     </div></div>

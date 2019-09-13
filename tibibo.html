@@ -31,7 +31,7 @@
 #bomain.devmode .devmode    { display:inline; }
 #bomain                     { position:relative; background-image:url('res/img/background/landscape/blueboard01.svg'); display:none; }
 
-#bomain #scoreaward         { position:absolute; font-size:4em; top:10%; left:70%; background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; background-color:#69b5cd;}
+#bomain ##g_scoreaward         { position:absolute; font-size:4em; top:10%; left:70%; background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; background-color:#69b5cd;}
 
 #bosplash					{ background-image:url("res/img/default/background/jlodb01.svg"); position:absolute; top:0;left:0; background-color:#0A0A0A; width:100%; height:100%; z-index:5; display:none; }
 #bosplash>div			{ color:white; margin:20% auto; width:75%; height:50%; background-image:url("res/img/banners/jlodb_tibibo.svg"); background-repeat:no-repeat;}
@@ -102,7 +102,7 @@
 #boawardscontent #move       { font-size:.5em; position:absolute; top:60%; left:30%; cursor:pointer; }
 #boawardscontent #del        { font-size:.5em; position:absolute; top:60%; left:65%; cursor:pointer; }
 
-#boawardscontent .anim12    { position:absolute; font-size:2em; }
+#boawardscontent .g_anim12    { position:absolute; font-size:2em; }
 #boawardscontent .fire1     { top:-.3em; left:-.3em; }
 #boawardscontent .fire2     { top:-.2em; left:-.2em; }
 
@@ -534,8 +534,8 @@ var tibibo = {
                 $img.append("<img src='"+src+"' alt=''/>");
                 if (done && !prev) {
                     
-                    $elt.append("<div class='fire1 icon anim12 noloop'><div><img src='res/img/default/anim/star05.svg'/></div></div>");
-                    $elt.append("<div class='fire2 icon anim12 noloop'><div><img src='res/img/default/anim/star06.svg'/></div></div>");
+                    $elt.append("<div class='fire1 icon g_anim12 g_anoloop'><div><img src='res/img/default/anim/star05.svg'/></div></div>");
+                    $elt.append("<div class='fire2 icon g_anim12 g_anoloop'><div><img src='res/img/default/anim/star06.svg'/></div></div>");
             
                     $elt.addClass("new").bind("touchstart mousedown", function(_event) {
                         $(this).removeClass("new").addClass("done");
@@ -544,9 +544,9 @@ var tibibo = {
                         $(this).find(".img img").attr("src", tibibo.awards.icons[award.icon])
                             .css("opacity",0).animate({opacity:1},1500);
                         tibibo.book.data.awards[id][4] = 1;
-                        $(this).find(".anim12").show().find("div").addClass("running");
+                        $(this).find(".g_anim12").show().find("div").addClass("g_arunning");
                         setTimeout(function(){
-                            $("#boawards .anim12").hide().find("div").removeClass("running");
+                            $("#boawards .g_anim12").hide().find("div").removeClass("g_arunning");
 							
 							$("#bomain #congrats")
 								.html(tibibo.locale.congrats[Math.floor(Math.random()*tibibo.locale.congrats.length)])
@@ -663,7 +663,7 @@ var tibibo = {
 		},
 		launch: function(_args, _shuffle) {
 			tibibo.process.shufflemode = _shuffle;
-			$("#waiting").show().find("div").addClass("running");
+			$("#waiting").show().find("div").addClass("g_arunning");
             $("#activity").jlodb({
                 standalone: tibibo.standalone,
                 onstart:    function($this) {
@@ -671,10 +671,10 @@ var tibibo = {
                         $this.parent().css("opacity",0)
                              .animate({opacity:1},500, function() { $("#bopage").hide(); }).show();
                     }
-                    $("#waiting").hide().find("div").removeClass("running"); },
+                    $("#waiting").hide().find("div").removeClass("g_arunning"); },
                 onfinish:   function($this, _hide) {
                     if (_hide) { $this.parent().hide(); $("#bopage").show(); }
-                    $("#score").score('hide'); },
+                    $("#g_score").score('hide'); },
                 onscore:    function($this, _ret) {
                     var isnext = false;
                     if (_ret.score>=2) {
@@ -688,9 +688,9 @@ var tibibo = {
 						}
 						else { isnext = $("#boframe").menu('score', _ret.score).menu('more'); }
 					}
-                    $("#score #next").toggle(isnext);
-                    $("#score").score('show',_ret.score);
-                    $("#scoreaward").toggle(tibibo.awards.check());
+                    $("#g_score #next").toggle(isnext);
+                    $("#g_score").score('show',_ret.score);
+                    $("##g_scoreaward").toggle(tibibo.awards.check());
                     return true; } },_args);
 		},
 		shuffle: {
@@ -1223,7 +1223,7 @@ $(window).ready(function() {
         
     }
     
-    $("#score").score({
+    $("#g_score").score({
         onreload:function($this) { $('#activity').jlodb('reload'); },
         onmenu:  function($this) { $('#activity').jlodb('close', true); 
                                 tibibo.book.display(); },
@@ -1234,8 +1234,8 @@ $(window).ready(function() {
 		} 
     });
     
-    var $award = $("<div id='scoreaward' class='icon'><img src='res/img/default/white/award.svg' alt=''/></div>").insertAfter("#score #fire3").bind("touchstart mousedown", function(_event) {
-        $("#score").hide();
+    var $award = $("<div id='scoreaward' class='icon'><img src='res/img/default/white/award.svg' alt=''/></div>").insertAfter("#g_score #fire3").bind("touchstart mousedown", function(_event) {
+        $("#g_score").hide();
         $(".jlodb").hide();
 		tibibo.book.display();
         $("#bopage").show();
@@ -1456,11 +1456,11 @@ $(window).ready(function() {
 	
 	<div id="congrats"></div>
     
-    <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg"/></div></div>
-    <div id="score"></div>
+    <div id="waiting" class="g_anim12"><div><img src="res/img/default/anim/waiting_red.svg"/></div></div>
+    <div id="g_score"></div>
  
     <div class="jlodb">
-        <div id="quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+        <div id="g_quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
                        onclick="$('#activity').jlodb('quit');">
             <img src="res/img/default/icon/nw_quit01.svg"/></div>
         <div id="activity"></div>

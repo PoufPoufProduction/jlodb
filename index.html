@@ -237,9 +237,9 @@ jlodb = {
 				}).show();
 			},
 			install: function(_mod) {
-				$("#waiting").show().find("div").addClass("running");
+				$("#waiting").show().find("div").addClass("g_arunning");
 				$.getJSON("mods/"+_mod+"/api/build.php", function(_data) {
-					$("#waiting").hide().find("div").removeClass("running");
+					$("#waiting").hide().find("div").removeClass("g_arunning");
 					jlodb.checkdb[_mod] = data.error?false:true;
 					jlodb.page.mods.admin(_mod);
 				});
@@ -379,13 +379,13 @@ jlodb = {
                     function (data) { $("body>div").toggleClass("logged", (data.status=="success")); });
             },
             install: function() {
-                $("#jlodb #mask").show(); $("#waiting div").addClass("running"); $("#waiting").show(); $("#waitingCount").show();
+                $("#jlodb #mask").show(); $("#waiting div").addClass("g_arunning"); $("#waiting").show(); $("#waitingCount").show();
                 if (jlodb.page.admin.timer) { clearTimeout(jlodb.page.admin.timer); }
                 jlodb.page.admin.timer = setTimeout(jlodb.page.admin.waiting, 100);
 
 
                 $.getJSON("api/builddb.php", function(data) {
-                    $("#jlodb #mask").hide(); $("#waiting div").removeClass("running"); $("#waiting").hide(); $("#waitingCount").hide();
+                    $("#jlodb #mask").hide(); $("#waiting div").removeClass("g_arunning"); $("#waiting").hide(); $("#waitingCount").hide();
                     clearTimeout(jlodb.page.admin.timer);
                     if (data.status=="success") {
                         // No warning anymore because of the "ON DUPLICATE KEY UPDATE" in API
@@ -432,12 +432,12 @@ jlodb = {
     ubr  : true,
     run        : function(_args, _update) {
         jlodb.ubr = _update;
-        $("#waiting").show().find("div").addClass("running");
+        $("#waiting").show().find("div").addClass("g_arunning");
         $("#activity").jlodb({ onstart:    function($this)       { $("#jlodb").hide(); $this.parent().show();
-                                                                   $("#waiting").hide().find("div").removeClass("running"); },
+                                                                   $("#waiting").hide().find("div").removeClass("g_arunning"); },
                                onfinish:   function($this, _hide){ if (_hide) { $("#jlodb").show(); $this.parent().hide(); }
-                                                                   $("#score").score('hide'); },
-                               onscore:    function($this, _ret) { $("#score").score('show',_ret.score); return true; },
+                                                                   $("#g_score").score('hide'); },
+                               onscore:    function($this, _ret) { $("#g_score").score('show',_ret.score); return true; },
                                onexercice: function($this,_id,_a){ if (jlodb.ubr) { $("#jlcontentb").browser("id",_id); } } },_args);
     },
     content     : function(_url) { $("#jlcontenta").load(_url+"?debug="+Math.floor(Math.random()*99999)); },
@@ -528,7 +528,7 @@ $(window).ready(function() {
 	$(window).resize();
 	$.ajaxSetup({ mimeType: "text/plain" });
 
-    $("#score").score({
+    $("#g_score").score({
         onreload:function($this) { $('#activity').jlodb('reload'); },
         onmenu:  function($this) { $('#activity').jlodb('close', true); } 
     });
@@ -560,13 +560,13 @@ $(window).ready(function() {
             <div id="jlfooter"><div id="jlconsole">Waiting for server response...</div></div>
         </div>
     </div>
-    <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg" alt=""/></div></div>
+    <div id="waiting" class="g_anim12"><div><img src="res/img/default/anim/waiting_red.svg" alt=""/></div></div>
     <div id="waitingCount"><div></div></div>
 
-    <div id="score"></div>
+    <div id="g_score"></div>
 
     <div class="jlodb">
-        <div id="quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+        <div id="g_quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
                        onclick="$('#activity').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg" alt=""/></div>
         <div id="activity"></div>
     </div>

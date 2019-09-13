@@ -122,9 +122,9 @@
                 }); }
 				
                 if (settings.exercice) {
-                    $this.find("#instructions #content").html(jtools.format(settings.exercice)).css("font-size",0.5*settings.fontex+"em");
-                    if (settings.labelex) { $this.find("#instructions #tag").html(settings.labelex).show(); }
-                    $this.find("#instructions").show();
+                    $this.find("#g_instructions #content").html(jtools.format(settings.exercice)).css("font-size",0.5*settings.fontex+"em");
+                    if (settings.labelex) { $this.find("#g_instructions #tag").html(settings.labelex).show(); }
+                    $this.find("#g_instructions").show();
                 }
                 
                 // HANDLE BACKGROUND
@@ -132,7 +132,7 @@
 
                 helpers.build($this);
 
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
         },
         isdecoy:function($this, _id) {
@@ -171,8 +171,8 @@
         build: function($this) {
             var settings = helpers.settings($this);
             settings.elts             = {};
-            $this.find("#submit").removeClass();
-            $this.find("#effects").removeClass();
+            $this.find("#g_submit").removeClass();
+            $this.find("#g_effects").removeClass();
             $this.find(".t").hide();
             var inituse               = [];
             var ids                   = [];
@@ -618,8 +618,8 @@
                 settings.puzzleid++;
 
 				$(settings.svg.root()).attr("class", $(settings.svg.root()).attr("class")+(wrongs?" wrong":" good"));
-				$this.find("#submit").addClass(wrongs?"wrong":"good");
-                $this.find("#effects").addClass(wrongs?"wrong":"good");
+				$this.find("#g_submit").addClass(wrongs?"wrong":"good");
+                $this.find("#g_effects").addClass(wrongs?"wrong":"good");
 					
                 
                 if ( settings.puzzleid<settings.number ) {

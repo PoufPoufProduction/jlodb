@@ -141,7 +141,7 @@
 
                     var $settings = $.extend({}, defaults, options, settings);
                     $this.removeClass();
-                    helpers.settings($this.addClass(defaults.name+"_editor").addClass("jlodb_editor"), $settings);
+                    helpers.settings($this.addClass(defaults.name+"_editor").addClass("j_editor"), $settings);
                     helpers.load($this, options.args);
                 });
             },

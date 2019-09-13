@@ -1,22 +1,22 @@
 <div>
     <div id="petxt"><div></div></div>
-    <div id="instructions" class="low"><div><div id="tag"></div><div id="content"></div></div></div>
+    <div id="g_instructions"><div><div id="tag"></div><div id="content"></div></div></div>
 
     <div id="peboard"></div>
 
-    <div id="submit" ontouchstart="$(this).closest('.puzzle').puzzle('submit');event.preventDefault();"
+    <div id="g_submit" ontouchstart="$(this).closest('.puzzle').puzzle('submit');event.preventDefault();"
                      onclick="$(this).closest('.puzzle').puzzle('submit');">
-        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
     </div>
 	
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.puzzle').puzzle('next');event.preventDefault();"
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.puzzle').puzzle('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.puzzle').puzzle('next');"><div>
         <h1 id="label"></h1>
     </div></div>

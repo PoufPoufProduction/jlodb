@@ -1,5 +1,5 @@
 <div>
-	<div class="e_column e_elt" id="e_editor">
+	<div class="j_ecol j_epart" id="e_editor">
 		<div id="e_data">
 			<textarea id="eph_exercice"></textarea>
 			<div class="e_goal blue">
@@ -17,34 +17,34 @@
 			<input type="text" value="" id="eph_size"/>
 			<textarea id="eph_line1" class="e_line"></textarea>
 		</div>
-		<div class="l bluekeypad" 
+		<div class="l g_bluekey" 
 			ontouchstart="$(this).closest('.marker_editor').marker_editor('valid',this);event.preventDefault();"
 			onclick="$(this).closest('.marker_editor').marker_editor('valid',this);">OK</div>
 	</div>
 	
-	<div class="e_column e_elt" id="e_control"><div>
+	<div class="j_ecol j_epart" id="e_control"><div>
 		<textarea id='e_export' class='export'></textarea>
-		<div class='l bluekeypad'
+		<div class='l g_bluekey'
 			ontouchstart="$(this).closest('.marker_editor').marker_editor('import',this);event.preventDefault();"
 			onclick="$(this).closest('.marker_editor').marker_editor('import',this);">
 			OK
 		</div>
 	</div></div>
 	
-	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+	<div class="j_epanel j_epart" id="e_screen"><div></div></div>
 
 
-	<div class="e_panel e_elt" id="e_menu"><div>
-		<div id="e_get" class="l bluekeypad"
+	<div class="j_epanel j_epart" id="e_menu"><div>
+		<div id="e_get" class="l g_bluekey"
 			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);"></div>
-		<div id="e_del" class="l bluekeypad"
+		<div id="e_del" class="l g_bluekey"
 			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);"></div>
-		<div id="e_import" class="l bluekeypad"
+		<div id="e_import" class="l g_bluekey"
 			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);"></div>
-		<div id="e_submit" class="l bluekeypad"
+		<div id="e_submit" class="l g_bluekey"
 			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
 			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);">→ jLoDb</div>
 	</div></div>
