@@ -167,7 +167,7 @@ jtools = {
 			var svg = _node.svg();
 			return "<svg xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' height:'100%' "+
 					"viewBox='0 0 "+(svg.si[0]*jtools.math.svg.font[0])+" "+(svg.si[1]*jtools.math.svg.font[1])+"'>"+
-					"<def><style>text { font-family: monospace; font-size:"+jtools.math.svg.font[1]+"px; } path {fill:none; stroke-width:.4; stroke:black; }</style></def>"+
+					"<def><style>text { font-family: monospace; font-size:"+jtools.math.svg.font[1]+"px; } path {fill:none; stroke-width:1; stroke:black; }</style></def>"+
 					svg.va+
 					"</svg>";
 		}
