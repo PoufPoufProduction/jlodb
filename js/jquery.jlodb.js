@@ -57,6 +57,16 @@ jtools = {
 				vTxt = vTxt.replace(vReg,vRegExp[i*2+1]);
 			}
 		}
+		
+		var vMath = RegExp("\\\[math\\\]([^\\\[]+)\\\[/math\\\]","g");
+		var val = vMath.exec(vTxt);
+		if (val) {
+			var tree = jtools.math.pol2tree(val[1]);
+			var svg = jtools.math.tree2svg(tree);
+			var ratio = (1*svg.size[0])/(5*svg.size[1]);
+			vTxt = vTxt.replace(vMath,"<div class='t_svg'><div style='width:"+Math.min(100,ratio*100)+"%'>"+svg.svg+"</div></div>");
+		}
+		
         return vTxt;
     },
 	instructions: function(_txt) {
@@ -67,35 +77,73 @@ jtools = {
 		return vRet;
 	},
 	math: {
-		svg: { font: [7,12], y: 8 },
+		svg: { font: [7,12], y: 9.5 },
 		symbology : {
-			"par" : { ty:"re", pr:5, va:"//",    tt:"$1//$2",   op:[null,null] },
-			"per" : { ty:"re", pr:5, va:"⊥",     tt:"$1⊥$2",    op:[null,null] },
-			"sqrt": { ty:"op", pr:0, va:"√",     tt:"√$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sqrt(r[0]);} },
+			"par" : { ty:"re", pr:5, va:"//",    tt:"$2//$1",   op:[null,null],      co: true, as:true },
+			"per" : { ty:"re", pr:5, va:"⊥",     tt:"$2⊥$1",    op:[null,null] },
 			"cos" : { ty:"op", pr:0, va:"cos",   tt:"cos$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.cos(r[0]);} },
 			"sin" : { ty:"op", pr:0, va:"sin",   tt:"sin$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sin(r[0]);} },
-			"+"   : { ty:"op", pr:5, va:"+",     tt:"$1+$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]+r[1]);} },
-			"-"   : { ty:"op", pr:5, va:"-",     tt:"$1-$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]-r[1]);} },
-			"*"   : { ty:"op", pr:2, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]*r[1]);} },
-			"×"   : { ty:"op", pr:2, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]*r[1]);} },
-			"/"   : { ty:"op", pr:2, va:"/",     tt:"$1/$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]==0?NaN:(r[0]/r[1]));},
+			"+"   : { ty:"op", pr:5, va:"+",     tt:"$2+$1",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]+r[0]);}, co:true, as:true },
+			"-"   : { ty:"op", pr:5, va:"-",     tt:"$2-$1",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]-r[0]);} },
+			"neg" : { ty:"op", pr:2, va:"-",     tt:"-$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:-r[0];} },
+			"id"  : { ty:"po", pr:9, va:"",      tt:"$1",       op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:r[0];} },
+			"="   : { ty:"op", pr:9, va:"=",     tt:"$2=$1",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]==r[0]?1:0);}, co:true, as:true },
+			"*"   : { ty:"op", pr:3, va:"×",     tt:"$2×$1",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]*r[0]);}, co:true, as:true },
+			"×"   : { ty:"op", pr:3, va:"×",     tt:"$2×$1",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]*r[0]);}, co:true, as:true },
+			"/"   : { ty:"op", pr:3, va:"/",     tt:"$2/$1",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]==0?NaN:(r[1]/r[0]));}, as:true,
 				svg : function() {
 					var s   = [];
 					var max = [0,1];
-					var ret = "";
-					var sp = 0.5;
-					for (var i=0; i<this.op.length; i++) { s.push(this.op[i]?this.op[i].svg():{si:[2,1],va:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>"}); }
+					var svg = "";
+					var sp = 0.1;
+					for (var i=0; i<this.op.length; i++) { s.push(this.op[i]?this.op[i].svg():{si:[2,0.5,0.5],svg:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>"}); }
 					for (var i in s) for (var j=0; j<2; j++) { max[j] = Math.max(max[j], s[i].si[j]); }
-					ret += "<g transform='translate("+(((max[0]-s[0].si[0])/2)*jtools.math.svg.font[0])+",0)'>"+s[0].va+"</g>";
-					ret += "<path d='m 0,"+ ((s[0].si[1]+sp)*jtools.math.svg.font[0]+1)+" l "+(max[0]*jtools.math.svg.font[0])+",0'/>";
-					ret += "<g transform='translate("+(((max[0]-s[1].si[0])/2)*jtools.math.svg.font[0])+","+((s[0].si[1]+2*sp)*jtools.math.svg.font[0])+")'>"+s[1].va+"</g>";
-					return { si:[max[0], s[0].si[1]+s[1].si[1]+2*sp], off:[0, s[0].si[1]+sp], va:ret};
+					svg += "<g transform='translate("+(((max[0]-s[1].si[0])/2)*jtools.math.svg.font[0])+",0)'>"+s[1].svg+"</g>";
+					svg += "<path d='m 0,"+ ((s[1].si[1]+s[1].si[2]+sp)*jtools.math.svg.font[1])+" l "+(max[0]*jtools.math.svg.font[0])+",0'/>";
+					svg += "<g transform='translate("+(((max[0]-s[0].si[0])/2)*jtools.math.svg.font[0])+","+((s[1].si[1]+s[1].si[2]+2*sp)*jtools.math.svg.font[1])+")'>"+s[0].svg+"</g>";
+					return { si:[max[0], s[1].si[1]+s[1].si[2]+sp, s[0].si[1]+s[0].si[2]+sp], svg:svg, pr:this.pr};
 				}},
+			"sqrt": { ty:"op", pr:0, va:"√",     tt:"√$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sqrt(r[0]);},
+				svg: function() {
+					var op = this.op[0]?this.op[0].svg():{si:[2,0.5,0.5],svg:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>"};					
+					var svg = "";
+					var sp = 0.1;
+					var mg = 0.1
+					svg+= "<path d='M "+(mg*jtools.math.svg.font[0])+","+((sp+mg)*jtools.math.svg.font[1])+" "+
+					      (0.5*jtools.math.svg.font[0])+","+((op.si[1]+op.si[2]+sp)*jtools.math.svg.font[1])+" "+
+					      jtools.math.svg.font[0]+","+(mg*jtools.math.svg.font[1])+" "+
+						  ((1+op.si[0])*jtools.math.svg.font[0])+","+(mg*jtools.math.svg.font[1])+" "+
+						  ((1+op.si[0])*jtools.math.svg.font[0])+","+(mg+sp*3*jtools.math.svg.font[1])+"'/>";
+					svg+= "<g transform='translate("+jtools.math.svg.font[0]+","+(sp*jtools.math.svg.font[1])+")'>"+op.svg+"</g>";
+					return { si:[op.si[0]+1+mg, op.si[1]+sp+mg, op.si[2]], svg:svg, pr:this.pr};
+					
+				}},
+			"pow":  { ty:"op", pr:2, va:"^",     tt:"$2^$1",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]^r[0]);}, as:true,
+				svg: function() {
+					var svgs= [];
+					var offx = 0;
+					var svg = "";
+
+					for (var i=0; i<this.op.length; i++) { svgs.push(this.op[i]?this.op[i].svg():{si:[2, 0.5, 0.5], svg:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>", pr:1}); }
+					
+					var tmp = this._svg(svgs[1], svgs[1].si[1]-0.5);
+					svg+="<g transform='translate(0,"+((svgs[0].si[1]/2)*jtools.math.svg.font[1])+")'>"+tmp.svg+"</g>";
+					offx+=tmp.offx;
+							
+					svg+="<g transform='translate("+(offx*jtools.math.svg.font[0])+",0)'>"+
+						"<g transform='scale(0.6)'>"+
+						svgs[0].svg+"</g></g>";
+					offx+=svgs[0].si[0]/2;
+					
+					return { si:[offx, svgs[1].si[1]+svgs[0].si[1]/2, svgs[1].si[2]], svg:svg, pr:this.pr };
+				}
+			},
 			"pi"  : { ty:"va", pr:1, va:"π",     tt:"π",        op:[],               eq: function(_a) { return Math.PI; } },
 			
 			get : function(_string) {
 				var ret;
 				var base = {
+					co: false, as: false,
 					_eq : function(_a) { var ret=[]; for (var i in this.op) { ret.push(this.op[i]?this.op[i].eq(_a):NaN); } return ret; },
 					eq  : function(_a) { return NaN; },
 					out : function() {
@@ -103,49 +151,44 @@ jtools = {
 						for (var i=0;i<this.op.length;i++) {
 							if (this.op[i]) {
 								var v=this.op[i].out();
-								if (this.pr<=this.op[i].pr) { v = "("+v+")"; }
+								if (this.pr<this.op[i].pr) { v = "("+v+")"; }
 								ret=ret.replace("$"+(i+1),v);
 							}
 						}
 						return ret;
 					},
+					_svg: function(_op, _offy) {
+						var ret = { svg:"", offx:0 };
+						if (this.pr<_op.pr) { ret.svg  += "<g transform='translate("+((ret.offx++)*jtools.math.svg.font[0])+","+(_offy*jtools.math.svg.font[1])+")'><text y='"+jtools.math.svg.y+"'>(</text></g>"; }
+						ret.svg += "<g transform='translate("+(ret.offx*jtools.math.svg.font[0])+",0)'>"+_op.svg+"</g>";
+						ret.offx += _op.si[0];
+						if (this.pr<_op.pr) { ret.svg  += "<g transform='translate("+((ret.offx++)*jtools.math.svg.font[0])+","+(_offy*jtools.math.svg.font[1])+")'><text y='"+jtools.math.svg.y+"'>)</text></g>"; }
+						return ret;
+					},
 					svg : function() {
-						var s   = [];
-						var max = [0,1];
-						var off = 0;
-						var ret = "";
-						for (var i=0; i<this.op.length; i++) { s.push(this.op[i]?this.op[i].svg():{si:[2,1],va:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>"}); }
-						for (var i in s) for (var j=0; j<2; j++) { max[j] = Math.max(max[j], s[i].si[j]); }
-						var ix = 0;
+						var svgs= [];
+						var max = [0,0.5,0.5];
+						var offx = 0;
+						var svg = "";
+						
+						for (var i=0; i<this.op.length; i++) { svgs.push(this.op[i]?this.op[i].svg():{si:[2, 0.5, 0.5], svg:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>", pr:1}); }
+						for (var i in svgs) for (var j=0; j<3; j++) { max[j] = Math.max(max[j], svgs[i].si[j]); }
+						
 						if (this.op.length==2) {
-							if (this.pr<=this.op[ix].pr) {
-								ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'><text y='"+jtools.math.svg.y+"'>(</text></g>";
-								off += 1;
-							}
-							ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-s[ix].si[1])/2)*jtools.math.svg.font[0])+")'>"+s[ix].va+"</g>";
-							off += s[ix].si[0];
-							if (this.pr<=this.op[ix].pr) {
-								ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'><text y='"+jtools.math.svg.y+"'>)</text></g>";
-								off += 1;
-							}
-							ix++;
+							var tmp = this._svg(svgs[1], max[1]-0.5);
+							svg+="<g transform='translate("+offx*jtools.math.svg.font[0]+","+((max[1]-svgs[1].si[1])*jtools.math.svg.font[1])+")'>"+tmp.svg+"</g>";
+							offx+=tmp.offx;
 						}
-						ret += "<text y='"+jtools.math.svg.y+"' transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'>"+this.va+"</text>";
-						off += this.va.length;
-							
-						if (ix<this.op.length) {
-							if (this.pr<=this.op[ix].pr) {
-								ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'><text y='"+jtools.math.svg.y+"'>(</text></g>";
-								off += 1;
-							}
-							ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-s[ix].si[1])/2)*jtools.math.svg.font[0])+")'>"+s[ix].va+"</g>";
-							off += s[ix].si[0];
-							if (this.pr<=this.op[ix].pr) {
-								ret += "<g transform='translate("+(off*jtools.math.svg.font[0])+","+(((max[1]-1)/2)*jtools.math.svg.font[0])+")'><text y='"+jtools.math.svg.y+"'>)</text></g>";
-								off += 1;
-							}
+						svg  += "<text y='"+jtools.math.svg.y+"' transform='translate("+(offx*jtools.math.svg.font[0])+","+((max[1]-0.5)*jtools.math.svg.font[1])+")'>"+this.va+"</text>";
+						offx += this.va.length;
+						
+						if (this.op.length>=1) {
+							var tmp = this._svg(svgs[0], max[1]-0.5);
+							svg+="<g transform='translate("+offx*jtools.math.svg.font[0]+","+((max[1]-svgs[0].si[1])*jtools.math.svg.font[1])+")'>"+tmp.svg+"</g>";
+							offx+=tmp.offx;
 						}
-						return { si:[off, max[1]], va:ret };
+						
+						return { si:[offx, max[1], max[2]], svg:svg, pr:this.pr };
 					}
 				};
 				if (jtools.math.symbology[_string]) { ret = jtools.math.symbology[_string];	}
@@ -163,13 +206,19 @@ jtools = {
 			}
 			return ret[0];
 		},
-		tree2svg: function(_node) {
+		tree2svg: function(_node,_args) {
 			var svg = _node.svg();
-			return "<svg xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' height:'100%' "+
-					"viewBox='0 0 "+(svg.si[0]*jtools.math.svg.font[0])+" "+(svg.si[1]*jtools.math.svg.font[1])+"'>"+
-					"<def><style>text { font-family: monospace; font-size:"+jtools.math.svg.font[1]+"px; } path {fill:none; stroke-width:1; stroke:black; }</style></def>"+
-					svg.va+
-					"</svg>";
+			var size = [ svg.si[0]*jtools.math.svg.font[0], (svg.si[1]+svg.si[2])*jtools.math.svg.font[1] ];
+			return { size:size,
+				svg: "<svg xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' height:'100%' "+
+					"viewBox='0 0 "+size[0]+" "+size[1]+"'>"+
+					"<def><style>"+
+						"text { font-family: monospace; font-size:"+jtools.math.svg.font[1]+"px; }"+
+						"path { fill:none; stroke-width:0.75; stroke:black; }"+
+					"</style></def>"+
+					(_args&&_args.bg ?"<rect x='0' y='0' width='"+size[0]+"' height='"+size[1]+"' style='fill:"+_args.bg+";'/>":"")+
+					svg.svg+
+					"</svg>" };
 		}
 	},
 	gen: {

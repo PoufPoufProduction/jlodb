@@ -22,7 +22,10 @@ $(window).ready(function() { $(window).resize(); jmath.pol2svg(); });
 var jmath = {
 	pol2svg: function() {
 		var tree = jtools.math.pol2tree($("#mainput").val());
-	    $("#maoutput").html(jtools.math.tree2svg(tree));
+		var svg = jtools.math.tree2svg(tree, {bg:"#FFA"});
+		$("#matext").html(tree.out());
+		var ratio = ($("#maoutput").height()*svg.size[0])/($("#maoutput").width()*svg.size[1]);
+	    $("#maoutput>div").css("width",Math.min(100,ratio*100)+"%").html(svg.svg);
 	}
 };
 //]]>
@@ -31,10 +34,15 @@ var jmath = {
 
 <body><div>
 
-    <textarea id="mainput" style="width:100%;height:20%;font-size:0.5em;">2 1 + 3 *</textarea>
-    <div onclick="jmath.pol2svg()" style="width:100%;text-align:center;color:white;background:rgba(0,0,0,0.7);cursor:pointer;">Submit</div>
-    <div id="maoutput" style="float:left;width:60%;height:50%;background-color:white;"></div>
-    
+<form action="javascript:jmath.pol2svg()">
+    <textarea id="mainput" style="width:100%;height:10%;font-size:0.5em;">2 1 +</textarea>
+    <div onclick="jmath.pol2svg()" style="width:100%;text-align:center;color:white;background:rgba(0,0,0,0.7);cursor:pointer;">OK</div>
+</form>
+    <div id="matext" style="width:100%;font-size:.5em;height:1.4em;padding-left:1em;color:#444;background-color:#DDD;"></div>
+	<div id="maoutput" style="float:left;width:8em;height:6em;background-color:white;"><div style="margin:0 auto;"></div></div>
+    <div id="maglossary" style="float:left;width:8em;height:3em;background-color:gray;color:white;"><div style="font-size:.5em;">
+	<i>Opérators</i> :<br/> + - * / cos sin sqrt pow neg
+	</div></div>
 
 </div>
 </body>

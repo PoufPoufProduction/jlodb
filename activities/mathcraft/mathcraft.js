@@ -20,22 +20,6 @@
         debug       : true                                     // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
-        "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
-        "\\\[math(.+)\\\](.+)\\\[/math\\\]",        "<div class='math' style='font-size:$1em;'><math xmlns='http://www.w3.org/1998/Math/MathML'>$2</math></div>",
-        "\\\[mathsmall\\\](.+)\\\[/mathsmall\\\]",  "<div class='maths'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
-        "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
-        "\\\[icon\\\](.+)\\\[/icon\\\]",            "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>",
-        "\\\[div(.+)\\\](.+)\\\[/div\\\]",        "<div style='font-size:$1em;text-align:center'>$2</div>",
-    ];
-
     var ntype = { normal:0, scientific:1, physics:2 };
 
     var nodecounter = 0;
@@ -621,15 +605,10 @@
             settings.context.onquit($this,_args);
         },
         format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
             for (var i=0; i<21; i++) {
                 var vReg = new RegExp("\\\["+(i+1)+"\\\](.+)\\\[/"+(i+1)+"\\\]", "g");
                 _text = _text.replace(vReg,"<span class='data' id='d"+i+"'>$1</span>");
             }
-
             return _text;
         },
         loader: {
@@ -871,7 +850,7 @@
                         settings.svg.load(svgContent, { addTo: false, changeSize: true});
                     break;
                     case "txt":
-                        $this.find("#figure").html(helpers.format(figure.content));
+                        $this.find("#figure").html(jtools.format(figure.content));
                     break;
                     default:
                         $this.find("#figure").html(figure.content);
@@ -880,16 +859,7 @@
                 }
             }
 
-            /* Exercice stuff */
-            if ($.isArray(exercice)) {
-                var html=""; for (var i in exercice) {
-                    html+="<div style='font-size:"+settings.font+"em;'>"+
-                            (exercice[i].length?helpers.format(exercice[i]):"&#xA0;")+"</div>"; }
-                $this.find("#exercice>div").html(html);
-            }
-            else {
-                $this.find("#exercice>div").html("<div style='font-size:"+settings.font+"em;'>"+helpers.format(exercice)+"</div>");
-            }
+			$this.find("#exercice>div").html(jtools.instructions(exercice));
 
             $this.find("#inventory .z").each(function(_index) {
                 if (values && _index<values.length) {

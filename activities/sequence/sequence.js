@@ -131,8 +131,7 @@
 					"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
 					"\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",        "<div class='icon' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
 					"\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
-					"\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>",
-					"\\\[math\\\]([^\\\[]+)\\\[/math\\\]",      "<div class='math'><math>$1</math></div>"
+					"\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>"
 				];
 
                 // Build the response if need

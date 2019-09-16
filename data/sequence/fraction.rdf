@@ -1081,17 +1081,5 @@
     </rdf:Description>
     
     
-    <rdf:Description>
-        <dct:identifier>dn01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, le numérateur de chaque fraction décimale.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function(){ var decs=[10,100,1000],nums=[[1000,1],[100,10],[10,100]],n=nums[Math.floor(Math.random()*nums.length)],a=(Math.floor(Math.random()*n[0])+1)*n[1],b=decs[Math.floor(Math.random()*decs.length)], ret='[math]<mrow><mi>'+(a/b)+'</mi><mo>=</mo><mfrac><mrow><mo>...</mo></mrow><mrow><mi>'+b+'</mi></mrow></mfrac></mrow>[/math]'; return [ret, a];}","class":"h20 alpha blank","font":1]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>division</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>d01</dct:alternative>
-    </rdf:Description>
-    
-    
 </rdf:RDF>
 
