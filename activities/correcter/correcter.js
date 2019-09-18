@@ -207,7 +207,7 @@
                     $this.find("#crdata").addClass("fig");
                 }
 
-                if (settings.exercice)  { $this.find("#crexercice").html(jtools.format(settings.exercice)); }
+                if (settings.exercice)  { $this.find("#g_instructions").html(jtools.instructions(settings.exercice)); }
                 if (settings.locale)    { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 $this.children().show();

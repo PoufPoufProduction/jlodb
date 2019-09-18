@@ -132,60 +132,86 @@
     </rdf:Description>
     
     <!-- STEP -->
-
+	
     <rdf:Description>
         <dct:identifier>s5100</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter un tableau de 5 nombres (compris entre 100 et 1000) variant de 100 en 100.</dct:title>
-        <dct:description><![CDATA["gg":[500,100,5,100,3,[0,2]],"background":"res/img/background/landscape/graycarpet01.svg","keypad":"num0","hint":false,"horiz":true,"gen":"function($this,_s,_i){var a=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],data=[],fixed=[];for (var i=0;i<_s.gg[2];i++){data.push((a+i*_s.gg[3]).toString());} for (var j in _s.gg[5]) for (var i=0; i<_s.gg[4]; i++) { fixed.push([i,_s.gg[5][j]]); } return {'data':data,'fixed':fixed}}"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"title":"[strong]100[/strong]","exercice":"[b]Complétez[/b] le tableau en renseignant les nombres variant de [b]100[/b] en [b]100[/b].","hex":16,"fontex":1.1,"hfiller":28]]></dct:description>
+        <dct:description><![CDATA["gg":{"range":[400,100],"size":[3,6],"step":[0,100],"stepfactor":1,"fixed":[0,1,2]},"background":"res/img/background/landscape/graycarpet01.svg","keypad":"num0","hint":false,"horiz":true,"gen":"function($this,_s,_i){var a=Math.floor(Math.random()*_s.gg.range[0])+_s.gg.range[1],data=[],fixed=[],step; do { step=(Math.floor(Math.random()*_s.gg.step[0])+_s.gg.step[1])*_s.gg.stepfactor } while (step==0); for (var i=0;i<_s.gg.size[1];i++){ var v=(a+i*step).toString(); while(v.length<_s.gg.size[0]) { v='_'+v; } data.push(v); } for (var j in _s.gg.fixed) for (var i=0; i<_s.gg.size[0]; i++) { fixed.push([i,_s.gg.fixed[j]]); } return {'data':data,'fixed':fixed}}","emptyval":"_"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Observez[/b] et [b]complétez[/b] la série de nombres.","hex":44,"fontex":1.1]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s8500</dct:alternative>
+        <dct:alternative>s5100</dct:alternative>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
     </rdf:Description>
-
+	
+	
+    <rdf:Description>
+        <dct:identifier>s5a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 5 nombres (compris entre 100 et 1000) variant de 10,20,30,40 ou 50.</dct:title>
+        <dct:description><![CDATA["number":2,"gg":{"range":[400,100],"size":[3,6],"step":[5,1],"stepfactor":10,"fixed":[0,1,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s5100</dct:alternative>
+        <dct:relation>s5100</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>s5b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 5 nombres (compris entre 100 et 1000) variant de -50 à +50.</dct:title>
+        <dct:description><![CDATA["number":2,"gg":{"range":[300,300],"size":[3,6],"step":[10,-5],"stepfactor":10,"fixed":[0,1,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s5100</dct:alternative>
+        <dct:relation>s5100</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
     <rdf:Description>
         <dct:identifier>s8100</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres (compris entre 1000 et 10000) variant de 100 en 100.</dct:title>
-        <dct:description><![CDATA["gg":[8200,1000,8,100,4,[0,2]]]]></dct:description>
+        <dct:description><![CDATA["gg":{"range":[8200,1000],"size":[4,8],"step":[0,100],"stepfactor":1,"fixed":[0,1,2]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>s8500</dct:alternative>
+        <dct:alternative>s5100</dct:alternative>
         <dct:relation>s5100</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>s8250</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres (compris entre 1000 et 10000) variant de 250 en 250.</dct:title>
-        <dct:description><![CDATA["gg":[7500,1000,8,250,4,[0,2]]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"title":"[strong]250[/strong]","exercice":"[b]Complétez[/b] le tableau en renseignant les nombres variant de [b]250[/b] en [b]250[/b]."]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:identifier>s8a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres (compris entre 1000 et 10000) variant de 100 à 500.</dct:title>
+        <dct:description><![CDATA["number":2,"gg":{"range":[10000,1000],"size":[5,8],"step":[5,1],"stepfactor":100,"fixed":[0,1,2]}]]></dct:description>
+        <dct:extent>4</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>s8500</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>s5100</dct:alternative>
         <dct:relation>s5100</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>s8500</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres (compris entre 1000 et 10000) variant de 500 en 500.</dct:title>
-        <dct:description><![CDATA["gg":[5000,1000,8,500,4,[0,2]]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"title":"[strong]500[/strong]","exercice":"[b]Complétez[/b] le tableau en renseignant les nombres variant de [b]500[/b] en [b]500[/b]."]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:identifier>s8b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres (compris entre 1000 et 10000) variant de - 500 à 500.</dct:title>
+        <dct:description><![CDATA["number":2,"gg":{"range":[5900,4100],"size":[5,8],"step":[10,-5],"stepfactor":100,"fixed":[0,1,2]}]]></dct:description>
+        <dct:extent>4</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>s8500</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>s5100</dct:alternative>
         <dct:relation>s5100</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
     </rdf:Description>
+
 
 
 

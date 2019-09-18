@@ -134,6 +134,7 @@ jtools = {
 						"<g transform='scale(0.6)'>"+
 						svgs[0].svg+"</g></g>";
 					offx+=svgs[0].si[0]/2;
+					offx+=0.2;
 					
 					return { si:[offx, svgs[1].si[1]+svgs[0].si[1]/2, svgs[1].si[2]], svg:svg, pr:this.pr };
 				}

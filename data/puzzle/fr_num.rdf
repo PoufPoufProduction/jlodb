@@ -93,111 +93,185 @@
 	
 	<rdf:Description>
         <dct:identifier>_nu1k0</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés, sans leurre [ 652, 131 ]</dct:title>
-        <dct:description><![CDATA["values":[{"1-00-2":"six","1-02-3":"cent","1-05-4":"cinquante","1-09-3":"deux"},{"1-00-3":"cent","1-03-4":"trente","1-07-3":"et","1-10-2":"un"}],"txt":[{"tt02":"652"},{"tt02":"131"}]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés sans leurre</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"six cent cinquante deux","tt":"652","d":[]},{"v":"cent trente et un","tt":"131","d":[]}],"decoys":["d1-00-1","d1-00-2","d1-00-3","d1-00-4","d1-00-5","d1-01-1","d1-01-2","d1-01-3","d1-01-4","d1-01-5","d1-02-1","d1-02-2","d1-02-3","d1-02-4","d1-02-5","d1-03-1","d1-03-2","d1-03-3","d1-03-4","d1-03-5","d1-04-1","d1-04-2","d1-04-3","d1-04-4","d1-04-5","d1-05-1","d1-05-2","d1-05-3","d1-05-4","d1-05-5","d1-06-1","d1-06-2","d1-06-3","d1-06-4","d1-06-5","d1-07-1","d1-07-2","d1-07-3","d1-07-4","d1-07-5","d1-08-1","d1-08-2","d1-08-3","d1-08-4","d1-09-1","d1-09-2","d1-09-3","d1-10-1","d1-10-2","d1-11-1"],"radius":25,"background":"res/img/background/landscape/graycarpet01.svg","init":{"area":[100,275,480,365]},"url":"desktop/puzzle/sentence.svg","gen":"function($this,_s,_i){var weight=function(_word) { var wl={'i':0.2,'l':0.2,'t':0.2,'m':0.6}, ret=0.2; for (var j in _word) { var l=_word[j]; if (l==l.toLowerCase()) { ret+=(wl[l]?wl[l]:0.3); } else { ret+=0.5; } } return Math.min(5,ret); }; var wordlist=_s.gg[_i].v.split(' '),lines=[],lineweights=[],currentline=[],currentweights=[],lineweight=0; v={}; for (var i=0; i<wordlist.length;i++) {var word=wordlist[i], ww=weight(word);  if (lineweight+Math.ceil(ww)>12) { lines.push(currentline);currentline=[]; lineweights.push(currentweights); currentweights=[]; lineweight=0; } lineweight+=Math.ceil(ww); currentline.push(word); currentweights.push(ww); } lines.push(currentline);currentline=[]; lineweights.push(currentweights); for (var ws in lineweights) { var total=0,current=lineweights[ws]; for (var c in current) { total+=Math.ceil(current[c]); } for (var i=total; i<12; i++) { var id=0,max=0; for (var j in current) { if (current[j]-Math.floor(current[j]-0.01)>max ) { max= current[j]-Math.floor(current[j]-0.01); id=j; }} if (Math.ceil(current[id])+0.1<=5) { current[id]=Math.ceil(current[id])+0.01*(12-i); } } } for (var i=0; i<lines.length; i++) { var o=0; for (var j=0; j<lines[i].length; j++) { v[(i+1)+'-'+(o<10?'0':'')+o+'-'+Math.ceil(lineweights[i][j])]=lines[i][j]; o+=Math.ceil(lineweights[i][j]);  }} var add=(12-total)/wordlist.length; for (var i=0; i<Math.min(9,_s.gg[_i].d.length); i++) { v['d1-0'+i+'-'+Math.min(5,Math.max(1,Math.round(add+weight(_s.gg[_i].d[i]))))] = _s.gg[_i].d[i]; } return {values:v,svgclass:'areatop legend l'+lines.length,magnetic:[[48,80,48,60,12,lines.length]],'txt':{'tt02':_s.gg [_i].tt},number:_s.gg.length};}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Ecrivez[/b] le nombre proposé en [red]toute lettre[/red]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_nu1ka</dct:alternative>
-        <dct:relation>_nu1ka</dct:relation>
+        <dct:alternative>_nu1k0</dct:alternative>
         <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
     </rdf:Description>
-    
-    
+	
+	<rdf:Description>
+        <dct:identifier>_nu1k1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés sans leurre</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"deux cent soixante six","tt":"266","d":[]},{"v":"neuf cent quinze","tt":"915","d":[]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_nu1k2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés sans leurre</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"huit cent quarante et un","tt":"841","d":[]},{"v":"trois cent neuf","tt":"309","d":[]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_nu1k3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés sans leurre</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"cent quatre vingt sept","tt":"187","d":[]},{"v":"sept cent soixante douze","tt":"772","d":[]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_nu1k4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés sans leurre</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"deux cent quatre vingt treize","tt":"293","d":[]},{"v":"six cent quatre vingt dix sept","tt":"697","d":[]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+	
 	<rdf:Description>
         <dct:identifier>_nu1ka</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés [ 266, 915 ]</dct:title>
-        <dct:description><![CDATA["magnetic":[[48,80,48,60,12,1]],"radius":20,"background":"res/img/background/landscape/graycarpet01.svg","svgclass":"l1 areatop legend","decoys":["d1-00-1","d1-00-2","d1-00-3","d1-00-4","d1-00-5","d1-01-1","d1-01-2","d1-01-3","d1-01-4","d1-01-5","d1-02-1","d1-02-2","d1-02-3","d1-02-4","d1-02-5","d1-03-1","d1-03-2","d1-03-3","d1-03-4","d1-03-5","d1-04-1","d1-04-2","d1-04-3","d1-04-4","d1-04-5","d1-05-1","d1-05-2","d1-05-3","d1-05-4","d1-05-5","d1-06-1","d1-06-2","d1-06-3","d1-06-4","d1-06-5","d1-07-1","d1-07-2","d1-07-3","d1-07-4","d1-07-5","d1-08-1","d1-08-2","d1-08-3","d1-08-4","d1-09-1","d1-09-2","d1-09-3","d1-10-1","d1-10-2","d1-11-1"],"values":[{"d1-02-3":"dix","d1-00-2":"trois","d1-01-3":"huit","1-00-2":"deux","1-02-3":"cent","1-05-4":"soixante","1-09-3":"six"},{"d1-00-4":"six","d1-01-4":"dix","d1-08-4":"cinq","1-00-4":"neuf","1-04-4":"cent","1-08-4":"quinze"}],"init":{"area":[100,275,480,365]},"url":"desktop/puzzle/sentence.svg","txt":[{"tt02":"266"},{"tt02":"915"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Ecrivez[/b] le nombre proposé en [red]toute lettre[/red]."]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_nu1ka</dct:alternative>
-        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
-    </rdf:Description>
-    
-    
-	<rdf:Description>
-        <dct:identifier>_nu1kb</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés [ 841, 309 ]</dct:title>
-        <dct:description><![CDATA["values":[{"d1-02-3":"trente","d1-00-2":"quatre","d1-01-3":"dix","1-00-2":"huit","1-02-2":"cent","1-04-4":"quarante","1-08-2":"et","1-10-2":"un"},{"d1-00-4":"six","d1-01-4":"dix","d1-08-4":"zéro","1-00-4":"trois","1-04-4":"cent","1-08-4":"neuf"}],"txt":[{"tt02":"841"},{"tt02":"309"}]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_nu1ka</dct:alternative>
-        <dct:relation>_nu1ka</dct:relation>
-        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
-    </rdf:Description>
-    
-    
-	<rdf:Description>
-        <dct:identifier>_nu1kc</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés [ 187, 772 ]</dct:title>
-        <dct:description><![CDATA["values":[{"d1-02-3":"dix","d1-00-2":"huit","d1-01-3":"trois","1-00-3":"cent","1-03-3":"quatre","1-06-3":"vingt","1-09-3":"sept"},{"d1-00-3":"dix","d1-01-3":"et","d1-09-3":"deux","1-00-3":"sept","1-03-3":"cent","1-06-3":"soixante","1-09-3":"douze"}],"txt":[{"tt02":"187"},{"tt02":"772"}]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_nu1ka</dct:alternative>
-        <dct:relation>_nu1ka</dct:relation>
-        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
-    </rdf:Description>
-    
-    
-	<rdf:Description>
-        <dct:identifier>_nu1kd</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés [ 293, 697 ]</dct:title>
-        <dct:description><![CDATA["values":[{"d1-02-3":"dix","d1-00-2":"neuf","d1-09-3":"trois","1-00-2":"deux","1-02-2":"cent","1-04-3":"quatre","1-07-2":"vingt","1-09-3":"treize"},{"d1-00-3":"huit","d1-01-3":"et","d1-09-3":"neuf","1-00-2":"six","1-02-2":"cent","1-04-2":"quatre","1-06-2":"vingt","1-08-2":"dix","1-10-2":"sept"}],"txt":[{"tt02":"293"},{"tt02":"697"}]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_nu1ka</dct:alternative>
-        <dct:relation>_nu1ka</dct:relation>
-        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
-    </rdf:Description>
-
-
-
-	<rdf:Description>
-        <dct:identifier>_nu10k0</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés, sans leurre [ 2653, 8089 ]</dct:title>
-        <dct:description><![CDATA["values":[{"1-00-2":"deux","1-02-2":"mille","1-04-1":"six","1-05-2":"cent","1-07-3":"cinquante","1-10-2":"trois"},{"1-00-2":"huit","1-02-3":"mille","1-05-3":"quatre","1-08-2":"vingt","1-10-2":"neuf"}],"txt":[{"tt02":"2653"},{"tt02":"8089"}]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés avec leurres</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"huit cent trente et un","tt":"831","d":["quatre","trois","cinq","treize"]},{"v":"deux cent soixante douze","tt":"272","d":["quatre","vingt","et","dix"]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_nu1ka</dct:alternative>
-        <dct:relation>_nu1ka</dct:relation>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
     </rdf:Description>
-    
+	
+	<rdf:Description>
+        <dct:identifier>_nu1kb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés avec leurres</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"neuf cent quatre vingt dix neuf","tt":"999","d":["soixante","et","cinquante","douze"]},{"v":"six cent dix sept","tt":"617","d":["soixante","et","seize","onze"]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_nu1kc</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés avec leurres</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"trois cent quatre vingt douze","tt":"392","d":["trente","et","deux","neuf"]},{"v":"deux cent soixante quinze","tt":"275","d":["vingt","et","cinq","six"]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+
+
+	<rdf:Description>
+        <dct:identifier>_nu10k1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés sans leurre</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"deux mille trois cent neuf","tt":"2 309","d":[]},{"v":"mille deux cent cinquante trois","tt":"1 253","d":[]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+
+	<rdf:Description>
+        <dct:identifier>_nu10k2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés sans leurre</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"cinq mille quatre vingt treize","tt":"5 093","d":[]},{"v":"deux mille six cent vingt et un","tt":"2 621","d":[]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+
 	<rdf:Description>
         <dct:identifier>_nu10ka</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés [ 8061, 1372 ]</dct:title>
-        <dct:description><![CDATA["values":[{"d1-02-3":"cent","d1-10-2":"onze","d1-09-2":"six","d1-01-2":"dix","1-00-2":"huit","1-02-2":"mille","1-04-4":"soixante","1-08-2":"et","1-10-2":"un"},{"d1-00-2":"un","d1-10-2":"deux","d1-09-2":"et","1-00-2":"mille","1-02-2":"trois","1-04-2":"cent","1-06-4":"soixante","1-10-2":"douze"}],"txt":[{"tt02":"8061"},{"tt02":"1372"}]]]></dct:description>
-        <dct:extent>3</dct:extent>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés avec leurres</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"mille deux cent trente et un","tt":"1 231","d":["trois","vingt","treize","onze"]},{"v":"six mille soixante et onze","tt":"6 071","d":["neuf","cent","sept","dix","un"]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_nu1ka</dct:alternative>
-        <dct:relation>_nu1ka</dct:relation>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
     </rdf:Description>
-    
+
+
 	<rdf:Description>
-        <dct:identifier>_nu10kb</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés [ 2308, 7119 ]</dct:title>
-        <dct:description><![CDATA["values":[{"d1-02-3":"trente","d1-10-2":"douze","d1-09-2":"zéro","d1-01-2":"dix","1-00-2":"deux","1-02-3":"mille","1-05-2":"trois","1-07-3":"cent","1-10-2":"huit"},{"d1-01-2":"un","d1-10-4":"soixante","d1-08-3":"onze","1-00-2":"sept","1-02-3":"mille","1-05-2":"cent","1-07-2":"dix","1-09-3":"neuf"}],"txt":[{"tt02":"2308"},{"tt02":"7119"}]]]></dct:description>
-        <dct:extent>3</dct:extent>
+        <dct:identifier>_nu100k1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés sans leurre</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"treize mille deux cent onze","tt":"13 211","d":[]},{"v":"quatre vingt seize mille cent six","tt":"96 106","d":[]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_nu1ka</dct:alternative>
-        <dct:relation>_nu1ka</dct:relation>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+
+	<rdf:Description>
+        <dct:identifier>_nu100ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés avec leurres</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"trente et un mille vingt cinq","tt":"31 025","d":["trois","deux","cent","dix"]},{"v":"soixante et onze mille cent huit","tt":"71 108","d":["trois","quatre","vingt","un"]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
+    </rdf:Description>
+
+	<rdf:Description>
+        <dct:identifier>_nu100kb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reconstruire un nombre à partir des différents mots proposés avec leurres</dct:title>
+        <dct:description><![CDATA["gg":[{"v":"quatre vingt un mille deux cents","tt":"81 200","d":["huit","deux","dix","et"]},{"v":"soixante dix mille quatre vingt douze","tt":"70 092","d":["six","et","cent","deux"]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_nu1k0</dct:alternative>
+        <dct:relation>_nu1k0</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/sentence.svg</dct:source>
     </rdf:Description>
     
