@@ -4,6 +4,7 @@
 <head>
     <title>jLoDb asset export</title>
     <script type="text/javascript" src="ext/js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jlodb.js"></script>
     <link rel="icon" type="image/png" href="favicon.ico" />
     <style>
 body               { font-family:"Century Gothic", sans-serif; }
@@ -24,40 +25,23 @@ a                  { text-decoration:none; }
 .exercice .label             { margin-left:2.5em; float:left; margin-right:3px; text-align:right; }
 
 .chapter                     { clear:both; }
-.chapter .strong             { font-weight:bold; display:inline; }
+.chapter .t_strong             { font-weight:bold; display:inline; }
 .chapter .label              { cursor:pointer; }
 .chapter .overview           { display:none; }
 .chapter .overview.s         { display:inherit; }
 
 .ids                { font-size:1em; height:6em; width:90%; border:1px solid black; margin:1px; resize:none; }
-    
+
+#emenu		{ width:100%; background-color:gray; color:white; height:1.4em; }
+#emenu>div	{ margin:0 .5em; cursor:pointer; float:left; }
+#enberrors  { width:5em; text-align:center; }
+#enberrors.s { color:red; font-weight:bold; }
     </style>
     <script>
     
-// TEXT FORMATING
-var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               " ",
-        "\\\[dot\\\]",                              "<div style='clear:left'></div><div style='margin:0 .5em 0 1em;float:left;'>•</div>",
-        "\\\[clear\\\]",                            "<div style='clear:both'></div>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
-        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1'/></div>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-    
+
 var snapshots = "";
 var render = {
-format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
-        },
-
 ids: function(_target, _ids) {
     $.getJSON("api/exercice.php?id="+_ids, function(data) {
         var html="";
@@ -66,14 +50,16 @@ ids: function(_target, _ids) {
         for (var i in ids) {
             var e = 0;
             var url="";
+			var vClass="exercice";
             for (var j in data.exercices) { if (data.exercices[j].id==ids[i]) { e = data.exercices[j]; } }
             if (!e) {
                 e={id:ids[i], activity:"info", level:0, diff:0, extend:0, label:"ERROR exercice not found"};
-                url=snapshots+"/res/img/exercices/info/xx/ioy.png";
+                url=snapshots+"/res/img/exercices/novel/xx/nlx.png";
+				vClass = "exercice exerror"
             }
             
             
-            html+="<div class='exercice'><div class='eximg' ";
+            html+="<div class='"+vClass+"'><div class='eximg' ";
             html+="onclick=\"window.open('demo.html?id="+e.id+"','_demo',"+
                       "'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,"+
                       "scrollbars=no,resizable=no,status=no,titlebar=no');\"";
@@ -103,6 +89,7 @@ ids: function(_target, _ids) {
             
         }
         $(_target).append(html);
+		$("#enberrors").html($(".exerror").length);
     });
 },
 count:0,
@@ -115,7 +102,7 @@ node: function(_target, _nodes, _level) {
         html+="<div class='chapter' id='"+id+"'>";
         html+="<div class='label' style='margin-left:"+_level+"em;'>"+
             "<a href='tibibo.html?id="+args.tibibo+"&chapter="+n.id+"'>["+n.id+"]</a> "+
-            render.format(n.label)+"</div>";
+            jtools.format(n.label)+"</div>";
         html+="<div class='overview'></div>";
         html+="</div>";
         var $html=$(html);
@@ -123,17 +110,7 @@ node: function(_target, _nodes, _level) {
         if (n.description) { render.chapter[id] = n.description; }
         
         $(_target).append($html);
-        $html.find(".label").bind("click", function(_event) {
-            var id=$(this).parent().attr("id");
-            var $o=$(this).next();
-            
-            if (render.chapter[id]) {
-                $o.html("");
-                render.ids($o, render.chapter[id]);
-            }
-            
-            $o.toggleClass("s");
-        });
+        $html.find(".label").bind("click", function(_event) { render.perform($(this),-1); });
         
         render.count++;
         if (n.children) {
@@ -143,9 +120,26 @@ node: function(_target, _nodes, _level) {
     }
 
 
+},
+perform: function($elt, _open) {
+    var id=$elt.parent().attr("id");
+    var $o=$elt.next();
+            
+    if (render.chapter[id]) { $o.html(""); render.ids($o, render.chapter[id]); }
+	switch(_open) {
+		case 0: $o.removeClass("s"); break;
+		case 1: $o.addClass("s"); break;
+		default: $o.toggleClass("s"); break;
+	}
 }
 
 };
+
+var eaction = 1;
+var openall=function() {
+	$(".label").each( function() { render.perform($(this), eaction); });
+	eaction = 1-eaction;
+}
 
 var args = {}
 $(window).ready(function() {
@@ -158,10 +152,10 @@ $(window).ready(function() {
         if (_check.status=="success") {
             snapshots	= _check.url;
 
-            if (args.id) { render.ids($("body"),args.id); }
+            if (args.id) { render.ids($("#edata"),args.id); }
             else if (args.tibibo) {
                 $.getJSON("mods/tibibo/api/book.php?value="+args.tibibo, function(_data) {
-                    render.node("body",_data.description,0);
+                    render.node("#edata",_data.description,0);
                 });
             }
             else {
@@ -175,6 +169,11 @@ $(window).ready(function() {
 </head>
 
 <body>
+<div id="emenu">
+	<div onclick="openall()">Open/Close all</div>
+	<div id="enberrors">0</div>
+</div>
+<div id="edata"></div>
 
 </body>
 

@@ -47,8 +47,8 @@
         <dct:title xml:lang="fr-FR">Calc</dct:title>
         <dct:abstract xml:lang="fr-FR">Calc offre la possibilité de se familiariser avec l'utilisation d'un tableur. De nombreuses fonctionnalités sont disponibles : formules mathématiques, références relatives et absolues, remplissage automatique.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["tipc1":"Afficher le premier indice","tipc2":"Afficher le deuxième indice","tipc3":"Afficher le troisième indice","tipcc":"Un indice coûte 1 point sur la note finale, souhaitez-vous continuer ?","cleancalc":"Effacer","editor":{"e_get":"Capturer le résultat","e_del":"Supprimer le résultat","e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur","eph_size":"Taille de la feuille Largeur*Hauteur","eph_sp":"Espacement entre cellule","eph_font":"Taille de la police","eph_hide":"X,Y,LARGEUR,HAUTEUR","eph_pospanel":"position initiale : left(%),top(%)","eph_tips":"Indices","eph_gg":"Paramètres de la fonction","eph_gen":"Fonction de génération","eph_cbg":"Couleur du fond","eph_ccolor":"Couleur du texte","eph_cwidth":"Largeur de la cellule","eph_cheight":"Hauteur de la cellule","e_timg":"Image","e_ttxt":"Text","e_tmath":"Formule","e_tgraph":"Graphique","e_tfree":"Libre","e_tnum":"Nombre","eph_value":"Valeur de la cellule","e_cfixed":"Invariable","e_cresult":"Résultat","eph_bgimg":"Image de fond","eph_gen":"Générateur","eph_gg":"Paramètres de génération"}]]></dct:description>
-        <dct:source>res/img/banners/calc.svg,res/img/icon/charts/,res/img/icon/tab/tab00.svg,res/img/control/tip.svg,res/img/background/asset/move01.svg,res/img/svginventoryicons/hardware/calculator01.svg,res/img/svginventoryicons/hardware/camera01.svg,res/img/svginventoryicons/tool/abacus01.svg,res/img/svginventoryicons/pencil/pen01.svg,res/img/svginventoryicons/action/gears01.svg</dct:source>
-    </rdf:Description>
+        <dct:source>res/img/banners/calc.svg,res/img/icon/charts/,res/img/icon/tab/tab00.svg,res/img/control/tip.svg,res/img/background/asset/move01.svg,res/img/svginventoryicons/hardware/calculator01.svg,res/img/svginventoryicons/hardware/camera01.svg,res/img/svginventoryicons/tool/abacus01.svg,res/img/svginventoryicons/pencil/pen01.svg,res/img/svginventoryicons/action/gears01.svg,addon/nodeeditor/</dct:source>
+	</rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:cards">
         <dct:title xml:lang="fr-FR">Jeux de cartes</dct:title>
@@ -143,7 +143,6 @@
         <dct:source>res/img/banners/logo.svg,res/img/desktop/logo.svg,res/img/icon/tab/tab0*.svg,res/img/control/*.svg,res/img/asset/misc/it0*.svg</dct:source>
     </rdf:Description>
     
-
     <rdf:Description rdf:about="urn:activity:mahjong">
         <dct:title xml:lang="fr-FR">Mahjong</dct:title>
         <dct:abstract xml:lang="fr-FR">Le joueur doit résoudre le tableau de mahjong en éliminant les tuiles identiques et accessibles.</dct:abstract>
@@ -162,7 +161,7 @@
         <dct:title xml:lang="fr-FR">MathCraft</dct:title>
         <dct:abstract xml:lang="fr-FR">A l'aide d'opérations élémentaires, l'utilisateur doit construire les formules mathématiques demandées par l'énoncé.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Résoudre le problème à l'aide des éléments fournis par l'exercice.","clear":"EFFACER","glossary":"ENCYCLOPÉDIE","vocabulary":{"mediator":"médiatrice de","middle":"milieu de","parallelogram":"est un parallélogramme","rectangle":"est un rectangle","rtriangle":"est un triangle rectangle en"},"databook":[{"t":"Simplification d'expression","id":1,"c":[{"t":"Opérations sur arborescence","id":1},{"t":"Opérations arithmétiques","id":2},{"t":"Opérations membre à membre","id":3}]},{"t":"Mathématiques","id":3,"c":[{"t":"Intégrales","id":31}]},{"t":"Géométrie","id":2,"c":[{"t":"Géométrie affine","id":11},{"t":"Géométrie euclidienne","id":12},{"t":"Théorèmes divers","id":19}]}],"action":{"replace":["Remplacement de valeur","Lorsque [1]X = Y[/1], remplace dans l'[2]expression[/2] la valeur X par la valeur Y.",1],"exnode":["Extraction de sous-noeud","Extrait le sous-noeud n°[1]X[/1] (de 1 à n) depuis la racine de l'[2]expression[/2].",1],"eval":["Evaluation","Calcule lorsque cela est possible les valeurs numériques de l'[1]expression[/1].",2],"swap":["Inversion de sous-noeuds","Inverse les deux noeuds de l'[1]expression[/1] lorsque l'opération principale est commutative.",2],"change":["Modification d'arborescence","Modifie l'arborescence de l'[1]expression[/1] suivant l'associativité des opérateurs",2],"add":["Addition membre à membre","Ajoute l'[1]expression n°1[/1] dans chaque membre de l'[2]expression n°2[/2].",3],"mult":["Multiplication membre à membre","Multiplie l'[1]expression n°1[/1] dans chaque membre de l'[2]expression n°2[/2].",3],"par3":["Droites parallèles","Si [1]d1//d2[/1] et [2]d1//d3[/2] alors d2//d3.",11],"parid":["Droites parallèles avec point commun","Si [1](AB)//(AC)[/1] (avec le point A commun aux deux droites) alors (AB)=(AC).",11],"perp2":["Droites perpendiculaires","Si [1]d1&perp;d3[/1] et [2]d2&perp;d3[/2] alors d1//d2.",11],"pperp":["Perpendiculaire à droites parallèles","Si [1]d1//d2[/1] et [2]d1&perp;d3[/2] alors d2&perp;d3.",11],"inline":["Point dans une droite (**)","Si [1]M&isin;(AB)[/1] alors (AB)=(AM) - ou (AB)=(BM) ou (AM)=(MB).",11],"par2pars":["Côtés d'un parallèlogramme (*)","Si [1]ABCD est un parallélogramme[/1] alors (AB)//(CD) - ou (AD)//(BC).",11],"par2par":["Côtés parallèles d'un parallèlogramme","Si [1](AB)//(CD)[/1] et [2](AD)//(BC)[/2] alors ABCD est un parallélogramme.",11],"par2rect":["Parallélogramme à angle droit","Si [1]un parallélogramme[/1] a [2]deux côtés perpendiculaires[/2] alors c'est un rectangle.",11],"med2perp":["Perpendicularité d'une médiatrice","Si [1]D1 est la médiatrice du segment [AB][/1] alors D1&perp;(AB).",11],"rectriangle":["Triangle rectangle","Si [1]AB&perp;AC[/1] alors ABC est un triangle rectangle en A",11],"tomid":["Milieu d'un segment","Si [1]M&isin;[AB][/1] et [2]MA=MB[/2] alors M est le milieu de [AB].",12],"mid2d":["Milieu d'un segment","Si [1]M est le milieu de [AB][/1] alors MA=MB.",12],"mid2in":["Milieu d'un segment","Si [1]M est le milieu de [AB][/1] alors M&isin;[AB].",12],"mid2par":["Milieu d'un parallèlogramme","Si un point [1]M est milieu de [AC][/1] et [2]M est milieu de [BD][/2] alors ABCD est un parallélogramme.",12],"mids2med":["Points d'une médiatrice","Si [1]MA=MB[/1] et [2]NA=NB[/2] alors (MN) est la médiatrice de [AB].",12],"pythagore":["Théorème de Pythagore","Si trois points ABC vérifient [1]AB&perp;AC[/1], alors on a BC² = AB² + AC².",19],"cinteg":["Intégrale d'une constante","Si l'expression C est constante par rapport à X, alors l'[1]intégrale[/1] &int;Cdx = C*[B-A] où B et A sont les bornes de l'intégrale",31]}]]></dct:description>
-        <dct:source>res/img/banners/mathematics.svg,res/img/action/nothing.svg,res/img/icon/geometry/</dct:source>
+        <dct:source>res/img/banners/mathematics.svg,res/img/action/nothing.svg,res/img/icon/geometry/,addon/nodeeditor/</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:memory">
@@ -176,8 +175,7 @@
         <dct:title xml:lang="fr-FR">Jeu de mémoire</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de mémoire où le joueur doit retrouver une séquence visuelle et auditive après que celle ait été jouée une première fois. La séquence s'allonge après chaque essais réussi.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Rejouer la séquence proposée."]]></dct:description>
-        <dct:requires>midi</dct:requires>
-        <dct:source>res/img/banners/memory.svg</dct:source>
+        <dct:source>res/img/banners/memory.svg,ext/MIDI/</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:memory3">
@@ -228,9 +226,6 @@
         <dct:source>res/img/banners/quizz.svg,res/img/asset/misc/house*.svg,ext/noto/svg/emoji_u1f468_1f3fc_200d_1f692.svg,ext/noto/svg/emoji_u1f469_1f3fe_200d_1f373.svg,ext/noto/svg/emoji_u1f469_1f3fb_200d_1f3a4.svg,ext/noto/svg/emoji_u1f468_1f3fe_200d_1f3a8.svg,ext/noto/svg/emoji_u1f468_200d_1f680.svg,ext/noto/svg/emoji_u1f469_200d_1f3ed.svg,ext/noto/svg/emoji_u1f40e.svg,ext/noto/svg/emoji_u1f415.svg,ext/noto/svg/emoji_u1f408.svg,ext/noto/svg/emoji_u1f407.svg,ext/noto/svg/emoji_u1f422.svg,ext/noto/svg/emoji_u1f426.svg,res/img/asset/misc/op*.svg,res/img/background/landscape/landscape02.svg,res/img/icon/tab/tab00.svg,res/img/asset/fx/target02.svg,res/img/asset/fx/target01.svg,ext/noto/svg/emoji_u2b50.svg,ext/noto/svg/emoji_u1f50d.svg,ext/noto/svg/emoji_u2753.svg,ext/noto/svg/emoji_u1f58b.svg,ext/noto/svg/emoji_u270f.svg,ext/noto/svg/emoji_u1f58d.svg,ext/noto/svg/emoji_u1f3b1.svg,ext/noto/svg/emoji_u1f3bf.svg,ext/noto/svg/emoji_u1f3b8.svg,ext/noto/svg/emoji_u1f3be.svg,ext/noto/svg/emoji_u1f3ae.svg,ext/noto/svg/emoji_u1f3a8.svg,ext/noto/svg/emoji_u1f354.svg,ext/noto/svg/emoji_u1f355.svg,ext/noto/svg/emoji_u1f363.svg,ext/noto/svg/emoji_u1f32d.svg,ext/noto/svg/emoji_u1f35d.svg,ext/noto/svg/emoji_u1f32e.svg,res/img/default/popup/good01.svg,res/img/default/popup/minus01.svg</dct:source>
     </rdf:Description>
 	
-	
-
-
     <rdf:Description rdf:about="urn:activity:robot">
         <dct:title xml:lang="fr-FR">Robot</dct:title>
         <dct:abstract xml:lang="fr-FR">Avec cette activité de programmation, l'utilisateur doit trouver la bonne séquence d'instructions pour amener le ou les robots vers leur case d'arrivée respective.</dct:abstract>

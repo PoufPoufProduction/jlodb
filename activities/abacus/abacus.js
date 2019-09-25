@@ -201,7 +201,7 @@
                 });
 
                 $this.find("#asboard").bind("mouseup mouseleave touchend touchleave", function(event) {
-                    if (settings.interactive && settings.mouse.move) {
+                    if (settings.interactive) {
                         var vMax = (settings.mouse.row>c[settings.type].b[0]?c[settings.type].u[1]:c[settings.type].u[0]);
                         if (Math.abs(settings.mouse.move)>0.8*vMax) {
                             if (settings.mouse.row>c[settings.type].b[0]) {
@@ -387,11 +387,11 @@
 					$this.find("#g_submit").addClass(wrongs?"wrong":"good");
 
 					if (settings.id<settings.data.length) {
-						setTimeout(function() { helpers.next($this, settings.reset); }, wrong?2000:500);
+						setTimeout(function() { helpers.next($this, settings.reset); }, wrongs?2000:500);
 					}
 					else {
 						settings.score = Math.max(0,Math.floor(5-settings.wrongs*settings.errratio));
-						setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, wrong?2000:500);
+						setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, wrongs?2000:500);
 					}
 				}
             },

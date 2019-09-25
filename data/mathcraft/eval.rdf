@@ -2,10 +2,12 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+	<!--
+	
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer un calcul numérique grâce à l'action d'évaluation [1+2].</dct:title>
-        <dct:description><![CDATA["figure":{"url":"res/img/background/mathcraft03.svg"},"values":[{"abstract":"1+2","id":"plus","children":[{"value":1},{"value":2}]},{"id":"eval"}],"result":"3","onlyone":true,"errratio":5,"glossary":false,"class":"ex"]]></dct:description>
+        <dct:description><![CDATA["figure":{"url":"res/img/background/mathcraft03.svg"},"values":[{"la":"1+2","va":"+","op":[{"va":1},{"va":2}]},{"id":"eval"}],"result":"3","errratio":5,"glossary":false,"class":"ex"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[blue]Certains actions permettent de modifier les valeurs présentes dans la fenêtre d'édition.[/blue] L'action d'[red]évaluation[/red] permet de calculer la valeur numérique d'une expression.[br]Faites glisser l'action d'[red]évaluation[/red] dans la fenêtre d'édition puis l'opération [b]1+2[/b]. Utilisez l'[b]icône de lecture[/b] pour effectuer la transformation. [b]Validez le résultat[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
@@ -20,7 +22,7 @@
     <rdf:Description>
         <dct:identifier>002o</dct:identifier>
         <dct:title xml:lang="fr-FR">Exécuter une multiplication afin d'obtenir le résultat demandé.</dct:title>
-        <dct:description><![CDATA["number":3,"values":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"id":"mult"},{"id":"eval"}],"gen":"function(){var a=Math.floor(Math.random()*9)+2,b,ret=\\\"<div style='width:1em;height:1em;margin-left:.2em;font-size:5em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48'><def><style>text {font-size:30px;text-anchor:middle;font-weight:bold;fill:#332920;}</style></def>\\\";do { b=Math.floor(Math.random()*9)+2} while (b*a<=10); ret+=\\\"<text transform='translate(24,35)'>\\\"+(a*b)+\\\"</text></svg></div>\\\"; return {\\\"figure\\\":{\\\"content\\\":ret},\\\"result\\\":a*b } }","errratio":5,"glossary":false,"class":"ex"]]></dct:description>
+        <dct:description><![CDATA["number":3,"values":[{"va":1},{"va":2},{"va":3},{"va":4},{"va":5},{"va":6},{"va":7},{"va":8},{"va":9},{"va":10},{"va":"×"},{"id":"eval"}],"gen":"function(){var a=Math.floor(Math.random()*9)+2,b,ret=\\\"<div style='width:1em;height:1em;margin-left:.2em;font-size:5em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48' id='mtfig'><def><style>svg#mtfig text {font-size:30px;text-anchor:middle;font-weight:bold;fill:#332920;}</style></def>\\\";do { b=Math.floor(Math.random()*9)+2} while (b*a<=10); ret+=\\\"<text transform='translate(24,35)'>\\\"+(a*b)+\\\"</text></svg></div>\\\"; return {\\\"figure\\\":{\\\"content\\\":ret},\\\"result\\\":a*b } }","errratio":5,"glossary":false,"class":"ex"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"A l'aide de l'action d'[red]évaluation[/red] et de la bonne multiplication, [b]affichez[/b] la valeur demandée."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -29,5 +31,8 @@
         <dct:alternative>024</dct:alternative>
     </rdf:Description>
     
+	
+	-->
+	
 </rdf:RDF>
 

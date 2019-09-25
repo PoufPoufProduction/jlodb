@@ -78,21 +78,16 @@
                 });
             },
             midi: function($this) {
-                if (jlodbext && jlodbext.midi) {
-                    jlodbext.midi.load({ soundfontUrl: "ext/MIDI/soundfont/", instrument: "acoustic_grand_piano",
+				jtools.addon.midi.init( function() {
+					jtools.addon.midi.load({ soundfontUrl: "ext/MIDI/soundfont/", instrument: "acoustic_grand_piano",
                                       callback: function() { helpers.loader.build($this); }});
-                }
-                else {
-                    helpers.exterror($this);
-                    helpers.loader.build($this);
-                }
+				});
             },
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                if (jlodbext && jlodbext.midi) { jlodbext.midi.setVolume(0, 127); }
-                else                           { helpers.exterror($this); }
+                jtools.addon.midi.setVolume(0, 127);
 
                 // Check the buttons
                 for (var i in settings.buttons) {
@@ -110,8 +105,7 @@
         stop: function($this, _i) {
             var settings = helpers.settings($this);
             for (var i in settings.buttons) { $("#"+settings.buttons[i].id, settings.svg.root()).attr("class",""); }
-            if (jlodbext && jlodbext.midi)  { jlodbext.midi.noteOff(0,settings.last,0); }
-             else                           { helpers.exterror($this); }
+            jtools.addon.midi.noteOff(0,settings.last,0);
 
             settings.last = 0;
         },
@@ -121,8 +115,7 @@
             for (var i in settings.buttons) { $("#"+settings.buttons[i].id, settings.svg.root()).attr("class",""); }
             $("#"+settings.buttons[_i].id, settings.svg.root()).attr("class","s");
             settings.last = settings.buttons[_i].note;
-            if (jlodbext && jlodbext.midi) { jlodbext.midi.noteOn(0,settings.last,127,0); }
-            else                           { helpers.exterror($this); }
+            jtools.addon.midi.noteOn(0,settings.last,127,0);
         },
         demo: function($this) {
             var settings = helpers.settings($this);
@@ -150,13 +143,6 @@
             else {
                 $("#count", settings.svg.root()).text(settings.sequence.length);
                 settings.count = 0; settings.interactive = true; }
-        },
-        exterror: function($this) {
-            var settings = helpers.settings($this);
-            if (!settings.error) {
-                alert("Error "+(jlodbext?"midi":"ext")+" undefined");
-                settings.error = true;
-            }
         }
     };
 

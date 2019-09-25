@@ -1,0 +1,13 @@
+.neditor                        { background-color:#030; background-repeat:repeat; background-image:url("../../res/img/default/pattern/line04.svg"); position:relative; overflow:visible; }
+.neditor #nedittree				{ position:relative; top:0; left:0; }
+.neditlink                      { position:absolute; border:.05em solid #106410; z-index:1; }
+.nedita                         { width:1em; height:1em; text-align:center; cursor:move; color:#352222; border-radius:.2em; z-index:3; background-image:url("../../res/img/action/nothing.svg"); }
+.nedita>span                    { position:relative; }
+.nedita .neditlabel             { font-size:.8em; }
+.nedita.ui-draggable-dragging   { opacity:0.9; }
+.nedita.neditop                 { background-image:url("../../res/img/action/nothing2.svg"); }
+.neditd                         { width:1.2em;height:1.2em; margin:-0.6em; background-color:rgba(0,32,0,0.5); border-radius:.1em; border:.1em solid #106410; position:absolute; z-index:2; }
+.neditd.over                    { border:.1em solid #20AA20; background-color:rgba(50,128,50,0.5); }
+.neditd .nedita                 { font-size:1.2em; cursor:auto; }
+#neditclear                     { cursor:pointer; width:1.2em; height:1.2em; position:absolute; text-align:center; font-size:.5em; top:0; left: 0; margin:.1em; border:.1em solid #20AA20;color:#20AA20;background-color:rgba(255,255,255,0.2); display:none; }
+#neditmask                      { width:100%;height:100%; position:absolute; top:0; left:0; background-color:#0F0; z-index:200; display:none; }

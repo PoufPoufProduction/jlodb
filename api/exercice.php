@@ -171,8 +171,6 @@ if (!$error) {
 				}
 				else { $json.='"data":{'.$row["Exercice_Parameters"].'},'; }
 				
-                $json.='"ext":"'.$row["Activity_External"].'",';
-				
                 if (!array_key_exists("nolocale",$_GET)) {
                     $json.='"locale":{"label":"'.$row["Activity_Title"].'"';
 					if (strlen($row["Activity_Locale"])) { $json.=','.$row["Activity_Locale"]; }

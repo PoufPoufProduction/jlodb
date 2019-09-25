@@ -47,7 +47,6 @@ if (!$error) {
                             '`Activity_Key`             VARCHAR( 4 )    NOT NULL , '.
                             '`Activity_Description`     TEXT , '.
                             '`Activity_Source`          TEXT , '.
-                            '`Activity_External`        VARCHAR( 255 ) , '.
                             '`Activity_Locale`          TEXT , '.
                        'PRIMARY KEY (  `Activity_Name` ) ) ENGINE=InnoDB') &&
            mysqli_query($link, 'CREATE TABLE  `'.$_SESSION['prefix'].'exercice` ('.
@@ -123,7 +122,6 @@ if (!$error) {
                     $activityName           = "";
                     $activityTitle          = "";
                     $activityDescription    = "";
-                    $activityExternal       = "";
                     $activityLocale         = "";
                     $activitySource         = "";
                     if (strcmp($childName,"rdf_Description")==0) {
@@ -134,7 +132,6 @@ if (!$error) {
                                 if (strcmp($dcName,"dct_abstract")==0)      { $activityDescription=$dc; }   else
                                 if (strcmp($dcName,"dct_description")==0)   { $activityLocale=$dc; }        
                             }
-                            if (strcmp($dcName,"dct_requires")==0)      { $activityExternal=$dc; }          else
                             if (strcmp($dcName,"dct_source")==0)        { $activitySource=$dc; }
                         }
                     }
@@ -146,11 +143,10 @@ if (!$error) {
                         $activityDescription = str_replace("'", "\'", $activityDescription);
 
                         $sql = "INSERT INTO `".$_SESSION['prefix']."activity` (`Activity_Name`, `Activity_Title`, `Activity_Key`, ".
-                               "`Activity_Description`, `Activity_Source`, `Activity_External`, `Activity_Locale` ) VALUES ('".
+                               "`Activity_Description`, `Activity_Source`, `Activity_Locale` ) VALUES ('".
                                $activityName."','".$activityTitle."','".substr($activityName,0,1).substr($activityName, -1)."','".
                                $activityDescription."',"
                                .(strlen($activitySource)?("'".$activitySource."'"):"NULL").","
-                               .(strlen($activityExternal)?("'".$activityExternal."'"):"NULL").","
                                .(strlen($activityLocale)?("'".$activityLocale."'"):"NULL").")";
                         mysqli_query($link, $sql);
                     }

@@ -9,573 +9,8 @@
         clean       : true,                                     // Clean board between exercices
         font        : 1,                                        // Exerice font
         errratio    : 1,                                        // Error weight
-        onlyone     : false,                                    // Only one response possible : no commutativity
         number      : 1,                                        // number of exercices
-        nbdec       : 2,                                        // number of dec for float numbers
-        ntype       : 0,                                        // number display type
-        glossary    : false,                                    // Glossary usage
-        a           : false,                                    // Glossary authorization
-        modif       : true,                                     // Editor modification
-        devmode     : false,                                    // devmode
-        debug       : true                                     // Debug mode
-    };
-
-    var ntype = { normal:0, scientific:1, physics:2 };
-
-    var nodecounter = 0;
-    var vocabulary  = 0;
-    var actioncount = 0;
-    var actiontmp   = 0;
-
-    var action = {
-        par3: function(_node, _value) {
-            var ret = 0, same=0;
-            for (var i=0; i<2; i++) for (var j=0; j<2; j++) {
-                var c1 = _node.children[0].children[i], c2 = _node.children[1].children[j];
-                if (c1.type=="value" && c2.type=="value" &&
-                   (c1.value==c2.value || ( c2.value.length==2 && c1.value == c2.value[1]+c2.value[0] ) ) ) { same = [i,j]; }
-            }
-            if (same) {
-                ret = $.extend(true,{},nodetype[_value]);
-                ret.children = [ _node.children[0].children[1-same[0]], _node.children[1].children[1-same[1]] ];
-                for (var i=0; i<2; i++) { if (ret.children[i].subtype=="segment") { ret.children[i].subtype="line"; } }
-            }
-            return ret;
-        }
-    };
-
-    var nodetype = {
-        /*
-        change: {
-            type:"action", value:"A", l:1, c:1,
-            check: function(_node,_id) {
-                return helpers.node.filled(_node.children[0]);
-            },
-            compute: function(_node) {
-                var ret = helpers.node.create("n"+(nodecounter++)); helpers.node.extend(ret,_node);
-
-                var done = false;
-                if (_node.type=="op" && op[_node.value].p && (op[_node.value].p()&op.p.associative)) {
-                    var children=[], val=0;
-                    for (var i in _node.children) {
-                        if (_node.children[i].type=="op" && _node.children[i].value==_node.value) {
-                            val|=1<<i;
-                            for (var j in _node.children[i].children) { children.push(_node.children[i].children[j]); }
-                        }
-                        else { children.push(_node.children[i]); }
-                    }
-                    if (children.length>2) {
-                        done = true;
-                        for (var j=0,i=1; j<2; j++) {
-                            if (val&(j+1)) {
-                                var tmp = helpers.node.create("n"+(nodecounter++)); helpers.node.extend(tmp,_node);
-                                tmp.children.push(this.compute(children[i]));   i=(i+1)%children.length;
-                                tmp.children.push(this.compute(children[i]));   i=(i+1)%children.length;
-                                ret.children.push(tmp);
-                            }
-                            else {
-                                ret.children.push(this.compute(children[i]));   i=(i+1)%children.length;
-                            }
-                        }
-                    }
-                }
-
-                if (!done) { for (var i in _node.children) { ret.children.push(this.compute(_node.children[i])); } }
-
-                return ret;
-            },
-            process: function(_node) { return (this.check(_node))?this.compute(_node.children[0]):0; }
-        },
-        cinteg:   {
-            type:"action", value:"C", l:1,    c:1,
-            check: function(_node,_id) { return (helpers.node.filled(_node)?true:false); },
-            compute: function(_node) {
-                var ret = 0;
-                if (_node.type=="op" && _node.value=="integ") {
-                    ret = helpers.node.create("n"+(nodecounter++)); ret.type="op"; ret.value="mult";
-                    ret.children.push(helpers.node.clone(_node.children[2]));
-                    var tmp = helpers.node.create("n"+(nodecounter++)); tmp.type="op"; tmp.value="minus";
-                    tmp.children.push(helpers.node.clone(_node.children[1]));
-                    tmp.children.push(helpers.node.clone(_node.children[0]));
-                    ret.children.push(tmp);
-                }
-                else {
-                    ret = helpers.node.create("n"+(nodecounter++)); helpers.node.extend(ret,_node);
-                    for (var i in _node.children) { ret.children.push(this.compute(_node.children[i])); }
-                }
-                return ret;
-            },
-            process: function(_node) { return (this.check(_node))?this.compute(_node.children[0]):0; }
-        },
-        */
-        eval:   {
-            type:"action", value:"=", l:1,    c:1,
-            check: function(_node,_id) { return (helpers.node.filled(_node)?true:false); },
-            build: function(_node) {
-                var ret = helpers.node.create("n"+(nodecounter++));
-                if (_node.tmp[0]) { ret.type = "v"; ret.value = _node.tmp[1]; }
-                else              { helpers.node.extend(ret,_node);
-                                    for (var i in _node.children) { ret.children.push(this.build(_node.children[i])); } }
-                return ret;
-              },
-            process: function($this) {
-                var e = this.children[0].process(), ret=0;
-                if (typeof(e)=="number") { ret = $this.find("#editor").editor("tonode", {"value":e});}
-                return ret;
-            }
-        },
-        /*
-        exnode: {
-            type:"action", value:"n", l:1, c:2, d:1,
-            check: function(_node,_id) {
-                var ret = helpers.node.filled(_node.children[_id]);
-                if (_id==0) { ret = ret && (_node.children[0] && _node.children[0].type=="v" &&
-                                            typeof(_node.children[0].value)=="number"); }
-                return ret;
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node,0)&&this.check(_node,1)) {
-                    var value = parseInt(_node.children[0].value)-1;
-                    if (value>=0 && value<_node.children[1].children.length) {
-                        ret = helpers.node.clone(_node.children[1].children[value]);
-                    }
-                }
-                return ret;
-            }
-        },
-        inline: {
-            type:"action", value:"<img src='res/img/icon/geometry/line02.svg'/>", l:1, c:1,
-            check : function(_node,_id) {
-                return helpers.node.filled(_node) && (_node.children[0].type=="op") && (_node.children[0].value=="isin");
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node)) {
-                    var c = _node.children[0].children[1].value, v = _node.children[0].children[0].value;
-                    if (actiontmp==c.value) { actioncount++; } actiontmp = c.value;
-                    var value = [c, c[0]+v ];
-                    if (actioncount%3==1) { value = [c, c[1]+v]; } else
-                    if (actioncount%3==2) { value = [c[0]+v, c[1]+v ]; }
-                    var tmp = {   type:"op", value:"eq", children:[
-                            { type:"v", subtype:"line", value:value[0] }, { type:"v", subtype:"line", value:value[1] } ] };
-                    ret = helpers.node.init(tmp);
-                }
-                return ret;
-            },
-        },
-        med2perp: {
-            type:"action", value:"<img src='res/img/icon/geometry/mediator02.svg'/>", l:1, c:1,
-            check : function(_node,_id) {
-                return helpers.node.filled(_node) && (_node.children[0].type=="op") && (_node.children[0].value=="mediator");
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node) ) { ret = helpers.node.clone(_node.children[0]); ret.value = "perp";
-                                          ret.children[0].subtype = "line"; ret.children[1].subtype = "line"; }
-                return ret;
-            }
-        },
-        mid2d : {
-            type:"action", value:"<img src='res/img/icon/geometry/midpoint02.svg'/>", l:1, c:1,
-            check : function(_node,_id) {
-                return helpers.node.filled(_node) && (_node.children[0].type=="op") && (_node.children[0].value=="middle");
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node) &&
-                    _node.children[0].children[0].type=="v" && _node.children[0].children[0].value.length==1 &&
-                    _node.children[0].children[1].subtype=="segment") {
-                    var tmp = {   type:"op", value:"eq", children:[
-                            { type:"v", value: _node.children[0].children[0].value+_node.children[0].children[1].value[0]} ,
-                            { type:"v", value: _node.children[0].children[0].value+_node.children[0].children[1].value[1]} ] };
-                    ret = helpers.node.init(tmp);
-                }
-                return ret;
-            }
-        },
-        mid2in: {
-            type:"action", value:"<img src='res/img/icon/geometry/midpoint02.svg'/>", l:1, c:1, check:function(_node,_id) { return action.mid2d.check(_node,_id);},
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node)) { ret = helpers.node.clone(_node.children[0]); ret.value="isin"; }
-                return ret;
-            }
-        },
-*/
-        mid2par: {
-            type:"action", value:"<img src='res/img/icon/geometry/parallelogram02.svg'/>", l:1, c:2,
-            check: function(_id) {
-                return (this.children[_id].filled() && this.children[_id].type=="op" && this.children[_id].id=="middle");
-            },
-            process: function($this) {
-                var ret = 0;
-                if (this.check(0)&&this.check(1)) {
-                    if (this.children[0].children[0].type=="value" && this.children[0].children[0].value.length==1 &&
-                        this.children[1].children[0].type=="value" &&
-                        this.children[0].children[0].value == this.children[1].children[0].value &&
-                        this.children[0].children[1].subtype=="segment" && this.children[1].children[1].subtype=="segment" &&
-                        this.children[0].children[1].value.indexOf(this.children[1].children[1].value[0])==-1 &&
-                        this.children[0].children[1].value.indexOf(this.children[1].children[1].value[1])==-1 ) {
-
-                        ret = $.extend(true,{},nodetype["parallelogram"]);
-                        var v1 = this.children[0].children[1].value, v2 = this.children[1].children[1].value;
-                        ret.children = [ { type:"value", value : v1[0]+v2[0]+v1[1]+v2[1] } ];
-                    }
-                }
-                return ret;
-            }
-        },
-/*
-        mids2med : {
-            type:"action", value:"<img src='res/img/icon/geometry/mediator02.svg'/>", l:1, c:2,
-            check: function(_node,_id) {
-                return helpers.node.filled(_node.children[_id]) &&  _node.children[_id] &&
-                       (_node.children[_id].type=="op") && (_node.children[_id].value=="eq");
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node,0)&&this.check(_node,1)) {
-                    var vOk = true, v=[0,0,0,0], p;
-                    for (var i=0; i<2; i++) {
-                        if (_node.children[i].children[0].value.length==2 && _node.children[i].children[1].value.length==2 )
-                        {
-                            if ((p=_node.children[i].children[1].value.indexOf(_node.children[i].children[0].value[0]))!=-1) {
-                                v[i*2] = _node.children[i].children[0].value[0];
-                                v[i*2+1] = _node.children[i].children[0].value[1]+_node.children[i].children[1].value[1-p];
-                            }
-                            else if ((p=_node.children[i].children[1].value.indexOf(_node.children[i].children[0].value[1]))!=-1) {
-                                v[i*2] = _node.children[i].children[0].value[1];
-                                v[i*2+1] = _node.children[i].children[0].value[0]+_node.children[i].children[1].value[1-p];
-                            }
-                            else vOk = false;
-                        }
-                    }
-                    if (vOk && (v[0]!=v[2]) && (v[1]==v[3] || v[1]==v[3][1]+v[3][0])) {
-                        var tmp = {   type:"op", value:"mediator", children:[
-                            { type:"v", subtype:"line", value: v[0]+v[2] },
-                            { type:"v", subtype:"segment", value: v[1] }
-                        ] };
-                        ret = helpers.node.init(tmp);
-                    }
-                }
-                return ret;
-            }
-        },
-        par2par: {
-            type:"action", value:"<img src='res/img/icon/geometry/parallelogram02.svg'/>", l:1, c:2,
-            check: function(_node, _id) {
-                return (helpers.node.filled(_node.children[_id]) && _node.children[_id].type=="op" && _node.children[_id].value=="par");
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node,0)&&this.check(_node,1)) {
-                    if (_node.children[0].children[0].value != _node.children[1].children[0].value &&
-                        _node.children[0].children[0].value != _node.children[1].children[1].value &&
-                        _node.children[0].children[0].value.length == 2 &&
-                        _node.children[0].children[1].value.length == 2 &&
-                        _node.children[1].children[0].value.length == 2 &&
-                        _node.children[0].children[1].value.length == 2 &&
-                        _node.children[0].children[0].value.indexOf(_node.children[0].children[1].value[0])==-1 &&
-                        _node.children[0].children[0].value.indexOf(_node.children[0].children[1].value[1])==-1 ) {
-
-                        var value = _node.children[0].children[0].value + _node.children[0].children[1].value +
-                                    _node.children[0].children[0].value[0];
-                        if (value.indexOf(_node.children[1].children[0].value[0]+_node.children[1].children[0].value[1]) == -1 &&
-                            value.indexOf(_node.children[1].children[0].value[1]+_node.children[1].children[0].value[0]) == -1 ) {
-                            value = _node.children[0].children[0].value + _node.children[0].children[1].value[1] +
-                                    _node.children[0].children[1].value[0] +_node.children[0].children[0].value[0];
-                        }
-
-                        var vOk = true;
-                        for (var i=0; i<2; i++) {
-                            if (value.indexOf(_node.children[1].children[i].value[0]+_node.children[1].children[i].value[1]) == -1 &&
-                                value.indexOf(_node.children[1].children[i].value[1]+_node.children[1].children[i].value[0]) == -1 ) {
-                                    vOk = false;
-                            }
-                        }
-                        if (vOk) {
-                            var tmp = {   type:"op", value:"parallelogram", children:[{ type:"v", value: value.substr(0,4) } ] };
-                            ret = helpers.node.init(tmp);
-                        }
-                    }
-
-                }
-                return ret;
-            }
-        },
-        par2pars: {
-            type:"action", value:"<img src='res/img/icon/geometry/parallelogram02.svg'/>", l:1, c:1,
-            check: function(_node, _id) {
-                return (helpers.node.filled(_node.children[0]) &&
-                        _node.children[0].type=="op" && _node.children[0].value=="parallelogram");
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node)) {
-                    if (_node.children[0].children[0].value.length == 4 ) {
-                        var c = _node.children[0].children[0].value;
-                        if (actiontmp==c) { actioncount++; } actiontmp = c;
-                        var tmp = {   type:"op", value:"par", children:[
-                                        { type:"v", subtype:"line", value: c[0+actioncount%2]+c[1+actioncount%2] },
-                                        { type:"v", subtype:"line", value: c[(3+actioncount%2)%4]+c[2+actioncount%2] } ] };
-                        ret = helpers.node.init(tmp);
-                    }
-                }
-                return ret;
-            }
-        },
-        par2rect: {
-            type:"action", value:"<img src='res/img/icon/geometry/rectangle02.svg'/>", l:1, c:2,
-            check: function(_node, _id) {
-                var ret = (helpers.node.filled(_node.children[_id]) && _node.children[_id].type=="op" &&
-                           _node.children[_id].value==(_id?"perp":"parallelogram"));
-                return ret;
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node,0)&&this.check(_node,1)&&
-                    _node.children[0].children[0].value.length == 4 &&
-                    _node.children[1].children[0].value.length == 2 &&
-                    _node.children[1].children[1].value.length == 2 &&
-                    _node.children[1].children[0].value != _node.children[1].children[1].value ) {
-                    var value = _node.children[0].children[0].value + _node.children[0].children[0].value[0];
-                    var vOk = true;
-                    for (var i=0; i<2; i++) {
-                        if (value.indexOf(_node.children[1].children[i].value[0]+_node.children[1].children[i].value[1]) == -1 &&
-                            value.indexOf(_node.children[1].children[i].value[1]+_node.children[1].children[i].value[0]) == -1 ) {
-                                vOk = false;
-                        }
-                    }
-
-                    if ( _node.children[1].children[0].value.indexOf(_node.children[1].children[1].value[0])== -1 &&
-                         _node.children[1].children[0].value.indexOf(_node.children[1].children[1].value[1])== -1 ) { vOk = false; }
-
-                    if (vOk) { ret = helpers.node.clone(_node.children[0]); ret.value="rectangle"; }
-                }
-                return ret;
-            }
-        },
-*/
-        par3: {
-            type:"action", value:"<img src='res/img/icon/geometry/parallel02.svg'/>", l:1, c:2,
-            check: function(_id) {
-                return (this.children[_id].filled() && this.children[_id].type=="op" && this.children[_id].id=="par");
-            },
-            process: function($this) { return (this.check(0)&&this.check(1))?action.par3(this,"par"):0; }
-        },
-        parid: {
-            type:"action", value:"<img src='res/img/icon/geometry/parallel02.svg'/>", l:1, c:1,
-            check: function() {
-                return (this.children[0].filled() && this.children[0].type=="op" && this.children[0].id=="par");
-            },
-            process: function($this) {
-                var ret = 0;
-                if (this.check()) {
-                    if (this.children[0].children[0].value.length == 2 &&
-                        this.children[0].children[1].value.length == 2 &&
-                        ( this.children[0].children[1].value.indexOf(this.children[0].children[0].value[0])!=-1 ||
-                          this.children[0].children[1].value.indexOf(this.children[0].children[0].value[1])!=-1 ) ) {
-                        
-                        ret = $.extend(true,{},nodetype["eq"]);
-                        ret.children = [ this.children[0].children[0], this.children[0].children[1] ];
-                        for (var i=0; i<2; i++) { if (ret.children[i].subtype=="segment") { ret.children[i].subtype="line"; } }
-                    }
-                }
-                return ret;
-            }
-        },
-        perp2: {
-            type:"action", value:"<img src='res/img/icon/geometry/perpendicular02.svg'/>", l:1, c:2,
-            check: function(_id) {
-                return (this.children[_id].filled() && this.children[_id].type=="op" && this.children[_id].id=="perp" );
-            },
-            process: function($this) { return (this.check(0)&&this.check(1))?action.par3(this,"par"):0; }
-        },
-        pperp: {
-            type:"action", value:"<img src='res/img/icon/geometry/parperp02.svg'/>", l:1, c:2,
-            check: function(_id) {
-                return (this.children[_id].filled() && this.children[_id].type=="op" && this.children[_id].id==(_id?"perp":"par"));
-            },
-            process: function($this) { return (this.check(0)&&this.check(1))?action.par3(this,"perp"):0; }
-        },
-/*
-        pythagore:    {
-            type:"action", value:"&Pi;", l:1, c:1,
-            check: function(_node,_id) {
-                return (helpers.node.filled(_node) && _node.children[0].type=="op" && _node.children[0].value=="perp");
-            },
-            process: function(_node) {
-                var ok = false;
-                if (this.check(_node)) {
-                    var ab = _node.children[0].children[0];
-                    var ac = _node.children[0].children[1];
-                    if (ab.type=="v" && ab.value.length==2 && typeof(ab.value)!="number" &&
-                        ac.type=="v" && ac.value.length==2 && typeof(ac.value)!="number") {
-                        var pab = 0, pac = ac.value.indexOf(ab.value[pab]);
-                        if (pac==-1) { pab = 1; pac = ac.value.indexOf(ab.value[pab]); }
-                        if (pac!=-1) {
-                            var pythagore = {   type:"op", value:"eq", children:[
-                                                  { type:"op", value:"pow", children:[
-                                                      { type:"v", value:ab.value[1-pab]+ac.value[1-pac] } ,
-                                                      { type:"v", value:2 }
-                                                    ]
-                                                  },
-                                                  { type:"op", value:"plus", children:[
-                                                      { type:"op", value:"pow", children:[
-                                                        { type:"v", value:ab.value[pab]+ac.value[1-pac] } ,
-                                                        { type:"v", value:2 }
-                                                        ]
-                                                      },
-                                                      { type:"op", value:"pow", children:[
-                                                        { type:"v", value:ab.value[1-pab]+ac.value[pac] } ,
-                                                        { type:"v", value:2 }
-                                                        ]
-                                                      }
-                                                    ]
-                                                  }
-                                                ]
-                                            };
-                            ret = helpers.node.init(pythagore);
-                            ok = true;
-                        }
-                    }
-                }
-                if (!ok) { ret = 0; }
-                return ret;
-            }
-        },
-        replace:    {
-            type:"action", value:"R", c:2, d:1,
-            check: function(_node,_id) {
-                var ret = helpers.node.filled(_node.children[_id]);
-                if (_id==0) { ret = ret && (_node.children[0] && _node.children[0].type=="op" && _node.children[0].value=="eq"); }
-                return ret;
-            },
-            compute: function(_node, _from, _to) {
-                var ret;
-                if (helpers.node.equal(_node, _from)) { ret = helpers.node.clone(_to); }
-                else {
-                    ret = helpers.node.create("n"+(nodecounter++));
-                    helpers.node.extend(ret,_node);
-                    for (var i in _node.children) { ret.children.push(action.replace.compute(_node.children[i], _from, _to)); }
-                }
-                return ret;
-            },
-            process: function(_node) {
-                if (this.check(_node,0)&&this.check(_node,1)) {
-                    var from = _node.children[0].children[0];
-                    var to   = _node.children[0].children[1];
-                    ret = action.replace.compute(_node.children[1], from, to);
-                }
-                else { ret = 0; }
-                return ret;
-            }
-        },
-        rectriangle: {
-            type:"action", value:"<img src='res/img/icon/geometry/rtriangle02.svg'/>", l:1, c:1,
-            check: function(_node,_id) {
-                return (helpers.node.filled(_node) && _node.children[0].type=="op" && _node.children[0].value=="perp");
-            },
-            process: function(_node) {
-                var ok = false;
-                if (this.check(_node)) {
-                    var ab = _node.children[0].children[0];
-                    var ac = _node.children[0].children[1];
-                    if (ab.type=="v" && ab.value.length==2 && typeof(ab.value)!="number" &&
-                        ac.type=="v" && ac.value.length==2 && typeof(ac.value)!="number") {
-                        var pab = 0, pac = ac.value.indexOf(ab.value[pab]);
-                        if (pac==-1) { pab = 1; pac = ac.value.indexOf(ab.value[pab]); }
-                        if (pac!=-1) {
-                            var tmp = {   type:"op", value:"rtriangle", children:[
-                                                  { type:"v", value:ab.value[pab]+ab.value[1-pab]+ac.value[1-pac] } ,
-                                                  { type:"v", value:ab.value[pab] }
-                                             ]};
-                            ret = helpers.node.init(tmp);
-                            ok = true;
-                        }
-                    }
-                }
-                if (!ok) { ret = 0; }
-                return ret;
-            }
-        },
-        swap: {
-            type:"action", value:"&lsaquo;&rsaquo;", l:1, c:1,
-            check: function(_node,_id) {
-                return helpers.node.filled(_node.children[0]) &&
-                       (_node.children[0] && _node.children[0].type=="op" &&
-                       op[_node.children[0].value].p && (op[_node.children[0].value].p()&op.p.commutative));
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node)) {
-                    ret = helpers.node.create("n"+(nodecounter++));
-                    helpers.node.extend(ret,_node.children[0]);
-                    ret.children.push(helpers.node.clone(_node.children[0].children[1]));
-                    ret.children.push(helpers.node.clone(_node.children[0].children[0]));
-                }
-                return ret;
-            }
-        },
-        tomid : {
-            type:"action", value:"<img src='res/img/icon/geometry/midpoint02.svg'/>", l:1, c:2,
-            check: function(_node,_id) {
-                return helpers.node.filled(_node.children[_id]) && (_node.children[_id].type=="op") &&
-                       (_node.children[_id].value==_id?"eq":"isin");
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node,0)&&this.check(_node,1)) {
-                    var m = _node.children[0].children[0].value;
-                    var a = [ _node.children[0].children[1].value[0], _node.children[0].children[1].value[1] ];
-                    var vOk = (_node.children[1].children[0].value!=_node.children[1].children[1].value);
-
-                    for (var i=0; i<2; i++) {
-                        vOk = vOk && ( _node.children[1].children[i].value==m+a[0] ||
-                                       _node.children[1].children[i].value==a[0]+m ||
-                                       _node.children[1].children[i].value==m+a[1] ||
-                                       _node.children[1].children[i].value==a[1]+m );
-                        vOk = vOk && (_node.children[1].children[0].value.indexOf(a[i])!=-1 ||
-                                      _node.children[1].children[1].value.indexOf(a[i])!=-1 );
-                    }
-
-                    if (vOk) {
-                        ret = helpers.node.clone(_node.children[0]);
-                        ret.value="middle";
-                    }
-                }
-                return ret;
-            }
-        },
-*/
-        integ:  { type:"op", value:"&int;", l:1, c:3, d:2,
-                  m:function(_node) { return "<msubsup><mo>&int;</mo><mrow>c0</mrow><mrow>c1</mrow></msubsup><mrow>c2"+
-                                             "<mo>&InvisibleTimes;</mo><mrow><mi>d</mi><mi>"+_node.subtype+"</mi></mrow>"; },
-                  t:function(_node) { return "int"+_node.subtype+"(c0,c1,c2)"; } },
-        isin:   { type:"op", value:"&isin;", l:1, c:2, m:"c0<mo>&isin;</mo>c1", t:"c0∈c1" },
-        mediator: { type:"op", value:"<img src='res/img/icon/geometry/mediator01.svg'/>", l:1, c:2,
-                  m:function() { return "c0<mtext mathsize='big'>"+(vocabulary?vocabulary.mediator:"mediator")+"</mtext>c1" },
-                  t:"mediator(c0,c1)" },
-        middle: { type:"op", value:"<img src='res/img/icon/geometry/midpoint01.svg'/>", l:1, c:2,
-                  m:function() { return "c0<mtext mathsize='big'>"+(vocabulary?vocabulary.middle:"middle")+"</mtext>c1" },
-                  t:"mid(c0,c1)" },
-        par:    { type:"op", value:"//", c:2, m:"c0<mo>//</mo>c1", t:["par(c0,c1)","par(c1,c0)"],
-                  p:function() { return nodemathtype.commutative | nodemathtype.associative; } },
-        parallelogram:  { type:"op", value:"<img src='res/img/icon/geometry/parallelogram01.svg'/>", l:1, c:1,
-                  m:function() { return "<mover><mrow><mtext mathsize='big'>"+(vocabulary?vocabulary.parallelogram:"parallelogram")+
-                                        "</mtext></mrow><mrow>c0</mrow></mover>";},
-                  t:"parallelogram(c0)", p:function() { return nodemathtype.final; } },
-        perp:   { type:"op", value:"&perp;", c:2, l:1, m:"c0<mo>&perp;</mo>c1", t:["perp(c0,c1)","perp(c1,c0)"],
-                  p:function() { return nodemathtype.commutative; } },
-        rectangle:  { type:"op", value:"<img src='res/img/icon/geometry/rectangle01.svg'/>", l:1, c:1,
-                  m:function() { return "<mover><mrow><mtext mathsize='big'>"+(vocabulary?vocabulary.rectangle:"rectangle")+
-                                        "</mtext></mrow><mrow>c0</mrow></mover>";},
-                  t:"rectangle(c0)", p:function() { return nodemathtype.final; } },
-        rtriangle: { type:"op", value:"<img src='res/img/icon/geometry/rtriangle01.svg'/>", l:1, c:2,
-                  m:function() { return "<mover><mrow><mtext mathsize='small'>"+(vocabulary?vocabulary.rtriangle:"rtriangle")+
-                                        " c1</mtext></mrow><mrow>c0</mrow></mover>";},
-                  t:"rtriangle(c0,c1)", p:function() { return nodemathtype.final; } }
+        debug       : true                                      // Debug mode
     };
 
     // private methods
@@ -607,7 +42,7 @@
         format: function(_text) {
             for (var i=0; i<21; i++) {
                 var vReg = new RegExp("\\\["+(i+1)+"\\\](.+)\\\[/"+(i+1)+"\\\]", "g");
-                _text = _text.replace(vReg,"<span class='data' id='d"+i+"'>$1</span>");
+                _text = _text.replace(vReg,"<span class='mtdata' id='d"+i+"'>$1</span>");
             }
             return _text;
         },
@@ -636,8 +71,11 @@
 
                 // Load the template
                 var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-                $this.load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
+                $this.load( templatepath, function(response, status, xhr) { helpers.loader.neditor($this); });
             },
+			neditor: function($this) {
+				jtools.addon.neditor.init(function() { helpers.loader.build($this); });
+			},
             build: function($this) {
                 var settings = helpers.settings($this);
 
@@ -645,159 +83,24 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // Build panel droppable
-                $this.find("#editor").editor({
-                    size: [3.5,5.5],
-                    onclick:function($editor, _event) {
-                        if (settings.timers.clear) { clearTimeout(settings.timers.clear); }
-                        else { $this.find("#clear").css("opacity",0).show().animate({opacity:1},500); }
-                        settings.timers.clear = setTimeout(function() { $this.find("#clear")
-                            .animate({opacity:0},500, function() { $(this).hide(); settings.timers.clear=0; }); }, 2000);
-
-                         if (settings.glossary) {
-                            $this.find("#glossary").css("opacity",0).show().animate({opacity:1},500);
-                            if (settings.timers.glossary) { clearTimeout(settings.timers.glossary); }
-                            settings.timers.glossary = setTimeout(function() { $this.find("#glossary")
-                                .animate({opacity:0},500, function() { $(this).hide(); settings.timers.glossary = 0; }); }, 2000);
-                        }
+                $this.find("#mteditor").neditor({
+                    onupdate:function($editor, _root) {
+						if (_root) {
+							svg = jtools.math.tree2svg(_root);
+							var ratio = ($("#mtscreen").height()*svg.size[0])/($("#mtscreen").width()*svg.size[1]);
+							$("#mtscreen>div").css("width",Math.min(100,ratio*100)+"%").html(svg.svg);
+							$this.find("#mtsubmit").toggleClass("s",_root.isfull());
+						}
+						else { $("#mtscreen>div").html(""); $this.find("#mtsubmit").removeClass("s"); }
                     },
-                    onupdate:function($editor, $root) {
-                        var settings = helpers.settings($this);
-                        var isFilled = $root&&$root.filled();
-                        $this.find("#toinventory").toggleClass("s",$root&&$root.type=="op"&&isFilled);
-                        $this.find("#exec").toggleClass("s",$root&&$root.type=="action"&&isFilled);
-                        $this.find("#mtsubmit").toggleClass("s", isFilled);
-                    },
-                    getnode:function($editor, _val) {
-                        return typeof(_val)=="object"?nodetype[_val.id]:helpers.settings($this).cvalues[_val];
-                    }
+                    getnode:function($editor, _val) { return _val<settings.cvalues.length?$.extend(true,{},settings.cvalues[_val]):jtools.math.symbology.get(0); }
+					
                 });
-
-
-                vocabulary = settings.locale.vocabulary;
-
-                // BUILD THE GLOSSARY
-                var vIsValid = function(_a, _id) {
-                    var ret = _a?false:true;
-                    if (!ret) { for (var i in _a) { if (_a[i]==_id) ret = true; } }
-                    return ret;
-                }
-                $this.find("#mtbook #b").html("");
-                for (var i in settings.locale.databook) {
-                    var e=settings.locale.databook[i], vTValid=vIsValid(settings.a,"t"+e.id);
-                    var $html=$("<h1 id='t"+i+"' class='"+(vTValid?" valid":" disabled")+"'>"+e.t+"</h1>");
-                    $this.find("#mtbook #b").append($html);
-                    $html.bind("mousedown touchstart", function(event) {
-                      if (!$(this).hasClass("disabled")) {
-                        var vId = parseInt($(this).attr("id").substr(1));
-                        if ($(this).hasClass("s")) {
-                            $(this).removeClass("s");
-                            $this.find("#mtbook #b h2.t"+vId).animate({"margin-left":"-20em"},500,function() { $(this).hide(); } );
-                            setTimeout(function() {
-                                $this.find("#mtbook #b h1").each(function(_index) {
-                                    if (_index!=vId) { $(this).show().animate({"margin-left":"-0.5em"},500); }
-                                });
-                            }, 500);
-                        }
-                        else {
-                            $(this).addClass("s");
-                            $this.find("#mtbook #b h1").each(function(_index) {
-                                if (_index!=vId) { $(this).animate({"margin-left":"-16em"},500,function() { $(this).hide(); }); }
-                            });
-                            setTimeout(function() {
-                                $this.find("#mtbook #b h2.t"+vId).css("margin-left","-20em").show().animate({"margin-left":"-0.5em"},500);
-                                }, 500);
-                        }
-                      }
-                      event.preventDefault();
-                    });
-
-                    if (e.c) for (var j in e.c) {
-                        var vBValid=vTValid&vIsValid(settings.a,"b"+e.c[j].id);
-                        var $html2 = $("<h2 id='b"+e.c[j].id+"' class='t"+i+(vBValid?" valid":" disabled")+"'>"+e.c[j].t+"</h2>");
-                        $this.find("#mtbook #b").append($html2);
-                        $html2.bind("mousedown touchstart", function(event) {
-                          if (!$(this).hasClass("disabled")) {
-                            var vId = parseInt($(this).attr("class").substr(1));
-                            var vBook = parseInt($(this).attr("id").substr(1));
-                            if ($(this).hasClass("s")) {
-                                $(this).removeClass("s");
-                                settings.bookid=0;
-                                $this.find("#editor").editor("mathml");
-                                $this.find("#mtbook #b #list").animate({"opacity":0},500, function(){$(this).html("").hide();});
-                                setTimeout(function() {
-                                    $this.find("#mtbook #b h1#t"+vId).show().animate({"margin-left":"-0.5em"},500);
-                                    $this.find("#mtbook #b h2.t"+vId).each(function(_index) {
-                                        if ($(this).attr("id")!="b"+vBook) { $(this).show().animate({"margin-left":"-0.5em"},500); }
-                                    });
-                                }, 500);
-                            }
-                            else {
-                                $(this).addClass("s");
-                                $this.find("#mtbook #b h1#t"+vId).animate({"margin-left":"-16em"},500,function() { $(this).hide(); } );
-                                $this.find("#mtbook #b h2.t"+vId).each(function(_index) {
-                                    if ($(this).attr("id")!="b"+vBook) {
-                                        $(this).animate({"margin-left":"-20em"},500,function() { $(this).hide(); });
-                                    }
-                                });
-                                setTimeout(function() {
-                                    $this.find("#mtbook #b #list").html("").show();
-                                    var vBValid= $this.find("#mtbook h2#b"+vBook).hasClass("valid");
-                                    settings.booknode = {};
-                                    for (var k in settings.locale.action) {
-                                        var a = settings.locale.action[k];
-                                        if (a[2]==vBook) {
-
-                                            var vNode = $this.find("#editor").editor("tonode", {id:k});
-                                            settings.booknode[k] = vNode;
-                                            var vClass=(vBValid && vIsValid(settings.a,k))?"":" disabled";
-                                            var $elt=$("<div class='icon ea action"+vClass+"' id='a"+k+"'><div class='label'>"+
-                                                    vNode.label()+"</div></div>");
-                                            $this.find("#mtbook #b #list").append($elt);
-                                            
-                                            $elt.bind("mousedown touchstart", function(event) {
-                                                if (!$(this).hasClass("disabled")) {
-                                                    var vAction = $(this).attr("id").substr(1);
-                                                    $this.find("#editor").editor("mathml",settings.booknode[vAction]);
-                                                    settings.bookid = vAction;
-                                                }
-                                            });
-                                        }
-                                    }
-                                    $this.find("#mtbook #b #list").animate({"opacity":1},500,function(){$(this).show(); });
-                                },500);
-                            }
-                          }
-                          event.preventDefault();
-                        });
-                    }
-                }
-                $this.find("#mtbook #b").append("<div id='list'></div>");
 
                 if (settings.data) { settings.number = settings.data.length; }
                 if (settings.gen) {
                     settings.data = [];
                     for (var i=0; i<settings.number; i++) { settings.data.push(eval('('+settings.gen+')')($this,settings,i)); }
-                }
-
-                // Update the action node type
-                for (var n in nodetype) {
-                    if (nodetype[n].type=="action") {
-
-                        nodetype[n].m = "<h1>"+settings.locale.action[n][0]+"</h1>"+
-                                        "<p class='sub'>"+settings.locale.action[n][1]+"</p>";
-
-                        for (var i=1; i<nodetype[n].c+1; i++) {
-                            var vReg = new RegExp("\\\["+i+"\\\](.+)\\\[/"+i+"\\\]","g");
-                            nodetype[n].m = nodetype[n].m.replace(vReg,"<span class='link' id='l"+i+"' "+
-                                "onclick=\"$(this).closest('.mathcraft').mathcraft('ref',"+i+");\" "+
-                                "ontouchstart=\"$(this).closest('.mathcraft').mathcraft('ref',"+i+");event.preventDefault();\" "+
-                                ">$1</span>");
-                        }
-
-                        nodetype[n].nomathml = true;
-                        nodetype[n].p = function() { return nodemathtype.rootonly; };
-                    }
-                    nodetype[n].id = n;
                 }
 
                 // Locale handling
@@ -820,8 +123,12 @@
             var figure      = (settings.data&&settings.data[settings.dataid].figure?settings.data[settings.dataid].figure:settings.figure);
 
             settings.cvalues = [];
-
-            if (settings.clean) { $this.find("#editor").editor("clear"); }
+			
+			if (settings.clean && $this.find("#mteditor").neditor("getroot")) {
+				$this.find("#mteditor").neditor("clear");
+			}
+			
+			$this.find("#g_effects").removeClass();
 
             if (figure) {
                 if (figure.url)        { $this.find("#figure").html("<img src='"+figure.url+"'/>"); } else
@@ -859,15 +166,20 @@
                 }
             }
 
-			$this.find("#exercice>div").html(jtools.instructions(exercice));
+			$this.find("#exercice>div").html(helpers.format(jtools.instructions(exercice)));
 
             $this.find("#inventory .z").each(function(_index) {
                 if (values && _index<values.length) {
-                    var vNode = $this.find("#editor").editor("tonode", values[_index]);
+					var vNode = jtools.math.symbology.get(values[_index]);
                     settings.cvalues.push(vNode);
-                    var vClass=(values[_index].children?"ea tree":"ea")+" "+vNode.type;
-                    var $elt=$("<div class='"+vClass+"' id='"+_index+"'><div class='label'>"+vNode.label()+"</div></div>");
-                    $(this).html($elt);
+                    var vClass=(vNode.op&&vNode.op[0]?"nedita nedittree":"nedita")+" nedit"+vNode.ty;
+					var vLabel = vNode.la?vNode.la:vNode.va;
+					var vLen = vLabel.toString().length;
+                    var $elt=$("<div class='"+vClass+"' id='"+_index+"'><div class='neditlabel'>"+vLabel+"</div></div>");
+					if (vLen>2) {
+						$elt.find(".neditlabel").css("font-size",(1.5/vLen)+"em")
+						                        .css("padding-top",(vLen/8)+"em"); }
+					$(this).html($elt);
                     helpers.draggable($this,$elt);
                 }
             });
@@ -875,27 +187,21 @@
         },
         draggable: function($this, $elt) {
             var settings = helpers.settings($this);
-            $elt.bind("mousedown touchstart", function(event) { /* helpers.node.mathml($this,parseInt($(this).attr("id")));*/ });
-            $elt.draggable({containment:$this, helper:"clone", 
+			
+            $elt.draggable({containment:$this, appendTo: $this.find("#mteditor #nedittree"), helper:"clone", 
                 start:function( event, ui) {
-                    $("#exercice .data#d"+$(this).attr("id")).addClass("hl");
-                    if (settings.cvalues[$(this).attr("id")].children.length ||
-                        settings.cvalues[$(this).attr("id")].type == "action" ) {
-                        $this.find("#editor").editor("mathml",settings.cvalues[$(this).attr("id")]);
-                    }
+                    $("#exercice .mtdata#d"+$(this).attr("id")).addClass("mthl");
                     if (settings.svg) {
                         $(".p"+(parseInt($(this).attr("id"))+1),settings.svg.root()).each(function() {
                             var vClass = $(this).attr("class");
                             $(this).attr("class",vClass+" hl");
                         });
                     }
-                    $(this).addClass("move");
                 },
                 stop: function( event, ui) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
-                    $("#exercice .data").removeClass("hl");
-                    $this.find("#editor").editor("mathml");
+                    $("#exercice .mtdata").removeClass("mthl");
                     
                     if (settings.svg) {
                         $(".hl",settings.svg.root()).each(function() {
@@ -904,7 +210,8 @@
                         });
                     }
 
-                    $(this).removeClass("move"); } });
+                }
+			});
         },
         levenshtein: function (a,b) {
                 var n = a.length, m = b.length, matrice = [];
@@ -933,7 +240,7 @@
                     root            : {},                                   // build tree
                     wrongs          : 0,                                    // wrongs value
                     mathmlup        : { ratio: 1, timerid: 0, action:0 },   // ratio of the mathml output
-                    timers          : { glossary: 0, clear: 0 },            // Timers id
+                    timers          : { clear: 0 },                         // Timers id
                     cvalues         : 0,                                    // current values
                     booknode        : {},                                   // book page editor node
                     svg             : 0                                     // figure as svg
@@ -973,17 +280,26 @@
                     if (!$.isArray(result)) { result = [ result ]; }
                     settings.dataid++;
 
-                    var min = 5;
-                    var values = $this.find("#editor").editor("text");
-                    if (settings.onlyone) { values = [ values[0] ]; }
-                    
-                    for (var i in values) for (var j in result ) { min = Math.min (min,helpers.levenshtein(values[i], result[j].toString())); }
+					var root = $this.find("#mteditor").neditor("getroot");
+					var min = 5;
+					
+					if (root) {
+						for (var i=0; i<result.length; i++) {
+							var r = result[i];
+							if (r.indexOf(" ")!=-1) {
+								var tree = jtools.math.pol2tree(r);
+								min = Math.min (min, tree.cmp(root));
+							}
+							else { min = Math.min (min,helpers.levenshtein(r, root.out())); }
+						}
+					}
+					
                     min = Math.min(5,min*settings.errratio);
                     $this.find("#mtscreen").addClass("s"+min);
 
-                    if (settings.devmode) { alert($this.find("#mtscreen>div").html()+"\n"+values[0]); }
-
                     settings.wrongs+=min;
+					
+					$this.find("#g_effects").addClass(min?"wrong":"good");
 
                     if (settings.dataid<settings.number) {
                         setTimeout(function(){
@@ -1024,14 +340,6 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#editor").editor('clear'); 
                 $this.find("#clear").animate({opacity:0},500, function() { $(this).hide(); });
-                $this.find("#glossary").animate({opacity:0},500, function() { $(this).hide(); });
-            },
-            glossary: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                settings.bookid=0;
-                $this.find("#clear").animate({opacity:0},500, function() { $(this).hide(); });
-                $this.find("#glossary").animate({opacity:0},500, function() { $(this).hide(); });
-                $this.find("#mtbook").css("opacity",0).show().animate({opacity:1},500);
             },
             execute: function() {
                 var $this = $(this) , settings = helpers.settings($this);

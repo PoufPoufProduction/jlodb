@@ -622,7 +622,7 @@
             var settings = $this.data("settings");
             settings.alchemist = true;
             $this.find("#atnewelt .icon").hide();
-            $this.find("#atnewelt .label").hide();
+            $this.find("#atnewelt .atlabel").hide();
             $this.find("#atnewelt #atdefault").show();
             $this.find("#atnewelt").css("left","-13em").show().animate({left:"-.2em"},400);
             $this.find("#atnewelt #"+_type+"label").show();
