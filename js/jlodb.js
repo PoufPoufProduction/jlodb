@@ -112,8 +112,8 @@ jtools = {
 		svg: { font: [7,12], y: 9.5 },
 		symbology : {
 			"abs" : { ty:"op", pr:2, va:"abs",	 tt:"|$1|",     op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.abs(r[0]);} },
-			"par" : { ty:"re", pr:5, va:"//",    tt:"$1//$2",   op:[null,null],      co: true, as:true },
-			"per" : { ty:"re", pr:5, va:"⊥",     tt:"$1⊥$2",    op:[null,null] },
+			"//" : { ty:"op", pr:5, va:"//",    tt:"$1//$2",   op:[null,null],      co: true, as:true, fi:true },
+			"⊥" : { ty:"op", pr:5, va:"⊥",     tt:"$1⊥$2",    op:[null,null], co:true, fi:true },
 			"cos" : { ty:"op", pr:0, va:"cos",   tt:"cos$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.cos(r[0]);} },
 			"sin" : { ty:"op", pr:0, va:"sin",   tt:"sin$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sin(r[0]);} },
 			"+"   : { ty:"op", pr:5, va:"+",     tt:"$1+$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]+r[0]);}, co:true, as:true },
@@ -177,7 +177,7 @@ jtools = {
 			get : function(_v) {
 				var ret;
 				var base = {
-					em: false,
+					em: false, fi:false, ro:false,
 					co: false, as: false,
 					_eq : function(_a) { var ret=[]; for (var i in this.op) { ret.push(this.op[i]?this.op[i].eq(_a):NaN); } return ret; },
 					eq  : function(_a) { return NaN; },
@@ -247,8 +247,9 @@ jtools = {
 							svg+="<g transform='translate("+offx*jtools.math.svg.font[0]+","+((max[1]-svgs[0].si[1])*jtools.math.svg.font[1])+")'>"+tmp.svg+"</g>";
 							offx+=tmp.offx;
 						}
-						svg  += "<text y='"+jtools.math.svg.y+"' transform='translate("+(offx*jtools.math.svg.font[0])+","+((max[1]-0.5)*jtools.math.svg.font[1])+")'>"+this.va+"</text>";
-						offx += this.va.toString().length;
+						var va = (this.ty=="va"&&this.la)?this.la:this.va;
+						svg  += "<text y='"+jtools.math.svg.y+"' transform='translate("+(offx*jtools.math.svg.font[0])+","+((max[1]-0.5)*jtools.math.svg.font[1])+")'>"+va+"</text>";
+						offx += va.toString().length;
 
 						if (this.op.length>=2) {
 							var tmp = this._svg(svgs[1], max[1]-0.5);

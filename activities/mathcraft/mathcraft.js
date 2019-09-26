@@ -90,8 +90,13 @@
 							var ratio = ($("#mtscreen").height()*svg.size[0])/($("#mtscreen").width()*svg.size[1]);
 							$("#mtscreen>div").css("width",Math.min(100,ratio*100)+"%").html(svg.svg);
 							$this.find("#mtsubmit").toggleClass("s",_root.isfull());
+							$this.find("#mtexec").toggleClass("s",_root.isfull()&&_root.ty=="de");
 						}
-						else { $("#mtscreen>div").html(""); $this.find("#mtsubmit").removeClass("s"); }
+						else {
+							$("#mtscreen>div").html("");
+							$this.find("#mtsubmit").removeClass("s");
+							$this.find("#mtexec").removeClass("s");
+						}
                     },
                     getnode:function($editor, _val) { return _val<settings.cvalues.length?$.extend(true,{},settings.cvalues[_val]):jtools.math.symbology.get(0); }
 					
@@ -114,6 +119,72 @@
                 helpers.build($this);
             }
         },
+		node: function(_id) {
+			
+			var getsameop = function(_n1, _n2) {
+				var ops=[[0,0],[0,1],[1,0],[1,1]];
+				var ret=0;
+				for (var i in ops) {
+					var ii = ops[i];
+					if (_n1.op[ii[0]].cmp(_n2.op[ii[1]]) == 0 &&
+						_n1.op[1-ii[0]].cmp(_n2.op[1-ii[1]]) != 0 ) { ret = ii; }
+				}
+				return ret;
+			}
+			
+			
+			var vret =  { ty:"de", ro:true, op:[null,null], va:_id, tt:_id, "mtla":"unknown",
+				svg:function() {
+					var svg = "<text y='"+jtools.math.svg.y+"' style='fill:red;'>"+this.mtla+"</text>";
+					return { si:[this.mtla.length*1.1, 1, 0.5], svg:svg, pr:1 }; },
+				mtpr: function() { return 0; }
+			};
+			
+			var vmath = {
+				"//2" : { mtla:"d1⊥d3 + d2⊥d3 => d1//d2",
+						  mtpr: function() {
+					var ret = 0;
+					if (this.isfull() && this.op[0].va=="⊥" && this.op[1].va=="⊥") {
+						var same = getsameop(this.op[0], this.op[1]);
+						if (same) {
+							ret = jtools.math.symbology.get({va:"//"});
+							ret.op[0] = $.extend({},this.op[0].op[1-same[0]],{mtelt:0});
+							ret.op[1] = $.extend({},this.op[1].op[1-same[1]],{mtelt:0});
+						}
+					}
+					return ret;
+				} },
+				"//3" : { mtla:"d1//d3 + d2//d3 => d1//d2",
+						  mtpr: function() {
+					var ret = 0;
+					if (this.isfull() && this.op[0].va=="//" && this.op[1].va=="//") {
+						var same = getsameop(this.op[0], this.op[1]);
+						if (same) {
+							ret = jtools.math.symbology.get({va:"//"});
+							ret.op[0] = $.extend({},this.op[0].op[1-same[0]],{mtelt:0});
+							ret.op[1] = $.extend({},this.op[1].op[1-same[1]],{mtelt:0});
+						}
+					}
+					return ret;
+				} },
+				"⊥//" : { mtla:"d1⊥d3 + d2//d3 => d1⊥d2",
+						  mtpr: function() {
+					var ret = 0;
+					if (this.isfull() && this.op[0].va=="⊥" && this.op[1].va=="//") {
+						var same = getsameop(this.op[0], this.op[1]);
+						if (same) {
+							ret = jtools.math.symbology.get({va:"⊥"});
+							ret.op[0] = $.extend({},this.op[0].op[1-same[0]],{mtelt:0});
+							ret.op[1] = $.extend({},this.op[1].op[1-same[1]],{mtelt:0});
+						}
+					}
+					return ret;
+				} }
+			};
+			
+			return $.extend(true, {}, vret, vmath[_id]?vmath[_id]:{});
+
+		},
         build: function($this) {
             var settings = helpers.settings($this);
             var data        = (settings.data?settings.data[settings.dataid]:settings);
@@ -171,6 +242,11 @@
             $this.find("#inventory .z").each(function(_index) {
                 if (values && _index<values.length) {
 					var vNode = jtools.math.symbology.get(values[_index]);
+					
+					if (vNode.va.toString().substr(0,2)=="mt") {
+						vNode = $.extend({}, vNode, helpers.node(vNode.va.toString().substr(2)));
+					}
+					
                     settings.cvalues.push(vNode);
                     var vClass=(vNode.op&&vNode.op[0]?"nedita nedittree":"nedita")+" nedit"+vNode.ty;
 					var vLabel = vNode.la?vNode.la:vNode.va;
@@ -336,54 +412,17 @@
 
                 }
             },
-            clear: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#editor").editor('clear'); 
-                $this.find("#clear").animate({opacity:0},500, function() { $(this).hide(); });
-            },
             execute: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (settings.interactive && $this.find("#exec").hasClass("s")) {
-                    var root    = $this.find("#editor").editor("value");
-                    var n       = root.process($this);
+                var $this = $(this), settings = helpers.settings($this);
+                if (settings.interactive && $this.find("#mtexec").hasClass("s")) {
+					var root = $this.find("#mteditor").neditor("getroot");
+                   
+				    if (root && root.ty=="de" && root.isfull()) {
+						var newroot = root.mtpr();
+						$this.find("#mteditor").neditor("clear",newroot);
+					}
 
-                    $this.find("#mask").css({"opacity":0,"background-color":n?"#0F0":"#F00"}).show().animate({opacity:1},500);
-                    setTimeout(function(){
-                        if (n) {
-                            root.detach();
-                            $this.find("#editor").editor("value", n);
-                            $this.find("#toinventory").addClass("s");
-                        }
-                        $this.find("#mask").animate({opacity:0},500, function(){$(this).hide(); });
-                    },500);
-                }
-            },
-            closebook: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#mtbook").animate({opacity:0}, 500, function() { $(this).hide(); });
-                settings.bookid=0;
-                $this.find("#editor").editor("mathml");
-            },
-            onscreen: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (settings.bookid) {
-                    $this.find("#mtbook").animate({opacity:0}, 500, function() { $(this).hide(); });
-                    $this.find("#editor").editor("value", settings.booknode[settings.bookid], true );
-                    settings.bookid=0;
-                }
-            },
-            ref: function(_id) {
-                var $this = $(this) , settings = helpers.settings($this);
-                var root = $this.find("#editor").editor("value");
-                if (root && root.type=="action") {
-
-                    root.children[_id-1].$html.addClass("over");
-                    $this.find("#mtscreen #l"+_id).addClass(root.check(_id-1)?"good":"wrong");
-
-                    setTimeout(function() {
-                        $this.find("#editor .ed").removeClass("over");
-                        $this.find("#mtscreen .link").removeClass("wrong").removeClass("good");
-                    }, 800);
+                    
                 }
             }
         };

@@ -35,11 +35,14 @@
 						var vPar = settings.root.mtfi($(this).attr("id").substr(1));
 						var vNew = settings.getnode($this, $(ui.draggable).attr("id"));
 						
-						if (vPar) {
-							vPar[0].op[vPar[1]].mtde();
-							vPar[0].op[vPar[1]] = vNew;
-						} else { settings.root.mtde(); settings.root = vNew; }
-						helpers.update($this, vNew); helpers.display($this);
+						if ((vPar&&vPar[0]&&vPar[0].fi&&vNew.ty!="va") || (vNew.ro)) {  }
+						else {
+							if (vPar) {
+								vPar[0].op[vPar[1]].mtde();
+								vPar[0].op[vPar[1]] = vNew;
+							} else { settings.root.mtde(); settings.root = vNew; }
+							helpers.update($this, vNew); helpers.display($this);
+						}
 							
 					}
 				});
@@ -48,7 +51,7 @@
 				
 				if (!_node.em) {
 					var vClass="nedita nedit"+_node.ty;
-					var vLabel = _node.va.toString();
+					var vLabel = (_node.ty=="va"&&_node.la)?_node.la.toString():_node.va.toString();
 					var vLen = vLabel.length;
                     var $elt=$("<div class='"+vClass+"'><div class='neditlabel'>"+vLabel+"</div></div>");
 					if (vLen>2) {
@@ -152,7 +155,9 @@
                 drop:function(event, ui) {
 					var vNew = settings.getnode($this, $(ui.draggable).attr("id"));
 					if (settings.root!=0) {
-						if ( vNew.op && vNew.op.length && !vNew.op[0]) { vNew.op[0] = settings.root; }
+						if ( vNew.op && vNew.op.length && !vNew.op[0] && !settings.root.ro) { 
+							vNew.op[0] = settings.root;
+						}
 						else { settings.root.mtde(); }
 					}
 					settings.root = vNew;
@@ -160,11 +165,15 @@
 					helpers.display($this); }
             });
 		},
-		clear: function($this) {
+		clear: function($this, _newroot) {
 			var settings = helpers.settings($this);
 			$this.find("#neditmask").css("opacity",1).show();
 			if (settings.root) { settings.root.mtde(); }
 			settings.root = 0;
+			if (_newroot) {
+				helpers.update($this, _newroot);
+				settings.root = _newroot;
+			}
 			helpers.display($this);
 			settings.onupdate($this, settings.root);
 			if (settings.clearId) { clearTimeout(settings.clearId); settings.clearId = 0; }
@@ -201,7 +210,7 @@
                     helpers.init($this);
                 });
             },
-            clear: function() { helpers.clear($(this)); },
+            clear: function(_newroot) { helpers.clear($(this),_newroot); },
 			getroot: function() { return helpers.settings($(this)).root; } 
             
         };
