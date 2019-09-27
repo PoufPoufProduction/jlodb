@@ -1,85 +1,82 @@
-.calc                               { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; position:relative;}
-.calc #g_splash                     { background-image:url("../../res/img/banners/calc.svg"); }
-.calc div#ccboard                   { height:16em; font-size:0.8em; }
-.calc div#ccboard>div               { position:relative; height:120%; width:120%; }
-.calc div#ccboard .cell             { position:absolute; background-color:white; background-size:100%; text-align:center; cursor:pointer; }
-.calc div#ccboard .cell.graph>div   { width:100%; height:100%; }
-.calc div#ccboard .cell.left        { text-align:left; }
-.calc div#ccboard .cell.left>div    { margin-left:.1em; }
-.calc div#ccboard .cell.f2>div      { font-size:2em; }
-.calc div#ccboard .cell.f15>div     { font-size:1.5em; }
-.calc div#ccboard .cell.f14>div     { font-size:1.4em; }
-.calc div#ccboard .cell.f12>div     { font-size:1.2em; }
-.calc div#ccboard .cell.f08>div     { font-size:0.8em; }
-.calc div#ccboard .cell.f05>div     { font-size:0.5em; }
-.calc div#ccboard .cell.f04>div     { font-size:0.4em; }
-.calc div#ccboard .cell.f03>div     { font-size:0.3em; }
-.calc div#ccboard .cell.f025>div    { font-size:0.25em; }
-.calc div#ccboard .cell.f02>div     { font-size:0.2em; }
-.calc div#ccboard .cell.f015>div    { font-size:0.15em; }
-.calc div#ccboard .cell.vm02>div    { margin-top:0.2em; }
-.calc div#ccboard .cell.vm05>div    { margin-top:0.5em; }
-.calc div#ccboard .cell.vm08>div    { margin-top:0.8em; }
-.calc div#ccboard .cell.vm1>div     { margin-top:1em; }
-.calc div#ccboard .cell.vm12>div    { margin-top:1.2em; }
-.calc div#ccboard .cell.vm2>div     { margin-top:2em; }
-.calc div#ccboard .cell.fixed       { cursor:auto; }
-.calc div#ccboard .cell.wrong       { background-color:#A00 !important; color:red !important;}
-.calc div#ccboard .cell.empty       { background-color:#FF0 !important; }
-.calc div#ccboard .cell.g           { background-color:#888; color:#444;cursor:auto; }
-.calc div#ccboard .cell.fixed .img  { border:1px solid black; border-width:1px 0 1px 0; margin-top:.5em; }
-.calc div#ccboard .cell.fixed .icon { font-size:3em; margin:0 auto;}
-.calc div#ccboard .cell.fixed .image{ width:100%; }
-.calc div#ccboard .cell.fixed>div   { line-height:1.2em; }
-
-.calc div#panel                 { position:absolute; width:6em; height:8em;
-                                  border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; font-size:.6em; }
-.calc.largepanel div#panel		{ font-size:1em; }
-.calc div#panel #ppanel         { width:6em; height:7em; background-color:rgba(255,255,255,0.8); position:relative; }
-.calc div#panel #ppanel>div     { display:none;  }
-.calc div#panel #phandle        { background-image:url("../../res/img/background/asset/move01.svg"); cursor:move; }
-.calc #phandle #pcancel       { float:right; cursor:pointer;}
-.calc #phandle #pvalid      { float:left; cursor:pointer; }
-.calc div#pmenu                  { position:absolute; left:-1em; top:0; }
-.calc div#pmenu>div              { background-color:white; border-radius:0.5em; background-image:url("../../res/img/icon/tab/tab00.svg");
-                                  cursor:pointer; overflow:visible; display:none; }
-.calc div#pmenu>div.s            { background-color:red; }
-
-.calc .alert					{ display:none; position:absolute; font-size:6em; width:1em; height:1em; top:2%; left:60%; }
-.calc.leftfx .alert				{ left:2%; }
-
-
-.calc #pimg                     { font-size:2em; }
-.calc #pimg .icon               { float:left; border-radius:.5em; overflow:visible; cursor:pointer;}
-.calc #pimg .icon.s             { background-color:rgba(84,137,184,0.9); }
-.calc.horizimg #pimg .icon      { width:4em; height:3em; font-size:.35em; border-radius:0; }
-.calc.borderimg #pimg .icon     { border:.1em solid gray; margin:.02em; }
-.calc.borderimg #pimg .icon.s   { background-color:inherit; border:.1em solid red; }
-.calc #ptxt>div			{ background-color:rgba(84,137,184,0.9); margin:.1em; color:white; cursor:pointer; }
-.calc #ptxt>div.small       { font-size:0.8em; }
-.calc #ptxt>div.inline      { width:auto; min-width:1.2em; float:left; text-align:center; }
-.calc #ptxt>div.s				{ background-color:rgba(256,220,50,0.9); }
-
-
-.calc #pgraph #graphmenu         { width:6em; height:3em; background-color:rgba(84,137,184,0.9); }
-.calc #pgraph #graphmenu>div     { border:.1em solid white; margin:.1em; float:left; background-color:rgba(255,255,255,0.8); cursor:pointer; }
-.calc #pgraph #graphmenu>div.s  { border:.1em solid red; }
-.calc #pgraph .line             { font-size:.8em; margin:.1em; background-color:#030; display:none;}
-.calc #pgraph .line>div         { float:left; margin:.1em; }
-.calc #pgraph .line .label      { width:2em; height:1em; margin-right:.4em; text-align:center; background-color:rgba(200,255,210,0.8); color:#030; }
-.calc #pgraph .line .ref        { width:2em; height:1em; text-align:center; background-color:rgba(255,255,255,0.9); cursor:pointer; }
-.calc #pgraph .line .ref.s      { background-color:red; }
-
-.calc table                 { border-spacing: 0; }
-.calc #pcalc td>div  { height:1.2em; }
-.calc #pcalc td>#cleancalc		{ font-size:.25em; height:1.2em; background-color:#030; color:#0F0; text-align:right; cursor:crosshair; padding-right:1em; margin-bottom:.2em; }
-.calc #pcalc td>#screen       { font-size:1.2em; width:5em; height:1.2em; cursor:crosshair;
-                                   text-align:center; color:#0F0; font-weight:bold;
-                                   background-color:#030;
-                                   background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-.calc.smallscreen #pcalc td>#screen>div { font-size:0.8em; margin-top:.15em; }
+.calc                           { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; position:relative;}
+.calc #g_splash                 { background-image:url("../../res/img/banners/calc.svg"); }
+.calc #ccboard                  { height:16em; font-size:0.8em; }
+.calc #ccboard>div              { position:relative; height:120%; width:120%; }
+.calc .ccelt                    { position:absolute; background-color:white; background-size:100%; text-align:center; cursor:pointer; }
+.calc .ccelt.graph>div          { width:100%; height:100%; }
+.calc .ccelt.left               { text-align:left; }
+.calc .ccelt.left>div           { margin-left:.1em; }
+.calc .ccelt.f2>div             { font-size:2em; }
+.calc .ccelt.f15>div            { font-size:1.5em; }
+.calc .ccelt.f14>div            { font-size:1.4em; }
+.calc .ccelt.f12>div            { font-size:1.2em; }
+.calc .ccelt.f08>div            { font-size:0.8em; }
+.calc .ccelt.f05>div            { font-size:0.5em; }
+.calc .ccelt.f04>div            { font-size:0.4em; }
+.calc .ccelt.f03>div            { font-size:0.3em; }
+.calc .ccelt.f025>div           { font-size:0.25em; }
+.calc .ccelt.f02>div            { font-size:0.2em; }
+.calc .ccelt.f015>div           { font-size:0.15em; }
+.calc .ccelt.vm02>div           { margin-top:0.2em; }
+.calc .ccelt.vm05>div           { margin-top:0.5em; }
+.calc .ccelt.vm08>div           { margin-top:0.8em; }
+.calc .ccelt.vm1>div            { margin-top:1em; }
+.calc .ccelt.vm12>div           { margin-top:1.2em; }
+.calc .ccelt.vm2>div            { margin-top:2em; }
+.calc .ccelt.fixed              { cursor:auto; }
+.calc .ccelt.wrong              { background-color:#A00 !important; color:red !important;}
+.calc .ccelt.empty              { background-color:#FF0 !important; }
+.calc .ccelt.g                  { background-color:#888; color:#444;cursor:auto; }
+.calc .ccelt.fixed .img         { border:1px solid black; border-width:1px 0 1px 0; margin-top:.5em; }
+.calc .ccelt.fixed .icon        { font-size:3em; margin:0 auto;}
+.calc .ccelt.fixed .image       { width:100%; }
+.calc .ccelt.fixed>div          { line-height:1.2em; }
+.calc #ccpanel                  { position:absolute; width:6em; height:8em; border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; font-size:.6em; }
+.calc.largepanel #ccpanel		{ font-size:1em; }
+.calc #cctools                  { width:6em; height:7em; background-color:rgba(255,255,255,0.8); position:relative; }
+.calc #cctools>div              { display:none;  }
+.calc #cchandle                 { background-image:url("../../res/img/background/asset/move01.svg"); cursor:move; }
+.calc #cccancel                 { float:right; cursor:pointer;}
+.calc #ccvalid                  { float:left; cursor:pointer; }
+.calc #ccmenu                   { position:absolute; left:-1em; top:0; }
+.calc #ccmenu>div               { background-color:white; border-radius:0.5em; background-image:url("../../res/img/icon/tab/tab00.svg"); cursor:pointer; overflow:visible; display:none; }
+.calc #ccmenu>div.s             { background-color:red; }
+.calc.leftfx #g_effects         { left:2%; }
+.calc #ccpimg                   { font-size:2em; }
+.calc #ccpimg .icon             { float:left; border-radius:.5em; overflow:visible; cursor:pointer;}
+.calc #ccpimg .icon.s           { background-color:rgba(84,137,184,0.9); }
+.calc.horizimg #ccpimg .icon    { width:4em; height:3em; font-size:.35em; border-radius:0; }
+.calc.borderimg #ccpimg .icon   { border:.1em solid gray; margin:.02em; }
+.calc.borderimg #ccpimg .icon.s { background-color:inherit; border:.1em solid red; }
+.calc #ccptxt>div			    { background-color:rgba(84,137,184,0.9); margin:.1em; color:white; cursor:pointer; }
+.calc #ccptxt>div.small         { font-size:0.8em; }
+.calc #ccptxt>div.inline        { width:auto; min-width:1.2em; float:left; text-align:center; }
+.calc #ccptxt>div.s				{ background-color:rgba(256,220,50,0.9); }
+.calc #ccgmenu                  { width:6em; height:3em; background-color:rgba(84,137,184,0.9); }
+.calc #ccgmenu>div              { border:.1em solid white; margin:.1em; float:left; background-color:rgba(255,255,255,0.8); cursor:pointer; }
+.calc #ccgmenu>div.s            { border:.1em solid red; }
+.calc .ccline                   { font-size:.8em; margin:.1em; background-color:#030; display:none;}
+.calc .ccline>div               { float:left; margin:.1em; }
+.calc .ccline .cclabel          { width:2em; height:2em; margin-right:.2em; text-align:center; background-color:rgba(200,255,210,0.8); color:#030; }
+.calc .ccline .cclabel>div		{ font-size:2em; }
+.calc .ccline .ccref            { font-weight:bold; background-image:url("../../res/img/default/white/look.svg");width:2em; height:1.7em; padding-top:.3em;  text-align:center; background-color:rgba(255,255,255,0.9); cursor:pointer; }
+.calc .ccline .ccref.s          { background-color:red; color:rgba(255,255,255,0.4); }
+.calc #ccpcalc td>div           { height:1.2em; }
+.calc #ccclean                  { font-size:.25em; height:1.2em; background-color:#030; color:#0F0; text-align:right; cursor:crosshair; padding-right:1em; margin-bottom:.2em; }
+.calc #ccscreen                 { font-size:1.2em; width:5em; height:1.2em; cursor:crosshair; text-align:center; color:#0F0; font-weight:bold; background-color:#030; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.calc.smallscreen #ccscreen>div { font-size:0.8em; margin-top:.15em; }
 .calc .graykeypad               { background-color:rgba(128,128,128,0.9) !important;} 
 .calc .g_bluekey                { color:white; text-align:center; font-size:1em; cursor:pointer; border:.05em solid white; }
+.calc #ccmove                   { height:1em; color:white; }
+.calc #ccneditor				{ width:6em; height:5em; }
+.calc #ccmelts                  { width:6em; height:2em; background-color:rgba(84,137,184,0.9); }
+.calc #ccmelts>div              { float:left; font-size:.7em; margin:.02em; }
+.calc #ccpick                   { cursor:pointer; width:1em; height:1em; background-color:#e4e4e4; color:black; text-align:center; border-radius:.2em; }
+.calc #ccpick.s                 { background-color:#A00; color:red;}
+.calc #g_tbutton                { position:absolute; top:1%; left:93%; cursor:help; width:1em; height:1em; display:none; }
+
+
+
 
 .calc #ccboard>#target            { position:absolute; border:.1em solid blue; margin:-.1em;
                                   overflow:visible;display:none; }
@@ -88,18 +85,6 @@
 .calc #target.s                 { border:.1em solid red; }
 .calc #target.s>div             { background-color:red; }
 
-
-.calc #escreen                  { height:1em; color:white; }
-
-#esource                      { width:6em; height:2em; background-color:rgba(84,137,184,0.9); }
-
-
-#esource>div                  { float:left; font-size:.7em; margin:.02em; }
-#esource #echange             { width:1em; height:1em; background-color:#e4e4e4; color:black; text-align:center; border-radius:.2em; }
-#esource #echange.s           { background-color:#A00; color:red;}
-.calc #eclear                 { top:33em; left:19em;  }
-
-.calc #g_tbutton                  { position:absolute; top:1%; left:93%; cursor:help; width:1em; height:1em; display:none; }
 
 
 

@@ -85,6 +85,7 @@
                 // Build panel droppable
                 $this.find("#mteditor").neditor({
                     onupdate:function($editor, _root) {
+						$this.find("#mtsave").removeClass("s");
 						if (_root) {
 							svg = jtools.math.tree2svg(_root);
 							var ratio = ($("#mtscreen").height()*svg.size[0])/($("#mtscreen").width()*svg.size[1]);
@@ -239,28 +240,28 @@
 
 			$this.find("#exercice>div").html(helpers.format(jtools.instructions(exercice)));
 
-            $this.find("#inventory .z").each(function(_index) {
-                if (values && _index<values.length) {
-					var vNode = jtools.math.symbology.get(values[_index]);
-					
-					if (vNode.va.toString().substr(0,2)=="mt") {
-						vNode = $.extend({}, vNode, helpers.node(vNode.va.toString().substr(2)));
-					}
-					
-                    settings.cvalues.push(vNode);
-                    var vClass=(vNode.op&&vNode.op[0]?"nedita nedittree":"nedita")+" nedit"+vNode.ty;
-					var vLabel = vNode.la?vNode.la:vNode.va;
-					var vLen = vLabel.toString().length;
-                    var $elt=$("<div class='"+vClass+"' id='"+_index+"'><div class='neditlabel'>"+vLabel+"</div></div>");
-					if (vLen>2) {
-						$elt.find(".neditlabel").css("font-size",(1.5/vLen)+"em")
-						                        .css("padding-top",(vLen/8)+"em"); }
-					$(this).html($elt);
-                    helpers.draggable($this,$elt);
-                }
-            });
+			for (var i in values) {
+				var vNode = jtools.math.symbology.get(values[i]);
+				if (vNode.va.toString().substr(0,2)=="mt") {
+					vNode = $.extend({}, vNode, helpers.node(vNode.va.toString().substr(2)));
+				}
+				helpers.pushelt($this, vNode);
+            }
             
         },
+		pushelt: function($this, _node) {
+            var settings = helpers.settings($this);
+			settings.cvalues.push(_node);
+			var vId = settings.cvalues.length-1;
+            var vClass=(_node.op&&_node.op[0]?"nedita nedittree":"nedita")+" nedit"+_node.ty;
+			var vLabel = _node.la?_node.la:_node.va;
+			var vLen = vLabel.toString().length;
+            var $elt=$("<div class='"+vClass+"' id='"+vId+"'><div class='neditlabel'>"+vLabel+"</div></div>");
+			if (vLen>2) { $elt.find(".neditlabel").css("font-size",(1.5/vLen)+"em").css("padding-top",(Math.pow(vLen,1.6)/15)+"em"); }
+			
+			$($this.find("#mtinventory .z").get(vId)).html($elt);
+            helpers.draggable($this,$elt);
+		},
         draggable: function($this, $elt) {
             var settings = helpers.settings($this);
 			
@@ -290,16 +291,16 @@
 			});
         },
         levenshtein: function (a,b) {
-                var n = a.length, m = b.length, matrice = [];
-                for(var i=-1; i < n; i++) { matrice[i]=[]; matrice[i][-1]=i+1; }
-                for(var j=-1; j < m; j++) { matrice[-1][j]=j+1; }
-                for(var i=0; i < n; i++) {
-                        for(var j=0; j < m; j++) {
-                                var cout = (a.charAt(i) == b.charAt(j))? 0 : 1;
-                                matrice[i][j] = Math.min(1+matrice[i][j-1], 1+matrice[i-1][j], cout+matrice[i-1][j-1]);
-                        }
+            var n = a.length, m = b.length, matrice = [];
+            for(var i=-1; i < n; i++) { matrice[i]=[]; matrice[i][-1]=i+1; }
+            for(var j=-1; j < m; j++) { matrice[-1][j]=j+1; }
+            for(var i=0; i < n; i++) {
+                for(var j=0; j < m; j++) {
+                    var cout = (a.charAt(i) == b.charAt(j))? 0 : 1;
+                    matrice[i][j] = Math.min(1+matrice[i][j-1], 1+matrice[i-1][j], cout+matrice[i-1][j-1]);
                 }
-                return matrice[n-1][m-1];
+            }
+            return matrice[n-1][m-1];
         }
     };
 
@@ -393,21 +394,15 @@
             },
             toinventory: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.interactive && $this.find("#toinventory").hasClass("s")) {
+                if (settings.interactive && $this.find("#mtsave").hasClass("s")) {
                     var vIndex = settings.cvalues.length;
-
-                    if (vIndex<21) {
-                        var vNew    = $this.find("#editor").editor("value");
-                        vNew.abstract  = $this.find("#editor").editor("text")[0];
-                        $this.find("#editor").editor("clear");
-
-                        var vClass="ea";
-                        if (vNew.children && vNew.children.length) { vClass+=" tree"; } else { vClass+=" "+vNew.type; }
-
-                        settings.cvalues.push(vNew);
-                        var $html=$("<div class='"+vClass+"' id='"+vIndex+"'><div class='label'>"+vNew.label()+"</div></div>");
-                        $($this.find("#inventory .z").get(vIndex)).html($html);
-                        helpers.draggable($this, $html);
+					var root = $this.find("#mteditor").neditor("getroot");
+					
+                    if (vIndex<21 && root) {
+						root.ea(function(_n) { if (_n.mtelt) { _n.mtelt.detach(); _n.mtelt = 0; } });
+						root.la=root.out();
+						helpers.pushelt($this,root);
+						$this.find("#mteditor").neditor("clear");
                     }
 
                 }
@@ -420,6 +415,7 @@
 				    if (root && root.ty=="de" && root.isfull()) {
 						var newroot = root.mtpr();
 						$this.find("#mteditor").neditor("clear",newroot);
+						$this.find("#mtsave").toggleClass("s", (newroot!=0));
 					}
 
                     

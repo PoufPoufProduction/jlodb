@@ -116,14 +116,14 @@ jtools = {
 			"⊥" : { ty:"op", pr:5, va:"⊥",     tt:"$1⊥$2",    op:[null,null], co:true, fi:true },
 			"cos" : { ty:"op", pr:0, va:"cos",   tt:"cos$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.cos(r[0]);} },
 			"sin" : { ty:"op", pr:0, va:"sin",   tt:"sin$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sin(r[0]);} },
-			"+"   : { ty:"op", pr:5, va:"+",     tt:"$1+$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]+r[0]);}, co:true, as:true },
-			"-"   : { ty:"op", pr:5, va:"-",     tt:"$1-$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]-r[0]);} },
+			"+"   : { ty:"op", pr:5, va:"+",     tt:"$1+$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]+r[1]);}, co:true, as:true },
+			"-"   : { ty:"op", pr:5, va:"-",     tt:"$1-$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]-r[1]);} },
 			"neg" : { ty:"op", pr:2, va:"-",     tt:"-$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:-r[0];} },
 			"id"  : { ty:"po", pr:9, va:"",      tt:"$1",       op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:r[0];} },
-			"="   : { ty:"op", pr:9, va:"=",     tt:"$1=$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]==r[0]?1:0);}, co:true, as:true },
-			"*"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]*r[0]);}, co:true, as:true },
-			"×"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]*r[0]);}, co:true, as:true },
-			"/"   : { ty:"op", pr:3, va:"/",     tt:"$1/$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]==0?NaN:(r[1]/r[0]));}, as:true,
+			"="   : { ty:"op", pr:9, va:"=",     tt:"$1=$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]==r[0]?1:0);}, co:true, as:true },
+			"*"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
+			"×"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
+			"/"   : { ty:"op", pr:3, va:"/",     tt:"$1/$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]==0?NaN:(r[0]/r[1]));}, as:true,
 				svg : function() {
 					var s   = [];
 					var max = [0,1];
@@ -151,7 +151,7 @@ jtools = {
 					return { si:[op.si[0]+1+mg, op.si[1]+sp+mg, op.si[2]], svg:svg, pr:this.pr};
 					
 				}},
-			"pow":  { ty:"op", pr:2, va:"^",     tt:"$1^$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]^r[0]);}, as:true,
+			"pow":  { ty:"op", pr:2, va:"^",     tt:"$1^$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]^r[1]);}, as:true,
 				svg: function() {
 					var svgs= [];
 					var offx = 0;
@@ -179,6 +179,7 @@ jtools = {
 				var base = {
 					em: false, fi:false, ro:false,
 					co: false, as: false,
+					ea: function(_c) { _c(this); for (var i in this.op) { if (this.op[i]) { this.op[i].ea(_c); }} },
 					_eq : function(_a) { var ret=[]; for (var i in this.op) { ret.push(this.op[i]?this.op[i].eq(_a):NaN); } return ret; },
 					eq  : function(_a) { return NaN; },
 					isfull : function() {

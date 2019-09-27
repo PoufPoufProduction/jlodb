@@ -21,13 +21,13 @@
 
 
 
-    <div id="panel">
-        <div id="ppanel">
-            <div id="pcalc">
+    <div id="ccpanel">
+        <div id="cctools">
+            <div id="ccpcalc">
                 <table>
-                    <tr><td colspan="3"><div id="screen" ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
+                    <tr><td colspan="3"><div id="ccscreen" ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
                             onclick="$(this).closest('.calc').calc('key', 'c', this);"><div>0</div></div></td></tr>
-                    <tr><td colspan="3"><div id="cleancalc" ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
+                    <tr><td colspan="3"><div id="ccclean" ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
                             onclick="$(this).closest('.calc').calc('key', 'c', this);"></div></td></tr>
                     <tr>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 7, this);event.preventDefault();"
@@ -63,77 +63,75 @@
                     </tr>
                 </table>
             </div>
-            <div id="pimg"></div>
-            <div id="pmath">
-                <div id="esource">
-                    <div id="echange" ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+            <div id="ccpimg"></div>
+            <div id="ccpmath" class="overflow">
+                <div id="ccmelts">
+                    <div id="ccpick" ontouchstart="$(this).toggleClass('s');event.preventDefault();"
                         onclick="$(this).toggleClass('s');"><span style="font-size:.7em;top:-0.3em;position:relative;">?</span></div>
                 </div>
-                <div id="editor"></div>
-                <div id="eclear" class="ebutton" ontouchstart="$(this).closest('.calc').calc('clear');event.preventDefault();"
-                     onclick="$(this).closest('.calc').calc('clear');">CLEAR</div>
+                <div id="ccneditor"></div>
             </div>
-            <div id="ptxt"></div>
-            <div id="pgraph">
-                <div id="graphmenu">
+            <div id="ccptxt"></div>
+            <div id="ccpgraph">
+                <div id="ccgmenu">
                     <div id="gbar" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','bar');event.preventDefault();"
                      onclick="$(this).closest('.calc').calc('graph','bar');"><img src="res/img/icon/charts/bar01.svg" alt=""/></div>
                     <div id="gfct" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','fct');event.preventDefault();"
                      onclick="$(this).closest('.calc').calc('graph','fct');"><img src="res/img/icon/charts/fct01.svg" alt=""/></div>
                 </div>
-                <div id="graphvalues">
-                    <div class="line">
-                        <div class="label">X</div>
-                        <div class="ref" id="ref11"
-    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
-    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
-                        <div class="ref" id="ref12"
-    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
-    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                <div id="ccgvalues">
+                    <div class="ccline">
+                        <div class="cclabel"><div></div></div>
+                        <div class="ccref" id="ref11"
+    ontouchstart="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                        <div class="ccref" id="ref12"
+    ontouchstart="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
                     </div>
-                    <div class="line">
-                        <div class="label">Y</div>
-                        <div class="ref" id="ref21"
-    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
-    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
-                        <div class="ref" id="ref22"
-    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
-    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                    <div class="ccline">
+                        <div class="cclabel"><div></div></div>
+                        <div class="ccref" id="ref21"
+    ontouchstart="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                        <div class="ccref" id="ref22"
+    ontouchstart="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
                     </div>
-                    <div class="line">
-                        <div class="label">Z</div>
-                        <div class="ref" id="ref31"
-    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
-    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
-                        <div class="ref" id="ref32"
-    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
-    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                    <div class="ccline">
+                        <div class="cclabel"><div></div></div>
+                        <div class="ccref" id="ref31"
+    ontouchstart="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                        <div class="ccref" id="ref32"
+    ontouchstart="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#ccgvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="phandle">
-            <div class="icon" id="pcancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
+        <div id="cchandle">
+            <div class="icon" id="cccancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('cell', 0);"><img src="res/img/default/white/cancel02.svg" alt=""/></div>
-            <div class="icon" id="pvalid" ontouchstart="$(this).closest('.calc').calc('valid');event.preventDefault();"
+            <div class="icon" id="ccvalid" ontouchstart="$(this).closest('.calc').calc('valid');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('valid');"><img src="res/img/default/white/valid02.svg" alt=""/></div>
-            <div id="escreen"></div>
+            <div id="ccmove"></div>
         </div>
-        <div id="pmenu">
-            <div class="icon" id="tabcalc" ontouchstart="$(this).closest('.calc').calc('tab', 'pcalc', this);event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('tab', 'pcalc', this);">
+        <div id="ccmenu">
+            <div class="icon" id="tabcalc" ontouchstart="$(this).closest('.calc').calc('tab', 'ccpcalc', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'ccpcalc', this);">
                 <img src="res/img/svginventoryicons/hardware/calculator01.svg" alt=""/></div>
-            <div class="icon" id="tabimg" ontouchstart="$(this).closest('.calc').calc('tab', 'pimg', this);event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('tab', 'pimg', this);">
+            <div class="icon" id="tabimg" ontouchstart="$(this).closest('.calc').calc('tab', 'ccpimg', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'ccpimg', this);">
                 <img src="res/img/svginventoryicons/hardware/camera01.svg" alt=""/></div>
-            <div class="icon" id="tabmath" ontouchstart="$(this).closest('.calc').calc('tab', 'pmath', this);event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('tab', 'pmath', this);">
+            <div class="icon" id="tabmath" ontouchstart="$(this).closest('.calc').calc('tab', 'ccpmath', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'ccpmath', this);">
                 <img src="res/img/svginventoryicons/tool/abacus01.svg" alt=""/></div>
-            <div class="icon" id="tabtxt" ontouchstart="$(this).closest('.calc').calc('tab', 'ptxt', this);event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('tab', 'ptxt', this);">
+            <div class="icon" id="tabtxt" ontouchstart="$(this).closest('.calc').calc('tab', 'ccptxt', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'ccptxt', this);">
                 <img src="res/img/svginventoryicons/pencil/pen01.svg" alt=""/></div>
-            <div class="icon" id="tabgraph" ontouchstart="$(this).closest('.calc').calc('tab', 'pgraph', this);event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('tab', 'pgraph', this);">
+            <div class="icon" id="tabgraph" ontouchstart="$(this).closest('.calc').calc('tab', 'ccpgraph', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'ccpgraph', this);">
                 <img src="res/img/svginventoryicons/action/gears01.svg" alt=""/></div>
         </div>
     </div>

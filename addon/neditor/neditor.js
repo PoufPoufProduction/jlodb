@@ -18,10 +18,7 @@
 					}
 					return 0;
 				};
-				_node.mtde = function() {
-					if (this.mtelt) { this.mtelt.detach(); }
-					if (this.op) for (var i in this.op) { if (this.op[i]) { this.op[i].mtde(); } }
-				}
+				_node.mtde = function() { _node.ea(function(_e) { if (_e.mtelt) { _e.mtelt.detach(); }}); };
 				_node.mtelt = $("<div id='n"+_node.mtid+"' class='neditd nedit"+_node.ty+"'></div>");
 				
 				settings.$tree.append(_node.mtelt);
@@ -31,19 +28,19 @@
 					out: function(event, ui) { $(this).removeClass("over"); },
 					drop:function(event, ui) {
 						$this.find(".over").removeClass("over");
-						
 						var vPar = settings.root.mtfi($(this).attr("id").substr(1));
 						var vNew = settings.getnode($this, $(ui.draggable).attr("id"));
 						
-						if ((vPar&&vPar[0]&&vPar[0].fi&&vNew.ty!="va") || (vNew.ro)) {  }
-						else {
-							if (vPar) {
-								vPar[0].op[vPar[1]].mtde();
-								vPar[0].op[vPar[1]] = vNew;
-							} else { settings.root.mtde(); settings.root = vNew; }
-							helpers.update($this, vNew); helpers.display($this);
+						if (vNew) {
+							if ((vPar&&vPar[0]&&vPar[0].fi&&vNew.ty!="va") || (vNew.ro)) {  }
+							else {
+								if (vPar) {
+									vPar[0].op[vPar[1]].mtde();
+									vPar[0].op[vPar[1]] = vNew;
+								} else { settings.root.mtde(); settings.root = vNew; }
+								helpers.update($this, vNew); helpers.display($this);
+							}
 						}
-							
 					}
 				});
 					
@@ -154,15 +151,17 @@
             $this.droppable({accept:".nedita",
                 drop:function(event, ui) {
 					var vNew = settings.getnode($this, $(ui.draggable).attr("id"));
-					if (settings.root!=0) {
-						if ( vNew.op && vNew.op.length && !vNew.op[0] && !settings.root.ro) { 
-							vNew.op[0] = settings.root;
+					if (vNew) {
+						if (settings.root!=0) {
+							if ( vNew.op && vNew.op.length && !vNew.op[0] && !settings.root.ro) { 
+								vNew.op[0] = settings.root;
+							}
+							else { settings.root.mtde(); }
 						}
-						else { settings.root.mtde(); }
-					}
-					settings.root = vNew;
-					helpers.update($this, vNew); 
-					helpers.display($this); }
+						settings.root = vNew;
+						helpers.update($this, vNew); 
+						helpers.display($this); }
+				}
             });
 		},
 		clear: function($this, _newroot) {
