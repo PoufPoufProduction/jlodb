@@ -71,11 +71,9 @@
 .calc #ccneditor				{ width:6em; height:5em; }
 .calc #ccmelts                  { width:6em; height:2em; background-color:rgba(84,137,184,0.9); }
 .calc #ccmelts>div              { float:left; font-size:.7em; margin:.02em; }
-.calc #ccpick                   { cursor:pointer; width:1em; height:1em; background-color:#e4e4e4; color:black; text-align:center; border-radius:.2em; }
-.calc #ccpick.s                 { background-color:#A00; color:red;}
+.calc #ccmelts>#ccpick          { cursor:pointer; width:1em; height:1em; background-color:#e4e4e4; color:black; text-align:center; margin:0; font-size:2em; background-image:url("../../res/img/default/white/look.svg"); background-color:rgba(255,255,255,0.9); margin-right:.05em; }
+.calc #ccmelts>#ccpick.s        { background-color:red; color:red;}
 .calc #g_tbutton                { position:absolute; top:1%; left:93%; cursor:help; width:1em; height:1em; display:none; }
-
-
 
 
 .calc #ccboard>#target            { position:absolute; border:.1em solid blue; margin:-.1em;

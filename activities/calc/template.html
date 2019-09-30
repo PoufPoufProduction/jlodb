@@ -67,7 +67,7 @@
             <div id="ccpmath" class="overflow">
                 <div id="ccmelts">
                     <div id="ccpick" ontouchstart="$(this).toggleClass('s');event.preventDefault();"
-                        onclick="$(this).toggleClass('s');"><span style="font-size:.7em;top:-0.3em;position:relative;">?</span></div>
+                        onclick="$(this).toggleClass('s');"><span style="font-size:.7em;top:-0.3em;position:relative;"></span></div>
                 </div>
                 <div id="ccneditor"></div>
             </div>
@@ -111,8 +111,8 @@
             </div>
         </div>
         <div id="cchandle">
-            <div class="icon" id="cccancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('cell', 0);"><img src="res/img/default/white/cancel02.svg" alt=""/></div>
+            <div class="icon" id="cccancel" ontouchstart="$(this).closest('.calc').calc('cancel');event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('cancel');"><img src="res/img/default/white/cancel02.svg" alt=""/></div>
             <div class="icon" id="ccvalid" ontouchstart="$(this).closest('.calc').calc('valid');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('valid');"><img src="res/img/default/white/valid02.svg" alt=""/></div>
             <div id="ccmove"></div>

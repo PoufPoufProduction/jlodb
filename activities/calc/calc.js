@@ -9,7 +9,7 @@
         exercice    : [],                               // Exercice
         withbars    : true,                             // Add the bars A,B,C,D,... 1,2,3,4,...
 		withauto	: false,							// Show auto filler with target
-	    size        : [1,1],							// Minimum size
+	    size        : 0,	    						// Minimum size
         sp          : 0.1,                              // space between cells
         font        : 1,                                // cell font size
         fontex      : 1,                                // exercice font size
@@ -138,18 +138,30 @@
 					onupdate:function($editor, _root) {
 					},
                     getnode:function($editor, _val) {
-						 return _val<settings.cvalues.length?$.extend(true,{},settings.cvalues[_val]):jtools.math.symbology.get(0);
+						return _val<settings.cvalues.length?$.extend(true,{},settings.cvalues[_val]):jtools.math.symbology.get(0);
 					}
                 });
                 // Fill math operator
                 var isRef = false;
                 for (var i in settings.math) {
 					var vNode = jtools.math.symbology.get(settings.math[i]);
+					var vClass=(vNode.op&&vNode.op[0]?"nedita nedittree":"nedita")+" nedit"+vNode.ty;
+					
 					if (vNode.va.toString().substr(0,2)=="cc") {
 						isRef = true;
-						// vNode = $.extend({}, vNode, helpers.node(vNode.va.toString().substr(2)));
+						if (!vNode.ccref) { vNode.ccref = settings.reference; }
+						vNode.la = (vNode.va[2]=='$'?'$':'')+vNode.ccref[0]+
+						           (vNode.va[3]=='$'?'$':'')+vNode.ccref.substr(1);
+						vNode.eq = function(_a) {
+							var ii = this.ccref.charCodeAt(0)-65;
+							var jj = parseInt(this.ccref.substr(1))-1;
+							var cell = settings.sheet[jj][ii];
+							return helpers.content($this,ii,jj);
+						}
+						vClass+=" neditref";
 					}
-					var vClass=(vNode.op&&vNode.op[0]?"nedita nedittree":"nedita")+" nedit"+vNode.ty;
+					else { vNode.ccref = 0; }
+					
 					var vLabel = vNode.la?vNode.la:vNode.va;
 					var vLen = vLabel.toString().length;
 			
@@ -203,6 +215,7 @@
                 }
           
                 // Compute the size regarding the filled cells
+				if (!settings.size) { settings.size = [1,1]; }
                 for (var i in settings.cells) {
                     var m = i.match(/c([0-9]*)x([0-9]*)/);
                     if (parseInt(m[1])>settings.size[0]) { settings.size[0] = parseInt(m[1]); }
@@ -313,18 +326,30 @@
 
                  for (var j=0; j<settings.size[1]; j++) {
                     for (var i=0; i<settings.size[0]; i++) {
+						s = settings.sheet[j][i];
                         
                         var type = helpers.value($this,(i+1),(j+1),"type","");
-                        if (type.length) { settings.sheet[j][i].type = type; }
+                        if (type.length) { s.type = type; }
 
-                        settings.sheet[j][i].fixed  = helpers.value($this,(i+1),(j+1),"fixed",(type=="free"));
-                        settings.sheet[j][i].value  = helpers.value($this,(i+1),(j+1),"value","");
-                        settings.sheet[j][i].result = helpers.value($this,(i+1),(j+1),"result","");
-                        settings.sheet[j][i].opt    = helpers.value($this,(i+1),(j+1),"opt","");
-                        settings.sheet[j][i].bgimg  = helpers.value($this,(i+1),(j+1),"bgimg","");
+                        s.fixed  = helpers.value($this,(i+1),(j+1),"fixed",(type=="free"));
+                        s.value  = helpers.value($this,(i+1),(j+1),"value","");
+                        s.result = helpers.value($this,(i+1),(j+1),"result","");
+                        s.opt    = helpers.value($this,(i+1),(j+1),"opt","");
+                        s.bgimg  = helpers.value($this,(i+1),(j+1),"bgimg","");
                         
-                        if (settings.sheet[j][i].type=="math" && settings.sheet[j][i].value) {
-                            // TODO
+                        if (s.type=="math") {
+                            s.value = jtools.math.symbology.get(s.value);
+							s.value.ea(function(_n) {
+								if (_n.va.toString().substr(0,2)=="cc" && _n.ccref) {
+									_n.la = (_n.va[2]=='$'?'$':'')+_n.ccref[0]+
+											(_n.va[3]=='$'?'$':'')+_n.ccref.substr(1);
+									_n.eq = function(_a) {
+										var ii = this.ccref.charCodeAt(0)-65;
+										var jj = parseInt(this.ccref.substr(1))-1;
+										return helpers.content($this,ii,jj);
+									};
+								}
+							});
                         }
                     }
                 }
@@ -335,18 +360,19 @@
                     for (var i=0; i<settings.size[0]; i++) {
                         w = helpers.value($this,(i+1),(j+1),"width",2);
                         h = helpers.value($this,(i+1),(j+1),"height",1.2);
+						s = settings.sheet[j][i];
 
-                        if (settings.sheet[j][i].type!="hide") {
-                            var vClass="ccelt "+settings.sheet[j][i].type;
-                            if (settings.sheet[j][i].opt) { vClass+=" "+settings.sheet[j][i].opt; }
-							settings.sheet[j][i].pos = [width,height];
-							settings.sheet[j][i].size = [w,h];
+                        if (s.type!="hide") {
+                            var vClass="ccelt "+s.type;
+                            if (s.opt) { vClass+=" "+s.opt; }
+							s.pos = [width,height];
+							s.size = [w,h];
                             html = '<div class="'+vClass+'" style="top:'+(settings.margin[1]+height)+'em;left:'+(settings.margin[0]+width)+'em;width:'+w+'em;'+
                                 'height:'+h+'em;background-color:'+helpers.value($this,(i+1),(j+1),"background","white")+';'+
-                                (settings.sheet[j][i].bgimg?"background-image:url('"+settings.sheet[j][i].bgimg+"');":"")+
+                                (s.bgimg?"background-image:url('"+s.bgimg+"');":"")+
                                 'color:'+helpers.value($this,(i+1),(j+1),"color","black")+';" ';
                             html+='id="c'+(i+1)+'x'+(j+1)+'" ';
-                            if (!settings.sheet[j][i].fixed || settings.edit) {
+                            if (!s.fixed || settings.edit) {
                                 html+='onmousedown=\'$(this).closest(".calc").calc("cell",this);\' ';
                                 html+='ontouchstart=\'$(this).closest(".calc").calc("cell",this);event.preventDefault();\' ';
                             }
@@ -363,7 +389,7 @@
 				$this.find("#ccpanel").css("top", settings.pospanel[1]+"%").css("left", settings.pospanel[0]+"%");
 
 
-                // HANDLE AUTOMATIC SELECT
+                // TODO: HANDLE AUTOMATIC SELECT (rebuild)
                 settings.spinpx = $board.children().first().next().offset().left -
                                   $board.children().first().offset().left - $board.children().first().width();
                 $this.bind("mouseup mouseleave touchend touchleave", function() {
@@ -446,77 +472,6 @@
                         } else { $target.removeClass("s").hide(); settings.auto.sheet=[]; helpers.update($this); }
                     }
                 });
-        },
-        ref: {
-            // Get all the reference from a cell
-            fromcell: function(_node) {
-                var ret = [];
-                if (_node.type=="value"&&_node.subtype.substr(0,3)=="ref") {
-                    ret.push(_node.value);
-                }
-                for (var i in _node.children) { ret = ret.concat(helpers.ref.fromcell(_node.children[i])); }
-                return ret;
-            },
-            // Check if loop
-            loop: function($this, _ref,_node) {
-                var settings = helpers.settings($this)
-                var ret = false;
-                var ref = helpers.ref.fromcell(_node);
-                while(ref.length && !ret) {
-                    var elt = ref.pop();
-                    if (elt==_ref) { ret = true; }
-                    else {
-                        var cell = settings.sheet[parseInt(elt[1])-1][elt.charCodeAt(0)-65];
-                        if (cell.type=="math") { ref = ref.concat(helpers.ref.fromcell(cell.value)); }
-                    }
-                };
-                return ret;
-            },
-            // check only root
-            checkonlyroot: function($this, _node, _notroot) {
-                var settings = helpers.settings($this), ret = true;                
-                if (_node.children) { for (var i in _node.children) { ret = ret && helpers.ref.checkonlyroot($this,_node.children[i],true); } }
-
-                if (_notroot && _node.subtype=="ref") {
-                    var t = settings.sheet[parseInt(_node.value.substr(1))-1][_node.value.charCodeAt(0)-65].type;
-                    if (t=="graph" || t=="txt" || t=="img") { ret = false; }
-                }
-
-                return ret;
-            },
-            inside: function($this, _node) {
-                var settings = helpers.settings($this)
-                var ret = true;
-                if (_node.children) { for (var i in _node.children) { if (!helpers.ref.inside($this,_node.children[i])) { ret = false; } } }
-                if (_node.subtype=="ref" &&
-                    ( _node.value.charCodeAt(0)-65>=settings.size[0] ||
-                    ( parseInt(_node.value.substr(1))-1>=settings.size[1]) ) ) { ret = false; }
-                return ret;
-            },
-            format : function(_ref, _val) {
-                var ret;
-                switch (parseInt(_val)) {
-                    case 2 : ret = _ref[0]+"$"+_ref[1];         break;
-                    case 3 : ret = "$"+_ref[0]+_ref[1];         break;
-                    case 4 : ret = "$"+_ref[0]+"$"+_ref[1];     break;
-                    default: ret = _ref;
-                }
-                return ret;
-            },
-            update : function(_node, _i, _j) {
-                if (_node.children) { for (var i in _node.children) { helpers.ref.update(_node.children[i],_i,_j); } }
-                if (_node.subtype=="ref") {
-                    var ref = [ _node.value.charCodeAt(0)-65, parseInt(_node.value.substr(1)) ];
-                    switch (parseInt(_node.id[3])) {
-                        case 1 : ref[0]+=_i; ref[1]+=_j; break;
-                        case 2 : ref[0]+=_i; break;
-                        case 3 : ref[1]+=_j; break;
-                        default: break;
-                    }
-                    _node.value     = String.fromCharCode(65+ref[0])+ref[1];
-                    _node.abstract  = helpers.ref.format(_node.value,_node.id[3])
-                }
-            }
         },
         graph: function($this, _val, _ratio) {
 			var hh=48, ww=Math.floor(hh*_ratio);
@@ -622,7 +577,6 @@
             }
             var type = cell.type;
             cell.tmp = cell.value;
-            if (settings.dev&&typeof(cell.result)!="undefined"&&cell.result.toString().length) { cell.tmp = cell.result; }
             switch(type) {
                 case "img" :
                     cell.tmp = cell.tmp.toString().length ? "<img src='"+settings.imgprefix+settings.img[cell.tmp]+".svg'/>":"";
@@ -725,12 +679,17 @@
             var settings = helpers.settings($this);
             settings.reference=value;
             for (var i in settings.cvalues) {
-                var n = settings.cvalues[i];
-                if (n.subtype=="ref") {
-                    n.value     = value;
-                    n.abstract  = helpers.ref.format(value, n.id[3]);
-                    $this.find("."+n.id+" .label").html(n.label());
-                }
+                var vNode = settings.cvalues[i];
+				if (vNode.ccref) {
+					vNode.ccref = settings.reference;
+					vNode.la = (vNode.va[2]=='$'?'$':'')+settings.reference[0]+
+						       (vNode.va[3]=='$'?'$':'')+settings.reference[1];
+					var vLen = vNode.la.length;
+					var $elt = $this.find("#ccmelts #"+i+" .neditlabel");
+					$elt.html(vNode.la);
+					if (vLen>2) { $elt.find(".neditlabel").css("font-size",(1.5/vLen)+"em").css("padding-top",(Math.pow(vLen,1.6)/15)+"em"); }
+					
+				}
             }
         }
     };
@@ -804,9 +763,7 @@
             cell: function(_cell) {
                 var $this = $(this) , settings = helpers.settings($this);
 				
-				if (_cell && settings.edit) {
-                    $this.calc("onedit","cell",_cell);
-				}
+				if (_cell && settings.edit) { $this.calc("onedit","cell",_cell); }
 				
                 var $target = $this.find("#target");
                 if (settings.interactive && !$target.hasClass("s")) {
@@ -821,70 +778,69 @@
                         }
                         else {
                             var c=settings.sheet[parseInt(target[2]-1)][parseInt(target[1]-1)];
-                            if (settings.target[0]!=target[0] || settings.dev) {
-                                settings.target=target;
+							settings.target=target;
 
-                                $this.find("#ccpimg .icon").removeClass("s");
-                                $this.find("#ccptxt>div").removeClass("s");
-                                $this.find("#ccneditor").neditor('clear');
-                                $this.find("#ccgmenu .icon").removeClass("s");
-                                $this.find("#ccgvalues .ccline").hide();
-                                helpers.key($this, 'c', false);
+                            $this.find("#ccpimg .icon").removeClass("s");
+                            $this.find("#ccptxt>div").removeClass("s");
+                            if (c.type!="math") { 
+							$this.find("#ccneditor").neditor('clear'); }
+                            $this.find("#ccgmenu .icon").removeClass("s");
+                            $this.find("#ccgvalues .ccline").hide();
+                            helpers.key($this, 'c', false);
                                 
-                                if (settings.tabs.length) {
-                                    var tab=settings.tabs[0];
+                            if (settings.tabs.length) {
+                                var tab=settings.tabs[0];
 
-                                    switch(c.type) {
-                                        case "img":
-                                            tab ="img";
-                                            $this.find("#ccpimg #img"+c.value).addClass("s");
-                                            break;
-                                        case "math":
-                                            tab ="math";
-                                            $this.find("#ccneditor").neditor('clear',$.extend({},c.value));
-                                            break;
-                                        case "txt":
-											tab = "txt";
-											$this.find("#ccptxt #txt"+c.value).addClass("s");
-											break;
-                                        case "graph" :
-                                            tab = "graph";
-                                            $this.find("#ccgmenu #g"+c.value.type).addClass("s");
-                                            $this.find("#ccgvalues .ccline").each(function(_index) {
-                                                if (_index<graphType[c.value.type].label.length) {
-                                                    $(this).show().find(".cclabel>div").html(graphType[c.value.type].label[_index]);
-                                                    if (_index<c.value.data.length) {
-                                                        $this.find(".ccref").first().html(c.value.data[_index][0]);
-                                                        $this.find(".ccref").first().next().html(c.value.data[_index][1]);
-                                                    }
+                                switch(c.type) {
+                                    case "img":
+                                        tab ="img";
+                                        $this.find("#ccpimg #img"+c.value).addClass("s");
+                                        break;
+                                    case "math":
+                                        tab ="math";
+										var root = 0;
+										if (c.value) {
+											root = $.extend(true,{},c.value);
+											root.ea(function(_n) { if (_n.mtelt) { _n.mtelt.detach(); _n.mtelt = 0; } });
+										}
+                                        $this.find("#ccneditor").neditor('clear',root);
+                                        break;
+                                    case "txt":
+								        tab = "txt";
+										$this.find("#ccptxt #txt"+c.value).addClass("s");
+										break;
+                                    case "graph" :
+                                        tab = "graph";
+                                        $this.find("#ccgmenu #g"+c.value.type).addClass("s");
+                                        $this.find("#ccgvalues .ccline").each(function(_index) {
+                                            if (_index<graphType[c.value.type].label.length) {
+                                                $(this).show().find(".cclabel>div").html(graphType[c.value.type].label[_index]);
+                                                if (_index<c.value.data.length) {
+                                                    $this.find(".ccref").first().html(c.value.data[_index][0]);
+                                                    $this.find(".ccref").first().next().html(c.value.data[_index][1]);
                                                 }
-                                            });
-                                            break;
-                                        case "free": tab = 0;
-                                            break;
-                                        default:
-                                            var value = c.value.toString();
-                                            if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
-                                            $this.find("#ccscreen>div").html(value);
-                                            break;
-                                    }
-                                    $this.find("#cctools>div").hide();
-                                    $this.find("#ccmenu>div").removeClass("s");
-									if (tab) {
-										$this.find("#cctools #ccp"+tab).show();
-										$this.find("#ccmenu #tab"+tab).addClass("s");
-									}
+                                            }
+                                        });
+                                        break;
+                                    case "free": tab = 0;
+                                        break;
+                                    default:
+                                        var value = c.value.toString();
+                                        if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
+                                        $this.find("#ccscreen>div").html(value);
+                                        break;
                                 }
-                                $this.find("#ccmove").css("opacity",c.type=="math"?1:0);
+                                $this.find("#cctools>div").hide();
+                                $this.find("#ccmenu>div").removeClass("s");
+						        if (tab) {
+									$this.find("#cctools #ccp"+tab).show();
+									$this.find("#ccmenu #tab"+tab).addClass("s");
+								}
                             }
+                            $this.find("#ccmove").css("opacity",c.type=="math"?1:0);
                             $target.show();
-							
 							$target.css("left",(settings.margin[0]+c.pos[0])+"em").css("top",(settings.margin[1]+c.pos[1])+"em");
-							
-							
 							$target.css("width",c.size[0]+"em").css("height",c.size[1]+"em");
-							
-							
                             $this.find("#ccpanel").show();
 
                         }
@@ -892,7 +848,6 @@
                     else {
                         $target.hide();
                         $this.find("#ccpanel").hide();
-                        if (settings.dev) { $this.find("#detail .detdiv").hide(); }
                     }
                 }
             },
@@ -936,8 +891,17 @@
                 }
                 helpers.key($(this), value, false);
             },
+			cancel: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                //$this.find("#target").hide();
+                $this.find("#ccpanel").hide();
+				$this.find("#ccpick").removeClass("s");
+				$this.find("#ccgvalues .ccref").removeClass("s");
+			},
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this), ok = true;
+				
+				
                 var i = parseInt(settings.target[1])-1;
                 var j = parseInt(settings.target[2])-1;
                 if ($this.find("#tabcalc").hasClass("s")) {
@@ -945,39 +909,44 @@
                     settings.sheet[j][i].value = parseFloat(settings.calculator.length?settings.calculator:"0");
                 }
                 else if ($this.find("#tabimg").hasClass("s")) {
-                    if (settings.sheet[j][i].type!="img") {
-                        var name = String.fromCharCode(65 + i)+(j+1);
-                        for (var jj=0; jj<settings.size[1]; jj++) for (var ii=0; ii<settings.size[0]; ii++) {
-                            var cc=settings.sheet[jj][ii];
-                            if (cc.type=="math"&& $.inArray(name,helpers.ref.fromcell(cc.value))!=-1) { ok=false; }
-                        }
-                    }
-                    if (ok) {
-                        settings.sheet[j][i].type = "img";
-                        settings.sheet[j][i].value = parseInt($this.find("#ccpimg .icon.s").attr("id").replace("img",""));
-                    }
+                    settings.sheet[j][i].type = "img";
+                    settings.sheet[j][i].value = parseInt($this.find("#ccpimg .icon.s").attr("id").replace("img",""));
                 }
                 else if ($this.find("#tabtxt").hasClass("s")) {
-                    if (settings.sheet[j][i].type!="txt") {
-                        var name = String.fromCharCode(65 + i)+(j+1);
-                        for (var jj=0; jj<settings.size[1]; jj++) for (var ii=0; ii<settings.size[0]; ii++) {
-                            var cc=settings.sheet[jj][ii];
-                            if (cc.type=="math"&& $.inArray(name,helpers.ref.fromcell(cc.value))!=-1) { ok=false; }
-                        }
-                    }
-                    if (ok) {
-                        settings.sheet[j][i].type = "txt";
-                        settings.sheet[j][i].value = parseInt($this.find("#ccptxt>div.s").attr("id").replace("txt",""));
-                    }
+                    settings.sheet[j][i].type = "txt";
+                    settings.sheet[j][i].value = parseInt($this.find("#ccptxt>div.s").attr("id").replace("txt",""));
                 }
                 else if ($this.find("#tabmath").hasClass("s")) {
 					var root = $this.find("#ccneditor").neditor("getroot");
 					
 					if (root && root.isfull()) {
-						root.ea(function(_n) { if (_n.mtelt) { _n.mtelt.detach(); _n.mtelt = 0; } });
-						$this.find("#ccneditor").neditor("clear");
-						settings.sheet[j][i].type = "math";
-                        settings.sheet[j][i].value = root;
+						// CHECK FOR LOOP
+						var ref=[],cpt=0;
+						root.ea(function(_n) { if (_n.ccref) { ref.push(_n.ccref); } });
+						while(ref.length && ok) {
+							var r = ref.pop();
+							var ii = r.charCodeAt(0)-65;
+							var jj = parseInt(r.substr(1))-1;
+							if (ii==i && jj==j) {
+								ok = false;
+								$this.find("#g_effects").addClass("wrong");
+								setTimeout(function() { $this.find("#g_effects").removeClass(); }, 1000);
+							}
+							else {
+								var c = settings.sheet[jj][ii];
+								if (c.type=="math") {
+									c.value.ea(function(_n) { if (_n.ccref) { ref.push(_n.ccref); } });
+								}
+							}
+							if (cpt++>100) { ok = false; }
+						}
+						
+						if (ok) {
+							$this.find("#ccneditor").neditor("clear");
+							root.ea(function(_n) { if (_n.mtelt) { _n.mtelt = 0; } });
+							settings.sheet[j][i].type = "math";
+							settings.sheet[j][i].value = root;
+						}
                     }
 					else { ok = false; }
                 }
@@ -1004,6 +973,8 @@
                 }
 				
                 if (ok) {
+					$this.find("#ccpick").removeClass("s");
+					$this.find("#ccgvalues .ccref").removeClass("s");
                     helpers.update($this);
                     var cell=0;
 					var n = settings.toright?[1,0]:[0,1];

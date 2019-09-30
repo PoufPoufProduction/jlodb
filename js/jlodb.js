@@ -22,6 +22,7 @@ shuffle = function(a) {
     }
     return a;
 }
+isNN = function(_a) { return isNaN(_a) || (_a.toString().length==0); }
 
 jtools = {
 	addon: {
@@ -111,19 +112,19 @@ jtools = {
 	math: {
 		svg: { font: [7,12], y: 9.5 },
 		symbology : {
-			"abs" : { ty:"op", pr:2, va:"abs",	 tt:"|$1|",     op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.abs(r[0]);} },
+			"abs" : { ty:"op", pr:2, va:"abs",	 tt:"|$1|",     op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:Math.abs(r[0]);} },
 			"//" : { ty:"op", pr:5, va:"//",    tt:"$1//$2",   op:[null,null],      co: true, as:true, fi:true },
 			"⊥" : { ty:"op", pr:5, va:"⊥",     tt:"$1⊥$2",    op:[null,null], co:true, fi:true },
-			"cos" : { ty:"op", pr:0, va:"cos",   tt:"cos$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.cos(r[0]);} },
-			"sin" : { ty:"op", pr:0, va:"sin",   tt:"sin$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sin(r[0]);} },
-			"+"   : { ty:"op", pr:5, va:"+",     tt:"$1+$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]+r[1]);}, co:true, as:true },
-			"-"   : { ty:"op", pr:5, va:"-",     tt:"$1-$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]-r[1]);} },
-			"neg" : { ty:"op", pr:2, va:"-",     tt:"-$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:-r[0];} },
-			"id"  : { ty:"po", pr:9, va:"",      tt:"$1",       op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:r[0];} },
-			"="   : { ty:"op", pr:9, va:"=",     tt:"$1=$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]==r[0]?1:0);}, co:true, as:true },
-			"*"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
-			"×"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
-			"/"   : { ty:"op", pr:3, va:"/",     tt:"$1/$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[1]==0?NaN:(r[0]/r[1]));}, as:true,
+			"cos" : { ty:"op", pr:0, va:"cos",   tt:"cos$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:Math.cos(r[0]);} },
+			"sin" : { ty:"op", pr:0, va:"sin",   tt:"sin$1",    op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:Math.sin(r[0]);} },
+			"+"   : { ty:"op", pr:5, va:"+",     tt:"$1+$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a);  return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]+r[1]);}, co:true, as:true },
+			"-"   : { ty:"op", pr:5, va:"-",     tt:"$1-$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]-r[1]);} },
+			"neg" : { ty:"op", pr:2, va:"-",     tt:"-$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:-r[0];} },
+			"id"  : { ty:"po", pr:9, va:"",      tt:"$1",       op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:r[0];} },
+			"="   : { ty:"op", pr:9, va:"=",     tt:"$1=$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]==r[0]?1:0);}, co:true, as:true },
+			"*"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
+			"×"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
+			"/"   : { ty:"op", pr:3, va:"/",     tt:"$1/$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[1]==0?NaN:(r[0]/r[1]));}, as:true,
 				svg : function() {
 					var s   = [];
 					var max = [0,1];
@@ -136,7 +137,7 @@ jtools = {
 					svg += "<g transform='translate("+(((max[0]-s[0].si[0])/2)*jtools.math.svg.font[0])+","+((s[1].si[1]+s[1].si[2]+2*sp)*jtools.math.svg.font[1])+")'>"+s[0].svg+"</g>";
 					return { si:[max[0], s[1].si[1]+s[1].si[2]+sp, s[0].si[1]+s[0].si[2]+sp], svg:svg, pr:this.pr};
 				}},
-			"sqrt": { ty:"op", pr:0, va:"√",     tt:"√$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNaN(r[0])?NaN:Math.sqrt(r[0]);},
+			"sqrt": { ty:"op", pr:0, va:"√",     tt:"√$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:Math.sqrt(r[0]);},
 				svg: function() {
 					var op = this.op[0]?this.op[0].svg():{si:[2,0.5,0.5],svg:"<text y='"+jtools.math.svg.y+"'>$"+(i+1)+"</text>"};					
 					var svg = "";
@@ -151,7 +152,7 @@ jtools = {
 					return { si:[op.si[0]+1+mg, op.si[1]+sp+mg, op.si[2]], svg:svg, pr:this.pr};
 					
 				}},
-			"pow":  { ty:"op", pr:2, va:"^",     tt:"$1^$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNaN(r[0])||isNaN(r[1]))?NaN:(r[0]^r[1]);}, as:true,
+			"pow":  { ty:"op", pr:2, va:"^",     tt:"$1^$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]^r[1]);}, as:true,
 				svg: function() {
 					var svgs= [];
 					var offx = 0;
@@ -265,7 +266,7 @@ jtools = {
 				// BUILD NODE FROM BASE AND REFERENCE
 				var ref = (typeof(_v)=="object"?_v.va:_v);
 				if (jtools.math.symbology[ref]) { ret = jtools.math.symbology[ref];	}
-				else { ret = { ty:"va", pr:1, va:ref, tt:ref, op:[], eq:function(_a) { return isNaN(this.va)?((_a&&_a[this.va])?_a[this.va]:this.va):parseFloat(this.va); } }; }
+				else { ret = { ty:"va", pr:1, va:ref, tt:ref, op:[], eq:function(_a) { return isNN(this.va)?((_a&&_a[this.va])?_a[this.va]:this.va):parseFloat(this.va); } }; }
 				var node;
 				if (typeof(_v)=="object") { node = $.extend(true, {}, base, ret, _v); }
 				else { node =  $.extend(true, {}, base, ret); }
