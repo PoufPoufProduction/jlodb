@@ -337,7 +337,7 @@
                         s.opt    = helpers.value($this,(i+1),(j+1),"opt","");
                         s.bgimg  = helpers.value($this,(i+1),(j+1),"bgimg","");
                         
-                        if (s.type=="math") {
+                        if (s.type=="math" && s.value) {
                             s.value = jtools.math.symbology.get(s.value);
 							s.value.ea(function(_n) {
 								if (_n.va.toString().substr(0,2)=="cc" && _n.ccref) {
