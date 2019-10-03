@@ -173,7 +173,7 @@ desc=`cat $content | grep value | sed -e 's|.*value" : "\([^"]*\)".*|\1|g'`
 
 exercice()
 {
-wget "$url/api/exercice.php?detail&novariant&source&id=$1" -O p_json.tmp -q
+wget "$url/api/exercice.php?detail&novariant&nolocale&source&id=$1" -O p_json.tmp -q
 IFS=$'\n'
 
 for ex in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'` ; do
