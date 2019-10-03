@@ -181,7 +181,9 @@ for ex in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'` ; do
 		id=`echo $ex | sed -e 's/^.*id":"\([^"]\+\)","label":.*$/\1/g'`
 		source=`echo $ex | sed -e 's/^.*source":"\([^"]\+\).*$/\1/g'`
         activity=`echo $ex | sed -e 's/^.*activity":"\([^"]\+\).*$/\1/g'`
-        data=`echo $ex | sed -e 's/^.*,"reference":[^{]\+,"data":\({.\+\),"ext".*$/\1/g'`
+        data=`echo $ex | sed -e 's/^.*,"reference":[^{]\+,"data":\({.\+\),"nb":[0-9]\+.*$/\1/g'`
+			
+
                 
 		echo "{\"activity\":\"$activity\",\"data\":$data}" > $output/standalone/exercice/$id.json
 
