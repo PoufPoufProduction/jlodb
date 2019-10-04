@@ -361,6 +361,7 @@
         <dct:identifier>2500m</dct:identifier>
         <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers inférieurs à 500.</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","withmove":true,"gen":"function() { var a=100+Math.floor(Math.random()*400),b=Math.random()<0.5?1+Math.floor(Math.random()*9):10+Math.floor(Math.random()*90); return Math.random()<0.5?a+'+'+b:b+'+'+a; }"]]></dct:description>
+		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Positionnez[/b] correctement les différentes valeurs puis [b]effectuez[/b] leur addition.","fontex":0.4]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -505,6 +506,21 @@
         <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
     </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>3500m</dct:identifier>
+        <dct:title xml:lang="fr-FR">Positionner et additionner 3 nombres entiers inférieurs à 500.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":3,"v":[[400,100],[90,10],[9,1]]},"background":"res/img/background/landscape/bluecarpet01.svg","withmove":true,"gen":"function($this, _s, _i) { var ret=[]; for (var i=0; i<_s.gg.nb; i++) { var c=_s.gg.v[Math.floor(Math.random()*_s.gg.v.length)]; ret.push(Math.floor(Math.random()*c[0])+c[1]); } return ret.join('+'); }"]]></dct:description>
+		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Positionnez[/b] correctement les différentes valeurs puis [b]effectuez[/b] leur addition.","fontex":0.4]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
+    </rdf:Description>
+	
 
     <rdf:Description>
         <dct:identifier>31k</dct:identifier>

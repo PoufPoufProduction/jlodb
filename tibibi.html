@@ -113,7 +113,7 @@ var tibibi = {
                             onscore:    function($this, _ret) {
                                 var isnext = false;
                                 if (_ret.score>=2) { isnext = $("#bimenu").menu('score', _ret.score).menu('more'); }
-                                $("#g_score #next").toggle(isnext);
+                                $("#g_score #g_snext").toggle(isnext);
                                 $("#g_score").score('show',_ret.score);
                                 return true; } },_args);
                     }
