@@ -17,8 +17,13 @@
         svg#fraction03 .fraction            { display:none; }
         svg#fraction03 #source              { display:none; cursor:pointer; }
         svg#fraction03.withsource #source   { display:inline; }
-        svg#fraction03.withsource #source .s rect   { stroke:black; stroke-width:2; }
+		svg#fraction03.withsource #source .f3bg { fill:white; fill-opacity:0.6; } 
+        svg#fraction03.withsource #source .f3fg   { fill:none; }
+        svg#fraction03.withsource #source .s .f3bg   { fill:gray; }
+        svg#fraction03.withsource #source .s .f3fg   { stroke:white; stroke-width:2; }
+		svg#fraction03 #source .s text  { fill:white; } 
         svg#fraction03 #source text                 { text-anchor:start; font-size:15px; }
+		svg#fraction03 text#f3label { font-size:96px; fill:white; }
 		
         svg#fraction03 path.wrong    { fill:black !important; }
         svg#fraction03 rect.wrong     { fill:black !important; }
@@ -27,19 +32,27 @@
 
 
 <g id="source">
-    <g id="0" transform="translate(150,10)">
-        <rect x="0" y="0" width="24" height="24" class="c0"/>
-        <text transform="translate(30,15)" class="t"></text>
+    <g id="0" transform="translate(130,5)">
+		<rect x="0" y="0" width="300" height="24" ry="10" class="f3bg"/>
+        <rect x="0" y="0" width="45" height="24" class="c0" ry="10"/>
+        <text transform="translate(50,15)" class="t"></text>
+		<rect x="0" y="0" width="300" height="24" ry="10" class="f3fg"/>
     </g>
-    <g id="1" transform="translate(150,40)">
-        <rect x="0" y="0" width="24" height="24" class="c1"/>
-        <text transform="translate(30,15)"  class="t"></text>
+    <g id="1" transform="translate(130,35)">
+		<rect x="0" y="0" width="300" height="24" ry="10" class="f3bg"/>
+        <rect x="0" y="0" width="45" height="24" class="c1" ry="10"/>
+        <text transform="translate(50,15)" class="t"></text>
+		<rect x="0" y="0" width="300" height="24" ry="10" class="f3fg"/>
     </g>
-    <g id="2" transform="translate(150,70)">
-        <rect x="0" y="0" width="24" height="24" class="c2"/>
-        <text transform="translate(30,15)"  class="t"></text>
+    <g id="2" transform="translate(130,65)">
+		<rect x="0" y="0" width="300" height="24" ry="10" class="f3bg"/>
+        <rect x="0" y="0" width="45" height="24" class="c2" ry="10"/>
+        <text transform="translate(50,15)" class="t"></text>
+		<rect x="0" y="0" width="300" height="24" ry="10" class="f3fg"/>
     </g>
 </g>
+
+<text transform="translate(450,80)" class="t" id="f3label"></text>
 
 <g transform="translate(150,150)" id="square2x2" class="fraction">
     <rect transform="translate(-10,10)" x="0" y="0" height="150" width="150" class="shadow"/>

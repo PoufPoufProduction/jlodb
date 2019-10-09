@@ -650,22 +650,24 @@
         // Handle the key input
         key: function($this, value, fromkeyboard) {
             var settings = helpers.settings($this);
+			var vLen = settings.calculator.length;
+			if (settings.calculator.indexOf(".")!=-1) { vLen--; }
             if (value==".") {
                 if (!settings.nodec) {
-                    if (settings.calculator.indexOf(".")==-1 && settings.calculator.length<settings.callen-1) {
-                        settings.calculator+=(settings.calculator.length?"":"0")+"."; }
+                    if (settings.calculator.indexOf(".")==-1 && vLen<settings.callen) {
+                        settings.calculator+=(vLen?"":"0")+"."; }
                 }
             }
             else if (value=="c") { settings.calculator=""; }
             else if (value=="-") {
                 if (!settings.noneg) {
-                    if (settings.calculator.length &&settings.calculator[0]=='-')
+                    if (vLen && settings.calculator[0]=='-')
                          { settings.calculator = settings.calculator.substr(1); }
                     else { settings.calculator = '-' + settings.calculator; }
                 }
             }
-            else if (settings.calculator.length<settings.callen) {
-                if (value=="0" && settings.calculator.length<2 && settings.calculator[0]=='0') {}
+            else if (vLen<settings.callen) {
+                if (value=="0" && vLen<2 && settings.calculator[0]=='0') {}
                 else {
                     if (settings.calculator.length==1 && settings.calculator[0]=='0') { settings.calculator=""; }
                     settings.calculator+=value.toString();

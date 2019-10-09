@@ -2,83 +2,123 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-
+		 
 	<!-- Matherpillar -->
 		 
     <rdf:Description>
         <dct:identifier>s01</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter une suite d'additions et de soustractions sur des valeurs comprises entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","errratio":2,"hide":[[1,2,6,1],[2,4,6,1]],"checkempty":true,"callen":1,"noneg":true,"nodec":true,"sp":0.02,"withbars":false,"rows":{"row0":{"height":0.04}},"cols":{"col0":{"width":0.04}},"all":{"height":1.2,"width":1.2},"cells":{"c1x1":{"type":"free","value":"1","color":"#800"},"c2x1":{"type":"free","value":"+3","color":"white","background":"gray"},"c3x1":{"type":"value","result":4},"c4x1":{"type":"free","value":"-1","color":"white","background":"gray"},"c5x1":{"type":"value","result":3},"c6x1":{"type":"free","value":"+2","color":"white","background":"gray"},"c7x1":{"type":"value","result":5},"c7x2":{"type":"free","value":"-4","color":"white","background":"gray"},"c7x3":{"type":"value","result":1},"c6x3":{"type":"free","value":"+7","color":"white","background":"gray"},"c5x3":{"type":"value","result":8},"c4x3":{"type":"free","value":"+1","color":"white","background":"gray"},"c3x3":{"type":"value","result":9},"c2x3":{"type":"free","value":"-6","color":"white","background":"gray"},"c1x3":{"type":"value","result":3},"c1x4":{"type":"free","value":"+4","color":"white","background":"gray"},"c1x5":{"type":"value","result":7},"c2x5":{"type":"free","value":"-3","color":"white","background":"gray"},"c3x5":{"type":"value","result":4},"c4x5":{"type":"free","value":"-2","color":"white","background":"gray"},"c5x5":{"type":"value","result":2},"c6x5":{"type":"free","value":"-1","color":"white","background":"gray"},"c7x5":{"type":"value","result":1}},"font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"En partant du 1 en haut à gauche, suivez le chemin proposé et [b]remplissez les cases vides[/b] en résolvant les opérations."</dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":{"o":[0,1],"v":[5,1],"r":[0,9],"m":"+-","c":1},"callen":1,"noneg":true,"nodec":true,"background":"res/img/background/landscape/yellowboard02.svg","errratio":2,"hide":[[1,1,8,8]],"checkempty":true,"sp":0.02,"withbars":false,"rows":{"row0":{"height":0.04}},"cols":{"col0":{"width":0.04}},"all":{"height":1.2,"width":1.4},"font":1.9,"gen":"function($this,_s,_i){var m=[[0,-1],[1,0],[0,1],[-1,0]],p=_s.gg.p||[1,1],n=_s.gg.n||[2,2,2,2,1,1,0,0,0,0,1,1,2,2,2,2,1,1,0,0,0,0],v=Math.floor(Math.random()*_s.gg.o[0])+_s.gg.o[1], c={},i=0; c['c'+p[0]+'x'+p[1]]={'type':'free','value':v,'color':'#A00'}; var la=0; while (i<n.length) { p[0]+=m[n[i]][0];p[1]+=m[n[i]][1]; i++; var vv=0,vt=v,oo; do { var oo=_s.gg.m[Math.floor(Math.random()*_s.gg.m.length)]; vv=Math.floor(Math.random()*_s.gg.v[0])+_s.gg.v[1]; vt=eval(v+oo+vv); } while (la==vv||vt<_s.gg.r[0]||vt>_s.gg.r[1]||Math.floor(vt*_s.gg.c)!=vt*_s.gg.c); c['c'+p[0]+'x'+p[1]]={'type':'free','value':(oo=='*'?'×':oo)+vv,'color':'white','background':'gray'}; p[0]+=m[n[i]][0];p[1]+=m[n[i]][1]; i++; v=vt; la=vv; c['c'+p[0]+'x'+p[1]]={'type':'value','result':v}; } return {cells:c}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"En partant de la [red]valeur fournie[/red], [b]suivez[/b] le parcours d'opération et [b]remplissez les cases vides[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>s01</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
         <dct:isPartOf>matherpillar</dct:isPartOf>
 		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s02</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter une suite d'additions et de soustractions sur des valeurs comprises entre 0 et 10.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","errratio":2,"hide":[[2,1,1,4],[4,2,1,4],[6,1,1,4]],"checkempty":true,"callen":1,"noneg":true,"nodec":true,"sp":0.02,"withbars":false,"rows":{"row0":{"height":0.04}},"cols":{"col0":{"width":0.04}},"all":{"height":1.2,"width":1.2},"cells":{"c1x1":{"type":"free","value":"1","color":"#800"},"c1x2":{"type":"free","value":"+5","color":"white","background":"gray"},"c1x3":{"type":"value","result":6},"c1x4":{"type":"free","value":"+3","color":"white","background":"gray"},"c1x5":{"type":"value","result":9},"c2x5":{"type":"free","value":"-6","color":"white","background":"gray"},"c3x5":{"type":"value","result":3},"c3x4":{"type":"free","value":"-3","color":"white","background":"gray"},"c3x3":{"type":"value","result":0},"c3x2":{"type":"free","value":"+7","color":"white","background":"gray"},"c3x1":{"type":"value","result":7},"c4x1":{"type":"free","value":"-1","color":"white","background":"gray"},"c5x1":{"type":"value","result":6},"c5x2":{"type":"free","value":"+2","color":"white","background":"gray"},"c5x3":{"type":"value","result":8},"c5x4":{"type":"free","value":"-5","color":"white","background":"gray"},"c5x5":{"type":"value","result":3},"c6x5":{"type":"free","value":"-2","color":"white","background":"gray"},"c7x5":{"type":"value","result":1},"c7x4":{"type":"free","value":"+4","color":"white","background":"gray"},"c7x3":{"type":"value","result":5},"c7x2":{"type":"free","value":"+4","color":"white","background":"gray"},"c7x1":{"type":"value","result":9}},"font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"En partant du 1 en haut à gauche, suivez le chemin proposé et [b]remplissez les cases vides[/b] en résolvant les opérations."</dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:title xml:lang="fr-FR">Compléter une suite d'additions et de soustractions sur des valeurs comprises entre 0 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"o":[50,10],"v":[9,1],"r":[0,99],"m":"+-","c":1},"callen":2]]></dct:description>
+        <dct:extent>4</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>s01</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:isPartOf>matherpillar</dct:isPartOf>
-		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
-    </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>s05</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter une suite d'additions, de soustractions, de multiplication et de division par 2 sur des valeurs comprises entre 0 et 10.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","errratio":2,"hide":[[1,2,6,1],[2,4,6,1]],"checkempty":true,"callen":1,"noneg":true,"nodec":true,"sp":0.02,"withbars":false,"rows":{"row0":{"height":0.04}},"cols":{"col0":{"width":0.04}},"all":{"height":1.2,"width":1.2},"cells":{"c1x1":{"type":"free","value":"1","color":"#800"},"c2x1":{"type":"free","value":"+2","color":"white","background":"gray"},"c3x1":{"type":"value","result":3},"c4x1":{"type":"free","value":"×2","color":"white","background":"gray"},"c5x1":{"type":"value","result":6},"c6x1":{"type":"free","value":"+2","color":"white","background":"gray"},"c7x1":{"type":"value","result":8},"c7x2":{"type":"free","value":"/2","color":"white","background":"gray"},"c7x3":{"type":"value","result":4},"c6x3":{"type":"free","value":"-3","color":"white","background":"gray"},"c5x3":{"type":"value","result":1},"c4x3":{"type":"free","value":"×7","color":"white","background":"gray"},"c3x3":{"type":"value","result":7},"c2x3":{"type":"free","value":"-3","color":"white","background":"gray"},"c1x3":{"type":"value","result":4},"c1x4":{"type":"free","value":"/2","color":"white","background":"gray"},"c1x5":{"type":"value","result":2},"c2x5":{"type":"free","value":"+2","color":"white","background":"gray"},"c3x5":{"type":"value","result":4},"c4x5":{"type":"free","value":"×2","color":"white","background":"gray"},"c5x5":{"type":"value","result":8},"c6x5":{"type":"free","value":"-7","color":"white","background":"gray"},"c7x5":{"type":"value","result":1}},"font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"En partant du 1 en haut à gauche, suivez le chemin proposé et [b]remplissez les cases vides[/b] en résolvant les opérations."</dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>operations</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>s01</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+        <dct:relation>s01</dct:relation>
         <dct:isPartOf>matherpillar</dct:isPartOf>
 		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s11</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter une suite d'additions et de soustractions sur des valeurs comprises entre 0 et 20.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","errratio":2,"hide":[[2,1,1,4],[4,2,1,4],[6,1,1,4]],"checkempty":true,"callen":2,"noneg":true,"nodec":true,"sp":0.02,"withbars":false,"rows":{"row0":{"height":0.04}},"cols":{"col0":{"width":0.04}},"all":{"height":1.2,"width":1.2},"cells":{"c1x1":{"type":"free","value":"10","color":"#800"},"c1x2":{"type":"free","value":"+5","color":"white","background":"gray"},"c1x3":{"type":"value","result":15},"c1x4":{"type":"free","value":"+3","color":"white","background":"gray"},"c1x5":{"type":"value","result":18},"c2x5":{"type":"free","value":"-9","color":"white","background":"gray"},"c3x5":{"type":"value","result":9},"c3x4":{"type":"free","value":"-3","color":"white","background":"gray"},"c3x3":{"type":"value","result":6},"c3x2":{"type":"free","value":"+7","color":"white","background":"gray"},"c3x1":{"type":"value","result":13},"c4x1":{"type":"free","value":"-8","color":"white","background":"gray"},"c5x1":{"type":"value","result":5},"c5x2":{"type":"free","value":"+4","color":"white","background":"gray"},"c5x3":{"type":"value","result":9},"c5x4":{"type":"free","value":"+8","color":"white","background":"gray"},"c5x5":{"type":"value","result":17},"c6x5":{"type":"free","value":"-2","color":"white","background":"gray"},"c7x5":{"type":"value","result":15},"c7x4":{"type":"free","value":"-7","color":"white","background":"gray"},"c7x3":{"type":"value","result":8},"c7x2":{"type":"free","value":"+9","color":"white","background":"gray"},"c7x1":{"type":"value","result":17}},"font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"En partant du 1 en haut à gauche, suivez le chemin proposé et [b]remplissez les cases vides[/b] en résolvant les opérations."</dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:title xml:lang="fr-FR">Compléter une suite d'additions, de soustractions et de multiplications sur des valeurs comprises entre 0 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"o":[10,5],"v":[6,2],"r":[0,99],"m":"+-****","c":1,"n":[1,1,1,1,1,1,2,2,3,3,3,3,3,3,2,2,1,1,1,1,1,1]},"callen":2]]></dct:description>
+        <dct:extent>4</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>s01</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+        <dct:relation>s01</dct:relation>
         <dct:isPartOf>matherpillar</dct:isPartOf>
 		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>s15</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter une suite d'additions, de soustractions, de multiplication et de division par 2 sur des valeurs comprises entre 0 et 20.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","errratio":2,"hide":[[1,2,6,1],[2,4,6,1]],"checkempty":true,"callen":2,"noneg":true,"nodec":true,"sp":0.02,"withbars":false,"rows":{"row0":{"height":0.04}},"cols":{"col0":{"width":0.04}},"all":{"height":1.2,"width":1.2},"cells":{"c1x1":{"type":"free","value":"1","color":"#800"},"c2x1":{"type":"free","value":"+8","color":"white","background":"gray"},"c3x1":{"type":"value","result":9},"c4x1":{"type":"free","value":"×2","color":"white","background":"gray"},"c5x1":{"type":"value","result":18},"c6x1":{"type":"free","value":"+2","color":"white","background":"gray"},"c7x1":{"type":"value","result":20},"c7x2":{"type":"free","value":"-6","color":"white","background":"gray"},"c7x3":{"type":"value","result":14},"c6x3":{"type":"free","value":"/2","color":"white","background":"gray"},"c5x3":{"type":"value","result":7},"c4x3":{"type":"free","value":"-1","color":"white","background":"gray"},"c3x3":{"type":"value","result":6},"c2x3":{"type":"free","value":"×2","color":"white","background":"gray"},"c1x3":{"type":"value","result":12},"c1x4":{"type":"free","value":"+5","color":"white","background":"gray"},"c1x5":{"type":"value","result":17},"c2x5":{"type":"free","value":"+1","color":"white","background":"gray"},"c3x5":{"type":"value","result":18},"c4x5":{"type":"free","value":"/2","color":"white","background":"gray"},"c5x5":{"type":"value","result":9},"c6x5":{"type":"free","value":"-3","color":"white","background":"gray"},"c7x5":{"type":"value","result":6}},"font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"En partant du 1 en haut à gauche, suivez le chemin proposé et [b]remplissez les cases vides[/b] en résolvant les opérations."</dct:description>
+        <dct:identifier>s21</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter une suite d'additions, de soustractions, de multiplications et de divisions entières sur des valeurs comprises entre 0 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"o":[10,5],"v":[6,2],"r":[0,99],"m":"+-****/////","c":1,"n":[1,1,1,1,1,1,2,2,3,3,3,3,3,3,2,2,1,1,1,1,1,1]},"callen":2]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s01</dct:alternative>
+        <dct:relation>s01</dct:relation>
+        <dct:isPartOf>matherpillar</dct:isPartOf>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s26</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter une suite d'additions, de soustractions, de multiplications et de divisions  sur des valeurs comprises entre 0 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"o":[10,5],"v":[6,2],"r":[0,99],"m":"+-****/////","c":10,"n":[1,1,1,1,1,1,2,2,3,3,3,3,3,3,2,2,1,1,1,1,1,1]},"callen":3,"nodec":false,"all":{"height":1.2,"width":2.1},"font":1.3]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>s01</dct:alternative>
+        <dct:relation>s01</dct:relation>
+        <dct:isPartOf>matherpillar</dct:isPartOf>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	
+	<!-- DOUBLE ENTRY SHEET -->
+	
+	<rdf:Description>
+        <dct:identifier>da</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau d'additions et de soustractions.</dct:title>
+        <dct:description><![CDATA["gg":{"ix":[100],"iy":[-10],"r":[0,1000],"v":[200,50],"vr":1,"o":"c3x3,c5x3,c3x5"},"noneg":true,"nodec":true,"callen":3,"sp":0.05,"background":"res/img/background/landscape/redsplash01.svg","font":1.5,"size":[7,8],"hide":[[1,1,7,8]],"all":{"width":2.7,"height":1.2},"cells":{"c1x2":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c3x2":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c5x2":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c7x2":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c1x4":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c3x4":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c5x4":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c7x4":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c1x6":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c3x6":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c5x6":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c7x6":{"type":"free","value":"[b]∨[/b]","opt":"vmn02 f05"},"c2x1":{"type":"free","value":"›"},"c4x1":{"type":"free","value":"›"},"c6x1":{"type":"free","value":"›"},"c2x3":{"type":"free","value":"›"},"c4x3":{"type":"free","value":"›"},"c6x3":{"type":"free","value":"›"},"c2x5":{"type":"free","value":"›"},"c4x5":{"type":"free","value":"›"},"c6x5":{"type":"free","value":"›"},"c2x7":{"type":"free","value":"›"},"c4x7":{"type":"free","value":"›"},"c6x7":{"type":"free","value":"›"}},"cols":{"col0":{"width":0.2},"col2":{"background":"#008","color":"#CCF","width":0.5},"col4":{"background":"#008","color":"#CCF","width":0.5},"col6":{"background":"#008","color":"#CCF","width":0.5}},"rows":{"row0":{"height":0.2},"row2":{"background":"#080","color":"#CFC","height":0.5},"row4":{"background":"#080","color":"#CFC","height":0.5},"row6":{"background":"#080","color":"#CFC","height":0.5},"row8":{"background":"#FEC"}},"withbars":false,"withauto":false,"gen":"function($this,_s,_i){ var v,c={}; do { v=(Math.floor(Math.random()*_s.gg.v[0])+_s.gg.v[1])*_s.gg.vr; } while ( (v+3*_s.gg.ix<_s.gg.r[0]) ||  (v+3*_s.gg.iy<_s.gg.r[0]) || (v+3*_s.gg.ix+3*_s.gg.iy<_s.gg.r[0]) || (v+3*_s.gg.ix>_s.gg.r[1]) ||  (v+3*_s.gg.iy>_s.gg.r[1]) || (v+3*_s.gg.ix+3*_s.gg.iy>_s.gg.r[1]) ); for (var i=0;i<4;i++) for (var j=0;j<4;j++) { var id= 'c'+(i*2+1)+'x'+(j*2+1); if (_s.gg.o.indexOf(id)!=-1) { c[id]={'type':'free','value':v+i*_s.gg.ix+j*_s.gg.iy,'background':'#888','color':'white'}; } else { c[id]={'type':'value','result':v+i*_s.gg.ix+j*_s.gg.iy}; } } c['c1x8']={'width':12.58,'type':'free','value':'[blue][b]›[/b] '+(_s.gg.ix>0?'+':'')+_s.gg.ix+'[/blue] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [green][b]∨[/b] '+(_s.gg.iy>0?'+':'')+_s.gg.iy+'[/green]'}; return {cells:c}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez[/b] les cases de ce circuit."</dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>da</dct:alternative>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>db</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau d'additions et de soustractions.</dct:title>
+        <dct:description><![CDATA["gg":{"ix":[-50],"iy":[20],"r":[0,1000],"v":[20,5],"vr":10,"o":"c3x3"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s01</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:isPartOf>matherpillar</dct:isPartOf>
+        <dct:alternative>da</dct:alternative>
+        <dct:relation>da</dct:relation>
 		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>dna</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau d'additions et de soustractions.</dct:title>
+        <dct:description><![CDATA["gg":{"ix":[-200],"iy":[5],"r":[-1000,1000],"v":[40,10],"vr":5,"o":"c3x3"},"noneg":false,"nodec":true,"callen":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>da</dct:alternative>
+        <dct:relation>da</dct:relation>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	
+	
 	
 	<!-- Quizz -->
 	

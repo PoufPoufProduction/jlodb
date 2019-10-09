@@ -2,7 +2,7 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
          
-         
+    <!-- Pair/Odd -->
          
     <rdf:Description>
         <dct:identifier>d2</dct:identifier>
@@ -33,61 +33,60 @@
         <dct:source>res/img/desktop/puzzle/groups2-4.svg</dct:source>
     </rdf:Description>
 
+	<!-- DIVIDE AND MULTIPLE -->
+	
     <rdf:Description>
-        <dct:identifier>d10023</dct:identifier>
+        <dct:identifier>db1</dct:identifier>
         <dct:title xml:lang="fr-FR">Déterminer la divisibilité par 2 et 3 de nombres compris entre 1 et 100.</dct:title>
-        <dct:description><![CDATA["init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "gen":"function($this,settings,_id){var ret=[], d=[[2,3,3],[3,2,2],[6,1000,1000]],max=100, val=[['a','b','c','d'],['e','f','g','h'],['i','j','k','l']]; for (var i=0; i<2;i++) { var e={}; for (var j=0;j<3;j++) { for (k=0;k<4;k++) { var a; do { a = Math.floor(Math.random()*max)+1; }while(a%d[j][0]!=0 || a%d[j][1]==0 || a%d[j][2]==0); e[val[j][k]]=a;} } ret.push(e);} return {\\\"values\\\":ret};}","txt":{"text1":"2","text2":"3","text3":"2 3"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez les nombres selon qu'ils soient divisibles par 2, par 3 ou par 2 et 3."]]></dct:description>
+        <dct:description><![CDATA["gg":{"v":[[0,2],[0,3]],"r":[90,10]},"background":"res/img/background/landscape/graycarpet02.svg","init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "gen":"function($this,_s,_id){var ret={},val=[['a','b','c','d'],['e','f','g','h'],['i','j','k','l']],r=[0,0]; do { r[0]=Math.floor(Math.random()*_s.gg.v[0][0])+_s.gg.v[0][1]; r[1]=Math.floor(Math.random()*_s.gg.v[1][0])+_s.gg.v[1][1]; } while (r[0]==r[1]); for (var i=0; i<3; i++) { var c=[]; for (var j=_s.gg.r[1]; j<_s.gg.r[0]+_s.gg.r[1]; j++) { if (((i<2)&&(j%r[i]==0)&&(j%r[1-i]!=0))||((i==2)&&(j%r[0]==0)&&(j%r[1]==0))) { c.push(j); } } shuffle(c); for (var j=0; j<4; j++) { ret[val[i][j]]=c[j]; } } return {'values':ret,'txt':{'text1':'×'+r[0],'text2':'×'+r[1],'text3':'×'+r[0]+' ×'+r[1]}};}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] les différents multiples dans les colonnes correspondantes."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>d1k23</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/groups3-4.svg</dct:source>
+        <dct:alternative>db1</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
-
+	
     <rdf:Description>
-        <dct:identifier>d1k23</dct:identifier>
+        <dct:identifier>db1b</dct:identifier>
         <dct:title xml:lang="fr-FR">Déterminer la divisibilité par 2 et 3 de nombres compris entre 1 et 1000.</dct:title>
-        <dct:description><![CDATA["init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "gen":"function($this,settings,_id){var ret=[], d=[[2,3,3],[3,2,2],[6,1000,1000]],max=1000, val=[['a','b','c','d'],['e','f','g','h'],['i','j','k','l']]; for (var i=0; i<2;i++) { var e={}; for (var j=0;j<3;j++) { for (k=0;k<4;k++) { var a; do { a = Math.floor(Math.random()*max)+1; }while(a%d[j][0]!=0 || a%d[j][1]==0 || a%d[j][2]==0); e[val[j][k]]=a;} } ret.push(e);} return {\\\"values\\\":ret};}","txt":{"text1":"2","text2":"3","text3":"2 3"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez les nombres selon qu'ils soient divisibles par 2, par 3 ou par 2 et 3."]]></dct:description>
+        <dct:description><![CDATA["gg":{"v":[[0,2],[0,3]],"r":[990,10]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>d1k23</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/groups3-4.svg</dct:source>
+        <dct:alternative>db1</dct:alternative>
+        <dct:relation>db1</dct:relation>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
-
+	
     <rdf:Description>
-        <dct:identifier>d1k25</dct:identifier>
-        <dct:title xml:lang="fr-FR">Déterminer la divisibilité par 2 et 5 de nombres compris entre 1 et 1000.</dct:title>
-        <dct:description><![CDATA["init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "gen":"function($this,settings,_id){var ret=[], d=[[2,5,5],[5,2,2],[10,1000,1000]],max=1000, val=[['a','b','c','d'],['e','f','g','h'],['i','j','k','l']]; for (var i=0; i<2;i++) { var e={}; for (var j=0;j<3;j++) { for (k=0;k<4;k++) { var a; do { a = Math.floor(Math.random()*max)+1; }while(a%d[j][0]!=0 || a%d[j][1]==0 || a%d[j][2]==0); e[val[j][k]]=a;} } ret.push(e);} return {\\\"values\\\":ret};}","txt":{"text1":"2","text2":"5","text3":"2 5"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez les nombres selon qu'ils soient divisibles par 2, par 5 ou par 2 et 5."]]></dct:description>
+        <dct:identifier>db2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Déterminer la divisibilité par 2 et 5 de nombres compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"v":[[0,2],[0,5]],"r":[90,10]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>d1k23</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/groups3-4.svg</dct:source>
+        <dct:type>3</dct:type>
+        <dct:alternative>db1</dct:alternative>
+        <dct:relation>db1</dct:relation>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
-
+	
     <rdf:Description>
-        <dct:identifier>d1k235</dct:identifier>
-        <dct:title xml:lang="fr-FR">Déterminer la divisibilité par 2, 3 et 5 de nombres compris entre 1 et 1000.</dct:title>
-        <dct:description><![CDATA["init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "gen":"function($this,settings,_id){var ret=[], d=[[2,3,5],[3,2,5],[5,2,3]],max=1000, val=[['a','b','c','d'],['e','f','g','h'],['i','j','k','l']]; for (var i=0; i<2;i++) { var e={}; for (var j=0;j<3;j++) { for (k=0;k<4;k++) { var a; do { a = Math.floor(Math.random()*max)+1; }while(a%d[j][0]!=0 || a%d[j][1]==0 || a%d[j][2]==0); e[val[j][k]]=a;} } ret.push(e);} return {\\\"values\\\":ret};}","txt":{"text1":"2","text2":"3","text3":"5"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez les nombres selon qu'ils soient divisibles par 2, par 3 ou par 5."]]></dct:description>
+        <dct:identifier>db3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Déterminer la divisibilité par 3 et 5 de nombres compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"v":[[0,3],[0,5]],"r":[90,10]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>d1k23</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/groups3-4.svg</dct:source>
+        <dct:type>3</dct:type>
+        <dct:alternative>db1</dct:alternative>
+        <dct:relation>db1</dct:relation>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
+
 
 </rdf:RDF>
 

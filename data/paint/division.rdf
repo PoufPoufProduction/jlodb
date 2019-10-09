@@ -5,7 +5,7 @@
     <!-- FRACTION -->
 
     <rdf:Description>
-        <dct:identifier>d201</dct:identifier>
+        <dct:identifier>e201</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier la moitié des éléments présents [4 à 6].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","scorearg":[4,4,6],"url":"res/img/desktop/paint/num001.svg","data":[{},{"toggle":true}],"selected":1,"canvas":["rect4","circle4","rect6"],"scorefct":"function($this,_result,_arg){var n=[0,0],l=_result.length;for (i=0;i<l;i++) { if (_result[i]=='1') n[i<_arg?0:1]++; } return Math.abs(n[0]-_arg/2)+Math.abs(n[1]-(l-_arg)/2);}","number":3,"font":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en rouge la [b]moitié[/b] des objets présents."]]></dct:description>
@@ -13,12 +13,12 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>d201</dct:alternative>
+        <dct:alternative>e201</dct:alternative>
         <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/paint/num001.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d202</dct:identifier>
+        <dct:identifier>e202</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier la moitié des éléments présents [6 à 10].</dct:title>
         <dct:description><![CDATA["scorearg":[6,8,8,10],"canvas":["circle6","rect8","circle8","rect10"],"number":4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en rouge la [b]moitié[/b] des objets présents."]]></dct:description>
@@ -26,13 +26,13 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>d201</dct:alternative>
-        <dct:relation>d201</dct:relation>
+        <dct:alternative>e201</dct:alternative>
+        <dct:relation>e201</dct:relation>
         <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/paint/num001.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d205</dct:identifier>
+        <dct:identifier>e205</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier la moitié des carrés et cercles présents [en nombre identique 4,6,8].</dct:title>
         <dct:description><![CDATA["scorearg":[4,6,8],"canvas":["elt44","elt66","elt88"],"number":3]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en rouge la [b]moitié[/b] des [red]carrés[/red] présents et la [b]moitié[/b] des [red]cercles[/red]."]]></dct:description>
@@ -40,13 +40,13 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>d201</dct:alternative>
-        <dct:relation>d201</dct:relation>
+        <dct:alternative>e201</dct:alternative>
+        <dct:relation>e201</dct:relation>
         <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/paint/num001.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d206</dct:identifier>
+        <dct:identifier>e206</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier la moitié des carrés et cercles présents [de 2 à 8].</dct:title>
         <dct:description><![CDATA["scorearg":[4,2,6,8],"canvas":["elt46","elt28","elt68","elt84"],"number":4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en rouge la [b]moitié[/b] des [red]carrés[/red] présents et la [b]moitié[/b] des [red]cercles[/red]."]]></dct:description>
@@ -54,11 +54,65 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>d201</dct:alternative>
-        <dct:relation>d201</dct:relation>
+        <dct:alternative>e201</dct:alternative>
+        <dct:relation>e201</dct:relation>
         <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/paint/num001.svg</dct:source>
     </rdf:Description>
 
+   <!-- DIVIDE and MULTIPLE -->
 
+    <rdf:Description>
+        <dct:identifier>da1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier dans une grille 10x10 tous les diviseurs d'un nombre compris entre 10 et 99.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","url":"res/img/desktop/paint/numbers10x10.svg","data":[{"skip":true},{"toggle":true}],"selected":1,"number":2,"svgclass":"nozero s1","gen":"function(){var result, nb; do { nb=0, result=' '; var a=Math.floor(Math.random()*90)+10; for (var i=1; i<100; i++) { if (i>a||a%i) { result+=' '; } else { result+='1'; nb++;} } } while(nb<4); return {'t':['/'+a.toString()],'result':result};}","remove":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez[/b] TOUS les [red]diviseurs[/red] du nombre ci-dessus."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>da1</dct:alternative>
+        <dct:source>res/img/desktop/paint/numbers10x10.svg,res/img/background/landscape/bluesplash01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>db1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier dans une grille 10x10 tous les multiples d'un nombre compris entre 2 et 99.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","url":"res/img/desktop/paint/numbers10x10.svg","data":[{"skip":true},{"toggle":true}],"selected":1,"number":2,"svgclass":"nozero s1","gen":"function(){var result, nb; do { nb=0, result=' '; var a=Math.floor(Math.random()*98)+2; for (var i=1; i<100; i++) { if (a>i||i%a) { result+=' '; } else { result+='1'; nb++;} } } while(nb<4); return {'t':['×'+a.toString()],'result':result};}","remove":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez[/b] TOUS les [red]multiples[/red] du nombre ci-dessus."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>da1</dct:alternative>
+        <dct:source>res/img/desktop/paint/numbers10x10.svg,res/img/background/landscape/bluesplash01.svg</dct:source>
+    </rdf:Description>
+	
+
+    <rdf:Description>
+        <dct:identifier>da2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier dans une grille 10x10 les diviseurs de 2 nombres compris entre 10 et 100.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","url":"res/img/desktop/paint/numbers10x10.svg","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"selected":1,"svgclass":"nozero s1 s2 s3","gen":"function(){var result,a,b; do { nb=[0,0,0], result=' '; var a=Math.floor(Math.random()*90)+10, b=Math.floor(Math.random()*90)+10; for (var i=1; i<100; i++) { if (i>a||a%i) { if (i>b||b%i) { result+=' '; } else { result+='2'; nb[1]++; } } else { if (i>b||b%i) { result+='1'; nb[0]++} else { result+='3'; nb[2]++; } } } } while (nb[0]<4 || nb[1]<4); return {'result':result,'t':['/'+a.toString(),'/'+b.toString(),'/']};}","remove":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour chacun des deux nombres, [b]coloriez[/b] TOUS les [red]diviseurs[/red] suivant leur couleur. [blue]Coloriez en bleu les diviseurs communs.[/blue]","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>da1</dct:alternative>
+        <dct:source>res/img/desktop/paint/numbers10x10.svg,res/img/background/landscape/bluesplash01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>db2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier dans une grille 10x10 les multiples de 2 nombres compris entre 2 et 100.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","url":"res/img/desktop/paint/numbers10x10.svg","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"selected":1,"svgclass":"nozero s1 s2 s3","gen":"function(){var result,a,b; do { nb=[0,0,0], result=' '; var a=Math.floor(Math.random()*98)+2, b=Math.floor(Math.random()*98)+2; for (var i=1; i<100; i++) { if (a>i||i%a) { if (b>i||i%b) { result+=' '; } else { result+='2'; nb[1]++; } } else { if (b>i||i%b) { result+='1'; nb[0]++} else { result+='3'; nb[2]++; } } } } while (nb[0]<4 || nb[1]<4 || nb[2]<1); return {'result':result,'t':['×'+a.toString(),'×'+b.toString(),'×']};}","remove":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour chacun des deux nombres, [b]coloriez[/b] TOUS les [red]multiples[/red] suivant leur couleur. [blue]Coloriez en bleu les multiples communs.[/blue]","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>da1</dct:alternative>
+        <dct:source>res/img/desktop/paint/numbers10x10.svg,res/img/background/landscape/bluesplash01.svg</dct:source>
+    </rdf:Description>
+	
 </rdf:RDF>
 
