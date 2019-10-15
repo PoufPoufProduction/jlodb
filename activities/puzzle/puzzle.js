@@ -560,7 +560,7 @@
                     var elt    = settings.elts[i];
                     if (!elt.decoy) {
                         var pieces = [ i ];
-                        if (settings.same) {
+                        if (settings.same && settings.same.length) {
                             var vSame = settings.same;
                             if (vSame=="all") { pieces=Object.keys(settings.elts); }
                             else {

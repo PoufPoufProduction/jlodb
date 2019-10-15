@@ -7,6 +7,7 @@
 .board #bdboard>div			      { width:100%;height:100%; position:relative; }
 .board #bdbg			          { position:absolute; background-color:white; }
 .board #bdcursor                  { position:absolute; overflow:visible; }
+.board .bdgrid                    { background-image:url("../../res/img/svginventoryicons/background/border/border01.svg"); }
 .board #bdboard .c				  { position:absolute;width:1.2em;height:1.2em;text-align:center;background-size:1.2em; }
 .board #bdboard .t				  { position:absolute;font-size:1.2em;width:1em;height:1em; border:1px solid black; cursor:move; background-color:rgba(128,128,128,0.2); background-image:url("../../res/img/default/pattern/steel01.svg");}
 .board.red #bdboard .t            { border:1px solid red; }
@@ -42,7 +43,7 @@
 .board #bdmodel>div		          { position:absolute;width:1.2em;height:1.2em;text-align:center;background-size:1.2em;}
 .board #bdcomment		          { display:none; background-color:rgba(255,255,255,0.8); }
 .board #bdcomment>div	          { font-size:.6em; padding:.2em; }
-.board #bdcomment .bdmult         { width:1.2em; height:1em; margin-top:.2em;font-size:2em; float:left; background-color:gray; color:white; border-radius:.4em; text-align:center; padding:0 .1em; }
+.board #bdcomment .bdmult         { width:2.6em; height:1.2em; font-size:2em; margin-left:.2em; float:left; background-color:gray; color:white; border-radius:.4em; text-align:center; padding:0 .1em; }
 .board #bdpaint                   { background-image:url("../../res/img/default/icon/se.svg");font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute; top:7em; left:7em; z-index:3; }
 .board .bd_splash	              { position:absolute; width:1em; height:1em; top:0; left:0; display:none;z-index:4; }
 

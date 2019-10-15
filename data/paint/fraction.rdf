@@ -6,20 +6,20 @@
 	
     <rdf:Description>
         <dct:identifier>a01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 4.</dct:title>
-        <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[4]},{"id":"square2x2","det":4,"dets":[4]}],"ggg":1,"background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,_s,_id){var val=_s.gg[Math.floor(Math.random()*_s.gg.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*d*_s.ggg)+1; } while(val.det*n/d==_s.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var ret='',nb=0; for (var i=0;i<_result.length;i++) { var r; if (_result[i]=='1') { nb++; r=(nb>arg)?'x':_result[i]; } else { r=(i-nb>=_result.length-arg)?'x':_result[i]; } ret+=r; } return ret; }","number":5,"tagsize":0.8]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 4.</dct:title>
+        <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[4]},{"id":"square2x2","det":4,"dets":[4]}],"ggg":1,"background":"res/img/background/landscape/grayboard01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,_s,_id){var val=_s.gg[Math.floor(Math.random()*_s.gg.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*d*_s.ggg)+1; } while(val.det*n/d==_s.scorearg); return {'scorearg':val.det*n/d,'canvas':val.id,'txt':{'f3label':n.toString()+'/'+d.toString()}};}","scorefct":"function($this,_result,_arg){var ret='',nb=0; for (var i=0;i<_result.length;i++) { var r; if (_result[i]=='1') { nb++; r=(nb>arg)?'x':_result[i]; } else { r=(i-nb>=_result.length-arg)?'x':_result[i]; } ret+=r; } return ret; }","number":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction demandée[/red]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>a01</dct:alternative>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a02</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2 ou 4.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2 ou 4.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[2,4]},{"id":"square2x2","det":4,"dets":[2,4]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -27,12 +27,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>a03</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 6.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 6.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle6","det":6,"dets":[6]},{"id":"square2x3","det":6,"dets":[6]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -40,12 +40,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>a04</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2,3 ou 6.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2,3 ou 6.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle6","det":6,"dets":[2,3,6]},{"id":"square2x3","det":6,"dets":[2,3,6]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -53,12 +53,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>a05</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4 ou 6.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 3, 4 ou 6.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[2,4]},{"id":"square2x2","det":4,"dets":[2,4]},{"id":"circle6","det":6,"dets":[2,3,6]},{"id":"square2x3","det":6,"dets":[2,3,6]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -66,12 +66,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a06</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 8.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 8.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle8","det":8,"dets":[8]},{"id":"square2x4","det":8,"dets":[8]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -79,12 +79,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>a07</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2,4 ou 8.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2,4 ou 8.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle8","det":8,"dets":[2,4,8]},{"id":"square2x4","det":8,"dets":[2,4,8]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -92,12 +92,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a08</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4 ou 8.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 4 ou 8.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[2,4]},{"id":"square2x2","det":4,"dets":[2,4]},{"id":"circle8","det":8,"dets":[2,4,8]},{"id":"square2x4","det":8,"dets":[2,4,8]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -105,13 +105,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     
     <rdf:Description>
         <dct:identifier>a09</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 12.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 12.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle12","det":12,"dets":[12]},{"id":"square3x4","det":12,"dets":[12]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -119,12 +119,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4, 6 ou 12.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 3, 4, 6 ou 12.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle12","det":12,"dets":[2,3,4,6,12]},{"id":"square3x4","det":12,"dets":[2,3,4,6,12]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -132,12 +132,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a11</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4, 6 ou 12.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 3, 4, 6 ou 12.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[2,4]},{"id":"square2x2","det":4,"dets":[2,4]},{"id":"circle6","det":6,"dets":[2,3,6]},{"id":"square2x3","det":6,"dets":[2,3,6]},{"id":"circle12","det":12,"dets":[2,3,4,6,12]},{"id":"square3x4","det":12,"dets":[2,3,4,6,12]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -145,12 +145,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a12</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, 6, 8 ou 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est respectivement de 4, 6, 8 ou 12.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, 6, 8 ou 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont respectivement de 4, 6, 8 ou 12.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[4]},{"id":"square2x2","det":4,"dets":[4]},{"id":"circle6","det":6,"dets":[6]},{"id":"square2x3","det":6,"dets":[6]},{"id":"circle8","det":8,"dets":[8]},{"id":"square2x4","det":8,"dets":[8]},{"id":"circle12","det":12,"dets":[12]},{"id":"square3x4","det":12,"dets":[12]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -158,12 +158,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a13</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 16, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4, 8 ou 16.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 16, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 4, 8 ou 16.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"square4x4","det":16,"dets":[2,4,8,16]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -171,12 +171,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a14</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 20, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4, 5, 10 ou 20.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 20, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 4, 5, 10 ou 20.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"square5x4","det":20,"dets":[2,4,5,10,20]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -184,12 +184,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a15</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, 6, 8, 12, 16 ou 20, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est respectivement 4, 6, 8, 12, 16 ou 20.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, 6, 8, 12, 16 ou 20, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont respectivement 4, 6, 8, 12, 16 ou 20.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"square2x2","det":4,"dets":[4]},{"id":"square2x3","det":6,"dets":[6]},{"id":"square2x4","det":8,"dets":[8]},{"id":"square3x4","det":12,"dets":[12]},{"id":"square4x4","det":16,"dets":[16]},{"id":"square5x4","det":20,"dets":[20]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -197,14 +197,27 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>a16</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, 6, 8, 12, 16 ou 20, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 4, 6, 8, 12, 16 ou 20.</dct:title>
+        <dct:description><![CDATA["gg":[{"id":"square2x2","det":4,"dets":[2,4]},{"id":"square2x3","det":6,"dets":[2,3,6]},{"id":"square2x4","det":8,"dets":[2,4,8]},{"id":"square3x4","det":12,"dets":[2,3,4,6,12]},{"id":"square4x4","det":16,"dets":[2,4,8,16]},{"id":"square5x4","det":20,"dets":[2,4,5,10,20]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+        <dct:relation>a01</dct:relation>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
 	
 	
     <rdf:Description>
         <dct:identifier>a21</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 4.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 4.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle4x2","det":4,"dets":[4]},{"id":"square2x2x2","det":4,"dets":[4]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -212,12 +225,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>a22</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2 ou 4.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2 ou 4.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle4x2","det":4,"dets":[2,4]},{"id":"square2x2x2","det":4,"dets":[2,4]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -225,12 +238,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a23</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 6.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 6.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle6x2","det":6,"dets":[6]},{"id":"square2x3x2","det":6,"dets":[6]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -238,12 +251,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a24</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3 ou 6.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 3 ou 6.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle6x2","det":6,"dets":[2,3,6]},{"id":"square2x3x2","det":6,"dets":[2,3,6]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -251,12 +264,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a25</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 8.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 8.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle8x2","det":8,"dets":[8]},{"id":"square2x4x2","det":8,"dets":[8]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -264,12 +277,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a26</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4 ou 8.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 4 ou 8.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle8x2","det":8,"dets":[2,4,8]},{"id":"square2x4x2","det":8,"dets":[2,4,8]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -277,12 +290,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a27</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4 ou 8.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 4 ou 8.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle4x2","det":4,"dets":[2,4]},{"id":"square2x2x2","det":4,"dets":[2,4]},{"id":"circle8x2","det":8,"dets":[2,4,8]},{"id":"square2x4x2","det":8,"dets":[2,4,8]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -290,12 +303,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a28</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 12.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 12.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle12x2","det":12,"dets":[12]},{"id":"square3x4x2","det":12,"dets":[12]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -303,12 +316,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a29</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4, 6 ou 12.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 3, 4, 6 ou 12.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle12x2","det":12,"dets":[2,3,4,6,12]},{"id":"square3x4x2","det":12,"dets":[2,3,4,6,12]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -316,12 +329,12 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>a30</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, 6 ou 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4, 6 ou 12.</dct:title>
+        <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, 6 ou 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 2, 3, 4, 6 ou 12.</dct:title>
         <dct:description><![CDATA["gg":[{"id":"circle6x2","det":6,"dets":[2,3,6]},{"id":"square2x3x2","det":6,"dets":[2,3,6]},{"id":"circle4x2","det":4,"dets":[2,4]},{"id":"square2x2x2","det":4,"dets":[2,4]},{"id":"circle12x2","det":12,"dets":[2,3,4,6,12]},{"id":"square3x4x2","det":12,"dets":[2,3,4,6,12]}],"ggg":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -329,21 +342,21 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     
     <rdf:Description>
         <dct:identifier>a50</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 10, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 10.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square1x10','det':10,'dets':[10],'max':1,'min':1},{'id':'square1x10x2','det':10,'dets':[10],'max':2,'min':11},{'id':'square1x10x3','det':10,'dets':[10],'max':3,'min':21}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d*val.max-(val.min)))+val.min; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var ret='',nb=0; for (var i=0;i<_result.length;i++) { var r; if (_result[i]=='1') { nb++; r=(nb>arg)?'x':_result[i]; } else { r=(i-nb>=_result.length-arg)?'x':_result[i]; } ret+=r; } return ret; }","number":6,"tagsize":0.6]]></dct:description>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 10, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 10.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square1x10','det':10,'dets':[10],'max':1,'min':1},{'id':'square1x10x2','det':10,'dets':[10],'max':2,'min':11},{'id':'square1x10x3','det':10,'dets':[10],'max':3,'min':21}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d*val.max-(val.min)))+val.min; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var ret='',nb=0; for (var i=0;i<_result.length;i++) { var r; if (_result[i]=='1') { nb++; r=(nb>arg)?'x':_result[i]; } else { r=(i-nb>=_result.length-arg)?'x':_result[i]; } ret+=r; } return ret; }","number":6,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>a01</dct:alternative>
-        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
 	

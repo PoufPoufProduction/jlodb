@@ -218,6 +218,10 @@
                         elt.update();
 						$this.find("#bdboard>div").append(elt.$elt);
                         settings.elts["c"+i+"x"+j]=elt;
+						if (settings.grid) {
+							$this.find("#bdboard>div").append("<div class='c bdgrid' "+
+                            "style='top:"+(1.2*(j+settings.margin))+"em;left:"+(1.2*(i+settings.margin))+"em;'></div>");
+						}
 					}
 				}
                 
@@ -242,8 +246,8 @@
 						"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
 						"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
 						"\\\[br\\\]",                               "<br/>",
-						"\\\[clear\\\]",                            "<div style='clear:both'></div>",
-						"\\\[space\\\]",                            "<div style='float:left;width:1em;'>&nbsp;</div>",
+						"\\\[clear\\\]",                            "<div style='clear:both;height:.1em'></div>",
+						"\\\[space\\\]",                            "<div style='float:left;width:0.5em;'>&nbsp;</div>",
 						"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
 						"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
 						"\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
