@@ -112,6 +112,14 @@ jtools = {
 	math: {
 		svg: { font: [7,12], y: 9.5 },
 		symbology : {
+			".nop" : { ty:"op", pr:5, va:"?", tt:"$1?$2", op:[null,null], eq:function(_a) { return NaN; } },
+			".mar" : { ty:"op", pr:9, va:"", tt:" $1 ", op:[null], eq:function(_a) { return this._eq(_a)[0];},
+				svg:function() {
+					var svg = this.op[0]?this.op[0].svg():{si:[2, 0.5, 0.5], svg:"<text y='"+jtools.math.svg.y+"'>$1</text>", pr:1};
+					svg.svg="<g transform='translate("+(0.5*jtools.math.svg.font[0])+",0)'>"+svg.svg+"</g>";
+					svg.si[0]=svg.si[0]+1;
+					return svg;
+			}}, 
 			"abs" : { ty:"op", pr:2, va:"abs",	 tt:"|$1|",     op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:Math.abs(r[0]);} },
 			"//" : { ty:"op", pr:5, va:"//",    tt:"$1//$2",   op:[null,null],      co: true, as:true, fi:true },
 			"⊥" : { ty:"op", pr:5, va:"⊥",     tt:"$1⊥$2",    op:[null,null], co:true, fi:true },
