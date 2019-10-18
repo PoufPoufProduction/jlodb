@@ -108,7 +108,7 @@
                     settings.data = [];
                     for (var i=0; i<settings.number; i++) { settings.data.push(eval('('+settings.gen+')')($this,settings,i)); }
                 }
-
+				
                 // Locale handling
 
                 if (settings.locale) { $.each(settings.locale, function(id,value) {

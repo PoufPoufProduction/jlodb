@@ -93,16 +93,17 @@
      <rdf:Description>
         <dct:identifier>fdo</dct:identifier>
         <dct:title xml:lang="fr-FR">Ecrire une fraction comme la somme d'un nombre entier et d'une fraction inférieure à 1 .</dct:title>
-        <dct:description><![CDATA["number":5,"values":[{"va":1},{"va":2},{"va":3},{"va":4},{"va":5},{"va":6},{"va":7},{"va":8},{"va":9},{"va":"+"},{"va":"/"}],"gen":"function(){var de=Math.floor(Math.random()*8)+2,num=Math.floor(Math.random()*de*5)+de; if (num%de==0) { num++; } return {'figure':{'type':'txt','content':'[math]'+num+' '+de+' /[/math]'},'result':(num%de)+' '+de+' / '+Math.floor(num/de)+' +' } }"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Représentez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1."]]></dct:description>
+        <dct:description><![CDATA["number":3,"values":[{"va":1},{"va":2},{"va":3},{"va":4},{"va":5},{"va":6},{"va":7},{"va":8},{"va":9},{"va":"+"},{"va":"/"}],"gen":"function(){var de=Math.floor(Math.random()*8)+2,num=Math.floor(Math.random()*de*5)+de; if (num%de==0) { num++; } return {'figure':{'type':'txt','content':'[math]'+num+' '+de+' /[/math]'},'result':(num%de)+' '+de+' / '+Math.floor(num/de)+' +' } }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Représentez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1.[br][br][i]Exemple :[/i][math]33 7 / .mar 5 7 / 4 + .mar =[/math]"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>fd1</dct:alternative>
     </rdf:Description>
+	
     
-     <rdf:Description>
+    <rdf:Description>
         <dct:identifier>fp1</dct:identifier>
         <dct:title xml:lang="fr-FR">Représenter une valeur donnée sous la forme d'une fraction décimale.</dct:title>
         <dct:description><![CDATA["number":5,"values":[{"va":3},{"va":18},{"va":72},{"va":99},{"va":123},{"va":301},{"va":499},{"va":807},{"va":999},{"va":1278},{"va":1604},{"va":1999},{"va":3005},{"va":4205},{"va":10},{"va":100},{"va":1000},{"va":"/"}],"gen":"function(){var nums=[3,18,72,99,123,301,499,807,999,1278,1604,1999,3005,4205],num=nums[Math.floor(Math.random()*nums.length)],des=[10,100,1000],de=des[Math.floor(Math.random()*des.length)]; return {'figure':{'type':'txt','content':'[user]'+(num/de)+'[/user]'},'result':num+' '+de+' /' } }","errratio":2]]></dct:description>
@@ -112,6 +113,20 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>fp1</dct:alternative>
+    </rdf:Description>
+	
+	<!-- Addition -->
+	
+	<rdf:Description>
+        <dct:identifier>ado</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ecrire une fraction comme la somme d'un nombre entier et d'une fraction inférieure à 1 .</dct:title>
+        <dct:description><![CDATA["number":3,"values":[{"va":1},{"va":2},{"va":3},{"va":4},{"va":5},{"va":6},{"va":7},{"va":8},{"va":9},{"va":"+"},{"va":"/"}],"gen":"function(){var de=Math.floor(Math.random()*8)+2,n1=Math.floor(Math.random()*7)+1,n2=Math.floor(Math.random()*(9-n1))+1; return {'figure':{'type':'txt','content':'[math]'+n1+' '+de+' / '+n2+' '+de+' / +[/math]'},'result':(n1+n2)+' '+de+' /' } }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Additionnez[/b] les deux fractions ci-dessus."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ado</dct:alternative>
     </rdf:Description>
     
     

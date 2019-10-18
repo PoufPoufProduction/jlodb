@@ -97,7 +97,7 @@ jtools = {
 			var tree = jtools.math.pol2tree(val[1]);
 			var svg = jtools.math.tree2svg(tree);
 			var ratio = (1*svg.size[0])/(5*svg.size[1]);
-			vTxt = vTxt.replace(vMath,"<div class='t_svg'><div style='width:"+Math.min(100,ratio*100)+"%'>"+svg.svg+"</div></div>");
+			vTxt = vTxt.replace(vMath,"<div class='t_svg'><div style='height:100%;width:"+Math.min(100,ratio*100)+"%'>"+svg.svg+"</div></div>");
 		}
 		
         return vTxt;
