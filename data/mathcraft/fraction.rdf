@@ -118,15 +118,27 @@
 	<!-- Addition -->
 	
 	<rdf:Description>
-        <dct:identifier>ado</dct:identifier>
-        <dct:title xml:lang="fr-FR">Ecrire une fraction comme la somme d'un nombre entier et d'une fraction inférieure à 1 .</dct:title>
-        <dct:description><![CDATA["number":3,"values":[{"va":1},{"va":2},{"va":3},{"va":4},{"va":5},{"va":6},{"va":7},{"va":8},{"va":9},{"va":"+"},{"va":"/"}],"gen":"function(){var de=Math.floor(Math.random()*8)+2,n1=Math.floor(Math.random()*7)+1,n2=Math.floor(Math.random()*(9-n1))+1; return {'figure':{'type':'txt','content':'[math]'+n1+' '+de+' / '+n2+' '+de+' / +[/math]'},'result':(n1+n2)+' '+de+' /' } }"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Additionnez[/b] les deux fractions ci-dessus."]]></dct:description>
+        <dct:identifier>oa1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ajouter deux fractions de même dénominateur.</dct:title>
+        <dct:description><![CDATA["gg":[true,false],"number":3,"values":[{"va":1},{"va":2},{"va":3},{"va":4},{"va":5},{"va":6},{"va":7},{"va":8},{"va":9},{"va":10},{"va":15},{"va":20},{"va":32},{"va":50},{"va":55},{"va":64},{"va":75},{"va":90},{"va":99},{"va":100},{"va":"/"}],"gen":"function($this,_s,_i){var v=[1,2,3,4,5,6,7,8,9,10,15,20,32,50,64,75,99,100],o=0,de=v[Math.floor(Math.random()*(v.length-1))+1],r,n1,n2; for (var i=0;i<20;i++) { var ii=Math.floor(Math.random()*_s.gg.length); if (_s.gg[ii]) { o=ii; } } do { r=v[Math.floor(Math.random()*v.length)]; n2=Math.max(50,Math.floor(Math.random()*(r-1))+1); n1=(o==0)?r-n2:r+n2; } while (n1<=0); return {'figure':{'type':'txt','content':'[math]'+n1+' '+de+' / '+n2+' '+de+' / '+((o==0)?'+':'-')+'[/math]'},'result':r+' '+de+' /' } }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Resolvez[/b] l'opération et [b]représentez[/b] son résultat sous la forme d'une fraction."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>ado</dct:alternative>
+        <dct:alternative>oa1</dct:alternative>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>oa2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ajouter ou soustraire deux fractions de même dénominateur.</dct:title>
+        <dct:description><![CDATA["gg":[true,true]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>oa1</dct:alternative>
+        <dct:relation>oa1</dct:relation>
     </rdf:Description>
     
     
