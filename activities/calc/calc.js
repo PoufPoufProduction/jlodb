@@ -644,7 +644,10 @@
                 if (auto && settings.auto.sheet[j][i]) { settings.auto.sheet[j][i].update = false; }
             }
             for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-                $this.find('#c'+(i+1)+'x'+(j+1)+'>div').html(helpers.content($this,i,j));
+				var c = helpers.content($this,i,j);
+				if (!isNaN(c)) { c = jtools.num.tostr(c); }
+
+                $this.find('#c'+(i+1)+'x'+(j+1)+'>div').html(c);
             }
         },
         // Handle the key input
@@ -666,7 +669,7 @@
                     else { settings.calculator = '-' + settings.calculator; }
                 }
             }
-            else if (vLen<settings.callen) {
+            else if (value<='9'&&value>='0'&&vLen<settings.callen) {
                 if (value=="0" && vLen<2 && settings.calculator[0]=='0') {}
                 else {
                     if (settings.calculator.length==1 && settings.calculator[0]=='0') { settings.calculator=""; }
@@ -721,6 +724,9 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
+					
+                    $(document).keypress(function(_e) {
+                        if (_e.keyCode!=116) { helpers.key($this, String.fromCharCode(_e.which), true); _e.preventDefault(); } });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);

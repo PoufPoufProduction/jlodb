@@ -22,7 +22,14 @@ shuffle = function(a) {
     }
     return a;
 }
+pick = function(a) { return a&&a.length?a[Math.floor(Math.random()*a.length)]:0; }
 isNN = function(_a) { return isNaN(_a) || (_a.toString().length==0); }
+
+jlo = {
+	numperclass    : 3,
+	comma          : ',',
+	mult           : '×'
+};
 
 jtools = {
 	addon: {
@@ -59,7 +66,7 @@ jtools = {
 	},
 	format: function(_text, _regexp) {
 		var vRegExp = _regexp || [
-            "[*]",                                                          "×",
+            "[*]",                                                          jlo.mult,
 			"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                                "<b>$1</b>",
             "\\\[bb\\\](.+)\\\[/bb\\\]",                                    "<b>$1</b>",
 			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                                "<i>$1</i>",
@@ -314,6 +321,36 @@ jtools = {
 	gen: {
 		maze: function(_args) {
 		}
+	},
+	num: {
+		tostr: function(_val) {
+			ret = _val.toString();
+			var neg=(ret[0]=="-");
+			if (neg) { ret=ret.substr(1);}
+			var i=ret, d="", p=ret.indexOf(".");
+			if (p!=-1) { i=ret.substr(0,p); d=ret.substr(p+1); }
+			ret = neg?"-":"";
+			for (var j=0; j<i.length; j++) {
+				if (j&&((i.length-j)%jlo.numperclass)==0) { ret+=" "; }
+				ret+=i[j];
+			}
+			if (p!=-1) {
+				ret+=jlo.comma;
+				for (var j=0;j<d.length; j++) {
+					if (j&&(j%jlo.numperclass==0)) { ret+=" "; }
+					ret+=d[j];
+				}
+			}
+			return ret;
+		},
+		tonum: function(_val) {
+			ret=_val.toString();
+			
+			
+			return ret;
+			
+		}
+		
 	},
 	time: {
 		seconds2hhmmss: function(_seconds) {
