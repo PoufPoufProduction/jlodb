@@ -32,7 +32,7 @@
     <rdf:Description>
         <dct:identifier>u1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre croissant 6 nombres positifs inférieurs à 1 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":1000,"class":"h12","gen":"function($this,_s,_i){var min=_s.elts.length?parseInt(_s.elts[_s.elts.length-1][1].replace(/ /g,'')):0,max=_s.gg*(1-(_s.nbvalues-_i-1)/_s.nbvalues),a=Math.floor(Math.random()*(max-min))+min; return jtools.num.tostr(a);}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] ([i]en haut[/i]) à la plus [red]grande[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -45,12 +45,13 @@
     <rdf:Description>
         <dct:identifier>u10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre croissant 6 nombres positifs inférieurs à 10 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":10000]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] ([i]en haut[/i]) à la plus [red]grande[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:alternative>u10k</dct:alternative>
+        <dct:relation>u1k</dct:relation>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>2</dct:type>
     </rdf:Description>
@@ -58,12 +59,13 @@
     <rdf:Description>
         <dct:identifier>u10m</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre croissant 6 nombres positifs inférieurs à 1 000 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":10000000]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] ([i]en haut[/i]) à la plus [red]grande[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:alternative>u10k</dct:alternative>
+        <dct:relation>u1k</dct:relation>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>2</dct:type>
     </rdf:Description>
@@ -95,7 +97,7 @@
     <rdf:Description>
         <dct:identifier>d1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre décroissant 6 nombres positifs inférieurs à 1 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":1000,"class":"h12","gen":"function($this,_s,_i){var max=_s.elts.length?parseInt(_s.elts[_s.elts.length-1][1].replace(/ /g,'')):_s.gg,min=_s.gg*(_s.nbvalues-_i-1)/_s.nbvalues,a=Math.floor(Math.random()*(max-min)+min);return jtools.num.tostr(a);}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]grande[/red] ([i]en haut[/i]) à la plus [red]petite[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -108,12 +110,13 @@
     <rdf:Description>
         <dct:identifier>d10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre décroissant 6 nombres positifs inférieurs à 10 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":10000]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]grande[/red] ([i]en haut[/i]) à la plus [red]petite[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:alternative>u10k</dct:alternative>
+        <dct:relation>d1k</dct:relation>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>2</dct:type>
     </rdf:Description>
@@ -121,12 +124,13 @@
     <rdf:Description>
         <dct:identifier>d1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre décroissant 6 nombres positifs inférieurs à 1 000 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":1000000]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]grande[/red] ([i]en haut[/i]) à la plus [red]petite[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:alternative>u10k</dct:alternative>
+        <dct:relation>d1k</dct:relation>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>2</dct:type>
     </rdf:Description>
@@ -136,7 +140,7 @@
     <rdf:Description>
         <dct:identifier>un1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 1 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":1000,"class":"h12","gen":"function($this,_s,_i){var min=_s.elts.length?parseInt(_s.elts[_s.elts.length-1][1].replace(/ /g,'')):-_s.gg,max=2*_s.gg*(1-(_s.nbvalues-_i-1)/_s.nbvalues)-_s.gg,a=Math.floor(Math.random()*(max-min))+min;return jtools.num.tostr(a); }","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] ([i]en haut[/i]) à la plus [red]grande[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -149,12 +153,13 @@
     <rdf:Description>
         <dct:identifier>un10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 10 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":10000]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] ([i]en haut[/i]) à la plus [red]grande[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:alternative>u10k</dct:alternative>
+        <dct:relation>un1k</dct:relation>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>3</dct:type>
     </rdf:Description>
@@ -162,12 +167,13 @@
     <rdf:Description>
         <dct:identifier>un1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 1 000 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":1000000]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] ([i]en haut[/i]) à la plus [red]grande[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:alternative>u10k</dct:alternative>
+        <dct:relation>un1k</dct:relation>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>3</dct:type>
     </rdf:Description>
@@ -175,7 +181,7 @@
     <rdf:Description>
         <dct:identifier>dn1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 1 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":1000,"class":"h12","gen":"function($this,_s,_i){var max=_s.elts.length?parseInt(_s.elts[_s.elts.length-1][1].replace(/ /g,'')):_s.gg,min=2*_s.gg*(_s.nbvalues-_i-1)/_s.nbvalues-_s.gg,a=Math.floor(Math.random()*(max-min)+min); return jtools.num.tostr(a); }","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]grande[/red] ([i]en haut[/i]) à la plus [red]petite[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -188,12 +194,13 @@
     <rdf:Description>
         <dct:identifier>dn10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 10 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":10000]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]grande[/red] ([i]en haut[/i]) à la plus [red]petite[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:alternative>u10k</dct:alternative>
+        <dct:relation>dn1k</dct:relation>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>3</dct:type>
     </rdf:Description>
@@ -201,12 +208,13 @@
     <rdf:Description>
         <dct:identifier>dn1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 1 000 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["gg":1000000]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]grande[/red] ([i]en haut[/i]) à la plus [red]petite[/red] ([i]en bas[/i]).","fontex":0.5]]></dct:description> 
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:alternative>u10k</dct:alternative>
+        <dct:relation>dn1k</dct:relation>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>3</dct:type>
     </rdf:Description>
