@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <!-- SPACE GAME -->
+         
+    <rdf:Description>
+        <dct:identifier>sd00</dct:identifier>
+        <dct:title xml:lang="fr-FR">Placer sous contraintes soleils et trous noirs dans une grille 4x4.</dct:title>
+        <dct:description><![CDATA["gg":{"n":2,"s":4,"p":[[0,2,"00"],[1,0,"21"],[2,3,"31"],[3,0,"20"],[3,2,"31"]],"r":"2030300203200203"},"same":{"1":"0"},"states":{"nb":4,"content":[" ","[img]res/img/asset/space/sat01.svg[/img]","[img]res/img/asset/space/sun01.svg[/img]","[img]res/img/asset/space/hole01.svg[/img]"]},"background":"res/img/background/landscape/darkboard01.svg","result":"1111111","gen":"function($this,_s,_i){ var t={}; for (var p in _s.gg.p) {var pp=_s.gg.p[p],c=pp[0].toString()+pp[1].toString(); t['p'+c]='[img]res/img/asset/space/planet0'+_s.gg.n+'.svg[/img]'; t['e'+c]='[img]res/img/asset/space/mask'+pp[2]+'.svg[/img]'; } return {'t':t,'template':'game/space'+(_s.gg.s<10?'0':'')+_s.gg.s,'result':_s.gg.r }; } ","onclick":"function($this, _e, _i, _s){var r=true; for (var p in _s.gg.p) { if (_s.gg.p[p][0]+_s.gg.p[p][1]*_s.gg.s==_i) { r=false; } } return r;}"]]></dct:description>
+		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez[/b] soleils et trous noirs dans la grille suivant l'illumination des planètes."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>sd00</dct:alternative>
+        <dct:source>res/img/background/landscape/darkboard01.svg,res/img/asset/space/</dct:source>
+    </rdf:Description>
+
+	
+	
+</rdf:RDF>

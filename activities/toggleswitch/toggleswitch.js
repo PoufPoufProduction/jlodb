@@ -152,7 +152,7 @@
                 if (o>=0) { style = settings.states.style[o%settings.states.style.length]; }
                 for (var i in style) { elt.elt.css(i, style[i]); }
             }
-
+			
             if (settings.states.content)
             {
                 var content = "";
@@ -163,6 +163,7 @@
                     vRegexp = new RegExp(settings.regexp.from, "g");
                     content = content.replace(vRegexp, settings.regexp.to);
                 }
+				else { content = helpers.format(content); }
 
                 if (content.length) { elt.elt.html(content); }
             }
@@ -356,15 +357,25 @@
                     });
                 }
                 else {
-                    var templatepath = "activities/"+settings.name+"/template/"+settings.current.template+".html"+debug;
+                    var templatepath = "activities/"+settings.name+"/html/"+settings.current.template+".html"+debug;
                     $this.find("#data").load(templatepath, function(response, status, xhr) {
-                        $this.find(".t").each(function(index) {
-                            var value = index<settings.current.t.length?settings.current.t[index]:" ";
-                            if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
-                            if (settings.current.t && settings.current.t.length>index) {
-                                $(this).html("<div style='font-size:"+settings.font+"em;margin-top:"+
-                                             (settings.font<1?(1-settings.font)/(2*settings.font):0)+"em;'>"+
-											 helpers.format(value.toString())+"</div>"); }});
+						if (settings.current.t) {
+							if (typeof(settings.current.t)=="string" || $.isArray(settings.current.t)) {
+								$this.find(".t").each(function(index) {
+									if (index<settings.current.t.length) {
+										var value = settings.current.t[index];
+										if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
+										$(this).html("<div style='font-size:"+settings.font+"em;margin-top:"+
+											(settings.font<1?(1-settings.font)/(2*settings.font):0)+"em;'>"+
+												helpers.format(value.toString())+"</div>"); }});
+							}
+							else {
+								for (var t in settings.current.t) {
+									$this.find("#"+t).html(helpers.format(settings.current.t[t]));
+								}
+
+							}
+						}
                         helpers.fill($this);
                     });
                 }
@@ -453,8 +464,10 @@
                     else {
 						var result = "";
                         for (var i=0; i<settings.current.result.length; i++) {
-							result+=settings.current.elts[i].state;
-                            if( settings.current.elts[i].state!=settings.current.result[i]) {
+							var s=settings.current.elts[i].state;
+							if (settings.same && settings.same[s]) { s = settings.same[s]; }
+							result+=s;
+                            if( s!=settings.current.result[i]) {
                                 wrongs++;
 								
 								var state = -1;

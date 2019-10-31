@@ -670,7 +670,7 @@
                 }
             }
             else if (value<='9'&&value>='0'&&vLen<settings.callen) {
-                if (value=="0" && vLen<2 && settings.calculator[0]=='0') {}
+                if (value=="0" && vLen<2 && settings.calculator[0]=='0' && settings.calculator.indexOf(".")==-1) {}
                 else {
                     if (settings.calculator.length==1 && settings.calculator[0]=='0') { settings.calculator=""; }
                     settings.calculator+=value.toString();
@@ -1019,12 +1019,16 @@
                     var error = 0;
                         for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
                             var r = settings.sheet[j][i];
-                            if (r.result.toString().length) {
+							var resultval = r.result.toString();
+                            if (resultval.length) {
                                 var uservalue = r.value;
-                                if (r.type=="math") { uservalue = $this.find("#c"+(i+1)+"x"+(j+1)).text(); }
+                                if (r.type=="math") {
+									uservalue = $this.find("#c"+(i+1)+"x"+(j+1)).text();
+									resultval = jtools.num.tostr(resultval);
+								}
 								if (settings.emptyisnull && uservalue.toString().length==0) { uservalue=0; }
 								
-                                if (r.result.toString()!=uservalue.toString()) {
+                                if (resultval!=uservalue.toString()) {
                                     error++;
                                     $this.find("#c"+(i+1)+"x"+(j+1)).addClass("wrong");
                                 }
