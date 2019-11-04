@@ -50,7 +50,7 @@
         "\\\[img ([^\\\]]+)\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='image' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>",
         "\\\[icon([0-9]+)\\\]([^\\\[]+)\\\[/icon[0-9]*\\\]",    "<div class='icon' style='float:left;font-size:$1em;'><img src='$2.svg'/></div>",
-        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:0.5em'>$1</span>"
+        "\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",    "<span style='font-size:0.5em'>$1</span>"
     ];
 
     var graphType = {

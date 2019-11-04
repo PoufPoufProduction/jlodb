@@ -125,7 +125,7 @@
 					"\\\[br\\\]",                               "<br/>",
 					"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
 					"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-					"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
+					"\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      "<span style='font-size:.5em;'>$1</span>",
 					"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
 					"\\\[dice\\\]([^\\\[]+)\\\[/dice\\\]",      "<div class='dice'>$1</div>",
 					"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",

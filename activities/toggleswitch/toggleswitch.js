@@ -31,6 +31,8 @@
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[s\\\]([^\\\[]+)\\\[/s\\\]",            "<s>$1</s>",
         "\\\[br\\\]",                               "<br/>",
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<div class='t_small'>$1</div>",
+        "\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      "<div class='t_tiny'>$1</div>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",

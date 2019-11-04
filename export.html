@@ -23,6 +23,7 @@ a                  { text-decoration:none; }
 .exercice .param             { position:absolute; top:9.2em; left:0; width:14em; height:0.8em; background-color:gray; color:white; }
 .exercice .param>div         { float:left; font-size:0.6em; }
 .exercice .label             { margin-left:2.5em; float:left; margin-right:3px; text-align:right; }
+.exercice .extitle .tag         { color:blue; cursor:pointer; }
 
 .chapter                     { clear:both; }
 .chapter .t_strong             { font-weight:bold; display:inline; }
@@ -78,7 +79,15 @@ ids: function(_target, _ids) {
             html+="<div><div class='exid'>"+e.id+"</div>";
             html+="<div class='extitle' ";
             html+="onclick=\"window.open('report.html?id="+e.id+"','_report');\"";
-			html+=">"+e.label+"</div>";
+			
+			var txt = e.label;
+            if (e.tag.length) {
+                var tags = e.tag.split(",");
+                for (var t in tags) { txt+=" <span class='tag'>#"+tags[t]+"</span>";}
+            }
+			
+			html+=">"+txt+"</div>";	
+			
 			html+="</div>";
             html+="<div class='param'>";
             html+="<div class='label'>Niveau</div><div class='value'>"+e.level+"</div>";
