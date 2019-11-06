@@ -1820,7 +1820,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>po10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">decimal</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -1855,7 +1855,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>po10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">decimal</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 
 
@@ -2355,7 +2355,7 @@
     <rdf:Description>
         <dct:identifier>de100</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 100 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var digit=2,a=0; for (var i=0;i<digit;i++) { a=a*10+Math.floor(Math.random()*10); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+Math.pow(10,i).toString()+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":1]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var digit=2,a=0; for (var i=0;i<digit;i++) { a=a*10+Math.floor(Math.random()*10); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+jtools.num.tostr(Math.pow(10,i))+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2366,7 +2366,7 @@
     <rdf:Description>
         <dct:identifier>de1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 1000 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var digit=3,a=0; for (var i=0;i<digit;i++) { a=a*10+(Math.random()*5>1?Math.floor(Math.random()*10):0); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+Math.pow(10,i).toString()+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":0.8]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var digit=3,a=0; for (var i=0;i<digit;i++) { a=a*10+(Math.random()*5>1?Math.floor(Math.random()*10):0); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+jtools.num.tostr(Math.pow(10,i))+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2377,7 +2377,7 @@
     <rdf:Description>
         <dct:identifier>de10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 10 000 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=4,a=0; for (var i=0;i<digit;i++) { a=a*10+(Math.random()*5>1?Math.floor(Math.random()*10):0); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+Math.pow(10,i).toString()+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":0.5]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=4,a=0; for (var i=0;i<digit;i++) { a=a*10+(Math.random()*5>1?Math.floor(Math.random()*10):0); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+jtools.num.tostr(Math.pow(10,i))+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":0.45]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2388,25 +2388,25 @@
     <rdf:Description>
         <dct:identifier>ded100</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 100 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"decimal":true,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=Math.floor(Math.random()*3)+2,m=['×100','×10','','/10','/100','/1000'],dec=Math.floor(Math.random()*4),a=0; do { a=0; for (var i=0;i<digit;i++) { var b=Math.random()>0.8?0:Math.floor(Math.random()*10); a=a*10+b; }} while(a==0); var aa=a,l=aa.toString().length,ret='',i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (ret.length) { ret='+'+ret; } ret=d+m[2+dec-i]+ret; } aa=Math.floor(aa/10); i++; } return [ret, a/Math.pow(10,dec)]}","class":"alpha p02 h12","font":0.6]]></dct:description>
+        <dct:description><![CDATA["time":0,"decimal":true,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=Math.floor(Math.random()*3)+2,m=['×100','×10','','/10','/100','/1 000'],dec=Math.max(digit==4?1:0,Math.floor(Math.random()*4)),a=0; do { a=0; for (var i=0;i<digit;i++) { var b=Math.random()>0.8?0:Math.floor(Math.random()*10); a=a*10+b; }} while(a==0); var aa=a,ret='',i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (ret.length) { ret='+'+ret; } ret=d+m[2+dec-i]+ret; } aa=Math.floor(aa/10); i++; } return [ret, a/Math.pow(10,dec)]}","class":"alpha p02 h12","font":0.55]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>de100</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">decimal</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>dee100</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 100 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"decimal":true,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=Math.floor(Math.random()*3)+2,m=['×100','×10','','×0.1','×0.01','×0.001'],dec=Math.floor(Math.random()*4),a=0; do { a=0; for (var i=0;i<digit;i++) { var b=Math.random()>0.8?0:Math.floor(Math.random()*10); a=a*10+b; }} while(a==0); var aa=a,l=aa.toString().length,ret='',i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (ret.length) { ret='+'+ret; } ret=d+m[2+dec-i]+ret; } aa=Math.floor(aa/10); i++; } return [ret, a/Math.pow(10,dec)]}","class":"alpha p02 h12","font":0.6]]></dct:description>
+        <dct:description><![CDATA["time":0,"decimal":true,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=Math.floor(Math.random()*3)+2,m=['×100','×10','','×0.1','×0.01','×0.001'],dec=Math.max(digit==4?1:0,Math.floor(Math.random()*4)),a=0; do { a=0; for (var i=0;i<digit;i++) { var b=Math.random()>0.8?0:Math.floor(Math.random()*10); a=a*10+b; }} while(a==0); var aa=a,ret='',i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (ret.length) { ret='+'+ret; } ret=d+m[2+dec-i]+ret; } aa=Math.floor(aa/10); i++; } return [ret, a/Math.pow(10,dec)]}","class":"alpha p02 h12","font":0.55]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>de100</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">decimal</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 
     <!-- EXTRACT DIGIT a:1, b:10, c:100, etc. -->
@@ -2607,6 +2607,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>f1m</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 	
 	<!-- weight -->
