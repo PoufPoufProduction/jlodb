@@ -285,7 +285,7 @@
         <dct:identifier>r100o</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement une graduation inférieure à 100.</dct:title>
 		
-        <dct:description><![CDATA["errratio":0.5,"gg":{"nb":4,"pi":12,"step":[1],"m":[50],"dec":[1],"off":[50]},"background":"res/img/background/landscape/yellowboard02.svg","number":2,"gen":"function($this,_s,_id){ var s=_s.gg.step[Math.floor(Math.random()*_s.gg.step.length)],off=_s.gg.off[_id%_s.gg.off.length],dec=_s.gg.dec[_id%_s.gg.dec.length],nb=_s.gg.nb,pi=_s.gg.pi,m=_s.gg.m[_id%_s.gg.m.length],o=off+Math.floor(Math.random()*(m/s-21))*s,show=[],txt={},v=[],vv={},d=[],dd=[],count=0;for (var i=0;i<21;i++) { if ((i*s+o)%(s*10)==0) {show.push('s'+(i<9?'0':'')+(i+1)); txt['t'+(i<9?'0':'')+(i+1)]=(i*s+o)/dec; } else if ((i*s+o)%(s*5)==0) {show.push('z'+(i<9?'0':'')+(i+1));} }; while(v.length<nb&&count<100){var a=Math.floor(Math.random()*19)+1,ok=((a*s+o)%(s*10)!=0); for (var i in v) { if (Math.abs(a-v[i])<4) { ok=false; }} if (ok){ v.push(a); } count++; }; count=0; while (d.length<(pi-v.length)&&count<100) { var a=Math.floor(Math.random()*19)+1, ok=((a*s+o)%(s*10)!=0); for (var i in v) { if (a==v[i]) { ok=false; }} for (var i in d) { if (a==d[i]) { ok=false; }} if (ok){ d.push(a); } count++; }; for (var i in v) { vv['p'+(v[i]<9?'0':'')+(v[i]+1)]=(v[i]*s+o)/dec; show.push('pa'+(v[i]<9?'0':'')+(v[i]+1));} for (var i in d) { vv['d'+(d[i]<9?'0':'')+(d[i]+1)]=(d[i]*s+o)/dec; dd.push('d'+(d[i]<9?'0':'')+(d[i]+1)); } return {'show':show,'txt':txt,'decoys':dd,'values':vv}; }","url":"desktop/puzzle/ruler02.svg","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"same":[[]]]]></dct:description>
+        <dct:description><![CDATA["errratio":0.5,"gg":{"nb":4,"pi":12,"step":[1],"m":[50],"dec":[1],"off":[50]},"background":"res/img/background/landscape/yellowboard02.svg","number":2,"gen":"function($this,_s,_id){ var s=_s.gg.step[Math.floor(Math.random()*_s.gg.step.length)],off=_s.gg.off[_id%_s.gg.off.length],dec=_s.gg.dec[_id%_s.gg.dec.length],nb=_s.gg.nb,pi=_s.gg.pi,m=_s.gg.m[_id%_s.gg.m.length],o=off+Math.floor(Math.random()*(m/s-21))*s,show=[],txt={},v=[],vv={},d=[],dd=[],count=0;for (var i=0;i<21;i++) { if ((i*s+o)%(s*10)==0) {show.push('s'+(i<9?'0':'')+(i+1)); txt['t'+(i<9?'0':'')+(i+1)]=jtools.num.tostr((i*s+o)/dec); } else if ((i*s+o)%(s*5)==0) {show.push('z'+(i<9?'0':'')+(i+1));} }; while(v.length<nb&&count<100){var a=Math.floor(Math.random()*19)+1,ok=((a*s+o)%(s*10)!=0); for (var i in v) { if (Math.abs(a-v[i])<4) { ok=false; }} if (ok){ v.push(a); } count++; }; count=0; while (d.length<(pi-v.length)&&count<100) { var a=Math.floor(Math.random()*19)+1, ok=((a*s+o)%(s*10)!=0); for (var i in v) { if (a==v[i]) { ok=false; }} for (var i in d) { if (a==d[i]) { ok=false; }} if (ok){ d.push(a); } count++; }; for (var i in v) { vv['p'+(v[i]<9?'0':'')+(v[i]+1)]=jtools.num.tostr((v[i]*s+o)/dec); show.push('pa'+(v[i]<9?'0':'')+(v[i]+1));} for (var i in d) { vv['d'+(d[i]<9?'0':'')+(d[i]+1)]=jtools.num.tostr((d[i]*s+o)/dec); dd.push('d'+(d[i]<9?'0':'')+(d[i]+1)); } return {'show':show,'txt':txt,'decoys':dd,'values':vv}; }","url":"desktop/puzzle/ruler02.svg","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"same":[[]]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les cases vides en respectant la graduation."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -356,6 +356,20 @@
         <dct:identifier>rd1k0o</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement une graduation inférieure à 1 000 avec pas de 0.1.</dct:title>
         <dct:description><![CDATA["gg":{"nb":4,"pi":12,"step":[1],"m":[10000],"dec":[10],"off":[0]},"svgclass":"small"]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>r10kro</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+		<dct:relation>r100o</dct:relation>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>rd10o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement une graduation inférieure à 100 avec pas de 0.1, 0.01 et 0.001.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":4,"pi":12,"step":[1,10,100],"m":[10000],"dec":[1000],"off":[0]},"svgclass":"small"]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

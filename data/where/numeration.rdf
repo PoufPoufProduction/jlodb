@@ -195,25 +195,27 @@
     <rdf:Description>
         <dct:identifier>sd5</dct:identifier>
         <dct:title xml:lang="fr-FR">Déplacer un curseur sur une échelle graduée de 0 à 5 où les valeurs décimales sont accessibles.</dct:title>
-        <dct:description><![CDATA["number":10,"url":"res/img/desktop/slider01.svg","class":"nolargemark","cursor":[{"cid":"rect","init":[50,300],"constraint":[0,-1],"steps":[0,1.2,3,5,8],"boundaries":[50,0,590,480]}],"gen":"function() { var x=Math.floor(Math.random()*50)/10; return ([x.toFixed(1),[\\\"result\\\",46+(x/5)*540,274]]); }","evaluation":[4.5,0.5],"font":2]]></dct:description>
+        <dct:description><![CDATA["number":8,"url":"res/img/desktop/slider01.svg","class":"nolargemark","cursor":[{"cid":"rect","init":[50,300],"constraint":[0,-1],"steps":[0,1.2,3,5,8],"boundaries":[50,0,590,480]}],"gen":"function() { var x=Math.floor(Math.random()*50)/10; return ([jtools.num.tostr(x),['result',46+(x/5)*540,274]]); }","evaluation":[4.5,0.5],"font":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>sd10</dct:alternative>
         <dct:source>res/img/desktop/slider01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>sd10</dct:identifier>
         <dct:title xml:lang="fr-FR">Déplacer un curseur sur une échelle graduée de 0 à 10 où les valeurs décimales sont accessibles.</dct:title>
-        <dct:description><![CDATA["number":10,"url":"res/img/desktop/slider01.svg","class":"nolargemark from0to10 mark10","cursor":[{"cid":"rect","init":[50,300],"constraint":[0,-1],"steps":[0,1.2,3,5,8],"boundaries":[50,0,590,480]}],"gen":"function() { var x=Math.floor(Math.random()*100)/10; return ([x.toFixed(1),[\\\"result\\\",46+(x/10)*540,274]]); }","evaluation":[4.5,0.5],"font":2]]></dct:description>
+        <dct:description><![CDATA["number":8,"url":"res/img/desktop/slider01.svg","class":"nolargemark from0to10 mark10","cursor":[{"cid":"rect","init":[50,300],"constraint":[0,-1],"steps":[0,1.2,3,5,8],"boundaries":[50,0,590,480]}],"gen":"function() { var x=Math.floor(Math.random()*100)/10; return ([jtools.num.tostr(x),['result',46+(x/10)*540,274]]); }","evaluation":[4.5,0.5],"font":2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>sd10</dct:alternative>
         <dct:source>res/img/desktop/slider01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -253,6 +255,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>di10</dct:alternative>
         <dct:source>res/img/desktop/slider01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
     
     <rdf:Description>
@@ -266,6 +269,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>di10</dct:alternative>
         <dct:source>res/img/desktop/slider01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 
 	<!-- DIAGRAM -->

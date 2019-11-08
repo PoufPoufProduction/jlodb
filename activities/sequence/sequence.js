@@ -352,6 +352,10 @@
                 // Check the response
 				if (settings.response.value.toString().length)
 				{
+					if (settings.oncheck) {
+						ret = eval('('+settings.oncheck+')')($this, settings.questions[settings.it].response, settings.response.value.toString());
+					}
+					else
 					if ($.isArray(settings.questions[settings.it].response)) {
 					  for (var i in settings.questions[settings.it].response) {
 						if ((!settings.strict&&settings.questions[settings.it].response[i]==settings.response.value) ||

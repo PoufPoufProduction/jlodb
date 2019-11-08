@@ -23,7 +23,7 @@
 	<rdf:Description>
         <dct:identifier>_nf01</dct:identifier>
         <dct:title xml:lang="fr-FR">Placer des nombres littéraux suivants des inégalités [1000|10000].</dct:title>
-        <dct:description><![CDATA["gg":[["0 < ... < 1 000","Trois-cent-six","Cent-quatre-vingt-dix-neuf","Neuf-cent-soixante-et-un","Quatre-vingt-dix-huit"],["1 000 < ... < 10 000","Deux-mille-douze","Neuf-mille-six-cents-onze","Cinq-mille-sept-cents","Mille-neuf-cent-huit"],["10 000 < ...","Cent-cinquante-mille","Onze-mille-deux-cent-un","Cinquante-mille-quatre-vingt-douze","Trente-mille-six-cents"]],"errratio":2,"radius":30,"background":"res/img/background/landscape/grayboard01.svg","init":{"area":[470,230,470,370]},"same":[["p11","p12","p13","p14"],["p21","p22","p23","p24"],["p31","p32","p33","p34"]],"url":"desktop/puzzle/folder01.svg","gen":"function($this,_s,_i) { var v={},t={}; for (var i=0;i<3;i++) { t['text'+(i+1)]=_s.gg[i][0]; for (var j=1; j<5; j++) { v['p'+(i+1)+''+j]=_s.gg[i][j]; } } return { values:v, txt:t }; }","scale":1.1]]></dct:description>
+        <dct:description><![CDATA["gg":[["0 < ... < 1 000","Trois-cent-six","Cent-quatre-vingt-dix-neuf","Neuf-cent-soixante-et-un","Quatre-vingt-dix-huit"],["1 000 < ... < 10 000","Deux-mille-douze","Neuf-mille-six-cents-onze","Cinq-mille-sept-cents","Mille-neuf-cent-huit"],["10 000 < ...","Cent-cinquante-mille","Onze-mille-deux-cent-un","Cinquante-mille-quatre-vingt-douze","Trente-mille-six-cents"]]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -45,6 +45,21 @@
         <dct:relation>_nf00</dct:relation>
         <dct:source>res/img/desktop/puzzle/folder01.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_nfd01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Placer des nombres littéraux décimaux suivants des inégalités [0.1|0.5].</dct:title>
+        <dct:description><![CDATA["gg":[["0 < ... < 0,1","Cinquante-deux millièmes","Trois centièmes","Quatre millièmes","Quatre-vingt-dix-neuf millièmes"],["0,1 < ... < 0,5","Deux dixièmes","Onze centièmes","Trois-cent-treize millièmes","Quarante-neuf centièmes"],["0,5 < ...","Cinquante-deux centièmes","Six dixièmes","Six-cent-soixante-douze millièmes","Quatre-vingt-neuf centièmes"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>_nf01</dct:alternative>
+        <dct:relation>_nf00</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/folder01.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+
 	
 	<!-- -->
     
