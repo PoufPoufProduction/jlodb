@@ -301,7 +301,7 @@
     <rdf:Description>
         <dct:identifier>c10</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer deux nombres compris entre 1 et 10 dont la somme vaut 10.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[9,1],"max":10,"f":1},"class":"h12","gen":"function($this,_s,_id){var a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = _s.gg.max-a; return [a*_s.gg.f,b*_s.gg.f];}","nbvalues":5,"number":2,"len":3.5,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[9,1],"max":10,"f":1},"class":"h12","gen":"function($this,_s,_id){var d=_s.gg.d?pick(_s.gg.d):1,a = Math.floor(Math.random()*_s.gg.a[0]*d)+_s.gg.a[1]*d, b = _s.gg.max*d-a; return [a*_s.gg.f/d,b*_s.gg.f/d];}","nbvalues":5,"number":2,"len":3.5,"font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 10</b>, c'est à dire à la valeur dont l'addition donne 10.","fontex":0.5]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -416,5 +416,21 @@
         <dct:isPartOf>complement</dct:isPartOf>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
+	
+
+    <rdf:Description>
+        <dct:identifier>cda</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer deux nombres décimaux dont la somme vaut 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[9,1],"max":10,"f":1,"d":[10,100]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 10</b>, c'est à dire à la valeur dont l'addition donne 10.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c100</dct:alternative>
+        <dct:relation>c10</dct:relation>
+        <dct:isPartOf>complement,décimal</dct:isPartOf>
+    </rdf:Description>
+
 
 </rdf:RDF>
