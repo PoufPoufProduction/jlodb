@@ -5,26 +5,26 @@
     <rdf:Description>
         <dct:identifier>210</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 2 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,2,true],"background":"res/img/background/landscape/graycarpet02.svg","number":5,"gen":"function($this,_s,_i) { var a,b,ok; do { a=Math.floor(Math.random()*_s.gg[0]+_s.gg[1]); b=Math.floor(Math.random()*_s.gg[2]+_s.gg[3]); ok=(_s.gg[4]?true:(((a%10)*(b%10)<10)&&(b%10>1))); } while (!ok); return a+'*'+b; }"]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,2,true,[1]],"background":"res/img/background/landscape/graycarpet02.svg","number":5,"gen":"function($this,_s,_i) { var a,b,ok; do { a=Math.floor(Math.random()*_s.gg[0]+_s.gg[1]); b=Math.floor(Math.random()*_s.gg[2]+_s.gg[3]); ok=(_s.gg[4]?true:(((a%10)*(b%10)<10)&&(b%10>1))); } while (!ok); return (a/pick(_s.gg[5]))+'*'+(b/pick(_s.gg[5])); }"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CP,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,CE1</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>310</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 3 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,3,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,3,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -32,13 +32,13 @@
     <rdf:Description>
         <dct:identifier>410</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 4 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,4,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,4,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -46,13 +46,13 @@
     <rdf:Description>
         <dct:identifier>510</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 5 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,5,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,5,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -60,13 +60,13 @@
     <rdf:Description>
         <dct:identifier>2510</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication d'un nombre entier compris entre 1 et 10 par un nombre entier compris entre 2 et 5.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,4,2,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,4,2,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -74,13 +74,13 @@
     <rdf:Description>
         <dct:identifier>610</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 6 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,6,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,6,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -88,13 +88,13 @@
     <rdf:Description>
         <dct:identifier>710</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 7 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,7,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,7,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -102,13 +102,13 @@
     <rdf:Description>
         <dct:identifier>810</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 8 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,8,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,8,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -116,13 +116,13 @@
     <rdf:Description>
         <dct:identifier>910</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 9 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,9,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,9,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -130,13 +130,13 @@
     <rdf:Description>
         <dct:identifier>1010</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication par 10 d'un nombre entier compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,0,10,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,0,10,true,[1]]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -144,13 +144,13 @@
     <rdf:Description>
         <dct:identifier>10</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres entiers compris entre 1 et 10</dct:title>
-        <dct:description><![CDATA["gg":[10,1,10,1,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[10,1,10,1,true,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -158,13 +158,13 @@
     <rdf:Description>
         <dct:identifier>20</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres entiers compris entre 10 et 20</dct:title>
-        <dct:description><![CDATA["gg":[11,10,11,10,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[11,10,11,10,true,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -172,13 +172,13 @@
     <rdf:Description>
         <dct:identifier>100</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres inférieurs à 100</dct:title>
-        <dct:description><![CDATA["gg":[88,11,88,11,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[88,11,88,11,true,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -187,13 +187,13 @@
     <rdf:Description>
         <dct:identifier>10010</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication d'un nombre inférieur à 100 avec un nombre inférieur à 10.</dct:title>
-        <dct:description><![CDATA["gg":[88,11,8,2,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[88,11,8,2,true,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -201,13 +201,13 @@
     <rdf:Description>
         <dct:identifier>10020</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication d'un nombre inférieur à 100 avec un nombre inférieur à 10.</dct:title>
-        <dct:description><![CDATA["gg":[88,11,9,11,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[88,11,9,11,true,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -215,13 +215,13 @@
     <rdf:Description>
         <dct:identifier>1k10</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication d'un nombre inférieur à 1 000 avec un nombre inférieur à 10.</dct:title>
-        <dct:description><![CDATA["gg":[898,101,8,2,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[898,101,8,2,true,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -229,13 +229,13 @@
     <rdf:Description>
         <dct:identifier>1k100</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication d'un nombre inférieur à 1 000 avec un nombre inférieur à 100.</dct:title>
-        <dct:description><![CDATA["gg":[898,101,88,11,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[898,101,88,11,true,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -243,13 +243,13 @@
     <rdf:Description>
         <dct:identifier>1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres inférieurs à 1000</dct:title>
-        <dct:description><![CDATA["gg":[898,101,898,101,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[898,101,898,101,true,[1]]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -257,13 +257,13 @@
     <rdf:Description>
         <dct:identifier>10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres inférieurs à 10000</dct:title>
-        <dct:description><![CDATA["gg":[8998,1001,8998,1001,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[8998,1001,8998,1001,true,[1]]]]></dct:description>
         <dct:extent>5</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>5</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -272,13 +272,13 @@
     <rdf:Description>
         <dct:identifier>10r</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication inférieure à 100 de 2 nombres entiers respectivement inférieurs à 100 et à 10 sans retenue</dct:title>
-        <dct:description><![CDATA["gg":[89,11,9,1,false]]]></dct:description>
+        <dct:description><![CDATA["gg":[89,11,9,1,false,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -287,13 +287,13 @@
     <rdf:Description>
         <dct:identifier>100r</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication inférieure à 100 de 2 nombres entiers respectivement inférieurs à 100 et à 20 sans retenue</dct:title>
-        <dct:description><![CDATA["gg":[89,11,19,11,false]]]></dct:description>
+        <dct:description><![CDATA["gg":[89,11,19,11,false,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
@@ -303,16 +303,47 @@
     <rdf:Description>
         <dct:identifier>10o</dct:identifier>
         <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres entiers respectivement inférieurs à 100 et à 10</dct:title>
-        <dct:description><![CDATA["gg":[89,11,8,2,true]]]></dct:description>
+        <dct:description><![CDATA["gg":[89,11,8,2,true,[1]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
         <dct:relation>210</dct:relation>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
+	
+	
+ 
+    <rdf:Description>
+        <dct:identifier>d10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres décimaux compris entre 0.1 et 1</dct:title>
+        <dct:description><![CDATA["gg":[8,2,8,2,true,[1,10,10,10,10]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>10k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+        <dct:relation>210</dct:relation>
+		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>d100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres décimaux compris entre 1 et 10</dct:title>
+        <dct:description><![CDATA["gg":[100,1,100,1,true,[1,10,10,100,100]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>10k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+        <dct:relation>210</dct:relation>
+		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
+    </rdf:Description>
+	
     
     
     <rdf:Description>
@@ -325,7 +356,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,CE1</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -339,7 +370,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,CE1</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -353,7 +384,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,CE1</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -367,7 +398,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,CE1</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -381,7 +412,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,CE1,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,CE1</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -395,7 +426,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -409,7 +440,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -423,7 +454,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -437,7 +468,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 
@@ -451,7 +482,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>10k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel,colonne</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
 		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
     </rdf:Description>
 

@@ -346,9 +346,12 @@ jtools = {
 		},
 		tonum: function(_val) {
 			ret=_val.toString();
-			
-			
-			return ret;
+			var regs=[[" ",""], [jlo.comma,"."], [jlo.mult,"*"]];
+			for (var r in regs) {
+				var rr=new RegExp(regs[r][0],"g");
+				ret = ret.replace(rr, regs[r][1]);
+			}
+			return eval(ret);
 			
 		}
 		

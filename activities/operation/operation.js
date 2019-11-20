@@ -206,15 +206,16 @@
                 settings.result.modulo  = Math.floor(m/Math.pow(10,settings.nbdec));
             }
             else if (settings.type=="*") {
-                var v   = (settings.op[0].value * settings.op[1].value).toString(settings.base);
-                var p   = v.length-(settings.max[1]*2);
                 var nbd = settings.op[0].alpha[1].length + settings.op[1].alpha[1].length;
-                var tmp = settings.op[1].alpha[0].length+settings.op[1].alpha[1].length;
-
+				var vv  = settings.op[0].value * settings.op[1].value;
+                var v   = vv.toString(settings.base);
+                var p   = Math.max(1,v.length-(settings.max[1]*2));
+				
                 settings.size[0]        = p+nbd;
-                settings.size[1]        = settings.op.length + (tmp>1?tmp:0) + 1;
+				var opsize              = (settings.op[1].alpha[0]!=0?settings.op[1].alpha[0].toString(settings.base).length:0) + settings.op[1].alpha[1].toString(settings.base).length;
+                settings.size[1]        = settings.op.length + (opsize>1?opsize:0) + 1;
                 settings.max[0]         = Math.max(settings.max[0], p);
-                settings.result.value   = [v.slice(0, p), '.', v.slice(p,p+nbd)].join('');
+                settings.result.value   = (vv/Math.pow(10,2*settings.max[1])).toString(settings.base);
                 settings.result.nbdec   = nbd;
                 settings.result.modulo  = 0;
             }
@@ -233,18 +234,16 @@
             }
             
             for (var i in settings.op) {
-                settings.op[i].pos = settings.withmove?0:
-                    settings.size[0] - settings.max[1] - settings.op[i].alpha[0].length;
+				if (settings.type=="*") {
+					settings.op[i].pos = settings.withmove?0:
+						settings.size[0] - settings.op[i].alpha[0].length - settings.op[i].alpha[1].length;
+				}
+				else {
+					settings.op[i].pos = settings.withmove?0:
+						settings.size[0] - settings.max[1] - settings.op[i].alpha[0].length;
+				}
             }
             
-            if (settings.debug) {
-                console.log("[value: "+vOpTmp+"] [operation: "+settings.type+"] ("+JSON.stringify(settings.op));
-                console.log("[max: "+settings.max+"]");
-                console.log("[result: "+JSON.stringify(settings.result)+"]");
-                console.log("[size: "+settings.size[0]+"x"+settings.size[1]+"]"+
-                            (settings.size[2]?" ("+settings.size[2]+")":""));
-            }
-
             // BUILD THE TABLE FOR THE DIVISION OPERATION
             var top = 0, left = 0;
             settings.cells.clear();
@@ -445,9 +444,10 @@
 
             $this.find(".dec.result").bind("mousedown touchstart", function(e) {
                 var $this = $(this).closest(".operation") , settings = helpers.settings($this);
-
+				var isSelected = $(this).hasClass("s");
+				
                 $this.find(".dec.result").removeClass("s");
-                $(this).addClass("s");
+                if (!isSelected) { $(this).addClass("s"); }
 
             });
 
@@ -647,20 +647,17 @@
                     }
 
                     // CHECK RESULT VALUES
+					var pos    = settings.result.value.indexOf('.');
+					var size   = (pos==-1?settings.result.value.length:pos)+settings.result.nbdec;
                     var result = settings.result.value.replace('.','');
+					var offset = settings.type=="/"?0:settings.size[0]-size;
                     $this.find(".value.result").each(function(_index) {
-                        var comma = settings.result.value.indexOf(".");
-                        var sint  = comma==-1?settings.result.length:comma;
-                        var it    = _index-(settings.max[0]-sint);
+                        var it    = _index-offset;
                         var isw   = false;
                         var val   = $(this).text();
                         if (it<0 || it>=result.length)  { isw = (val.length && val!="0") }
                         else                            { isw = (result[it]!=val); }
                         
-                        if (settings.debug) {
-                            console.log("[RESULT "+_index+"] [comma: "+comma+"] [int size: "+sint+"] [it: "+it+"] "+
-                                        "[val: "+val+"] "+(isw?"(KO)":"(OK)"));
-                        }
                         if (isw) { error++; $(this).addClass("wrong"); }
                     });
 
@@ -677,7 +674,6 @@
                         });
                     }
                     
-                    
                     // CHECK THE MODULO
                     if (settings.type=="/") {
                         var modulo = settings.result.modulo.toString(settings.base);
@@ -688,11 +684,7 @@
                             var val   = $(this).text();
                             if (it<0)   { isw = (val.length && val!="0") }
                             else        { isw = (modulo[it]!=val); }
-                            
-                            if (settings.debug) {
-                                console.log("[MODULO "+_index+"] [modulo: "+modulo+"] [it: "+it+"] "+
-                                            "[val: "+val+"] "+(isw?"(KO)":"(OK)"));
-                            }
+
                             if (isw) { error++; $(this).addClass("wrong"); }
                         });
                     }

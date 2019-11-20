@@ -1194,6 +1194,136 @@
         <dct:type>4</dct:type>
         <dct:alternative>a10</dct:alternative>
     </rdf:Description>
+	
+	<!-- Décimal -->
+
+    <rdf:Description>
+        <dct:identifier>d10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10000,1],"n":[0,1],"d":[10,100,1000],"o":[10,100,1000],"r":[1]},"number":15,"class":"h12 p02","time":0,"template":"keypad","decimal":true,"input":{"digit":5,"speed":5000},"gen":"function($this,_s,_i) { var m,n,d,e,o,r; do { m=Math.floor(Math.random()*_s.gg.m[0])+_s.gg.m[1]; d=pick(_s.gg.d); n=Math.floor(Math.random()*_s.gg.n[0])+_s.gg.n[1]; e=(n==1)?1:pick(_s.gg.d); o=pick(_s.gg.o); r=pick(_s.gg.r); } while ((o*r*(m/d)*(n/e)>100000)||((o*r*(m/d)*(n/e)*10000)%10!=0)); var ops=[jtools.num.tostr(m/d),jtools.num.tostr(o)]; if (r!=1) { ops.push(jtools.num.tostr(r)); } if (n!=1) { ops.push(jtools.num.tostr(n/e)); } if (r!=1 || n!=1) { shuffle(ops); } return [ops.join(jlo.mult),Math.round(10000*o*r*(m/d)*(n/e))/10000]; }","font":1]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d10a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10000,1],"n":[0,1],"d":[10,100,1000],"o":[0.1,0.01,0.001],"r":[1]}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d10b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10000,1],"n":[0,1],"d":[10,100,1000],"o":[10,100,1000,0.1,0.01,0.001],"r":[1]}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d10c</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10000,1],"n":[0,1],"d":[10,100,1000],"o":[10,100,1000,0.1,0.01,0.001],"r":[10,100,1000,0.1,0.01,0.001]},"font":0.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d10d</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10,1],"n":[9,2],"d":[10,100,1000],"o":[10,100,1000,0.1,0.01,0.001],"r":[1]},"font":0.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>di10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10000,1],"n":[0,1],"d":[10,100,1000],"o":[10,100,1000],"r":[1]},"regexp": { "output": "\\\\.\\\\.\\\\." },"number":15,"class":"h12 p02","time":0,"template":"keypad","decimal":true,"input":{"digit":5,"speed":5000},"gen":"function($this,_s,_i) { var m,n,d,e,o,r; do { m=Math.floor(Math.random()*_s.gg.m[0])+_s.gg.m[1]; d=pick(_s.gg.d); n=Math.floor(Math.random()*_s.gg.n[0])+_s.gg.n[1]; e=(n==1)?1:pick(_s.gg.d); o=pick(_s.gg.o); r=pick(_s.gg.r); } while ((o*r*(m/d)*(n/e)>100000)||((o*r*(m/d)*(n/e)*10000)%10!=0)); var ops=[m/d,o]; if (r!=1) { ops.push(r); } if (n!=1) { ops.push(n/e); } if (r!=1 || n!=1) { shuffle(ops); } var i=Math.floor(Math.random()*ops.length); var ret = Math.round(ops[i]*10000)/10000; for (var j in ops) { ops[j]=jtools.num.tostr(ops[j]); } ops[i]='...'; return [ops.join(jlo.mult)+' = '+jtools.num.tostr(Math.round(10000*o*r*(m/d)*(n/e))/10000),ret]; }","font":0.6]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>di10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>di10a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10000,1],"n":[0,1],"d":[10,100,1000],"o":[0.1,0.01,0.001],"r":[1]}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>di10</dct:alternative>
+        <dct:relation>di10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>di10b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10000,1],"n":[0,1],"d":[10,100,1000],"o":[10,100,1000,0.1,0.01,0.001],"r":[1]}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>di10</dct:alternative>
+        <dct:relation>di10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>di10c</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10000,1],"n":[0,1],"d":[10,100,1000],"o":[10,100,1000,0.1,0.01,0.001],"r":[10,100,1000,0.1,0.01,0.001]},"font":0.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>di10</dct:alternative>
+        <dct:relation>di10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>di10d</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre décimal par un multiple de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"m":[10,1],"n":[9,2],"d":[10,100,1000],"o":[10,100,1000,0.1,0.01,0.001],"r":[1]},"font":0.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>di10</dct:alternative>
+        <dct:relation>di10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
 
     <!-- Negatif -->
 

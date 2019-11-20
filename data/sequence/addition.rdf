@@ -1377,81 +1377,136 @@
 	<!-- ADDITIONS WITH COMPLEMENTS -->
 	
     <rdf:Description>
-        <dct:identifier>g310a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 10 sachant que les deux premières sont complémentaires à 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*9)+1,b=Math.floor(Math.random()*9)+1,v=[0,0,0],p=2; v[p]=b;v[(p+1)%v.length]=a;v[(p+2)%v.length]=10-a; return v[0]+\\\"+\\\"+v[1]+\\\"+\\\"+v[2]; }","class":"h12 alpha neg","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"En remarquant que les deux premières opérandes sont <b>complémentaires à 10</b>, effectuez l'addition."]]></dct:description>
+        <dct:identifier>g310</dct:identifier>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[10],"v":[9,1],"d":[1],"nb":[3]},"font":2,"number":10,"time":0,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_i) { var nb=pick(_s.gg.nb),i=0,vv=[],l=0,c=0,d=1; do { if (i%2==0) { d=pick(_s.gg.d); c=pick(_s.gg.c); do { l=Math.floor(Math.random()*_s.gg.v[0])+_s.gg.v[1]; } while (l>=c); vv.push(jtools.num.tostr(l/d)); } else { vv.push(jtools.num.tostr((c-l)/d)); }} while(++i<nb); shuffle(vv); return vv.join('+'); }","class":"h12 alpha neg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"En [red]regroupant astucieusement[/red] les valeurs, [b]résolvez[/b] l'addition."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>g310a</dct:alternative>
+        <dct:alternative>g310</dct:alternative>
 		<dct:isPartOf>complement</dct:isPartOf>
     </rdf:Description>
-
+	
     <rdf:Description>
-        <dct:identifier>g310b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 10 sachant que la première et la dernière sont complémentaires à 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*9)+1,b=Math.floor(Math.random()*9)+1,v=[0,0,0],p=1; v[p]=b;v[(p+1)%v.length]=a;v[(p+2)%v.length]=10-a; return v[0]+\\\"+\\\"+v[1]+\\\"+\\\"+v[2]; }","class":"h12 alpha neg","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Effectuez l'addition en regroupant les termes de l'addition astucieusement : 1+6+9 = 1+9+6 = (1+9)+6 = 10+6 = 16."]]></dct:description>
+        <dct:identifier>g510</dct:identifier>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 5 valeurs comprises entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[10],"v":[9,1],"d":[1],"nb":[3,5]},"font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>g310a</dct:alternative>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
 		<dct:isPartOf>complement</dct:isPartOf>
     </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>g310c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 10 dont deux sont complémentaires à 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*9)+1,b=Math.floor(Math.random()*9)+1,v=[0,0,0],p=Math.floor(Math.random()*v.length); v[p]=b;v[(p+1)%v.length]=a;v[(p+2)%v.length]=10-a; return v[0]+\\\"+\\\"+v[1]+\\\"+\\\"+v[2]; }","class":"h12 alpha neg","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"En remarquant que deux des opérandes sont <b>complémentaires à 10</b>, effectuez astucieusement l'addition."]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>g310a</dct:alternative>
-		<dct:isPartOf>complement</dct:isPartOf>
-    </rdf:Description>
-
+	
     <rdf:Description>
         <dct:identifier>g320</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 20 dont deux sont complémentaires à 20.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*19)+1,b=Math.floor(Math.random()*9)+1,v=[0,0,0],p=Math.floor(Math.random()*v.length); v[p]=b;v[(p+1)%v.length]=a;v[(p+2)%v.length]=20-a; return v[0]+\\\"+\\\"+v[1]+\\\"+\\\"+v[2]; }","class":"h12 alpha neg","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"En remarquant que deux des opérandes sont <b>complémentaires à 20</b>, effectuez astucieusement l'addition."]]></dct:description>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 20.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[10,20],"v":[19,1],"d":[1],"nb":[3]},"font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>g310a</dct:alternative>
+        <dct:type>1</dct:type>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
 		<dct:isPartOf>complement</dct:isPartOf>
     </rdf:Description>
-
+	
     <rdf:Description>
-        <dct:identifier>g31020</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner astucieusement, sans contrainte de temps, 3 valeurs comprises entre 1 et 20.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var m=Math.floor(Math.random()*2)*10+10, a=Math.floor(Math.random()*(m-1))+1,b=Math.floor(Math.random()*9)+1,v=[0,0,0],p=Math.floor(Math.random()*v.length); v[p]=b;v[(p+1)%v.length]=a;v[(p+2)%v.length]=m-a; return v[0]+\\\"+\\\"+v[1]+\\\"+\\\"+v[2]; }","class":"h12 alpha neg","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Effectuez l'addition en [b]regroupant astucieusement[/b] les opérandes."]]></dct:description>
+        <dct:identifier>g520</dct:identifier>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 5 valeurs comprises entre 1 et 20.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[10,20],"v":[19,1],"d":[1],"nb":[3,5]},"font":1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>g310a</dct:alternative>
+        <dct:type>1</dct:type>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
 		<dct:isPartOf>complement</dct:isPartOf>
     </rdf:Description>
-
+	
+    <rdf:Description>
+        <dct:identifier>g350</dct:identifier>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[50],"v":[99,1],"d":[1],"nb":[3]},"input":{"digit":3,"speed":5000},"font":1.4]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
+		<dct:isPartOf>complement</dct:isPartOf>
+    </rdf:Description>
+	
     <rdf:Description>
         <dct:identifier>g3100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner astucieusement, sans contrainte de temps, 3 valeurs comprises entre 1 et 100.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var m=100, a=Math.floor(Math.random()*(m-1))+1,b=Math.floor(Math.random()*99)+1,v=[0,0,0],p=Math.floor(Math.random()*v.length); v[p]=b;v[(p+1)%v.length]=a;v[(p+2)%v.length]=m-a; return v[0]+\\\"+\\\"+v[1]+\\\"+\\\"+v[2]; }","class":"h12 alpha neg","font":1.4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Effectuez l'addition en [b]regroupant astucieusement[/b] les opérandes."]]></dct:description>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[100],"v":[99,1],"d":[1],"nb":[3]},"input":{"digit":3,"speed":5000},"font":1.4]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>g310a</dct:alternative>
+        <dct:type>1</dct:type>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
 		<dct:isPartOf>complement</dct:isPartOf>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>g3</dct:identifier>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 3 valeurs comprises entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[100,50,20,10],"v":[99,1],"d":[1],"nb":[3]},"input":{"digit":3,"speed":5000},"font":1.4]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
+		<dct:isPartOf>complement</dct:isPartOf>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gd310</dct:identifier>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 3 valeurs comprises entre 0.1 et 1.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[10],"v":[9,1],"d":[10],"nb":[3]},"input":{"digit":3,"speed":5000},"decimal":true,"font":1]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
+		<dct:isPartOf>complement</dct:isPartOf>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gd3100</dct:identifier>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 3 valeurs comprises entre 0.1 et 1.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[10,100],"v":[99,1],"d":[10],"nb":[3]},"input":{"digit":3,"speed":5000},"decimal":true,"font":1]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
+		<dct:isPartOf>complement</dct:isPartOf>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gd31k</dct:identifier>
+        <dct:title xml:lang="fr-FR">En les regroupant judicieusement, additionner, sans contrainte de temps, 3 valeurs comprises entre 0.1 et 1.</dct:title>
+        <dct:description><![CDATA["gg":{"c":[10,100],"v":[99,1],"d":[10,100],"nb":[3]},"input":{"digit":4,"speed":5000},"decimal":true,"font":0.9]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>g310</dct:alternative>
+        <dct:relation>g310</dct:relation>
+		<dct:isPartOf>complement</dct:isPartOf>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 
 	<!-- 3 numbers -->

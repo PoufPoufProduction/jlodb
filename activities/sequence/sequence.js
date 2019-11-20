@@ -184,7 +184,10 @@
 
                     // The question may be an array [question, response], otherwise response is evaluated from the question
                     if ($.isArray(vNewValue))   { vValue.question = vNewValue[0].toString(); vValue.response = vNewValue[1]; }
-                    else                        { vValue.question = vNewValue.toString(); vValue.response = eval(vNewValue.toString().replace("×","*")); }
+                    else                        {
+						vValue.question = vNewValue.toString();
+						vValue.response = jtools.num.tonum(vNewValue);
+					}
                     
 
                     // Special treatment

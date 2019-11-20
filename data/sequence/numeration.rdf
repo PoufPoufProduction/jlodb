@@ -2369,63 +2369,169 @@
 
     <!-- DECOMPOSE -->
 
-    <rdf:Description>
+	<rdf:Description>
         <dct:identifier>de100</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 100 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var digit=2,a=0; for (var i=0;i<digit;i++) { a=a*10+Math.floor(Math.random()*10); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+jtools.num.tostr(Math.pow(10,i))+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":1]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":{"nb":[0,2],"v":[2,4],"m":1,"s":true},"decimal":false,"font":1,"time":0,"input":{"digit":4,"speed":5000},"gen":"function($this,_s,_i) { var m=[[jlo.mult+'1000',jlo.mult+'100',jlo.mult+'10','','/10','/100','/1 000'],[jlo.mult+'1000',jlo.mult+'100',jlo.mult+'10','',jlo.mult+'0'+jlo.comma+'1',jlo.mult+'0'+jlo.comma+'01',jlo.mult+'0'+jlo.comma+'001']],u=[1000,100,10,1,0.1,0.01,0.001],dg=Math.floor(Math.random()*_s.gg.nb[0])+_s.gg.nb[1],v=[]; for (var i=_s.gg.v[0];i<_s.gg.v[1];i++) { var a=Math.floor(Math.random()*9)+1; v.push([i,(a!=1&&i!=3&&(_s.gg.m!=0||i<4)?'(':'')+(a+m[_s.gg.m][i]).toString().replace('1'+jlo.mult,'')+(a!=1&&i!=3&&(_s.gg.m!=0||i<4)?')':''),a*u[i]]); } shuffle(v);var vv=[]; for (var i=0; i<dg && i<v.length; i++) { vv.push(v[i]); } if (_s.gg.s) { vv.sort(function(_a,_b){ return (_a[0]>_b[0]); }); } var r=[],rr=0; for (var i in vv) { rr+=vv[i][2]; r.push(vv[i][1]); } return [r.join('+'), Math.round(1000*rr)/1000]}","class":"alpha p02 h12","number":15]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>de100</dct:alternative>
     </rdf:Description>
-
-    <rdf:Description>
+	
+	<rdf:Description>
         <dct:identifier>de1k</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 1000 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var digit=3,a=0; for (var i=0;i<digit;i++) { a=a*10+(Math.random()*5>1?Math.floor(Math.random()*10):0); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+jtools.num.tostr(Math.pow(10,i))+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 1 000 à partir de sa décomposition en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[2,2],"v":[1,4],"m":1,"s":true},"decimal":false,"font":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
     </rdf:Description>
-
-    <rdf:Description>
+	
+	<rdf:Description>
         <dct:identifier>de10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 10 000 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=4,a=0; for (var i=0;i<digit;i++) { a=a*10+(Math.random()*5>1?Math.floor(Math.random()*10):0); } var aa=a,ret=(a==0)?\\\"0\\\":\\\"\\\",i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (i==0) { ret=d.toString(); } else { var r=(ret.length!=0?\\\"+\\\":\\\"\\\"); ret=\\\"(\\\"+d+\\\"×\\\"+jtools.num.tostr(Math.pow(10,i))+\\\")\\\"+r+ret; } } i=i+1; aa=Math.floor(aa/10); }; return [ret, a]}","class":"alpha p02 h12","font":0.45]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[0,4],"m":1,"s":true},"decimal":false,"font":0.45]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
     </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>ded100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 1 000 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"decimal":true,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=Math.floor(Math.random()*3)+2,m=['×100','×10','','/10','/100','/1 000'],dec=Math.max(digit==4?1:0,Math.floor(Math.random()*4)),a=0; do { a=0; for (var i=0;i<digit;i++) { var b=Math.random()>0.8?0:Math.floor(Math.random()*10); a=a*10+b; }} while(a==0); var aa=a,ret='',i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (ret.length) { ret='+'+ret; } ret=d+m[2+dec-i]+ret; } aa=Math.floor(aa/10); i++; } return [ret, a/Math.pow(10,dec)]}","class":"alpha p02 h12","font":0.55]]></dct:description>
-        <dct:extent>1</dct:extent>
+	
+	<rdf:Description>
+        <dct:identifier>de1ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 1 000 à partir de sa décomposition désordonnée en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[2,2],"v":[1,4],"m":1,"s":false},"decimal":false,"font":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>de10ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0 et 10 000 à partir de sa décomposition désordonnée en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[0,4],"m":1,"s":false},"decimal":false,"font":0.45]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ded100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 1 à partir de sa décomposition en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[3,7],"m":0,"s":true},"decimal":true,"font":0.45]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
         <dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>dee100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 1 000 à partir de sa décomposition en puissances de 10.</dct:title>
-        <dct:description><![CDATA["time":0,"decimal":true,"input":{"digit":4,"speed":5000},"gen":"function() { var digit=Math.floor(Math.random()*3)+2,m=['×100','×10','','×0.1','×0.01','×0.001'],dec=Math.max(digit==4?1:0,Math.floor(Math.random()*4)),a=0; do { a=0; for (var i=0;i<digit;i++) { var b=Math.random()>0.8?0:Math.floor(Math.random()*10); a=a*10+b; }} while(a==0); var aa=a,ret='',i=0; while(aa>0) { var d=aa%10; if (d!=0) { if (ret.length) { ret='+'+ret; } ret=d+m[2+dec-i]+ret; } aa=Math.floor(aa/10); i++; } return [ret, a/Math.pow(10,dec)]}","class":"alpha p02 h12","font":0.55]]></dct:description>
-        <dct:extent>1</dct:extent>
+	
+	<rdf:Description>
+        <dct:identifier>ded100a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 1 à partir de sa décomposition désordonnée en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[3,7],"m":0,"s":false},"decimal":true,"font":0.45]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
+        <dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>dee100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 1 à partir de sa décomposition en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[3,7],"m":1,"s":true},"decimal":true,"font":0.45]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
         <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
-
+	
+	<rdf:Description>
+        <dct:identifier>dee100a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 1 à partir de sa décomposition désordonnée en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[3,7],"m":1,"s":false},"decimal":true,"font":0.45]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ded10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 10 à partir de sa décomposition en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[2,7],"m":0,"s":true},"decimal":true,"font":0.45,"input":{"digit":5,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
+        <dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ded10a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 10 à partir de sa décomposition désordonnée en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[2,7],"m":0,"s":false},"decimal":true,"font":0.45,"input":{"digit":5,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
+        <dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>dee10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 10 à partir de sa décomposition en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[2,7],"m":1,"s":true},"decimal":true,"font":0.45,"input":{"digit":5,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>dee10a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un nombre compris entre 0.001 et 10 à partir de sa décomposition désordonnée en puissances de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[3,2],"v":[2,7],"m":1,"s":false},"decimal":true,"font":0.45,"input":{"digit":5,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>de100</dct:alternative>
+        <dct:relation>de100</dct:relation>
+        <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
     <!-- EXTRACT DIGIT a:1, b:10, c:100, etc. -->
 
     <rdf:Description>

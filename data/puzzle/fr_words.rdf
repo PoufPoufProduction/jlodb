@@ -7,7 +7,7 @@
     <rdf:Description>
         <dct:identifier>_wsx</dct:identifier>
         <dct:title xml:lang="fr-FR">Replacer chaque lettre pour reformer correctement les mots proposés.</dct:title>
-        <dct:description><![CDATA["gg":[["batEau","voIture","motO","Avion","cYcle"]],"background":"res/img/background/landscape/grayboard01.svg","url":"desktop/puzzle/words05.svg","gen":"function($this,_s,_i){var gg=_s.gg[_i],show=[],values={},t={},pos=[]; for (var i=0; i<gg.length; i++) { var w=gg[i]; var off=Math.floor(Math.random()*(13-w.length)); for (var j=0; j<w.length; j++) { var l=w[j],jj=j+off; show.push('b'+i+(jj<9?'0':'')+(jj+1)); if (l==l.toLowerCase()) { show.push('p'+i+(jj<9?'0':'')+(jj+1)); t['t'+i+(jj<9?'0':'')+(jj+1)]=l; } else { values['p'+i+(jj<9?'0':'')+(jj+1)]=l.toLowerCase(); pos.push([50+jj*50,70+i*70]); } } } return {show:show,values:values,txt:t,init:{pos:shuffle(pos)},number:_s.gg.length};}","radius":25]]></dct:description>
+        <dct:description><![CDATA["gg":[["batEau","voIture","motO","Avion","cYcle"]],"background":"res/img/background/landscape/grayboard01.svg","url":"desktop/puzzle/words05.svg","gen":"function($this,_s,_i){var gg=_s.gg[_i],show=[],values={},t={},pos=[],s={}; for (var i=0; i<gg.length; i++) { var w=gg[i]; var off=Math.floor(Math.random()*(13-w.length)); for (var j=0; j<w.length; j++) { var l=w[j],ll=l.toLowerCase(),jj=j+off; show.push('b'+i+(jj<9?'0':'')+(jj+1)); if (l==ll) { show.push('p'+i+(jj<9?'0':'')+(jj+1)); t['t'+i+(jj<9?'0':'')+(jj+1)]=l; } else { var n='p'+i+(jj<9?'0':'')+(jj+1); if (s[ll]) {s[ll].push(n); } else { s[ll]=[n]; } values[n]=l.toLowerCase(); pos.push([50+jj*50,70+i*70]); } } } var ss=[]; for (var si in s) { if (s[si].length>1) { ss.push(s[si]); } } return {show:show,same:ss,values:values,txt:t,init:{pos:shuffle(pos)},number:_s.gg.length};}","radius":25]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Déplacez[/b] les lettres pour reformer correctement les mots proposés."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
@@ -34,6 +34,19 @@
         <dct:identifier>_wsa101</dct:identifier>
         <dct:title xml:lang="fr-FR">Replacer chaque lettre pour reformer correctement les mots proposés [fractions].</dct:title>
         <dct:description><![CDATA["gg":[["trois-QuaRTs","deux-DeMis","un-sePtième","un-siXième","deux-tierS"]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>frword</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_wsx</dct:alternative>
+        <dct:relation>_wsx</dct:relation>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/words05.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wsaga</dct:identifier>
+        <dct:title xml:lang="fr-FR">Replacer chaque lettre pour reformer correctement les mots proposés [g ou j].</dct:title>
+        <dct:description><![CDATA["gg":[["fraGilité","surGissant","Jupe","couraGeux","Justice"]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
