@@ -227,8 +227,7 @@
                             .css("top",event.clientY-$this.offset().top).show();
                         setTimeout(function(){$this.find("#rttouch>div").removeClass("g_arunning").parent().hide(); },800);
 
-
-                        if ($(this).children().size()) { $(this).children().detach().appendTo(ui.draggable.parent()); }
+                        if ($(this).children()) { $(this).children().detach().appendTo(ui.draggable.parent()); }
                         $(ui.draggable).detach().css("top",0).css("left",0).css("width","inherit").css("height","inherit");
                         $(this).append(ui.draggable);
                 } });

@@ -196,7 +196,7 @@
     <rdf:Description>
         <dct:identifier>q10</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de deux nombres compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/redcarpet01.svg","gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[9,2]},"errratio":2,"checkempty":true,"callen":4,"noneg":true,"nodec":true,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":7.5},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function($this, _s, _i) { var val={d:[],push:function(_val){this.d.push(_val);},exist:function(_val){var r=false; for (var id in this.d) { if (this.d[id]==_val) { r=true; }} return r;}},cells={}; for (var i=0; i<6; i++) { var a,b,t; do { a = _s.gg.a[Math.floor(Math.random()*_s.gg.a.length)]; b = Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1]; t=a+'×'+b; } while (val.exist(t)); val.push(t); cells['c1x'+(i+1)]={'fixed':true,'value':t,'background':'#FEC','color':'#444'}; cells['c2x'+(i+1)]={'result':a*b}; } return {'cells':cells}; }","font":1.5]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/redcarpet01.svg","gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[9,2]},"errratio":2,"checkempty":true,"callen":4,"noneg":true,"nodec":true,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":7.5},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function($this, _s, _i) { var val={d:[],push:function(_val){this.d.push(_val);},exist:function(_val){var r=false; for (var id in this.d) { if (this.d[id]==_val) { r=true; }} return r;}},cells={}; for (var i=0; i<6; i++) { var a,b,t; do { a = _s.gg.a[Math.floor(Math.random()*_s.gg.a.length)]; b = Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1]; t=a+jlo.mult+b; } while (val.exist(t)); val.push(t); cells['c1x'+(i+1)]={'fixed':true,'value':t,'background':'#FEC','color':'#444'}; cells['c2x'+(i+1)]={'result':a*b}; } return {'cells':cells}; }","font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Donnez le résultat[/b] correspondant à chaque multiplications proposées par l'exercice."</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -389,11 +389,12 @@
 		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
     </rdf:Description>
 	
+	<!-- Complex multiplications -->
 	
     <rdf:Description>
         <dct:identifier>qm01</dct:identifier>
         <dct:title xml:lang="fr-FR">Calculer, sans poser les opérations, des multiplications complexes.</dct:title>
-        <dct:description><![CDATA["gg":[["20×70",1400],["125×80",10000],["25×2×3",150],["9×40×5",1800],["4×1425×25×10",1425000],["17×25×2×4×5×2",34000]],"background":"res/img/background/landscape/bluesplash01.svg","errratio":2,"checkempty":true,"callen":7,"noneg":true,"nodec":true,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":7.5},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function($this,_s,_i) { var cells={}; shuffle(_s.gg); for (var j=0;j<6;j++) { cells['c1x'+(j+1)]={'fixed':true,'value':_s.gg[j][0],'background':'#FEC','color':'#444'}; cells['c2x'+(j+1)]={'result':_s.gg[j][1]}; } return {'cells':cells}; }","font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":[[[20,70],1400],[[125,80],10000],[[25,2,3],150],[[9,40,5],1800],[[4,1425,25,10],1425000],[[17,25,2,4,5,2],34000]],"background":"res/img/background/landscape/bluesplash01.svg","errratio":2,"checkempty":true,"callen":7,"noneg":true,"nodec":true,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":7.5},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function($this,_s,_i) { var cells={}; shuffle(_s.gg); for (var j=0;j<6;j++) { for (var i in _s.gg[j][0]) { _s.gg[j][0][i]=jtools.num.tostr(_s.gg[j][0][i]); } cells['c1x'+(j+1)]={'fixed':true,'value':_s.gg[j][0].join(jlo.mult),'background':'#FEC','color':'#444'}; cells['c2x'+(j+1)]={'result':_s.gg[j][1]}; } return {'cells':cells}; }","font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Calculez sans poser les opérations[/b]."</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -406,7 +407,7 @@
     <rdf:Description>
         <dct:identifier>qm02</dct:identifier>
         <dct:title xml:lang="fr-FR">A partir d'une égalité donné, calculer, sans poser les opérations, des multiplications complexes.</dct:title>
-        <dct:description><![CDATA["gg":[["190×56",10640],["560×1900",1064000],["56×2×19",2128],["19×25×46×4",106400],["19×2×10×28",10640],["8×56×25×19",21280]]]]></dct:description>
+        <dct:description><![CDATA["gg":[[[190,56],10640],[[560,1900],1064000],[[56,2,19],2128],[[19,25,46,4],106400],[[19,2,10,28],10640],[[8,56,25,19],21280]]]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"On donne l'égalité [red][b]19×56 = 1064[/b][/red]. Sans poser d'opération, [b]donnez le résultats des calculs ci-dessus[/b]."</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -416,8 +417,39 @@
         <dct:relation>qm01</dct:relation>
 		<dct:source>res/img/background/landscape/bluesplash01.svg</dct:source>
     </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>qma1</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir d'une égalité donné, calculer, sans poser les opérations, des multiplications complexes.</dct:title>
+        <dct:description><![CDATA["gg":[[80,20],[40,40],[[10,1],[0.1,0.1],[10,0.1],[1,0.01],[1,0.1]]],"erratio":2,"sp":0.05,"background":"res/img/background/landscape/grayboard01.svg","font":1.5,"size":[2,6],"all":{"width":1.2,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FDC","color":"#014","width":8},"col2":{"background":"#FEC","width":4.5}},"rows":{"row0":{"height":0.2}},"gen":"function($this,_s,_i){var c={},a,b; do { a=Math.floor(Math.random()*_s.gg[0][0])+_s.gg[0][1]; b=Math.floor(Math.random()*_s.gg[1][0])+_s.gg[1][1];  } while ((a*b)%10==0); c['c1x1']={'background':'#A30','color':'white','width':12.55,'type':'free','value':jtools.num.tostr(a)+jlo.mult+jtools.num.tostr(b)+' = '+jtools.num.tostr(a*b),'fixed':true}; shuffle(_s.gg[2]); for (var j=0; j<5; j++) { c['c1x'+(j+2)]= {'type':'free','value':jtools.num.tostr(jtools.num.round(a*_s.gg[2][j][0]))+jlo.mult+jtools.num.tostr(jtools.num.round(b*_s.gg[2][j][1]))}; c['c2x'+(j+2)]= {'type':'value','result':jtools.num.round(a*_s.gg[2][j][0]*b*_s.gg[2][j][1])}; } return { cells:c}; }","noneg":true,"nodec":false,"withbars":false,"withauto":false,"callen":6,"hide":[[2,1,1,1]]]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Déterminez[/b] chaque produit grâce à l'information donnée plus haut."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>qma1</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>qma2</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir d'une égalité donné, calculer, sans poser les opérations, des multiplications complexes.</dct:title>
+        <dct:description><![CDATA["gg":[[80,20],[8,2],[[10,1],[10,10],[1,100],[100,10],[100,10]]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>qma1</dct:alternative>
+        <dct:relation>qma1</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
     
     
+
 
 </rdf:RDF>
 

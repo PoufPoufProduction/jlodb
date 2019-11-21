@@ -324,6 +324,11 @@ jtools = {
 		}
 	},
 	num: {
+		round: function(_val, _p) {
+			if (!_p) { _p=5; }
+			var pp=Math.pow(10,_p);
+			return Math.round(_val*pp)/pp;
+		},
 		tostr: function(_val) {
 			ret = _val.toString();
 			var neg=(ret[0]=="-");
