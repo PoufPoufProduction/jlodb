@@ -28,7 +28,8 @@ isNN = function(_a) { return isNaN(_a) || (_a.toString().length==0); }
 jlo = {
 	numperclass    : 3,
 	comma          : ',',
-	mult           : '×'
+	mult           : '×',
+	div            : '÷'
 };
 
 jtools = {

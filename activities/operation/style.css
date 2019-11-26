@@ -1,11 +1,11 @@
 .operation                          { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .operation>div                      { width:16em;height:12em; }
 .operation #g_splash                { background-image:url("../../res/img/banners/operation.svg"); }
-.operation div.tab                  { width:1em; height:1em; background-color:rgba(255,255,255,0.5); position:absolute; font-size:1.8em; color:rgb(53,34,34);  text-align:center; }
-.operation div.tab span             { font-size:.8em; top:-.2em; position:relative;}
+.operation .ontab                   { width:1em; height:1em; background-color:rgba(255,255,255,0.5); position:absolute; font-size:1.8em; color:rgb(53,34,34);  text-align:center; border:.05em solid white; left:-1em; padding-left:1em; }
+.operation .ontab span              { font-size:.8em; top:-.2em; position:relative;}
 .operation #onbase                  { border-radius:0 0.5em 0.5em 0; top:1.2em; }
-.operation div.tab .label           { font-size:.2em; height:.5em; overflow:visible; text-align:left; margin-left:.5em; }
-.operation div#nbdec                { border-radius:0 0.5em 0.5em 0; top:2.4em; }
+.operation .ontab .label            { font-size:.2em; height:.5em; overflow:visible; text-align:left; margin-left:.5em; }
+.operation #onnbdec                 { border-radius:0 0.5em 0.5em 0; top:2.4em; }
 .operation #onboard                 { width:16em; height:12em; position:absolute; top:0; left:0;}
 .operation #ondata                  { position:relative; margin:0; width:86%; height:86%; overflow:visible;}
 .operation #ondata>div              { position:absolute;  z-index:1; background-color:#dcd6d2;}

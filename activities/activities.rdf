@@ -195,7 +195,7 @@
     <rdf:Description rdf:about="urn:activity:operation">
         <dct:title xml:lang="fr-FR">Opérations</dct:title>
         <dct:abstract xml:lang="fr-FR">L'activité propose à l'utilisateur de résoudre une opération arithmétiques (addition, soustraction, multiplication ou division) ou logiques (inclusion ou exclusion) à 2 opérandes ou plus.</dct:abstract>
-        <dct:description xml:lang="fr-FR"><![CDATA["guide":"Poser l'opération et donner le bon résultat."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA["guide":"Poser l'opération et donner le bon résultat.","onlbase":"BASE","onlnbdec":"DEC"]]></dct:description>
         <dct:source>res/img/banners/operation.svg,res/img/icon/cell/cell*.svg,res/img/asset/fx/target*.svg</dct:source>
     </rdf:Description>
 
@@ -290,6 +290,13 @@
         <dct:abstract xml:lang="fr-FR">Jeu de logique où le joueur doit déplacer certains objets dynamiques pour extraire l'élément de couleur rouge.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Déplacer les différents véhicules pour permettre au kart de Tux le manchot d'atteindre la sortie.","guidegen":"Déplacer les différents objets afin d'atteindre les objectifs fixés par l'énoncé.","mlabel":"Mouvements","olabel":"Objectif","clabel":"Annuler"]]></dct:description>
         <dct:source>res/img/banners/trafficjam.svg,res/img/tileset/ortho/traffic/,res/img/asset/misc/goal01.svg,res/img/svginventoryicons/misc/pressure01.svg,res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="urn:activity:ttext">
+        <dct:title xml:lang="fr-FR">Question/Réponse</dct:title>
+        <dct:abstract xml:lang="fr-FR">L'activité pose une question et fournit les lettres utiles à la formulation de la réponse.</dct:abstract>
+        <dct:description xml:lang="fr-FR"><![CDATA[]]></dct:description>
+        <dct:source>res/img/banners/ttext.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:where">

@@ -392,6 +392,113 @@
         <dct:alternative>100</dct:alternative>
 		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
     </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>d10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division au dixième près dont les diviseurs sont inférieurs à 10.</dct:title>
+        <dct:description><![CDATA["nbdec":1,"gg":[[80,20,[1]],[8,2,[1]],10],"number":2,"background":"res/img/background/landscape/blueboard01.svg","gen":"function($this,_s,_i) { var t,a,b,r,deca,dect; do { dect=pick(_s.gg[0][2]); deca=pick(_s.gg[1][2]); t=(Math.floor(Math.random()*_s.gg[0][0]*dect)+_s.gg[0][1]*dect)/dect; a=(Math.floor(Math.random()*_s.gg[1][0]*deca)+_s.gg[1][1]*deca)/deca; r=(t/a)*Math.pow(10,_s.nbdec); } while ((t*dect)%10==0 || r%10==0 || t/a>_s.gg[2]); return t+'/'+a; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] la division au [red]dixième près[/red]."],"fontex":0.5]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>d10b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division au dixième près dont les diviseurs sont inférieurs à 10.</dct:title>
+        <dct:description><![CDATA["nbdec":2,"gg":[[80,20,[1]],[8,2,[1]],10]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] la division au [red]centième près[/red]."],"fontex":0.5]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>dd10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division au dixième près dont les diviseurs sont inférieurs à 10.</dct:title>
+        <dct:description><![CDATA["nbdec":1,"gg":[[80,20,[10]],[8,2,[1]],10]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] la division au [red]dixième près[/red]."],"fontex":0.5]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>d100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division au dixième près dont les diviseurs sont inférieurs à 100.</dct:title>
+        <dct:description><![CDATA["nbdec":1,"gg":[[800,200,[1]],[80,20,[1]],100],"hint":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] la division au [red]dixième près[/red]."],"fontex":0.5]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>dd100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division au dixième près dont les diviseurs sont inférieurs à 100.</dct:title>
+        <dct:description><![CDATA["nbdec":1,"gg":[[800,200,[10]],[80,20,[1]],100],"hint":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] la division au [red]dixième près[/red]."],"fontex":0.5]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>dd100a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division au dixième près dont les diviseurs sont inférieurs à 100.</dct:title>
+        <dct:description><![CDATA["nbdec":1,"gg":[[800,200,[10]],[8,2,[1]],500]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] la division au [red]dixième près[/red]."],"fontex":0.5]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>dd100b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division au dixième près dont les diviseurs sont inférieurs à 100.</dct:title>
+        <dct:description><![CDATA["nbdec":1,"gg":[[800,200,[1]],[8,2,[10]],500],"hint":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] la division au [red]dixième près[/red]."],"fontex":0.5]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d10</dct:alternative>
+        <dct:relation>d10</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
+    </rdf:Description>
+	
     
 </rdf:RDF>
 

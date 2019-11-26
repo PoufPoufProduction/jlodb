@@ -89,7 +89,7 @@
 
                 // Base and nbdec
                 $this.find("#onbase").toggle(settings.base!=10).find("span").html(settings.base);
-                $this.find("#nbdec").toggle(settings.nbdec!=0).find("span").html(settings.nbdec);
+                $this.find("#onnbdec").toggle(settings.nbdec!=0).find("span").html(settings.nbdec);
 
                 // Keypad
                 setTimeout(function() {
@@ -176,10 +176,12 @@
                            alpha: ["",""],  // Int and dec parts of the value in native base
                            width: 0,        // Width of the integer and decimal part
                            pos  : 0,        // First column position
+						   nbdec: 0,		// Number of decimals
                            $elt : 0 };      // Graphical element from DOM
                 if (comma)  { op.alpha    = [ vOperation[i].substr(0, comma), vOperation[i].substr(comma+1) ]; }
                 else        { op.alpha[0] = vOperation[i]; }
                 for (j=0; j<2; j++) { settings.max[j]=Math.max(op.alpha[j].length,settings.max[j]); }
+				op.nbdec = op.alpha[1].length;
                 op.width = op.alpha[0].length + op.alpha[1].length;
                 settings.op.push(op);
             }
@@ -191,19 +193,20 @@
             
             // COMPUTE RESULT AND PREPARE BOARD SETTINGS ACCORDING TO THE OPERATION TYPE
             if (settings.type=="/") {
-                var nbd = settings.nbdec?settings.nbdec:settings.max[1];
-                var v   = Math.floor(Math.pow(settings.base,nbd)*settings.op[0].value/settings.op[1].value);
-                var m   = settings.op[0].value*Math.pow(10,settings.nbdec) - v*settings.op[1].value;
+				var v = Math.floor(Math.round(10*Math.pow(10,settings.nbdec)*
+						(settings.op[0].value/Math.pow(settings.base,settings.max[1]))/
+						(settings.op[1].value/Math.pow(settings.base,settings.max[1])))/10);
                 v       = v.toString(settings.base);
-                var p   = v.length-nbd;
-                settings.size[0]        = settings.max[0]+Math.max(settings.max[1],nbd)+
-                                          Math.max(p+nbd,settings.op[1].alpha[0].length+settings.op[1].alpha[1].length);
+                var p   = v.length-settings.nbdec;
+				
+                settings.size[0]        = settings.max[0]+Math.max(settings.max[1],settings.nbdec+settings.op[1].nbdec)+
+                                          Math.max(p+settings.nbdec,settings.op[1].alpha[0].length+settings.op[1].alpha[1].length);
                 settings.size[1]        = 1+2*v.length;
-                settings.size[2]        = settings.max[0]+Math.max(settings.max[1],nbd);
+                settings.size[2]        = settings.max[0]+Math.max(settings.max[1],settings.nbdec+settings.op[1].nbdec);
                 settings.max[0]         = Math.max(op.alpha[1].length, p);
-                settings.result.value   = [v.slice(0, p), '.', v.slice(p,p+nbd)].join('');
-                settings.result.nbdec   = nbd;
-                settings.result.modulo  = Math.floor(m/Math.pow(10,settings.nbdec));
+                settings.result.value   = [v.slice(0, p), '.', v.slice(p,p+settings.nbdec)].join('');
+                settings.result.nbdec   = settings.nbdec;
+                settings.result.modulo  = (settings.op[0].value*Math.pow(10,settings.nbdec) - settings.op[1].value*v)/Math.pow(10,settings.op[0].nbdec);
             }
             else if (settings.type=="*") {
                 var nbd = settings.op[0].alpha[1].length + settings.op[1].alpha[1].length;
@@ -379,10 +382,12 @@
             // HINT
             if (settings.hint) {
                 $this.find("#help").show();
+				var v=vOperation[1];
+				while (Math.floor(v)!=v) { v = v*10; }
                 var hint="";
                 for (var i=1; i<10; i++) {
-                    hint+="<div class='elt'><div class='label'>"+i+"×"+vOperation[1]+"</div>"+
-                          "<div class='result'>"+(i*vOperation[1])+"</div></div>";
+                    hint+="<div class='elt'><div class='label'>"+i+"×"+v+"</div>"+
+                          "<div class='result'>"+(i*v)+"</div></div>";
                 }
                 $this.find("#phelp>div").html(hint);
             }

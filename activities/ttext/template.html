@@ -1,0 +1,23 @@
+<div>
+    <div id="g_instructions"></div>
+    <div id="ttboard">PoufPouf Production Boilerplate</div>
+
+	<div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
+
+    <div id="g_submit" ontouchstart="$(this).closest('.ttext').ttext('valid');event.preventDefault();"
+                     onclick="$(this).closest('.ttext').ttext('valid');">
+        <img src="res/img/default/icon/swvalid.svg" id="g_svalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="g_sgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="g_swrong" alt=""/>
+    </div>
+	
+    <div id="g_splash" ontouchstart="$(this).hide().closest('.ttext').ttext('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.ttext').ttext('next');"><div>
+        <h1 id="label"></h1>
+    </div></div>
+
+</div>
+
