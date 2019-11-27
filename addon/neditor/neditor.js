@@ -48,7 +48,7 @@
 				
 				if (!_node.em) {
 					var vClass="nedita nedit"+_node.ty;
-					var vLabel = (_node.ty=="va"&&_node.la)?_node.la.toString():_node.va.toString();
+					var vLabel = jtools.num.tostr((_node.ty=="va"&&_node.la)?_node.la:_node.va);
 					var vLen = vLabel.length;
                     var $elt=$("<div class='"+vClass+"'><div class='neditlabel'>"+vLabel+"</div></div>");
 					if (vLen>2) {

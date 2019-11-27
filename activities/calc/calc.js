@@ -162,7 +162,7 @@
 					}
 					else { vNode.ccref = 0; }
 					
-					var vLabel = vNode.la?vNode.la:vNode.va;
+					var vLabel = jtools.num.tostr(vNode.la?vNode.la:vNode.va);
 					var vLen = vLabel.toString().length;
 			
 					settings.cvalues.push(vNode);

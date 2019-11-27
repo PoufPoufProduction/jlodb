@@ -254,7 +254,7 @@
 			settings.cvalues.push(_node);
 			var vId = settings.cvalues.length-1;
             var vClass=(_node.op&&_node.op[0]?"nedita nedittree":"nedita")+" nedit"+_node.ty;
-			var vLabel = _node.la?_node.la:_node.va;
+			var vLabel = jtools.num.tostr(_node.la?_node.la:_node.va);
 			var vLen = vLabel.toString().length;
             var $elt=$("<div class='"+vClass+"' id='"+vId+"'><div class='neditlabel'>"+vLabel+"</div></div>");
 			if (vLen>2) { $elt.find(".neditlabel").css("font-size",(1.5/vLen)+"em").css("padding-top",(Math.pow(vLen,1.6)/15)+"em"); }

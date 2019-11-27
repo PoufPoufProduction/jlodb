@@ -119,7 +119,7 @@
             build: function($this) {
                 var settings = helpers.settings($this);
 				
-				var vRegExp = [
+				var vOldRegExp = [
 					"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
 					"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
 					"\\\[br\\\]",                               "<br/>",
@@ -147,7 +147,7 @@
                                 vLabel = settings.input.values[_index];
                                 vValue = settings.input.values[_index];
                             }
-                            $(this).html(jtools.format(vLabel.toString(),vRegExp)).addClass("g_bluekey").bind("click touchstart",function(event) {
+                            $(this).html(jtools.format(vLabel.toString(),vOldRegExp)).addClass("g_bluekey").bind("click touchstart",function(event) {
                                 $this.sequence('key',vValue, this); event.preventDefault(); });
                                
                             if (settings.input.attr) {
@@ -193,10 +193,10 @@
                     // Special treatment
                     var vRegExpMult = new RegExp("\\\*", "g")
                     vValue.question = vValue.question.toString().replace(vRegExpMult,"×");
-
+					
                     // Fill the dom element, use a regexp if needed
-                    if (vRegexp)    { $li.html(jtools.format(vValue.question.replace(vRegexp, settings.regexp.input.to), vRegExp)); }
-                    else            { $li.html(jtools.format(vValue.question), vRegExp); }
+                    if (vRegexp)    { $li.html(jtools.format(vValue.question.replace(vRegexp, settings.regexp.input.to), vOldRegExp)); }
+                    else            { $li.html(jtools.format(vValue.question, vOldRegExp)); }
 
                     // Store the question
                     settings.questions.push(vValue);

@@ -139,8 +139,8 @@ jtools = {
 			"neg" : { ty:"op", pr:2, va:"-",     tt:"-$1",      op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:-r[0];} },
 			"id"  : { ty:"po", pr:9, va:"",      tt:"$1",       op:[null],           eq: function(_a) { var r=this._eq(_a); return isNN(r[0])?NaN:r[0];} },
 			"="   : { ty:"op", pr:9, va:"=",     tt:"$1=$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]==r[0]?1:0);}, co:true, as:true },
-			"*"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
-			"×"   : { ty:"op", pr:3, va:"×",     tt:"$1×$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
+			"*"   : { ty:"op", pr:3, va:jlo.mult,     tt:"$1"+jlo.mult+"$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
+			"×"   : { ty:"op", pr:3, va:jlo.mult,     tt:"$1"+jlo.mult+"$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[0]*r[1]);}, co:true, as:true },
 			"/"   : { ty:"op", pr:3, va:"/",     tt:"$1/$2",    op:[null,null],      eq: function(_a) { var r=this._eq(_a); return (isNN(r[0])||isNN(r[1]))?NaN:(r[1]==0?NaN:(r[0]/r[1]));}, as:true,
 				svg : function() {
 					var s   = [];
@@ -266,7 +266,7 @@ jtools = {
 							svg+="<g transform='translate("+offx*jtools.math.svg.font[0]+","+((max[1]-svgs[0].si[1])*jtools.math.svg.font[1])+")'>"+tmp.svg+"</g>";
 							offx+=tmp.offx;
 						}
-						var va = (this.ty=="va"&&this.la)?this.la:this.va;
+						var va = jtools.num.tostr((this.ty=="va"&&this.la)?this.la:this.va);
 						svg  += "<text y='"+jtools.math.svg.y+"' transform='translate("+(offx*jtools.math.svg.font[0])+","+((max[1]-0.5)*jtools.math.svg.font[1])+")'>"+va+"</text>";
 						offx += va.toString().length;
 
@@ -283,9 +283,12 @@ jtools = {
 				// BUILD NODE FROM BASE AND REFERENCE
 				var ref = (typeof(_v)=="object"?_v.va:_v);
 				if (jtools.math.symbology[ref]) { ret = jtools.math.symbology[ref];	}
-				else { ret = { ty:"va", pr:1, va:ref, tt:ref, op:[], eq:function(_a) { return isNN(this.va)?((_a&&_a[this.va])?_a[this.va]:this.va):parseFloat(this.va); } }; }
+				else { ret = { ty:"va", pr:1, va:ref, tt:ref, op:[], eq:function(_a) { return isNaN(this.va)?((_a&&_a[this.va])?_a[this.va]:this.va):parseFloat(this.va); } }; }
 				var node;
-				if (typeof(_v)=="object") { node = $.extend(true, {}, base, ret, _v); }
+				if (typeof(_v)=="object") {
+					node = $.extend(true, {}, base, ret, _v);
+					node.va = ret.va; // Do not overwrite va field
+				}
 				else { node =  $.extend(true, {}, base, ret); }
 				
 				// HANDLE CHILDREN
@@ -331,21 +334,28 @@ jtools = {
 			return Math.round(_val*pp)/pp;
 		},
 		tostr: function(_val) {
-			ret = _val.toString();
-			var neg=(ret[0]=="-");
-			if (neg) { ret=ret.substr(1);}
-			var i=ret, d="", p=ret.indexOf(".");
-			if (p!=-1) { i=ret.substr(0,p); d=ret.substr(p+1); }
-			ret = neg?"-":"";
-			for (var j=0; j<i.length; j++) {
-				if (j&&((i.length-j)%jlo.numperclass)==0) { ret+=" "; }
-				ret+=i[j];
+			var ret = _val.toString();
+			if (!isNaN(_val)) {
+				var neg=(ret[0]=="-");
+				if (neg) { ret=ret.substr(1);}
+				var i=ret, d="", p=ret.indexOf(".");
+				if (p!=-1) { i=ret.substr(0,p); d=ret.substr(p+1); }
+				ret = neg?"-":"";
+				for (var j=0; j<i.length; j++) {
+					if (j&&((i.length-j)%jlo.numperclass)==0) { ret+=" "; }
+					ret+=i[j];
+				}
+				if (p!=-1) {
+					ret+=jlo.comma;
+					for (var j=0;j<d.length; j++) {
+						if (j&&(j%jlo.numperclass==0)) { ret+=" "; }
+						ret+=d[j];
+					}
+				}
 			}
-			if (p!=-1) {
-				ret+=jlo.comma;
-				for (var j=0;j<d.length; j++) {
-					if (j&&(j%jlo.numperclass==0)) { ret+=" "; }
-					ret+=d[j];
+			else {
+				switch(ret) {
+					case "*" : ret = jlo.mult; break;
 				}
 			}
 			return ret;
