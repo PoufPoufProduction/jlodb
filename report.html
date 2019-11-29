@@ -59,7 +59,7 @@ var jlodb = function() {
 
 var update = function(_elt) {
 	$(_elt).addClass("d");
-	$("#re_submit").addClass("s");
+	$("#re_submit").toggleClass("s",($("#re_comment").val().length!=0));
 }
 
 var send = function() {

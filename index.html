@@ -51,7 +51,14 @@
         #jlcontent #jlcontenta li .icon      { position:absolute; top:0; width:1.5em; height:1.5em; }
         #jlcontent #jlcontentb               { display:none; }
 
-        #jlodb #buildlog        { font-size:.2em; }
+        #jlodb #adbuildlog        { font-size:.3em; margin-left:1em;  }
+		#adpanel .adrelt { font-size:.5em; height:2.4em; margin:.1em; background-color:gray; }
+		#adpanel .adrelt div { float:left; }
+		#adpanel .adrelt .adrid { width:20%; height:2em; background-color:#444; color:white; text-align:center; font-size:1.5em; cursor:pointer; padding-top:.1em; }
+		#adpanel .adrelt .adrtitle { width:34%; color:white; font-size:.6em; padding:0 .2em; }
+		#adpanel .adrelt .adrcomment { width:34%; color:black; background-color:#AAA; font-size:.6em; padding:0 .2em; height:4em; }
+		#adpanel .adrelt .adrvalues { font-size:1.2em; width:2.2em; }
+		#adpanel .adrelt .adrcancel { font-size:2.4em; cursor:pointer; }
 
         #jlcontent>.jlcontent .banner     { padding:0 .3em 0 .3em; margin:.5em; line-height:1.4em; }
         h1             { font-size:1.6em; overflow:visible; }
@@ -362,7 +369,8 @@ jlodb = {
                         $("#lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
 						
 						$.getJSON("api/editor.php", function(_editor) { $("#adnbedits").html(_editor.count); });
-						$.getJSON("api/report.php", function(_report) { $("#adnbreports").html(_report.count); });
+						$.getJSON("api/report.php?count", function(_report) { $("#adnbreports").html(_report.count); });
+						$.getJSON("user/api/user.php?count", function(_report) { $("#adnbusers").html(_report.count); });
 						
 						
                     }).show(); });
@@ -390,14 +398,45 @@ jlodb = {
                     if (data.status=="success") {
                         // No warning anymore because of the "ON DUPLICATE KEY UPDATE" in API
                         if (data.warnings && data.warnings.length) {
-                            $("#jlodb #buildlog").html("");
+                            $("#jlodb #adbuildlog").html("");
                             for (var i in data.warnings) {
-                                $("#jlodb #buildlog").append("<p>"+data.warnings[i]+"</p>");
+                                $("#jlodb #adbuildlog").append("<p>"+data.warnings[i]+"</p>");
                             }
                         } else { jlodb.home(); }
                     } else { alert("ERROR: "+data.textStatus); }
                 });
-            }
+            },
+			report: {
+				load: function() {
+					$.getJSON("api/report.php", function(_data) { jlodb.page.admin.report.build(_data);	});
+				},
+				del: function(_id) {
+					$.getJSON("api/report.php?action=del&value="+_id, function(_data) {
+						jlodb.page.admin.report.build(_data);
+						$.getJSON("api/report.php?count", function(_report) {
+							$("#adnbreports").html(_report.count); });
+					});
+				},
+				build: function(_report) {
+					$("#adpanel").html("");
+					for (var i in _report.reports) {
+						var r = _report.reports[i];
+						var $elt=$("<div class='adrelt'></div>");
+						$elt.append("<div class='adrid' onclick='jlodb.run({id:\""+r.exercice+"\"},true);' >"+r.exercice+"</div>");
+						$elt.append("<div class='adrtitle'>"+r.title+"<div>");
+						$elt.append("<div class='adrcomment'>"+r.comment+"<div>");
+						$elt.append("<div class='adrvalues'>"
+							+"<div class='icon'><img src='res/img/classification/"+r.classification+".svg' alt=''/></div>"
+							+"<div class='icon' style='background-image:url(\"res/img/icon/icon.svg\")'>"+r.level+"</div>"
+							+"<div class='icon'><img src='res/img/numbers/star/star"+r.diff+".svg' alt=''/></div>"
+							+"<div class='icon' style='background-image:url(\"res/img/icon/duration.svg\")'>"+r.duration+"</div>"
+							+"<div>");
+						$elt.append("<div class='icon adrcancel' onclick='jlodb.page.admin.report.del("+r.id+");'><img src='res/img/default/icon/cancel01.svg' alt='X'/></div>");
+						$("#adpanel").append($elt);
+					}
+				}
+				
+			}
         },
         edition: {
 			data:0,

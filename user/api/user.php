@@ -10,7 +10,7 @@ if (!$error && array_key_exists("value",$_GET)) {
 
 
     // CHECK IF THE FOUND USER IS NOT THE CURRENT USER OR ONE OF HIS FRIENDS
-    $json       = "";
+    $users       = "";
     $nbfriends  = 0;
     while(($nbfriends < 50) && ($row = mysqli_fetch_array($user)) ) {
         $good = false;
@@ -25,13 +25,19 @@ if (!$error && array_key_exists("value",$_GET)) {
 
         if ($good) {
             $nbfriends++;
-            if (strlen($json)) { $json.=","; }
-            $json.='{ "id":"'.$row["User_Id"].'","first":"'.$row["User_FirstName"].'",'.
+            if (strlen($users)) { $users.=","; }
+            $users.='{ "id":"'.$row["User_Id"].'","first":"'.$row["User_FirstName"].'",'.
                    '"last":"'.$row["User_LastName"].'","email":"'.$row["User_eMail"].'",'.
                    '"avatar":"'.$row["User_Avatar"].'","tag":"'.$row["User_Tag"].'","key":"'.$row["User_Key"].'"}';
         }
     }
     $status ="success";
+}
+else if (array_key_exists("count",$_GET)) {
+	$count = mysqli_fetch_array(mysqli_query($link, "SELECT COUNT(`User_Id`) FROM `".$_SESSION['prefix']."user`"));
+    $status ="success";
+	$error=0;
+	$textstatus="";
 }
 
 
@@ -40,7 +46,8 @@ echo '{';
 if (isset($status))             { echo '  "status" : "'.$status.'",'; }
 if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
 if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
-if (isset($json))               { echo '  "users" : ['.$json.'],'; }
+if (isset($users))              { echo '  "users" : ['.$users.'],'; }
+if (isset($count))              { echo '  "count" : '.$count[0].','; }
 echo '  "from" : "user/api" }';
 
 

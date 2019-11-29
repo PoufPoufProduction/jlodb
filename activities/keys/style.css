@@ -1,0 +1,18 @@
+.keys                { background-image:url("../../res/img/default/pattern/line02.svg");  background-repeat:repeat; }
+.keys #g_splash      { background-image:url("../../res/img/banners/keys.svg"); }
+.keys #ksboard       { height:100%; height:12em; position:relative; }
+.keys #ksboard>div   { position:absolute; background-color:rgba(255,255,255,0.6); border:.1em solid white; }
+.keys #ksboard>#kslegend      { width:7em; height:7em;top:.5em;left:.25em;margin-left:-.1em; background-color:rgba(255,240,220,0.9); }
+.keys #ksboard>#kslegend>div  { font-size:.5em; margin:.2em; }
+.keys #ksboard>#kswords       { width:8.25em; height:7em;top:.5em;left:7.5em;margin-left:-.1em; background-color:rgba(0,0,0,0.7);}
+.keys #ksboard>#kswords>div   { position:relative; overflow:visible; }
+.keys #kswords .ksw           { position:absolute; width:1.2em; height:1.2em; background-color:rgba(255,240,220,0.9); text-align:center; cursor:pointer; border-radius:.1em; margin:.1em; overflow:visible; }
+.keys #kswords .ksw.s         { background-color:yellow; border:.05em solid white; margin:.05em; }
+.keys #kswords .ksw.w		  { background-color:red; color:#FDD; }
+.keys #ksboard>#kskeys        { width:15.5em; height:2.5em;top:7.75em;left:0.25em;margin-left:-.1em;  }
+.keys #kskeys .ksk           { float:left; width:1.2em; height:1.2em; margin:0.1em 0 0 0.1em; color:white; text-align:center; cursor:pointer; position:relative; border-radius:.1em; }
+.keys #kskeys .ksn			{ position:absolute; top:70%; left:75%; font-size:.3em; text-align:center; width:1em; }
+.keys #kskeys .ksk.d { opacity:0.4; }
+.keys #kskeys .ksk.d .ksv { opacity:0.5; }
+.keys #kskeys .ksk.d .ksn { display:none; }
+.keys #kswords .ksw .g_anim12  { position:absolute; top:0; left:0; font-size:1.6em; margin:-.1em; }

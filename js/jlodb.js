@@ -86,7 +86,7 @@ jtools = {
 			"\\\[char[ ]*([\\\.0-9]+)]([^\\\[]+)\\\[/char([^\\\]]*)\\\]",   "<div class='char' style='font-size:$1em'><img src='$2'/></div>",
 			"\\\[char[ ]+([^\\\.]+\\\.svg)\\\]([^\\\[]+)\\\[/char\\\]",     "<div class='char' style='background-image:url(\"$1\")'><img src='$2'/></div>",
 			"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",                          "<div class='icon'><img src='$1'/></div>",
-		    "\\\[icon[ ]*([\\\.0-9]+)]([^\\\[]+)\\\[/icon([^\\\]]*)\\\]",   "<div class='icon' style='font-size:$1em'><img src='$2'/></div>",
+		    "\\\[icon[ ]*([\\\.0-9]+)\\\]([^\\\[]+)\\\[/icon([^\\\]]*)\\\]",   "<div class='icon' style='font-size:$1em'><img src='$2'/></div>",
 			"\\\[icon[ ]+([^\\\.]+\\\.svg)\\\]([^\\\[]+)\\\[/icon\\\]",     "<div class='icon' style='background-image:url(\"$1\")'><img src='$2'/></div>",
 			"\\\[code\\\](.+)\\\[/code\\\]",                                "<div class='t_code'>$1</div>",
 			"\\\[strong\\\](.+)\\\[/strong\\\]",                            "<div class='t_strong'>$1</div>",
@@ -100,12 +100,23 @@ jtools = {
 			}
 		}
 		
+		var vRatio = 5;
+		var vValue = "";
+		
 		var vMath = RegExp("\\\[math\\\]([^\\\[]+)\\\[/math\\\]","g");
 		var val = vMath.exec(vTxt);
-		if (val) {
-			var tree = jtools.math.pol2tree(val[1]);
+		if (val) { vValue = val[1]; }
+		else {
+			vMath = RegExp("\\\[math[ ]*([\\\.0-9]+)\\\]([^\\\[]+)\\\[/math([^\\\]]*)\\\]","g");
+			val = vMath.exec(vTxt);
+			if (val) { vRatio=val[1]; vValue = val[2]; }
+		}
+		
+		
+		if (vValue) {
+			var tree = jtools.math.pol2tree(vValue);
 			var svg = jtools.math.tree2svg(tree);
-			var ratio = (1*svg.size[0])/(5*svg.size[1]);
+			var ratio = (1*svg.size[0])/(vRatio*svg.size[1]);
 			vTxt = vTxt.replace(vMath,"<div class='t_svg'><div style='height:100%;width:"+Math.min(100,ratio*100)+"%'>"+svg.svg+"</div></div>");
 		}
 		

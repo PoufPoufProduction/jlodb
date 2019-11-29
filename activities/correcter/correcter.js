@@ -312,7 +312,7 @@
                         var posy = $(elt).offset().top-$this.offset().top;
 
                         // Position the popup : 6 = 1 (border width) + 5 (padding)
-                        $popup.css("left",(posx-settings.offset[settings.style][0])+"px")
+                        $popup.css("left",(posx-settings.offset[settings.style][0]-20)+"px")
                               .css("top",(posy-settings.offset[settings.style][1])+"px");
 
                         // Compute the array

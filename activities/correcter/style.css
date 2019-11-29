@@ -12,10 +12,10 @@
 .correcter #crdata span.wrong       { background-color:rgba(255,80,65,1.0); color:rgb(220, 240, 256); }
 .correcter #crdata span.highlight   { background-color:yellow; }
 .correcter #crdata span.light		{ color: #888; }
-.correcter #crpopup                 { position:absolute; top:0; left:0; font-size:.5em; background-color:rgba(255,255,255,1); border:1px solid black; display:none; padding:5px; z-index:2;}
+.correcter #crpopup                 { position:absolute; top:0; left:0; font-size:.5em; background-color:rgba(255,255,255,0.9); border:1px solid black; display:none; padding:5px 0; z-index:2;}
 .correcter #crpopup .current        { background-color:rgba(255,231,184,0.8); }
-.correcter #crpopup div             { cursor:pointer; }
-.correcter #crpopup div.s           { background-color:rgba(255,0,0,0.8); }
+.correcter #crpopup>div>div             { cursor:pointer; padding:0 4em 0 25px;}
+.correcter #crpopup>div>div.s           { background-color:rgba(255,0,0,0.8); }
 .correcter .g_anim12					{ top:0;font-size:3em;margin-top:-0.5em;margin-left:-0.5em; }
 
 
