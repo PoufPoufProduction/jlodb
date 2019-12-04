@@ -306,19 +306,18 @@
             };
             
             ret.$html=$("<div class='mgtile' id='"+ret.id+"'>"+
-                            "<img src='res/img/asset/mahjong/"+(_data.src?_data.src:"void")+".svg' alt='' />"+
-                            "<div class='img'></div>"+
-                            "<div class='txt'><div></div></div>"+
-                            "<div class='sub'><div></div></div>"+
-                            "<div class='hg'></div>"+
-                            "<div class='mask'></div>"+
-                        "</div>");
+                        "<img src='res/img/asset/mahjong/"+(_data.src?_data.src:"void")+".svg' alt='' />"+
+                         "<div class='hg'></div><div class='mask'></div></div>");
             
-            if (_data.img) { ret.$html.find(".img").append("<img src='"+_data.img+"' alt=''/>").show(); }
-            if (_data.txt) { ret.$html.find(".txt>div").css("font-size",(_data.txtfont?_data.txtfont:1)+"em")
-                                      .append(_data.txt).parent().show(); }
-            if (_data.sub) { ret.$html.find(".sub>div").css("font-size",(_data.subfont?_data.subfont:1)+"em")
-                                      .append(_data.sub).parent().show(); }
+            if (_data.img) {
+				ret.$html.append("<div class='img'><img src='"+_data.img+"' alt=''/></div>");
+			}
+            if (_data.txt) {
+				ret.$html.append("<div class='txt'><div style='font-size:"+(_data.txtfont?_data.txtfont:1)+"em'>"+_data.txt+"</div></div>");
+			}
+            if (_data.sub) { 
+				ret.$html.append("<div class='sub'><div style='font-size:"+(_data.subfont?_data.subfont:1)+"em'>"+_data.sub+"</div></div>");
+			}
             
             ret.$html.bind("mousedown touchstart", function(_event) {
                 if (settings.interactive) {

@@ -55,8 +55,9 @@
 
     var graphType = {
         pie : { label: ["X"], line: [ false ] },
-        bar : { label: ["Y"], line: [ true ] },
-        fct : { label: ["Y"], line: [ true ] }
+        bar : { label: ["X"], line: [ true ] },
+        fct : { label: ["X"], line: [ true ] },
+		fct2: { label: ["X","Y"], line: [ true ] }
     };
 
     // private methods
@@ -480,27 +481,38 @@
                     "<def><style>.ccgraph .up {fill:green} .ccgraph .down {fill:red;} "+
                     ".ccgraph path.l {fill:none;stroke:black;stroke-width:0.5px;} .ccgraph path.b {fill:#AEF;} "+
                     ".ccgraph path.d {fill:none;stroke:black;stroke-width:1px;} "+
-					".ccgraph line.grid {fill:none;stroke:#dd8833;stroke-width:0.2px; } "+
+					".ccgraph line.grid {fill:none;stroke:#dd8833;stroke-width:0.1px; opacity:0.5; } "+
+					".ccgraph line.grid2 {fill:none;stroke:#dd8833;stroke-width:0.4px; opacity:0.5; } "+
+					".ccgraph text {font-size:2px; } "+
                     "</style></def>";
 
 			// GET VALUES (AND COMPUTE THEM IF NECESSARY)
             var value = [];		// NUMERIC VALUES
 			var label = [];		// LABEL VALUES
-            for (var i in _val.data) {
+            for (var i=0; i<_val.data.length; i++) {
                 var mini = Math.min( _val.data[i][0].charCodeAt(0)-64, _val.data[i][1].charCodeAt(0)-64 );
                 var minj = Math.min( parseInt(_val.data[i][0].substr(1)), parseInt(_val.data[i][1].substr(1)) );
                 var maxi = Math.max( _val.data[i][0].charCodeAt(0)-64, _val.data[i][1].charCodeAt(0)-64 );
                 var maxj = Math.max( parseInt(_val.data[i][0].substr(1)), parseInt(_val.data[i][1].substr(1)) );
 
                 var v = { min:0, max:0, sum:0, val:[]}, first = true;
+				
+				if (_val.init && i<_val.init.length) {
+					v.min = _val.init[i];
+					v.max = _val.init[i];
+					v.sum = _val.init[i];
+					first = false;
+					v.val.push(_val.init[i]);
+				}
+				
                 for (var jj=minj; jj<=maxj; jj++) for (var ii=mini; ii<=maxi; ii++) {
                     var content = helpers.content($this,ii-1,jj-1);
+					
                     $this.find("#c"+ii+"x"+jj+">div").html(content);
 					
-					if (typeof(content) == "number")
+					if (!isNaN(content))
 					{
 						vv = parseFloat(content);
-						vv = isNaN(vv)?0:vv;
 						if (first || vv<v.min) { v.min = vv; }
 						if (first || vv>v.max) { v.max = vv; }
 						first = false;
@@ -516,24 +528,13 @@
             }
 
 			// PREPARE GRAPH (h is the height, a is the x-axis ratio position, nb is the number of values )
+			v = value[0];
 			if (v.max>0) { v.max = v.max*1.1; } else { v.max = v.max/1.1; }
             var v = value[0], h, a, nb=v.val.length;
             if (v.min>0) { h = v.max;       a = 0; } else
             if (v.max<0) { h = -v.min;      a = 1; } else
                          { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
 			if (h) {
-				if (_val.grid) {
-					if (_val.grid[0]) { }
-					else
-					if (_val.grid[1]) {
-						var yy=Math.floor(v.min/_val.grid[1] -1)*_val.grid[1];
-						for (var i=0; i<h/_val.grid[1]+2; i++) {
-							ret+="<line x1='0' x2='"+ww+"' y1='"+hh*(1-a-(yy+i*_val.grid[1])/h)+"' "+
-								 "y2='"+hh*(1-a-(yy+i*_val.grid[1])/h)+"' class='grid'/>";
-						}
-					}
-				}
-				
 				// DRAW GRAPH
 				switch (_val.type) {
 					case "bar":
@@ -544,10 +545,16 @@
 						}
 						break;
 					case "fct":
+					case "fct2":
 						var path = [];
-						for (var i=0; i<nb; i++) {
-							path.push([ww*i/(nb-1), hh*(1-a-(v.val[i]/h))]);
+						if (_val.type=="fct2") {
+							nb=Math.min(value[0].val.length, value[1].val.length);
+							for (var i=0; i<nb; i++) {
+								path.push([ ww*(value[1].val[i]-value[1].min)/(value[1].max-value[1].min),
+								            hh*(1-a-(v.val[i]/h))]);
+							}
 						}
+						else { for (var i=0; i<nb; i++) { path.push([ww*i/(nb-1), hh*(1-a-(v.val[i]/h))]); } }
 						ret+="<path class='b' d='M ";
 						for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
 						ret+=" "+ww+","+((1-a)*hh)+" 0,"+((1-a)*hh)+"'/>";
@@ -556,6 +563,34 @@
 						ret+="'/>";
 						break;
 				}
+				
+				if (_val.grid) {
+					if (_val.grid[0]) {
+						var nbb=(value.length>1 ? (value[1].max-value[1].min)/_val.grid[0] : nb);
+						for (var i=0; i<nbb+1; i++) {
+							var vClass="grid";
+							if (_val.grid.length>2 && _val.grid[2] &&
+								(jtools.num.round(i)%_val.grid[2]==0)) { vClass="grid2"; }
+							ret+="<line y1='0' y2='"+hh+"' x1='"+(ww*i/(nb-1))+"' "+
+								 "x2='"+(ww*i/(nb-1))+"' class='"+vClass+"'/>";
+						}
+					}
+					
+					if (_val.grid[1]) {
+						var yy=Math.floor(value[0].min/_val.grid[1] -1)*_val.grid[1];
+						for (var i=0; i<h/_val.grid[1]+2; i++) {
+							var vClass="grid";
+							if (_val.grid.length>3 && _val.grid[3] &&
+								(jtools.num.round(yy+i*_val.grid[1])%_val.grid[3]==0)) { vClass="grid2"; }
+							ret+="<line x1='0' x2='"+ww+"' y1='"+hh*(1-a-(yy+i*_val.grid[1])/h)+"' "+
+								 "y2='"+hh*(1-a-(yy+i*_val.grid[1])/h)+"' class='"+vClass+"'/>";
+						}
+					}
+				}
+				
+				
+				if (label.length>0) { ret+="<g transform='translate(2,1)'><text transform='rotate(90)'>"+label[0]+"</text></g>"; }
+				if (label.length>1) { ret+="<text transform='translate(47,47)' style='text-anchor:end'>"+label[1]+"</text>"; }
 
 				// DRAW AXIS
 				ret+="<path class='d' d='M 0,"+((1-a)*hh)+" "+ww+","+((1-a)*hh)+"'/>";
@@ -582,7 +617,9 @@
                     cell.tmp = cell.tmp.toString().length ? "<img src='"+settings.imgprefix+settings.img[cell.tmp]+".svg'/>":"";
                     break;
                 case "math":
-                    if (cell.tmp.eq) { cell.tmp = cell.tmp.eq(); }
+                    if (cell.tmp.eq) {
+						cell.tmp = cell.tmp.eq();
+						if (typeof(cell.tmp)=="number" && isNaN(cell.tmp)) { cell.tmp=""; }  }
                     break;
                 case "txt":
                     cell.tmp = cell.tmp.toString().length?settings.txt[cell.tmp]:"";
@@ -643,10 +680,8 @@
                 settings.sheet[j][i].update = false;
                 if (auto && settings.auto.sheet[j][i]) { settings.auto.sheet[j][i].update = false; }
             }
-            for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-				var c = helpers.content($this,i,j);
-				if (!isNaN(c)) { c = jtools.num.tostr(c); }
-
+            for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {				
+				var c = jtools.num.tostr(jtools.num.round(helpers.content($this,i,j)));
                 $this.find('#c'+(i+1)+'x'+(j+1)+'>div').html(c);
             }
         },
@@ -826,8 +861,8 @@
                                             if (_index<graphType[c.value.type].label.length) {
                                                 $(this).show().find(".cclabel>div").html(graphType[c.value.type].label[_index]);
                                                 if (_index<c.value.data.length) {
-                                                    $this.find(".ccref").first().html(c.value.data[_index][0]);
-                                                    $this.find(".ccref").first().next().html(c.value.data[_index][1]);
+                                                    $(this).find(".ccref").first().html(c.value.data[_index][0]);
+                                                    $(this).find(".ccref").first().next().html(c.value.data[_index][1]);
                                                 }
                                             }
                                         });
@@ -1026,7 +1061,7 @@
                                 var uservalue = r.value;
                                 if (r.type=="math") {
 									uservalue = $this.find("#c"+(i+1)+"x"+(j+1)).text();
-									resultval = jtools.num.tostr(resultval);
+									resultval = jtools.num.tostr(jtools.num.round(resultval));
 								}
 								if (settings.emptyisnull && uservalue.toString().length==0) { uservalue=0; }
 								

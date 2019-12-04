@@ -340,9 +340,13 @@ jtools = {
 	},
 	num: {
 		round: function(_val, _p) {
-			if (!_p) { _p=5; }
-			var pp=Math.pow(10,_p);
-			return Math.round(_val*pp)/pp;
+			var ret = _val;
+			if (!isNaN(_val) && _val.toString().length) {
+				if (!_p) { _p=5; }
+				var pp=Math.pow(10,_p);
+				ret = Math.round(_val*pp)/pp;
+			}
+			return ret;
 		},
 		tostr: function(_val) {
 			var ret = _val.toString();
