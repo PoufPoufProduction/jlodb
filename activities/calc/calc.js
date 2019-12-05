@@ -475,12 +475,12 @@
                 });
         },
         graph: function($this, _val, _ratio) {
-			var hh=48, ww=Math.floor(hh*_ratio);
+			var h48=48, w48=Math.floor(h48*_ratio);
             var ret = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' "+
-                    "width='100%' height='100%' viewBox='0 0 "+ww+" "+hh+"' preserveAspectRatio='none' class='ccgraph cc"+_val.type+"'>"+
+                    "width='100%' height='100%' viewBox='0 0 "+w48+" "+h48+"' preserveAspectRatio='none' class='ccgraph cc"+_val.type+"'>"+
                     "<def><style>.ccgraph .up {fill:green} .ccgraph .down {fill:red;} "+
                     ".ccgraph path.l {fill:none;stroke:black;stroke-width:0.5px;} .ccgraph path.b {fill:#AEF;} "+
-                    ".ccgraph path.d {fill:none;stroke:black;stroke-width:1px;} "+
+                    ".ccgraph path.d {fill:none;stroke:black;stroke-width:0.5px;} "+
 					".ccgraph line.grid {fill:none;stroke:#dd8833;stroke-width:0.1px; opacity:0.5; } "+
 					".ccgraph line.grid2 {fill:none;stroke:#dd8833;stroke-width:0.4px; opacity:0.5; } "+
 					".ccgraph text {font-size:2px; } "+
@@ -495,95 +495,97 @@
                 var maxi = Math.max( _val.data[i][0].charCodeAt(0)-64, _val.data[i][1].charCodeAt(0)-64 );
                 var maxj = Math.max( parseInt(_val.data[i][0].substr(1)), parseInt(_val.data[i][1].substr(1)) );
 
-                var v = { min:0, max:0, sum:0, val:[]}, first = true;
+                var v = { min:0, max:0, val:[]}, first = true;
 				
 				if (_val.init && i<_val.init.length) {
 					v.min = _val.init[i];
 					v.max = _val.init[i];
-					v.sum = _val.init[i];
 					first = false;
 					v.val.push(_val.init[i]);
 				}
 				
                 for (var jj=minj; jj<=maxj; jj++) for (var ii=mini; ii<=maxi; ii++) {
                     var content = helpers.content($this,ii-1,jj-1);
-					
-                    $this.find("#c"+ii+"x"+jj+">div").html(content);
-					
-					if (!isNaN(content))
-					{
-						vv = parseFloat(content);
-						if (first || vv<v.min) { v.min = vv; }
-						if (first || vv>v.max) { v.max = vv; }
-						first = false;
-						v.sum+=vv;
-						v.val.push(vv);
-					}
-					else
-					{
-						label.push(content);
+					if (content.toString().length) {
+						if (!isNaN(content))
+						{
+							vv = parseFloat(content);
+							if (first || vv<v.min) { v.min = vv; }
+							if (first || vv>v.max) { v.max = vv; }
+							first = false;
+							v.val.push(vv);
+						}
+						else
+						{
+							label.push(content);
+						}
 					}
                 }
                 value.push(v);
             }
-
-			// PREPARE GRAPH (h is the height, a is the x-axis ratio position, nb is the number of values )
-			v = value[0];
-			if (v.max>0) { v.max = v.max*1.1; } else { v.max = v.max/1.1; }
-            var v = value[0], h, a, nb=v.val.length;
-            if (v.min>0) { h = v.max;       a = 0; } else
-            if (v.max<0) { h = -v.min;      a = 1; } else
-                         { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
-			if (h) {
+			
+			// PREPARE Y-AXIS VALUES
+			var nb = value[0].val.length;
+			if (value.length==1) {
+				var v = { min:0, max:nb-1, val:[]};
+				for (var i=0; i<nb; i++) { v.val.push(i); }
+				value.push(v);
+			}
+			else { nb = Math.min(nb,value[1].val.length); }
+			
+			var v0 = value[0], v1 = value[1];
+			if (v0.max>0) { v0.max = v0.max*1.1; }
+			if (v0.min<0) { v0.min = v0.min*1.1; }
+			var xpos, ypos=0, vh, vw = v1.max-v1.min;
+			if (v0.min>0) { vh = v0.max;        xpos = 1; } else
+            if (v0.max<0) { vh = -v0.min;       xpos = 0; } else
+                          { vh = v0.max-v0.min; xpos = vh?1-Math.abs(v0.min)/vh:1; }
+			if (v1.min>0 || v1.max<0) { ypos = -vw; }
+			if (v1.min<0 && v1.max>0) { ypos = Math.abs(v1.min)/vw; }
+			
+			if (vh) {
 				// DRAW GRAPH
 				switch (_val.type) {
 					case "bar":
 						for (var i=0; i<nb; i++) {
-							var th = Math.abs(v.val[i]);
-							ret+="<rect class='"+(v.val[i]>0?"up":"down")+"' x='"+(ww*i/nb)+"' width='"+(ww/nb)+"' ";
-							ret+="y='"+((v.val[i]>0?(1-a-th/h):(1-a))*hh)+"' height='"+th*hh/h+"'/>";
+							var th = Math.abs(value[0].val[i]);
+							ret+="<rect class='"+(value[0].val[i]>0?"up":"down")+"' x='"+(w48*i/nb)+"' width='"+(w48/nb)+"' ";
+							ret+="y='"+((value[0].val[i]>0?(xpos-th/vh):xpos)*h48)+"' height='"+th*h48/vh+"'/>";
 						}
 						break;
 					case "fct":
 					case "fct2":
 						var path = [];
-						if (_val.type=="fct2") {
-							nb=Math.min(value[0].val.length, value[1].val.length);
-							for (var i=0; i<nb; i++) {
-								path.push([ ww*(value[1].val[i]-value[1].min)/(value[1].max-value[1].min),
-								            hh*(1-a-(v.val[i]/h))]);
-							}
+						var last;
+						for (var i=0; i<nb; i++) {
+							last = w48*(v1.val[i]-v1.min)/(v1.max-v1.min);
+							path.push( last+","+ (h48*(xpos-(v0.val[i]/vh))) );
 						}
-						else { for (var i=0; i<nb; i++) { path.push([ww*i/(nb-1), hh*(1-a-(v.val[i]/h))]); } }
-						ret+="<path class='b' d='M ";
-						for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
-						ret+=" "+ww+","+((1-a)*hh)+" 0,"+((1-a)*hh)+"'/>";
-						ret+="<path class='l' d='M ";
-						for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
-						ret+="'/>";
+						ret+="<path class='b' d='M "+path.join(" ")+" "+last+","+(xpos*h48)+" 0,"+(xpos*h48)+"'/>";
+						ret+="<path class='l' d='M "+path.join(" ")+"'/>";
 						break;
 				}
 				
 				if (_val.grid) {
 					if (_val.grid[0]) {
-						var nbb=(value.length>1 ? (value[1].max-value[1].min)/_val.grid[0] : nb);
-						for (var i=0; i<nbb+1; i++) {
+						var xx=Math.floor(v1.min/_val.grid[0] -1)*_val.grid[0];
+						for (var i=0; i<(vw/_val.grid[0])+2; i++) {
 							var vClass="grid";
 							if (_val.grid.length>2 && _val.grid[2] &&
-								(jtools.num.round(i)%_val.grid[2]==0)) { vClass="grid2"; }
-							ret+="<line y1='0' y2='"+hh+"' x1='"+(ww*i/(nb-1))+"' "+
-								 "x2='"+(ww*i/(nb-1))+"' class='"+vClass+"'/>";
+								(jtools.num.round(xx+i*_val.grid[0])%_val.grid[2]==0)) { vClass="grid2"; }
+							ret+="<line y1='0' y2='"+h48+"' x1='"+w48*(ypos+(xx+i*_val.grid[0])/vw)+"' "+
+								 "x2='"+w48*(ypos+(xx+i*_val.grid[0])/vw)+"' class='"+vClass+"'/>";
 						}
 					}
 					
 					if (_val.grid[1]) {
-						var yy=Math.floor(value[0].min/_val.grid[1] -1)*_val.grid[1];
-						for (var i=0; i<h/_val.grid[1]+2; i++) {
+						var yy=Math.floor(v0.min/_val.grid[1] -1)*_val.grid[1];
+						for (var i=0; i<(vh/_val.grid[1])+2; i++) {
 							var vClass="grid";
 							if (_val.grid.length>3 && _val.grid[3] &&
 								(jtools.num.round(yy+i*_val.grid[1])%_val.grid[3]==0)) { vClass="grid2"; }
-							ret+="<line x1='0' x2='"+ww+"' y1='"+hh*(1-a-(yy+i*_val.grid[1])/h)+"' "+
-								 "y2='"+hh*(1-a-(yy+i*_val.grid[1])/h)+"' class='"+vClass+"'/>";
+							ret+="<line x1='0' x2='"+w48+"' y1='"+h48*(xpos-(yy+i*_val.grid[1])/vh)+"' "+
+								 "y2='"+h48*(xpos-(yy+i*_val.grid[1])/vh)+"' class='"+vClass+"'/>";
 						}
 					}
 				}
@@ -593,8 +595,8 @@
 				if (label.length>1) { ret+="<text transform='translate(47,47)' style='text-anchor:end'>"+label[1]+"</text>"; }
 
 				// DRAW AXIS
-				ret+="<path class='d' d='M 0,"+((1-a)*hh)+" "+ww+","+((1-a)*hh)+"'/>";
-				ret+="<path class='d' d='M 0,0 0,"+hh+"'/>";
+				ret+="<path class='d' d='m 0,"+(xpos*h48)+" "+w48+",0'/>";
+				ret+="<path class='d' d='m "+(ypos*w48)+",0 0,"+h48+"'/>";
 			}
 
             ret+="</svg>";
