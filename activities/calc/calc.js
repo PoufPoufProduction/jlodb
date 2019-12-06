@@ -506,23 +506,24 @@
 				
                 for (var jj=minj; jj<=maxj; jj++) for (var ii=mini; ii<=maxi; ii++) {
                     var content = helpers.content($this,ii-1,jj-1);
-					if (content.toString().length) {
-						if (!isNaN(content))
-						{
-							vv = parseFloat(content);
-							if (first || vv<v.min) { v.min = vv; }
-							if (first || vv>v.max) { v.max = vv; }
-							first = false;
-							v.val.push(vv);
-						}
-						else
-						{
-							label.push(content);
-						}
+					
+					if (!isNaN(content))
+					{
+						vv = parseFloat(content);
+						if (first || vv<v.min) { v.min = vv; }
+						if (first || vv>v.max) { v.max = vv; }
+						first = false;
+						v.val.push(vv);
+					}
+					else
+					{
+						label.push(content);
 					}
                 }
                 value.push(v);
             }
+			
+			if (_val.max) { value[0].max = _val.max; }
 			
 			// PREPARE Y-AXIS VALUES
 			var nb = value[0].val.length;
@@ -556,12 +557,17 @@
 					case "fct":
 					case "fct2":
 						var path = [];
-						var last;
+						var lastx, lasty;
 						for (var i=0; i<nb; i++) {
-							last = w48*(v1.val[i]-v1.min)/(v1.max-v1.min);
-							path.push( last+","+ (h48*(xpos-(v0.val[i]/vh))) );
+							var tmpx = w48*(v1.val[i]-v1.min)/(v1.max-v1.min);
+							var tmpy = h48*(xpos-(v0.val[i]/vh));
+							if (!isNaN(tmpx) && !isNaN(tmpy)) {
+								lastx = tmpx;
+								lasty = tmpy;
+								path.push( lastx+","+ lasty );
+							}
 						}
-						ret+="<path class='b' d='M "+path.join(" ")+" "+last+","+(xpos*h48)+" 0,"+(xpos*h48)+"'/>";
+						ret+="<path class='b' d='M "+path.join(" ")+" "+lastx+","+(xpos*h48)+" 0,"+(xpos*h48)+"'/>";
 						ret+="<path class='l' d='M "+path.join(" ")+"'/>";
 						break;
 				}
