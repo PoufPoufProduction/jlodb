@@ -156,14 +156,10 @@
 				// SLIDER
 				$this.find("#loslider>div").draggable({axis:'y',containment:'parent',
 					stop: function(event, ui) { helpers.slider.update($this); },
-					start: function(event, ui) {
-						helpers.slider.update($this);
-						console.log(JSON.stringify(settings.slider));
-					},
+					start: function(event, ui) { helpers.slider.update($this); },
 					drag: function(event, ui) {
 						var y = settings.slider.cod*($(this).offset().top-settings.slider.top)/settings.slider.gap;
 						$this.find("#loccode").css("margin-top",-y+"px");
-						console.log(y);
 					}
 				});
 
@@ -202,14 +198,12 @@
                 return  ( dd[0]>0 ||
                         ( dd[0]==0 && dd[1]>0) ||
                         ( dd[0]==0 && dd[1]==0 && dd[2]>0) ||
-                        ( dd[0]==0 && dd[1]==0 && dd[2]==0 && dd[3]>0) ); } );
+                        ( dd[0]==0 && dd[1]==0 && dd[2]==0 && dd[3]>0) )?1:-1; } );
             var strtmp="";
             for (var i in data) {
                 if (strtmp.length) { strtmp+=" "; }
                 strtmp+=data[i][0]+","+data[i][1]+","+data[i][2]+","+data[i][3]; }
-            console.log(strtmp);
             var crc=helpers.crc32(strtmp);
-            console.log("crc: "+crc);
             return crc;
         },
         dropvalue: function($this, $e) {

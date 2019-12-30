@@ -172,7 +172,7 @@
 			// HANDLE KEYS
 			var ks=[];
 			for (var k in settings.keys) { ks.push([k,settings.keys[k][0]]); }
-			if (settings.order) { ks.sort(function(_a,_b) { return (_a[0]>_b[0]); }); } else { shuffle(ks); }
+			if (settings.order) { ks.sort(function(_a,_b) { return _a[0].localeCompare(_b[0]); }); } else { shuffle(ks); }
 			s = Math.min(1.8,  Math.max(0.9,15/(ks.length*1.2*1.1)));
 			for (var k=0; k<ks.length; k++) {
 				var $elt = $("<div class='ksk g_bluekey' id='k"+ks[k][0]+"'></div>");

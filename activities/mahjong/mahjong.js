@@ -179,7 +179,7 @@
         display: function($this,_clear) {
             var settings = helpers.settings($this);
             if (_clear) { $this.find("#mgboard>div").html(""); }
-			settings.elts.sort(function(_a,_b) { return (_a.pos[0]>_b.pos[0]); });
+			settings.elts.sort(function(_a,_b) { return (_a.pos[0]-_b.pos[0]); });
             for (var i in settings.elts)
             {
 				var elt=settings.elts[i];

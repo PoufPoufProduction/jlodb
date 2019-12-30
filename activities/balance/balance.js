@@ -321,7 +321,7 @@
                 var m = $(this).attr("transform").match(/([0-9]+),([0-9]+)/);
                 order.push({id:$(this).attr("id"), y:parseInt(m[2])});
             });
-            order.sort(function(a,b){return (a.y>b.y); });
+            order.sort(function(a,b){return (a.y-b.y); });
             for (var i in order) {
                 $("#weights", settings.svg.root()).append($("#weights #"+order[i].id, settings.svg.root()).detach());
             }

@@ -185,7 +185,7 @@
 							var line 	= settings.board[settings.current.j];
 							var values 	= [];
 							for (var i in line.value) { values.push(line.value[i]); }
-							values.sort(function(_a,_b){ return (_b<_a); });
+							values.sort(function(_a,_b){ return _a-_b; });
 							var nb = values.length;
 							var s = 3/Math.pow(nb,0.5);
 							var l = 1.4/s;

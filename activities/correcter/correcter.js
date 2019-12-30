@@ -322,12 +322,7 @@
                             for (var i=0; i<settings.dictionary[goodWord].length; i++) { response.push(settings.dictionary[goodWord][i]); }
                         }
                         shuffle(response);
-                        response.sort(function(_a,_b) {
-                            var r={"à":"a","À":"A"};
-                            var a=_a,b=_b;
-                            for (var i in r) { a=a.replace(i,r[i]); b=b.replace(i,r[i]); }
-                            return (a>b);
-                        });
+                        response.sort(function(_a,_b) { return _a.localeCompare(_b); });
 
                         // Fill the popup
                         var reg=new RegExp("(')" ,"g"), nb = 1;

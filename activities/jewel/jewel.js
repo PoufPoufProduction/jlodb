@@ -464,7 +464,7 @@
 				if (cell) { cell.tmp = false; }
 				if (helpers.fromboard($this, i,j)!='0' && !cell) { totreat.push([i,j]); }
             }
-            totreat.sort(function(a,b){ return (b[1]<a[1]); });
+            totreat.sort(function(a,b){ return a[1]-b[1]; });
 
             // CREATE FEED FLOW (for moving tiles in the good direction)
             var weight = [], cells=[];
@@ -521,7 +521,7 @@
                         up.offset(w[0],w[1]).reinit(speed);
 						up.tmp = true;
 						totreat.push([elt[0]+w[0],elt[1]+w[1]]);
-						totreat.sort(function(a,b){ return (b[1]<a[1]); });
+						totreat.sort(function(a,b){ return a[1]-b[1]; });
                         anim = true;
                     }
                 }
