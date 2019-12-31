@@ -138,12 +138,13 @@ if (!$error) {
     if (array_key_exists("limit",$_GET)) { $limit = $_GET["limit"]; }
     $sql.= $order." LIMIT ".$limit;
 
-    if (array_key_exists("raw",$_GET)) {
+    if (array_key_exists("raw",$_GET) || array_key_exists("idsonly",$_GET) ) {
         $sql = "SELECT * FROM `".$_SESSION['prefix']."exercice`";
     }
 
     $exercice = mysqli_query($link, $sql);
     $json = "";
+	$idsonly = "";
 	if ($exercice) {
 		while($row = mysqli_fetch_array($exercice)) {
 			if (strlen($json)) { $json.=array_key_exists("raw",$_GET)?"\n":","; }
@@ -159,6 +160,8 @@ if (!$error) {
             $json.='"base":"'.$row["Exercice_Base"].'",';
             $json.='"tag":"'.$row["Exercice_Tags"].'",';
             $json.='"reference":"'.$row["Exercice_Reference"].'",';
+			
+			$idsonly.=$row["Exercice_Id"]."\n";
             
             if (array_key_exists("detail",$_GET)) {
                 
@@ -193,7 +196,9 @@ if (!$error) {
 }
 
 // PUBLISH DATA UNDER JSON FORMAT
-if (array_key_exists("raw",$_GET)) { echo $json; }
+
+if (array_key_exists("idsonly",$_GET))  { echo $idsonly; }
+else if (array_key_exists("raw",$_GET)) { echo $json; }
 else {
     echo '{';
     if (isset($status))                 { echo '  "status" : "'.$status.'",'; }

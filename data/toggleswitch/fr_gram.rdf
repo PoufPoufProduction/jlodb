@@ -9,7 +9,7 @@
 	<!-- 1. [NA] nom -->
 	
     <rdf:Description>
-        <dct:identifier>_gnand1</dct:identifier>
+        <dct:identifier>_gnand01</dct:identifier>
         <dct:title xml:lang="fr-FR">Rajouter l'article défini 'le' devant les mots le permettant et repérer ainsi les noms.</dct:title>
         <dct:description><![CDATA["errratio":2,"gg":{"nb":3,"good":["bateau","camion","train","crocodile","directeur","mot","nez","genou","cou","pied","tableau","maître","chien","chat","repas","lit","kangourou"],"wrong":["parfois","dormir","et","celui","voir","partir","beaucoup","sans","faire","cassé","nos","vos","celle","ceux","tellement","demain","hier","jamais","maintenant"]},"number":3,"background":"res/img/background/landscape/yellowboard02.svg","gen":"function($this,_s,_i){var r='',t=[]; for (var i=0; i<4; i++) { var rr=(Math.random()<0.5),w=_s.gg[rr?'good':'wrong'],v,ok; r+=rr?'1':'0'; do { v=w[Math.floor((_i+Math.random())*w.length/_s.gg.nb)]; ok=true; for (var j in t) { if (t[j]==v) { ok=false; } } } while(!ok); t.push(v);} return { 'template':'table2.5x4','result':r,'t':t} }","states":{ "nb":2,"content":["<p style='color:#CCC;'>le</p>","<p style='color:black;'>le</p>"],"style":[{},{}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Rajoutez l'article défini 'le'[/b] devant les mots le permettant et repérez ainsi les [red]noms communs[/red] (masculins).","fontex":0.9]]></dct:description>
@@ -17,12 +17,12 @@
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnand1</dct:alternative>
+        <dct:alternative>_gnand01</dct:alternative>
         <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
-        <dct:identifier>_gnand2</dct:identifier>
+        <dct:identifier>_gnand02</dct:identifier>
         <dct:title xml:lang="fr-FR">Rajouter l'article indéfini 'un' devant les mots le permettant et repérer ainsi les noms.</dct:title>
         <dct:description><![CDATA["gg":{"nb":3,"good":["garçon","portable","chagrin","écran","film","homme","parent","air","malheur","cousin","mariage","été","nénuphar","panier","problème"],"wrong":["donnez","tragique","beaucoup","sans","faire","êtes","en","connaître","cassé","parfois","aussitôt","marchons","parlent","éclairer"]},"number":3,"background":"res/img/background/landscape/yellowboard02.svg","states":{ "nb":2,"content":["<p style='color:#CCC;'>un</p>","<p style='color:black;'>un</p>"],"style":[{},{}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Rajoutez l'article indéfini 'un'[/b] devant les mots le permettant et repérez ainsi les [red]noms communs[/red] (masculins).","fontex":0.9]]></dct:description>
@@ -30,13 +30,13 @@
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnand1</dct:alternative>
-        <dct:relation>_gnand1</dct:relation>
+        <dct:alternative>_gnand01</dct:alternative>
+        <dct:relation>_gnand01</dct:relation>
         <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
-        <dct:identifier>_gnani1</dct:identifier>
+        <dct:identifier>_gnani01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les noms communs parmi une liste de mots.</dct:title>
         <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/bluesplash01.svg","values":[{"template":"array2x5","result":"0111000111","t":["cependant","l'autobus","une plante","la chaise","revenir","fatigué","parfois","le coeur","un sourire","l'océan"]},{"template":"array2x5","result":"1101101000","t":["un homme", "une femme","alors","un voyage","la couleur","heureuse","une crevette","tricoter","celui","selon"]}],"states":{ "nb":2,"style":[{"background-color":"white","color":"black"},{"background-color":"blue","color":"white"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Parmis ces différents mots, [b]coloriez en bleu[/b] les [red]noms[/red]."]]></dct:description>
@@ -44,25 +44,25 @@
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnani1</dct:alternative>
+        <dct:alternative>_gnani01</dct:alternative>
         <dct:source>res/img/background/landscape/bluesplash01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>_gnani5</dct:identifier>
+        <dct:identifier>_gnani05</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les noms (propres ou communs) parmis les différents mots.</dct:title>
         <dct:description><![CDATA["values":[{"template":"array2x5","result":"1011001010","t":["un chapeau","à vendre","des outils","Charles","parfois","le","une grue","regarder","la chaussure","revenir"]},{"template":"array2x5","result":"1001111000","t":["une tomate", "seulement","partir","la Belgique","le chemin","l'automobile","la lune","donc","vous","quelques"]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnani1</dct:alternative>
-        <dct:relation>_gnani1</dct:relation>
+        <dct:alternative>_gnani01</dct:alternative>
+        <dct:relation>_gnani01</dct:relation>
         <dct:source>res/img/background/landscape/bluesplash01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
-        <dct:identifier>_gnans0</dct:identifier>
+        <dct:identifier>_gnans00</dct:identifier>
         <dct:title xml:lang="fr-FR">Repérer les phrases contenant au moins un nom commun (surligné en rouge).</dct:title>
         <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/graycarpet01.svg","values":[{"template":"check5","result":"01001","t":["Tu fais quoi ?", "Le [red]poussin[/red] sort de son [red]oeuf[/red].","Comment allez-vous ?","Nous avons perdu.","Elle joue de la [red]guitare[/red]."]},{"template":"check5","result":"00110","t":["On ne sait pas.", "Tout cela est très étrange.","La [red]lune[/red] brille beaucoup.","C'est mon [red]frère[/red].","Je n'ai rien compris."]}],"states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Cochez[/b] les phrases contenant au moins [red]1 nom[/red]."]]></dct:description>
@@ -70,34 +70,34 @@
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnans0</dct:alternative>
+        <dct:alternative>_gnans00</dct:alternative>
 		<dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>_gnans1</dct:identifier>
+        <dct:identifier>_gnans01</dct:identifier>
         <dct:title xml:lang="fr-FR">Repérer les phrases contenant au moins un nom commun.</dct:title>
         <dct:description><![CDATA["values":[{"template":"check5","result":"00110","t":["C'est incroyable !", "Il n'est plus là.","La boite est vide.","Il fait beaucoup de vélo.","Ils sont tous très contents."]},{"template":"check5","result":"11001","t":["J'aime les gâteaux.", "Le vase est cassé.","C'est très embêtant.","Il fait ce qu'il veut.","C'est un joli dessin."]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>_gnans0</dct:alternative>
-        <dct:relation>_gnans0</dct:relation>
+        <dct:alternative>_gnans00</dct:alternative>
+        <dct:relation>_gnans00</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>_gnans2</dct:identifier>
+        <dct:identifier>_gnans02</dct:identifier>
         <dct:title xml:lang="fr-FR">Repérer les phrases contenant au moins un nom (propre ou commun).</dct:title>
         <dct:description><![CDATA["values":[{"template":"check5","result":"10111","t":["Charlotte est rentrée chez elle.", "Rien ne va plus.", "La tempête est finie.","Mon oncle Oscar est arrivé.","Ils habitent tous à Paris."]},{"template":"check5","result":"00111","t":["Mais, ce n'est pas encore fini ?", "Tout va bien ?", "Londres est une grande ville.","Marie Curie est très connue.","Pierre n'aime pas beaucoup marcher."]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnans0</dct:alternative>
-        <dct:relation>_gnans0</dct:relation>
+        <dct:alternative>_gnans00</dct:alternative>
+        <dct:relation>_gnans00</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
     </rdf:Description>
 	
@@ -105,7 +105,7 @@
 	<!-- 1. [NA] genre -->
 
     <rdf:Description>
-        <dct:identifier>_gnagm1</dct:identifier>
+        <dct:identifier>_gnagm01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les noms au masculin.</dct:title>
         <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/graycarpet02.svg","values":[{"template":"array2x5","result":"1001011001","t":["Le poisson","Une tomate","La descente","Le camion","La cerise","Le chien","Un cerf","La pluie","Une planète","Un crocodile"]},{"template":"array2x5","result":"1101010100","t":["Un asticot", "Un peigne","La serviette","Le verre","La table","Un coussin","Une abeille","Un stylo","Une cheminée","La boulangerie"]}],"states":{ "nb":2,"style":[{"background-color":"white","color":"black"},{"background-color":"blue","color":"white"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez en bleu[/b] les noms [red]masculins[/red]."]]></dct:description>
@@ -113,24 +113,24 @@
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnagm1</dct:alternative>
+        <dct:alternative>_gnagm01</dct:alternative>
         <dct:source>res/img/background/landscape/bluesplash01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>_gnagm2</dct:identifier>
+        <dct:identifier>_gnagm02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les noms au masculin.</dct:title>
         <dct:description><![CDATA["values":[{"template":"array2x5","result":"1001011101","t":["le renard","la chaise","une maison","un lapin","la cerise","le chien","le ciel","l'océan","une planète","un crocodile"]},{"template":"array2x5","result":"0111001100","t":["une poule","le vase","au lit","un tapis","la télévision","une gomme","le crayon","un chapeau","une robe","la poubelle"]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnagm1</dct:alternative>
-        <dct:relation>_gnagm1</dct:relation>
+        <dct:alternative>_gnagm01</dct:alternative>
+        <dct:relation>_gnagm01</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
-        <dct:identifier>_gnagd1</dct:identifier>
+        <dct:identifier>_gnagd01</dct:identifier>
         <dct:title xml:lang="fr-FR">Rajouter l'article défini 'le' devant les mots le permettant et repérer ainsi les noms masculun.</dct:title>
         <dct:description><![CDATA["gg":{"nb":3,"good":["bateau","camion","train","crocodile","directeur","mot","nez","genou","cou","pied","tableau","maître","chien","chat","repas","lit","kangourou"],"wrong":["colombe","table","chaise","girafe","valise","porte","sauterelle","maison","voiture","trotinette","route","planète","vitre","fenêtre","fourmi"]},"number":3,"background":"res/img/background/landscape/yellowboard02.svg","gen":"function($this,_s,_i){var r='',t=[]; for (var i=0; i<4; i++) { var rr=(Math.random()<0.5),w=_s.gg[rr?'good':'wrong'],v,ok; r+=rr?'1':'0'; do { v=w[Math.floor((_i+Math.random())*w.length/_s.gg.nb)]; ok=true; for (var j in t) { if (t[j]==v) { ok=false; } } } while(!ok); t.push(v);} return { 'template':'table2.5x4','result':r,'t':t} }","states":{ "nb":2,"content":["<p style='color:#CCC;'>le</p>","<p style='color:black;'>le</p>"],"style":[{},{}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Rajoutez l'article[/b] devant les [red] mots masculins[/red].","fontex":0.9]]></dct:description>
@@ -138,20 +138,20 @@
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnagd1</dct:alternative>
+        <dct:alternative>_gnagd01</dct:alternative>
         <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
-        <dct:identifier>_gnagd2</dct:identifier>
+        <dct:identifier>_gnagd02</dct:identifier>
         <dct:title xml:lang="fr-FR">Rajouter l'article indéfini 'un' devant les mots le permettant et repérer ainsi les noms.</dct:title>
         <dct:description><![CDATA["gg":{"nb":3,"good":["garçon","portable","chagrin","écran","film","homme","parent","air","malheur","cousin","mariage","été","nénuphar","panier","problème"],"wrong":["trousse","plume","mer","île","fête","piscine","danseuse","huître","orange","maladie","tornade","étoile","souris","cuillière"]},"number":3,"background":"res/img/background/landscape/yellowboard02.svg","states":{ "nb":2,"content":["<p style='color:#CCC;'>un</p>","<p style='color:black;'>un</p>"],"style":[{},{}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>_gnagd1</dct:alternative>
-        <dct:relation>_gnagd1</dct:relation>
+        <dct:alternative>_gnagd01</dct:alternative>
+        <dct:relation>_gnagd01</dct:relation>
         <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 	
