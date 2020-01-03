@@ -2,18 +2,31 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-    <!-- NOMINALISATION -->
-
-    <rdf:Description>
-        <dct:identifier>_ga201</dct:identifier>
-        <dct:title xml:lang="fr-FR">Nominaliser correctement les verbes.</dct:title>
-        <dct:description><![CDATA["values":[["inaugurer","inauguration"],["ouvrir","ouverture"],["limoger","limogage"],["changer","changement"],["échouer","échec"],["refuser","refus"],["recontrer","recontre"],["applaudir","applaudissement"],["arrêter","arrêt"],["démissionner","démission"]],"nbvalues":5,"number":4,"class":"h12","font":1,"len":7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Nominalisez les verbes suivants"]]></dct:description>
-        <dct:extent>1</dct:extent>
+	<!-- 1. [NA] LE NOM ET LES DETERMINANTS -->
+	<!-- n:nom, d:déterminant, p:nom propre, g:genre, n:nombre -->
+	
+	<rdf:Description>
+        <dct:identifier>_gnap01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque nom propre au nom commun qui lui correspond.</dct:title>
+        <dct:description><![CDATA["values":[[["un pays","la France"],["une ville","Londres"],["un océan","le Pacifique"],["un fleuve","la Seine"],["une princesse","Cendrillon"],["un héros","Ulysse"]],[["une montagne","le Mont-Blanc"],["un chien","Milou"],["une planète","Jupiter"],["un roi","Louis XIV"],["une mer","la Méditerranée"],["un tableau","la Joconde"]]],"nbvalues":6,"class":"h12","font":1,"len":7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] chaque nom [red]propre[/red] au nom [red]commun[/red] qui lui correspond.","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>frgram</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>ga201</dct:alternative>
+        <dct:type>1</dct:type>
+        <dct:alternative>_gnap01</dct:alternative>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_gnap02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque nom propre au nom commun qui lui correspond.</dct:title>
+        <dct:description><![CDATA["values":[[["un pays","l'Espagne"],["un continent","l'Afrique"],["un artiste","Picasso"],["un océan","l'Antlantique"],["une reine","Marie-Antoinette"],["une héroïne","Wonder Woman"]],[["une montagne","l'Everest"],["une région","la Bretagne"],["une planète","Vénus"],["un empereur","Napoléon Ier"],["une ville","Paris"],["un ballet","Casse-noisette"]]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_gnap01</dct:alternative>
+        <dct:relation>_gnap01</dct:relation>
     </rdf:Description>
 
 </rdf:RDF>
