@@ -82,6 +82,7 @@ jtools = {
 			"\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",                      "<span style='color:orange'>$1</span>",
 			"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",                            "<div class='t_svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
 			"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",                            "<div class='img'><img src='$1'/></div>",
+			"\\\[size[ ]*([\\\.0-9]+)]([^\\\[]+)\\\[/size([^\\\]]*)\\\]",   "<div style='font-size:$1em'>$2</div>",
 			"\\\[char\\\]([^\\\[]+)\\\[/char\\\]",                          "<div class='char'><img src='$1'/></div>",
 			"\\\[char[ ]*([\\\.0-9]+)]([^\\\[]+)\\\[/char([^\\\]]*)\\\]",   "<div class='char' style='font-size:$1em'><img src='$2'/></div>",
 			"\\\[char[ ]+([^\\\.]+\\\.svg)\\\]([^\\\[]+)\\\[/char\\\]",     "<div class='char' style='background-image:url(\"$1\")'><img src='$2'/></div>",

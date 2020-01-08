@@ -8,6 +8,7 @@
         lang        : "en-US",                                  // Current localization
         font        : 1,                                        // The font-size multiplicator
         sep         : " .,'-;:\"?!»«",                          // The separators
+		endline		: "¤",
         background  : "",
         debug       : true                                     // Debug mode
     };
@@ -85,24 +86,30 @@
                 var vGroup=-1;
                 var vEndGroup = false;
                 var vBeginGroup = false;
+				
+				settings.sep+=settings.endline;
 
                 // PARSE EACH PARAGRAPH
                 for (var i=0; i<settings.text.length; i++) {
 					var $p=$("<p></p>");
-                    for (var j=0; j<settings.text[i].length; j++) {
+					var line = settings.text[i];
+					// ADD A SEPARATOR AT THE END OF THE LINE IF NOT
+					if (settings.sep.indexOf(line[line.length-1])==-1) { line+=settings.endline; }
+                    for (var j=0; j<line.length; j++) {
 						
 						// CHECK EXERCICE BRACKET
                         var vIsQuestion = false;
                         for (var k in settings.questions) {
-                            if (settings.text[i][j]==settings.questions[k].s) {
+                            if (line[j]==settings.questions[k].s) {
                                 vIsQuestion = true;
-                                if (vGroup==-1) { vGroup=k; vBeginGroup = true; vEndGroup = false; } else { vEndGroup=true; }
+                                if (vGroup==-1) { vGroup=k; vBeginGroup = true; vEndGroup = false; }
+								else 			{ vEndGroup=true; }
                             }
                         }
                         if (vIsQuestion) { continue; } 
 
 						// CURRENT CHAR IS A SEPARATOR
-                        if (settings.sep.indexOf(settings.text[i][j])!=-1){
+                        if (settings.sep.indexOf(line[j])!=-1){
 							// A REAL WORD HAS TO BE PUSHED
                             if (!lastLetterIsSep) {
                                 $p.append(helpers.word($this,word, vGroup));
@@ -110,7 +117,7 @@
                                 if (vEndGroup) { vEndGroup=false; vGroup=-1; }
                             }
 							// STORE THE CURRENT CHAR AS SEPARATOR
-                            word+=settings.text[i][j];
+                            word+=line[j];
                             lastLetterIsSep=true;
                         }
 						// CURRENT CHAR IS NOT A SEPARATOR
@@ -122,13 +129,14 @@
                                 if (vEndGroup) { vEndGroup=false; vGroup=-1; }
                             }
 							// STORE THE CURRENT CHAR AS REAL WORD CHARACTER 
-                            word+=settings.text[i][j];
+                            word+=line[j];
                             lastLetterIsSep=false;
                         }
                         vBeginGroup = false;
                     }
 					// PUSH THE LAST WORD
-                    $p.append(helpers.word($this,word, lastLetterIsSep?9:8)); word="";
+					if (word!=settings.endline) { $p.append(helpers.word($this,word, lastLetterIsSep?9:8)); }
+					word="";
 					$content.append($p);
 					settings.endofline.push(settings.it);
                 }

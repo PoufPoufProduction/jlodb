@@ -15,6 +15,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>_gnap01</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">nom</dct:coverage>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -27,6 +28,40 @@
         <dct:type>1</dct:type>
         <dct:alternative>_gnap01</dct:alternative>
         <dct:relation>_gnap01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">nom</dct:coverage>
     </rdf:Description>
 
+	
+	<!-- 3. [GN] Le groupe nominal -->
+	<!-- c: complément du nom, a: adjectif -->
+	
+	<rdf:Description>
+        <dct:identifier>_ggnc01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer un complément du nom.</dct:title>
+        <dct:description><![CDATA["values":[["une tarte","aux pommes"],["le ballon","de football"],["un jouet","en bois"],["des hélices","d’avion"],["la route","des vacances"],["du lait","de coco"],["une lampe","de chevet"],["la course","en sacs"]],"errratio":2,"nbvalues":8,"class":"h12","font":0.8,"len":9]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour chaque nom, [b]associez[/b] le [red]complément[/red] qui convient.","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_ggnc01</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">cdn</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_ggnc02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer un complément du nom.</dct:title>
+        <dct:description><![CDATA["values":[["un appareil","à raclette"],["les vacances","d’été"],["un gilet","sans manches"],["mon vélo","de course"],["les habitants","de la forêt"],["un tube","de colle"],["un appartement","avec balcon"],["une soupe","sans sel"]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_ggnc01</dct:alternative>
+        <dct:relation>_ggnc01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">cdn</dct:coverage>
+    </rdf:Description>
+	
+	
+	
+	
 </rdf:RDF>

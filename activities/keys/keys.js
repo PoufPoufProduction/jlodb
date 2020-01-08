@@ -171,48 +171,20 @@
 
 			// HANDLE KEYS
 			var ks=[];
-			for (var k in settings.keys) { ks.push([k,settings.keys[k][0]]); }
+			for (var k in settings.keys) {
+				ks.push([(settings.convert[k]?settings.convert[k]:k),settings.keys[k][0],k]);
+			}
 			if (settings.order) { ks.sort(function(_a,_b) { return _a[0].localeCompare(_b[0]); }); } else { shuffle(ks); }
 			s = Math.min(1.8,  Math.max(0.9,15/(ks.length*1.2*1.1)));
 			for (var k=0; k<ks.length; k++) {
 				var $elt = $("<div class='ksk g_bluekey' id='k"+ks[k][0]+"'></div>");
-				$elt.append("<div class='ksv'>"+ks[k][0]+"</div>");
+				$elt.append("<div class='ksv'>"+ks[k][2]+"</div>");
 				$elt.append("<div class='ksn'>"+ks[k][1]+"</div>");
 				$elt.css("font-size",s+"em");
 				$this.find("#kskeys>div").append($elt);
 				
 				$elt.bind("mousedown touchstart", function(_e) {
-					if (settings.lid!=-1 && !$this.hasClass("d") && settings.interactive) {
-						var id = $(this).attr("id").substr(1);
-						var key = settings.keys[id];
-						if (key[0]>key[1]) {
-							settings.values[settings.lid]=id;
-							key[1]++;
-							var $elt = $this.find("#w"+settings.lid+".ksw");
-							var $key = $(this);
-							$elt.find(".kswl").css("opacity",0).html(id).animate({opacity:1},500);
-							$key.find(".ksn").html(key[0]-key[1]);
-							
-							$elt.find(".g_anim12>div").addClass("g_arunning").parent().show();
-							setTimeout(function() { $elt.find(".g_anim12>div").removeClass("g_arunning").parent().hide(); }, 1000);
-							
-							$key.addClass("g_ktouch");
-							setTimeout(function() { $key.removeClass("g_ktouch"); }, 50);
-					
-							
-							if (key[0]-key[1]==0) { $key.addClass("d"); }
-							$this.find(".ksw").removeClass("s");
-							
-							do {
-								settings.lid++;
-							} while (settings.lid<settings.values.length && settings.values[settings.lid]!=0);
-							
-							if ( settings.lid>=settings.values.length) { settings.lid=-1; }
-							else { helpers.prepare($this, settings.lid); $this.find("#w"+settings.lid).addClass("s"); }
-							
-						}
-					}
-					_e.preventDefault();
+					helpers.touch($this, $(this)); _e.preventDefault();
 				});
 			}
 			
@@ -223,7 +195,7 @@
 			if (settings.values[_id]) {
 				var kid = settings.values[_id];
 				var key=settings.keys[kid];
-				var $key = $this.find("#k"+kid+".ksk");
+				var $key = $this.find("#k"+(settings.convert[kid]?settings.convert[kid]:kid)+".ksk");
 				key[1]=Math.max(0, key[1]-1);
 				$key.removeClass("d").find(".ksn").html(key[0]-key[1]);
 				settings.values[_id]=0;
@@ -231,6 +203,49 @@
 				
 				$key.addClass("g_ktouch");
 				setTimeout(function() { $key.removeClass("g_ktouch"); }, 50);		
+			}
+		},
+		touch: function($this, $key) {
+            var settings = helpers.settings($this);
+			if (settings.lid!=-1 && !$key.hasClass("d") && settings.interactive) {
+				var id = $key.attr("id").substr(1);
+				
+				for (var k in settings.convert) {
+					if (settings.convert[k]==id) { id=k; }
+				}
+				
+				var key = settings.keys[id];
+				if (key[0]>key[1]) {
+					settings.values[settings.lid]=id;
+					key[1]++;
+					var $elt = $this.find("#w"+settings.lid+".ksw");
+					$elt.find(".kswl").css("opacity",0).html(id).animate({opacity:1},500);
+					$key.find(".ksn").html(key[0]-key[1]);
+							
+					$elt.find(".g_anim12>div").addClass("g_arunning").parent().show();
+					setTimeout(function() { $elt.find(".g_anim12>div").removeClass("g_arunning").parent().hide(); }, 1000);
+							
+					$key.addClass("g_ktouch");
+					setTimeout(function() { $key.removeClass("g_ktouch"); }, 50);
+					
+					if (key[0]-key[1]==0) { $key.addClass("d"); }
+					$this.find(".ksw").removeClass("s");
+							
+					do {
+						settings.lid++;
+					} while (settings.lid<settings.values.length && settings.values[settings.lid]!=0);
+							
+					if ( settings.lid>=settings.values.length) { settings.lid=-1; }
+					else { helpers.prepare($this, settings.lid); $this.find("#w"+settings.lid).addClass("s"); }
+							
+				}
+			}
+		},
+		key: function($this, _k) {
+            var settings = helpers.settings($this);
+			if ( settings.keys[_k]) {
+				var $elt=$this.find("#k"+(settings.convert[_k]?settings.convert[_k]:_k)+".ksk");
+				helpers.touch($this, $elt);
 			}
 		}
     };
@@ -248,6 +263,7 @@
 					result			: [],
 					values			: [],
 					keys			: {},
+					convert			: { "\'":"aa" },
 					nberrors		: 0,
 					lid				: -1
                 };
@@ -255,6 +271,9 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
+					
+                    $(document).keypress(function(_e) {
+                        if (_e.keyCode!=116) { helpers.key($this, String.fromCharCode(_e.which)); _e.preventDefault(); } });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);

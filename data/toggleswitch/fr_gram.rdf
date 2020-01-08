@@ -19,6 +19,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>_gnand01</dct:alternative>
         <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">déterminant,nom</dct:coverage>
     </rdf:Description>
 	
     <rdf:Description>
@@ -33,6 +34,7 @@
         <dct:alternative>_gnand01</dct:alternative>
         <dct:relation>_gnand01</dct:relation>
         <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">déterminant,nom</dct:coverage>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -46,6 +48,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>_gnani01</dct:alternative>
         <dct:source>res/img/background/landscape/bluesplash01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -59,6 +62,7 @@
         <dct:alternative>_gnani01</dct:alternative>
         <dct:relation>_gnani01</dct:relation>
         <dct:source>res/img/background/landscape/bluesplash01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom</dct:coverage>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -73,6 +77,7 @@
         <dct:alternative>_gnans00</dct:alternative>
 		<dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom,tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -86,6 +91,7 @@
         <dct:alternative>_gnans00</dct:alternative>
         <dct:relation>_gnans00</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -99,6 +105,7 @@
         <dct:alternative>_gnans00</dct:alternative>
         <dct:relation>_gnans00</dct:relation>
         <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom</dct:coverage>
     </rdf:Description>
 	
 	
@@ -115,6 +122,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>_gnagm01</dct:alternative>
         <dct:source>res/img/background/landscape/bluesplash01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom,genre</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -127,6 +135,8 @@
         <dct:type>1</dct:type>
         <dct:alternative>_gnagm01</dct:alternative>
         <dct:relation>_gnagm01</dct:relation>
+        <dct:source>res/img/background/landscape/bluesplash01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom,genre</dct:coverage>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -140,6 +150,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>_gnagd01</dct:alternative>
         <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom,déterminant,genre</dct:coverage>
     </rdf:Description>
 	
     <rdf:Description>
@@ -153,7 +164,42 @@
         <dct:alternative>_gnagd01</dct:alternative>
         <dct:relation>_gnagd01</dct:relation>
         <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">nom,déterminant,genre</dct:coverage>
     </rdf:Description>
+	
+	<!-- 3. [GN] Le groupe nominal -->
+	<!-- c: complément du nom, a: adjectif -->
+	
+    <rdf:Description>
+        <dct:identifier>_ggnc01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les groupes nominaux avec complément du nom.</dct:title>
+        <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/graycarpet01.svg","values":[{"template":"array1x5","result":"10110","t":["le dernier roi de France","ma tirelire remplie","les vaches de ce fermier","le gâteau à la poire","les vêtements usagés"]},{"template":"array1x5","result":"10011","t":["une salle à manger","la petite sœur","son faible volume","une lampe de chevet","la vieille machine à coudre"]}],"states":{ "nb":2,"style":[{"background-color":"white","color":"black"},{"background-color":"red","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"white"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Surligner[/b] les groupes nominaux avec [red]complément du nom[/red]","fontex":0.9]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_ggnc01</dct:alternative>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">cdn</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_ggnc02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les groupes nominaux avec complément du nom.</dct:title>
+        <dct:description><![CDATA["values":[{"template":"array1x5","result":"01110","t":["le petit chaperon rouge","la fille de la voisine","ce papier à fleurs","un chewing-gum à la fraise","une cocotte-minute"]},{"template":"array1x5","result":"10100","t":["la soupe à l’oignon","une crème épaisse","une montre en or","une route enneigée","un ciel nuageux"]}]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_ggnc01</dct:alternative>
+        <dct:relation>_ggnc01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+		<dct:coverage xml:lang="fr-FR">cdn</dct:coverage>
+    </rdf:Description>
+	
+	
+
 	
 	
 	<!-- DEPRECATED -->
