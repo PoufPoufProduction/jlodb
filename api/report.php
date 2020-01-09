@@ -12,6 +12,7 @@ if (!$error) {
 			if (array_key_exists("diff",$_POST)) 				{ $diff=$_POST["diff"]; }
 			if (array_key_exists("level",$_POST)) 				{ $level=$_POST["level"]; }
 			if (array_key_exists("extend",$_POST)) 				{ $extend=$_POST["extend"]; }
+			if (array_key_exists("tags",$_POST)) 				{ $tags=$_POST["tags"]; }
 			
 			if (array_key_exists("label",$_POST)) { 
 				$label=$_POST["label"];
@@ -22,8 +23,8 @@ if (!$error) {
 				$comment = str_replace("'", "\'", $comment);
 			}
 			
-			$sql="INSERT INTO `".$_SESSION['prefix']."report` (`Report_Exercice`,`Report_Description`, `Report_State`, `Report_Title`, `Report_Level`, `Report_Difficulty`, `Report_Classification`, `Report_Duration`, `Report_Date`) VALUES ('".
-                $id."','".$comment."',0,'".$label."',".$level.",".$diff.",'".$classification."',".$extend.", NOW() )";
+			$sql="INSERT INTO `".$_SESSION['prefix']."report` (`Report_Exercice`,`Report_Description`, `Report_State`, `Report_Title`, `Report_Level`, `Report_Difficulty`, `Report_Classification`, `Report_Duration`, `Report_Tags`, `Report_Date`) VALUES ('".
+                $id."','".$comment."',0,'".$label."',".$level.",".$diff.",'".$classification."',".$extend.",'".$tags."', NOW() )";
 			
 			$query = mysqli_query($link,$sql );
 			$getlist=false;
@@ -39,7 +40,7 @@ if (!$error) {
 		if ($ret) { $count = mysqli_fetch_array($ret); }
 		$getlist=false;
 	}
-	
+
 	if ($getlist)
 	{
 		$ret 	= mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."report` LIMIT 10");
@@ -50,7 +51,7 @@ if (!$error) {
 				'"exercice":"'.str_replace("\n"," ",$row["Report_Exercice"]).'","comment":"'.str_replace("\n"," ",$row["Report_Description"]).'",'.
 				'"title":"'.str_replace("\n"," ",$row["Report_Title"]).'",'.'"level":"'.str_replace("\n"," ",$row["Report_Level"]).'",'.
 				'"diff":"'.str_replace("\n"," ",$row["Report_Difficulty"]).'",'.'"classification":"'.str_replace("\n"," ",$row["Report_Classification"]).'",'.
-				'"duration":"'.str_replace("\n"," ",$row["Report_Duration"]).'",'.'"date":"'.$row["Report_Date"].'"}';
+				'"duration":"'.str_replace("\n"," ",$row["Report_Duration"]).'",'.'"tags":"'.str_replace("\n"," ",$row["Report_Tags"]).'",'.'"date":"'.$row["Report_Date"].'"}';
         }
 	}
 	$status="success";

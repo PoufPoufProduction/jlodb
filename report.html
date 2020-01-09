@@ -18,7 +18,8 @@
 		#re_right>* { font-size:0.4em; width:100%; border:0; margin:0.2em 0; text-align:center; display:block;}
 		#re_right>*.d { background-color:#FFA; }
 		#re_right #re_id { font-size:0.5em; background-color:#444; color:white; }
-		#re_right textarea { height:35%; text-align:inherit; font-size:0.3em; }
+		#re_right textarea { height:30%; text-align:inherit; font-size:0.3em; }
+		#re_right textarea#re_tags { height:10%; font-size:0.2em; }
 		#re_bottom { width:20.6em; height:2.8em; background-color:gray; }
 		#re_submit { margin:.05em;font-size:2.5em;opacity:0.2; }
 		#re_submit.s { cursor:pointer; opacity:1; }
@@ -44,6 +45,7 @@ var jlodb = function() {
 			$("#re_level").val(_data.level);
 			$("#re_duration").val(_data.extend);
 			$("#re_label").val(_data.label);
+			$("#re_tags").val(_data.tag);
 			$("#re_comment").val("");
 			$("#re_right>*").removeClass("d");
 			$("#re_submit").removeClass("s");
@@ -73,11 +75,15 @@ var send = function() {
 				  level: 			$("#re_level").val(),
 				  extend: 			$("#re_duration").val(),
 				  label: 			$("#re_label").val(),
+				  tags: 			$("#re_tags").val(),
 				  comment: 			$("#re_comment").val(),
 				  })
 		.done(function( _data ) {
 			try { _data = jQuery.parseJSON(_data); } catch (e) { alert("[JSON ERROR] "+e.message); return; }
-			if (_data.query) { alert(locale.reh_alert); } else { alert(locale.reh_error);}
+			if (_data.query) {
+				alert(locale.reh_alert);
+				$("#re_comment").val("");
+			} else { alert(locale.reh_error);}
 		});
 	}
 }
@@ -112,6 +118,7 @@ $(window).ready(function() {
 				for (var i in _json) {	$("#"+i).html(_json[i]); }
 				$("#re_duration").attr("placeholder", _json["reh_time"]);
 				$("#re_comment").attr("placeholder", _json["reh_comment"]);
+				$("#re_tags").attr("placeholder", _json["reh_tags"]);
 			});
 			
             $.getJSON("locale/"+_check.lang+"/classification.json", function(_json) {
@@ -153,6 +160,7 @@ $(window).ready(function() {
 		<select id="re_diff" onchange="update(this);"><option id="re_diff1" value="1"></option><option id="re_diff2" value="2"></option><option id="re_diff3" value="3"></option><option id="re_diff4" value="4"></option><option id="re_diff5" value="5"></option></select>
 		<input type="text" id="re_duration" onkeyup="update(this);"></input>
 		<select id="re_level" onchange="update(this);"><option id="re_level1" value="1"></option><option id="re_level2" value="2"></option><option id="re_level3" value="3"></option><option id="re_level4" value="4"></option><option id="re_level5" value="5"></option></select>
+		<textarea id="re_tags" onkeyup="update(this);"></textarea>
 		<textarea id="re_label" onkeyup="update(this);"></textarea>
 		<textarea id="re_comment" onkeyup="update(this);"></textarea>
 	</div>

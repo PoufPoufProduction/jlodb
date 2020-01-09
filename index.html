@@ -56,6 +56,7 @@
 		#adpanel .adrelt div { float:left; }
 		#adpanel .adrelt .adrid { width:20%; height:2em; background-color:#444; color:white; text-align:center; font-size:1.5em; cursor:pointer; padding-top:.1em; }
 		#adpanel .adrelt .adrtitle { width:34%; color:white; font-size:.6em; padding:0 .2em; }
+		#adpanel .adrelt .adrtitle .tag { text-decoration:italic; color:#ADF; }
 		#adpanel .adrelt .adrcomment { width:34%; color:black; background-color:#AAA; font-size:.6em; padding:0 .2em; height:4em; }
 		#adpanel .adrelt .adrvalues { font-size:1.2em; width:2.2em; }
 		#adpanel .adrelt .adrcancel { font-size:2.4em; cursor:pointer; }
@@ -423,7 +424,14 @@ jlodb = {
 						var r = _report.reports[i];
 						var $elt=$("<div class='adrelt'></div>");
 						$elt.append("<div class='adrid' onclick='jlodb.run({id:\""+r.exercice+"\"},true);' >"+r.exercice+"</div>");
-						$elt.append("<div class='adrtitle'>"+r.title+"<div>");
+						var txt = r.title;
+						if (r.tags.length) {
+							var tags = r.tags.split(",");
+							for (var t in tags) {
+								txt+=" <span class='tag'>#"+tags[t]+"</span>";
+							}
+						}
+						$elt.append("<div class='adrtitle'>"+txt+"<div>");
 						$elt.append("<div class='adrcomment'>"+r.comment+"<div>");
 						$elt.append("<div class='adrvalues'>"
 							+"<div class='icon'><img src='res/img/classification/"+r.classification+".svg' alt=''/></div>"
