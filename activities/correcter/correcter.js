@@ -14,6 +14,7 @@
         background  : "",                   // Background image
 		commas		: ".,:;\"",				// Commas
 		split		: " ",					// Split
+		order		: [],					// Order for props
 		highlight	: false,				// Highlight words
 		errratio	: 1,
 		animation   : true,					// Animation
@@ -322,7 +323,21 @@
                             for (var i=0; i<settings.dictionary[goodWord].length; i++) { response.push(settings.dictionary[goodWord][i]); }
                         }
                         shuffle(response);
-                        response.sort(function(_a,_b) { return _a.localeCompare(_b); });
+						
+						if (settings.order.length) {
+							response.sort(function(_a,_b) {
+								var va = 99;
+								var vb = 99;
+								for (var o=0; o<settings.order.length; o++) {
+									if (settings.order[o]==_a) { va=o; }
+									if (settings.order[o]==_b) { vb=o; }
+								}									
+								return va-vb;
+							});
+						}
+						else {
+							response.sort(function(_a,_b) { return _a.localeCompare(_b); });
+						}
 
                         // Fill the popup
                         var reg=new RegExp("(')" ,"g"), nb = 1;
