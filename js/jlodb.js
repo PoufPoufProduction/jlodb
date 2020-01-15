@@ -72,6 +72,7 @@ jtools = {
             "\\\[bb\\\](.+)\\\[/bb\\\]",                                    "<b>$1</b>",
 			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                                "<i>$1</i>",
 			"\\\[br\\\]",                                                   "<br/>",
+			"\\\[clear\\\]",                                                "<div style='clear:both'></div>",
 			"\\\[op[ ]*([^\\\]]+)]([^\\\[]+)\\\[/op([^\\\]]*)\\\]",         "<span style='opacity:$1;'>$2</span>",
 			"\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",                          "<span class='t_tiny'>$1</span>",
 			"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",                        "<span class='t_small'>$1</span>",

@@ -48,10 +48,10 @@ if (!$error) {
         while($row = mysqli_fetch_array($ret)) {
             if (strlen($json)) { $json.=","; }
             $json.='{"id":"'.$row["Report_Id"].'",'.
-				'"exercice":"'.str_replace("\n"," ",$row["Report_Exercice"]).'","comment":"'.str_replace("\n"," ",$row["Report_Description"]).'",'.
-				'"title":"'.str_replace("\n"," ",$row["Report_Title"]).'",'.'"level":"'.str_replace("\n"," ",$row["Report_Level"]).'",'.
-				'"diff":"'.str_replace("\n"," ",$row["Report_Difficulty"]).'",'.'"classification":"'.str_replace("\n"," ",$row["Report_Classification"]).'",'.
-				'"duration":"'.str_replace("\n"," ",$row["Report_Duration"]).'",'.'"tags":"'.str_replace("\n"," ",$row["Report_Tags"]).'",'.'"date":"'.$row["Report_Date"].'"}';
+				'"exercice":"'.jsonFormat($row["Report_Exercice"]).'","comment":"'.jsonFormat($row["Report_Description"]).'",'.
+				'"title":"'.jsonFormat($row["Report_Title"]).'",'.'"level":"'.jsonFormat($row["Report_Level"]).'",'.
+				'"diff":"'.jsonFormat($row["Report_Difficulty"]).'",'.'"classification":"'.jsonFormat($row["Report_Classification"]).'",'.
+				'"duration":"'.jsonFormat($row["Report_Duration"]).'",'.'"tags":"'.jsonFormat($row["Report_Tags"]).'",'.'"date":"'.$row["Report_Date"].'"}';
         }
 	}
 	$status="success";

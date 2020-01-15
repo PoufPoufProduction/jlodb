@@ -10,6 +10,7 @@
         sep         : " .,'-;:\"?!»«",                          // The separators
 		endline		: "¤",
         background  : "",
+		errratio    : 1,
         debug       : true                                     // Debug mode
     };
 
@@ -366,7 +367,7 @@
 						}, 1500);
 					}
 					else {
-						settings.score = 5 - nbErrors;
+						settings.score = 5 - nbErrors*settings.errratio;
 						if (settings.score<0) { settings.score = 0; }
 						$(this).find("#valid").hide();
 						setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, (settings.score!=5)?3000:500);

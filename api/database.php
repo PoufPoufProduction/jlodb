@@ -13,6 +13,13 @@ $status     = "error";
 $error      = 0;
 $textstatus = "";
 
+function jsonFormat($text) {
+	$ret = $text;
+	$ret = str_replace("\n"," ",$ret);
+	$ret = str_replace('"','\"',$ret);
+	return $ret;
+}
+
 session_start();
 
 if ( !array_key_exists("database",$_SESSION) || (isset($forceReadFile)&&$forceReadFile))  {
