@@ -43,6 +43,7 @@ $(window).ready(function() {
     if (args.id)       { options.id = args.id; } else {
         if (args.activity)          { options.activity = args.activity; }
         if (args.classification)    { options.classification = args.classification; }
+		if (args.tag)               { options.tag = args.tag; }
     }
     if (args.nosplash)   { $("body").addClass("nosplash"); }
     if (args.standalone) { standalone = true; }

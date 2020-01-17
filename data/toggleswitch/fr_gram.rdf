@@ -258,9 +258,127 @@
 		<dct:coverage xml:lang="fr-FR">cdn</dct:coverage>
     </rdf:Description>
 	
-	
+	<!-- 3. [PH] La phrase, majuscule et ponctuation -->
+	<!-- m: mots, p: ponctuation -->
 
 	
+	
+    <rdf:Description>
+        <dct:identifier>_gph01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Barrer les phrases mal construites.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper01.svg","values":[{"template":"array1x5","result":"10111","t":["tout va bien.","Le papillon vole au-dessus de la maison.","L'araignée monte à la gouttière","le chien n'est pas très content","Cheval le parfois contre."]},{"template":"array1x5","result":"01110","t":["La mer est calme.","le soleil brille.","Il très chaud.","J'ai du sable dans mes chaussures","C'est un bel été."]},{"template":"array1x5","result":"11010","t":["Les vaches regardent le train passer","l'âne est un animal tétu.","Le chien du voisin n'est pas gentil.","Petit lait chat chat boit.","Les dindons me font peur."]}],"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Une phrase débute par une [red]majuscule[/red], finit par un [red]point[/red] et a un [red]sens[/red] ([i]elle veut dire quelque chose[/i]). [b]Barrez[/b] les phrases [red]fausses[/red].","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+		<dct:coverage xml:lang="fr-FR">phrase</dct:coverage>
+        <dct:alternative>_gph01</dct:alternative>
+        <dct:source>res/img/background/landscape/wallpaper01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_gph02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Barrer les phrases mal construites.</dct:title>
+        <dct:description><![CDATA["values":[{"template":"array1x5","result":"01100","t":["Dans huit jours nous serons à Londres.","elle est bien plus malheureuse que moi","cherchait Il se et trouvait plus ne se.","Je leur parlerai de Robespierre, pardi.","Et pourquoi a-t-il pris cette échelle ?"]},{"template":"array1x5","result":"11001","t":["cet homme, nous le connaissons déjà.","Revue depuis je plus ce jour, ne l'ai.","Donner sa démission, c'est honorable.","Ce cavalier passa et ne nous dit rien.","mon père était à la pêche au loin"]},{"template":"array1x5","result":"00001","t":["C'est pourtant dommage de manquer ça.","Il faut donc prendre ses précautions.","Et nous, que ferons-nous en attendant ?","Mais qu'est-ce que je vais donc faire ?","La mer était magnifique, le ciel pur"]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+		<dct:coverage xml:lang="fr-FR">phrase</dct:coverage>
+        <dct:alternative>_gph01</dct:alternative>
+        <dct:relation>_gph01</dct:relation>
+        <dct:source>res/img/background/landscape/wallpaper01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_gphm01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer par un espace les mots de la phrase [ Ilfaitduvélo, Legarçoncourt, Ellejouedelaguitare ].</dct:title>
+        <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/graycarpet01.svg","data":"<div style='margin-top:50%;margin-left:5%;font-size:1.2em;font-family: \\\"Courier New\\\" Courier monospace;color:#332200;height:1.2em;'><div style='margin-top:.2em;background-color:rgba(255,255,255,0.5);border-radius:.1em;width:12em;padding:.1em;height:1.2em;'><div class='t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div><div class='a t' style='float:left;'></div></div></div><div id='illustration' style='position:absolute;width:1em;height:1em;font-size:7.5em;top:1%;left:30%;background-color:white;border:2px solid black;'></div>","states":{ "nb":2,"style":[{"margin-left":"0"},{"margin-left":"0.3em"}]},"wrong":{"style":{"color":"red"}},"values":[{"result":"01000101000000000000","t":"Ilfaitduvélo."},{"result":"01000001000000000000","t":"Legarçoncourt."},{"result":"00010001010100000000","t":"Ellejouedelaguitare."}],"illustration":["res/img/clipart/sport/cyclist01.svg","res/img/clipart/event/runningboy01.svg","res/img/clipart/music/guitarplayer01.svg"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les mots de la phrase sont attachés. [b]Séparez-les[/b] en ajoutant [red]un espace devant[/red] les premières lettres de chaque mot.","fontex":0.8]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_gphm01</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">phrase</dct:coverage>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/clipart/sport/cyclist01.svg,res/img/clipart/event/runningboy01.svg,res/img/clipart/music/guitarplayer01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>_gphm02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer par un espace les mots de la phrase [ Mononclelitlejournal, Ilvabientôtpleuvoir, Elsasauteàlacorde ].</dct:title>
+        <dct:description><![CDATA["values":[{"result":"0010001001010000000","t":"Monpèrelitlejournal."},{"result":"01010000001000000000","t":"Ilvabientôtpleuvoir."},{"result":"00010000110100000000","t":"Elsasauteàlacorde."}],"illustration":["res/img/clipart/event/reading01.svg","res/img/clipart/event/rainiscoming01.svg","res/img/clipart/sport/jumping01.svg"]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_gphm01</dct:alternative>
+        <dct:relation>_gphm01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">phrase</dct:coverage>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/clipart/event/reading01.svg,res/img/clipart/event/rainiscoming01.svg,res/img/clipart/sport/jumping01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>_gphm03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer par un espace les mots de la phrase [ Mangerfaitdubien, eaugèleàzérodegré, Venezicitoutdesuite ].</dct:title>
+        <dct:description><![CDATA["values":[{"result":"00000100010100000000","t":"Mangerfaitdubien."},{"result":"00001000110001000000","t":"L'eaugèleàzérodegré."},{"result":"00001001000101000000","t":"Venezicitoutdesuite."}],"illustration":["res/img/clipart/food/grocerybasket01.svg","res/img/clipart/building/igloo01.svg","res/img/clipart/event/runningboy01.svg"]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_gphm01</dct:alternative>
+        <dct:relation>_gphm01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">phrase</dct:coverage>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/clipart/food/grocerybasket01.svg,res/img/clipart/building/igloo01.svg,res/img/clipart/event/runningboy01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>_gphm04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer par un espace les mots de la phrase [ Tunemecroisjamais, Ilboitbeaucoupdethé, Allezdanslejardin ].</dct:title>
+        <dct:description><![CDATA["values":[{"result":"01010100001000000000","t":"Tunemecroisjamais."},{"result":"01000100000001010000","t":"Ilboitbeaucoupdethé."},{"result":"00001000101000000000","t":"Allezdanslejardin."}],"illustration":["res/img/clipart/people/littlegirl01.svg","res/img/clipart/event/drinkscoffee02.svg","res/img/clipart/vegetable/tree01.svg"]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_gphm01</dct:alternative>
+        <dct:relation>_gphm01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">phrase</dct:coverage>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/clipart/people/littlegirl01.svg,res/img/clipart/event/drinkscoffee02.svg,res/img/clipart/vegetable/tree01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>_gphm05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer par un espace les mots de la phrase [ Lecarpartbientôt, Ilestmidimoinssix, Ilvaàlamercetété ].</dct:title>
+        <dct:description><![CDATA["values":[{"result":"01001000100000000000","t":"Lecarpartbientôt."},{"result":"01001000100001000000","t":"Ilestmidimoinssix."},{"result":"01011010010010000000","t":"Ilvaàlamercetété."}],"illustration":["res/img/clipart/vehicle/bus02.svg","res/img/clipart/tool/pocketwatch01.svg","res/img/clipart/building/lighthouse01.svg"]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_gphm01</dct:alternative>
+        <dct:relation>_gphm01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">phrase</dct:coverage>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/clipart/vehicle/bus02.svg,res/img/clipart/tool/pocketwatch01.svg,res/img/clipart/building/lighthouse01.svg</dct:source>
+    </rdf:Description>
+
+	
+    <rdf:Description>
+        <dct:identifier>_gphp01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer les différentes phrases du texte.</dct:title>
+        <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/yellowboard02.svg","data":"<div style='margin-top:10%;padding:1%;margin-left:4%;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:90%;height:65%;font-size:1em;font-family: \\\"Courier New\\\" Courier monospace;'><div class='t' style='float:left;margin-left:0.3em;'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div></div>","states":{ "nb":2,"style":[{"margin-left":"0.3em","float":"left"},{"margin-left":"0.3em","float":"left"}]},"wrong":{"style":{"color":"red"}},"values":[{"result":"000000100000000010000000000000","t":["Ce","matin,","la","petite Lizzie","s'est","levée","tôt","elle","est","sortie","de","la","chambre","sans","réveiller","sa","soeur","à","la","cuisine,","elle","a","préparé","le","petit-déjeuner","pour","tout","le","monde."]},{"result":"000001000010000000000100000000","t":["La","fillette","a","sorti","des","bols","elle","a","ouvert","le","frigo","sur","la","table,","elle","a","posé","le","lait","et","la","confiture","quel","travail !"]}],"onclick":"function($this,elts,id){var c = elts[id].elt.html(); if (elts[id].state) { elts[id].elt.html(c[0].toLowerCase()+c.substr(1)); elts[id].elt.prev().html(elts[id].elt.prev().html().replace('.','')); } else { elts[id].elt.html(c[0].toUpperCase()+c.substr(1)); elts[id].elt.prev().append('.'); } return true;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Séparez[/b] les différentes phrases du texte en cliquant sur le [red]premier mot[/red] de chacune d'entre elles."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_gphp01</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">phrase</dct:coverage>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	
+	
+
 	
 	<!-- DEPRECATED -->
 

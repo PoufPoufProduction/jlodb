@@ -465,7 +465,7 @@
                     if (settings.scorefct) { wrongs = eval('('+settings.scorefct+')')($this, settings.current.elts, settings); }
                     else {
 						var result = "";
-                        for (var i=0; i<settings.current.result.length; i++) {
+                        for (var i=0; i<Math.min(settings.current.result.length,settings.current.elts.length); i++) {
 							var s=settings.current.elts[i].state;
 							if (settings.same && settings.same[s]) { s = settings.same[s]; }
 							result+=s;
