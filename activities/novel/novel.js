@@ -957,8 +957,8 @@
                     
                     if (!options.dev) {
                         $(document).keypress(function(_e) {
-                            if (_e.keyCode!=116) { helpers.key($this, _e.keyCode); _e.preventDefault(); }
-                        });
+                            helpers.key($this, _e.keyCode); _e.preventDefault(); }
+                        );
                     }
                     
                     // HANDLE FRAME STUFF

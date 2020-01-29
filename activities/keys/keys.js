@@ -273,7 +273,7 @@
                     helpers.unbind($this);
 					
                     $(document).keypress(function(_e) {
-                        if (_e.keyCode!=116) { helpers.key($this, String.fromCharCode(_e.which)); _e.preventDefault(); } });
+						helpers.key($this, String.fromCharCode(_e.which)); _e.preventDefault(); });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
