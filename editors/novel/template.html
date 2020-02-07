@@ -1,0 +1,53 @@
+<div>
+	<div class="j_ecol j_epart" id="e_control"><div>
+		<textarea id='e_export' class='export' style="font-size:.3em"></textarea>
+		<div class='l g_bluekey'
+			ontouchstart="$(this).closest('.novel_editor').novel_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.novel_editor').novel_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="j_ecol j_epart" id="e_helppanel" style="display:none;"><div style="font-size:.5em; color:white">
+		<h3>def</h3>
+<pre>id : { url : { state1 : "" , state2 : "" } ,
+       attr : { class, size, [css] } }</pre>
+		<h3>story</h3>
+<pre>chapter : [ { type : XXX , [args] } ]
+
+dialog  : text:"ref", from:"id"
+dialogg : text:"ref"
+error   : value:1
+hide    : value:"id", attr:{anim}
+if      : cond:"$var", value:[[],[]]
+jump    : value:"chapter"
+menu    : value:[{"text":"", "story":[]}]
+op      : value:"$var"
+pause   : value:1
+stop    :
+show    : value:"id state",
+          attr:{anim, onclick, [css]}</pre>
+<br/>
+		<h3>glossary</h3>
+<pre>{ "ref1" : "text1", "ref2" : "text2" }</pre>
+<br/>
+		<h3>values</h3>
+<pre>anim    : dissolve, {from|to}{right|left|top|bottom}
+onclick : "chapter keyCode"
+class   : "portrait", "sprite", "frame"
+text    : "value" | [ "cond" , "true" , "false" ]</pre>
+	</div></div>
+	
+	<div class="j_epanel j_epart" id="e_screen"><div></div></div>
+
+
+	<div class="j_epanel j_epart" id="e_menu"><div>
+		<div id="e_help" class="l g_bluekey"
+			ontouchstart="$(this).closest('.novel_editor').novel_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.novel_editor').novel_editor('edit',this);">?</div>
+		<div id="e_submit" class="l g_bluekey"
+			ontouchstart="$(this).closest('.novel_editor').novel_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.novel_editor').novel_editor('edit',this);">→ jLoDb</div>
+	</div></div>
+</div>
+

@@ -128,6 +128,8 @@ ul                              { list-style:none; }
 .jlodb #activity.edit .edit		{ display:inherit; }
 
 
+/*============== EDITOR PARTS ===============*/
+
 .j_editor                       { background-color:#555; font-size:.5em; position:relative; width:32em; height:24em; }
 .j_editor .j_epart			    { font-size:.96em; float:left; margin:.1em .2em; border:.1em solid white; background-color:#222; position:relative; }
 .j_editor .j_epart>div		    { width:101%;height:100%; }
@@ -137,7 +139,7 @@ ul                              { list-style:none; }
 
 .j_editor .j_epart .l			{ width:99%; height:1.2em; font-size:1em; color:white; margin:.1em .05em; text-align:center; cursor:pointer; border:0; float:left;  }
 .j_editor .j_epart .l.d2		{ width:49%; }
-.j_editor #e_control textarea			{ font-size:0.6em; background-color:#222; color:white; border:0; width:99%; height:94%; }
+.j_editor #e_control textarea			{ font-size:0.6em; background-color:#222; color:white; border:0; width:99%; height:94%; overflow:auto; }
 .j_editor #e_control .l { color:white; text-align:center; cursor:pointer; }
 
 /*============== MENU =======================*/

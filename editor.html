@@ -12,7 +12,7 @@
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
     <link rel="icon" type="image/png" href="favicon.ico" />
 	<style>
-	#editor_panel { position:absolute; width:100%; height:100%; background-color:rgba(0,0,0,0.6); top:0; left:0; font-size:.5em; display:none; z-index:100; }
+	#editor_panel { position:absolute; width:100%; height:100%; background-color:rgba(0,0,0,0.6); top:0; left:0; font-size:.5em; display:none; z-index:200; }
 	#editor_panel>div { background-color:rgba(255,255,255,0.9); width:80%; height:80%; margin:5% 10%; border:.1em solid white;  display:block; }
 	#editor_panel input { background-color:#333; color:white; border:0; width:80%; margin-left:5%; padding:0 5%;font-size:1em; }
 	#editor_panel textarea { background-color:#333; color:white; border:0; width:80%; margin-left:5%; padding:0 5%;font-size:0.8em; height:8em; }
@@ -24,6 +24,8 @@
 
 var name = "";
 onsubmit = function(_json) {
+	var vReg = RegExp("\n","g");
+	_json = _json.replace(vReg,"");
 	$("#editor_panel #editor_data").html(_json);
 	$("#editor_panel").show();
 }
