@@ -1,14 +1,22 @@
 .memory                                 { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .memory>div                             { width:100%; height:100%; }
-.memory table                           { margin:0 auto; border:2px solid rgb(53,34,34); margin-top:2%; font-size:1.8em; }
-.memory #myboard td                     { width:1.2em; height:1.2em; color:rgb(30,63,128); text-align:center; background-size: 100%; background-repeat:no-repeat; background-color:rgba(255,252,246,0.8); }
-.memory #myboard td div                 { width:1.2em; height:1.2em; margin:0 auto; color: rgba(53,34,34,0.8);}
-.memory #myboard td.active              { background-color:rgba(255,220,162,0.8); }
+.memory #mynav							{ position:absolute; width:26%; height:100%; top:0; left:75%; background-color:rgba(40,40,40,0.8); border:1px solid white; border-width:0 0 0 .1em; } 
+.memory table                           { margin-top:2%; margin-left:5%; border:2px solid rgb(53,34,34);  font-size:1.8em; background-color:rgba(255,255,255,0.8); }
+.memory #myboard td                     { width:1.2em; height:1.2em; color:rgb(30,63,128); text-align:center; background-size: 100%; background-repeat:no-repeat; background-color:rgba(255,252,246,0.6); }
+.memory #myboard td div                 { width:1.2em; height:1.2em; margin:0 auto; color: rgba(53,34,34,0.6);}
+.memory #myboard td.active              { background-color:rgba(255,220,162,0.6); }
 .memory #myboard td.false               { background-color:rgba(255,80,65,1.0); }
 .memory #myboard td.good                { background-color:rgba(80,255,65,1.0); }
 .memory.active #myboard td.active div   { cursor:pointer; }
 .memory #g_splash                       { background-image:url("../../res/img/banners/memory.svg"); background-color:rgba(0,0,0,0.2); }
-.memory #g_splash #explanation          { position:absolute; top:40%; left:69%; font-size:.6em; width:25%; font-style:italic; text-align:justify; }
-.memory #g_splash table                 { margin-top:1em; font-size:.8em; border:0; background-color:none; }
-.memory #g_splash #number_l             { width:14em; }
-.memory #g_splash #number_v             { width:2em; }
+.memory #mylifes						{ font-size:1.3em; background-color:white;margin-top:5%; }
+.memory #mylifes>div                    { float:left;}
+.memory .mys                        { margin-top:5%; border:1px solid white; border-width:.1em 0; background-color:rgba(128,128,128,0.5); position:relative; width:95%; height:1.2em; }
+.memory #mylid							{ margin:0 auto; color:white; text-align:center; position:absolute; top:0;width:100%; }
+.memory .mylslider						{ top:0; left:0; height:1.2em; width:0; background-color:rgba(200,100,100,0.8); }
+.memory #myminus1                       { position:absolute; top:2%; left:60%; font-size:4em; display:none; }
+.memory #mymonkeys                      { font-size:3.9em; margin-top:5%; }
+.memory #mym2                           { display:none; }
+.memory #mymonkeys.s #mym1				{ display:none; }
+.memory #mymonkeys.s #mym2				{ display:inherit; }
+

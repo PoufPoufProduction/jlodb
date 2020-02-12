@@ -12,7 +12,9 @@
         debug       : true                                     // Debug mode
     };
 
-
+	
+    var gReg         = new RegExp("[$]","g");
+	
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -98,17 +100,6 @@
                 setTimeout(function() { $this[settings.name]('next'); }, 500);
             }
         },
-        text: function($this, _txt) {
-            var settings = helpers.settings($this);
-            var ret = _txt;
-            if ($.isArray(ret)) {
-                try { var test = eval(ret[0].replace("$","settings.data.")); ret = ret[test?1:2]; }
-                catch (e) { ret = ret[1]; }
-            }
-
-            if (settings.glossary && settings.glossary[ret]) { ret = settings.glossary[ret]; }
-            return jtools.format(ret);
-        },
         init: function($this) {
             var settings = helpers.settings($this);
             var first = false, name = "init";
@@ -132,7 +123,6 @@
                 var elt         = pc.story[pc.p];
                 var timer       = 0;
                 var next        = true;
-                var reg         = new RegExp("[$]","g");
                 switch(elt.type) {
                     case "callback" :
                         if (settings.callback && settings.callback[elt.value]) {
@@ -155,9 +145,9 @@
                             html+=">";
 
                             if (settings.def[elt.from] && settings.def[elt.from].text) {
-                                html+="<div class='label'>"+helpers.text($this, settings.def[elt.from].text)+"</div>";
+                                html+="<div class='label'>"+helpers.getvalue($this, settings.def[elt.from].text,true)+"</div>";
                             }
-                            html+="<div class='content'>"+helpers.text($this, elt.text)+"</div>";
+                            html+="<div class='content'>"+helpers.getvalue($this, elt.text,true)+"</div>";
                             html+= "</div>";
                             $this.find("#nlboard").append(html);
                             timer = -1;
@@ -165,17 +155,13 @@
                         }
                         break;
                     case "dialogg" :
-                        $this.find("#nlboard #dialog .content").append(helpers.text($this, elt.text)).parent().show();
+                        $this.find("#nlboard #dialog .content").append(helpers.getvalue($this, elt.text,true)).parent().show();
                         timer = -1;
                         setTimeout(function(){ settings.state = "dialog"; }, 200);
                         break;
                     case "error" : settings.score -= elt.value?elt.value:1; break;
                     case "hide" :
-                        var value = elt.value;
-                        if (value.indexOf("$")!=-1) {
-                            try { value = eval(value.replace(reg,"settings.data.")+";"); }
-                            catch (e) { alert("error with: "+value); }
-                        }
+                        var value = helpers.getvalue($this,elt.value,false);
                         var e = value.split(" ");
                         var $elt = $this.find("#elt"+e[0]);
                         if ($elt.length) {
@@ -198,17 +184,13 @@
                         break;
                     case "if"   :
                         var rep = true;
-                        try { rep = eval(elt.cond.replace(reg,"settings.data.")+";"); }
+                        try { rep = eval(elt.cond.replace(gReg,"settings.data.")+";"); }
                         catch (e) { alert("error with: "+elt.cond); }
                         if (rep) { settings.pc.push({story:elt.value[0], p:0, n:"if"}); }
                         else if (elt.value.length>1) { settings.pc.push({story:elt.value[1], p:0, n:"if"}); }
                         break;
                     case "jump" :
-                        var dest = elt.value;
-                        if (elt.value[0]=='$') {
-                            try { dest = eval(dest.replace(reg,"settings.data.")); }
-                            catch (e) { alert("error with: "+dest); }
-                        }
+                        var dest = helpers.getvalue($this,elt.value,false);
                         if (settings.content.story[dest]) {
                             settings.pc = [ {story: settings.content.story[dest], p:0 , n:dest } ];
                             next =false;
@@ -218,34 +200,25 @@
                         next = false; timer = -1;
                         var $html=$("<div id='menu'></menu>");
                         if (elt.attr&&elt.attr["class"]) {
-                            var value = elt.attr["class"];
-                            if (value.indexOf("$")!=-1) {
-                                try { value = eval(value.replace(reg,"settings.data.")+";"); }
-                                catch (e) { alert("error with: "+value); }
-                            }
-                            $html.addClass(value);
+                            $html.addClass(helpers.getvalue($this,elt.attr["class"],false));
                         }
                         for (var i in elt.value) {
                             var m = "<div class='g_bluekey' id='r"+i+"'";
                             m+=" onclick='$(this).closest(\".novel\").novel(\"menu\",this,"+i+");'";
                             m+=" ontouchstart='$(this).closest(\".novel\").novel(\"menu\",this,"+i+");event.preventDefault();'";
-                            m+=">"+helpers.text($this,elt.value[i].text)+"</div>";
+                            m+=">"+helpers.getvalue($this,elt.value[i].text,true)+"</div>";
                             $html.append(m);
                         }
                         $this.find("#nlboard").append($html);
                         break;
                     case "op" :
-                            try { eval(elt.value.replace(reg,"settings.data.")+";"); }
+                            try { eval(elt.value.replace(gReg,"settings.data.")+";"); }
                             catch (e) { alert("error with: "+elt.value); }
                         break;
                     case "pause"  : timer = parseFloat(elt.value)*1000; break;
                     case "stop"   : next = false; timer = -1; break;
                     case "show" :
-                        var value = elt.value;
-                        if (value.indexOf("$")!=-1) {
-                            try { value = eval(value.replace(reg,"settings.data.")+";"); }
-                            catch (e) { alert("error with: "+value); }
-                        }
+                        var value = helpers.getvalue($this,elt.value,false);
                         var e = value.split(" ");
                         var def = settings.def[e[0]];
                         
@@ -255,11 +228,7 @@
                             var type = def.attr?def.attr.type:"img";
 
                             var url="";
-                            if (e.length>1) { url = def.url[e[1]]; }
-                            if (url && url.indexOf("$")!=-1) {
-                                try { url = eval(url.replace(reg,"settings.data.")+";"); }
-                                catch (e) { alert("error with: "+url); }
-                            }
+                            if (e.length>1) { url = helpers.getvalue($this,def.url[e[1]],false); }
                             
                             if ($elt.length) {
                                 oldleft     = $elt.css("left");
@@ -268,14 +237,14 @@
                                 
                                 switch(type) {
                                     case "frame":   $elt.replace($(helpers.framefromdef($this, url, e[0], def.attr)));   break;
-                                    case "text":    $elt.replace($(helpers.textfromdef($this, e[0], def.attr)));        break;
+                                    case "text":    $elt.replace($(helpers.getvaluefromdef($this, e[0], def.attr)));        break;
                                     default:        if (e.length>1) { $elt.find("img").attr("src",url); }     break;
                                 }
                             }
                             else {
                                 switch(type) {
                                     case "frame":   $elt = $(helpers.framefromdef($this, url, e[0], def.attr));   break;
-                                    case "text":    $elt = $(helpers.textfromdef($this, e[0], def.attr));                   break;
+                                    case "text":    $elt = $(helpers.getvaluefromdef($this, e[0], def.attr));                   break;
                                     default:        $elt = $(helpers.imgfromdef($this, url, e[0], def.attr));     break;
                                 }
                                 
@@ -286,14 +255,8 @@
                             var leftv= (elt.attr && elt.attr.left)? elt.attr.left : ( (def.attr && def.attr.left)?def.attr.left:"" );
                             var topv= (elt.attr && elt.attr.top)? elt.attr.top : ( (def.attr && def.attr.top)?def.attr.top:"" );
                             
-                            if (leftv.indexOf("$")!=-1) {
-                                try { leftv = eval(leftv.replace(reg,"settings.data.")+";"); }
-                                catch (e) { alert("error with: "+leftv); }
-                            }
-                            if (topv.indexOf("$")!=-1) {
-                                try { topv = eval(topv.replace(reg,"settings.data.")+";"); }
-                                catch (e) { alert("error with: "+topv); }
-                            }
+                            leftv = helpers.getvalue($this,leftv,false);
+                            topv  = helpers.getvalue($this,topv,false);
 
                             if (leftv)  { $elt.css("left", leftv); }
                             if (topv)   { $elt.css("top", topv); }
@@ -364,6 +327,30 @@
                 }
             }
         },
+		getvalue:function($this, _value, _glossary) {
+            var settings    = helpers.settings($this);
+			var ret         = _value;
+			
+			if ($.isArray(ret)) {
+				try {
+					var test = eval(ret[0].replace(gReg,"settings.data."));
+					return helpers.getvalue($this,ret[test?1:2],_glossary);
+				}
+				catch (e) { alert("conditional error with: "+_value[0]); ret = _value[1]; }
+			}
+			else
+            if (ret.indexOf("$")!=-1) {
+                try { ret = eval(ret.replace(gReg,"settings.data.")+";"); }
+                catch (e) { alert("error with: "+_value); }
+            }
+			
+			if (_glossary)
+			{
+				if ( settings.glossary && settings.glossary[ret]) { ret = settings.glossary[ret]; }
+				ret = jtools.format(ret);
+			}
+			return ret;
+		},
         imgfromdef: function($this, _url, _id, _attr) {
             var settings    = helpers.settings($this);
             var style="";
@@ -388,15 +375,10 @@
             if (_attr&&_attr.index)       { style+="z-index:"+_attr.index+";" }
             if (_attr&&_attr.size)        { style+="font-size:"+_attr.size+"em;" }
             if (_attr&&_attr.color)       { style+="color:"+_attr.color+";" }
-            
-            var value = _attr.value;
-            if (value.indexOf("$")!=-1) {
-                try { value = eval(value.replace(reg,"settings.data.")+";"); }
-                catch (e) { alert("error with: "+value); }
-            }
-                            
+                       
             elt = "<div "+(_attr&&_attr["class"]?"class='"+_attr["class"]+"' ":"")+"id='elt"+_id+"'"+
-                    (style?" style='"+style+"'":"")+">"+jtools.format(value)+"</div>";
+                    (style?" style='"+style+"'":"")+">"+helpers.getvalue($this,_attr.value,true)+"</div>";
+					
             return elt;
             
         },

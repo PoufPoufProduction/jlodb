@@ -5,11 +5,10 @@
         template    : "template.html",      // Memory's html template
         css         : "style.css",          // Mermory's css style sheet
         lang        : "fr-FR",              // Current localization
-        delay       : 2000,                 // Time of display the values
-        attempt     : 0,                    // Number of errors authorized
-        score       : 1,                    // The score (from 1 to 5)
-        level       : 3,                    // The beginning level
-        inclevel    : true,                 // Increase the level after each success
+        delay       : [2000,0],             // Time of display the values
+        level       : [3,0],                // The beginning level
+		number      : 5,                    // Number of levels
+		mapping     : [],
         background  : "",
         debug       : true                 // Debug mode
     };
@@ -74,50 +73,107 @@
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-                var n = settings.level;
-                if (settings.inclevel) n=n+"+";
-                $this.find("#number_v").html(n);
-                $this.find("#exposure_v").html(settings.delay/1000);
-                $this.find("#error_v").html(settings.attempt);
                 if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+		clear: function($this) {
+            var settings = helpers.settings($this);
+			$this.find("td div").animate({opacity:0},500, function() { $(this).html("").parent().removeClass(); });
+			$this.find("#g_effects").removeClass();
+			setTimeout(function(){helpers.next($this); }, 800);
+		},
+		next: function($this) {
+            var settings = helpers.settings($this);
+			
+			if ($.isArray(settings.level)) {
+				settings.current.level = settings.level[0] + settings.count*settings.level[1];
+			} else { settings.current.level = settings.level; }
+			if ($.isArray(settings.delay)) {
+				settings.current.delay = settings.delay[0] + settings.count*settings.delay[1];
+			} else { settings.current.delay = settings.delay; }
+			
+			$this.find("#mylid").html(settings.current.level);
+			
+			$this.find("#mycount").css("width",(100*settings.count/settings.number)+"%");
+			
+            // build the numbers array
+            var a = [];
+            for (i=0; i<settings.current.level; i++) { a.push(i); }
+			shuffle(a);
+
+            // fill the grid
+            var i=0;
+			var position = pick(settings.position[settings.current.level]);
+            $this.find("td div").each(function(index) {
+                if (position&Math.pow(2,index)){
+                    $(this).html(settings.mapping.length?settings.mapping[a[i]]:a[i]+1)
+						   .css("opacity",0).animate({opacity:1}, settings.current.delay/2 )
+					       .parent().addClass("active");
+                    settings.soluce[index] = a[i]+1;
+                    i++;
+                }
+            });
+			
+			$this.find("#mymonkeys").addClass("s");
+
+			$this.find("#mydelay").animate({opacity:0}, settings.current.delay/2, function() {
+				$(this).css("width",0).css("opacity",1).animate({width:"100%"},settings.current.delay,function(){helpers.hide($this); });
+			});
+		},
         hide: function($this) {
-            $this.addClass("active").find("td div").each(function(index) { $(this).text(""); });
-            helpers.settings($this).response=0;
+            var settings = helpers.settings($this);
+            $this.addClass("active").find("td div").each(function(index) { $(this).html(""); });
+			$this.find("#mymonkeys").removeClass("s");
+            settings.response=0;
+			settings.interactive = true;
         },
         // compute the score
-        score:function(level, count, inclevel, error) {
-            var l = Math.floor((level-3)/2);
-            if (!inclevel) { l = Math.ceil(count-error/2); }
-            if (l>5) { l = 5; }
-            if (l<0) { l = 0; }
-            return l;
+        score:function($this) {
+            var settings = helpers.settings($this);
+            return 2 + settings.life;
         },
         cont: function($this) {
             var settings = helpers.settings($this);
             // Load the template
-            $this.addClass("active").find(".false").removeClass("false").addClass("active").children().text("");
-            settings.response--;
+            $this.addClass("active").find(".false").removeClass("false").addClass("active").children().html("");
+            settings.interactive = true;
         }
     };
 
     // The plugin
     $.fn.memory = function(method) {
-
+/*
+GRID VALUES
+1		2		4		8		16
+32		64		128		256		512
+1024	2048	4096	8192	16384
+32768	65536	131072	262144	524288
+1048576	2097152	4194304	8388608	16777216
+*/
+	
+	
         // public methods
         var methods = {
             init: function(options) {
                 // The initial settings
                 var settings = {
+					interactive : false,
                     response    : 0,        // The number of good found values
                     soluce      : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-                    position    : [ 0, 4096,  10240,      21504,      328000,     145536,
-                                    459200,   342336,     469440,     473536,     10824010,
-                                    720544,   1034208,    1038304,    15149518,   15153614,
-                                    33080895, 33084991,   33091135,   33216191,   33408895,
-                                    33412991, 33419135,   33544191,   33550335,   33554431 ],
-                    error       : 0,        // The number of errors
+                    position    : [ [0],
+									[4096], 
+									[10240,131200,262208,65792],
+									[21504,16781313,1052688,4198404],
+									[328000,141440,17825809],
+									[332096,145536,17829905],
+                                    [459200,338240],
+									[463296,342336],
+									[469440],     [473536],     [10824010],
+                                    [720544],   [1034208],    [1038304],    [15149518],   [15153614],
+                                    [33080895], [33084991],   [33091135],   [33216191],   [33408895],
+                                    [33412991], [33419135],   [33544191],   [33550335],   [33554431] ],
+					current     : { level: 0, delay: 0 },
+                    life        : 3,        // The number of life
                     count       : 0         // The number of succeed grid
                 };
 
@@ -141,67 +197,43 @@
                 });
             },
             // Next level
-            next: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-
-                 // build the numbers array
-                var a = new Array();
-                for (i=0; i<settings.level; i++) { a.push(i); }
-                for (i=0; i<100; i++) {
-                    var first = Math.floor(Math.random()*settings.level);
-                    var second = Math.floor(Math.random()*settings.level);
-                    var swap = a[first];
-                    a[first] = a[second];
-                    a[second] = swap;
-                }
-
-                // fill the grid
-                var i=0;
-                $(this).find("td div").each(function(index) {
-                    $(this).text("").parent().removeClass("good").removeClass("false").removeClass("active");
-                    if (settings.position[settings.level]&Math.pow(2,index)){
-                        $(this).text(a[i]+1).parent().addClass("active");
-                        settings.soluce[index] = a[i]+1;
-                        i++;
-                    }
-                });
-
-                // launch the game
-                var $this=$(this);
-                setTimeout(function() { helpers.hide($this); } , settings.delay);
-            },
+            next: function() { helpers.next($(this)); },
             // click on a cell for showing the value
             click: function(elt, value) {
-               var $this = $(this) , settings = helpers.settings($this);
-               var $elt=$(elt), $this=$(this);
-               if ($this.hasClass("active") && $elt.hasClass("active")) {
+               var $this = $(this), settings = helpers.settings($this), $elt=$(elt);
+               if ($this.hasClass("active") && $elt.hasClass("active") && settings.interactive ) {
                     $elt.removeClass("active").children().text(settings.soluce[value-1]);
-                    if (settings.soluce[value-1]==++settings.response) {
+                    if (settings.soluce[value-1]==settings.response+1) {
+						settings.response++;
                         $elt.addClass("good");
-                        if (settings.response >= settings.level) {
+                        if (settings.response >= settings.current.level) {
                             $this.removeClass("active");
                             settings.count++;
-                            if (settings.inclevel) { settings.level++; }
-                            if (settings.level>25 || (!settings.inclevel && settings.count>=5)) {
-                                settings.score = helpers.score(settings.level, settings.count, settings.inclevel, settings.error);
-                                setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000);
+							$this.find("#g_effects").addClass("good");
+                            if (settings.current.level>25 || (settings.count>=settings.number)) {
+								$this.find("#mycount").css("width", "100%");
+                                setTimeout(function() { helpers.end($this, {'status':'success', 'score':helpers.score($this)}); }, 1000);
                             }
                             else {
-                                setTimeout(function() { $this.memory('next')}, 500);
+                                setTimeout(function() { helpers.clear($this); }, 500);
                             }
                         }
                     }
                     else {
+						settings.interactive = false;
                         $elt.addClass("false");
                         $this.removeClass("active");
-                        if (++settings.error>settings.attempt) {
-                            settings.score = helpers.score(settings.level, settings.count, settings.inclevel, settings.error);
-                            $this.find("#score").addClass(settings.showscore?"s"+settings.score:"done").show();
-                            setTimeout(function() { helpers.end($this); }, 2000);
+						settings.life--;
+						$this.find("#myminus1").css("opacity",1).show()
+							.animate({opacity:0},1000, function() { $(this).hide(); });
+						for (var i=0; i<3; i++) {
+							$this.find("#myh"+(i+1)+" img").attr("src","res/img/icon/heart0"+(settings.life>i?"1":"2")+".svg");
+						}
+		
+                        if (settings.life==0) {
+                            setTimeout(function() { helpers.end($this, {'status':'success', 'score':0}); }, 2000);
                         }
-                        else {
-                            setTimeout(function() { helpers.cont($this); }, 300);
-                        }
+                        else { setTimeout(function() { helpers.cont($this); }, 300); }
                     }
                 }
             },

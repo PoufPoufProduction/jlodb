@@ -76,17 +76,36 @@
                 onclick="$(this).closest('.memory').memory('click', this,  25);"
                 style="background-image:url('res/img/svginventoryicons/background/border/square01.svg')"><div></div></td></tr>
     </table>
+	
+	<div id="mynav">
+		<div id="mylifes">
+			<div class="icon" id="myh1"><img src="res/img/icon/heart01.svg" alt=""/></div>
+			<div class="icon" id="myh2"><img src="res/img/icon/heart01.svg" alt=""/></div>
+			<div class="icon" id="myh3"><img src="res/img/icon/heart01.svg" alt=""/></div>
+		</div>
+		<div class="mys">
+			<div class="mylslider" id="mycount"></div>
+			<div id="mylid">3</div>
+		</div>
+		<div class="mys">
+			<div class="mylslider" id="mydelay"></div>
+		</div>
+		<div id="mymonkeys">
+			<div class="icon" id="mym1"><img src="ext/noto/svg/emoji_u1f648.svg" alt=""/></div>
+			<div class="icon" id="mym2"><img src="ext/noto/svg/emoji_u1f435ex.svg" alt=""/></div>
+		</div>
+	</div>
+	
+	<div id="g_effects">
+        <div id="g_egood"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="g_ewrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
+	
+	<div id="myminus1" class="icon"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+	
     <div id="g_splash" ontouchstart="$(this).hide().closest('.memory').memory('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.memory').memory('next');"><div>
-            <div id="explanation">
-                <div id="guide"></div>
-                <table>
-                    <tr><td id="number_l"></td><td id="number_v"></td></tr>
-                    <tr><td id="exposure_l"></td><td id="exposure_v"></td></tr>
-                    <tr><td id="error_l">(s)</td><td id="error_v"></td></tr>
-                </table>
-            </div>
-            <h1 id="label"></h1>
+        <h1 id="label"></h1>
     </div></div>
 </div>
 
