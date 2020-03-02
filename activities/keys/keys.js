@@ -243,6 +243,15 @@
 		},
 		key: function($this, _k) {
             var settings = helpers.settings($this);
+			if (_k=="BACK") {
+				if (settings.interactive && settings.lid>0) {
+					$this.find(".ksw").removeClass("s");
+					settings.lid--;
+					helpers.prepare($this, settings.lid);
+					$this.find("#w"+settings.lid).addClass("s");
+				}
+			}
+			else
 			if ( settings.keys[_k]) {
 				var $elt=$this.find("#k"+(settings.convert[_k]?settings.convert[_k]:_k)+".ksk");
 				helpers.touch($this, $elt);
@@ -272,6 +281,9 @@
                     var $this = $(this);
                     helpers.unbind($this);
 					
+					$(document).keydown(function(_e) {
+						if (_e.keyCode == $.ui.keyCode.BACKSPACE) { helpers.key($this,"BACK"); _e.preventDefault(); }
+					});
                     $(document).keypress(function(_e) {
 						helpers.key($this, String.fromCharCode(_e.which)); _e.preventDefault(); });
 
