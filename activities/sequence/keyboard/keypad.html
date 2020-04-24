@@ -1,0 +1,45 @@
+<table>
+    <tr><td colspan="3" id="sescreen" >
+		<div ontouchstart="$(this).closest('.sequence').sequence('key', '*', this);event.preventDefault();"
+			 onclick="$(this).closest('.sequence').sequence('key', '*', this);">0</div></td></tr>
+    <tr>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 7, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 7, this);" class="g_bluekey"><div>7</div></td>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 8, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 8, this);" class="g_bluekey"><div>8</div></td>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 9, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 9, this);" class="g_bluekey"><div>9</div></td>
+    </tr>
+    <tr>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 4, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 4, this);" class="g_bluekey"><div>4</div></td>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 5, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 5, this);" class="g_bluekey"><div>5</div></td>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 6, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 6, this);" class="g_bluekey"><div>6</div></td>
+    </tr>
+    <tr>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 1, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 1, this);" class="g_bluekey"><div>1</div></td>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 2, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 2, this);" class="g_bluekey"><div>2</div></td>
+        <td ontouchstart="$(this).closest('.sequence').sequence('key', 3, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 3, this);" class="g_bluekey"><div>3</div></td>
+    </tr>
+    <tr>
+        <td id="keydec" class="g_bluekey disable"
+			ontouchstart="if (!$(this).hasClass('disable')) { $(this).closest('.sequence').sequence('key', '.', this);} event.preventDefault();"
+			onclick="if (!$(this).hasClass('disable')) { $(this).closest('.sequence').sequence('key', '.', this); }"><div>.</div></td>
+        <td class="g_bluekey" ontouchstart="$(this).closest('.sequence').sequence('key', 0, this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', 0, this);"><div>0</div></td>
+        <td id="keyneg" class="g_bluekey disable"
+			ontouchstart="if (!$(this).hasClass('disable')) { $(this).closest('.sequence').sequence('key', '-', this);} event.preventDefault();"
+			onclick="if (!$(this).hasClass('disable')) { $(this).closest('.sequence').sequence('key', '-', this); }"><div>-</div></td>
+    </tr>
+    <tr>
+        <td class="g_bluekey" ontouchstart="$(this).closest('.sequence').sequence('key', '*', this);event.preventDefault();"
+			onclick="$(this).closest('.sequence').sequence('key', '*', this);" colspan="3">
+    <div class="icon" style="margin:0 auto;"><img src="res/img/default/white/cancel02.svg" alt=""/></div>
+        </td>
+    </tr>
+</table>

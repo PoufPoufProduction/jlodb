@@ -2,12 +2,14 @@
     // Activity default parameters
     var defaults = {
         name        : "sequence",               // The activity name
-        template    : "keypad.html",            // Activity html template
+        template    : "template.html",          // Activity html template
         css         : "style.css",              // Activity css style sheet
         lang        : "fr-FR",                  // Current localization
         number      : 20,                       // Number of questions
+        prepare		: 3,						// Number of prepared quetions
         time        : 1,                        // Sequence time reference
         timemode    : 0,                        // 0: global, 1: individual
+        start		: 10,						// Starting position in percent.
         score       : 1,                        // The score (from 1 to 5)
         shuffle     : true,                     // Shuffle the questions
         keyboard    : true,                     // The keyboard is authorized
@@ -20,6 +22,9 @@
         decimal     : false,                    // Accept decimal values
         negative    : false,                    // Accept negative values
         fontex      : 1,                        // Exercice font
+        input		: {},						// Define the input
+        background  : "",                   	// Board background
+        background2 : "",						// Values background
 		edit		: false,					// Editor mode
         debug       : true                      // Debug mode
     };
@@ -77,13 +82,64 @@
 
                 // Load the template
                 if (settings.template.indexOf(".html")==-1) { settings.template+=".html"; }
-                var templatepath = "activities/"+settings.name+"/template/"+settings.template+debug;
-                $this.load( templatepath, function(response, status, xhr) { helpers.loader.svg($this); });
-            },        // Load the svg if require
-            svg:function($this) {
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
+            },
+            build: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.input && settings.input.svg) {
-                    var debug = "";
+				
+				var vOldRegExp = [
+					"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+					"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+					"\\\[br\\\]",                               "<br/>",
+					"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+					"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+					"\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      "<span style='font-size:.5em;'>$1</span>",
+					"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
+					"\\\[dice\\\]([^\\\[]+)\\\[/dice\\\]",      "<div class='dice'>$1</div>",
+					"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
+					"\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",        "<div class='icon' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
+					"\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
+					"\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>"
+				];
+
+				// HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
+                if (settings.background2) { $this.find("#sevalues").css("background-image","url("+settings.background2+")"); }
+                
+                
+                
+                // BUILD OR LOAD THE KEYPAD
+                $this.find("#sekeypad").html("");
+                
+                if (settings.input.gen) {
+					var vInput = eval('('+settings.input.gen+')')($this,settings,0);
+					$.extend(settings.input,vInput);
+				}
+                
+                if (settings.input.values) {
+					for (var ii in settings.input.values) {
+						var vInput = settings.input.values[ii];
+						var vLabel = $.isArray(vInput)?vInput[0]:vInput;
+                        
+                        var $elt=$('<div class="seinput seinputex" id=i'+ii+'></div>');
+                        $elt.html("<div class='seslider'></div><div>"+jtools.format(vLabel.toString(),vOldRegExp)+"</div>").addClass("g_bluekey").bind("click touchstart",function(event) {
+							var ii = $(this).attr("id").substr(1);
+							var vInput = settings.input.values[ii];
+							var vValue = $.isArray(vInput)?vInput[1]:vInput;
+                            $this.sequence('key',vValue, this); event.preventDefault(); });
+                        
+                        if (settings.input.attr) {
+							var css=["font-size","width","height"];
+                            for (var i=0; i<settings.input.attr.length; i++) { $elt.css(css[i], settings.input.attr[i]+"em"); }
+                        }
+                        $this.find("#sekeypad").append($elt);
+					}
+					
+                }
+                else if (settings.input.svg) {
+					var debug = "";
+					$this.addClass("sesvg");
                     if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
                     var elt= $("<div id='svg' style='width:100%; height:100%'></div>").appendTo($this.find("#sekeypad"));
                     elt.svg();
@@ -108,60 +164,36 @@
                                 var vData = settings.values[i][1];
                                 if ($.isArray(vData))   { for (var j in vData) { svgBind($("#"+vData[j], settings.svg.root())); } }
                                 else                    { svgBind($("#"+vData, settings.svg.root())); }
-                                
                             }
-                            helpers.loader.build($this);
+                            
+                            if (settings.input.t) {
+								for (var t in settings.input.t) {
+									if (settings.input.t[t].toString().indexOf(".svg")!=-1)  {
+										$("#"+t,settings.svg.root()).attr("xlink:href",settings.input.t[t]).show();
+									}
+									else { $("#"+t,settings.svg.root()).text(settings.input.t[t]).show(); }
+								}
+							}
                         }
                     });
-                }
-                else { helpers.loader.build($this); }
-            },
-            build: function($this) {
-                var settings = helpers.settings($this);
-				
-				var vOldRegExp = [
-					"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-					"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-					"\\\[br\\\]",                               "<br/>",
-					"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-					"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-					"\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      "<span style='font-size:.5em;'>$1</span>",
-					"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
-					"\\\[dice\\\]([^\\\[]+)\\\[/dice\\\]",      "<div class='dice'>$1</div>",
-					"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
-					"\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",        "<div class='icon' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
-					"\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
-					"\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>"
-				];
+				}
+                else {
+					var id=(settings.input.id?settings.input.id:"keypad");
+                    var debug = "";
+                    if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+					var keyboardpath = "activities/"+settings.name+"/keyboard/"+id+".html"+debug;
+					$this.find("#sekeypad").addClass("se"+id).load( keyboardpath, function(response, status, xhr) {
+						if (settings.decimal)   { $this.find("#keydec").removeClass("disable"); }
+						if (settings.negative)  { $this.find("#keyneg").removeClass("disable"); }
+					});
+					
+					if (id=="azertyup" || id=="azerty") { $this.addClass("vertical"); }
+				}
 
-                // Build the response if need
-                if (settings.input && settings.input.values) {
-                    $this.find(".input").each( function(_index) {
-                        if (_index < settings.input.values.length) {
-                            var vLabel, vValue;
-                            if ($.isArray(settings.input.values[_index])) {
-                                vLabel = settings.input.values[_index][0];
-                                vValue = settings.input.values[_index][1];
-                            }
-                            else {
-                                vLabel = settings.input.values[_index];
-                                vValue = settings.input.values[_index];
-                            }
-                            $(this).html(jtools.format(vLabel.toString(),vOldRegExp)).addClass("g_bluekey").bind("click touchstart",function(event) {
-                                $this.sequence('key',vValue, this); event.preventDefault(); });
-                               
-                            if (settings.input.attr) {
-                                var css=["font-size","width","height"];
-                                for (var i=0; i<settings.input.attr.length; i++) { $(this).css(css[i], settings.input.attr[i]+"em"); }
-                            }
-                        }
-                        else { $(this).hide(); }
-                    });
-                }
-
+				// PREPARE TO BUILD QUESTION
+				settings.prepare = Math.min(settings.number, settings.prepare);
                 
                 // Build the questions
-                var vLast = -1, vNew;
                 var vRegexp = (settings.regexp&&settings.regexp.input)?new RegExp(settings.regexp.input.from, "g"):0;
                 var $ul = $this.find("#sevalues ul").css("font-size",settings.font+"em").hide();
 
@@ -200,7 +232,6 @@
 
                     // Store the question
                     settings.questions.push(vValue);
-                    vLast = vNew;
                 }
 
                 // Handle some elements
@@ -219,8 +250,7 @@
 
                 if (settings.context.onload) { settings.context.onload($this); }
                  
-                if (settings.decimal)   { $this.find("#keydec").removeClass("disable"); }
-                if (settings.negative)  { $this.find("#keyneg").removeClass("disable"); }
+                
 
                 // Locale handling
 
@@ -261,10 +291,11 @@
         },
         move: function($this, _anim) {
             var settings = helpers.settings($this);
-            var vHeight=Math.floor(($this.find("#sevalues").height()-$this.find("#sevalues li").height())/settings.vertical);
-            $this.find("#sevalues li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
-            if (_anim)  { $this.find("#sevalues ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
-            else        { $this.find("#sevalues ul").css("top", vHeight+"px"); }
+            var vLiHe = $this.find("#sevalues ul").height()/settings.questions.length;
+            var vLiRatio = 100*vLiHe/$this.find("#sevalues").height();
+            var vPos = settings.start - settings.it*vLiRatio;
+            if (_anim)  { $this.find("#sevalues ul").animate({top: vPos+"%"}, 250, function() { helpers.next($this); }); }
+            else        { $this.find("#sevalues ul").css("top", vPos+"%"); }
             
             if (settings.timemode==1) { settings.timer.begin = Date.now(); }
         },

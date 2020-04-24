@@ -8,7 +8,7 @@
     <rdf:Description>
         <dct:identifier>b201</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 2 objets et sans contrainte de temps, l'objet le plus lourd grâce aux pesées proposées.</dct:title>
-        <dct:description><![CDATA["number":6,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"template":"template.html","values":[["A_lt_B","B"],["A_lt_C","C"],["B_lt_C","C"],["A_wt_B","A"],["A_wt_C","A"],["B_wt_C","B"]],"class":"alpha neg", "font":4.5]]></dct:description>
+        <dct:description><![CDATA["number":6,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"values":[["A_lt_B","B"],["A_lt_C","C"],["B_lt_C","C"],["A_wt_B","A"],["A_wt_C","A"],["B_wt_C","B"]],"class":"vertical alpha neg","font":4.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel objet est le [red]plus lourd[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -21,7 +21,7 @@
     <rdf:Description>
         <dct:identifier>b251</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 2 objets et sans contrainte de temps, l'objet le plus léger grâce aux pesées proposées.</dct:title>
-        <dct:description><![CDATA["number":6,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"template":"template.html","values":[["A_lt_B","A"],["A_lt_C","A"],["B_lt_C","B"],["A_wt_B","B"],["A_wt_C","C"],["B_wt_C","C"]],"class":"alpha neg", "font":4.5]]></dct:description>
+        <dct:description><![CDATA["number":6,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"values":[["A_lt_B","A"],["A_lt_C","A"],["B_lt_C","B"],["A_wt_B","B"],["A_wt_C","C"],["B_wt_C","C"]],"class":"vertical alpha neg","font":4.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel objet est le [red]plus léger[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -35,7 +35,7 @@
     <rdf:Description>
         <dct:identifier>b301</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 3 objets et sans contrainte de temps, l'objet le plus lourd grâce aux pesées simples proposées.</dct:title>
-        <dct:description><![CDATA["number":8,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"template":"template.html","values":[["A_wt_B A_wt_C","A"],["A_wt_C A_wt_B","A"],["A_lt_B B_wt_C","B"],["B_wt_C A_lt_B","B"],["A_lt_C B_lt_C","C"],["B_lt_C A_lt_C","C"]],"class":"alpha neg", "font":4.5]]></dct:description>
+        <dct:description><![CDATA["number":8,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"values":[["A_wt_B A_wt_C","A"],["A_wt_C A_wt_B","A"],["A_lt_B B_wt_C","B"],["B_wt_C A_lt_B","B"],["A_lt_C B_lt_C","C"],["B_lt_C A_lt_C","C"]],"class":"vertical alpha neg", "font":4.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel objet est le [red]plus lourd[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -49,7 +49,7 @@
     <rdf:Description>
         <dct:identifier>b302</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 3 objets et sans contrainte de temps, l'objet le plus lourd grâce aux pesées proposées.</dct:title>
-        <dct:description><![CDATA["number":10,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"template":"template.html","values":[["A_wt_B A_wt_C","A"],["A_wt_C A_wt_B","A"],["A_wt_B B_wt_C","A"],["B_wt_C A_wt_B","A"],["A_wt_C B_lt_C","A"],["B_lt_C A_wt_C","A"],["A_lt_B B_wt_C","B"],["B_wt_C A_lt_B","B"],["A_lt_B A_wt_C","B"],["A_wt_C A_lt_B","B"],["B_wt_C A_lt_C","B"],["A_lt_C B_wt_C","B"],["A_lt_C B_lt_C","C"],["B_lt_C A_lt_C","C"],["A_lt_C A_wt_B","C"],["A_wt_B A_lt_C","C"],["B_lt_C A_lt_B","C"],["A_lt_B B_lt_C","C"]],"class":"alpha neg", "font":4.5]]></dct:description>
+        <dct:description><![CDATA["number":10,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},values":[["A_wt_B A_wt_C","A"],["A_wt_C A_wt_B","A"],["A_wt_B B_wt_C","A"],["B_wt_C A_wt_B","A"],["A_wt_C B_lt_C","A"],["B_lt_C A_wt_C","A"],["A_lt_B B_wt_C","B"],["B_wt_C A_lt_B","B"],["A_lt_B A_wt_C","B"],["A_wt_C A_lt_B","B"],["B_wt_C A_lt_C","B"],["A_lt_C B_wt_C","B"],["A_lt_C B_lt_C","C"],["B_lt_C A_lt_C","C"],["A_lt_C A_wt_B","C"],["A_wt_B A_lt_C","C"],["B_lt_C A_lt_B","C"],["A_lt_B B_lt_C","C"]],"class":"vertical alpha neg", "font":4.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel objet est le [red]plus lourd[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -63,7 +63,7 @@
     <rdf:Description>
         <dct:identifier>b303</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 3 objets et sans contrainte de temps, l'objet le plus lourd grâce aux pesées proposées.</dct:title>
-        <dct:description><![CDATA["number":10,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"template":"template.html","values":[["A_wt_B A_wt_C","A"],["A_wt_C A_wt_B","A"],["A_wt_B B_wt_C","A"],["B_wt_C A_wt_B","A"],["A_wt_C B_lt_C","A"],["B_lt_C A_wt_C","A"],["A_lt_B B_wt_C","B"],["B_wt_C A_lt_B","B"],["A_lt_B A_wt_C","B"],["A_wt_C A_lt_B","B"],["B_wt_C A_lt_C","B"],["A_lt_C B_wt_C","B"],["A_lt_C B_lt_C","C"],["B_lt_C A_lt_C","C"],["A_lt_C A_wt_B","C"],["A_wt_B A_lt_C","C"],["B_lt_C A_lt_B","C"],["A_lt_B B_lt_C","C"],["A_wt_B B_eq_C","A"],["B_eq_C A_wt_B","A"],["A_wt_C B_eq_C","A"],["B_eq_C A_wt_C","A"],["A_lt_B A_eq_C","B"],["A_eq_C A_lt_B","B"],["B_wt_C A_eq_C","B"],["A_eq_C B_wt_C","A"],["A_lt_C A_eq_B","C"],["A_eq_B A_lt_C","C"],["B_lt_C A_eq_B","C"],["A_eq_B A_lt_C","C"]],"class":"alpha neg", "font":4.5]]></dct:description>
+        <dct:description><![CDATA["number":10,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"values":[["A_wt_B A_wt_C","A"],["A_wt_C A_wt_B","A"],["A_wt_B B_wt_C","A"],["B_wt_C A_wt_B","A"],["A_wt_C B_lt_C","A"],["B_lt_C A_wt_C","A"],["A_lt_B B_wt_C","B"],["B_wt_C A_lt_B","B"],["A_lt_B A_wt_C","B"],["A_wt_C A_lt_B","B"],["B_wt_C A_lt_C","B"],["A_lt_C B_wt_C","B"],["A_lt_C B_lt_C","C"],["B_lt_C A_lt_C","C"],["A_lt_C A_wt_B","C"],["A_wt_B A_lt_C","C"],["B_lt_C A_lt_B","C"],["A_lt_B B_lt_C","C"],["A_wt_B B_eq_C","A"],["B_eq_C A_wt_B","A"],["A_wt_C B_eq_C","A"],["B_eq_C A_wt_C","A"],["A_lt_B A_eq_C","B"],["A_eq_C A_lt_B","B"],["B_wt_C A_eq_C","B"],["A_eq_C B_wt_C","A"],["A_lt_C A_eq_B","C"],["A_eq_B A_lt_C","C"],["B_lt_C A_eq_B","C"],["A_eq_B A_lt_C","C"]],"class":"vertical alpha neg", "font":4.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel objet est le [red]plus lourd[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -79,7 +79,7 @@
     <rdf:Description>
         <dct:identifier>b351</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 3 objets et sans contrainte de temps, l'objet le plus léger grâce aux pesées simples proposées.</dct:title>
-        <dct:description><![CDATA["number":8,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"template":"template.html","values":[["A_lt_B A_lt_C","A"],["A_lt_C A_lt_B","A"],["A_wt_B B_lt_C","B"],["B_lt_C A_wt_B","B"],["A_wt_C B_wt_C","C"],["B_wt_C A_wt_C","C"]],"class":"alpha neg", "font":4.5]]></dct:description>
+        <dct:description><![CDATA["number":8,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"values":[["A_lt_B A_lt_C","A"],["A_lt_C A_lt_B","A"],["A_wt_B B_lt_C","B"],["B_lt_C A_wt_B","B"],["A_wt_C B_wt_C","C"],["B_wt_C A_wt_C","C"]],"class":"vertical alpha neg", "font":4.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel objet est le [red]plus léger[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -92,7 +92,7 @@
     <rdf:Description>
         <dct:identifier>b352</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 3 objets et sans contrainte de temps, l'objet le plus léger grâce aux pesées proposées.</dct:title>
-        <dct:description><![CDATA["number":10,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"template":"template.html","values":[["A_lt_B A_lt_C","A"],["A_lt_C A_lt_B","A"],["A_lt_B B_lt_C","A"],["B_lt_C A_lt_B","A"],["A_lt_C B_wt_C","A"],["B_wt_C A_lt_C","A"],["A_wt_B B_lt_C","B"],["B_lt_C A_wt_B","B"],["A_wt_B A_lt_C","B"],["A_lt_C A_wt_B","B"],["B_lt_C A_wt_C","B"],["A_wt_C B_lt_C","B"],["A_wt_C B_wt_C","C"],["B_wt_C A_wt_C","C"],["A_wt_C A_lt_B","C"],["A_lt_B A_wt_C","C"],["B_wt_C A_wt_B","C"],["A_wt_B B_wt_C","C"]],"class":"alpha neg", "font":4.5]]></dct:description>
+        <dct:description><![CDATA["number":10,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"values":[["A_lt_B A_lt_C","A"],["A_lt_C A_lt_B","A"],["A_lt_B B_lt_C","A"],["B_lt_C A_lt_B","A"],["A_lt_C B_wt_C","A"],["B_wt_C A_lt_C","A"],["A_wt_B B_lt_C","B"],["B_lt_C A_wt_B","B"],["A_wt_B A_lt_C","B"],["A_lt_C A_wt_B","B"],["B_lt_C A_wt_C","B"],["A_wt_C B_lt_C","B"],["A_wt_C B_wt_C","C"],["B_wt_C A_wt_C","C"],["A_wt_C A_lt_B","C"],["A_lt_B A_wt_C","C"],["B_wt_C A_wt_B","C"],["A_wt_B B_wt_C","C"]],"class":"vertical alpha neg", "font":4.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel objet est le [red]plus léger[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -105,7 +105,7 @@
     <rdf:Description>
         <dct:identifier>b353</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 3 objets et sans contrainte de temps, l'objet le plus léger grâce aux pesées proposées.</dct:title>
-        <dct:description><![CDATA["number":10,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"template":"template.html","values":[["A_lt_B A_lt_C","A"],["A_lt_C A_lt_B","A"],["A_lt_B B_lt_C","A"],["B_lt_C A_lt_B","A"],["A_lt_C B_wt_C","A"],["B_wt_C A_lt_C","A"],["A_wt_B B_lt_C","B"],["B_lt_C A_wt_B","B"],["A_wt_B A_lt_C","B"],["A_lt_C A_wt_B","B"],["B_lt_C A_wt_C","B"],["A_wt_C B_lt_C","B"],["A_wt_C B_wt_C","C"],["B_wt_C A_wt_C","C"],["A_wt_C A_lt_B","C"],["A_lt_B A_wt_C","C"],["B_wt_C A_wt_B","C"],["A_wt_B B_wt_C","C"],["A_lt_B B_eq_C","A"],["B_eq_C A_lt_B","A"],["A_lt_C B_eq_C","A"],["B_eq_C A_lt_C","A"],["A_wt_B A_eq_C","B"],["A_eq_C A_wt_B","B"],["B_lt_C A_eq_C","B"],["A_eq_C B_lt_C","A"],["A_wt_C A_eq_B","C"],["A_eq_B A_wt_C","C"],["B_wt_C A_eq_B","C"],["A_eq_B A_wt_C","C"]],"class":"alpha neg", "font":4.5]]></dct:description>
+        <dct:description><![CDATA["number":10,"time":0,"input":{"attr":[5,2,1.2],"digit":1,"values":["A","B","C"]},"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/weight/$1.svg[/img][/icon]"}},"values":[["A_lt_B A_lt_C","A"],["A_lt_C A_lt_B","A"],["A_lt_B B_lt_C","A"],["B_lt_C A_lt_B","A"],["A_lt_C B_wt_C","A"],["B_wt_C A_lt_C","A"],["A_wt_B B_lt_C","B"],["B_lt_C A_wt_B","B"],["A_wt_B A_lt_C","B"],["A_lt_C A_wt_B","B"],["B_lt_C A_wt_C","B"],["A_wt_C B_lt_C","B"],["A_wt_C B_wt_C","C"],["B_wt_C A_wt_C","C"],["A_wt_C A_lt_B","C"],["A_lt_B A_wt_C","C"],["B_wt_C A_wt_B","C"],["A_wt_B B_wt_C","C"],["A_lt_B B_eq_C","A"],["B_eq_C A_lt_B","A"],["A_lt_C B_eq_C","A"],["B_eq_C A_lt_C","A"],["A_wt_B A_eq_C","B"],["A_eq_C A_wt_B","B"],["B_lt_C A_eq_C","B"],["A_eq_C B_lt_C","A"],["A_wt_C A_eq_B","C"],["A_eq_B A_wt_C","C"],["B_wt_C A_eq_B","C"],["A_eq_B A_wt_C","C"]],"class":"vertical alpha neg", "font":4.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel objet est le [red]plus léger[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -120,7 +120,7 @@
     <rdf:Description>
         <dct:identifier>u1</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver l'unité la plus adaptée pour effectuer une pesée [g,kg].</dct:title>
-        <dct:description><![CDATA["number":"15","template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["g","g"],["kg","k"]]},"time":0,"regexp":{"input": { "from": "(.+)","to":"<div class='icon' style='margin:0 0.5em;'><img src='ext/noto/svg/emoji_u$1.svg'/></div>"}},"values":[["1f3b2","g"],["1f6f5","k"],["1f9e2","g"],["1f9e6","g"],["1f40c","g"],["1f36d","g"],["1f40e","k"],["1f58d","g"],["1f69a","k"],["1f95a","g"],["1f404","k"],["1f416","k"],["1f697","k"],["1f4ce","g"],["1f4cf","g"],["1f4cc","g"],["1f682","k"],["1f400","g"],["1f98b","g"],["1f41b","g"],["1f42a","k"],["1f40f","k"]],"class":"neg alpha","font":4]]></dct:description>
+        <dct:description><![CDATA["number":"15","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["g","g"],["kg","k"]]},"time":0,"regexp":{"input": { "from": "(.+)","to":"<div class='icon' style='margin:0 0.5em;'><img src='ext/noto/svg/emoji_u$1.svg'/></div>"}},"values":[["1f3b2","g"],["1f6f5","k"],["1f9e2","g"],["1f9e6","g"],["1f40c","g"],["1f36d","g"],["1f40e","k"],["1f58d","g"],["1f69a","k"],["1f95a","g"],["1f404","k"],["1f416","k"],["1f697","k"],["1f4ce","g"],["1f4cf","g"],["1f4cc","g"],["1f682","k"],["1f400","g"],["1f98b","g"],["1f41b","g"],["1f42a","k"],["1f40f","k"]],"class":"vertical neg alpha","font":4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[red]1 kilogramme (kg) = 1 000 grammes (g)[/red][br]Quelle unité est la plus [b]adaptée[/b] pour peser les objets suivant ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>gravity</dct:subject>
@@ -133,7 +133,7 @@
 	<rdf:Description>
         <dct:identifier>ua</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le réalisme des grandeurs proposées [g,kg].</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='ext/noto/svg/emoji_u$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["oui","o"],["non","n"]]},"values":[["1f3b8 90kg","n"],["1f3cd 25g","n"],["1f4a1 40g","o"],["1f4a9 50kg","n"],["1f4bb 2kg","o"],["1f4ce 2g","o"],["1f4cf 30g","o"],["1f4f1 300kg","n"],["1f6b2 8kg","o"],["1f6f5 60kg","o"],["1f34e 2g","n"],["1f35e 200g","o"],["1f40c 15kg","n"],["1f41b 3g","o"],["1f41c 1kg","n"],["1f69c 800g","n"],["1f95a 50g","o"],["1f404 800kg","o"],["1f408 1g","n"],["1f418 5kg","n"],["1f697 1000kg","o"],["1f692 30kg","n"],["1f695 800g","n"],["270f 10g","o"]],"class":"neg alpha h60","font":0.6]]></dct:description>
+        <dct:description><![CDATA["number":15,"time":0,"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='ext/noto/svg/emoji_u$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["oui","o"],["non","n"]]},"values":[["1f3b8 90kg","n"],["1f3cd 25g","n"],["1f4a1 40g","o"],["1f4a9 50kg","n"],["1f4bb 2kg","o"],["1f4ce 2g","o"],["1f4cf 30g","o"],["1f4f1 300kg","n"],["1f6b2 8kg","o"],["1f6f5 60kg","o"],["1f34e 2g","n"],["1f35e 200g","o"],["1f40c 15kg","n"],["1f41b 3g","o"],["1f41c 1kg","n"],["1f69c 800g","n"],["1f95a 50g","o"],["1f404 800kg","o"],["1f408 1g","n"],["1f418 5kg","n"],["1f697 1000kg","o"],["1f692 30kg","n"],["1f695 800g","n"],["270f 10g","o"]],"class":"vertical neg alpha h60","font":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"La masse proposée est-elle [b]réaliste[/b] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>gravity</dct:subject>

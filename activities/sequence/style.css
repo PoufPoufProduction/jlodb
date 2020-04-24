@@ -1,46 +1,45 @@
-.sequence>div                           { height:100%; font-size:1.6em;}
+.sequence>div                           { height:100%; font-size:1.6em; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .sequence .icon                         { width:1em; height:1em; }
 .sequence .icon.icon5                   { width:2em; }
 .sequence .icon.iconA                   { width:2em; }
-.sequence #seboard                      { float:left; width:30%; height:100%; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; }
+
+
+
+
+.sequence #seboard                      { float:left; width:30%; height:100%;  }
+.sequence.vertical #seboard             { clear:both; width:100%; height:30%; font-size:.3em; overflow:hidden; }
+.sequence.sesvg #seboard                { clear:both; width:100%; height:30%; font-size:.3em; overflow:hidden; }
+
 .sequence #sekeypad                     { display:inline-block; position:relative; margin-top:2px; }
+.sequence #sekeypad table				{ margin-left:.06em; }
 .sequence #sekeypad td>div              { font-size:.8em; height:1.2em; width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold; color:rgb(220,231,241); }
 .sequence #sescreen                     { background-color:rgba(15, 15, 30, 0.75) !important; color:#DDDDFF !important; }
 .sequence td#sescreen>div               { width:inherit; text-align:center; }
-.sequence .keyboard #sescreen           { float:right; font-size:3em; width:2.5em; border-radius:.25em; margin-right:.05em; text-align:center; margin-top:0.2em; }
+.sequence.sesvg #sekeypad               { width:100%; height:100%; position:absolute; top:0; left:0; overflow:hidden; }
+
+
+.sequence .seinput						{ float:left; border-radius:.25em; overflow:hidden; text-align:center; cursor:pointer; margin-left:.2em; margin-bottom:.1em; color:white; }
+.sequence .sekeyboard .seinput          { width:1.2em; height:1.2em; font-size:1.7em; }
+.sequence .seinputex					{ position:relative; }
+.sequence .seinputex>div				{ position:absolute; top:0; left:0; width:100%; height:100%; }
+.sequence .seinputex .seslider			{ width:0; background-color:rgba(255,255,0,0.4); }
+.sequence .seinputex>div>div			{ margin:0 auto; }
+
 .sequence #setime                       { font-size:.5em; width:5.9em; height:1.2em; overflow:hidden; text-align:center; border:0; float:none; position:relative; margin:.05em; background-color:gray; }
 .sequence #setime>div                   { position:absolute;top:0;left:0;width:100%;height:100%;color:white; }
 .sequence #setime>#setimeslider         { background-color:#0A0; width:0; }
 .sequence #setime.late>#setimeslider    { background-color:red; }
-.sequence .svg #setime                  { font-size:1em; width:100%; text-align:right; position:absolute; z-index:2000;}
-.sequence .template #setime             { font-size:1em; width:100%; text-align:right; }
-.sequence #g_splash                     { background-image:url("../../res/img/banners/sequence.svg"); }
-.sequence #g_splash h1					{ font-size:.9em; }
-.sequence #g_splash #guide_time         { width:1em; height:1em; position:absolute; top:50%; left:0; font-size:7em; display:none; }
-.sequence #g_splash #guide_number:before{ content:"×" }
-.sequence #g_splash #guide_number       { position:absolute; top:71%; left:68%; font-size:3em; color:red; font-weight:bold; width:1.5em; overflow:visible; text-align:center; }
-.sequence .keypad #sevalues             { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
-.sequence .keypad #seboard              { }
-.sequence .svg                          { position:relative; }
-.sequence .svg #sekeypad                { width:100%; height:100%; position:absolute; top:0; left:0; overflow:hidden; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; }
-.sequence .svg #sevalues                { height:1em; width:100%; overflow:hidden; float:none; position:relative; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
-.sequence .svg #seboard                 { float:none; width:100%; height:1em; font-size:.3em; overflow:hidden; border:1px solid black; border-width:0 0 1px 0;}
-.sequence .svg #seboard table           { width:100%; }
-.sequence .template #sevalues           { width:100%; height:70%; overflow:hidden; float:none;  background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
-.sequence .template.keyboard #sevalues  { height:55% }
-.sequence .template2 #sevalues          { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
-.sequence .template #sevalues li        { padding-bottom:.2em; }
-.sequence .template #seboard            { clear:both; width:100%; height:30%; font-size:.3em; overflow:hidden; }
-.sequence .template.keyboard #seboard   { height:45%; }
-.sequence .template .input              { display:inline-block; border-radius:.25em; height:1em; overflow:hidden; text-align:center; cursor:pointer; margin-bottom:.1em; color:white; }
-.sequence .template2 .input             { border-radius:.25em; overflow:hidden; text-align:center; cursor:pointer; margin-left:.2em; margin-bottom:.1em; color:white; }
-.sequence .keyboard .input              { width:1.2em; height:1.2em; font-size:1.8em; }
-.sequence .template .input .icon        { display:inline-block; }
-.sequence .template #sekeypad           { margin:0 1em; clear:both;  }
-.sequence .template.keyboard #sekeypad  { margin:0 .25em; }
-.sequence .template #setime             { font-size:1em; width:100%; border:0; float:none; text-align:right; }
-.sequence #sevalues                     { text-align:center; overflow:hidden; float:left; width:70%; height:100%; }
+.sequence.sesvg #setime                 { font-size:0.8em; width:100%; text-align:right; position:absolute; z-index:200;}
+.sequence.vertical #setime             	{ font-size:0.8em; width:100%; text-align:right; }
+
+
+.sequence #sevalues           			{ background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; text-align:center; overflow:hidden; float:left; width:70%; height:100%; }
 .sequence #seexercice                   { font-size:.25em; background-color:rgba(255,255,255,0.9); font-style:italic; position:relative; top:0; left:0; z-index:200; text-align:center; padding-left:1em;  }
+.sequence.vertical #sevalues            { width:100%; height:70%; overflow:hidden; float:none;  background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
+.sequence.sesvg #sevalues               { height:15%; width:100%; overflow:hidden; position:relative; z-index:200;}
+
+
+
 .sequence #sevalues ul                  { list-style-type:none; position:relative; top:0; left:0; padding:0; -webkit-margin-before: 0em; overflow:hidden; width:105%; }
 .sequence #sevalues li                  { height:1em; overflow:hidden; white-space:nowrap; }
 .sequence #sevalues li.select           { background-color:rgba(2,20,88, 0.9); color:rgb(220, 240, 256); }
@@ -58,9 +57,6 @@
 .sequence #sevalues .w10                { width:1em; display:inline-block; }
 .sequence #sevalues .w07                { width:.68em; display:inline-block; }
 .sequence #sevalues .h10                { height:1em; display:inline-block; }
-.sequence #seeffects                    { position:absolute; z-index:500; font-size:3em; top:2%; left:50%; }
-.sequence .template #seeffects          { position:absolute; z-index:500; font-size:3em; top:2%; left:68%;}
-.sequence #seeffects>div                { width:1em; height:1em; display:none; }
 .sequence.alpha   #sevalues li          { opacity:0.3; }
 .sequence.alpha   #sevalues li.select   { opacity:1;}
 .sequence.alpha   #sevalues li.good     { opacity:1; }
@@ -85,9 +81,21 @@
 .sequence.h18     #sevalues li          { height:1.8em; }
 .sequence.h20     #sevalues li          { height:2em; }
 .sequence.h60     #sevalues li          { height:6em; }
-.sequence.comment #comment              { font-size:1em; }
 .sequence         #sevalues li .bg      { background-color: rgba(84,137,184,0.9); }
-.sequence .g_bluekey.disable           { background-color: gray; }
+
+
+.sequence #seeffects                    { position:absolute; z-index:500; font-size:3em; top:2%; left:50%; }
+.sequence.vertical #seeffects           { left:68%;}
+.sequence.sesvg #seeffects              { left:68%; z-index:201;}
+.sequence #seeffects>div                { width:1em; height:1em; display:none; }
+.sequence .g_bluekey.disable            { background-color: gray; }
+.sequence #g_splash                     { background-image:url("../../res/img/banners/sequence.svg"); }
+.sequence #g_splash h1					{ font-size:.9em; }
+.sequence #g_splash #guide_time         { width:1em; height:1em; position:absolute; top:50%; left:0; font-size:7em; display:none; }
+.sequence #g_splash #guide_number:before{ content:"×" }
+.sequence #g_splash #guide_number       { position:absolute; top:71%; left:68%; font-size:3em; color:red; font-weight:bold; width:1.5em; overflow:visible; text-align:center; }
+
+
 
 
 
