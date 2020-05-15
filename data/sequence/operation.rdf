@@ -8,7 +8,7 @@
     <rdf:Description>
         <dct:identifier>20a</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire, additionner, multiplier jusqu'à 5 et diviser par 2, sans contrainte de temps, des valeurs comprises entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2]},"time":0,"number":15,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_i) { var val=[function() { return Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1])+'+'+Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); }, function() { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return (a+b)+'-'+b; }, function() { return Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1])+'*'+Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); }, function() { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return (a*b)+'/'+b; }], v=Math.floor(Math.random()*val.length); return val[v]();}","font":2,"class":"h12"]]></dct:description>
+        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2]},"number":15,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_i) { var val=[function() { return Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1])+'+'+Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); }, function() { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return (a+b)+'-'+b; }, function() { return Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1])+'*'+Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); }, function() { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return (a*b)+'/'+b; }], v=Math.floor(Math.random()*val.length); return val[v]();}","font":2,"class":"h12"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -37,7 +37,7 @@
     <rdf:Description>
         <dct:identifier>n10</dct:identifier>
         <dct:title xml:lang="fr-FR">Ajouter, sans contrainte de temps, 2 nombres compris entre -10 et 10.</dct:title>
-        <dct:description><![CDATA["time":0,"negative":true,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*21)-10,b=Math.floor(Math.random()*21)-10; return [(a<0?\\\"(\\\"+a+\\\")\\\":a.toString())+\\\"+\\\"+(b<0?\\\"(\\\"+b+\\\")\\\":b.toString()),a+b]; }","font":1.5]]></dct:description>
+        <dct:description><![CDATA["negative":true,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*21)-10,b=Math.floor(Math.random()*21)-10; return [(a<0?\\\"(\\\"+a+\\\")\\\":a.toString())+\\\"+\\\"+(b<0?\\\"(\\\"+b+\\\")\\\":b.toString()),a+b]; }","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -48,7 +48,7 @@
     <rdf:Description>
         <dct:identifier>na10</dct:identifier>
         <dct:title xml:lang="fr-FR">Ajouter, sans contrainte de temps, 2 nombres compris entre -10 et 10 avec présence de valeurs absolues.</dct:title>
-        <dct:description><![CDATA["time":0,"negative":true,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*21)-10,b=Math.floor(Math.random()*21)-10,aa=Math.floor(Math.random()*1.5),ba=Math.floor(Math.random()*1.5),ar=(aa==0?a:Math.abs(a)),br=(ba==0?b:Math.abs(b)); return [(a<0?(aa==0?\\\"(\\\"+a+\\\")\\\":\\\"|\\\"+a+\\\"|\\\"):(aa==0?a:\\\"|\\\"+a+\\\"|\\\"))+\\\"+\\\"+(b<0?(ba==0?\\\"(\\\"+b+\\\")\\\":\\\"|\\\"+b+\\\"|\\\"):(ba==0?b:\\\"|\\\"+b+\\\"|\\\")),ar+br]; }","font":1.5,"class":"h12"]]></dct:description>
+        <dct:description><![CDATA["negative":true,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*21)-10,b=Math.floor(Math.random()*21)-10,aa=Math.floor(Math.random()*1.5),ba=Math.floor(Math.random()*1.5),ar=(aa==0?a:Math.abs(a)),br=(ba==0?b:Math.abs(b)); return [(a<0?(aa==0?\\\"(\\\"+a+\\\")\\\":\\\"|\\\"+a+\\\"|\\\"):(aa==0?a:\\\"|\\\"+a+\\\"|\\\"))+\\\"+\\\"+(b<0?(ba==0?\\\"(\\\"+b+\\\")\\\":\\\"|\\\"+b+\\\"|\\\"):(ba==0?b:\\\"|\\\"+b+\\\"|\\\")),ar+br]; }","font":1.5,"class":"h12"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

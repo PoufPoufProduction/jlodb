@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+	<!-- QA -->
+
+    <rdf:Description>
+        <dct:identifier>t1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Exercice numérique simple avec génération automatique.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","background2":"res/img/background/landscape/blueboard01.svg","class":"h12","input":{"digit":2,"speed":5000},"gen":"function() { var a = 10+Math.floor(Math.random()*80),b; do { b = 10+Math.floor(Math.random()*80); } while(a+b>=100 || a%10+b%10>9); return \\\"\\\"+a+\\\"+\\\"+b; }","font":1.8]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Exercice de contrôle [gen]"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>root</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>t1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">test</dct:coverage>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>t2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Exercice numérique simple en base 2.</dct:title>
+        <dct:description><![CDATA["number":15,"start":30,"class":"neg alpha","prepare":2,"time":10,"input":{"id":"keypad2","digit":1,"speed":0},"values":[["1",1],["One",1],["0",0],["Zero",0]],"font":0.5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Exercice de contrôle [number, start, class, prepare, time]"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>root</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>t1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">test</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>t3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Exercice simple avec propositions.</dct:title>
+        <dct:description><![CDATA["input":{"digit":1,"speed":0,"values":["0","1"]},"values":[["A 1",1],["B 1",1],["C 1",1],["A 0",0],["B 0",0],["C 0",0]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Exercice de contrôle"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>root</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>t1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">test</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>t4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Exercice simple avec propositions.</dct:title>
+        <dct:description><![CDATA["class":"h12 p05 vertical","prepare":1,"input":{"attr":[3,5,1.2],"digit":1,"speed":0,"values":[["0",0,[10,2,5]],["1",1,[10,2,0]]]},"values":[["1",1],["One",1],["0",0],["Zero",0]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Exercice de contrôle [prepare]"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>root</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>t1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">test</dct:coverage>
+    </rdf:Description>
+
+
+</rdf:RDF>
+

@@ -6,15 +6,11 @@
         css         : "style.css",              // Activity css style sheet
         lang        : "fr-FR",                  // Current localization
         number      : 20,                       // Number of questions
-        prepare		: 3,						// Number of prepared quetions
-        time        : 1,                        // Sequence time reference
+        prepare		: 5,						// Number of prepared quetions
+        time        : 0,                        // Sequence time reference
         timemode    : 0,                        // 0: global, 1: individual
         start		: 10,						// Starting position in percent.
-        score       : 1,                        // The score (from 1 to 5)
-        shuffle     : true,                     // Shuffle the questions
-        keyboard    : true,                     // The keyboard is authorized
-        vertical    : 2,                        // The vertical position of the current question
-        filter      : [],                       // Filter the entry
+        skeyboard    : true,                    // The keyboard is authorized
         erase       : '*',                      // The erase caracter
         font        : 1,                        // Questions font factor
         screenc     : false,                    // Clear the screen between question
@@ -28,6 +24,23 @@
 		edit		: false,					// Editor mode
         debug       : true                      // Debug mode
     };
+    
+    // TODO : remove
+    var vOldRegExp = [
+					"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+					"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+					"\\\[br\\\]",                               "<br/>",
+					"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+					"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+					"\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      "<span style='font-size:.5em;'>$1</span>",
+					"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
+					"\\\[dice\\\]([^\\\[]+)\\\[/dice\\\]",      "<div class='dice'>$1</div>",
+					"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
+					"\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",        "<div class='icon' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
+					"\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
+					"\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>"
+				];
+				
 
     // private methods
     var helpers = {
@@ -87,21 +100,6 @@
             },
             build: function($this) {
                 var settings = helpers.settings($this);
-				
-				var vOldRegExp = [
-					"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-					"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-					"\\\[br\\\]",                               "<br/>",
-					"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-					"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-					"\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      "<span style='font-size:.5em;'>$1</span>",
-					"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
-					"\\\[dice\\\]([^\\\[]+)\\\[/dice\\\]",      "<div class='dice'>$1</div>",
-					"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
-					"\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",        "<div class='icon' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
-					"\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
-					"\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>"
-				];
 
 				// HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
@@ -129,10 +127,10 @@
 							var vValue = $.isArray(vInput)?vInput[1]:vInput;
                             $this.sequence('key',vValue, this); event.preventDefault(); });
                         
-                        if (settings.input.attr) {
-							var css=["font-size","width","height"];
-                            for (var i=0; i<settings.input.attr.length; i++) { $elt.css(css[i], settings.input.attr[i]+"em"); }
-                        }
+                        var vAttr = settings.input.attr?settings.input.attr:[1,1.2,1.2];
+                        var css=["font-size","width","height"];
+                        for (var i=0; i<vAttr.length; i++) { $elt.css(css[i], vAttr[i]+"em"); }
+
                         $this.find("#sekeypad").append($elt);
 					}
 					
@@ -194,45 +192,9 @@
 				settings.prepare = Math.min(settings.number, settings.prepare);
                 
                 // Build the questions
-                var vRegexp = (settings.regexp&&settings.regexp.input)?new RegExp(settings.regexp.input.from, "g"):0;
-                var $ul = $this.find("#sevalues ul").css("font-size",settings.font+"em").hide();
+                $this.find("#sevalues ul").css("font-size",settings.font+"em").hide();
 
-                // Fill the UL list
-                var vValueArray = [];
-                if (!settings.gen) {
-                    var cpt = 0;
-                    for (var i=0; i<settings.values.length; i++) { vValueArray.push(settings.values[i]); }
-                    if (settings.shuffle) { shuffle(vValueArray); }
-                    for (var i=0; i<settings.number-settings.values.length; i++) { vValueArray.push(vValueArray[i%settings.values.length]); }
-                    if (settings.shuffle) { shuffle(vValueArray); }
-                }
-
-                for (var i=0; i<settings.number; i++) {
-                    var $li = $("<li></li>").appendTo($ul), vNewValue, vValue = { question:0, response:0};
-
-                    // Get the question
-                    if (settings.gen)   { vNewValue = eval('('+settings.gen+')')($this,settings,i); }
-                    else                { vNewValue = vValueArray[i%vValueArray.length]; }
-
-                    // The question may be an array [question, response], otherwise response is evaluated from the question
-                    if ($.isArray(vNewValue))   { vValue.question = vNewValue[0].toString(); vValue.response = vNewValue[1]; }
-                    else                        {
-						vValue.question = vNewValue.toString();
-						vValue.response = jtools.num.tonum(vNewValue);
-					}
-                    
-
-                    // Special treatment
-                    var vRegExpMult = new RegExp("\\\*", "g")
-                    vValue.question = vValue.question.toString().replace(vRegExpMult,"×");
-					
-                    // Fill the dom element, use a regexp if needed
-                    if (vRegexp)    { $li.html(jtools.format(vValue.question.replace(vRegexp, settings.regexp.input.to), vOldRegExp)); }
-                    else            { $li.html(jtools.format(vValue.question, vOldRegExp)); }
-
-                    // Store the question
-                    settings.questions.push(vValue);
-                }
+                for (var i=0; i<settings.prepare; i++) { helpers.add($this,i); }
 
                 // Handle some elements
                 $this.find("#sescreen>div").html("&#xA0;");
@@ -266,6 +228,40 @@
                 if (!$this.find("#g_splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+		updqu: function($this) {
+            var settings = helpers.settings($this);
+            
+			
+		},
+        add: function($this,_i) {
+            var settings = helpers.settings($this);
+            
+            var vRegexp = (settings.regexp&&settings.regexp.input)?new RegExp(settings.regexp.input.from, "g"):0;
+            var $ul = $this.find("#sevalues ul")
+            var $li = $("<li></li>").appendTo($ul), vNewValue, vValue = { question:0, response:0};
+
+			// Get the question
+			if (settings.gen)   { vNewValue = eval('('+settings.gen+')')($this,settings,_i); }
+            else                { vNewValue = pick(settings.values); }
+
+            // The question may be an array [question, response], otherwise response is evaluated from the question
+            if ($.isArray(vNewValue))   { vValue.question = vNewValue[0].toString(); vValue.response = vNewValue[1]; }
+            else                        {
+				vValue.question = vNewValue.toString();
+				vValue.response = jtools.num.tonum(vNewValue);
+			}
+                    
+			// TO REMOVE : Special treatment
+            var vRegExpMult = new RegExp("\\\*", "g")
+            vValue.question = vValue.question.toString().replace(vRegExpMult,"×");
+					
+            // Fill the dom element, use a regexp if needed
+            if (vRegexp)    { $li.html(jtools.format(vValue.question.replace(vRegexp, settings.regexp.input.to), vOldRegExp)); }
+            else            { $li.html(jtools.format(vValue.question, vOldRegExp)); }
+
+            // Store the question
+            settings.questions.push(vValue);        
+		},
         // Update the timer
         timer:function($this) {
             var settings = helpers.settings($this);
@@ -433,7 +429,12 @@
                         settings.combo = 0;
                         $this.find("#seeffects #wrong").show();
                     }
-                    if (++settings.it==settings.number) {
+                    
+                    if (settings.it+settings.prepare<settings.number) {
+						helpers.add($this, settings.it+settings.prepare);
+					}
+                    
+                    if (++settings.it==settings.questions.length) {
                         settings.interactive = false;
                         clearTimeout(settings.timer.id);
                         
@@ -443,6 +444,7 @@
       
                         setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score}); }, 1000);
                     }
+                    
                     settings.response.digit = 0;
                     settings.response.value = "";
                     helpers.move($this, true);
@@ -462,15 +464,18 @@
                 var settings = {
                     it              : 0,                        // Current question index
                     questions       : [],                       // Questions array
-                    response        : { value:"", digit: 0 },   // Current response
+                    response        : { value:"", digit: 0, id:0 },   // Current response
                     keypadtimer     : 0,                        // Keypadtimer (in case of more than one digit)
                     timer: {                                    // The general timer
                         id      : 0,                            // The timer id
                         begin   : 0                             // The begining time
                     },
+                    score			: 1,						// Score
                     interactive     : false,                    // Entry allowed or not
                     combo           : 0,                        // Successive good response
                     svg             : 0,                        // The SVG board
+                    weights			: [],						// Question weights
+                    weightbyinput	: false,					// Balancing by input
                     wrong           : 0                         // Number of wrong responses
                 };
 
@@ -503,6 +508,8 @@
             key: function(value, _elt) {
                 var $this = $(this), settings = helpers.settings($this);
                 if (_elt) {
+					settings.response.id=-1;
+					if ($(_elt).attr("id")) { settings.response.id = parseInt($(_elt).attr("id").substr(1)); }
                     $(_elt).attr("class", $(_elt).attr("class")+" g_ktouch");
                     setTimeout(function() { $(_elt).attr("class", $(_elt).attr("class").replace(" g_ktouch","")); },
                                (settings.input && settings.input.svg)?500:50);

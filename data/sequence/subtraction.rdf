@@ -5,7 +5,7 @@
     <rdf:Description>
         <dct:identifier>10</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 5 et 10, et la différence positive.</dct:title>
-        <dct:description><![CDATA["gg":{"dim":[5,6]},"class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_id) { var ret=''; if (_s.gg.dim) { var a=Math.floor(Math.random()*_s.gg.dim[0])+_s.gg.dim[1]; ret = a+'-'+(Math.floor(Math.random()*a)+1); } else { var a=Math.floor(Math.random()*_s.gg.val[0])+_s.gg.val[1], b=Math.floor(Math.random()*_s.gg.val[2])+_s.gg.val[3]; ret=(a+b)+'-'+b; } return ret; }","font":2.4]]></dct:description>
+        <dct:description><![CDATA["gg":{"dim":[5,6]},"class":"h12","input":{"digit":2,"speed":5000},"gen":"function($this,_s,_id) { var ret=''; if (_s.gg.dim) { var a=Math.floor(Math.random()*_s.gg.dim[0])+_s.gg.dim[1]; ret = a+'-'+(Math.floor(Math.random()*a)+1); } else { var a=Math.floor(Math.random()*_s.gg.val[0])+_s.gg.val[1], b=Math.floor(Math.random()*_s.gg.val[2])+_s.gg.val[3]; ret=(a+b)+'-'+b; } return ret; }","font":2.4]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -82,7 +82,7 @@
     <rdf:Description>
         <dct:identifier>50r</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 10 et 50, et la différence positive (sans retenue).</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a = Math.floor(1+Math.random()*4)*10+Math.floor(1+Math.random()*9), b; do { b = Math.floor(1+Math.random()*(a-1)); } while (a%10<b%10); return \\\"\\\"+a+\\\"-\\\"+b;}","font":2.2]]></dct:description>
+        <dct:description><![CDATA["class":"h12","input":{"digit":2,"speed":5000},"gen":"function() { var a = Math.floor(1+Math.random()*4)*10+Math.floor(1+Math.random()*9), b; do { b = Math.floor(1+Math.random()*(a-1)); } while (a%10<b%10); return \\\"\\\"+a+\\\"-\\\"+b;}","font":2.2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -106,7 +106,7 @@
     <rdf:Description>
         <dct:identifier>n10</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 0 et 10.</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"negative":true,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*11),b=Math.floor(Math.random()*11); return \\\"\\\"+a+\\\"-\\\"+b; }","font":2.4]]></dct:description>
+        <dct:description><![CDATA["class":"h12","negative":true,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*11),b=Math.floor(Math.random()*11); return \\\"\\\"+a+\\\"-\\\"+b; }","font":2.4]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
