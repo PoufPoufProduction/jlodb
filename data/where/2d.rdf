@@ -9,7 +9,7 @@
         <dct:title xml:lang="fr-FR">Repérer une position dans une grille.</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":6,"url":"res/img/desktop/where/grid01.svg","cursor":[{"cid":"cursor","init":[220,170],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[50,50],"boundaries":[220,170,520,420]}],"gen":"function() { var x=Math.floor(Math.random()*7),y=Math.floor(Math.random()*6); return [String.fromCharCode(65+x)+' '+(y+1),'p'+String.fromCharCode(97+x)+(y+1)]; }","svgclass":"positive","font":1.5]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ta</dct:alternative>
@@ -20,9 +20,10 @@
     <rdf:Description>
         <dct:identifier>ia</dct:identifier>
         <dct:title xml:lang="fr-FR">Repérer, dans le plan, un point à coordonnées entières et positives avec un pas de 1.</dct:title>
-        <dct:description><![CDATA["number":8,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[32,32],"boundaries":[320,78,640,304]}],"gen":"function() { var x=Math.floor(Math.random()*6), y=Math.floor(Math.random()*6); return (['('+jtools.num.tostr(x)+' ; '+jtools.num.tostr(y)+')' ; 'p'+x+''+y]); }","svgclass":"positive","font":1.5]]></dct:description>
+        <dct:description><![CDATA["number":8,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[32,32],"boundaries":[320,78,640,304]}],"gen":"function() { var x=Math.floor(Math.random()*6), y=Math.floor(Math.random()*6); return (['('+jtools.num.tostr(x)+' ; '+jtools.num.tostr(y)+')', \\\"p\\\"+x+\\\"\\\"+y]); }","svgclass":"positive","font":1.5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"A l'aide du [red]repère[/red], [b]positionnez[/b] le curseur à l'endroit demandé."]]></dct:description>
         <dct:extent>3</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ia</dct:alternative>
@@ -35,7 +36,7 @@
         <dct:description><![CDATA["number":8,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[32,32],"boundaries":[320,78,640,304]}],"gen":"function() { var x=Math.floor(Math.random()*5)*2, y=Math.floor(Math.random()*4)*2; return (['('+jtools.num.tostr(x*50)+' ; '+jtools.num.tostr(y*50)+')',\\\"p\\\"+x+\\\"\\\"+y]); }","svgclass":"logo positive","font":1.2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"A l'aide de la [red]grille 100x100[/red], [b]positionnez[/b] le curseur à l'endroit demandé."]]></dct:description>
         <dct:extent>3</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ia</dct:alternative>
@@ -48,7 +49,7 @@
         <dct:description><![CDATA["number":8,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[32,32],"boundaries":[320,78,640,304]}],"gen":"function() { var x=Math.floor(Math.random()*10), y=Math.floor(Math.random()*7); return (['('+jtools.num.tostr(x*50)+' ; '+jtools.num.tostr(y*50)+')',\\\"p\\\"+x+\\\"\\\"+y]); }","svgclass":"logo positive","font":1.2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"A l'aide de la [red]grille 100x100[/red], [b]positionnez[/b] le curseur à l'endroit demandé."]]></dct:description>
         <dct:extent>3</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ia</dct:alternative>
@@ -61,7 +62,7 @@
         <dct:title xml:lang="fr-FR">Repérer, dans le plan, un point à coordonnées entières avec un pas de 1.</dct:title>
         <dct:description><![CDATA["number":8,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[32,32],"boundaries":[0,78,640,480]}],"gen":"function() { var x=Math.floor(Math.random()*11)-5, y=Math.floor(Math.random()*9)-3; return (['('+jtools.num.tostr(x)+' ; '+jtools.num.tostr(y)+')',\\\"p\\\"+x+\\\"\\\"+y]); }","font":1.5]]></dct:description>
         <dct:extent>3</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ia</dct:alternative>
@@ -75,7 +76,7 @@
         <dct:description><![CDATA["number":8,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[32,32],"boundaries":[0,78,640,480]}],"gen":"function() { var x=(Math.floor(Math.random()*9)-4)*2, y=(Math.floor(Math.random()*5)-2)*2; return (['('+jtools.num.tostr(x*50)+' ; '+jtools.num.tostr(y*50)+')',\\\"p\\\"+x+\\\"\\\"+y]); }","svgclass":"logo","font":1.2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"A l'aide de la [red]grille 100x100[/red], [b]positionnez[/b] le curseur à l'endroit demandé."]]></dct:description>
         <dct:extent>3</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ia</dct:alternative>
@@ -89,7 +90,7 @@
         <dct:description><![CDATA["number":8,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[32,32],"boundaries":[0,78,640,480]}],"gen":"function() { var x=(Math.floor(Math.random()*18)-9), y=(Math.floor(Math.random()*10)-5); return (['('+jtools.num.tostr(x*50)+' ; '+jtools.num.tostr(y*50)+')',\\\"p\\\"+x+\\\"\\\"+y]); }","svgclass":"logo","font":1.2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"A l'aide de la [red]grille 100x100[/red], [b]positionnez[/b] le curseur à l'endroit demandé."]]></dct:description>
         <dct:extent>3</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ia</dct:alternative>
@@ -105,7 +106,7 @@
         <dct:title xml:lang="fr-FR">Repérer, dans le plan, un point à coordonnées décimales et positives.</dct:title>
         <dct:description><![CDATA["number":6,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"boundaries":[320,78,640,480]}],"gen":"function() { var x=Math.floor(Math.random()*60)/10, y=Math.floor(Math.random()*60)/10; return (['('+jtools.num.tostr(x)+' ; '+jtools.num.tostr(y)+')',[\\\"p00\\\",320+32*x,304-32*y]]); }","svgclass":"positive","font":1.5]]></dct:description>
         <dct:extent>4</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ia</dct:alternative>
@@ -118,7 +119,7 @@
         <dct:title xml:lang="fr-FR">Repérer, dans le plan, un point à coordonnées décimales.</dct:title>
         <dct:description><![CDATA["number":6,"url":"res/img/desktop/geometry/grid01.svg","cursor":[{"cid":"cursor","init":[320,304],"steps":[0,0.5,1.5,3.0,5.0],"boundaries":[0,78,640,480]}],"gen":"function() { var x=Math.floor(Math.random()*110)/10-5, y=Math.floor(Math.random()*90)/10-3; return (['('+jtools.num.tostr(x)+' ; '+jtools.num.tostr(y)+')',[\\\"p00\\\",320+32*x,304-32*y]]); }","font":1.5]]></dct:description>
         <dct:extent>4</dct:extent>
-        <dct:subject>mathematics</dct:subject>
+        <dct:subject>position</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ia</dct:alternative>

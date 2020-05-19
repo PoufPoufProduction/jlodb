@@ -175,7 +175,7 @@
     <rdf:Description>
         <dct:identifier>i01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier l'absence d'un élément (potion bleue).</dct:title>
-        <dct:description><![CDATA["regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/potion/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['red','green','purple','yellow','white'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='blue'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp+'0'+(Math.floor(Math.random()*4)+1); } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/potion/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['red','green','purple','yellow','white'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='blue'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp+'0'+(Math.floor(Math.random()*4)+1); } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les groupes dans lesquels il n'y a <b>pas de potion bleu</b>.","tag":"0"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -183,13 +183,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>i01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/potion/</dct:source>
+        <dct:source>res/img/svginventoryicons/potion/,res/img/background/landscape/bluesplash01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>i02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier l'absence d'un élément (cerise).</dct:title>
-        <dct:description><![CDATA["regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['banana01','pear01','pepper01','tomato01','kiwi01','apple01','apricot01','strawberry01'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='cherry02'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp; } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['banana01','pear01','pepper01','tomato01','kiwi01','apple01','apricot01','strawberry01'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='cherry02'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp; } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les groupes dans lesquels il n'y a <b>pas de cerise</b>.","tag":"0"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -197,13 +197,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>i01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/vegetable/</dct:source>
+        <dct:source>res/img/svginventoryicons/vegetable/,res/img/background/landscape/bluesplash01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>i03</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier l'absence d'un élément (pierre précieuse verte).</dct:title>
-        <dct:description><![CDATA["regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/mineral/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['red','blue','purple','yellow','white'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='green'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp+'0'+(Math.floor(Math.random()*4)+1); } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/mineral/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['red','blue','purple','yellow','white'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='green'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp+'0'+(Math.floor(Math.random()*4)+1); } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les groupes dans lesquels il n'y a <b>pas de pierre précieuse verte</b>.","tag":"0"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -211,7 +211,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>i01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/mineral/</dct:source>
+        <dct:source>res/img/svginventoryicons/mineral/,res/img/background/landscape/bluesplash01.svg</dct:source>
     </rdf:Description>
 
 	<!-- IDENTIFICATION -->

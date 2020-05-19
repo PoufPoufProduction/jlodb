@@ -6,6 +6,7 @@
         lang            : "en-US",                                  // Current localization
         classification  : 0,                                        // Classification tree
         activities      : 0,                                        // Activitie list
+        onmini			: -1,										// Action from context to do when minimized
         debug           : true                                      // Debug mode
     };
 
@@ -285,11 +286,16 @@
 				$this.find("#onmask").show()
 					 .css("opacity",1).animate({opacity:0}, 300, function() { $(this).hide(); });
                 settings.classId = _val;
+                $this.find("#exerciceid").val("");
                 helpers.buildClassification($this);
                 helpers.update($this);
             },
             id: function(_val) {
-                var $this = $(this);
+                var $this = $(this), settings = helpers.settings($this);
+                
+                if ($this.find("#jdata").hasClass("brsnap") && settings.onmini!=-1) {
+					settings.context[settings.onmini].process(_val);
+				}
                 $this.find("#exerciceid").val(_val?_val:"");
                 helpers.update($(this));
             },
@@ -321,6 +327,18 @@
 
                 helpers.update($this);
             },
+            toggle: function() {
+				
+                var $this = $(this), settings = helpers.settings($this);
+                if ($this.find("#jdata").hasClass("brsnap")) {
+					$this.find("#jdata").removeClass("brsnap");
+					$this.find("#brview img").attr("src","res/img/action/nothing.svg");
+				}
+				else {
+					$this.find("#jdata").addClass("brsnap");
+					$this.find("#brview img").attr("src","res/img/action/red.svg");
+				}
+			},
 			onshow() {},
             context: function(_c, _id) {
                 var $this = $(this), settings = $this.data("settings");

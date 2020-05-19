@@ -70,7 +70,7 @@
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":3,"withrottimer":false,"errratio":2,"init":{"id":{"ruler":[460,180]},"pos":[[600,350],[600,385]]},"decoys":["ruler"],"magnetic":[[55,350],[90,350],[125,350],[160,350],[195,350],[230,350],[265,350],[300,350],[335,350],[370,350],[405,350],[440,350],[475,350],[510,350],[545,350],[55,385],[90,385],[125,385],[160,385],[195,385],[230,385],[265,385],[300,385],[335,385],[370,385],[405,385],[440,385],[475,385],[510,385],[545,385]],"same":[["pp01","pp02","pp03","pp04","pp05","pp06","pp07","pp08","pp09","pp10","pp11","pp12","pp13","pp14","pp15","pp16","pp17","pp18","pp19","pp20","pp21","pp22","pp23","pp24","pp25","pp26","pp27","pp28","pp29","pp30"]],"sym":{"pp01":15,"pp02":15,"pp03":15,"pp04":15,"pp05":15,"pp06":15,"pp07":15,"pp08":15,"pp09":15,"pp10":15,"pp11":15,"pp12":15,"pp13":15,"pp14":15,"pp15":15,"pp16":15,"pp17":15,"pp18":15,"pp19":15,"pp20":15,"pp21":15,"pp22":15,"pp23":15,"pp24":15,"pp25":15,"pp26":15,"pp27":15,"pp28":15,"pp29":15,"pp30":15},"url":"desktop/puzzle/ruler01b.svg","decoyfx":false,"gen":"function($this,settings,_id){var r=Math.floor(Math.random()*4),a=Math.floor(Math.random()*30)+1,b,show={}; do { b=Math.floor(Math.random()*30)+1; } while(a==b); show['fig'+(r*15)]=['rect',-5*a,-5*b,10*a,10*b]; return {'svgclass':'pp'+(a<10?'0'+a:a)+' pp'+(b<10?'0'+b:b),'add':show,'id':['ruler','pp'+(a<10?'0'+a:a),'pp'+(b<10?'0'+b:b)]}; }","rotation":15]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En [b]orientant[/b] correctement la règle par [red]simple clic[/red], [b]mesurez[/b] les 2 côtés du rectangle et [b]placez[/b] les jetons sur les valeurs correspondantes.","fontex":0.7]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>r2ro</dct:alternative>
@@ -89,7 +89,7 @@
         <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","class":"r4","errratio":2,"init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"magnetic":[[185,121],[395,121],[605,121],[185,201],[395,201],[605,201],[185,281],[395,281],[605,281],[185,361],[395,361],[605,361]],"url":"desktop/puzzle/ruler01.svg","decoyfx":false,"gen":"function($this,settings,_id){ var pp=[[50,30],[100,30],[150,30],[200,30]],p={},b=['01','02','07','08'],vv=[[113,214,316,417],[113,214,315,417],[114,215,316,417]],v=vv[Math.floor(vv.length*Math.random())],val={},s=[]; shuffle(v); for (var i=0;i<4;i++) { var id=Math.floor(v[i]/100); s.push('b'+b[i]+(v[i]%100<10?'0':'')+(v[i]%100)); val['pp'+b[i]]=id; p['pp'+b[i]]=pp[id-1]; } return {'values':val,'show':s,'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les [b]4 bandes grises[/b] et [b]ordonnez-les[/b] de la plus petite (1) à la plus grande (4).","fontex":0.7]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>rco6</dct:alternative>
@@ -102,7 +102,7 @@
         <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","class":"r6","init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"magnetic":[[185,121],[395,121],[605,121],[185,201],[395,201],[605,201],[185,281],[395,281],[605,281],[185,361],[395,361],[605,361]],"url":"desktop/puzzle/ruler01.svg","decoyfx":false,"gen":"function($this,settings,_id){ var pp=[[50,30],[100,30],[150,30],[50,80],[100,80],[150,80]],p={},b=['01','02','04','05','07','08'],vv=[[112,213,314,415,516,617]],v=vv[Math.floor(vv.length*Math.random())],val={},s=[]; shuffle(v);for (var i=0;i<6;i++) { var id=Math.floor(v[i]/100); s.push('b'+b[i]+(v[i]%100<10?'0':'')+(v[i]%100)); val['pp'+b[i]]=id; p['pp'+b[i]]=pp[id-1]; } return {'values':val,'show':s,'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les [b]6 bandes grises[/b] et [b]ordonnez-les[/b] de la plus petite (1) à la plus grande (6).","fontex":0.7]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>rco6</dct:alternative>
@@ -118,7 +118,7 @@
         <dct:description><![CDATA["gg":{"v":[3,4,5,6,7,8,9],"pp":[[50,30],[100,30],[150,30],[200,30]],"b":["01","02","07","08"]},"background":"res/img/background/landscape/grayboard01.svg","class":"r4","number":3,"errratio":1,"init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"url":"desktop/puzzle/ruler01.svg","decoyfx":false,"gen":"function($this,settings,_id){ var pp=settings.gg.pp,p={},b=settings.gg.b,v=settings.gg.v,val={},s=[]; shuffle(v);for (var i=0;i<pp.length;i++) { s.push('b'+b[i]+(v[i]<10?'0':'')+(v[i])); val['pp'+b[i]]=v[i]; p['pp'+b[i]]=pp[i]; } return {'values':val,'show':s,'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les [b]bandes grises[/b] et [b]faites glisser[/b] les jetons correspondants dans les zones associées.","fontex":0.7]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>r4a</dct:alternative>
@@ -130,7 +130,7 @@
         <dct:title xml:lang="fr-FR">Mesurer 4 bandes grises à l'aide d'une règle graduée.</dct:title>
         <dct:description><![CDATA["gg":{"v":[12,13,14,15,16],"pp":[[50,30],[100,30],[150,30],[200,30]],"b":["01","02","07","08"]}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r4a</dct:alternative>
@@ -143,7 +143,7 @@
         <dct:title xml:lang="fr-FR">Mesurer 6 bandes grises à l'aide d'une règle graduée.</dct:title>
         <dct:description><![CDATA["class":"r6","gg":{"v":[3,4,5,6,7,8,9,10,11],"pp":[[50,30],[100,30],[150,30],[50,80],[100,80],[150,80]],"b":["01","02","04","05","07","08"]}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>r4a</dct:alternative>
@@ -156,7 +156,7 @@
         <dct:title xml:lang="fr-FR">Mesurer 6 bandes grises à l'aide d'une règle graduée.</dct:title>
         <dct:description><![CDATA["class":"r6","gg":{"v":[9,10,11,12,13,14,15,16],"pp":[[50,30],[100,30],[150,30],[50,80],[100,80],[150,80]],"b":["01","02","04","05","07","08"]}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r4a</dct:alternative>
@@ -172,7 +172,7 @@
         <dct:description><![CDATA["show":[["b0106","b0205","b0305","b0404","b0504","b0603","b0705","b0804","b0905","b1006","b1105","b1207"]],"id":["pp02","pp03","pp07","pp09","pp11","ruler"],"background":"res/img/background/landscape/graycarpet01.svg","errratio":2,"init":{"id":{"ruler":[460,30],"ref":[500,30]},"pos":[[50,30],[100,30],[150,30],[200,30],[250,30]],"area":[0,0,100,100]},"same":[["pp01","pp02","pp03","pp04","pp05","pp06","pp07","pp08","pp09","pp10","pp11","pp12"]],"decoys":["ruler","ref"],"magnetic":[[185,121],[395,121],[605,121],[185,201],[395,201],[605,201],[185,281],[395,281],[605,281],[185,361],[395,361],[605,361]],"url":"desktop/puzzle/ruler01.svg","decoyfx":false]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les différentes bandes grises et mettez un jeton sur celles dont la [b]longueur est égale à 5[/b].","fontex":0.7,"labelex":"5"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r10</dct:alternative>
@@ -185,7 +185,7 @@
         <dct:description><![CDATA["show":[["b0106","b0206","b0305","b0407","b0504","b0606","b0705","b0804","b0907","b1006","b1105","b1206"]],"id":["pp01","pp02","pp06","pp10","pp12","ruler"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les différentes bandes grises et mettez un jeton sur celles dont la [b]longueur est égale à 6[/b].","fontex":0.7,"labelex":"6"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r10</dct:alternative>
@@ -199,7 +199,7 @@
         <dct:description><![CDATA["show":[["b0109","b0210","b0311","b0410","b0509","b0608","b0711","b0810","b0910","b1011","b1110","b1212"]],"id":["pp02","pp04","pp08","pp09","pp11","ruler"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les différentes bandes grises et mettez un jeton sur celles dont la [b]longueur est égale à 10[/b].","fontex":0.7,"labelex":"10"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r10</dct:alternative>
@@ -213,7 +213,7 @@
         <dct:description><![CDATA["show":[["b0111","b0212","b0313","b0412","b0514","b0611","b0711","b0812","b0912","b1013","b1114","b1212"]],"id":["pp02","pp04","pp08","pp09","pp12","ruler"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les différentes bandes grises et mettez un jeton sur celles dont la [b]longueur est égale à 12[/b].","fontex":0.7,"labelex":"12"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r10</dct:alternative>
@@ -227,7 +227,7 @@
         <dct:description><![CDATA["show":[["b0114","b0213","b0315","b0416","b0512","b0614","b0713","b0814","b0914","b1014","b1113","b1215"]],"id":["pp01","pp06","pp08","pp09","pp10","ruler"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les différentes bandes grises et mettez un jeton sur celles dont la [b]longueur est égale à 14[/b].","fontex":0.8,"labelex":"14"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r10</dct:alternative>
@@ -245,7 +245,7 @@
         <dct:description><![CDATA["show":[["b0115","b0213","b0312","b0413","b0512","b0612","b0713","b0814","b0912","b1012","b1113","b1214"]],"id":["pp03","pp05","pp06","pp09","pp10","ruler"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les différentes bandes grises et mettez un jeton sur celles dont la [b]longueur est inférieure à 13[/b].","fontex":0.7,"labelex":"<13"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r10</dct:alternative>
@@ -261,7 +261,7 @@
         <dct:description><![CDATA["show":[["b0115","b0214","b0315","b0415","b0514","b0615","b0713","b0812","b0916","b1013","b1113","b1212"]],"id":["pp01","pp03","pp04","pp06","pp09","ruler"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les différentes bandes grises et mettez un jeton sur celles dont la [b]longueur est supérieure à 14[/b].","fontex":0.7,"labelex":">14"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>r10</dct:alternative>
@@ -278,7 +278,7 @@
         <dct:description><![CDATA["show":[["b0106","b0205","b0305","b0404","b0504","b0603","b0705","b0804","b0905","b1006","b1105","b1207","ref05"]],"id":["pp02","pp03","pp07","pp09","pp11","ref"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Mettez un jeton sur les bandes grises dont la [b]longueur est égale[/b] à celle de la bande de référence (en bleu).","fontex":0.7,"labelex":""]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>l10</dct:alternative>
@@ -293,7 +293,7 @@
         <dct:description><![CDATA["show":[["b0106","b0206","b0305","b0407","b0504","b0606","b0705","b0804","b0907","b1006","b1105","b1206","ref06"]],"id":["pp01","pp02","pp06","pp10","pp12","ref"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Mettez un jeton sur les bandes grises dont la [b]longueur est égale[/b] à celle de la bande de référence (en bleu).","fontex":0.7,"labelex":""]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>l10</dct:alternative>
@@ -307,7 +307,7 @@
         <dct:description><![CDATA["show":[["b0109","b0210","b0311","b0410","b0509","b0608","b0711","b0810","b0910","b1011","b1110","b1212","ref10"]],"id":["pp02","pp04","pp08","pp09","pp11","ref"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Mettez un jeton sur les bandes grises dont la [b]longueur est égale[/b] à celle de la bande de référence (en bleu).","fontex":0.7,"labelex":""]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>l10</dct:alternative>
@@ -321,7 +321,7 @@
         <dct:description><![CDATA["show":[["b0114","b0213","b0315","b0416","b0512","b0614","b0713","b0814","b0914","b1014","b1113","b1215","ref14"]],"id":["pp01","pp06","pp08","pp09","pp10","ref"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Mettez un jeton sur les bandes grises dont la [b]longueur est égale[/b] à celle de la bande de référence (en bleu).","fontex":0.8,"labelex":""]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>l10</dct:alternative>
@@ -337,7 +337,7 @@
         <dct:description><![CDATA["show":[["b0115","b0213","b0312","b0413","b0512","b0612","b0713","b0814","b0912","b1012","b1113","b1214","ref13"]],"id":["pp03","pp05","pp06","pp09","pp10","ref"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Mettez un jeton sur les bandes grises [b]plus courtes[/b] que la bande de référence (en bleu), c'est-à-dire dont  la [b]longueur est strictement inférieure[/b] à celle de la bande de référence.","fontex":0.7,"labelex":"<"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>l10</dct:alternative>
@@ -353,7 +353,7 @@
         <dct:description><![CDATA["show":[["b0115","b0214","b0315","b0415","b0514","b0615","b0713","b0812","b0916","b1013","b1113","b1212","ref14"]],"id":["pp01","pp03","pp04","pp06","pp09","ref"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Mettez un jeton sur les bandes grises [b]plus longues[/b] que la bande de référence (en bleu), c'est-à-dire dont la [b]longueur est strictement supérieure[/b] à celle de la bande de référence.","fontex":0.7,"labelex":">"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>l10</dct:alternative>

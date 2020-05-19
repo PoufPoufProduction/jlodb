@@ -14,7 +14,7 @@
         <dct:description><![CDATA["input":{"id":"keypad","digit":1,"speed":0},"number":15,"gen":"function(){var r=0,n=5,pos=Math.floor(Math.random()*n),l=Math.floor(Math.random()*20)+24, ret=\\\"<div style='width:1em;height=1em;margin:0.05em;'><svg xmlns='http://www.w3.org/2000/svg' width='90%' height='90%' viewBox='0 0 48 48'><def><style>rect {fill:cyan;fill-opacity:0.2;stroke:black;stroke-width:0.5;}.wrong rect {stroke:red;fill:red;fill-opacity:0.5;}.good rect {stroke:green;fill:green;fill-opacity:0.5;}line {stroke:black;stroke-width:1;}</style></def><rect x='0' y='0' width='48' height='48'/>\\\"; for (var i=0; i<n;i++) { var x1,x2,y=(6+i*(36/(n-1))),c=Math.random(),style=\\\"\\\"; if (i==pos) { style=\\\" style='stroke:#800;'\\\"; } if ((i==pos)||(c<0.5)) { x1=(48-l)/2; x2=x1+l;r++;} else { var l2; do { l2=Math.floor(Math.random()*20)+24; } while (Math.abs(l-l2)<10); if (Math.random()<0.5) { x1=(48-l)/2; x2=x1+l2; } else { x2=(48+l)/2;x1=x2-l2;} if (x1<0 || x2>48) { x1=(48-l2)/2; x2=x1+l2; } } ret+=\\\"<line x1='\\\"+x1+\\\"' y1='\\\"+y+\\\"' x2='\\\"+x2+\\\"' y2='\\\"+y+\\\"'\\\"+style+\\\"/>\\\"; } ret+=\\\"</svg></div>\\\"; return [ret, r-1];}","class":"alpha blank","font":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"speed":5000},"comment":"Combien de traits sont de [b]même longueur[/b] que le [red]trait rouge[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>i02</dct:alternative>
@@ -26,7 +26,7 @@
         <dct:description><![CDATA["input":{"id":"keypad","digit":1,"speed":0},"number":10,"gen":"function(){var r=0,n=10,pos=Math.floor(Math.random()*n),l=Math.floor(Math.random()*20)+24, ret=\\\"<div style='width:1em;height=1em;margin:0.05em;'><svg xmlns='http://www.w3.org/2000/svg' width='90%' height='90%' viewBox='0 0 48 48'><def><style>rect {fill:cyan;fill-opacity:0.2;stroke:black;stroke-width:0.5;}.wrong rect {stroke:red;fill:red;fill-opacity:0.5;}.good rect {stroke:green;fill:green;fill-opacity:0.5;}line {stroke:black;stroke-width:0.5;}</style></def><rect x='0' y='0' width='48' height='48'/>\\\"; for (var i=0; i<n;i++) { var x1,x2,y=(6+i*(36/(n-1))),c=Math.random(),style=\\\"\\\"; if (i==pos) { style=\\\" style='stroke:#800;'\\\"; } if ((i==pos)||(c<0.3)) { x1=(48-l)/2; x2=x1+l;r++;} else { var l2; do { l2=Math.floor(Math.random()*20)+24; } while (Math.abs(l-l2)<10); if (Math.random()<0.5) { x1=(48-l)/2; x2=x1+l2; } else { x2=(48+l)/2;x1=x2-l2;} if (x1<0 || x2>48) { x1=(48-l2)/2; x2=x1+l2; } } ret+=\\\"<line x1='\\\"+x1+\\\"' y1='\\\"+y+\\\"' x2='\\\"+x2+\\\"' y2='\\\"+y+\\\"'\\\"+style+\\\"/>\\\"; } ret+=\\\"</svg></div>\\\"; return [ret, r-1];}","class":"alpha blank","font":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"speed":5000},"comment":"Combien de traits sont de [b]même longueur[/b] que le [red]trait rouge[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>i02</dct:alternative>
@@ -39,7 +39,7 @@
         <dct:description><![CDATA["number":8,"gen":"function(){var val=[1,2,3,4],r=0,l=(8+Math.floor(Math.random()*12)),ret=\\\"<div style='width:2em;height=1em;margin:0.05em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 96 48'><def><style>text { font-size:5px;} rect {fill:gray;stroke:black;stroke-width:0.1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";shuffle(val); for (var i=0; i<4;i++) { ret+=\\\"<text transform='translate(10,\\\"+(10+i*8)+\\\")'>\\\"+(i+1)+\\\"</text><rect x='16' y='\\\"+(5+i*8)+\\\"' height='6' width='\\\"+(val[i]*l)+\\\"'/>\\\"; if (val[i]==4) { r=(i+1); }} ret+=\\\"</svg></div>\\\"; return [ret, r];}","class":"alpha blank","font":3.4,"input":{"digit":1,"attr":[1.2,2,1.2],"values":[["1",1],["2",2],["3",3],["4",4]]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le [red]trait[/red] le [b]plus long[/b] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>i11</dct:alternative>
@@ -51,7 +51,7 @@
         <dct:description><![CDATA["number":8,"gen":"function(){var val=[1,2,3,4],r=0,l=(8+Math.floor(Math.random()*12)),ret=\\\"<div style='width:2em;height=1em;margin:0.05em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 96 48'><def><style>text { font-size:5px;} rect {fill:gray;stroke:black;stroke-width:0.1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";shuffle(val); for (var i=0; i<4;i++) { ret+=\\\"<text transform='translate(10,\\\"+(10+i*8)+\\\")'>\\\"+(i+1)+\\\"</text><rect x='16' y='\\\"+(5+i*8)+\\\"' height='6' width='\\\"+(val[i]*l)+\\\"'/>\\\"; if (val[i]==1) { r=(i+1); }} ret+=\\\"</svg></div>\\\"; return [ret, r];}","class":"alpha blank","font":3.4,"input":{"digit":1,"attr":[1.2,2,1.2],"values":[["1",1],["2",2],["3",3],["4",4]]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le [red]trait[/red] le [b]plus court[/b] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>i11</dct:alternative>
@@ -63,7 +63,7 @@
         <dct:description><![CDATA["number":8,"gen":"function(){var val=[1,2,3,4],r=0,l=(2+Math.floor(Math.random()*8)),ret=\\\"<div style='width:1em;height=1em;margin:0.05em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48'><def><style>text { font-size:5px;} rect {fill:gray;stroke:black;stroke-width:0.1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";shuffle(val); for (var i=0; i<4;i++) { ret+=\\\"<text transform='translate(\\\"+(5+i*12)+\\\",45)'>\\\"+(i+1)+\\\"</text><rect x='\\\"+(3+i*12)+\\\"' y='\\\"+(40-val[i]*l)+\\\"' height='\\\"+(val[i]*l)+\\\"' width='6'/>\\\"; if (val[i]==4) { r=(i+1); }} ret+=\\\"</svg></div>\\\"; return [ret, r];}","class":"alpha blank","font":5,"input":{"digit":1,"attr":[1.2,2,1.2],"values":[["1",1],["2",2],["3",3],["4",4]]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le [red]trait[/red] le [b]plus long[/b] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>i11</dct:alternative>
@@ -75,7 +75,7 @@
         <dct:description><![CDATA["number":8,"gen":"function(){var val=[1,2,3,4],r=0,l=(2+Math.floor(Math.random()*8)),ret=\\\"<div style='width:1em;height=1em;margin:0.05em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48'><def><style>text { font-size:5px;} rect {fill:gray;stroke:black;stroke-width:0.1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";shuffle(val); for (var i=0; i<4;i++) { ret+=\\\"<text transform='translate(\\\"+(5+i*12)+\\\",45)'>\\\"+(i+1)+\\\"</text><rect x='\\\"+(3+i*12)+\\\"' y='\\\"+(40-val[i]*l)+\\\"' height='\\\"+(val[i]*l)+\\\"' width='6'/>\\\"; if (val[i]==1) { r=(i+1); }} ret+=\\\"</svg></div>\\\"; return [ret, r];}","class":"alpha blank","font":5,"input":{"digit":1,"attr":[1.2,2,1.2],"values":[["1",1],["2",2],["3",3],["4",4]]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le [red]trait[/red] le [b]plus court[/b] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>i11</dct:alternative>
@@ -87,7 +87,7 @@
         <dct:description><![CDATA["number":8,"gen":"function(){var val=[1,2,3,4],r=Math.floor(Math.random()*4),l=(2+Math.floor(Math.random()*8)),ret=\\\"<div style='width:1em;height=1em;margin:0.05em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48'><def><style>text { font-size:5px;} rect {fill:gray;stroke:black;stroke-width:0.1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";shuffle(val); for (var i=0; i<4;i++) { ret+=\\\"<text transform='translate(\\\"+(13+i*8)+\\\",45)'>\\\"+(i+1)+\\\"</text><rect x='\\\"+(11+i*8)+\\\"' y='\\\"+(40-val[i]*l)+\\\"' height='\\\"+(val[i]*l)+\\\"' width='6'/>\\\";} ret+=\\\"<rect x='3' y='\\\"+(40-val[r]*l)+\\\"' height='\\\"+(val[r]*l)+\\\"' width='6' style='fill:yellow;'/></svg></div>\\\"; return [ret, r+1];}","class":"alpha blank","font":5,"input":{"digit":1,"attr":[1.2,2,1.2],"values":[["1",1],["2",2],["3",3],["4",4]]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le [red]trait[/red] dont la longueur est [b]identique[/b] à celle du trait de référence [b]en jaune[/b] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>i11</dct:alternative>
@@ -114,7 +114,7 @@
         <dct:description><![CDATA["number":"15","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["cm","c"],["m","m"]]},"regexp":{"input": { "from": "(.+)","to":"<div class='icon' style='margin:0 0.5em;'><img src='ext/noto/svg/emoji_u$1.svg'/></div>"}},"values":[["1f3b2","c"],["1f3aa","m"],["1f3e0","m"],["1f3e8","m"],["1f3ef","m"],["1f4cf","c"],["1f4d0","c"],["1f4d2","c"],["1f5fb","m"],["1f5fd","m"],["1f58a","c"],["1f69a","m"],["1f98b","c"],["1f400","c"],["1f418","m"],["1f424","c"],["1f682","m"],["1f995","m"],["26ea","m"],["26f5","m"],["2618","c"],["2702","c"]],"class":"vertical neg alpha","font":4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[red]1 mètre (m) = 100 centi-mètres (cm)[/red][br]Quelle unité est la plus [b]adaptée[/b] pour mesurer les objets suivant ?"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>u1</dct:alternative>
@@ -127,7 +127,7 @@
         <dct:description><![CDATA["number":15,"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='ext/noto/svg/emoji_u$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["oui","o"],["non","n"]]},"values":[["1f3b8 3cm","n"],["1f3c0 40cm","o"],["1f3e5 15m","o"],["1f3eb 1m","n"],["1f3e0 8cm","n"],["1f4a9 15m","n"],["1f4cf 20cm","o"],["1f5d2 29cm","o"],["1f34a 7m","n"],["1f34d 1cm","n"],["1f58a 15cm","o"],["1f58b 2m","n"],["1f58c 1cm","n"],["1f69a 3m","o"],["1f69b 15m","n"],["1f98b 5cm","o"],["1f95a 3m","n"],["1f353 3cm","o"],["1f353 80cm","n"],["1f401 6cm","o"],["1f400 12m","n"],["1f418 12cm","n"],["1f990 15m","n"],["1f997 4cm","o"],["2603 1m","o"]],"class":"vertical neg alpha h60","font":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"La taille proposée est-elle [b]réaliste[/b] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ua</dct:alternative>
@@ -142,7 +142,7 @@
         <dct:description><![CDATA["number":15,"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='margin-left:.1em;'><img src='ext/noto/svg/emoji_u$1.svg'/></div><div style='float:left;width:1.1em;'>...</div><div class='icon'><img src='ext/noto/svg/emoji_u$2.svg'/></div>"}},"input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":["&lt;","&gt;"]},"values":[["1f3b2 1f3e0","&lt;"],["1f41c 1f40e","&lt;"],["1f353 1f40b","&lt;"],["1f400 1f42b","&lt;"],["1f423 1f3eb","&lt;"],["1f577 1f3ef","&lt;"],["1f980 1f692","&lt;"],["1f997 1f682","&lt;"],["270f 1f995","&lt;"],["1f48d 2708","&lt;"],["1f3c0 1f3b2","&gt;"],["1f3e2 1f40c","&gt;"],["26ea 1f41b","&gt;"],["26c4 1f41e","&gt;"],["1f691 1f34b","&gt;"],["1f3e2 1f34e","&gt;"],["1f3b8 1f5dd","&gt;"],["1f30d 1f4ce","&gt;"],["1f30e 1f4cf","&gt;"],["1f40b 1f45f","&gt;"]],"class":"vertical neg alpha","font":2.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] la taille des 2 éléments."]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c1</dct:alternative>
@@ -157,7 +157,7 @@
         <dct:description><![CDATA["number":10,"input":{"digit":1,"speed":5000},"gen":"function(){var ret=\\\"<div style='width:4.5em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 20'><path d='M 20 10 100 10' style='fill:none;stroke:black;stroke-width:0.2'/>\\\",nb=10,max=5,a=[-1,-1,-1,-1],b=['A','B','C','D']; for (var i=0; i<a.length; i++) { do { a[i]=Math.floor(Math.random()*nb); } while (a[i]==a[(i+1)%a.length] || a[i]==a[(i+2)%a.length] || a[i]==a[(i+3)%a.length]); shuffle(b); }for (var i=0; i<nb; i++) { ret+=\\\"<circle cx='\\\"+(20+(40/nb)+(i*80/nb))+\\\"' cy='10' r='0.8'/>\\\"; } for (var i=0; i<a.length;i++) { ret+=\\\"<text style='font-size:5px;' transform='translate(\\\"+(18+(40/nb)+(a[i]*80/nb))+\\\",8)'>\\\"+b[i]+\\\"</text>\\\"; } ret+=\\\"<text style='font-size:7px;' transform='translate(2,11)'>[\\\"+b[0]+b[1]+\\\"]</text>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, Math.abs(a[0]-a[1])];}","class":"neg alpha","font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle est la [red]longueur du trait[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>geometry</dct:subject>
+        <dct:subject>measure</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>e10</dct:alternative>

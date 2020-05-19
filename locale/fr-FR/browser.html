@@ -14,10 +14,13 @@
 		</select>
 		
 		<input class="brinput" type="text" id="exerciceid" onkeyup="$(this).closest('.browser').browser('update');" placeholder="Identifiant"/>
+		<div class="brdel" onclick="$(this).prev().val('');$(this).closest('.browser').browser('update');"><img src="res/img/default/white/delete.svg" alt=""/></div>
 		
 		<input class="brinput" type="text" id="reference" onkeyup="$(this).closest('.browser').browser('update');" placeholder="Référence"/>
+		<div class="brdel" onclick="$(this).prev().val('');$(this).closest('.browser').browser('update');"><img src="res/img/default/white/delete.svg" alt=""/></div>
 		
 		<input class="brinput" type="text" id="tags" onkeyup="$(this).closest('.browser').browser('update');" placeholder="Tag"/>
+		<div class="brdel" onclick="$(this).prev().val('');$(this).closest('.browser').browser('update');"><img src="res/img/default/white/delete.svg" alt=""/></div>
 		
 		<div style="clear:both;"></div>
 		
@@ -65,6 +68,7 @@
             <option value="ASC" selected="selected">Croissant(e)</option>
             <option value="DESC">Décroissant(e)</option>
         </select>
+        <div id="brview" class="icon" onclick="$(this).closest('.browser').browser('toggle');"><img src="res/img/action/nothing.svg" alt=""/></div>
     </div>
     <div id="jdata">
     </div>

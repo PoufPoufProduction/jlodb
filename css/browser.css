@@ -14,6 +14,8 @@
 #jbrowser .brinput                      {  width:45%; height:1.2em; background-color:#888;
 										  margin:.1em 0 0 2%; color:white; border:0; border-radius:.2em;
 										  padding-left:2%; float:left; font-size:1em;}
+#jbrowser input.brinput					{ width:40%; border-radius:.2em 0 0 .2em; }
+#jbrowser .brdel						{ width:5%; height:1.2em; background-color:#333; float:left; border-radius:0 .2em .2em 0; margin-top:.1em; cursor:pointer; }
 #jbrowser #bractivities					{ width:47%; }
 
 #jbrowser #brargs #brcount				{ float:right; margin-right:2%; font-size:2.8em; }
@@ -32,6 +34,7 @@
 
 #jbrowser #jsubmit                      { font-size:4em; width:1em; height:1em; position:absolute; top:59%; left:83%; opacity:0.1; }
 .upd #jbrowser #jsubmit                 { cursor:pointer; opacity: 1; }
+#jbrowser #brview						{ font-size:2em; cursor:pointer; float:right; margin-right:.5em;}
 
 
 /* CLASSIFICATION */
@@ -60,30 +63,36 @@
 #jbrowser #jresults #orderby span		{ float: left; font-size:1.5em;}
 #jbrowser #jresults #orderby select     { float:left; border:0; background: transparent; width:7em; cursor:pointer; color:black;}
 
-#jbrowser #jresults #jdata>div.elt      { padding:.1em; }
-#jbrowser #jresults #jdata>div.elt.s    { background-color:#555; }
-#jbrowser #jresults #jdata>div.elt>*    { float:left; margin-right:.1em; }
-#jbrowser #jresults .title              { width:4em; height:3em; background-color:gray; position:relative; cursor:pointer;
+#jbrowser #jdata>div.elt      { padding:.1em; }
+#jbrowser #jdata>div.elt.s    { background-color:#555; }
+#jbrowser #jdata>div.elt>*    { float:left; margin-right:.1em; }
+#jbrowser #jdata .title              { width:4em; height:3em; background-color:gray; position:relative; cursor:pointer;
                                           background-image:url('../res/img/background/landscape/nosnapshot01.svg');background-repeat:no-repeat; }
-#jbrowser #jresults .title>img          { width:4em; height:3em; }
-#jbrowser #jresults .title .id          { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em;
+#jbrowser #jdata .title>img          { width:4em; height:3em; }
+#jbrowser #jdata .title .id          { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em;
                                           padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black; font-size:.4em; }
-#jbrowser #jresults .title .nb          { position:absolute; color:black; width:1.5em; background-color:white; top:5.8em; left:-0.1em;
+#jbrowser #jdata .title .nb          { position:absolute; color:black; width:1.5em; background-color:white; top:5.8em; left:-0.1em;
                                           padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black; font-size:.4em; }
-#jbrowser #jresults .activity           { width:3em; height:3em; cursor:pointer; }
-#jbrowser #jresults .parameter          { width:3.1em; height:3em; }
-#jbrowser #jresults .parameter>div      { font-size:1.4em; float:left; width:1em; height:1em; margin:0.03em; text-align:center;
+#jbrowser #jdata .activity           { width:3em; height:3em; cursor:pointer; }
+#jbrowser #jdata .parameter          { width:3.1em; height:3em; }
+#jbrowser #jdata .parameter>div      { font-size:1.4em; float:left; width:1em; height:1em; margin:0.03em; text-align:center;
                                           background-image:url("../res/img/icon/icon.svg"); }
-#jbrowser #jresults .parameter>div.time { background-image:url("../res/img/icon/duration.svg"); }
-#jbrowser #jresults .label              { background-color:white; height:3em; width:15em; }
-#jbrowser #jresults .label>div          { font-size:.5em; }
-#jbrowser #jresults .label div.m        { height:4.6em; }
-#jbrowser #jresults .label div.ref      { margin-right:.2em; float:right; font-weight:bold; cursor:pointer; }
-#jbrowser #jresults .label div.variant  { margin-left:.2em; float:left; font-style:italic; cursor:pointer; }
-#jbrowser #jresults .label .tag         { color:blue; cursor:pointer; }
-#jbrowser #jresults .context            { width:3em; height:3em; }
-#jbrowser #jresults .context>div        { font-size:1.4em; float:left; width:1em; height:1em; margin:0.03em; background-color:gray;
+#jbrowser #jdata .parameter>div.time { background-image:url("../res/img/icon/duration.svg"); }
+#jbrowser #jdata .label              { background-color:white; height:3em; width:15em; }
+#jbrowser #jdata .label>div          { font-size:.5em; }
+#jbrowser #jdata .label div.m        { height:4.6em; }
+#jbrowser #jdata .label div.ref      { margin-right:.2em; float:right; font-weight:bold; cursor:pointer; }
+#jbrowser #jdata .label div.variant  { margin-left:.2em; float:left; font-style:italic; cursor:pointer; }
+#jbrowser #jdata .label .tag         { color:blue; cursor:pointer; }
+#jbrowser #jdata .context            { width:3em; height:3em; }
+#jbrowser #jdata .context>div        { font-size:1.4em; float:left; width:1em; height:1em; margin:0.03em; background-color:gray;
                                           cursor:pointer; border-radius:.2em; }
+                                          
+#jbrowser #jdata.brsnap .label			{ display:none; }
+#jbrowser #jdata.brsnap .context		{ display:none; }
+#jbrowser #jdata.brsnap .parameter		{ display:none; }
+#jbrowser #jdata.brsnap .activity		{ display:none; }
+#jbrowser #jdata>div.elt				{ float:left; }
 
 
 
