@@ -241,6 +241,50 @@
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
     
+     <!-- Approximation -->
+    
+    <rdf:Description>
+        <dct:identifier>ra1m</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver les valeurs approximatives entières de nombres compris entre 1 et 1 000 000.</dct:title>
+        <dct:description><![CDATA["toright":true,"nodec":true,"noneg":true,"gg":{"max":[10000,100000,1000000],"min":100,"nb":5,"type":[10,100,1000],"ex":1,"de":[1]},"background":"res/img/background/landscape/bluegeo01.svg","errratio":3,"sp":0.06,"font":0.8,"withbars":false,"all":{"width":6,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"},"row1":{"height":2.4,"background":"gray","color":"white"}},"gen":"function($this,_s,_i){var ret={}; for (var c=0; c<_s.gg.type.length; c++) { ret['c'+(c+2)+'x1']={'type':'free','value':'r'+_s.gg.type[c]}; } for (var i=2;i<_s.gg.nb+2;i++) { var ok; do { ok=true; var de=_s.gg.de[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.de.length)], v=Math.floor(Math.random()*(de*(_s.gg.max[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.max.length)])-_s.gg.min))+_s.gg.min,dd=0; ret['c1x'+i]={'type':'value','value':(v/de)}; for (var c=0; c<_s.gg.type.length; c++) { var vv=_s.gg.type[c], val=Math.round(v/(vv*de))*vv; ok=ok&&(Math.abs(v%(vv*de))!=((vv*de)/2)); ret['c'+(c+2)+'x'+i]={'type':'value'}; ret['c'+(c+2)+'x'+i][(i<_s.gg.ex+2)?'value':'result']=val; } } while(!ok); } return {'cells':ret}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez[/b] le tableau.","po":{"r0.01":"Arrondi au [i]centième[/i]","r0.1":"Arrondi au [i]dixième[/i]","r1":"Arrondi à l'[i]unité[/i]","r10":"Arrondi à la [i]dizaine[/i]","r100":"Arrondi à la [i]centaine[/i]","r1000":"Arrondi au [i]millier[/i]"}</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ra1m</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CM1</dct:coverage>
+		<dct:source>res/img/background/landscape/bluegeo01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>ra1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver les valeurs approximatives entières de nombres compris entre 1 et 1 000.</dct:title>
+        <dct:description><![CDATA["gg":{"max":[1000,1000,1000,100],"min":70,"nb":6,"type":[10,100],"ex":1,"de":[1]},"font":1]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ra1m</dct:alternative>
+        <dct:relation>ra1m</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CM1</dct:coverage>
+		<dct:source>res/img/background/landscape/bluegeo01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>rg1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver les valeurs approximatives entières de nombres compris entre 0.01 et 10.</dct:title>
+        <dct:description><![CDATA["nodec":false,"gg":{"max":[10],"min":70,"nb":6,"type":[1,0.1],"ex":1,"de":[1000,100,100,10]},"font":1]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ra1m</dct:alternative>
+        <dct:relation>ra1m</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CM1</dct:coverage>
+		<dct:source>res/img/background/landscape/bluegeo01.svg</dct:source>
+    </rdf:Description>
+    
     <!-- Decomposition question -->
     
     <rdf:Description>
