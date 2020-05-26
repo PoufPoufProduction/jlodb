@@ -19,8 +19,6 @@ cat $1 \
  | sed -e 's|stroke-dasharray:none||g' \
  | sed -e 's|stroke-dashoffset:0||g' \
  | sed -e 's|stroke-opacity:1||g' \
- | sed -e 's|;marker[^:]*:[^;]*|;|g' \
- | sed -e 's|;solid[^:]*:[^;]*|;|g' \
  | sed -e 's|;enable-background:accumulate|;|g' \
  | sed -e 's|;stroke-opacity:1|;|g' \
  | sed -e 's|;color:#000000|;|g' \
@@ -34,8 +32,10 @@ cat $1 \
  | sed -e 's|;[^:]*:auto|;|g' \
  | sed -e 's|;[;]*|;|g'  \
  | sed -e 's|";|"|g'  \
- | sed -e 's|id="[^"]*"||g'  \
  | sed -e 's|0\.499|0\.5|g'  \
  | sed -e 's| [ ]*| |g'
+ 
+ 
+# | sed -e 's|id="[^"]*"||g'  \
  
  
