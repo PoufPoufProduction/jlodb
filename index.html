@@ -276,7 +276,7 @@ jlodb = {
                         $.getJSON("api/activity.php", function (data) {
                             for (var i=0; i<data.activities.length; i++) {
                                 var html="<tr><td class='icon'><div class='icon' onclick='jlodb.page.activities.detail(\"";
-                                html += data.activities[i].name+"\");'><img src='res/img/activity/";
+                                html += data.activities[i].name+"\");'><img src='res/img/icon/activity/";
                                 html += data.activities[i].name+".svg' alt=''/></div></td>";
                                 html += "<td class='text'><h1>"+data.activities[i].label+"</h1><p>";
                                 html += data.activities[i].description+"</p></td></tr>";
@@ -324,14 +324,14 @@ jlodb = {
                 $("#classification table.list").html("");
                 if (node.parent) {
                     var html ="<tr><td class='icon'><div class='icon' onclick='jlodb.page.classification.moveto(\"";
-                    html += node.parent.attr("id")+"\");'><img src='res/img/classification/up.svg' alt=''/></div></td>";
+                    html += node.parent.attr("id")+"\");'><img src='res/img/icon/classification/up.svg' alt=''/></div></td>";
                     html += "<td class='text'><h1>"+node.node.attr("label")+"</h1><p>";
                     html += node.node.attr("abstract")+"</p></td></tr>";
                     $("#classification table.list").append(html);
                 }
                 $(node.node.attr("children")).each(function() {
                     var html="<tr><td class='icon'><div class='icon' onclick='jlodb.page.classification.moveto(\"";
-                    html += this.id+"\");'><img src='res/img/classification/";
+                    html += this.id+"\");'><img src='res/img/icon/classification/";
                     html += this.id+".svg' alt=''/></div></td>";
                     html += "<td class='text'><h1>"+this.label+"</h1><p>";
                     html += this.abstract+"</p></td></tr>";
@@ -367,7 +367,7 @@ jlodb = {
 					if (!lang) { lang="zxx"; }
                     $("#jlcontent>div").hide();
                     $("#jlcontenta").load("locale/"+lang+"/admin.html"+"?debug="+Math.floor(Math.random()*99999),function() {
-                        $("#lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
+                        $("#lockjlodb img").attr("src","res/img/default/white/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
 						
 						$.getJSON("api/editor.php", function(_editor) { $("#adnbedits").html(_editor.count); });
 						$.getJSON("api/report.php?count", function(_report) { $("#adnbreports").html(_report.count); });
@@ -379,7 +379,7 @@ jlodb = {
             lock: function() {
                 $.getJSON("api/lock.php?action="+(jlodb.checkdb.lock?"unlock":"lock"), function(data) {
                     if (data.status=="success") { jlodb.checkdb.lock = data.lock; }
-                    $("#lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
+                    $("#lockjlodb img").attr("src","res/img/default/white/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
                 });
             },
             perform: function(_login) {
@@ -434,7 +434,7 @@ jlodb = {
 						$elt.append("<div class='adrtitle'>"+txt+"<div>");
 						$elt.append("<div class='adrcomment'>"+r.comment+"<div>");
 						$elt.append("<div class='adrvalues'>"
-							+"<div class='icon'><img src='res/img/classification/"+r.classification+".svg' alt=''/></div>"
+							+"<div class='icon'><img src='res/img/icon/classification/"+r.classification+".svg' alt=''/></div>"
 							+"<div class='icon' style='background-image:url(\"res/img/icon/icon.svg\")'>"+r.level+"</div>"
 							+"<div class='icon'><img src='res/img/numbers/star/star"+r.diff+".svg' alt=''/></div>"
 							+"<div class='icon' style='background-image:url(\"res/img/icon/duration.svg\")'>"+r.duration+"</div>"
@@ -589,7 +589,7 @@ $(window).ready(function() {
     <div id="jlodb">
         <div id="jlpage">
             <div id="jlheader">
-                <img src="res/img/banners/jlodb.svg" alt="" class="background" />
+                <img src="res/img/background/banners/jlodb.svg" alt="" class="background" />
                 <ul>
                     <li><div class="icon"></div></li>
                     <li><div class="icon"></div></li>

@@ -7,8 +7,7 @@
     <rdf:Description>
         <dct:identifier>aa</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[51,0,51],[1,1,2]],"robots":[{"origin":[0,1,0],"code":[1,2,0],"actions":["f01","f01","fct1"]}],"padding":6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Une fonction est une entité informatique qui encapsule une séquence d'instructions effectuant un traitement spécifique bien identifié et qui peut être réutilisé dans le programme."]]]></dct:description>
+        <dct:description><![CDATA["class":"hrun","board":[[51,0,51],[1,1,2]],"robots":[{"origin":[0,1,0],"code":[["fct1"],["f01","f01"],0],"actions":[]}],"padding":6]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -21,6 +20,7 @@
         <dct:identifier>ab</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[51,0,51],[1,1,2]],"robots":[{"origin":[0,1,0],"code":[2,1,0],"actions":["f01","fct1","fct1"]}],"padding":6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La commande [b]F1[/b] permet de lancer l'exécution du code contenu dans le panneau F1.","La fonction F1 doit contenir le code suivant :[code][a]f01[/a][/code]","[code][a]fct1[/a][a]fct1[/a][/code] lance 2 fois la commande [red][b]AVANCER[/b][/red] de la section F1."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -32,20 +32,19 @@
         <dct:identifier>ac</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[461,461,475,0,0],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[2,2,0],"actions":["f01","f01","x2","fct1"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'appel à une fonction est une action comme une autre qui peut-être exécutée plusieurs fois grâce à un opérateur de multiplication."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["L'appel à une fonction est une action comme une autre qui peut être exécutée plusieurs fois grâce à un opérateur de multiplication.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]f01[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]x2[/a][a]fct1[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ad</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée d'un circuit en escalier.</dct:title>
         <dct:description><![CDATA["board":[[51,1,1],[1,1,0],[2,0,0]],"robots":[{"origin":[2,0,2],"code":[2,4,0],"actions":["f01","f01","turnleft","turnright","fct1","fct1"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'intérêt de la fonction est de regrouper les séquences d'instructions qui se répétent dans le programme afin de ne pas devoir les ré-écrire à chaque fois.","Dans ce niveau, la séquence 'AVANCE - TOURNE GAUCHE - AVANCE - TOURNE DROITE' est utilisée 2 fois. Il est donc judicieux de l'encapsuler dans une fonction."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisées plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]turnright[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]fct1[/a][a]fct1[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -58,6 +57,7 @@
         <dct:identifier>ae</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée d'un circuit en U.</dct:title>
         <dct:description><![CDATA["board":[[1,1,1],[469,0,1],[2,1,1]],"robots":[{"origin":[0,0,0],"code":[18,12,0],"actions":["f01","turnright","fct1","x2","x3","x4"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une rotation inutile en fin de programme n'a aucune importance.","La fonction F1 devrait contenir le code suivant :[code][a]x2[/a][a]f01[/a][a]turnright[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]x3[/a][a]fct1[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -69,6 +69,7 @@
         <dct:identifier>af</dct:identifier>
         <dct:title xml:lang="fr-FR">En mutualisant certaines action grâce à la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,1,0],[476,1,0],[0,1,1],[0,0,2]],"robots":[{"origin":[0,0,0],"code":[18,12,0],"actions":["f01","f01","f01","f01","f01","turnleft","turnright","fct1","fct1"]}],"padding":0]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisées plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]turnright[/a][a]f01[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]fct1[/a][a]f01[/a][a]turnleft[/a][a]fct1[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

@@ -8,7 +8,7 @@
     <rdf:Description>
         <dct:identifier>dun</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) aux dénominateurs identiques, du plus petit au plus grand.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluegeo01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"up", "gen":"function($this,settings,_id){var val=[];var de=Math.floor(Math.random()*4)+7; for (var j=0;j<5;j++) { var num=1, already; do { num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de}};}"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_blue01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"up", "gen":"function($this,settings,_id){var val=[];var de=Math.floor(Math.random()*4)+7; for (var j=0;j<5;j++) { var num=1, already; do { num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez les fractions[/b] proposées en veillant à respecter les inégalités présentes."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -16,13 +16,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>dtd</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/bluegeo01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>dud</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) aux numérateurs identiques, du plus petit au plus grand.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluegeo01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"up", "gen":"function($this,settings,_id){var val=[];var num=Math.floor(Math.random()*5)+1; for (var j=0;j<5;j++) { var de=1, already; do { de=Math.floor(Math.random()*10)+num; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de}};}"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_blue01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"up", "gen":"function($this,settings,_id){var val=[];var num=Math.floor(Math.random()*5)+1; for (var j=0;j<5;j++) { var de=1, already; do { de=Math.floor(Math.random()*10)+num; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez les fractions[/b] proposées en veillant à respecter les inégalités présentes."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -30,13 +30,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>dtd</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/bluegeo01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>du</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) dont les dénominateurs sont compris entre 0 et 10, du plus petit au plus grand.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluegeo01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"up", "gen":"function($this,settings,_id){var val=[];for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de}};}"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_blue01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"up", "gen":"function($this,settings,_id){var val=[];for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez les fractions[/b] proposées en veillant à respecter les inégalités présentes."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -44,13 +44,13 @@
         <dct:type>4</dct:type>
         <dct:alternative>dtd</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/bluegeo01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>dtu</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 2) dont les dénominateurs sont compris entre 0 et 10, du plus petit au plus grand.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluegeo01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"up", "gen":"function($this,settings,_id){var val=[];for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de*2)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de}};}"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_blue01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"up", "gen":"function($this,settings,_id){var val=[];for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de*2)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez les fractions[/b] proposées en veillant à respecter les inégalités présentes."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -58,13 +58,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>dtd</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/bluegeo01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ddn</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) aux dénominateurs identiques, du plus grand au plus petit.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluegeo01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"down", "gen":"function($this,settings,_id){var val=[];var de=Math.floor(Math.random()*4)+7; for (var j=0;j<5;j++) { var num=1, already; do { num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de}};}"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_blue01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"down", "gen":"function($this,settings,_id){var val=[];var de=Math.floor(Math.random()*4)+7; for (var j=0;j<5;j++) { var num=1, already; do { num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez les fractions[/b] proposées en veillant à respecter les inégalités présentes."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -72,13 +72,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>dtd</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/bluegeo01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ddd</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) aux numérateurs identiques, du plus grand au plus petit.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluegeo01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"down", "gen":"function($this,settings,_id){var val=[];var num=Math.floor(Math.random()*5)+1; for (var j=0;j<5;j++) { var de=1, already; do { de=Math.floor(Math.random()*10)+num; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de}};}"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_blue01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"down", "gen":"function($this,settings,_id){var val=[];var num=Math.floor(Math.random()*5)+1; for (var j=0;j<5;j++) { var de=1, already; do { de=Math.floor(Math.random()*10)+num; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez les fractions[/b] proposées en veillant à respecter les inégalités présentes."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -86,13 +86,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>dtd</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/bluegeo01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>dd</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) dont les dénominateurs sont compris entre 0 et 10, du plus grand au plus petit.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluegeo01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"down", "gen":"function($this,settings,_id){var val=[];for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de}};}"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_blue01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"down", "gen":"function($this,settings,_id){var val=[];for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez les fractions[/b] proposées en veillant à respecter les inégalités présentes."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -100,13 +100,13 @@
         <dct:type>4</dct:type>
         <dct:alternative>dtd</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/bluegeo01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>dtd</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 2) dont les dénominateurs sont compris entre 0 et 10, du plus grand au plus petit.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluegeo01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"down", "gen":"function($this,settings,_id){var val=[];for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de*2)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de}};}"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_blue01.svg","number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"desktop/puzzle/compare01.svg","class":"exup","svgclass":"down", "gen":"function($this,settings,_id){var val=[];for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de*2)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); return {\\\"values\\\":{\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Placez les fractions[/b] proposées en veillant à respecter les inégalités présentes."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -114,7 +114,7 @@
         <dct:type>4</dct:type>
         <dct:alternative>dtd</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/bluegeo01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/compare01.svg,res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
      <!-- FILL -->
@@ -122,14 +122,14 @@
     <rdf:Description>
         <dct:identifier>dr40</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement une graduation en 1/4 commençant par 0.</dct:title>
-        <dct:description><![CDATA["gg":{"ds":[4],"nb":4,"e":12,"r":0,"d":0},"background":"res/img/background/landscape/yellowboard02.svg","errratio":2,"svgclass":"small","number":2,"gen":"function($this,_s,_id){var d=_s.gg.ds[Math.floor(Math.random()*_s.gg.ds.length)],omin=0,omax=_s.gg.d*d,o=Math.floor(Math.random()*(omax-omin))+omin,txt={},show=[],p=[],count=0,values={},y=[],decoys=[],name=function(_v,_d){if (Math.random()>=_s.gg.r || _v<_d || (_v%_d)==0) { return _v+'/'+_d;} else { return Math.floor(_v/_d)+'+'+(_v%_d)+'/'+_d; }}; for(var i=0; i<21;i++) { if ((o+i)%d==0) { txt['t'+(i<9?'0':'')+(i+1)]=(o+i)/d; show.push('s'+(i<9?'0':'')+(i+1)); } } do { var pp=Math.floor(Math.random()*19)+1, ok=true; for (var i in p) { if (Math.abs(pp-p[i])<3) { ok=false; }} if (ok && ((o+pp)%d)!=0) { p.push(pp); } count++; } while(p.length<_s.gg.nb && count<100); for (var i in p) { show.push('pa'+(p[i]<9?'0':'')+(p[i]+1)); values['p'+(p[i]<9?'0':'')+(p[i]+1)]=name(o+p[i],d); } do {var ok=true,decoy=Math.floor(Math.random()*19)+1; for (var i in p) { if (p[i]==decoy) {ok = false; }} for (var i in y) { if (y[i]==decoy) {ok = false; }} if (ok) {y.push(decoy); } }while(y.length<(_s.gg.e-p.length)); for (var i in y) { values['d'+(y[i]<9?'0':'')+(y[i]+1)]=name(o+y[i],d); decoys.push('d'+(y[i]<9?'0':'')+(y[i]+1)); } return { 'txt':txt,'show':show,'values':values,'decoys':decoys};  }","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"url":"desktop/puzzle/ruler02.svg","same":[[]]]]></dct:description>
+        <dct:description><![CDATA["gg":{"ds":[4],"nb":4,"e":12,"r":0,"d":0},"background":"res/img/background/landscape/c_yellow04.svg","errratio":2,"svgclass":"small","number":2,"gen":"function($this,_s,_id){var d=_s.gg.ds[Math.floor(Math.random()*_s.gg.ds.length)],omin=0,omax=_s.gg.d*d,o=Math.floor(Math.random()*(omax-omin))+omin,txt={},show=[],p=[],count=0,values={},y=[],decoys=[],name=function(_v,_d){if (Math.random()>=_s.gg.r || _v<_d || (_v%_d)==0) { return _v+'/'+_d;} else { return Math.floor(_v/_d)+'+'+(_v%_d)+'/'+_d; }}; for(var i=0; i<21;i++) { if ((o+i)%d==0) { txt['t'+(i<9?'0':'')+(i+1)]=(o+i)/d; show.push('s'+(i<9?'0':'')+(i+1)); } } do { var pp=Math.floor(Math.random()*19)+1, ok=true; for (var i in p) { if (Math.abs(pp-p[i])<3) { ok=false; }} if (ok && ((o+pp)%d)!=0) { p.push(pp); } count++; } while(p.length<_s.gg.nb && count<100); for (var i in p) { show.push('pa'+(p[i]<9?'0':'')+(p[i]+1)); values['p'+(p[i]<9?'0':'')+(p[i]+1)]=name(o+p[i],d); } do {var ok=true,decoy=Math.floor(Math.random()*19)+1; for (var i in p) { if (p[i]==decoy) {ok = false; }} for (var i in y) { if (y[i]==decoy) {ok = false; }} if (ok) {y.push(decoy); } }while(y.length<(_s.gg.e-p.length)); for (var i in y) { values['d'+(y[i]<9?'0':'')+(y[i]+1)]=name(o+y[i],d); decoys.push('d'+(y[i]<9?'0':'')+(y[i]+1)); } return { 'txt':txt,'show':show,'values':values,'decoys':decoys};  }","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"url":"desktop/puzzle/ruler02.svg","same":[[]]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les cases vides en respectant la graduation."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>dr</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -142,7 +142,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>dr</dct:alternative>
         <dct:relation>dr40</dct:relation>
-        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
     
     
@@ -156,7 +156,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>dr</dct:alternative>
         <dct:relation>dr40</dct:relation>
-        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
     
 
@@ -170,7 +170,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>dr</dct:alternative>
         <dct:relation>dr40</dct:relation>
-        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
     
     
@@ -184,7 +184,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>dr</dct:alternative>
         <dct:relation>dr40</dct:relation>
-        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
     <!-- Compare -->
@@ -192,40 +192,40 @@
     <rdf:Description>
         <dct:identifier>dca</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les fractions suivant qu'elles soient supérieures, inférieures ou égales à 1.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper01.svg","init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "values":[{"a":"99/101","b":"8/88","c":"23/54","d":"29/39","e":"19/19","f":"100/100","g":"65/65","h":"88/88","i":"57/56","j":"44/14","k":"12/7","l":"121/2"}],"txt":{"text1":"<1","text2":"=1","text3":">1"}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_brown02.svg","init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "values":[{"a":"99/101","b":"8/88","c":"23/54","d":"29/39","e":"19/19","f":"100/100","g":"65/65","h":"88/88","i":"57/56","j":"44/14","k":"12/7","l":"121/2"}],"txt":{"text1":"<1","text2":"=1","text3":">1"}]]></dct:description>
 		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] les fractions suivant qu'elles soient [red]supérieures[/red], [red]inférieures[/red] ou [red]égales[/red] à 1."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>dca</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/wallpaper01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/b_brown02.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>dcb</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les fractions suivant qu'elles soient supérieures, inférieures ou égales à 2.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper01.svg","init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "values":[{"a":"199/100","b":"3/2","c":"20/33","d":"56/29","e":"38/19","f":"200/100","g":"130/65","h":"24/12","i":"57/28","j":"44/10","k":"12/5","l":"32/10"}],"txt":{"text1":"<2","text2":"=2","text3":">2"}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/b_brown02.svg","init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "values":[{"a":"199/100","b":"3/2","c":"20/33","d":"56/29","e":"38/19","f":"200/100","g":"130/65","h":"24/12","i":"57/28","j":"44/10","k":"12/5","l":"32/10"}],"txt":{"text1":"<2","text2":"=2","text3":">2"}]]></dct:description>
 		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] les fractions suivant qu'elles soient [red]supérieures[/red], [red]inférieures[/red] ou [red]égales[/red] à 2."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>dca</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/wallpaper01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/b_brown02.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>dda</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les fractions littérales suivant qu'elles soient supérieures, inférieures ou égales à 1.</dct:title>
-        <dct:description><![CDATA["gg":[["<1","Deux-cinquièmes","Douze-treizièmes","Un-demi","Trois-quarts"],["=1","Deux-demis","Quatre-quarts","Cent-centièmes","Douze-douzièmes"],[">1","Cinq-tiers","Trois-demis","Douze-dixièmes","Cinquante-deux-onzièmes"]],"errratio":2,"radius":30,"background":"res/img/background/landscape/grayboard01.svg","init":{"area":[470,230,470,370]},"same":[["p11","p12","p13","p14"],["p21","p22","p23","p24"],["p31","p32","p33","p34"]],"url":"desktop/puzzle/folder01.svg","gen":"function($this,_s,_i) { var v={},t={}; for (var i=0;i<3;i++) { t['text'+(i+1)]=_s.gg[i][0]; for (var j=1; j<5; j++) { v['p'+(i+1)+''+j]=_s.gg[i][j]; } } return { values:v, txt:t }; }","scale":1.1]]></dct:description>
+        <dct:description><![CDATA["gg":[["<1","Deux-cinquièmes","Douze-treizièmes","Un-demi","Trois-quarts"],["=1","Deux-demis","Quatre-quarts","Cent-centièmes","Douze-douzièmes"],[">1","Cinq-tiers","Trois-demis","Douze-dixièmes","Cinquante-deux-onzièmes"]],"errratio":2,"radius":30,"background":"res/img/background/landscape/c_gray01.svg","init":{"area":[470,230,470,370]},"same":[["p11","p12","p13","p14"],["p21","p22","p23","p24"],["p31","p32","p33","p34"]],"url":"desktop/puzzle/folder01.svg","gen":"function($this,_s,_i) { var v={},t={}; for (var i=0;i<3;i++) { t['text'+(i+1)]=_s.gg[i][0]; for (var j=1; j<5; j++) { v['p'+(i+1)+''+j]=_s.gg[i][j]; } } return { values:v, txt:t }; }","scale":1.1]]></dct:description>
 		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] les fractions suivant qu'elles soient [red]supérieures[/red], [red]inférieures[/red] ou [red]égales[/red] à 1."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>dda</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/folder01.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/folder01.svg,res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -239,7 +239,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>dda</dct:alternative>
         <dct:relation>dda</dct:relation>
-        <dct:source>res/img/desktop/puzzle/folder01.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/folder01.svg,res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 	
     

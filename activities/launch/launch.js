@@ -11,7 +11,7 @@
         bubble      : [40,34],
         wall        : [100,2],
         level       : 0,
-        background  : "res/img/background/landscape/tiles01.svg",
+        background  : "res/img/background/landscape/b_tiles01.svg",
 		svgclass	: "",
         tip         : false,
         board       : "",                                       // board

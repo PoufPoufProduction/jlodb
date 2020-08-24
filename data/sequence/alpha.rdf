@@ -6,40 +6,40 @@
     <rdf:Description>
         <dct:identifier>m01</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, la lettre manquante selon l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":15,"input":{"id":"azertyup","digit":1,"speed":5000},"regexp":{"output":"\\\\?"},"gen":"function(){ var val=Math.floor(Math.random()*26), b=val-2,ret=\\\"\\\",pre=\\\"...\\\",suf=\\\"...\\\"; if (b<0) { b = 0; pre=\\\"\\\";} if (b+5>25) { b=20; suf=\\\"\\\"; } for (var i=b;i<b+6;i++) { ret+=(i==val?\\\"<span style='color:red;'>?</span>\\\":String.fromCharCode(65+i)); } return [pre+ret+suf,String.fromCharCode(65+val)];}","class":"neg alpha","font":1.5]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","number":15,"input":{"id":"azertyup","digit":1,"speed":5000},"regexp":{"output":"\\\\?"},"gen":"function(){ var val=Math.floor(Math.random()*26), b=val-2,ret=\\\"\\\",pre=\\\"...\\\",suf=\\\"...\\\"; if (b<0) { b = 0; pre=\\\"\\\";} if (b+5>25) { b=20; suf=\\\"\\\"; } for (var i=b;i<b+6;i++) { ret+=(i==val?\\\"<span style='color:red;'>?</span>\\\":String.fromCharCode(65+i)); } return [pre+ret+suf,String.fromCharCode(65+val)];}","class":"neg alpha","font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Selon l'ordre [b]alphabétique[/b], quelle est la [red]lettre manquante[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>languages</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>m01</dct:alternative>
-        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
         
     <rdf:Description>
         <dct:identifier>ma01</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, la lettre suivante selon l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":15,"input":{"id":"azertyup","digit":1,"speed":5000},"gen":"function(){ var val=Math.floor(Math.random()*25); return [String.fromCharCode(65+val),String.fromCharCode(65+val+1)];}","class":"neg alpha","font":2]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","number":15,"input":{"id":"azertyup","digit":1,"speed":5000},"gen":"function(){ var val=Math.floor(Math.random()*25); return [String.fromCharCode(65+val),String.fromCharCode(65+val+1)];}","class":"neg alpha","font":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Selon l'ordre [b]alphabétique[/b], quelle est la [red]lettre suivante[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>languages</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>m01</dct:alternative>
-        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
         
     <rdf:Description>
         <dct:identifier>mb01</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, la lettre précédente selon l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":15,"input":{"id":"azertyup","digit":1,"speed":5000},"gen":"function(){ var val=Math.floor(Math.random()*25); return [String.fromCharCode(65+val+1),String.fromCharCode(65+val)];}","class":"neg alpha","font":2]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","number":15,"input":{"id":"azertyup","digit":1,"speed":5000},"gen":"function(){ var val=Math.floor(Math.random()*25); return [String.fromCharCode(65+val+1),String.fromCharCode(65+val)];}","class":"neg alpha","font":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Selon l'ordre [b]alphabétique[/b], quelle est la [red]lettre précédente[/red] ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>languages</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>m01</dct:alternative>
-        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>

@@ -70,12 +70,12 @@
             $("#ontab .jheader #onlabel").html(node.node.attr("label"));
             if (node.parent) {
                 var html="<div class='elt' onclick=\"$(this).closest('.browser').browser('classification','"+
-                         node.parent.attr("id")+"');\"><div class='icon'  >"+"<img src='res/img/classification/up.svg'/></div><div class='l'></div></div>";
+                         node.parent.attr("id")+"');\"><div class='icon' >"+"<img src='res/img/icon/classification/up.svg'/></div><div class='l'></div></div>";
                 $("#ontab .content").append(html);
             }
             $(node.node.attr("children")).each(function() {
                 var html="<div class='elt' onclick=\"$(this).closest('.browser').browser('classification','"+this.id+"');\"><div class='icon' >"+
-                         "<img src='res/img/classification/"+this.id+".svg'/></div><div class='l'>"+this.label+"</div></div>";
+                         "<img src='res/img/icon/classification/"+this.id+".svg'/></div><div class='l'>"+this.label+"</div></div>";
                 $("#ontab .content").append(html);
             });
         },
@@ -116,7 +116,7 @@
                 html+="</div>";
 
                 html+="<div class='activity' "+helpers.onclick(['activity',e.activity])+">"+
-                      "<img src='res/img/activity/"+e.activity+".svg'/></div>";
+                      "<img src='res/img/icon/activity/"+e.activity+".svg'/></div>";
 
                 var txt = e.label;
                 if (e.tag.length) {
@@ -136,7 +136,7 @@
 
                 html+="<div class='parameter'>";
                 html+="<div "+helpers.onclick(['classification',e.classification])+">"+
-                      "<img src='res/img/classification/"+e.classification+".svg'/></div>";
+                      "<img src='res/img/icon/classification/"+e.classification+".svg'/></div>";
                 html+="<div>"+e.level+"</div>";
                 html+="<div><img src='res/img/numbers/star/star"+e.diff+".svg'/></div>";
                 html+="<div class='time'>"+e.extend+"</div>";
@@ -332,11 +332,11 @@
                 var $this = $(this), settings = helpers.settings($this);
                 if ($this.find("#jdata").hasClass("brsnap")) {
 					$this.find("#jdata").removeClass("brsnap");
-					$this.find("#brview img").attr("src","res/img/action/nothing.svg");
+					$this.find("#brview img").attr("src","res/img/icon/action/nothing.svg");
 				}
 				else {
 					$this.find("#jdata").addClass("brsnap");
-					$this.find("#brview img").attr("src","res/img/action/red.svg");
+					$this.find("#brview img").attr("src","res/img/icon/action/red.svg");
 				}
 			},
 			onshow() {},

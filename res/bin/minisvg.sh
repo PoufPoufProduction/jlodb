@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cat $1 \
  | tr -d '\n' \

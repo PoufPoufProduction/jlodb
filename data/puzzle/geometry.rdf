@@ -7,14 +7,14 @@
 	<rdf:Description>
         <dct:identifier>ia01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les angles droits d'un polygône.</dct:title>
-        <dct:description><![CDATA["gg":{"nb":5,"max":[20,20]},"background":"res/img/background/landscape/graycarpet01.svg","withrottimer":false,"errratio":2,"init":{"id":{"ruler":[460,180]},"area":[100,100,300,300]},"radius":120,"pieces":"tr01","decoys":["ruler"],"url":"desktop/puzzle/ruler03.svg","decoyfx":false,"gen":"function($this,_s,_id){ var ids=['ruler'],t=[]; for (var i=0; i<_s.gg.max[0]+_s.gg.max[1];i++) { t.push(i); } shuffle(t); for (var i=0; i<_s.gg.nb; i++) { var val=t[i],w=(val>=_s.gg.max[0]),v=val-(w?_s.gg.max[0]:0)+1; ids.push('t'+(w?'n':'a')+(v<10?'0':'')+v); } return {'id':ids }; }","cumul":true,"rotation":15,"show":["box"]]]></dct:description>
+        <dct:description><![CDATA["gg":{"nb":5,"max":[20,20]},"background":"res/img/background/landscape/c_gray02.svg","withrottimer":false,"errratio":2,"init":{"id":{"ruler":[460,180]},"area":[100,100,300,300]},"radius":120,"pieces":"tr01","decoys":["ruler"],"url":"desktop/puzzle/ruler03.svg","decoyfx":false,"gen":"function($this,_s,_id){ var ids=['ruler'],t=[]; for (var i=0; i<_s.gg.max[0]+_s.gg.max[1];i++) { t.push(i); } shuffle(t); for (var i=0; i<_s.gg.nb; i++) { var val=t[i],w=(val>=_s.gg.max[0]),v=val-(w?_s.gg.max[0]:0)+1; ids.push('t'+(w?'n':'a')+(v<10?'0':'')+v); } return {'id':ids }; }","cumul":true,"rotation":15,"show":["box"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En [b]orientant[/b] correctement l'équerre par [red]simple clic[/red], [b]identifiez[/b] les différents triangles et [b]placez[/b]-les dans la boite correspondante.","fontex":0.7,"txt":{"box1":"Triangle rectangle","box2":"Triangle quelconque"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ia01</dct:alternative>
-        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/puzzle/ruler03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray02.svg,res/img/desktop/puzzle/ruler03.svg</dct:source>
     </rdf:Description>
 	
 	
@@ -22,14 +22,14 @@
 	<rdf:Description>
         <dct:identifier>ib01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les segments perpendiculaires.</dct:title>
-        <dct:description><![CDATA["show":["lred"],"gg":0,"background":"res/img/background/landscape/grayboard01.svg","desktop":[-320,-240],"withrottimer":false,"errratio":3,"init":{"id":{"ruler":[-220,-80]},"pos":[[-100,-150],[-50,-150],[0,-150]]},"radius":20,"decoys":["ruler"],"url":"desktop/puzzle/perpendicular01.svg","decoyfx":false,"gen":"function($this,_s,_id){ var ids=['ruler'],tr={'#mainrot':'rotate('+(4-Math.floor(Math.random()*9))+')'},t=[1,2,3,4,5,6]; shuffle(t); for (var i=0; i<6;i++) { if (i<3) { ids.push('pp0'+t[i]); tr['#l0'+t[i]]='rotate('+_s.gg+')'; } else { tr['#l0'+t[i]]='rotate('+(_s.gg+(1-2*Math.floor(Math.random()*2))*(2+Math.floor(Math.random()*5)))+')'; } } if (_s.gg) { tr['#rulerrot']='rotate('+_s.gg+')'; } return {'id':ids,'transform':tr }; }","cumul":true,"rotation":0,"magnetic":[[-255,140],[-150,145],[-55,140],[50,135],[155,145],[255,140]],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]]]]></dct:description>
+        <dct:description><![CDATA["show":["lred"],"gg":0,"background":"res/img/background/landscape/c_gray01.svg","desktop":[-320,-240],"withrottimer":false,"errratio":3,"init":{"id":{"ruler":[-220,-80]},"pos":[[-100,-150],[-50,-150],[0,-150]]},"radius":20,"decoys":["ruler"],"url":"desktop/puzzle/perpendicular01.svg","decoyfx":false,"gen":"function($this,_s,_id){ var ids=['ruler'],tr={'#mainrot':'rotate('+(4-Math.floor(Math.random()*9))+')'},t=[1,2,3,4,5,6]; shuffle(t); for (var i=0; i<6;i++) { if (i<3) { ids.push('pp0'+t[i]); tr['#l0'+t[i]]='rotate('+_s.gg+')'; } else { tr['#l0'+t[i]]='rotate('+(_s.gg+(1-2*Math.floor(Math.random()*2))*(2+Math.floor(Math.random()*5)))+')'; } } if (_s.gg) { tr['#rulerrot']='rotate('+_s.gg+')'; } return {'id':ids,'transform':tr }; }","cumul":true,"rotation":0,"magnetic":[[-255,140],[-150,145],[-55,140],[50,135],[155,145],[255,140]],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"A l'aide de l'[b]équerre[/b], [b]identifiez[/b] les segments [b]perpendiculaires[/b] à la droite [red]rouge[/red] et [b]placez-y[/b] un jeton.","fontex":0.7]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ib01</dct:alternative>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/perpendicular01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/puzzle/perpendicular01.svg</dct:source>
     </rdf:Description>
     
 	<rdf:Description>
@@ -43,7 +43,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>ib01</dct:alternative>
         <dct:relation>ib01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/perpendicular01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/puzzle/perpendicular01.svg</dct:source>
     </rdf:Description>
     
 	<rdf:Description>
@@ -57,7 +57,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>ib01</dct:alternative>
         <dct:relation>ib01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/perpendicular01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/puzzle/perpendicular01.svg</dct:source>
     </rdf:Description>
     
 	<rdf:Description>
@@ -71,7 +71,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>ib01</dct:alternative>
         <dct:relation>ib01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/perpendicular01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/puzzle/perpendicular01.svg</dct:source>
     </rdf:Description>
 	
 	

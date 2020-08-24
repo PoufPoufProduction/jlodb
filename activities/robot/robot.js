@@ -115,7 +115,7 @@
                                 $this.find("#rttabs #t"+(i+1)+" .f"+j+" div.z").each(function(_index) {
                                     $(this).toggle(_index<settings.robots[i].code[j].length);
                                     if (_index<settings.robots[i].code[j].length) {
-                                        $(this).append("<div class='a'><img src='res/img/action/"+
+                                        $(this).append("<div class='a'><img src='res/img/icon/action/"+
                                             settings.robots[i].code[j][_index]+".svg' alt='"+
                                             settings.robots[i].code[j][_index]+"' style='position:relative;'/></div>");
                                     }
@@ -178,7 +178,7 @@
                     // Initialize the action cards
                     for (var j in settings.robots[i].actions) {
                         var $elt = $($this.find("#rttabs #t"+(parseInt(i)+1)+" .rtcode .z").get(parseInt(j)));
-                        var $html=$("<div class='a'><img src='res/img/action/"+settings.robots[i].actions[j]+".svg' alt='"+settings.robots[i].actions[j]+"'/></div>");
+                        var $html=$("<div class='a'><img src='res/img/icon/action/"+settings.robots[i].actions[j]+".svg' alt='"+settings.robots[i].actions[j]+"'/></div>");
                         $elt.html($html);
                         $html.draggable({ containment:$this.find("#t"+(parseInt(i)+1)), revert:true, stack:".a"});
                     }
@@ -710,11 +710,11 @@
             if (!settings.stop && helpers.success($this, _count)) {
                 settings.score = 5-settings.wrong;
                 if (settings.score<2) { settings.score = 2; }
-                $this.find("#rtgoal").css("left","110%").show().animate({left:"50%"},500);
+                $this.find("#rtgoal").css("left","110%").show().animate({left:"50%"},300);
                 setTimeout(function() {
                     helpers.end($this,{'status':'success','score':settings.score});
                     $this.find("#rtgoal").animate({left:"110%"},1000);
-                }, 1000);
+                }, 2000);
             }
             else {
                 helpers.restore($this);
@@ -1133,9 +1133,9 @@
 						"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
 						"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
 						"\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
-						"\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon'><img src='res/img/action/$1.svg' alt=''/></div>",
-						"\\\[a1\\\]([^\\\[]+)\\\[/a1\\\]",          "<div class='icon o1'><img src='res/img/action/$1.svg' alt=''/></div>",
-						"\\\[a2\\\]([^\\\[]+)\\\[/a2\\\]",          "<div class='icon o2'><img src='res/img/action/$1.svg' alt=''/></div>"
+						"\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon'><img src='res/img/icon/action/$1.svg' alt=''/></div>",
+						"\\\[a1\\\]([^\\\[]+)\\\[/a1\\\]",          "<div class='icon o1'><img src='res/img/icon/action/$1.svg' alt=''/></div>",
+						"\\\[a2\\\]([^\\\[]+)\\\[/a2\\\]",          "<div class='icon o2'><img src='res/img/icon/action/$1.svg' alt=''/></div>"
 					];
 	
 					

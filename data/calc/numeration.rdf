@@ -8,14 +8,14 @@
     <rdf:Description>
         <dct:identifier>c1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier 8 nombres entiers, compris entre 1 et 1 000, depuis leur décomposition.</dct:title>
-        <dct:description><![CDATA["gg":[3,1,0],"nodec":true,"callen":6,"noneg":true,"background":"res/img/background/landscape/wallpaper02.svg","errratio":3,"sp":0.1,"font":1,"withbars":false,"all":{"width":4.5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true,"width":14.8}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function($this,_s,_i){var c=0.5,de=Math.pow(10,_s.gg[1]-1),ret={}; for (var i=1;i<9;i++) { var v=0,vv=[],nb; do { var p=Math.pow(10,_s.gg[0]-1); v=0; nb=0; vv=[]; for (var j=0; j<_s.gg[0]; j++) { var tt=(Math.random()>c),d=Math.floor(Math.random()*9+1) ; v=v*10+(tt?d:0); if (tt) { nb++; var tmp=''; if (d!=1 || (_s.gg[2]==1&&p<de) || p==de) { tmp+=d; } if (p!=de) { if (_s.gg[2]==1 && p<de) { tmp+='/'; } else { if (d!=1) { tmp+='×'; } } } if (_s.gg[2]==1&&p<de) { tmp+=jtools.num.tostr(de/p);} else { tmp+=(p!=de?jtools.num.tostr(p/de):''); } vv.push(tmp); } p=p/10; } } while (v<10 || nb>3); ret['c1x'+i]={'type':'value','value':vv.join('+')}; ret['c2x'+i]={'type':'value','result':v/de}; } return {'cells':ret}; }"]]></dct:description>
+        <dct:description><![CDATA["gg":[3,1,0],"nodec":true,"callen":6,"noneg":true,"background":"res/img/background/landscape/c_002.svg","errratio":3,"sp":0.1,"font":1,"withbars":false,"all":{"width":4.5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true,"width":14.8}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function($this,_s,_i){var c=0.5,de=Math.pow(10,_s.gg[1]-1),ret={}; for (var i=1;i<9;i++) { var v=0,vv=[],nb; do { var p=Math.pow(10,_s.gg[0]-1); v=0; nb=0; vv=[]; for (var j=0; j<_s.gg[0]; j++) { var tt=(Math.random()>c),d=Math.floor(Math.random()*9+1) ; v=v*10+(tt?d:0); if (tt) { nb++; var tmp=''; if (d!=1 || (_s.gg[2]==1&&p<de) || p==de) { tmp+=d; } if (p!=de) { if (_s.gg[2]==1 && p<de) { tmp+='/'; } else { if (d!=1) { tmp+='×'; } } } if (_s.gg[2]==1&&p<de) { tmp+=jtools.num.tostr(de/p);} else { tmp+=(p!=de?jtools.num.tostr(p/de):''); } vv.push(tmp); } p=p/10; } } while (v<10 || nb>3); ret['c1x'+i]={'type':'value','value':vv.join('+')}; ret['c2x'+i]={'type':'value','result':v/de}; } return {'cells':ret}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Identifiez[/b] chaque nombre depuis sa décomposion."</dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c1m</dct:alternative>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -28,7 +28,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>c1m</dct:alternative>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -42,7 +42,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -56,7 +56,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -70,7 +70,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">décimal,CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -84,7 +84,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">décimal,CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -98,7 +98,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">décimal,CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -112,7 +112,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">décimal,CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -126,7 +126,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">décimal,CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -140,7 +140,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">décimal,CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -154,7 +154,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">décimal,CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -168,7 +168,7 @@
         <dct:alternative>c1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">décimal,CM2</dct:coverage>
         <dct:relation>c1k</dct:relation>
-        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     
@@ -177,14 +177,14 @@
     <rdf:Description>
         <dct:identifier>d1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Recopier 5 nombres, compris entre 1 et 1 000, grâce à leur décomposition.</dct:title>
-        <dct:description><![CDATA["gg":{"dg":3,"v":[3,1],"de":1},"class":"largepanel","background":"res/img/background/landscape/darkboard01.svg","math":[{"va":1},{"va":2},{"va":3},{"va":4},{"va":5},{"va":6},{"va":7},{"va":8},{"va":9},{"va":10},{"va":100},{"va":1000},{"va":10000},{"va":100000},{"va":"+"},{"va":"×"}],"nocellref":true,"errratio":3,"sp":0.04,"font":1.9,"withbars":false,"all":{"width":5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function($this,_s,_i){var ret={}; for (var i=1;i<6;i++) { var v=0,c=[],cc=Math.floor(Math.random()*_s.gg.v[0])+_s.gg.v[1]; for (var j=0; j<_s.gg.dg; j++) { c.push((j<cc)); } do { shuffle(c); v=0; for (var j=0; j<_s.gg.dg; j++) { v=v*10+(c[j]?Math.floor(Math.random()*9+1):0); } } while (v<10); ret['c1x'+i]={'type':'value','value':v/_s.gg.de}; ret['c2x'+i]={'type':'math','result':v/_s.gg.de}; } return {'cells':ret}; }"]]></dct:description>
+        <dct:description><![CDATA["gg":{"dg":3,"v":[3,1],"de":1},"class":"largepanel","background":"res/img/background/landscape/c_dark01.svg","math":[{"va":1},{"va":2},{"va":3},{"va":4},{"va":5},{"va":6},{"va":7},{"va":8},{"va":9},{"va":10},{"va":100},{"va":1000},{"va":10000},{"va":100000},{"va":"+"},{"va":"×"}],"nocellref":true,"errratio":3,"sp":0.04,"font":1.9,"withbars":false,"all":{"width":5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function($this,_s,_i){var ret={}; for (var i=1;i<6;i++) { var v=0,c=[],cc=Math.floor(Math.random()*_s.gg.v[0])+_s.gg.v[1]; for (var j=0; j<_s.gg.dg; j++) { c.push((j<cc)); } do { shuffle(c); v=0; for (var j=0; j<_s.gg.dg; j++) { v=v*10+(c[j]?Math.floor(Math.random()*9+1):0); } } while (v<10); ret['c1x'+i]={'type':'value','value':v/_s.gg.de}; ret['c2x'+i]={'type':'math','result':v/_s.gg.de}; } return {'cells':ret}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Recopiez[/b] chaque nombre à partir de sa décomposion en puissance de 10."</dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>d1m</dct:alternative>
-        <dct:source>res/img/background/landscape/darkboard01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_dark01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -197,7 +197,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>d1m</dct:alternative>
         <dct:relation>d1k</dct:relation>
-        <dct:source>res/img/background/landscape/darkboard01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_dark01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -210,7 +210,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>d1m</dct:alternative>
         <dct:relation>d1k</dct:relation>
-        <dct:source>res/img/background/landscape/darkboard01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_dark01.svg</dct:source>
     </rdf:Description>
 
 
@@ -224,7 +224,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>d1m</dct:alternative>
         <dct:relation>d1k</dct:relation>
-        <dct:source>res/img/background/landscape/darkboard01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_dark01.svg</dct:source>
     </rdf:Description>
 		
     <rdf:Description>
@@ -237,7 +237,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>d1m</dct:alternative>
         <dct:relation>d1k</dct:relation>
-        <dct:source>res/img/background/landscape/darkboard01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_dark01.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
     
@@ -246,7 +246,7 @@
     <rdf:Description>
         <dct:identifier>ra1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver les valeurs approximatives entières de nombres compris entre 1 et 1 000 000.</dct:title>
-        <dct:description><![CDATA["toright":true,"nodec":true,"noneg":true,"gg":{"max":[10000,100000,1000000],"min":100,"nb":5,"type":[10,100,1000],"ex":1,"de":[1]},"background":"res/img/background/landscape/bluegeo01.svg","errratio":3,"sp":0.06,"font":0.8,"withbars":false,"all":{"width":6,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"},"row1":{"height":2.4,"background":"gray","color":"white"}},"gen":"function($this,_s,_i){var ret={}; for (var c=0; c<_s.gg.type.length; c++) { ret['c'+(c+2)+'x1']={'type':'free','value':'r'+_s.gg.type[c]}; } for (var i=2;i<_s.gg.nb+2;i++) { var ok; do { ok=true; var de=_s.gg.de[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.de.length)], v=Math.floor(Math.random()*(de*(_s.gg.max[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.max.length)])-_s.gg.min))+_s.gg.min,dd=0; ret['c1x'+i]={'type':'value','value':(v/de)}; for (var c=0; c<_s.gg.type.length; c++) { var vv=_s.gg.type[c], val=Math.round(v/(vv*de))*vv; ok=ok&&(Math.abs(v%(vv*de))!=((vv*de)/2)); ret['c'+(c+2)+'x'+i]={'type':'value'}; ret['c'+(c+2)+'x'+i][(i<_s.gg.ex+2)?'value':'result']=val; } } while(!ok); } return {'cells':ret}; }"]]></dct:description>
+        <dct:description><![CDATA["toright":true,"nodec":true,"noneg":true,"gg":{"max":[10000,100000,1000000],"min":100,"nb":5,"type":[10,100,1000],"ex":1,"de":[1]},"background":"res/img/background/landscape/b_blue01.svg","errratio":3,"sp":0.06,"font":0.8,"withbars":false,"all":{"width":6,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"},"row1":{"height":2.4,"background":"gray","color":"white"}},"gen":"function($this,_s,_i){var ret={}; for (var c=0; c<_s.gg.type.length; c++) { ret['c'+(c+2)+'x1']={'type':'free','value':'r'+_s.gg.type[c]}; } for (var i=2;i<_s.gg.nb+2;i++) { var ok; do { ok=true; var de=_s.gg.de[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.de.length)], v=Math.floor(Math.random()*(de*(_s.gg.max[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.max.length)])-_s.gg.min))+_s.gg.min,dd=0; ret['c1x'+i]={'type':'value','value':(v/de)}; for (var c=0; c<_s.gg.type.length; c++) { var vv=_s.gg.type[c], val=Math.round(v/(vv*de))*vv; ok=ok&&(Math.abs(v%(vv*de))!=((vv*de)/2)); ret['c'+(c+2)+'x'+i]={'type':'value'}; ret['c'+(c+2)+'x'+i][(i<_s.gg.ex+2)?'value':'result']=val; } } while(!ok); } return {'cells':ret}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez[/b] le tableau.","po":{"r0.01":"Arrondi au [i]centième[/i]","r0.1":"Arrondi au [i]dixième[/i]","r1":"Arrondi à l'[i]unité[/i]","r10":"Arrondi à la [i]dizaine[/i]","r100":"Arrondi à la [i]centaine[/i]","r1000":"Arrondi au [i]millier[/i]"}</dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -254,7 +254,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>ra1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM1</dct:coverage>
-		<dct:source>res/img/background/landscape/bluegeo01.svg</dct:source>
+		<dct:source>res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -268,7 +268,7 @@
         <dct:alternative>ra1m</dct:alternative>
         <dct:relation>ra1m</dct:relation>
         <dct:coverage xml:lang="fr-FR">CM1</dct:coverage>
-		<dct:source>res/img/background/landscape/bluegeo01.svg</dct:source>
+		<dct:source>res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -282,7 +282,7 @@
         <dct:alternative>ra1m</dct:alternative>
         <dct:relation>ra1m</dct:relation>
         <dct:coverage xml:lang="fr-FR">CM1</dct:coverage>
-		<dct:source>res/img/background/landscape/bluegeo01.svg</dct:source>
+		<dct:source>res/img/background/landscape/b_blue01.svg</dct:source>
     </rdf:Description>
     
     <!-- Decomposition question -->
@@ -290,7 +290,7 @@
     <rdf:Description>
         <dct:identifier>db1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre de dizaines et le chiffre des dizaines depuis 5 nombres, compris entre 1 et 1 000 000.</dct:title>
-        <dct:description><![CDATA["toright":true,"nodec":true,"noneg":true,"gg":{"max":[10000,100000,1000000],"min":100,"nb":6,"type":["c10","n10"],"ex":1,"de":[1]},"background":"res/img/background/landscape/wallpaper02.svg","errratio":3,"sp":0.06,"font":1,"withbars":false,"all":{"width":6,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"},"row1":{"height":2.4,"background":"gray","color":"white"}},"gen":"function($this,_s,_i){var ret={}; for (var c=0; c<_s.gg.type.length; c++) { ret['c'+(c+2)+'x1']={'type':'free','value':_s.gg.type[c]}; } for (var i=2;i<_s.gg.nb+2;i++) { var de=_s.gg.de[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.de.length)], v=Math.floor(Math.random()*(de*(_s.gg.max[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.max.length)])-_s.gg.min))+_s.gg.min,dd=0; ret['c1x'+i]={'type':'value','value':(v/de)}; for (var c=0; c<_s.gg.type.length; c++) { var type=_s.gg.type[c], dg=parseInt(type.substr(1)),digit=(type.substr(0,1)=='c'||type.substr(0,1)=='d'),val=(type.substr(0,1)=='c'||type.substr(0,1)=='n')?Math.floor(v/dg):Math.floor(dg*v/de); if (digit) { val=val%10; } ret['c'+(c+2)+'x'+i]={'type':'value'}; ret['c'+(c+2)+'x'+i][(i<_s.gg.ex+2)?'value':'result']=val; } } return {'cells':ret}; }"]]></dct:description>
+        <dct:description><![CDATA["toright":true,"nodec":true,"noneg":true,"gg":{"max":[10000,100000,1000000],"min":100,"nb":6,"type":["c10","n10"],"ex":1,"de":[1]},"background":"res/img/background/landscape/c_002.svg","errratio":3,"sp":0.06,"font":1,"withbars":false,"all":{"width":6,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"},"row1":{"height":2.4,"background":"gray","color":"white"}},"gen":"function($this,_s,_i){var ret={}; for (var c=0; c<_s.gg.type.length; c++) { ret['c'+(c+2)+'x1']={'type':'free','value':_s.gg.type[c]}; } for (var i=2;i<_s.gg.nb+2;i++) { var de=_s.gg.de[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.de.length)], v=Math.floor(Math.random()*(de*(_s.gg.max[(i<_s.gg.ex+2)?0:Math.floor(Math.random()*_s.gg.max.length)])-_s.gg.min))+_s.gg.min,dd=0; ret['c1x'+i]={'type':'value','value':(v/de)}; for (var c=0; c<_s.gg.type.length; c++) { var type=_s.gg.type[c], dg=parseInt(type.substr(1)),digit=(type.substr(0,1)=='c'||type.substr(0,1)=='d'),val=(type.substr(0,1)=='c'||type.substr(0,1)=='n')?Math.floor(v/dg):Math.floor(dg*v/de); if (digit) { val=val%10; } ret['c'+(c+2)+'x'+i]={'type':'value'}; ret['c'+(c+2)+'x'+i][(i<_s.gg.ex+2)?'value':'result']=val; } } return {'cells':ret}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez[/b] le tableau.","po":{"c1":"Chiffre des unités","n1":"Nombre d'unités","c10":"Chiffre des dizaines","n10":"Nombre de dizaines","c100":"Chiffre des centaines","n100":"Nombre de centaines","c1000":"Chiffre des milliers","n1000":"Nombre de milliers","d10":"Chiffres des dixièmes","d100":"Chiffres des centièmes","d1000":"Chiffres des millièmes","o10":"Nombre de dixièmes","o100":"Nombres de centièmes","o1000":"Nombres de millièmes"}</dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -298,7 +298,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>db1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -313,7 +313,7 @@
         <dct:alternative>db1m</dct:alternative>
         <dct:relation>db1m</dct:relation>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -328,7 +328,7 @@
         <dct:alternative>db1m</dct:alternative>
         <dct:relation>db1m</dct:relation>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     
@@ -342,7 +342,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>db1m</dct:alternative>
         <dct:relation>db1m</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -355,7 +355,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>db1m</dct:alternative>
         <dct:relation>db1m</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -368,7 +368,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>db1m</dct:alternative>
         <dct:relation>db1m</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
 	
@@ -383,7 +383,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>db1m</dct:alternative>
         <dct:relation>db1m</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 	
@@ -397,7 +397,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>db1m</dct:alternative>
         <dct:relation>db1m</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 	
@@ -411,7 +411,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>db1m</dct:alternative>
         <dct:relation>db1m</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 	
@@ -439,7 +439,7 @@
     <rdf:Description>
         <dct:identifier>p01</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter un tableau en numérant des balles dans une image (de 1 à 5).</dct:title>
-        <dct:description><![CDATA["pospanel":[70,5],"background":"res/img/background/landscape/bluesplash01.svg","errratio":3,"noneg":true,"nodec":true,"hide":[[1,1,1,6]],"checkempty":true,"callen":2,"sp":0.05,"rows":{"row0":{"height":0.1}},"cols":{"col0":{"width":0.1},"col1":{"width":6.15},"col2":{"width":0.1,"background":"gray"},"col3":{"background":"#AA8"}},"withbars":false,"all":{"height":1.33,"width":1.33},"cells":{"c1x1":{"type":"free","value":"<img src='res/img/background/portrait/bubble01.svg'/>","height":8.2},"c3x1":{"type":"free","value":"<img src='res/img/asset/balls/blue01.svg'/>"},"c3x2":{"type":"free","value":"<img src='res/img/asset/balls/black01.svg'/>"},"c3x3":{"type":"free","value":"<img src='res/img/asset/balls/green01.svg'/>"},"c3x4":{"type":"free","value":"<img src='res/img/asset/balls/yellow01.svg'/>"},"c3x5":{"type":"free","value":"<img src='res/img/asset/balls/purple01.svg'/>"},"c3x6":{"type":"free","value":"<img src='res/img/asset/balls/red01.svg'/>"},"c4x1":{"type":"value","result":4},"c4x2":{"type":"value","result":2},"c4x3":{"type":"value","result":5},"c4x4":{"type":"value","result":5},"c4x5":{"type":"value","result":3},"c4x6":{"type":"value","result":4}},"font":1.4]]></dct:description>
+        <dct:description><![CDATA["pospanel":[70,5],"background":"res/img/background/landscape/c_blue03.svg","errratio":3,"noneg":true,"nodec":true,"hide":[[1,1,1,6]],"checkempty":true,"callen":2,"sp":0.05,"rows":{"row0":{"height":0.1}},"cols":{"col0":{"width":0.1},"col1":{"width":6.15},"col2":{"width":0.1,"background":"gray"},"col3":{"background":"#AA8"}},"withbars":false,"all":{"height":1.33,"width":1.33},"cells":{"c1x1":{"type":"free","value":"<img src='res/img/background/portrait/bubble01.svg'/>","height":8.2},"c3x1":{"type":"free","value":"<img src='res/img/asset/balls/blue01.svg'/>"},"c3x2":{"type":"free","value":"<img src='res/img/asset/balls/black01.svg'/>"},"c3x3":{"type":"free","value":"<img src='res/img/asset/balls/green01.svg'/>"},"c3x4":{"type":"free","value":"<img src='res/img/asset/balls/yellow01.svg'/>"},"c3x5":{"type":"free","value":"<img src='res/img/asset/balls/purple01.svg'/>"},"c3x6":{"type":"free","value":"<img src='res/img/asset/balls/red01.svg'/>"},"c4x1":{"type":"value","result":4},"c4x2":{"type":"value","result":2},"c4x3":{"type":"value","result":5},"c4x4":{"type":"value","result":5},"c4x5":{"type":"value","result":3},"c4x6":{"type":"value","result":4}},"font":1.4]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez le tableau[/b] avec, pour chaque couleur, le [red]nombre de balles[/red] visibles dans l'image.","fontex":1.4</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -447,13 +447,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>p01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/background/landscape/bluesplash01.svg,res/img/background/portrait/bubble01.svg,res/img/asset/balls/</dct:source>
+        <dct:source>res/img/background/landscape/c_blue03.svg,res/img/background/portrait/bubble01.svg,res/img/asset/balls/</dct:source>
     </rdf:Description>
     
      <rdf:Description>
         <dct:identifier>p02</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter un tableau en numérant des balles dans une image (de 1 à 10).</dct:title>
-        <dct:description><![CDATA["pospanel":[70,5],"background":"res/img/background/landscape/bluesplash01.svg","errratio":3,"noneg":true,"nodec":true,"hide":[[1,1,1,6]],"checkempty":true,"callen":2,"sp":0.05,"rows":{"row0":{"height":0.1}},"cols":{"col0":{"width":0.1},"col1":{"width":6.15},"col2":{"width":0.1,"background":"gray"},"col3":{"background":"#AA8"}},"withbars":false,"all":{"height":1.33,"width":1.33},"cells":{"c1x1":{"type":"free","value":"<img src='res/img/background/portrait/bubble02.svg'/>","height":8.2},"c3x1":{"type":"free","value":"<img src='res/img/asset/balls/blue01.svg'/>"},"c3x2":{"type":"free","value":"<img src='res/img/asset/balls/black01.svg'/>"},"c3x3":{"type":"free","value":"<img src='res/img/asset/balls/white01.svg'/>"},"c3x4":{"type":"free","value":"<img src='res/img/asset/balls/yellow01.svg'/>"},"c3x5":{"type":"free","value":"<img src='res/img/asset/balls/purple01.svg'/>"},"c3x6":{"type":"free","value":"<img src='res/img/asset/balls/red01.svg'/>"},"c4x1":{"type":"value","result":4},"c4x2":{"type":"value","result":6},"c4x3":{"type":"value","result":9},"c4x4":{"type":"value","result":8},"c4x5":{"type":"value","result":2},"c4x6":{"type":"value","result":7}},"font":1.4]]></dct:description>
+        <dct:description><![CDATA["pospanel":[70,5],"background":"res/img/background/landscape/c_blue03.svg","errratio":3,"noneg":true,"nodec":true,"hide":[[1,1,1,6]],"checkempty":true,"callen":2,"sp":0.05,"rows":{"row0":{"height":0.1}},"cols":{"col0":{"width":0.1},"col1":{"width":6.15},"col2":{"width":0.1,"background":"gray"},"col3":{"background":"#AA8"}},"withbars":false,"all":{"height":1.33,"width":1.33},"cells":{"c1x1":{"type":"free","value":"<img src='res/img/background/portrait/bubble02.svg'/>","height":8.2},"c3x1":{"type":"free","value":"<img src='res/img/asset/balls/blue01.svg'/>"},"c3x2":{"type":"free","value":"<img src='res/img/asset/balls/black01.svg'/>"},"c3x3":{"type":"free","value":"<img src='res/img/asset/balls/white01.svg'/>"},"c3x4":{"type":"free","value":"<img src='res/img/asset/balls/yellow01.svg'/>"},"c3x5":{"type":"free","value":"<img src='res/img/asset/balls/purple01.svg'/>"},"c3x6":{"type":"free","value":"<img src='res/img/asset/balls/red01.svg'/>"},"c4x1":{"type":"value","result":4},"c4x2":{"type":"value","result":6},"c4x3":{"type":"value","result":9},"c4x4":{"type":"value","result":8},"c4x5":{"type":"value","result":2},"c4x6":{"type":"value","result":7}},"font":1.4]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez le tableau[/b] avec, pour chaque couleur, le [red]nombre de balles[/red] visibles dans l'image.","fontex":1.4</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -461,13 +461,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>p01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/background/landscape/bluesplash01.svg,res/img/background/portrait/bubble02.svg,res/img/asset/balls/</dct:source>
+        <dct:source>res/img/background/landscape/c_blue03.svg,res/img/background/portrait/bubble02.svg,res/img/asset/balls/</dct:source>
     </rdf:Description>
     
      <rdf:Description>
         <dct:identifier>p03</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter un tableau en numérant des balles dans une image (de 0 à 10).</dct:title>
-        <dct:description><![CDATA["pospanel":[70,5],"background":"res/img/background/landscape/bluesplash01.svg","errratio":3,"noneg":true,"nodec":true,"hide":[[1,1,1,6]],"checkempty":true,"callen":2,"sp":0.05,"rows":{"row0":{"height":0.1}},"cols":{"col0":{"width":0.1},"col1":{"width":6.15},"col2":{"width":0.1,"background":"gray"},"col3":{"background":"#AA8"}},"withbars":false,"all":{"height":1.33,"width":1.33},"cells":{"c1x1":{"type":"free","value":"<img src='res/img/background/portrait/bubble02.svg'/>","height":8.2},"c3x1":{"type":"free","value":"<img src='res/img/asset/balls/green01.svg'/>"},"c3x2":{"type":"free","value":"<img src='res/img/asset/balls/red01.svg'/>"},"c3x3":{"type":"free","value":"<img src='res/img/asset/balls/black01.svg'/>"},"c3x4":{"type":"free","value":"<img src='res/img/asset/balls/gray02.svg'/>"},"c3x5":{"type":"free","value":"<img src='res/img/asset/balls/white01.svg'/>"},"c3x6":{"type":"free","value":"<img src='res/img/asset/balls/purple01.svg'/>"},"c4x1":{"type":"value","result":5},"c4x2":{"type":"value","result":7},"c4x3":{"type":"value","result":6},"c4x4":{"type":"value","result":0},"c4x5":{"type":"value","result":9},"c4x6":{"type":"value","result":2}},"font":1.4]]></dct:description>
+        <dct:description><![CDATA["pospanel":[70,5],"background":"res/img/background/landscape/c_blue03.svg","errratio":3,"noneg":true,"nodec":true,"hide":[[1,1,1,6]],"checkempty":true,"callen":2,"sp":0.05,"rows":{"row0":{"height":0.1}},"cols":{"col0":{"width":0.1},"col1":{"width":6.15},"col2":{"width":0.1,"background":"gray"},"col3":{"background":"#AA8"}},"withbars":false,"all":{"height":1.33,"width":1.33},"cells":{"c1x1":{"type":"free","value":"<img src='res/img/background/portrait/bubble02.svg'/>","height":8.2},"c3x1":{"type":"free","value":"<img src='res/img/asset/balls/green01.svg'/>"},"c3x2":{"type":"free","value":"<img src='res/img/asset/balls/red01.svg'/>"},"c3x3":{"type":"free","value":"<img src='res/img/asset/balls/black01.svg'/>"},"c3x4":{"type":"free","value":"<img src='res/img/asset/balls/gray02.svg'/>"},"c3x5":{"type":"free","value":"<img src='res/img/asset/balls/white01.svg'/>"},"c3x6":{"type":"free","value":"<img src='res/img/asset/balls/purple01.svg'/>"},"c4x1":{"type":"value","result":5},"c4x2":{"type":"value","result":7},"c4x3":{"type":"value","result":6},"c4x4":{"type":"value","result":0},"c4x5":{"type":"value","result":9},"c4x6":{"type":"value","result":2}},"font":1.4]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez le tableau[/b] avec, pour chaque couleur, le [red]nombre de balles[/red] visibles dans l'image.","fontex":1.4</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -475,13 +475,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>p01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/background/landscape/bluesplash01.svg,res/img/background/portrait/bubble02.svg,res/img/asset/balls/</dct:source>
+        <dct:source>res/img/background/landscape/c_blue03.svg,res/img/background/portrait/bubble02.svg,res/img/asset/balls/</dct:source>
     </rdf:Description>
     
      <rdf:Description>
         <dct:identifier>p11</dct:identifier>
         <dct:title xml:lang="fr-FR">Répondre aux questions de numérations portant sur une image (de 1 à 10).</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","imgsize":2,"imgprefix":"res/img/asset/balls/","img":["blue01","green01","red01","orange01","purple01","yellow01","white01","black01"],"errratio":3,"noneg":true,"nodec":true,"hide":[[1,1,1,6]],"checkempty":true,"callen":2,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"width":12},"col2":{"width":0.2,"background":"gray"},"col3":{"width":13,"background":"#AA8"}},"withbars":false,"all":{"height":2.6,"width":2.6},"cells":{"c1x1":{"type":"free","value":"<img src='res/img/background/portrait/bubble02.svg'/>","height":16},"c3x1":{"type":"free","value":"p1"},"c3x2":{"type":"free","value":"p2"},"c3x3":{"type":"free","value":"p3"},"c3x4":{"type":"free","value":"p4"},"c3x5":{"type":"free","value":"p5"},"c3x6":{"type":"free","value":"p6"},"c4x1":{"type":"img","result":5},"c4x2":{"type":"img","result":4},"c4x3":{"type":"value","result":5,"opt":"f2"},"c4x4":{"type":"img","result":2},"c4x5":{"type":"img","result":3},"c4x6":{"type":"img","result":6}},"font":0.7]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue03.svg","imgsize":2,"imgprefix":"res/img/asset/balls/","img":["blue01","green01","red01","orange01","purple01","yellow01","white01","black01"],"errratio":3,"noneg":true,"nodec":true,"hide":[[1,1,1,6]],"checkempty":true,"callen":2,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"width":12},"col2":{"width":0.2,"background":"gray"},"col3":{"width":13,"background":"#AA8"}},"withbars":false,"all":{"height":2.6,"width":2.6},"cells":{"c1x1":{"type":"free","value":"<img src='res/img/background/portrait/bubble02.svg'/>","height":16},"c3x1":{"type":"free","value":"p1"},"c3x2":{"type":"free","value":"p2"},"c3x3":{"type":"free","value":"p3"},"c3x4":{"type":"free","value":"p4"},"c3x5":{"type":"free","value":"p5"},"c3x6":{"type":"free","value":"p6"},"c4x1":{"type":"img","result":5},"c4x2":{"type":"img","result":4},"c4x3":{"type":"value","result":5,"opt":"f2"},"c4x4":{"type":"img","result":2},"c4x5":{"type":"img","result":3},"c4x6":{"type":"img","result":6}},"font":0.7]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez le tableau[/b] en répondant aux questions portant sur l'image à gauche.","po":{"p1":"Quelles balles sont au nombre de [b]8[/b] ?","p2":"Quelles balles sont les [b]moins nombreuses[/b] ?","p3":"[icon2]res/img/asset/balls/green01[/icon2]Combien y-a-t'il de balles [b]vertes[/b] ?","p4":"Quelles balles sont au nombre de [b]7[/b] ?","p5":"Quelles balles sont au nombre de [b]3[/b] ?","p6":"Quelles balles sont les [b]plus nombreuses[/b] ?"}</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -489,7 +489,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>p01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/background/landscape/bluesplash01.svg,res/img/background/portrait/bubble02.svg,res/img/asset/balls/</dct:source>
+        <dct:source>res/img/background/landscape/c_blue03.svg,res/img/background/portrait/bubble02.svg,res/img/asset/balls/</dct:source>
     </rdf:Description>
     
     <!-- FROM LEGEND -->
@@ -497,7 +497,7 @@
     <rdf:Description>
         <dct:identifier>pl01</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter un tableau suivant les données d'un énoncé.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","errratio":3,"noneg":true,"nodec":true,"checkempty":true,"sp":0.02,"hide":[[2,1,2,1],[1,3,1,2],[2,5]],"withbars":false,"cols":{"col0":{"width":0.2},"col2":{"width":1.2,"background":"#AA8"},"col1":{"width":3.64},"col3":{"width":4.8}},"rows":{"row0":{"height":0.2}},"cells":{"c1x1":{"type":"free","value":"header","opt":"f025","width":9.68,"background":"#ffe"},"c1x2":{"height":3.64,"type":"free","value":"[img]res/img/clipart/building/farm01[/img]","background":"#FEC"},"c2x2":{"type":"free","value":"[img]res/img/clipart/animal/duck01[/img]"},"c3x2":{"type":"value","result":30},"c2x3":{"type":"free","value":"[img]res/img/clipart/animal/chicken01[/img]"},"c3x3":{"type":"value","result":200},"c2x4":{"type":"free","value":"[img]res/img/clipart/animal/snail01[/img]"},"c3x4":{"type":"value","result":40000},"c1x5":{"type":"free","value":"total","width":4.86,"background":"#AA8","color":"white"},"c3x5":{"type":"value","result":40230}},"font":1.9]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue03.svg","errratio":3,"noneg":true,"nodec":true,"checkempty":true,"sp":0.02,"hide":[[2,1,2,1],[1,3,1,2],[2,5]],"withbars":false,"cols":{"col0":{"width":0.2},"col2":{"width":1.2,"background":"#AA8"},"col1":{"width":3.64},"col3":{"width":4.8}},"rows":{"row0":{"height":0.2}},"cells":{"c1x1":{"type":"free","value":"header","opt":"f025","width":9.68,"background":"#ffe"},"c1x2":{"height":3.64,"type":"free","value":"[img]res/img/clipart/building/farm01[/img]","background":"#FEC"},"c2x2":{"type":"free","value":"[img]res/img/clipart/animal/duck01[/img]"},"c3x2":{"type":"value","result":30},"c2x3":{"type":"free","value":"[img]res/img/clipart/animal/chicken01[/img]"},"c3x3":{"type":"value","result":200},"c2x4":{"type":"free","value":"[img]res/img/clipart/animal/snail01[/img]"},"c3x4":{"type":"value","result":40000},"c1x5":{"type":"free","value":"total","width":4.86,"background":"#AA8","color":"white"},"c3x5":{"type":"value","result":40230}},"font":1.9]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez le tableau[/b] suivant les données de l'énoncé.","fontex":1.4,"po":{"total":"total","header":"Dans une ferme, il y a [b]trois dizaines[/b] de [red]canards[/red], [b]deux centaines[/b] de [red]poules[/red] et [b]quatre dizaines de milliers[/b] d'[red]escargots[/red].[br][i]Combien y a-t-il d'animaux dans cette ferme ?[/i]"}</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -505,13 +505,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>pl01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
-        <dct:source>res/img/clipart/building/farm01.svg,res/img/clipart/animal/duck01.svg,res/img/clipart/animal/chicken01.svg,res/img/clipart/animal/snail01.svg,res/img/background/landscape/bluesplash01.svg</dct:source>
+        <dct:source>res/img/clipart/building/farm01.svg,res/img/clipart/animal/duck01.svg,res/img/clipart/animal/chicken01.svg,res/img/clipart/animal/snail01.svg,res/img/background/landscape/c_blue03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>pl02</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter un tableau suivant les données d'un énoncé [Le petit prince].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","errratio":3,"callen":10,"noneg":true,"nodec":true,"class":"smallpanel smallscreen","checkempty":true,"sp":0.02,"hide":[[1,2,1,2],[1,5,1,2]],"withbars":false,"cols":{"col0":{"width":0.2},"col1":{"width":4.8},"col2":{"width":4.8,"background":"#AA8"},"col3":{"width":3.6}},"rows":{"row0":{"height":0.2}},"cells":{"c1x1":{"type":"free","value":"[img]res/img/background/gears01[/img]","height":3.6},"c1x4":{"height":3.64,"type":"free","value":"header","background":"#ffe","opt":"f025"},"c2x1":{"type":"free","value":"c1","opt":"f05 vm05"},"c3x1":{"type":"value","result":111,"opt":"f05 vm05"},"c2x2":{"type":"free","value":"c2","opt":"f05 vm05"},"c3x2":{"type":"value","result":7000,"opt":"f05 vm05"},"c2x3":{"type":"free","value":"c3","opt":"f05 vm05"},"c3x3":{"type":"value","result":900000,"opt":"f05 vm05"},"c2x4":{"type":"free","value":"c4","opt":"f05 vm05"},"c3x4":{"type":"value","result":7500000,"opt":"f05 vm05"},"c2x5":{"type":"free","value":"c5","opt":"f05 vm05"},"c3x5":{"type":"value","result":311000000,"opt":"f05 vm05"},"c2x6":{"type":"free","value":"c6","opt":"f05 vm05"},"c3x6":{"type":"value","result":2000000000,"opt":"f05 vm05"}},"font":1.45]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue03.svg","errratio":3,"callen":10,"noneg":true,"nodec":true,"class":"smallpanel smallscreen","checkempty":true,"sp":0.02,"hide":[[1,2,1,2],[1,5,1,2]],"withbars":false,"cols":{"col0":{"width":0.2},"col1":{"width":4.8},"col2":{"width":4.8,"background":"#AA8"},"col3":{"width":3.6}},"rows":{"row0":{"height":0.2}},"cells":{"c1x1":{"type":"free","value":"[img]res/img/background/a_gears01[/img]","height":3.6},"c1x4":{"height":3.64,"type":"free","value":"header","background":"#ffe","opt":"f025"},"c2x1":{"type":"free","value":"c1","opt":"f05 vm05"},"c3x1":{"type":"value","result":111,"opt":"f05 vm05"},"c2x2":{"type":"free","value":"c2","opt":"f05 vm05"},"c3x2":{"type":"value","result":7000,"opt":"f05 vm05"},"c2x3":{"type":"free","value":"c3","opt":"f05 vm05"},"c3x3":{"type":"value","result":900000,"opt":"f05 vm05"},"c2x4":{"type":"free","value":"c4","opt":"f05 vm05"},"c3x4":{"type":"value","result":7500000,"opt":"f05 vm05"},"c2x5":{"type":"free","value":"c5","opt":"f05 vm05"},"c3x5":{"type":"value","result":311000000,"opt":"f05 vm05"},"c2x6":{"type":"free","value":"c6","opt":"f05 vm05"},"c3x6":{"type":"value","result":2000000000,"opt":"f05 vm05"}},"font":1.45]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez le tableau[/b] suivant les données de l'énoncé.","fontex":1.4,"po":{"total":"total","header":"La septième planète fut donc la [blue]Terre[/blue].[br]La [blue]Terre[/blue] n'est pas une planète quelconque ! On y compte [b]cent onze rois[/b] (...), [b]sept mille géographes[/b], [b]neuf cent mille businessmen[/b], [b]sept millions et demi d'ivrognes[/b], [b]trois cent onze millions de vaniteux[/b], c'est-à-dire environ [b]deux milliards de grandes personnes[/b].","c1":"rois","c4":"ivrognes","c2":"géographes","c5":"vaniteux","c3":"businessmen","c6":"grandes personnes"}</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -519,7 +519,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>pl01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
-        <dct:source>res/img/background/gears01.svg,res/img/background/landscape/bluesplash01.svg</dct:source>
+        <dct:source>res/img/background/a_gears01.svg,res/img/background/landscape/c_blue03.svg</dct:source>
     </rdf:Description>
     
     <!-- Quizz -->
@@ -527,7 +527,7 @@
     <rdf:Description>
         <dct:identifier>q01</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver des nombres compris entre 1 et 10 000 à partir d'énigmes.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/redsplash01.svg","errratio":3,"noneg":true,"nodec":true,"checkempty":true,"sp":0.04,"withbars":false,"all":{"height":1.2},"cols":{"col1":{"width":8,"background":"#FFD","fixed":true},"col2":{"width":3.5},"col0":{"width":0.4}},"rows":{"row0":{"height":0.4}},"cells":{"c1x1":{"type":"free","value":"t0","opt":"f025"},"c1x2":{"type":"free","value":"t1","opt":"f025"},"c1x3":{"type":"free","value":"t2","opt":"f025"},"c2x1":{"type":"value","result":3234},"c2x2":{"type":"value","result":1248},"c2x3":{"type":"value","result":254}},"font":1.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_red03.svg","errratio":3,"noneg":true,"nodec":true,"checkempty":true,"sp":0.04,"withbars":false,"all":{"height":1.2},"cols":{"col1":{"width":8,"background":"#FFD","fixed":true},"col2":{"width":3.5},"col0":{"width":0.4}},"rows":{"row0":{"height":0.4}},"cells":{"c1x1":{"type":"free","value":"t0","opt":"f025"},"c1x2":{"type":"free","value":"t1","opt":"f025"},"c1x3":{"type":"free","value":"t2","opt":"f025"},"c2x1":{"type":"value","result":3234},"c2x2":{"type":"value","result":1248},"c2x3":{"type":"value","result":254}},"font":1.6]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez le tableau[/b] en répondant correctement aux énigmes proposés.","fontex":1.4,"po":{"t0":"Quel est le nombre de [b]quatre chiffres[/b] dont le chiffre des [red]dizaines d'unités[/red] et des [red]unités de mille[/red] est [b]3[/b], le [red]chiffre des centaines[/red] est [b]2[/b] et celui des [red]unités[/red] est le [b]double[/b] de celui des [red]centaines[/red].","t1":"Quel est le nombre dont le [red]nombre de centaines[/red] est [b]12[/b], le [red]chiffre des unités[/red] est [b]8[/b] et le [red]chiffre des dizaines[/red] est la [b]moitié[/b] de celui des [red]unités[/red] ?","t2":"Quel est le nombre dont le [red]nombre de dizaines[/red] est [b]25[/b] et le [red]chiffre des unités[/red] est le [b]double[/b] de celui des [red]centaines[/red]."}</dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -535,7 +535,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>q01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">cycle3,CM1,CM2</dct:coverage>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
     
     <!-- SEQUENCES -->
@@ -543,7 +543,7 @@
     <rdf:Description>
         <dct:identifier>s2</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter des séries de nombres incrémentales.</dct:title>
-        <dct:description><![CDATA["gg":{"step":[[45,1]],"a":[[1,2]],"afactor":1,"l":3,"dec":[1]},"background":"res/img/background/landscape/wallpaper02.svg","checkempty":true,"callen":2,"noneg":true,"nodec":true,"sp":0.04,"rows":{"row0":{"height":0.2},"row7":{"height":0.2,"fixed":true,"background":"gray"}},"cols":{"col0":{"width":0.2},"col2":{"width":0.2,"fixed":true,"background":"gray"},"col4":{"width":0.2,"fixed":true,"background":"gray"},"col6":{"width":0.2,"fixed":true,"background":"gray"}},"withbars":false,"all":{"height":1.2,"width":5},"gen":"function($this,_s,_id) { var cells={}; for (var i=0; i<3;i++) { var a,b=Math.floor(Math.random()*_s.gg.step[i%_s.gg.step.length][0])+_s.gg.step[i%_s.gg.step.length][1]; do { a=(Math.floor(Math.random()*_s.gg.a[i%_s.gg.a.length][0])+_s.gg.a[i%_s.gg.a.length][1])*_s.gg.afactor;} while(a==0); for (var j=0; j<6;j++) { if (j<_s.gg.l) { cells['c'+(2*i+1)+'x'+(j+1)]={'value':(b+j*a)/_s.gg.dec[i%_s.gg.dec.length],'fixed':true}; } else { cells['c'+(2*i+1)+'x'+(j+1)]={'result':(b+j*a)/_s.gg.dec[i%_s.gg.dec.length],'background':'#FDA','color':'#222'}; } } } return {'cells':cells}; }","font":1.2]]></dct:description>
+        <dct:description><![CDATA["gg":{"step":[[45,1]],"a":[[1,2]],"afactor":1,"l":3,"dec":[1]},"background":"res/img/background/landscape/c_002.svg","checkempty":true,"callen":2,"noneg":true,"nodec":true,"sp":0.04,"rows":{"row0":{"height":0.2},"row7":{"height":0.2,"fixed":true,"background":"gray"}},"cols":{"col0":{"width":0.2},"col2":{"width":0.2,"fixed":true,"background":"gray"},"col4":{"width":0.2,"fixed":true,"background":"gray"},"col6":{"width":0.2,"fixed":true,"background":"gray"}},"withbars":false,"all":{"height":1.2,"width":5},"gen":"function($this,_s,_id) { var cells={}; for (var i=0; i<3;i++) { var a,b=Math.floor(Math.random()*_s.gg.step[i%_s.gg.step.length][0])+_s.gg.step[i%_s.gg.step.length][1]; do { a=(Math.floor(Math.random()*_s.gg.a[i%_s.gg.a.length][0])+_s.gg.a[i%_s.gg.a.length][1])*_s.gg.afactor;} while(a==0); for (var j=0; j<6;j++) { if (j<_s.gg.l) { cells['c'+(2*i+1)+'x'+(j+1)]={'value':(b+j*a)/_s.gg.dec[i%_s.gg.dec.length],'fixed':true}; } else { cells['c'+(2*i+1)+'x'+(j+1)]={'result':(b+j*a)/_s.gg.dec[i%_s.gg.dec.length],'background':'#FDA','color':'#222'}; } } } return {'cells':cells}; }","font":1.2]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Observez[/b] et [b]complétez[/b] les séries de nombres."</dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -551,7 +551,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -565,7 +565,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -579,7 +579,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -593,7 +593,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -607,7 +607,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -621,7 +621,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -635,7 +635,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -649,7 +649,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -663,7 +663,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
 
@@ -678,7 +678,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -692,7 +692,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -706,7 +706,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -720,7 +720,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     
@@ -735,7 +735,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 	
@@ -750,7 +750,7 @@
         <dct:alternative>s25</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
         <dct:relation>s2</dct:relation>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 

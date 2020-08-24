@@ -22,7 +22,7 @@
     <rdf:Description>
         <dct:identifier>2</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs (paires) appartenant à la table de multiplication de 2.</dct:title>
-        <dct:description><![CDATA["gg":2,"number":2,"background":"res/img/background/landscape/brownboard01.svg","template":"array3x3","gen":"function($this,_s,_id){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var c=(Math.random()<0.5), a=c?_s.gg*(Math.floor(Math.random()*10)+1):_s.gg*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(_s.gg-1)); result+=(a%_s.gg==0)?'1':'0'; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["gg":2,"number":2,"background":"res/img/background/landscape/c_gray01.svg","template":"array3x3","gen":"function($this,_s,_id){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var c=(Math.random()<0.5), a=c?_s.gg*(Math.floor(Math.random()*10)+1):_s.gg*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(_s.gg-1)); result+=(a%_s.gg==0)?'1':'0'; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs [red]paires[/red] c'est à dire, appartenant à la table de multiplication de <b>2</b>.","tag":"×2"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -30,7 +30,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
-		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -45,7 +45,7 @@
         <dct:alternative>9</dct:alternative>
 		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -60,7 +60,7 @@
         <dct:alternative>9</dct:alternative>
 		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -75,7 +75,7 @@
         <dct:alternative>9</dct:alternative>
 		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -90,7 +90,7 @@
         <dct:alternative>9</dct:alternative>
 		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -105,7 +105,7 @@
         <dct:alternative>9</dct:alternative>
 		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -120,7 +120,7 @@
         <dct:alternative>9</dct:alternative>
 		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -135,7 +135,7 @@
         <dct:alternative>9</dct:alternative>
 		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
 	
@@ -144,7 +144,7 @@
     <rdf:Description>
         <dct:identifier>c2</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 2.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[2],"b":[10,1]},"number":2,"background":"res/img/background/landscape/grayboard01.svg","template":"array2x4","gen":"function($this,_s,_i){var result='',ret=[]; for (var i=0; i<9; i++) { var chance=(Math.random()<0.5), a=_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)],b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1], c=a*b; if (chance) { do {c=Math.floor(Math.random()*_s.gg.a[_s.gg.a.length-1]*_s.gg.b[0])+_s.gg.b[1]; } while (c==a*b); } result+=(a*b==c)?'0':'1'; ret.push(a+'×'+b+'='+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2],"b":[10,1]},"number":2,"background":"res/img/background/landscape/c_gray01.svg","template":"array2x4","gen":"function($this,_s,_i){var result='',ret=[]; for (var i=0; i<9; i++) { var chance=(Math.random()<0.5), a=_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)],b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1], c=a*b; if (chance) { do {c=Math.floor(Math.random()*_s.gg.a[_s.gg.a.length-1]*_s.gg.b[0])+_s.gg.b[1]; } while (c==a*b); } result+=(a*b==c)?'0':'1'; ret.push(a+'×'+b+'='+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Barrez[/b] les opérations erronées."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -152,7 +152,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -166,7 +166,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -180,7 +180,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -194,7 +194,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -208,7 +208,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -222,7 +222,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -236,7 +236,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -250,7 +250,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -264,7 +264,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -278,7 +278,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -292,7 +292,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -306,7 +306,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -320,7 +320,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -334,7 +334,7 @@
         <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
 		<dct:relation>c2</dct:relation>
-		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
 
 	
@@ -369,7 +369,7 @@
 	<rdf:Description>
         <dct:identifier>i2</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 dont le résultat est exact.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[2],"b":[10,1],"g":true},"number":5,"background":"res/img/background/landscape/bluecarpet02.svg","automatic":"one","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}},"class":"center","gen":"function($this,_s,_i) { var t=[{'t':'array2x4','n':8}],tt=t[Math.floor(Math.random()*t.length)],r='',txt=[],ii=Math.floor(Math.random()*tt.n); for (var i=0;i<tt.n;i++) { var a=_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)], b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1],c; do { c=a*b+Math.floor(Math.random()*10)-5; } while(c<=0 || c==a*b); if ((_s.gg.g&&i==ii)||((!_s.gg.g) && i!=ii)) { r+=_s.gg.g?'1':'0'; c=a*b; } else { r+=_s.gg.g?'0':'1'; } txt.push(a+'×'+b+'='+c); } return {'template':tt.t,'result':r,'t':txt}; }","font":0.9]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2],"b":[10,1],"g":true},"number":5,"background":"res/img/background/landscape/c_blue05.svg","automatic":"one","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}},"class":"center","gen":"function($this,_s,_i) { var t=[{'t':'array2x4','n':8}],tt=t[Math.floor(Math.random()*t.length)],r='',txt=[],ii=Math.floor(Math.random()*tt.n); for (var i=0;i<tt.n;i++) { var a=_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)], b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1],c; do { c=a*b+Math.floor(Math.random()*10)-5; } while(c<=0 || c==a*b); if ((_s.gg.g&&i==ii)||((!_s.gg.g) && i!=ii)) { r+=_s.gg.g?'1':'0'; c=a*b; } else { r+=_s.gg.g?'0':'1'; } txt.push(a+'×'+b+'='+c); } return {'template':tt.t,'result':r,'t':txt}; }","font":0.9]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [blue]résultat est exact[/blue]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -377,7 +377,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -390,7 +390,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -404,7 +404,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -418,7 +418,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -432,7 +432,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -446,7 +446,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -460,7 +460,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -474,7 +474,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -488,7 +488,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -502,7 +502,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -516,7 +516,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -530,7 +530,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -544,7 +544,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -558,7 +558,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -572,7 +572,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -587,7 +587,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -601,7 +601,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -615,7 +615,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -629,7 +629,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -643,7 +643,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -657,7 +657,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -671,7 +671,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -685,7 +685,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -699,7 +699,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -713,7 +713,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -727,7 +727,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -741,7 +741,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -755,7 +755,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -769,7 +769,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -783,7 +783,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -791,7 +791,7 @@
 	<rdf:Description>
         <dct:identifier>ii2</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -799,14 +799,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii3</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[3],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[3],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -814,14 +814,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii4</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 4 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[4],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[4],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -829,14 +829,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii5</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 5 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[5],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[5],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -844,14 +844,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii25</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2,3,4 ou 5 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[2,3,4,5],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2,3,4,5],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -859,14 +859,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii24</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 ou 4 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[2,4],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2,4],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -874,14 +874,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii248</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2,4 ou 8 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[2,4,8],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2,4,8],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -889,14 +889,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii36</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3 ou 6 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[3,6],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[3,6],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -904,14 +904,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii369</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3,6 ou 9 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[3,6,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[3,6,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -919,14 +919,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii6</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 6 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[6],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[6],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -934,14 +934,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii7</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 7 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[7],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[7],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -949,14 +949,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii8</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 8 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[8],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[8],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -964,14 +964,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii9</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 9 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[9],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[9],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -979,14 +979,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 2 à 9 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[2,3,4,5,6,7,8,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2,3,4,5,6,7,8,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -994,14 +994,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii69</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 6 à 9 dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[6,7,8,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[6,7,8,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1009,7 +1009,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -1017,7 +1017,7 @@
 	<rdf:Description>
         <dct:identifier>ii2t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[2],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1025,14 +1025,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii3t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[3],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[3],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1040,14 +1040,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii4t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 4 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[4],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[4],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1055,14 +1055,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii5t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 5 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[5],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[5],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1070,14 +1070,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii25t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2,3,4 ou 5 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[2,3,4,5],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[2,3,4,5],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1085,14 +1085,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii24t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 ou 4 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[2,4],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[2,4],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1100,14 +1100,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii248t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2,4 ou 8 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[2,4,8],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[2,4,8],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1115,14 +1115,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii36t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3 ou 6 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[3,6],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[3,6],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1130,14 +1130,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii369t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3,6 ou 9 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[3,6,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[3,6,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1145,14 +1145,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii6t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 6 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[6],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[6],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1160,14 +1160,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii7t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 7 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[7],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[7],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1175,14 +1175,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii8t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 8 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[8],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[8],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1190,14 +1190,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii9t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 9 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[9],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[9],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1205,14 +1205,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii29t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 2 à 9 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[2,3,4,5,6,7,8,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[2,3,4,5,6,7,8,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1220,14 +1220,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii69t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 6 à 9 dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"a":[6,7,8,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"a":[6,7,8,9],"b":[10,1],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -1235,7 +1235,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i2</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i2</dct:relation>
     </rdf:Description>
 	
@@ -1244,14 +1244,14 @@
 	<rdf:Description>
         <dct:identifier>q2a</dct:identifier>
         <dct:title xml:lang="fr-FR">Répondre à des questions portant sur la multiplication par 2.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","automatic":"one","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue01.svg","automatic":"one","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"font":2.8,"class":"center","legendsize":2,"legend":["Quelle multiplication a [b]14[/b] pour résultat ?"],"values":[{"template":"qcm4v","result":"0010","t":["2×3","2×8","2×7","2×9"]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>q2a</dct:alternative>
-        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue01.svg</dct:source>
     </rdf:Description>
 	
 </rdf:RDF>

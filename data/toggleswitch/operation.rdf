@@ -7,14 +7,14 @@
     <rdf:Description>
         <dct:identifier>c10</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier les soustractions, additions, multiplications jusqu'à 5 et divisions par 2, de valeurs comprises entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2]},"background":"res/img/background/landscape/wallpaper02.svg","template":"array3x3","gen":"function($this,_s,_id){var val=[function(_e) { var a=Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1]),b=Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); return a+'+'+b+'='+(a+b+_e); }, function(_e) { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return (a+b)+'-'+b+'='+(a+_e); }, function(_e) { var a=Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1]),b = Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); return a+'×'+b+'='+(a*b+_e);}, function(_e) { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return (a*b)+'/'+b+'='+(a+_e); }],res='',t=[]; for (var i=0; i<9; i++) { var c=Math.floor(Math.random()*2),er=0,v=Math.floor(Math.random()*val.length); res+=(1-c).toString(); if (c==0) { do { er = Math.floor(Math.random()*5)-2; } while (er==0); } t.push(val[v](er)); }; return { 'result':res,'t':t}; }","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"#333"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.5,"number":3]]></dct:description>
+        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2]},"background":"res/img/background/landscape/c_002.svg","template":"array3x3","gen":"function($this,_s,_id){var val=[function(_e) { var a=Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1]),b=Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); return a+'+'+b+'='+(a+b+_e); }, function(_e) { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return (a+b)+'-'+b+'='+(a+_e); }, function(_e) { var a=Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1]),b = Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); return a+'×'+b+'='+(a*b+_e);}, function(_e) { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return (a*b)+'/'+b+'='+(a+_e); }],res='',t=[]; for (var i=0; i<9; i++) { var c=Math.floor(Math.random()*2),er=0,v=Math.floor(Math.random()*val.length); res+=(1-c).toString(); if (c==0) { do { er = Math.floor(Math.random()*5)-2; } while (er==0); } t.push(val[v](er)); }; return { 'result':res,'t':t}; }","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"#333"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.5,"number":3]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Barrez[/b] les opérations [red]erronées[/red]."}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c10</dct:alternative>
-		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
          
 	<!-- INTRUDER -->
@@ -22,7 +22,7 @@
 	<rdf:Description>
         <dct:identifier>i10</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi soustractions, additions, multiplications jusqu'à 5 et divisions par 2, la seule opération dont le résultat est exact.</dct:title>
-        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2],"g":true},"number":5,"background":"res/img/background/landscape/bluecarpet02.svg","automatic":"one","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}},"class":"center","gen":"function($this,_s,_i) { var val=[function() { var a=Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1]),b=Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); return [ a+'+'+b,a+b]; }, function() { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return [(a+b)+'-'+b,a]; }, function(_e) { var a=Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1]),b = Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); return [a+'×'+b,a*b];}, function(_e) { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return [(a*b)+'/'+b,a]; }],t=[{'t':'array2x4','n':8}],tt=t[Math.floor(Math.random()*t.length)],r='',txt=[],ii=Math.floor(Math.random()*tt.n); for (var i=0;i<tt.n;i++) { var op=Math.floor(Math.random()*4),v=val[op](),c; do { c=v[1]+Math.floor(Math.random()*6)-3; } while(c<=0 || c==v[1]); if ((_s.gg.g&&i==ii)||((!_s.gg.g) && i!=ii)) { r+=_s.gg.g?'1':'0'; c=v[1]; } else { r+=_s.gg.g?'0':'1'; } txt.push(v[0]+'='+c); } return {'template':tt.t,'result':r,'t':txt}; }","font":0.8]]></dct:description>
+        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2],"g":true},"number":5,"background":"res/img/background/landscape/c_blue05.svg","automatic":"one","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}},"class":"center","gen":"function($this,_s,_i) { var val=[function() { var a=Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1]),b=Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); return [ a+'+'+b,a+b]; }, function() { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return [(a+b)+'-'+b,a]; }, function(_e) { var a=Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1]),b = Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); return [a+'×'+b,a*b];}, function(_e) { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return [(a*b)+'/'+b,a]; }],t=[{'t':'array2x4','n':8}],tt=t[Math.floor(Math.random()*t.length)],r='',txt=[],ii=Math.floor(Math.random()*tt.n); for (var i=0;i<tt.n;i++) { var op=Math.floor(Math.random()*4),v=val[op](),c; do { c=v[1]+Math.floor(Math.random()*6)-3; } while(c<=0 || c==v[1]); if ((_s.gg.g&&i==ii)||((!_s.gg.g) && i!=ii)) { r+=_s.gg.g?'1':'0'; c=v[1]; } else { r+=_s.gg.g?'0':'1'; } txt.push(v[0]+'='+c); } return {'template':tt.t,'result':r,'t':txt}; }","font":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule opération dont le [blue]résultat est exact[/blue]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -30,7 +30,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>i10</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -43,14 +43,14 @@
         <dct:type>3</dct:type>
         <dct:alternative>i10</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_blue05.svg</dct:source>
 		<dct:relation>i10</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii10</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi soustractions, additions, multiplications jusqu'à 5 et divisions par 2, la seule opération dont le résultat est faux.</dct:title>
-        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule opération dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -58,14 +58,14 @@
         <dct:type>2</dct:type>
         <dct:alternative>i10</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i10</dct:relation>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>ii10t</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi soustractions, additions, multiplications jusqu'à 5 et divisions par 2, la seule opération dont le résultat est faux, en moins de 20 secondes.</dct:title>
-        <dct:description><![CDATA["time":20,"gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description><![CDATA["time":20,"gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2],"g":false},"background":"res/img/background/landscape/c_red05.svg"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule opération dont le [red]résultat est faux[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -73,7 +73,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i10</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red05.svg</dct:source>
 		<dct:relation>i10</dct:relation>
     </rdf:Description>
 	

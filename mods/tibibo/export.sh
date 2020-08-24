@@ -78,7 +78,7 @@ if [ -d $output ] ; then
 	echo "+ ERROR: Can not clean $dest/ (rigth issue?)"
 	exit
 fi
-mkdir -p $output/res/img/background/landscape $output/res/img/svginventoryicons/pencil/ $output/res/img/banners/ $output/css/ $output/ext/noto/svg/
+mkdir -p $output/res/img/background/landscape $output/res/img/svginventoryicons/pencil/ $output/res/img/background/banners/ $output/css/ $output/ext/noto/svg/
 mkdir -p $output/user $output/mods/tibibo/res/img $output/standalone/exercice $output/standalone/activity $output/activities
 mkdir -p $output/res/img/icon/tab
 
@@ -109,9 +109,9 @@ for a in "${assets[@]}"; do
 done
 
 echo -n "."; cp -rf ext/font $output/ext/font
-echo -n "."; cp -f res/img/background/landscape/blueboard01.svg $output/res/img/background/landscape/blueboard01.svg 
+echo -n "."; cp -f res/img/background/landscape/c_blue01.svg $output/res/img/background/landscape/c_blue01.svg 
 echo -n "."; cp -rf res/img/svginventoryicons/award $output/res/img/svginventoryicons/award
-echo -n "."; cp -rf res/img/banners/jlodb_tibibo.svg $output/res/img/banners/jlodb_tibibo.svg
+echo -n "."; cp -rf res/img/background/banners/jlodb_tibibo.svg $output/res/img/background/banners/jlodb_tibibo.svg
 echo -n "."; cp -f res/img/svginventoryicons/pencil/brush01.svg $output/res/img/svginventoryicons/pencil/
 echo -n "."; cp -f LICENSE $output/
 echo

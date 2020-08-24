@@ -7,25 +7,25 @@
 	<rdf:Description>
         <dct:identifier>a1</dct:identifier>
         <dct:title xml:lang="fr-FR">Placer les heures d'une horloge analogique.</dct:title>
-        <dct:description><![CDATA["errratio":2,"svgclass":"hour","init":{"area":[480,60,600,180]},"background":"res/img/background/landscape/time01.svg","url":"desktop/puzzle/clock01.svg","width":640,"radius":30,"scale":1.2,"values":[{"p00":"12","p01":"1","p02":"2","p03":"3","p04":"4","p05":"5","p06":"6","p07":"7","p08":"8","p09":"9","p10":"10","p11":"11"}],"rotation":0]]></dct:description>
+        <dct:description><![CDATA["errratio":2,"svgclass":"hour","init":{"area":[480,60,600,180]},"background":"res/img/background/landscape/c_yellow01.svg","url":"desktop/puzzle/clock01.svg","width":640,"radius":30,"scale":1.2,"values":[{"p00":"12","p01":"1","p02":"2","p03":"3","p04":"4","p05":"5","p06":"6","p07":"7","p08":"8","p09":"9","p10":"10","p11":"11"}],"rotation":0]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>a1</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/clock01.svg,res/img/background/landscape/time01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/clock01.svg,res/img/background/landscape/c_yellow01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>a2</dct:identifier>
         <dct:title xml:lang="fr-FR">Placer les minutes d'une horloge analogique.</dct:title>
-        <dct:description><![CDATA["errratio":2,"svgclass":"min","init":{"area":[480,60,600,180]},"background":"res/img/background/landscape/time01.svg","url":"desktop/puzzle/clock01.svg","width":640,"radius":30,"scale":1.2,"values":[{"p00":"0","p01":"5","p02":"10","p03":"15","p04":"20","p05":"25","p06":"30","p07":"35","p08":"40","p09":"45","p10":"50","p11":"55"}],"rotation":0]]></dct:description>
+        <dct:description><![CDATA["errratio":2,"svgclass":"min","init":{"area":[480,60,600,180]},"background":"res/img/background/landscape/c_yellow01.svg","url":"desktop/puzzle/clock01.svg","width":640,"radius":30,"scale":1.2,"values":[{"p00":"0","p01":"5","p02":"10","p03":"15","p04":"20","p05":"25","p06":"30","p07":"35","p08":"40","p09":"45","p10":"50","p11":"55"}],"rotation":0]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>a1</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/clock01.svg,res/img/background/landscape/time01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/clock01.svg,res/img/background/landscape/c_yellow01.svg</dct:source>
     </rdf:Description>
 
 	<!-- HOUR MATCHING -->
@@ -33,7 +33,7 @@
     <rdf:Description>
         <dct:identifier>ha</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les horloges analogiques correspondant aux différentes heures numériques [heures et minutes avec leurres].</dct:title>
-        <dct:description><![CDATA["svgclass":"tinytt","number":2,"errratio":2,"gg":[0,12,0,12,1,1],"background":"res/img/background/landscape/graycarpet01.svg","number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,_s,_id){ var txt={},tt=[], id=[]; for (var h=_s.gg[0]; h<_s.gg[1]; h++) for (var m=_s.gg[2]; m<_s.gg[3]; m++) { tt.push(h*100+m*5); } shuffle(tt); for (var i=0; i<12; i++) { var h=Math.floor(tt[i]/100),m=tt[i]%100; h=(h<10?'0':'')+h; m=(m<10?'0':'')+m; if (i<6) { txt['txt0'+(i+1)] = h+':'+m; txt['pi0'+(i+1)]='res/img/clock/clock'+h+m+'.svg'; txt['pb0'+(i+1)]='res/img/clock/swatch0'+_s.gg[5]+'.svg'; id.push('pp0'+(i+1)); } else if (_s.gg[4]) { txt['di0'+(i-5)]='res/img/clock/clock'+h+m+'.svg'; txt['db0'+(i-5)]='res/img/clock/swatch0'+_s.gg[5]+'.svg'; id.push('dd0'+(i-5)); } } return { 'id':id,'txt':txt } }","show":["t01"]]]></dct:description>
+        <dct:description><![CDATA["svgclass":"tinytt","number":2,"errratio":2,"gg":[0,12,0,12,1,1],"background":"res/img/background/landscape/c_gray02.svg","number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,_s,_id){ var txt={},tt=[], id=[]; for (var h=_s.gg[0]; h<_s.gg[1]; h++) for (var m=_s.gg[2]; m<_s.gg[3]; m++) { tt.push(h*100+m*5); } shuffle(tt); for (var i=0; i<12; i++) { var h=Math.floor(tt[i]/100),m=tt[i]%100; h=(h<10?'0':'')+h; m=(m<10?'0':'')+m; if (i<6) { txt['txt0'+(i+1)] = h+':'+m; txt['pi0'+(i+1)]='res/img/clock/clock'+h+m+'.svg'; txt['pb0'+(i+1)]='res/img/clock/swatch0'+_s.gg[5]+'.svg'; id.push('pp0'+(i+1)); } else if (_s.gg[4]) { txt['di0'+(i-5)]='res/img/clock/clock'+h+m+'.svg'; txt['db0'+(i-5)]='res/img/clock/swatch0'+_s.gg[5]+'.svg'; id.push('dd0'+(i-5)); } } return { 'id':id,'txt':txt } }","show":["t01"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les horloges correspondant aux différentes [b]heures[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>time</dct:subject>
@@ -41,7 +41,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>ha</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/graycarpet01.svg,res/img/clock/*.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/c_gray02.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -55,7 +55,7 @@
         <dct:alternative>ha</dct:alternative>
         <dct:relation>ha</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/graycarpet01.svg,res/img/clock/*.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/c_gray02.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -69,7 +69,7 @@
         <dct:alternative>ha</dct:alternative>
         <dct:relation>ha</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/graycarpet01.svg,res/img/clock/*.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/c_gray02.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -83,7 +83,7 @@
         <dct:alternative>ha</dct:alternative>
         <dct:relation>ha</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/graycarpet01.svg,res/img/clock/*.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/c_gray02.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -97,7 +97,7 @@
         <dct:alternative>ha</dct:alternative>
         <dct:relation>ha</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/graycarpet01.svg,res/img/clock/*.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/c_gray02.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -111,7 +111,7 @@
         <dct:alternative>ha</dct:alternative>
         <dct:relation>ha</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/graycarpet01.svg,res/img/clock/*.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/c_gray02.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -125,7 +125,7 @@
         <dct:alternative>ha</dct:alternative>
         <dct:relation>ha</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/graycarpet01.svg,res/img/clock/*.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/c_gray02.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -139,7 +139,7 @@
         <dct:alternative>ha</dct:alternative>
         <dct:relation>ha</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/graycarpet01.svg,res/img/clock/*.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/list01.svg,res/img/background/landscape/c_gray02.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
 	<!-- CLOCK FILLING -->

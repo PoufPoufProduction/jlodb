@@ -61,7 +61,7 @@
     <rdf:Description>
         <dct:identifier>ab10</dct:identifier>
         <dct:title xml:lang="fr-FR">Sélectionner autant d'argent que demandé (de 1 à 10).</dct:title>
-        <dct:description><![CDATA["svgclass":"unit coins","group":"unit","gg":[9,1],"background":"res/img/background/landscape/yellowboard02.svg","number":5,"template":"desktop/numeration01.svg","onclick":"function($this, elts, id, settings){ var ret = true, number=false, index = 0, val=[], e='v1'; do { var cpt=0; for (var i=0; i<10; i++) { if ( (elts[i+index].state==1 && id!=i+index) ||(elts[i+index].state==0 && id==i+index)) { cpt++; number=true; }} index+=10; if (number) {val.push(cpt); } ret&=(cpt!=10);} while(index<elts.length); if (ret) {val.reverse(); if (!val.length) { val=[0];} for (var i=0; i<3; i++) { $('#'+e,settings.svg.root()).html(i<val.length?val[i]:''); e+='0';}} return ret;}","scorefct":"function($this, elts, settings){ var user=settings.current.user, ret = 0, index = 0, val=[]; do { var cpt=0; for (var i=0; i<10; i++) { if (elts[i+index].state==1) { cpt++; }} index+=10; val.push(cpt); } while(index<elts.length); val.reverse(); while(val.length<3){val.push(0);} if (val[0]!=user%10) { $('#bgunit',settings.svg.root()).attr('class','unit wrong');ret++; } if (val[1]!=Math.floor(user/10)%10) { $('#bgdecade',settings.svg.root()).attr('class','decade wrong');ret++; } if (val[2]!=Math.floor(user/100)%10) { $('#bghundred',settings.svg.root()).attr('class','hundred wrong');ret++; }return ret;}","gen":"function($this,_s,_i){var a=Math.floor(Math.random()*_s.gg[0])+_s.gg[1]; return {'tag':a,'user':a}}","states":{ "nb":2, "class":["c0","c1"]}]]></dct:description>
+        <dct:description><![CDATA["svgclass":"unit coins","group":"unit","gg":[9,1],"background":"res/img/background/landscape/c_yellow04.svg","number":5,"template":"desktop/numeration01.svg","onclick":"function($this, elts, id, settings){ var ret = true, number=false, index = 0, val=[], e='v1'; do { var cpt=0; for (var i=0; i<10; i++) { if ( (elts[i+index].state==1 && id!=i+index) ||(elts[i+index].state==0 && id==i+index)) { cpt++; number=true; }} index+=10; if (number) {val.push(cpt); } ret&=(cpt!=10);} while(index<elts.length); if (ret) {val.reverse(); if (!val.length) { val=[0];} for (var i=0; i<3; i++) { $('#'+e,settings.svg.root()).html(i<val.length?val[i]:''); e+='0';}} return ret;}","scorefct":"function($this, elts, settings){ var user=settings.current.user, ret = 0, index = 0, val=[]; do { var cpt=0; for (var i=0; i<10; i++) { if (elts[i+index].state==1) { cpt++; }} index+=10; val.push(cpt); } while(index<elts.length); val.reverse(); while(val.length<3){val.push(0);} if (val[0]!=user%10) { $('#bgunit',settings.svg.root()).attr('class','unit wrong');ret++; } if (val[1]!=Math.floor(user/10)%10) { $('#bgdecade',settings.svg.root()).attr('class','decade wrong');ret++; } if (val[2]!=Math.floor(user/100)%10) { $('#bghundred',settings.svg.root()).attr('class','hundred wrong');ret++; }return ret;}","gen":"function($this,_s,_i){var a=Math.floor(Math.random()*_s.gg[0])+_s.gg[1]; return {'tag':a,'user':a}}","states":{ "nb":2, "class":["c0","c1"]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Sélectionnez[/b] autant d'éléments que demandé ci-contre."},"t":["Centaines","Dizaines","Unités"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -69,7 +69,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ac1k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,monnaie</dct:coverage>
-        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -82,7 +82,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ac1k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,monnaie</dct:coverage>
-        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:relation>ab10</dct:relation>
     </rdf:Description>
     
@@ -96,7 +96,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ac1k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,monnaie</dct:coverage>
-        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:relation>ab10</dct:relation>
     </rdf:Description>
     
@@ -110,7 +110,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ac1k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1,monnaie</dct:coverage>
-        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:relation>ab10</dct:relation>
     </rdf:Description>
     
@@ -124,7 +124,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ac1k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:relation>ab10</dct:relation>
     </rdf:Description>
     
@@ -138,7 +138,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ac1k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:relation>ab10</dct:relation>
     </rdf:Description>
     
@@ -152,7 +152,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ac1k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:relation>ab10</dct:relation>
     </rdf:Description>
     
@@ -166,7 +166,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ac1k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/numeration01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:relation>ab10</dct:relation>
     </rdf:Description>
     
@@ -175,7 +175,7 @@
     <rdf:Description>
         <dct:identifier>i01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier l'absence d'un élément (potion bleue).</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/potion/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['red','green','purple','yellow','white'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='blue'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp+'0'+(Math.floor(Math.random()*4)+1); } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue03.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/potion/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['red','green','purple','yellow','white'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='blue'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp+'0'+(Math.floor(Math.random()*4)+1); } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les groupes dans lesquels il n'y a <b>pas de potion bleu</b>.","tag":"0"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -183,13 +183,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>i01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/potion/,res/img/background/landscape/bluesplash01.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/potion/,res/img/background/landscape/c_blue03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>i02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier l'absence d'un élément (cerise).</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['banana01','pear01','pepper01','tomato01','kiwi01','apple01','apricot01','strawberry01'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='cherry02'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp; } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue03.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['banana01','pear01','pepper01','tomato01','kiwi01','apple01','apricot01','strawberry01'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='cherry02'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp; } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les groupes dans lesquels il n'y a <b>pas de cerise</b>.","tag":"0"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -197,13 +197,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>i01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/vegetable/,res/img/background/landscape/bluesplash01.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/vegetable/,res/img/background/landscape/c_blue03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>i03</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier l'absence d'un élément (pierre précieuse verte).</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluesplash01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/mineral/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['red','blue','purple','yellow','white'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='green'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp+'0'+(Math.floor(Math.random()*4)+1); } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue03.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon12' style='float:left;'><img src=\\\"res/img/svginventoryicons/mineral/$1.svg\\\"/></div>"},"number":3,"template":"array2x5","gen":"function(){var p=['red','blue','purple','yellow','white'],result=\\\"\\\",ret=[]; for(var i=0;i<10;i++) { var b=false, s=\\\"\\\"; for (var j=0;j<7;j++) { var pp; if (j) s+=' '; if (Math.floor(Math.random()*14)<1) { b=true; pp='green'; } else { pp=p[Math.floor(Math.random()*p.length)];} s=s+pp+'0'+(Math.floor(Math.random()*4)+1); } result+=b?'0':'1'; ret.push(s); } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les groupes dans lesquels il n'y a <b>pas de pierre précieuse verte</b>.","tag":"0"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -211,7 +211,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>i01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/mineral/,res/img/background/landscape/bluesplash01.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/mineral/,res/img/background/landscape/c_blue03.svg</dct:source>
     </rdf:Description>
 
 	<!-- IDENTIFICATION -->
@@ -219,7 +219,7 @@
     <rdf:Description>
         <dct:identifier>i1</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre 1.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array3x2","result":"110001","t":["/svginventoryicons/human/lefthand01","1","/numbers/star/starr2","/numbers/dice/dice02","/svginventoryicons/human/righthand02","/coin/coin1"]},{"template":"array3x2","result":"010111","t":["/coin/coins2","/numbers/star/starr1","2","1","/numbers/dice/dice01","/svginventoryicons/vegetable/cherry01"]},{"template":"array3x2","result":"101010","t":["/svginventoryicons/vegetable/strawberry01","/numbers/match/match21","/numbers/box/box01","/numbers/dice/dice02","/svginventoryicons/human/lefthand01","/svginventoryicons/vegetable/cherry02"]},{"template":"array3x2","result":"011011","t":["/numbers/box/box02","1","/numbers/dice/dice01","/svginventoryicons/vegetable/cherry02","/svginventoryicons/human/righthand01","/svginventoryicons/vegetable/cherry01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_002.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array3x2","result":"110001","t":["/svginventoryicons/human/lefthand01","1","/numbers/star/starr2","/numbers/dice/dice02","/svginventoryicons/human/righthand02","/coin/coin1"]},{"template":"array3x2","result":"010111","t":["/coin/coins2","/numbers/star/starr1","2","1","/numbers/dice/dice01","/svginventoryicons/vegetable/cherry01"]},{"template":"array3x2","result":"101010","t":["/svginventoryicons/vegetable/strawberry01","/numbers/match/match21","/numbers/box/box01","/numbers/dice/dice02","/svginventoryicons/human/lefthand01","/svginventoryicons/vegetable/cherry02"]},{"template":"array3x2","result":"011011","t":["/numbers/box/box02","1","/numbers/dice/dice01","/svginventoryicons/vegetable/cherry02","/svginventoryicons/human/righthand01","/svginventoryicons/vegetable/cherry01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les différentes représentations du nombre <b>1</b>.","tag":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -227,13 +227,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>i5</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/human/lefthand01.svg,res/img/numbers/star/starr2.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/righthand02.svg,res/img/coin/coin1.svg,res/img/coin/coins2.svg,res/img/numbers/star/starr1.svg,res/img/numbers/dice/dice01.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/match/match21.svg,res/img/numbers/box/box01.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/box/box02.svg,res/img/numbers/dice/dice01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/svginventoryicons/human/righthand01.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/human/lefthand01.svg,res/img/numbers/star/starr2.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/righthand02.svg,res/img/coin/coin1.svg,res/img/coin/coins2.svg,res/img/numbers/star/starr1.svg,res/img/numbers/dice/dice01.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/match/match21.svg,res/img/numbers/box/box01.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/box/box02.svg,res/img/numbers/dice/dice01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/svginventoryicons/human/righthand01.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>i2</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre 2</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array3x2","result":"101011","t":["/svginventoryicons/human/lefthand02","1","/numbers/star/starr2","/numbers/dice/dice01","/coin/coins2","2"]},{"template":"array3x2","result":"101000","t":["/coin/coins2","/numbers/star/starr1","2","1","/numbers/dice/dice01","/svginventoryicons/vegetable/cherry01"]},{"template":"array3x2","result":"010101","t":["/svginventoryicons/vegetable/strawberry01","/numbers/star/starr2","I","/numbers/dice/dice02","/svginventoryicons/human/lefthand01","/svginventoryicons/vegetable/cherry02"]},{"template":"array3x2","result":"100110","t":["/numbers/box/box02","1","/numbers/dice/dice01","/svginventoryicons/vegetable/cherry02","/svginventoryicons/human/righthand02","/svginventoryicons/vegetable/cherry01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_002.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array3x2","result":"101011","t":["/svginventoryicons/human/lefthand02","1","/numbers/star/starr2","/numbers/dice/dice01","/coin/coins2","2"]},{"template":"array3x2","result":"101000","t":["/coin/coins2","/numbers/star/starr1","2","1","/numbers/dice/dice01","/svginventoryicons/vegetable/cherry01"]},{"template":"array3x2","result":"010101","t":["/svginventoryicons/vegetable/strawberry01","/numbers/star/starr2","I","/numbers/dice/dice02","/svginventoryicons/human/lefthand01","/svginventoryicons/vegetable/cherry02"]},{"template":"array3x2","result":"100110","t":["/numbers/box/box02","1","/numbers/dice/dice01","/svginventoryicons/vegetable/cherry02","/svginventoryicons/human/righthand02","/svginventoryicons/vegetable/cherry01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les différentes représentations du nombre <b>2</b>.","tag":2}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -241,13 +241,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>i5</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/human/lefthand02.svg,res/img/numbers/star/starr2.svg,res/img/numbers/dice/dice01.svg,res/img/coin/coins2.svg,res/img/coin/coins2.svg,res/img/numbers/star/starr1.svg,res/img/numbers/dice/dice01.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/star/starr2.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/box/box02.svg,res/img/numbers/dice/dice01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/svginventoryicons/human/righthand02.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/human/lefthand02.svg,res/img/numbers/star/starr2.svg,res/img/numbers/dice/dice01.svg,res/img/coin/coins2.svg,res/img/coin/coins2.svg,res/img/numbers/star/starr1.svg,res/img/numbers/dice/dice01.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/star/starr2.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/box/box02.svg,res/img/numbers/dice/dice01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/svginventoryicons/human/righthand02.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>i3</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre 3</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array3x2","result":"011001","t":["2","/svginventoryicons/human/lefthand03","/numbers/dice/dice03","/numbers/star/starr2","/svginventoryicons/vegetable/cherry01","/coin/coins3","2"]},{"template":"array4x3","result":"001101011000","t":["/numbers/match/match13","/svginventoryicons/vegetable/cherry02","III","/numbers/star/starr3","/numbers/dice/dice02","/numbers/match/match32","2","/numbers/dice/dice03","/svginventoryicons/human/lefthand03","/numbers/match/match02","1","/svginventoryicons/human/lefthand01"]},{"template":"array4x3","result":"101001000010","t":["3","/coin/coin1","/numbers/star/starr3","1","/svginventoryicons/human/lefthand01","/numbers/dice/dice03","/svginventoryicons/human/righthand02","/svginventoryicons/vegetable/cherry02","/numbers/match/match22","2","/svginventoryicons/human/lefthand03","/numbers/star/starr2"]},{"template":"array4x3","result":"000101011010","t":["II","/svginventoryicons/vegetable/strawberry01","2","3","/numbers/star/starr2","/numbers/match/match31","/numbers/dice/dice02","/svginventoryicons/human/lefthand03","III","/svginventoryicons/vegetable/cherry02","/numbers/star/starr3","/numbers/match/match01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_002.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array3x2","result":"011001","t":["2","/svginventoryicons/human/lefthand03","/numbers/dice/dice03","/numbers/star/starr2","/svginventoryicons/vegetable/cherry01","/coin/coins3","2"]},{"template":"array4x3","result":"001101011000","t":["/numbers/match/match13","/svginventoryicons/vegetable/cherry02","III","/numbers/star/starr3","/numbers/dice/dice02","/numbers/match/match32","2","/numbers/dice/dice03","/svginventoryicons/human/lefthand03","/numbers/match/match02","1","/svginventoryicons/human/lefthand01"]},{"template":"array4x3","result":"101001000010","t":["3","/coin/coin1","/numbers/star/starr3","1","/svginventoryicons/human/lefthand01","/numbers/dice/dice03","/svginventoryicons/human/righthand02","/svginventoryicons/vegetable/cherry02","/numbers/match/match22","2","/svginventoryicons/human/lefthand03","/numbers/star/starr2"]},{"template":"array4x3","result":"000101011010","t":["II","/svginventoryicons/vegetable/strawberry01","2","3","/numbers/star/starr2","/numbers/match/match31","/numbers/dice/dice02","/svginventoryicons/human/lefthand03","III","/svginventoryicons/vegetable/cherry02","/numbers/star/starr3","/numbers/match/match01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les différentes représentations du nombre <b>3</b>.","tag":3}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -255,13 +255,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>i5</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/dice/dice03.svg,res/img/numbers/star/starr2.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/coin/coins3.svg,res/img/numbers/match/match13.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/star/starr3.svg,res/img/numbers/dice/dice02.svg,res/img/numbers/match/match32.svg,res/img/numbers/dice/dice03.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/match/match02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/coin/coin1.svg,res/img/numbers/star/starr3.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/numbers/dice/dice03.svg,res/img/svginventoryicons/human/righthand02.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/match/match22.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/star/starr2.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/star/starr2.svg,res/img/numbers/match/match31.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/star/starr3.svg,res/img/numbers/match/match01.svg,res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/dice/dice03.svg,res/img/numbers/star/starr2.svg,res/img/svginventoryicons/vegetable/cherry01.svg,res/img/coin/coins3.svg,res/img/numbers/match/match13.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/star/starr3.svg,res/img/numbers/dice/dice02.svg,res/img/numbers/match/match32.svg,res/img/numbers/dice/dice03.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/match/match02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/coin/coin1.svg,res/img/numbers/star/starr3.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/numbers/dice/dice03.svg,res/img/svginventoryicons/human/righthand02.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/match/match22.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/star/starr2.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/star/starr2.svg,res/img/numbers/match/match31.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/star/starr3.svg,res/img/numbers/match/match01.svg,res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>i4</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre 4</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array3x2","result":"101100","t":["/svginventoryicons/human/lefthand04","3","/numbers/dice/dice04","/numbers/star/starr4","/svginventoryicons/vegetable/cherry02","/coin/coins3","4"]},{"template":"array4x3","result":"010000100100","t":["/numbers/dice/dice03","/numbers/star/starr4","2","/svginventoryicons/human/lefthand03","3","/numbers/dice/dice02","/svginventoryicons/human/righthand04","/svginventoryicons/vegetable/cherry02","/coin/coins3","4","/svginventoryicons/human/lefthand01","/numbers/star/starr2"]},{"template":"array4x3","result":"101010000010","t":["/coin/coins4","/svginventoryicons/vegetable/strawberry01","/numbers/dice/dice04","1","/numbers/star/starr4","/numbers/dice/dice03","/coin/coins3","/svginventoryicons/human/lefthand02","II","/svginventoryicons/human/lefthand01","/svginventoryicons/human/righthand04","/numbers/star/starr1"]},{"template":"array4x3","result":"010010100011","t":["/numbers/match/match05","4","/svginventoryicons/vegetable/cherry02","/numbers/star/starr3","/numbers/star/starr4","3","/numbers/match/match41","/svginventoryicons/human/lefthand02","III","/numbers/match/match31","/svginventoryicons/human/lefthand04","/coin/coins4"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_002.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array3x2","result":"101100","t":["/svginventoryicons/human/lefthand04","3","/numbers/dice/dice04","/numbers/star/starr4","/svginventoryicons/vegetable/cherry02","/coin/coins3","4"]},{"template":"array4x3","result":"010000100100","t":["/numbers/dice/dice03","/numbers/star/starr4","2","/svginventoryicons/human/lefthand03","3","/numbers/dice/dice02","/svginventoryicons/human/righthand04","/svginventoryicons/vegetable/cherry02","/coin/coins3","4","/svginventoryicons/human/lefthand01","/numbers/star/starr2"]},{"template":"array4x3","result":"101010000010","t":["/coin/coins4","/svginventoryicons/vegetable/strawberry01","/numbers/dice/dice04","1","/numbers/star/starr4","/numbers/dice/dice03","/coin/coins3","/svginventoryicons/human/lefthand02","II","/svginventoryicons/human/lefthand01","/svginventoryicons/human/righthand04","/numbers/star/starr1"]},{"template":"array4x3","result":"010010100011","t":["/numbers/match/match05","4","/svginventoryicons/vegetable/cherry02","/numbers/star/starr3","/numbers/star/starr4","3","/numbers/match/match41","/svginventoryicons/human/lefthand02","III","/numbers/match/match31","/svginventoryicons/human/lefthand04","/coin/coins4"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les différentes représentations du nombre <b>4</b>.","tag":4}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -269,13 +269,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>i5</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/human/lefthand04.svg,res/img/numbers/dice/dice04.svg,res/img/numbers/star/starr4.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/coin/coins3.svg,res/img/numbers/dice/dice03.svg,res/img/numbers/star/starr4.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/righthand04.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/coin/coins3.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/numbers/star/starr2.svg,res/img/coin/coins4.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/dice/dice04.svg,res/img/numbers/star/starr4.svg,res/img/numbers/dice/dice03.svg,res/img/coin/coins3.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/human/righthand04.svg,res/img/numbers/star/starr1.svg,res/img/numbers/match/match05.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/star/starr3.svg,res/img/numbers/star/starr4.svg,res/img/numbers/match/match41.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/numbers/match/match31.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/coin/coins4.svg,res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/human/lefthand04.svg,res/img/numbers/dice/dice04.svg,res/img/numbers/star/starr4.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/coin/coins3.svg,res/img/numbers/dice/dice03.svg,res/img/numbers/star/starr4.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/righthand04.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/coin/coins3.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/numbers/star/starr2.svg,res/img/coin/coins4.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/dice/dice04.svg,res/img/numbers/star/starr4.svg,res/img/numbers/dice/dice03.svg,res/img/coin/coins3.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/human/righthand04.svg,res/img/numbers/star/starr1.svg,res/img/numbers/match/match05.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/numbers/star/starr3.svg,res/img/numbers/star/starr4.svg,res/img/numbers/match/match41.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/numbers/match/match31.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/coin/coins4.svg,res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>i5</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre 5</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array4x3","result":"100000011000","t":["/coin/coins5","/svginventoryicons/human/lefthand02","/coin/coins3","/svginventoryicons/human/lefthand04","/numbers/dice/dice02","/numbers/dice/dice03","/numbers/dice/dice04","/numbers/dice/dice05","/svginventoryicons/human/lefthand05","/coin/coins2","/coin/coins4","/svginventoryicons/human/lefthand03"]},{"template":"array4x3","result":"100001110010","t":["5","/numbers/star/starr4","II","/numbers/dice/dice03","/svginventoryicons/human/lefthand03","/numbers/dice/dice05","/svginventoryicons/human/righthand05","/coin/coins5","4","/svginventoryicons/human/lefthand03","/numbers/star/starr5","/numbers/dice/dice04"]},{"template":"array4x3","result":"101000100000","t":["/numbers/dice/dice05","/numbers/match/match41","5","/svginventoryicons/human/lefthand03","3","/numbers/dice/dice02","/svginventoryicons/human/righthand05","/svginventoryicons/vegetable/cherry02","/coin/coins4","1","/svginventoryicons/human/lefthand03","/numbers/star/starr4"]},{"template":"array4x3","result":"110111000000","t":["/numbers/match/match51","/numbers/star/starr5","II","5","/numbers/dice/dice05","/svginventoryicons/human/lefthand05","3","/numbers/dice/dice01","/numbers/match/match31","/svginventoryicons/human/lefthand04","/coin/coins2","2"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_002.svg","regexp":{ "from": "([/][^ ]+)","to":"<img src=\\\"res/img$1.svg\\\"/>"},"values":[{"template":"array4x3","result":"100000011000","t":["/coin/coins5","/svginventoryicons/human/lefthand02","/coin/coins3","/svginventoryicons/human/lefthand04","/numbers/dice/dice02","/numbers/dice/dice03","/numbers/dice/dice04","/numbers/dice/dice05","/svginventoryicons/human/lefthand05","/coin/coins2","/coin/coins4","/svginventoryicons/human/lefthand03"]},{"template":"array4x3","result":"100001110010","t":["5","/numbers/star/starr4","II","/numbers/dice/dice03","/svginventoryicons/human/lefthand03","/numbers/dice/dice05","/svginventoryicons/human/righthand05","/coin/coins5","4","/svginventoryicons/human/lefthand03","/numbers/star/starr5","/numbers/dice/dice04"]},{"template":"array4x3","result":"101000100000","t":["/numbers/dice/dice05","/numbers/match/match41","5","/svginventoryicons/human/lefthand03","3","/numbers/dice/dice02","/svginventoryicons/human/righthand05","/svginventoryicons/vegetable/cherry02","/coin/coins4","1","/svginventoryicons/human/lefthand03","/numbers/star/starr4"]},{"template":"array4x3","result":"110111000000","t":["/numbers/match/match51","/numbers/star/starr5","II","5","/numbers/dice/dice05","/svginventoryicons/human/lefthand05","3","/numbers/dice/dice01","/numbers/match/match31","/svginventoryicons/human/lefthand04","/coin/coins2","2"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les différentes représentations du nombre <b>5</b>.","tag":5}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -283,7 +283,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>i5</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/coin/coins5.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/coin/coins3.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/numbers/dice/dice02.svg,res/img/numbers/dice/dice03.svg,res/img/numbers/dice/dice04.svg,res/img/numbers/dice/dice05.svg,res/img/svginventoryicons/human/lefthand05.svg,res/img/coin/coins2.svg,res/img/coin/coins4.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/star/starr4.svg,res/img/numbers/dice/dice03.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/dice/dice05.svg,res/img/svginventoryicons/human/righthand05.svg,res/img/coin/coins5.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/star/starr5.svg,res/img/numbers/dice/dice04.svg,res/img/numbers/dice/dice05.svg,res/img/numbers/match/match41.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/righthand05.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/coin/coins4.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/star/starr4.svg,res/img/numbers/match/match51.svg,res/img/numbers/star/starr5.svg,res/img/numbers/dice/dice05.svg,res/img/svginventoryicons/human/lefthand05.svg,res/img/numbers/dice/dice01.svg,res/img/numbers/match/match31.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/coin/coins2.svg,res/img/background/landscape/wallpaper02.svg</dct:source>
+        <dct:source>res/img/coin/coins5.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/coin/coins3.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/numbers/dice/dice02.svg,res/img/numbers/dice/dice03.svg,res/img/numbers/dice/dice04.svg,res/img/numbers/dice/dice05.svg,res/img/svginventoryicons/human/lefthand05.svg,res/img/coin/coins2.svg,res/img/coin/coins4.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/star/starr4.svg,res/img/numbers/dice/dice03.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/dice/dice05.svg,res/img/svginventoryicons/human/righthand05.svg,res/img/coin/coins5.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/star/starr5.svg,res/img/numbers/dice/dice04.svg,res/img/numbers/dice/dice05.svg,res/img/numbers/match/match41.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/dice/dice02.svg,res/img/svginventoryicons/human/righthand05.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/coin/coins4.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/numbers/star/starr4.svg,res/img/numbers/match/match51.svg,res/img/numbers/star/starr5.svg,res/img/numbers/dice/dice05.svg,res/img/svginventoryicons/human/lefthand05.svg,res/img/numbers/dice/dice01.svg,res/img/numbers/match/match31.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/coin/coins2.svg,res/img/background/landscape/c_002.svg</dct:source>
     </rdf:Description>
 
 	<!-- DIGITS -->
@@ -291,7 +291,7 @@
     <rdf:Description>
         <dct:identifier>d13</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque élément le bon nombre de doigts (de 1 à 3)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"102","t":["/svginventoryicons/mineral/copper01 /svginventoryicons/mineral/copper01","/numbers/star/starr1","/coin/coin1 /coin/coin1 /coin/coin1"]},{"template":"table3.1x3","result":"212","t":["/svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01","/numbers/star/starr2","/coin/coins3"]},{"template":"table3.1x3","result":"122","t":["/svginventoryicons/vegetable/cherry02","/numbers/star/starr1 /numbers/star/starr2","/coin/coins2 /coin/coins1"]}],"states":{ "nb":3, "content":["/svginventoryicons/human/lefthand01","/svginventoryicons/human/lefthand02","/svginventoryicons/human/lefthand03"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"102","t":["/svginventoryicons/mineral/copper01 /svginventoryicons/mineral/copper01","/numbers/star/starr1","/coin/coin1 /coin/coin1 /coin/coin1"]},{"template":"table3.1x3","result":"212","t":["/svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01","/numbers/star/starr2","/coin/coins3"]},{"template":"table3.1x3","result":"122","t":["/svginventoryicons/vegetable/cherry02","/numbers/star/starr1 /numbers/star/starr2","/coin/coins2 /coin/coins1"]}],"states":{ "nb":3, "content":["/svginventoryicons/human/lefthand01","/svginventoryicons/human/lefthand02","/svginventoryicons/human/lefthand03"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre de doigts."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -299,13 +299,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/mineral/copper01.svg,res/img/numbers/star/starr1.svg,res/img/coin/coin1.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/numbers/star/starr2.svg,res/img/coin/coins3.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/coin/coins2.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/mineral/copper01.svg,res/img/numbers/star/starr1.svg,res/img/coin/coin1.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/numbers/star/starr2.svg,res/img/coin/coins3.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/coin/coins2.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>d14</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque élément le bon nombre de doigts (de 1 à 4)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"332","t":["/numbers/star/starr4","/coin/coins2 /coin/coins2","/svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01"]},{"template":"table3.1x3","result":"313","t":["/coin/coins4","/svginventoryicons/vegetable/apricot01 /svginventoryicons/vegetable/apricot01","/numbers/star/starr2 /numbers/star/starr2"]},{"template":"table3.1x3","result":"132","t":["/svginventoryicons/vegetable/cherry02","/numbers/star/starr1 /numbers/star/starr1 /numbers/star/starr2","/coin/coins2 /coin/coins1"]}],"states":{ "nb":4, "content":["/svginventoryicons/human/lefthand01","/svginventoryicons/human/lefthand02","/svginventoryicons/human/lefthand03","/svginventoryicons/human/lefthand04"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"332","t":["/numbers/star/starr4","/coin/coins2 /coin/coins2","/svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01"]},{"template":"table3.1x3","result":"313","t":["/coin/coins4","/svginventoryicons/vegetable/apricot01 /svginventoryicons/vegetable/apricot01","/numbers/star/starr2 /numbers/star/starr2"]},{"template":"table3.1x3","result":"132","t":["/svginventoryicons/vegetable/cherry02","/numbers/star/starr1 /numbers/star/starr1 /numbers/star/starr2","/coin/coins2 /coin/coins1"]}],"states":{ "nb":4, "content":["/svginventoryicons/human/lefthand01","/svginventoryicons/human/lefthand02","/svginventoryicons/human/lefthand03","/svginventoryicons/human/lefthand04"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le [b]bon nombre de doigts[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -313,13 +313,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/svginventoryicons/vegetable/apricot01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/svginventoryicons/vegetable/apricot01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>d15</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque élément le bon nombre de doigts (de 1 à 5)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"241","t":["/numbers/star/starr3","/coin/coins5","/svginventoryicons/vegetable/apple01 /svginventoryicons/vegetable/apple01"]},{"template":"table3.1x3","result":"440","t":["/coin/coins3 /coin/coins2","/numbers/star/starr2 /numbers/star/starr2 /numbers/star/starr1","/svginventoryicons/vegetable/apricot01"]},{"template":"table3.1x3","result":"412","t":["/numbers/star/starr2 /numbers/star/starr1 /numbers/star/starr2","/svginventoryicons/vegetable/cherry02","/coin/coins2 /coin/coins1"]}],"states":{ "nb":5, "content":["/svginventoryicons/human/lefthand01","/svginventoryicons/human/lefthand02","/svginventoryicons/human/lefthand03","/svginventoryicons/human/lefthand04","/svginventoryicons/human/lefthand05"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"241","t":["/numbers/star/starr3","/coin/coins5","/svginventoryicons/vegetable/apple01 /svginventoryicons/vegetable/apple01"]},{"template":"table3.1x3","result":"440","t":["/coin/coins3 /coin/coins2","/numbers/star/starr2 /numbers/star/starr2 /numbers/star/starr1","/svginventoryicons/vegetable/apricot01"]},{"template":"table3.1x3","result":"412","t":["/numbers/star/starr2 /numbers/star/starr1 /numbers/star/starr2","/svginventoryicons/vegetable/cherry02","/coin/coins2 /coin/coins1"]}],"states":{ "nb":5, "content":["/svginventoryicons/human/lefthand01","/svginventoryicons/human/lefthand02","/svginventoryicons/human/lefthand03","/svginventoryicons/human/lefthand04","/svginventoryicons/human/lefthand05"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre de doigts."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -327,7 +327,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/vegetable/apple01 .svg,res/img/svginventoryicons/vegetable/apricot01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/svginventoryicons/human/lefthand05.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/vegetable/apple01 .svg,res/img/svginventoryicons/vegetable/apricot01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/svginventoryicons/human/lefthand01.svg,res/img/svginventoryicons/human/lefthand02.svg,res/img/svginventoryicons/human/lefthand03.svg,res/img/svginventoryicons/human/lefthand04.svg,res/img/svginventoryicons/human/lefthand05.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
 	<!-- ASSOCIATION -->
@@ -335,7 +335,7 @@
     <rdf:Description>
         <dct:identifier>n13</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque élément le bon nombre (de 1 à 3)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"210","t":["/svginventoryicons/mineral/copper01 /svginventoryicons/mineral/copper01 /svginventoryicons/mineral/copper01","/numbers/star/starr2","/coin/coin1"]},{"template":"table3.1x3","result":"211","t":["/numbers/star/starr3","/svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01","/coin/coins2"]},{"template":"table3.1x3","result":"212","t":["/coin/coins2 /coin/coins1","/svginventoryicons/vegetable/cherry02","/numbers/star/starr1 /numbers/star/starr2"]}],"states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"210","t":["/svginventoryicons/mineral/copper01 /svginventoryicons/mineral/copper01 /svginventoryicons/mineral/copper01","/numbers/star/starr2","/coin/coin1"]},{"template":"table3.1x3","result":"211","t":["/numbers/star/starr3","/svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01","/coin/coins2"]},{"template":"table3.1x3","result":"212","t":["/coin/coins2 /coin/coins1","/svginventoryicons/vegetable/cherry02","/numbers/star/starr1 /numbers/star/starr2"]}],"states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon [b]nombre[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -343,13 +343,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/mineral/copper01.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/mineral/copper01.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/svginventoryicons/vegetable/cherry02.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>n14</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque élément le bon nombre (de 1 à 4)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"132","t":["/svginventoryicons/mineral/copper01 /svginventoryicons/mineral/copper01","/numbers/star/starr4","/coin/coins3"]},{"template":"table3.1x3","result":"023","t":["/numbers/star/starr1","/svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01","/coin/coins2 /coin/coins2"]},{"template":"table3.1x3","result":"233","t":["/coin/coins2 /coin/coins1","/numbers/star/starr1 /numbers/star/starr1 /numbers/star/starr2","/coin/coins4"]}],"states":{ "nb":4, "content":["1","2","3","4"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"132","t":["/svginventoryicons/mineral/copper01 /svginventoryicons/mineral/copper01","/numbers/star/starr4","/coin/coins3"]},{"template":"table3.1x3","result":"023","t":["/numbers/star/starr1","/svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01 /svginventoryicons/vegetable/banana01","/coin/coins2 /coin/coins2"]},{"template":"table3.1x3","result":"233","t":["/coin/coins2 /coin/coins1","/numbers/star/starr1 /numbers/star/starr1 /numbers/star/starr2","/coin/coins4"]}],"states":{ "nb":4, "content":["1","2","3","4"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon [b]nombre[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -357,13 +357,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/mineral/copper01.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/mineral/copper01.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>n15</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque élément le bon nombre (de 1 à 5)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"433","t":["/svginventoryicons/human/lefthand05","/coin/coins4","/numbers/star/starr4"]},{"template":"table3.1x3","result":"114","t":["/numbers/star/starr2","/svginventoryicons/vegetable/strawberry01 /svginventoryicons/vegetable/strawberry01","/coin/coins1 /coin/coins2 /coin/coins2"]},{"template":"table3.1x3","result":"244","t":["/coin/coins2 /coin/coins1","/numbers/star/starr2 /numbers/star/starr1 /numbers/star/starr2","/numbers/dice/dice01 /numbers/dice/dice01 /numbers/dice/dice03"]}],"states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_yellow04.svg","regexp":{ "from": "([/][^ ]+)","to":"<div class='icon12'><img src=\\\"res/img$1.svg\\\"/></div>"},"values":[{"template":"table3.1x3","result":"433","t":["/svginventoryicons/human/lefthand05","/coin/coins4","/numbers/star/starr4"]},{"template":"table3.1x3","result":"114","t":["/numbers/star/starr2","/svginventoryicons/vegetable/strawberry01 /svginventoryicons/vegetable/strawberry01","/coin/coins1 /coin/coins2 /coin/coins2"]},{"template":"table3.1x3","result":"244","t":["/coin/coins2 /coin/coins1","/numbers/star/starr2 /numbers/star/starr1 /numbers/star/starr2","/numbers/dice/dice01 /numbers/dice/dice01 /numbers/dice/dice03"]}],"states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon [b]nombre[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -371,7 +371,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/svginventoryicons/human/lefthand05.svg,res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/dice/dice01.svg,res/img/numbers/dice/dice03.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/human/lefthand05.svg,res/img/coin/coins*.svg,res/img/numbers/star/starr*.svg,res/img/svginventoryicons/vegetable/strawberry01.svg,res/img/numbers/dice/dice01.svg,res/img/numbers/dice/dice03.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
     <!-- CANDLES -->
@@ -379,7 +379,7 @@
     <rdf:Description>
         <dct:identifier>g13</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe de bougies le bon nombre (de 1 à 3)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":3,"template":"table3.1x3","gen":"function(){var t=[],ret=[],nb=3,max=3,line=3; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*3)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); shuffle(v); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon12'><img src='res/img/numbers/cake/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray01.svg","number":3,"template":"table3.1x3","gen":"function(){var t=[],ret=[],nb=3,max=3,line=3; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*3)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); shuffle(v); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon12'><img src='res/img/numbers/cake/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez le bon nombre de [b]bougies[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -387,13 +387,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP,MAT</dct:coverage>
-        <dct:source>res/img/numbers/cake/cake0*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/numbers/cake/cake0*.svg,res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>g15</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe de bougies le bon nombre (de 1 à 5)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":3,"template":"table3.1x3","gen":"function(){var t=[],ret=[],nb=3,max=4,line=3; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*5)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); shuffle(v); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon12'><img src='res/img/numbers/cake/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray01.svg","number":3,"template":"table3.1x3","gen":"function(){var t=[],ret=[],nb=3,max=4,line=3; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*5)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); shuffle(v); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon12'><img src='res/img/numbers/cake/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez le bon nombre de [b]bougies[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -401,13 +401,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP,MAT</dct:coverage>
-        <dct:source>res/img/numbers/cake/cake0*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/numbers/cake/cake0*.svg,res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>g110</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe de bougies le bon nombre (de 1 à 10)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":2,"template":"table5.1x4","gen":"function(){var t=[],ret=[],nb=5,max=4,line=4; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*10)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); shuffle(v); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon12'><img src='res/img/numbers/cake/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray01.svg","number":2,"template":"table5.1x4","gen":"function(){var t=[],ret=[],nb=5,max=4,line=4; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*10)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); shuffle(v); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon12'><img src='res/img/numbers/cake/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez le bon nombre de [b]bougies[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -415,7 +415,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/cake/cake0*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/numbers/cake/cake0*.svg,res/img/background/landscape/c_gray01.svg</dct:source>
     </rdf:Description>
     
     <!-- STARS -->
@@ -423,7 +423,7 @@
     <rdf:Description>
         <dct:identifier>s13</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 3)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":3,"template":"table3.1x3","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<3; i++) { var a = Math.floor(Math.random()*3)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":3,"template":"table3.1x3","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<3; i++) { var a = Math.floor(Math.random()*3)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -431,13 +431,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP,MAT</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s14</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 4)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*4)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":4, "content":["1","2","3","4"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*4)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":4, "content":["1","2","3","4"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -445,13 +445,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP,MAT</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s15</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 5)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*5)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*5)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -459,13 +459,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP,MAT</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s16</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 6)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*6)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":6, "content":["1","2","3","4","5","6"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*6)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":6, "content":["1","2","3","4","5","6"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -473,13 +473,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s17</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 7)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*7)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":7, "content":["1","2","3","4","5","6","7"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*7)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":7, "content":["1","2","3","4","5","6","7"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -487,13 +487,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s18</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 8)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*8)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":8, "content":["1","2","3","4","5","6","7","8"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*8)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":8, "content":["1","2","3","4","5","6","7","8"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -501,13 +501,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s19</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 9)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*9)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":9, "content":["1","2","3","4","5","6","7","8","9"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*9)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":9, "content":["1","2","3","4","5","6","7","8","9"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -515,13 +515,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s110</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 10)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*10)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*10)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -529,13 +529,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>s510</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 5 à 10)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*6)+5, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue02.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*6)+5, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/star/starr\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -543,7 +543,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/star/starr*.svg,res/img/background/landscape/c_blue02.svg</dct:source>
     </rdf:Description>
 	
 	<!-- COINS -->
@@ -623,7 +623,7 @@
     <rdf:Description>
         <dct:identifier>m13</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 1 à 3)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/graycarpet01.svg","number":3,"template":"table3.1x3","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<3; i++) { var a = Math.floor(Math.random()*3)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray02.svg","number":3,"template":"table3.1x3","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<3; i++) { var a = Math.floor(Math.random()*3)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -631,13 +631,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP,MAT</dct:coverage>
-        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/graycarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/c_gray02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>m14</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 1 à 4)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/graycarpet01.svg","number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*4)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":4, "content":["1","2","3","4"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray02.svg","number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*4)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":4, "content":["1","2","3","4"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -645,13 +645,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP,MAT</dct:coverage>
-        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/graycarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/c_gray02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>m15</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 1 à 5)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/graycarpet01.svg","number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*5)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray02.svg","number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*5)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -659,13 +659,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP,MAT</dct:coverage>
-        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/graycarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/c_gray02.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>m110</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 1 à 10)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/graycarpet01.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*10)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray02.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*10)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -673,13 +673,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/graycarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/c_gray02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>m510</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 5 à 10)</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/graycarpet01.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*6)+5, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray02.svg","number":2,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*6)+5, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon12'><img src='res/img/numbers/match/match\\\"+b+\\\"1.svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] à chaque élément le bon nombre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -687,7 +687,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
-        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/graycarpet01.svg</dct:source>
+        <dct:source>res/img/numbers/match/match*1.svg,res/img/background/landscape/c_gray02.svg</dct:source>
     </rdf:Description>
 
     <!-- SPACE -->
@@ -695,7 +695,7 @@
     <rdf:Description>
         <dct:identifier>e10m</dct:identifier>
         <dct:title xml:lang="fr-FR">Séparer par une espace les classes de nombres inférieures à 10 millions.</dct:title>
-        <dct:description><![CDATA["gg":[[1000,99000],[1000,999000],[1000,9999000]],"background":"res/img/background/landscape/yellowboard02.svg","number":3,"data":"<div style='margin-top:11%;margin-left:15%;font-size:1.1em;font-family: \\\"Courier New\\\" Courier monospace;color:#332200;'><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div></div>","gen":"function($this, _s, _i){var result=\\\"\\\",ret=[]; for (var i=0; i<5; i++) { var b=Math.floor(Math.random()*_s.gg.length),a = (Math.floor(Math.random()*_s.gg[b][1])+_s.gg[b][0]).toString(), l=a.length; for (var j=0;j<10;j++) { ret.push(j<l?a[j]:''); if (j>0) { result+=(j<l&&j!=0?((l-j)%3==0?1:0):0).toString(); } } } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"margin-left":"0"},{"margin-left":"0.3em"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["gg":[[1000,99000],[1000,999000],[1000,9999000]],"background":"res/img/background/landscape/c_yellow04.svg","number":3,"data":"<div style='margin-top:11%;margin-left:15%;font-size:1.1em;font-family: \\\"Courier New\\\" Courier monospace;color:#332200;'><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:10em;padding:.1em;'><div class='t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div><div class='a t' style='height:1.2em;float:left;'></div></div></div>","gen":"function($this, _s, _i){var result=\\\"\\\",ret=[]; for (var i=0; i<5; i++) { var b=Math.floor(Math.random()*_s.gg.length),a = (Math.floor(Math.random()*_s.gg[b][1])+_s.gg[b][0]).toString(), l=a.length; for (var j=0;j<10;j++) { ret.push(j<l?a[j]:''); if (j>0) { result+=(j<l&&j!=0?((l-j)%3==0?1:0):0).toString(); } } } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"margin-left":"0"},{"margin-left":"0.3em"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Ajoutez[/b] une espace [red]DEVANT[/red] les bons chiffres, pour séparer les classes des différents nombres."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -703,7 +703,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>e10g</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -717,7 +717,7 @@
         <dct:alternative>e10g</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:relation>e10m</dct:relation>
-		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_yellow04.svg</dct:source>
     </rdf:Description>
     
     
@@ -725,7 +725,7 @@
     <rdf:Description>
         <dct:identifier>ec10m</dct:identifier>
         <dct:title xml:lang="fr-FR">Barrer les nombres dans lesquels les espaces séparant les classes sont mal placés.</dct:title>
-        <dct:description><![CDATA["gg":[[10000,90000],[10000,990000],[10000,9990000]],"background":"res/img/background/landscape/redsplash01.svg","number":2,"template":"array2x5","gen":"function($this,_s,_g){var sp=[[3,6,9,12],[1,4,7,10,13],[2,5,8,11,14],[4,6,9,12]],result=\\\"\\\",ret=[];  for (var i=0;i<10;i++) { var b=Math.floor(Math.random()*_s.gg.length),a = (Math.floor(Math.random()*_s.gg[b][1])+_s.gg[b][0]).toString(), l=a.length,c=(Math.random()>0.5),s=c?0:Math.floor(Math.random()*(sp.length-1))+1,ii,jj=0,aa=''; for (var ii=0; ii<l; ii++) { if (sp[s][jj]==ii) { aa=' '+aa;jj++;} aa=a[l-ii-1]+aa; } ret.push(aa); result+=c?'0':'1'; } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["gg":[[10000,90000],[10000,990000],[10000,9990000]],"background":"res/img/background/landscape/c_red03.svg","number":2,"template":"array2x5","gen":"function($this,_s,_g){var sp=[[3,6,9,12],[1,4,7,10,13],[2,5,8,11,14],[4,6,9,12]],result=\\\"\\\",ret=[];  for (var i=0;i<10;i++) { var b=Math.floor(Math.random()*_s.gg.length),a = (Math.floor(Math.random()*_s.gg[b][1])+_s.gg[b][0]).toString(), l=a.length,c=(Math.random()>0.5),s=c?0:Math.floor(Math.random()*(sp.length-1))+1,ii,jj=0,aa=''; for (var ii=0; ii<l; ii++) { if (sp[s][jj]==ii) { aa=' '+aa;jj++;} aa=a[l-ii-1]+aa; } ret.push(aa); result+=c?'0':'1'; } return {result:result,t:ret}}","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les nombres dans lesquels les espaces séparant les classes sont [red]mal placés[/red]."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -733,7 +733,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ec10g</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
-		<dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
@@ -747,7 +747,7 @@
         <dct:alternative>ec10g</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
         <dct:relation>ec10m</dct:relation>
-		<dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
     
 	<!-- QUIZZ -->
@@ -755,14 +755,14 @@
     <rdf:Description>
         <dct:identifier>f01</dct:identifier>
         <dct:title xml:lang="fr-FR">Valider des propositions générales relatives à une valeur numérique décimale.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","errratio":2,"states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue01.svg","errratio":2,"states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"legend":["[img]res/img/svginventoryicons/hardware/calculator01.svg[/img]Dans le nombre [h1]734,321[/h1]","[img]res/img/svginventoryicons/hardware/calculator01.svg[/img]Dans le nombre [h1]601,908[/h1]"],"values":[{"template":"check5r","result":"10010","t":["[small]Les chiffres des [b]dizaines[/b] et des [b]dixièmes[/b] sont [red]égaux[/red].[/small]","[small]Le chiffre des [b]unités[/b] est le [red]double[/red] de celui des [b]dixièmes[/b].[/small]","[small]Le chiffre des [b]dizaines[/b] est [red]inférieur[/red] au chiffre des [b]centièmes[/b].[/small]","[small]Le chiffre des [b]dixièmes[/b] est égal à la [red]somme[/red] du chiffre des [b]centièmes[/b] et de celui des [b]millièmes[/b].[/small]","[small]Le chiffre des [b]millièmes[/b] est [red]3[/red].[/small]"]},{"template":"check5r","result":"01011","t":["[small]Le chiffre des [b]dixièmes[/b] est [red]0[/red].[/small]", "[small]Le chiffre des [b]dizaines[/b] est [red]0[/red].[/small]","[small]Le chiffre des [b]centaines[/b] est plus [red]petit[/red] que le chiffre des [b]centièmes[/b].[/small]","[small]Le chiffre des [b]unités[/b] est [red]1[/red].[/small]","[small]Le chiffre des [b]centièmes[/b] est plus [red]petit[/red] que le chiffre des [b]unités[/b].[/small]"]}],"exercice":"Cochez les [b]affirmations exactes[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>f01</dct:alternative>
-        <dct:source>res/img/svginventoryicons/hardware/calculator01.svg,res/img/background/landscape/blueboard01.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/hardware/calculator01.svg,res/img/background/landscape/c_blue01.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
     
@@ -770,14 +770,14 @@
     <rdf:Description>
         <dct:identifier>f02</dct:identifier>
         <dct:title xml:lang="fr-FR">Valider des propositions générales relatives à une valeur numérique décimale.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","errratio":2,"states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_blue01.svg","errratio":2,"states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"legend":["[img]res/img/svginventoryicons/hardware/calculator01.svg[/img]Dans le nombre [h1]371,19[/h1]","[img]res/img/svginventoryicons/hardware/calculator01.svg[/img]Dans le nombre [h1]75,65[/h1]"],"values":[{"template":"check5r","result":"01011","t":["Les chiffres des [b]dixièmes[/b] est [red]9[/red].","Il y a [red]37[/red] [b]dizaines[/b].","Il y a [red]11[/red] [b]dixièmes[/b].","Il y a [red]37 119[/red] [b]centièmes[/b].","Le chiffre des [b]centièmes[/b] est [red]9[/red]."]},{"template":"check5r","result":"11011","t":["Le chiffre des [b]dixièmes[/b] est [red]6[/red].", "Il y a [red]756[/red] [b]dixièmes[/b].","Il y a [red]756[/red] [b]centièmes[/b].","Le chiffre des [b]centièmes[/b] est [red]5[/red].","Il y a [red]75[/red] [b]unités[/b]."]}],"exercice":"Cochez les [b]affirmations exactes[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>f01</dct:alternative>
-        <dct:source>res/img/svginventoryicons/hardware/calculator01.svg,res/img/background/landscape/blueboard01.svg</dct:source>
+        <dct:source>res/img/svginventoryicons/hardware/calculator01.svg,res/img/background/landscape/c_blue01.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
     
@@ -786,14 +786,14 @@
     <rdf:Description>
         <dct:identifier>gda</dct:identifier>
         <dct:title xml:lang="fr-FR">Supprimer les décompositions en puissances de 10 fausses.</dct:title>
-        <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/graycarpet02.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/c_gray05.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Identifiez[/b] et [b]barrez[/b] les propositions [red]fausses[/red].","values":[{"template":"array1x5","result":"10110","t":["Dans [b]14,67[/b], il y a [i]146 dizaines[/i].","Dans [b]14,67[/b], il y a [i]146 dixièmes[/i].","Dans [b]14,67[/b], il y a [i]6 dixièmes[/i].","Dans [b]14,67[/b], il y a [i]7 centièmes[/i].","Dans [b]14,67[/b], il y a [i]1 467 centièmes[/i]."]},{"template":"array1x5","result":"10001","t":["Dans [b]4,206[/b], il n'y a [i]aucun centième[/i].","Dans [b]4,206[/b], il y a [b]4 unités[/b].","Dans [b]4,206[/b], il y a [b]420 centièmes[/b].","Dans [b]4,206[/b], il y a [b]4 206 millièmes[/b].","Dans [b]4,206[/b], il y a [b]420 dixièmes[/b]."]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>gda</dct:alternative>
-		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray05.svg</dct:source>
         <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 	
@@ -802,14 +802,14 @@
     <rdf:Description>
         <dct:identifier>gdb</dct:identifier>
         <dct:title xml:lang="fr-FR">Supprimer les approximations décimales fausses.</dct:title>
-        <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/graycarpet02.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/c_gray05.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Identifiez[/b] et [b]barrez[/b] les propositions [red]fausses[/red].","values":[{"template":"array1x5","result":"01010","t":["[b]4,2[/b] est plus proche de 4 que de 5.","[b]3,89[/b] est plus proche de 3 que de 4.","[b]6,5[/b] est aussi proche de 6 que de 7.","[b]0,2[/b] est plus proche de 1 que de 0.","[b]45,6[/b] est plus proche de 46 que de 45."]},{"template":"array1x5","result":"10100","t":["[b]5,82[/b] est plus proche de 5 que de 6.","[b]5,82[/b] est plus proche de de 5,8 que de 5,9.","[b]1,604[/b] est plus proche de 1 que de 2.","[b]1,604[/b] est plus proche de 1,6 que de 1,7.","[b]1,604[/b] est plus proche de 1,6 que de 1,61."]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>gda</dct:alternative>
-		<dct:source>res/img/background/landscape/graycarpet02.svg</dct:source>
+		<dct:source>res/img/background/landscape/c_gray05.svg</dct:source>
         <dct:coverage xml:lang="fr-FR">décimal</dct:coverage>
     </rdf:Description>
 	

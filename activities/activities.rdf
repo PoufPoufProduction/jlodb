@@ -5,98 +5,98 @@
     <rdf:Description rdf:about="urn:activity:abacus">
         <dct:title xml:lang="fr-FR">Le boulier</dct:title>
         <dct:abstract xml:lang="fr-FR">L'activité du boulier permet à l'utilisateur d'utiliser un boulier chinois ou japonais pour compter, additioner ou multiplier.</dct:abstract>
-        <dct:source>res/img/banners/abacus.svg,res/img/desktop/abacus/,res/img/background/landscape/brownboard03.svg</dct:source>
+        <dct:source>res/img/background/banners/abacus.svg,res/img/desktop/abacus/,res/img/background/landscape/b_brown01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:alchemist">
         <dct:title xml:lang="fr-FR">L'alchimiste</dct:title>
         <dct:abstract xml:lang="fr-FR">L'alchimiste est un jeu de logique dans lequel le joueur doit combiner au moins 3 éléments de même type afin de les transmuter en un élément de qualité supérieure.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["goallabel":"Objectifs","happylabel":"Extra !","winlabel":"Gagné !","lostlabel":"Perdu...","goaltxt":{"survive":"Survivre $1 tours","max":"En moins de $1 tours","level":"Transmuter l'élément $1","empty":"Vider la zone rouge","fill":"Remplir la zone jaune d'éléments $1 ou plus","frozen":"Dégeler tous les éléments","remove":"Éliminer l'élément $1"} ]]></dct:description>
-        <dct:source>res/img/banners/alchemist.svg,res/img/svginventoryicons/mineral/,res/img/svginventoryicons/potion/,res/img/svginventoryicons/space/,res/img/svginventoryicons/vegetable/,res/img/svginventoryicons/misc/salt01.svg,res/img/asset/runes/,res/img/background/asset/potion01.svg,res/img/svginventoryicons/background/noborder/transmut01.svg,res/img/asset/fx/ice01.svg,res/img/asset/misc/alchemist*.svg,res/img/asset/misc/pocketwatch01.svg</dct:source>
+        <dct:source>res/img/background/banners/alchemist.svg,res/img/svginventoryicons/mineral/,res/img/svginventoryicons/potion/,res/img/svginventoryicons/space/,res/img/svginventoryicons/vegetable/,res/img/svginventoryicons/misc/salt01.svg,res/img/asset/runes/,res/img/background/asset/potion01.svg,res/img/svginventoryicons/background/noborder/transmut01.svg,res/img/asset/fx/ice01.svg,res/img/asset/misc/alchemist*.svg,res/img/asset/misc/pocketwatch01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:ana">
         <dct:title xml:lang="fr-FR">Anagrammes</dct:title>
         <dct:abstract xml:lang="fr-FR">Ce jeu propose à l'utilisateur de retrouver les anagrammes formés à partir de lettres fournies.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["aahelp":"L'opération coûte 1 point sur la note finale. Voulez-vous découvrir une lettre de la grille ?","editor":{"e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur"}]]></dct:description>
-        <dct:source>res/img/banners/anagram.svg,res/img/background/landscape/blueboard01.svg,res/img/svginventoryicons/background/border/simple01.svg,res/img/icon/tab/tab00.svg,res/img/asset/anim/bluelight*.svg</dct:source>
+        <dct:source>res/img/background/banners/anagram.svg,res/img/background/landscape/c_blue01.svg,res/img/svginventoryicons/background/border/simple01.svg,res/img/icon/tab/tab00.svg,res/img/asset/anim/bluelight*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:asm">
         <dct:title xml:lang="fr-FR">Assembleur 6502</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette activité permet de réaliser des programmes en langage assembleur pour processeur 6502. Cet émulateur dispose en outre, d'une sortie standard, d'un écran graphique et d'une manette de jeu.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Glisser les différents opérateurs et paramètres proposés par l'exercice vers la zone centrale. Lancer le programme en appuyant sur le bouton de lecture.","title":"Guide de l'assembleur 6502","tipc1":"Afficher le premier indice","tipc2":"Afficher le deuxième indice","tipc3":"Afficher le troisième indice","tipcc":"Un indice coûte 1 point sur la note finale, souhaitez-vous continuer ?","phint":"Interface","phx2":"Règle la vitesse d'exécution.","phstop":"Arrête le programme.","phabout":"Affiche la documentation.","phtip":"Ouvre la page d'aides.","phplay":"Lance le programme.","phreg":"Registres","phaba":"Accumulateur.","phabx":"Registre d'index X.","phaby":"Registre d'index Y.","phabsp":"Pointeur de pile. <b>[Cliquable]</b>","phabpc":"Compteur ordinal. <b>[Cliquable]</b>","phflag":"Indicateurs","phsign":"Signe","phover":"Débordement (oVerflow)","phbreak":"Break","phdec":"Mode décimal","phinh":"Inhibition interruption","phzero":"Zéro","phcarry":"Retenue","phadd":"Mode d'adressages","phimm":"<b>Immédiat</b> : l'opérande est codé sur un octet, il contient une constante et non une adresse, ce qui est indiqué par le dièse (#).","phzer":"<b>Zéro</b> : très proche de l'adressage direct, mais agit seulement sur la page zéro (la zone mémoire de 256 octets comprise entre les adresses 0000 et 00FF).","phzerx":"<b>Direct indexé en page Zéro</b> : fonctionne comme l'adressage direct en page Zéro auxquelles on ajoute un des deux registres d'index X ou Y.","phabs":"<b>Direct ou Absolu</b> : l'opérande est codé sur deux octets, le premier contient la partie basse de l'adresse et le second la partie haute. L'adresse étant un nombre codé sur 16 bits, on peut 'balayer' toute la mémoire du processeur (de 0000 à FFFF).","phabsx":"<b>Direct indexé</b> : fonctionne comme l'adressage direct auxquelles on ajoute un des deux registres d'index X ou Y.","phind":"<b>Indirect</b> : l'adresse effective est donnée par le contenu de l'adresse spécifiée dans l'opérande (sur deux octets).","phindx":"<b>Pré-indexé Indirect</b> : L'adresse effective est donnée par le contenu de l'adresse calculée en ajoutant X à celle spécifiée dans l'opérande. Le contenu de X est additionné avant l'indirection.","phindy":"<b>Post-indexé Indirect</b> : L'adresse effective est caculée en ajoutant Y au contenue de l'adresse spécifiée dans l'opérande. Le contenu de Y est additionné après l'indirection.","phimpl":"<b>Implicite</b> : aucun adressage n'est nécessaire pour une opération limitée aux registres.","phrel":"<b>Relatif</b> : il est utilisé uniquement par les instructions de branchement conditionnel et c'est le seule mode qu'elles utilisent. Ce déplacement étant codé sur un octet, il est donc limité à -128 et +127. Un déplacement nul correspondant à l'instruction suivante.","phji1":"Jeu d'instructions (1/3)","phji2":"Jeu d'instructions (2/3)","phji3":"Jeu d'instructions (3/3)"]]></dct:description>
-        <dct:source>res/img/banners/asm.svg,res/img/asset/misc/it*.svg,res/img/control/,res/img/background/border01.svg,res/img/background/asset/it01.svg,res/img/asset/fx/dialog01.svg</dct:source>
+        <dct:source>res/img/background/banners/asm.svg,res/img/asset/misc/it*.svg,res/img/control/,res/img/background/asset/filler01.svg,res/img/background/asset/it01.svg,res/img/asset/fx/dialog01.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description rdf:about="urn:activity:balance">
         <dct:title xml:lang="fr-FR">Balance</dct:title>
         <dct:abstract xml:lang="fr-FR">Balance permet de peser des objets à l'aide d'une balance à 2 plateaux.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":["À l'aide des masses marquées proposées par l'exercice, équilibrer la balance afin de connaître précisément la masse de l'objet à évaluer."]]]></dct:description>
-        <dct:source>res/img/banners/balance.svg,res/img/desktop/balance01.svg,res/img/icon/tab/tab00.svg,res/img/svginventoryicons/action/gears01.svg,res/img/svginventoryicons/hardware/calculator01.svg</dct:source>
+        <dct:source>res/img/background/banners/balance.svg,res/img/desktop/balance01.svg,res/img/icon/tab/tab00.svg,res/img/svginventoryicons/action/gears01.svg,res/img/svginventoryicons/hardware/calculator01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:board">
         <dct:title xml:lang="fr-FR">Couleur</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette application demande de reproduire un tableau à l'aide des couleurs et des pinceaux proposés.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["mmode":"mode","mmode0":"opaque","mmode1":"additif","mmode2":"soustractif","mmode3":"auto","mbrush":"pinceaux","mcolor":"couleurs","editor":{"e_get":"Capturer le résultat","e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur","e_mode0":"Mode opaque","e_mode1":"Mode additif","e_mode2":"Mode soustractif","e_mode3":"Mode spécial","eph_nbsteps":"Nombre d'opérations attendues","e_cf0":"Masquer les couleurs","e_cf1":"1 couleur par ligne","e_cf2":"2 couleurs par ligne","e_cf3":"3 couleurs par ligne","e_cf4":"4 couleurs par ligne","e_bf0":"Masquer les pinceaux","e_bf1":"1 pinceau par ligne","e_bf2":"2 pinceaux par ligne","e_bf3":"3 pinceaux par ligne","e_bf4":"4 pinceaux par ligne","eph_size":"Largeur*Hauteur","eph_color":"Indice de la couleur de fond"}]]></dct:description>
-        <dct:source>res/img/banners/board.svg,res/img/asset/splashes/,res/img/svginventoryicons/background/border/border01.svg</dct:source>
+        <dct:source>res/img/background/banners/board.svg,res/img/asset/splashes/,res/img/svginventoryicons/background/border/border01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:calc">
         <dct:title xml:lang="fr-FR">Calc</dct:title>
         <dct:abstract xml:lang="fr-FR">Calc offre la possibilité de se familiariser avec l'utilisation d'un tableur. De nombreuses fonctionnalités sont disponibles : formules mathématiques, références relatives et absolues, remplissage automatique.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["tipc1":"Afficher le premier indice","tipc2":"Afficher le deuxième indice","tipc3":"Afficher le troisième indice","tipcc":"Un indice coûte 1 point sur la note finale, souhaitez-vous continuer ?","ccclean":"Effacer","editor":{"e_get":"Capturer le résultat","e_del":"Supprimer le résultat","e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur","eph_size":"Taille de la feuille Largeur*Hauteur","eph_sp":"Espacement entre cellule","eph_font":"Taille de la police","eph_hide":"X,Y,LARGEUR,HAUTEUR","eph_pospanel":"position initiale : left(%),top(%)","eph_tips":"Indices","eph_gg":"Paramètres de la fonction","eph_gen":"Fonction de génération","eph_cbg":"Couleur du fond","eph_ccolor":"Couleur du texte","eph_cwidth":"Largeur de la cellule","eph_cheight":"Hauteur de la cellule","e_timg":"Image","e_ttxt":"Text","e_tmath":"Formule","e_tgraph":"Graphique","e_tfree":"Libre","e_tnum":"Nombre","eph_value":"Valeur de la cellule","e_cfixed":"Invariable","e_cresult":"Résultat","eph_bgimg":"Image de fond","eph_gen":"Générateur","eph_gg":"Paramètres de génération"}]]></dct:description>
-        <dct:source>res/img/banners/calc.svg,res/img/icon/charts/,res/img/icon/tab/tab00.svg,res/img/control/tip.svg,res/img/background/asset/move01.svg,res/img/svginventoryicons/hardware/calculator01.svg,res/img/svginventoryicons/hardware/camera01.svg,res/img/svginventoryicons/tool/abacus01.svg,res/img/svginventoryicons/pencil/pen01.svg,res/img/svginventoryicons/action/gears01.svg,addon/neditor/</dct:source>
+        <dct:source>res/img/background/banners/calc.svg,res/img/icon/charts/,res/img/icon/tab/tab00.svg,res/img/control/tip.svg,res/img/background/asset/move01.svg,res/img/svginventoryicons/hardware/calculator01.svg,res/img/svginventoryicons/hardware/camera01.svg,res/img/svginventoryicons/tool/abacus01.svg,res/img/svginventoryicons/pencil/pen01.svg,res/img/svginventoryicons/action/gears01.svg,addon/neditor/</dct:source>
 	</rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:cards">
         <dct:title xml:lang="fr-FR">Jeux de cartes</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette activité propose des jeux de cartes de type solitaire.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["csdesc":"Règles du jeu"]]></dct:description>
-        <dct:source>res/img/banners/cards.svg,res/img/cards/,res/img/background/landscape/greenboard01.svg</dct:source>
+        <dct:source>res/img/background/banners/cards.svg,res/img/asset/cards/,res/img/background/landscape/greenboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:code">
         <dct:title xml:lang="fr-FR">Code</dct:title>
         <dct:abstract xml:lang="fr-FR">Code est un système de programmation simple et intuitif. Il autorise la gestion d'objets complexes comme les chaînes de caractères et les tableaux. L'activité permet ainsi le traitement de n'importe quel type de données.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":["Glisser les différents opérateurs et paramètres proposés par l'exercice vers la zone centrale. Lancer le programme en appuyant sur le bouton de lecture.","La note finale dépend du nombre d'indices dévoilés."],"mandraw":"Dessine à la position (X,Y) le sprite S de taille (W,H).","mandump":"Affiche la variable V sous la forme d'une valeur numérique.","manprint":"Affiche la variable V sous sa forme imprimable.","manpixel":"Colorie le pixel (X,Y) suivant la couleur configurée préalablement.","manrect":"Colorie un rectangle de taille (W,H) depuis la position (X,Y).","manline":"Trace une ligne entre les positions (X1,Y1) et (X2,Y2).","mancircle":"Trace un disque de centre (X,Y) et rayon R.","manreturn":"Renvoie, en fin de fonction, la valeur V.","manrgb":"Définit la couleur suivant les composantes Rouge, Vert, Bleu.","manpick":"Définit la couleur suivant le pixel de coordonnées (X,Y).","manfloor":"Renvoie l'entier directement inférieur à la valeur V.","manceil":"Renvoie l'entier directement supérieur à la valeur V.","mansqrt":"Renvoie la racine carrée de la valeur V.","mancos":"Renvoie le cosinus de la valeur V.","manabs":"Renvoie la valeur absolue de la valeur V.","manlen":"Renvoie la longueur de l'objet O (chaîne ou tableau).","manget":"Renvoie l'élément numéro I de l'objet O (chaîne ou tableau).","manfind":"Renvoie la position de la valeur I dans l'objet O (-1 si non trouvé).","mansub":"Renvoie la sous-chaîne de A commençant à la position I.","mansub2":"Renvoie la sous-chaîne de A commençant à la position I et de taille V.","manrgb2":"Renvoie sous la forme d'un tableau [R,G,B] la couleur courante.","manread":"Renvoie la valeur de la dernière touche pressée.","tipc1":"Afficher le premier indice","tipc2":"Afficher le deuxième indice","tipc3":"Afficher le troisième indice","tipcc":"Un indice coûte 1 point sur la note finale, souhaitez-vous continuer ?"]]></dct:description>
-        <dct:source>res/img/banners/code.svg,res/img/icon/tab/tab0*.svg,res/img/asset/misc/it*.svg,res/img/control/,res/img/background/asset/it01.svg,res/img/asset/fx/dialog01.svg</dct:source>
+        <dct:source>res/img/background/banners/code.svg,res/img/icon/tab/tab0*.svg,res/img/asset/misc/it*.svg,res/img/control/,res/img/background/asset/it01.svg,res/img/asset/fx/dialog01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:correcter">
         <dct:title xml:lang="fr-FR">Le correcteur</dct:title>
         <dct:abstract xml:lang="fr-FR">L'utilisateur doit corriger un texte en remplaçant les mots erronés ou manquants.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["editor":{"e_get":"Capturer le résultat","e_del":"Supprimer le résultat","e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur","eph_line1":"Ligne","eph_goal1":"Objectif n°1","eph_goal2":"Objectif n°2","eph_goal3":"Objectif n°3","eph_exercice":"Intitulé de l'exercice","eph_size":"Taille de la police","eph_proba":"Probabilité de substitution (1/n)","e_default":"Correction de dictée","e_blank":"Case à remplir","e_bold":"Mots en gras","e_first":"Premier candidat","e_notfirst":"Candidat aléatoire","e_local":"Unique","e_global":"Globale","eph_exercice":"Ennoncé (facultatif) de l'exercice."}]]></dct:description>
-        <dct:source>res/img/banners/correcter.svg</dct:source>
+        <dct:source>res/img/background/banners/correcter.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:countdown">
         <dct:title xml:lang="fr-FR">Le compte est bon</dct:title>
         <dct:abstract xml:lang="fr-FR">A l'aide de nombres fournis par l'exercice et des 4 opérations arithmétiques, l'utilisateur doit retrouver une valeur donnée.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":["Glisser les tuiles vers la dernière ligne, changez l'opérateur si nécessaire et valider l'opération.","La note finale dépend du nombre de tentatives effectuées avant de trouver la suite d'opérations capable de produire le résultat escompté."]]]></dct:description>
-        <dct:source>res/img/banners/countdown.svg,res/img/asset/anim/ink01.svg</dct:source>
+        <dct:source>res/img/background/banners/countdown.svg,res/img/asset/anim/ink01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:crossword">
         <dct:title xml:lang="fr-FR">Mots croisés</dct:title>
         <dct:abstract xml:lang="fr-FR">Le but de ce jeu de lettres est de retrouver tous les mots d'une grille grâce aux définitions données en annexe. Il est également possible d'émuler des jeux de chiffres comme le Kakuro ou 'Skyscraper'.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA[]]></dct:description>
-        <dct:source>res/img/banners/crossword.svg,res/img/svginventoryicons/pencil/pen01.svg,res/img/svginventoryicons/pencil/pencil01.svg,res/img/svginventoryicons/background/border/square*.svg,res/img/asset/anim/bluelight*.svg</dct:source>
+        <dct:source>res/img/background/banners/crossword.svg,res/img/svginventoryicons/pencil/pen01.svg,res/img/svginventoryicons/pencil/pencil01.svg,res/img/svginventoryicons/background/border/square*.svg,res/img/asset/anim/bluelight*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:draw">
         <dct:title xml:lang="fr-FR">Dessin</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette activitée est un peu particulière en ce sens que, contrairement aux autres, elle ne fournit aucune note. Elle offre cependant à l'utilisateur la possibilité de dessiner librement.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"" ]]></dct:description>
-        <dct:source>res/img/banners/geometry.svg</dct:source>
+        <dct:source>res/img/background/banners/geometry.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:equation">
         <dct:title xml:lang="fr-FR">Equations</dct:title>
         <dct:abstract xml:lang="fr-FR">Activité permettant d'interagir avec une ou plusieurs expressions mathématiques du premier degré . Au programme : développement, factorisation, résolution d'équations à une ou plusieurs inconnues, etc.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Déplacer les différents éléments de l'équation pour résoudre le problème proposé.","hcontent":"Cliquez sur les fonctionnalités activées pour en obtenir une description détaillée.","hlabel":{"0ad":"0 est [red]l'élément neutre de l'addition[/red]. En [b]cliquant dessus[/b], celui-ci disparaît de l'addition.","0mu":"0 est [red]l'élément absorbant de la multiplication[/red]. En [b]cliquant dessus[/b], les autres opérandes de la multiplication disparaissent.","0di":"En tant que [blue]numérateur[/blue], 0 est [red]l'élément absorbant de la division[/red]. En [b]cliquant dessus[/b], le dénominateur de la division disparaît.","1di":"En tant que [blue]dénominateur[/blue], 1 est [red]l'élément neutre de la division[/red]. En [b]cliquant dessus[/b], celui-ci disparaît de l'opération.","1mu":"1 est [red]l'élément neutre de la multiplication[/red]. En [b]cliquant dessus[/b], celui-ci disparaît de l'opération.","1fr":"1 est le résultat de la [red]division d'un nombre par lui même[/red]. En [b]glissant[/b] une valeur 1 légèrement vers le [b]haut[/b] puis en [b]cliquant[/b] sur n'importe quelle valeur, la valeur 1 est [b]remplacée[/b] par la fraction correspondante.","1new":"1 est [red]l'élément neutre de la multiplication[/red]. En [b]glissant[/b] n'importe quelle valeur légèrement vers le [b]côté[/b], celle-ci est automatiquement multipliée par 1.","ad":"En [b]glissant[/b] une valeur [red]numérique[/red] vers une autre valeur [red]numérique[/red] membre d'une [blue]même opération[/blue], celle-ci est automatiquement [b]calculée[/b].","addbra":"[b]Glisser[/b] l'icône [red]parenthèse[/red] depuis la zone de gauche vers une valeur quelconque permet d'[b]encadrer[/b] celle-ci par des parenthèses.","auto":"Au sein d'une [blue]même addition[/blue], 2 mêmes [red]inconnues[/red] peuvent être [b]ajoutées[/b] en glissant l'une sur l'autre.","bra":"Lorsqu'elles sont [red]inutiles[/red], les parenthèses peuvent être supprimées par simple [b]clic[/b].","dec":"En cliquant sur une valeur [red]numérique[/red], celle-ci peut être automatiquement [b]décomposée[/b] en un produit de 2 diviseurs.","decn":"En cliquant sur une valeur [red]négative[/red], celle-ci est [b]multipliée[/b] automatiquement par -1.","dist":"La [red]distribution[/red] s'effectue en faisant [b]glisser[/b] un multiplicateur vers un des membres entre parenthèses.","eq2add":"En faisant [b]glisser[/b] une équation vers une autre équation, celle-ci vient s'[red]ajouter membre à membre[/red] à la deuxième. Une [blue]flèche bleue[/blue] apparaît.","eq2rep":"En faisant [b]glisser[/b] une équation du type [i]x=...[/i] ou [i]y=...[/i] vers une autre équation, un remplacement est effectuée dans cette dernière. Une [red]flèche rouge[/red] apparaît.","eqa":"Faire [b]glisser[/b] une valeur depuis la [blue]zone de gauche[/blue] vers la [red]zone centrale[/red] de l'équation permet d'effecuter une [b]addition membre à membre[/b]. [i]Les valeurs de la zone de gauche peuvent changer de signe par simple clic.[/i]","eqm":"Faire [b]glisser[/b] une valeur depuis la [blue]zone de gauche[/blue] vers la [red]zone supérieure[/red] de l'équation permet d'effecuter une [b]multiplication membre à membre[/b].","eqd":"Faire [b]glisser[/b] une valeur depuis la [blue]zone de gauche[/blue] vers la [red]zone inférieure[/red] de l'équation permet d'effecuter une [b]division membre à membre[/b].","fact":"[b]Glisser[/b] une valeur légèrement vers le haut permet, lorsque cela est possible, de [b]factoriser[/b] celle-ci d'une [red]expression entre parenthèses[/red].","frad":"Lorsque leur [red]dénominateur sont identiques[/red], deux fractions peuvent s'[b]ajouter[/b] en faisant [b]glisser[/b] le dénominateur de l'une vers celui de la deuxième.","frmu":"Deux fractions peuvent se [b]multiplier[/b] en faisant [b]glisser[/b] le dénominateur de l'une vers celui de la deuxième.","frs":"Une fraction peut être [b]simplifiée[/b] en faisant [b]glisser[/b] une valeur du [red]dénominateur[/red] vers une valeur identique du [red]numérateur[/red]. Ou inversement.","frup":"Le [red]multiplicateur[/red] d'une fraction peut rejoindre le numérateur de celle-ci par simple [b]glissement[/b].","jump":"Au sein d'une équation, il est possible de faire [b]glisser[/b] une valeur de l'[red]autre côté du signe égal[/red]. Celle-ci change alors de signe. [i]Cette opération revient à une addition membre à membre.[/i]","user":"[b]Glisser[/b] l'opérateur d'[red]enregistrement[/red] vers une expression entre parenthèses permet d'[b]enregistrer[/b] celle-ci afin de l'utiliser ultérieurement. En [b]cliquant[/b] sur une valeur enregistrée, celle-ci reprend sa [red]forme initiale[/red]."}]]></dct:description>
-        <dct:source>res/img/banners/equation.svg,res/img/desktop/equation.svg,res/img/background/landscape/gears01.svg,res/img/help/equation/</dct:source>
+        <dct:source>res/img/background/banners/equation.svg,res/img/desktop/equation.svg,res/img/background/landscape/a_gears01.svg,res/img/help/equation/</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:geometry">
@@ -105,160 +105,160 @@
         <dct:abstract xml:lang="fr-FR">L'activité de géométrie offre un certain nombre de fonctionnalités permettant de réaliser les différentes figures demandées par l'énoncé.</dct:abstract>
         <dct:description xml:lang="en-US"><![CDATA[]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA["label_dots":"Points à relier","guide_dots":"Pour tracer un trait, il suffit de cliquer sur un premier point, puis de glisser vers un deuxième point tout en gardant le doigt appuyé sur la souris ou sur l'écran. Le trait doit alors changer de couleur. En relachant la pression, le trait est tracé.","hseg":"En maintenant la [b]pression[/b] du doigt ou de la souris, [b]relier[/b] deux points permet de tracer le segment compris entre ces 2 extrémités.","hlin":"De la même façon que pour le segment, il est possible de créer une droite en [b]reliant 2 points[/b].","hcir":"Il est possible de créer un cercle de [b]2 façons distinctes[/b] : en [b]reliant 2 points[/b] ou en [b]cliquant sur 1 point[/b] et le cercle aura pour rayon la dernière valeur utilisée.","hbis":"[b]Relier[/b] 2 droites ou 2 segments non parallèles permet d'en afficher la bissectrice.","hint":"L'intersection de 2 éléments (droites, segments ou cercles) s'obtient en [b]glissant[/b] le doigt ou la souris d'un élément à l'autre.","hmid":"Utilisée comme l'[b]outil segment[/b], cette opération permet d'identifier le [b]milieu[/b] de deux points.","hpar":"Créer une droite parallèle en [b]cliquant[/b] sur une droite ou un segment, puis en [b]glissant[/b] jusqu'au point voulu.","hper":"Créer une droite perpendiculaire en [b]cliquant[/b] sur une droite ou un segment, puis en [b]glissant[/b] jusqu'au point voulu.","hsty":"Bien que facultatif, il est parfois utile de varier la [b]taille[/b] de ses tracés et de maintenir ainsi une certaine lisibilité","hcol":"Facultatif également, la [b]couleur[/b] des tracés peut être modifiée afin d'en faciliter la lecture.","hwar":"Ces outils ne sont pas forcément tous disponibles à chaque niveau.[br][b]Cliquez[/b] pour fermer cette fenêtre.","editor":{"e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur"}]]></dct:description>
-        <dct:source>res/img/banners/geometry.svg,res/img/desktop/geometry/*.svg,res/img/icon/geometry/,res/img/svginventoryicons/background/border/square*.svg,res/img/numbers/dice/dice01*.svg,res/img/background/book*.svg</dct:source>
+        <dct:source>res/img/background/banners/geometry.svg,res/img/desktop/geometry/*.svg,res/img/icon/geometry/,res/img/svginventoryicons/background/border/square*.svg,res/img/numbers/dice/dice01*.svg,res/img/background/book*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:hammer">
         <dct:title xml:lang="fr-FR">Cliquez les tous !</dct:title>
         <dct:abstract xml:lang="fr-FR">Cliquer sur les éléments demandés par l'énoncé avant qu'ils ne disparaissent.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Cliquez sur les éléments demandés par l'énoncé avant qu'ils ne disparaissent."]]></dct:description>
-        <dct:source>res/img/banners/hammer.svg,res/img/asset/misc/hole01.svg,res/img/ppvc/hammer/,res/img/ppvc/sign01.svg,res/img/icon/click01.svg,res/img/icon/click02.svg</dct:source>
+        <dct:source>res/img/background/banners/hammer.svg,res/img/asset/misc/hole01.svg,res/img/ppvc/hammer/,res/img/ppvc/sign01.svg,res/img/icon/click01.svg,res/img/icon/click02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:impress">
         <dct:title xml:lang="fr-FR">Diaporama</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette activité permet de créer et de visualiser des diaporamas.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["isend":"FIN","editor":{"e_new":"Insérer","e_newtitle":"Titre","e_newtext":"Texte","e_newimg":"Image","e_newlist":"Liste","e_del":"Supprimer","e_left":"A gauche","e_right":"A droite","e_export":"Importer / Exporter","e_none":"Aucune transition","e_fade":"Fondu","e_toleft":"Vers la gauche","e_toright":"Vers la droite","e_totop":"Vers le haut","e_tobottom":"Vers le bas","e_static":"Affichage statique","e_dynamic":"Affichage dynamique","e_url":"URL","e_size":"Taille","e_htitle":"Titre","e_hsubtitle":"Sous-titre","e_hcontent":"Contenu","e_hfooter":"Bas de page","e_puce":"Puce","e_toedit":"Retour vers l'éditeur"}]]></dct:description>
-        <dct:source>res/img/banners/impress.svg</dct:source>
+        <dct:source>res/img/background/banners/impress.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description rdf:about="urn:activity:jewel">
         <dct:title xml:lang="fr-FR">Jewel</dct:title>
         <dct:abstract xml:lang="fr-FR">Le jeu demande à l'utilisateur d'échanger deux joyaux adjacents afin d'en aligner 3 identiques et de les faire ainsi disparaître.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["jlscore":"score","goallabel":"Objectifs","withtime":"Temps limité","goaltxt":{"survive":"Jouer $1 tours","max":"En moins de $1 tours","frozen":"Libérer tous les éléments"},"editor":{"e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur","eph_proba":"Probabilité de bonus (1/n)","e_help":"<b>0</b> ou <b>' '</b>: Vide<br/><b>1-7</b>: Pierre précise<br/><b>a</b>: Pierre aléatoire<br/><b>f</b>: Pierre gelée<br/><b>g</b>: Pierre gelée + vérouillée<br/><b>h</b>: Pierre gelée + vérouillée (*2)<br/><b>l</b>: Pierre vérouillée<br/><b>m</b>: Pierre vérouillée (*2)","e_min":"Pouvoir jouer pendant N tours","e_max":"Finir les autres objectifs en moins de N tours","e_frozen":"Dégeler et dévérouiller","eph_score":"Score de référence"} ]]></dct:description>
-        <dct:source>res/img/banners/jewel.svg,res/img/asset/jewels/,res/img/asset/fx/ice01.svg,res/img/asset/fx/locked*.svg,res/img/asset/misc/goal01.svg,res/img/background/landscape/landscape01.svg</dct:source>
+        <dct:source>res/img/background/banners/jewel.svg,res/img/asset/jewels/,res/img/asset/fx/ice01.svg,res/img/asset/fx/locked*.svg,res/img/asset/misc/goal01.svg,res/img/background/landscape/a_country01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:keys">
         <dct:title xml:lang="fr-FR">Question/Réponse</dct:title>
         <dct:abstract xml:lang="fr-FR">L'activité pose une question et fournit les lettres utiles à la formulation de la réponse.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA[]]></dct:description>
-        <dct:source>res/img/banners/keys.svg,res/img/asset/anim/bluelight*.svg</dct:source>
+        <dct:source>res/img/background/banners/keys.svg,res/img/asset/anim/bluelight*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:launch">
         <dct:title xml:lang="fr-FR">Bulle</dct:title>
         <dct:abstract xml:lang="fr-FR">Eliminer les bulles de la même couleur en les regroupant par groupe de 3 ou plus.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Tourner la roue en glissant horizontalement le doigt ou la souris puis envoyer la balle par simple clic. Eliminer les bulles de la même couleur en les regroupant par groupe de 3 ou plus." ]]></dct:description>
-        <dct:source>res/img/banners/launch.svg,res/img/desktop/bubble01.svg,res/img/background/landscape/tiles01.svg</dct:source>
+        <dct:source>res/img/background/banners/launch.svg,res/img/desktop/bubble01.svg,res/img/background/landscape/b_tiles01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description rdf:about="urn:activity:logo">
         <dct:title xml:lang="fr-FR">LOGO</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette activité de programmation permet de réaliser avec le langage LOGO les figures géométriques demandées par l'énoncé.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["source":{"av":"AVANCE","re":"RECULE","td":"TOURNE DROITE","tg":"TOURNE GAUCHE","lc":"LEVE CRAYON","bc":"BAISSE CRAYON","ct":"CACHE TORTUE","mt":"MONTRE TORTUE","or":"ORIGINE","ve":"VIDE ECRAN","ne":"NETTOIE","co":"COULEUR","fo":"FOND","ca":"CAP","po":"POSITION","int":"ENTIER","round":"ARRONDI","rand":"HASARD","sqrt":"RACINE","rep":"REPETE","fct1":"POUR MÉTHODE_1","call1":"MÉTHODE_1","fct2":"POUR MÉTHODE_2 X","call2":"MÉTHODE_2","fct3":"POUR MÉTHODE_3 X Y","call3":"MÉTHODE_3","black":"NOIR","white":"BLANC","red":"ROUGE","green":"VERT","blue":"BLEU","gt":"SI","gte":"SI","lte":"SI","lt":"SI","eq":"SI","no":"SI"},"manav":"La tortue avance d'une distance numérique égale à D.","manre":"La tortue avance  d'une distance numérique égale à D.","mantg":"La tortue tourne dans le sens antihoraire d'un angle de A degrés.","mantd":"La tortue tourne dans le sens horaire d'un angle de A degrés.","manco":"Utilise la couleur C pour les tracés effectués par la tortue.","manfo":"Colorie le fond de l'écran avec la couleur C.","manlc":"La tortue ne dessine plus lorsqu'elle se déplace.","manbc":"La tortue effectue un tracé à chacun de ses déplacements.","manor":"La tortue reprend sa position d'origine.","manca":"La tortue se tourne vers la direction A en degré.","manpo":"La tortue se déplace à l'endroit du plan de coordonnées (X,Y).","manxx":"La variable locale X prend la valeur V.","manyy":"La variable locale Y prend la valeur V.","manzz":"La variable locale Z prend la valeur V.","manii":"La variable globale I prend la valeur V.","manjj":"La variable globale J prend la valeur V.","mancall1":"Le programme exécute Méthode_1.","mancall2":"Le programme exécute Méthode_2 en renseignant la variable X.","mancall3":"Le programme exécute Méthode_3 en renseignant les variables X et Y.","tipc1":"Afficher le premier indice","tipc2":"Afficher le deuxième indice","tipc3":"Afficher le troisième indice","tipcc":"Un indice coûte 1 point sur la note finale, souhaitez-vous continuer ?","loprogramzone":"Zone de programme","lodepotzone":"Dépot","loscreenzone":"Écran"]]></dct:description>
-        <dct:source>res/img/banners/logo.svg,res/img/desktop/logo.svg,res/img/icon/tab/tab0*.svg,res/img/control/*.svg,res/img/asset/misc/it0*.svg</dct:source>
+        <dct:source>res/img/background/banners/logo.svg,res/img/desktop/logo.svg,res/img/icon/tab/tab0*.svg,res/img/control/*.svg,res/img/asset/misc/it0*.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description rdf:about="urn:activity:mahjong">
         <dct:title xml:lang="fr-FR">Mahjong</dct:title>
         <dct:abstract xml:lang="fr-FR">Le joueur doit résoudre le tableau de mahjong en éliminant les tuiles identiques et accessibles.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Vider le tableau de mahjong en éliminant les tuiles identiques lorsque celles-ci sont accessibles par la gauche ou par la droite.","hint":"L'opération coûte 1 point sur la note finale. Voulez-vous surligner une paire possible ?"]]></dct:description>
-        <dct:source>res/img/banners/mahjong.svg,res/img/asset/mahjong/,res/img/svginventoryicons/misc/dice01.svg,res/img/background/landscape/greenboard01.svg</dct:source>
+        <dct:source>res/img/background/banners/mahjong.svg,res/img/asset/mahjong/,res/img/svginventoryicons/misc/dice01.svg,res/img/background/landscape/c_green02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:marker">
         <dct:title xml:lang="fr-FR">Marqueur</dct:title>
         <dct:abstract xml:lang="fr-FR">En fonction de l'énoncé, l'utilisateur doit surligner certaines parties d'un texte avec la couleur adéquate.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["editor":{"e_get":"Capturer le résultat","e_del":"Supprimer le résultat","e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur","eph_line1":"Ligne","eph_goal1":"Objectif n°1","eph_goal2":"Objectif n°2","eph_goal3":"Objectif n°3","eph_exercice":"Intitulé de l'exercice","eph_size":"Taille de la police"}]]></dct:description>
-        <dct:source>res/img/banners/marker.svg</dct:source>
+        <dct:source>res/img/background/banners/marker.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:mathcraft">
         <dct:title xml:lang="fr-FR">MathCraft</dct:title>
         <dct:abstract xml:lang="fr-FR">A l'aide d'opérations élémentaires, l'utilisateur doit construire les formules mathématiques demandées par l'énoncé.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA[]]></dct:description>
-        <dct:source>res/img/banners/mathcraft.svg,res/img/action/nothing*.svg,addon/neditor/,res/img/control/toleft.svg,res/img/control/play.svg,res/img/control/valid.svg</dct:source>
+        <dct:source>res/img/background/banners/mathcraft.svg,res/img/icon/action/nothing*.svg,addon/neditor/,res/img/control/toleft.svg,res/img/control/play.svg,res/img/control/valid.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:memory">
         <dct:title xml:lang="fr-FR">Jeu de mémoire</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de mémoire où le joueur doit retrouver des nombres cachés après que ces derniers aient été brièvement exposés.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["mylife":"Vie(s)"]]></dct:description>
-        <dct:source>res/img/banners/memory.svg,res/img/svginventoryicons/background/border/square*.svg,res/img/icon/heart*.svg,ext/noto/svg/emoji_u1f648.svg,ext/noto/svg/emoji_u1f435ex.svg</dct:source>
+        <dct:source>res/img/background/banners/memory.svg,res/img/svginventoryicons/background/border/square*.svg,res/img/icon/heart*.svg,ext/noto/svg/emoji_u1f648.svg,ext/noto/svg/emoji_u1f435ex.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:memory2">
         <dct:title xml:lang="fr-FR">Jeu de mémoire</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de mémoire où le joueur doit retrouver une séquence visuelle et auditive après que celle ait été jouée une première fois. La séquence s'allonge après chaque essais réussi.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Rejouer la séquence proposée."]]></dct:description>
-        <dct:source>res/img/banners/memory.svg,ext/MIDI/</dct:source>
+        <dct:source>res/img/background/banners/memory.svg,ext/MIDI/</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:memory3">
         <dct:title xml:lang="fr-FR">Jeu de mémoire</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de mémoire où le joueur doit retourner et associer deux cartes identiques ou correspondantes, initialement faces cachées.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Cliquer sur une carte pour la retourner et regrouper les paires pour les faire disparaitre."]]></dct:description>
-        <dct:source>res/img/banners/memory.svg,res/img/svginventoryicons/background/noborder/star01.svg,res/img/svginventoryicons/background/border/card01.svg,res/img/svginventoryicons/background/border/card03.svg</dct:source>
+        <dct:source>res/img/background/banners/memory.svg,res/img/svginventoryicons/background/noborder/star01.svg,res/img/svginventoryicons/background/border/card01.svg,res/img/svginventoryicons/background/border/card03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:novel">
         <dct:title xml:lang="fr-FR">Roman graphique</dct:title>
         <dct:abstract xml:lang="fr-FR">L'activité propose à l'utilisateur des romans graphiques intéractifs.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"...","devvar":"Variables","devdef":"Définitions","devsto":"Histoire","devrun":"Relancer","devcon":"Continuer","devimp":"Importer","devexp":"Exporter"]]></dct:description>
-        <dct:source>res/img/banners/novel.svg,res/img/background/book01.svg</dct:source>
+        <dct:source>res/img/background/banners/novel.svg,res/img/background/book01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:operation">
         <dct:title xml:lang="fr-FR">Opérations</dct:title>
         <dct:abstract xml:lang="fr-FR">L'activité propose à l'utilisateur de résoudre une opération arithmétiques (addition, soustraction, multiplication ou division) ou logiques (inclusion ou exclusion) à 2 opérandes ou plus.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Poser l'opération et donner le bon résultat.","onlbase":"BASE","onlnbdec":"DEC"]]></dct:description>
-        <dct:source>res/img/banners/operation.svg,res/img/icon/cell/cell*.svg,res/img/asset/fx/target*.svg</dct:source>
+        <dct:source>res/img/background/banners/operation.svg,res/img/icon/cell/cell*.svg,res/img/asset/fx/target*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:paint">
         <dct:title xml:lang="fr-FR">Peinture</dct:title>
         <dct:abstract xml:lang="fr-FR">Activité générique qui demande de peindre certains éléments dans la couleur adéquate. Il est, entre autres, possible d'émuler un jeu de type Picross.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Choisir une couleur de remplissage et peindre les éléments appropriés.","pilabel":"Picross","piguide":"Retrouver le dessin caché en utilisant les indications fournies."]]></dct:description>
-        <dct:source>res/img/banners/paint.svg,res/img/banners/picross.svg</dct:source>
+        <dct:source>res/img/background/banners/paint.svg,res/img/background/banners/picross.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:path">
         <dct:title xml:lang="fr-FR">Chemin</dct:title>
         <dct:abstract xml:lang="fr-FR">Le principe est ici de tracer un ou plusieurs chemins selon les contraintes liés à l'exercice.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Déplacer le curseur afin de tracer le chemin demandé par l'exercice.","help":"Afficher une partie du tracé coûte 1 point sur la note finale. Voulez-vous continuer ?"]]></dct:description>
-        <dct:source>res/img/banners/path.svg,res/img/asset/misc/goal01.svg,res/img/control/tip.svg</dct:source>
+        <dct:source>res/img/background/banners/path.svg,res/img/asset/misc/goal01.svg,res/img/control/tip.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:puzzle">
         <dct:title xml:lang="fr-FR">Puzzle</dct:title>
         <dct:abstract xml:lang="fr-FR">Activité de puzzle tout à fait classique qui demande de déplacer les pièces à l'endroit adéquat pour reconstituer l'image dans son ensemble. La rotation des pièces est facultative.</dct:abstract>
-        <dct:source>res/img/banners/puzzle.svg</dct:source>
+        <dct:source>res/img/background/banners/puzzle.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:quizz">
         <dct:title xml:lang="fr-FR">Quizz d'Einstein</dct:title>
         <dct:abstract xml:lang="fr-FR">Quizz d'Einstein où il est demandé d'organiser un certain nombre d'éléments en fonction des indices fournis.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["phelph1":"Chaque élément est [b]unique[/b].","heq":"Les deux éléments sont [b]dans la même colonne[/b].","hnot":"Les deux éléments [b]ne sont pas[/b] dans la même colonne.","hlt":"Le premier élément est [b]à gauche[/b] du deuxième. Les colonnes des deux éléments peuvent être ou ne pas être voisines.","hgt":"Le premier élément est [b]à droite[/b] du deuxième. Les colonnes des deux éléments peuvent être ou ne pas être voisines.","hnext":"Les colonnes des deux éléments sont [b]voisines[/b]. Dans un sens ou dans l'autre.","hfar":"Les deux éléments ne sont pas dans la même colonne et leur colonne respective [b]ne sont pas voisines[/b].","hmask":"[b]Affiche/Efface[/b] les indices masqués.","hfilter":"[b]Filtre[/b] les indices suivant le critère sélectionné (éléments ou règles).","hmark":"Ce bouton permet d'[b]écrire[/b] les réponses.","hhint":"Ce bouton propose de noter les [b]candidats[/b] possibles.","help":"L'opération coûte 1 point sur la note finale. Voulez-vous surligner les propositions erronées ?"]]></dct:description>
-        <dct:source>res/img/banners/quizz.svg,res/img/asset/misc/house*.svg,ext/noto/svg/emoji_u1f468_1f3fc_200d_1f692.svg,ext/noto/svg/emoji_u1f469_1f3fe_200d_1f373.svg,ext/noto/svg/emoji_u1f469_1f3fb_200d_1f3a4.svg,ext/noto/svg/emoji_u1f468_1f3fe_200d_1f3a8.svg,ext/noto/svg/emoji_u1f468_200d_1f680.svg,ext/noto/svg/emoji_u1f469_200d_1f3ed.svg,ext/noto/svg/emoji_u1f40e.svg,ext/noto/svg/emoji_u1f415.svg,ext/noto/svg/emoji_u1f408.svg,ext/noto/svg/emoji_u1f407.svg,ext/noto/svg/emoji_u1f422.svg,ext/noto/svg/emoji_u1f426.svg,res/img/asset/misc/op*.svg,res/img/background/landscape/landscape02.svg,res/img/icon/tab/tab00.svg,res/img/asset/fx/target02.svg,res/img/asset/fx/target01.svg,ext/noto/svg/emoji_u2b50.svg,ext/noto/svg/emoji_u1f50d.svg,ext/noto/svg/emoji_u2753.svg,ext/noto/svg/emoji_u1f58b.svg,ext/noto/svg/emoji_u270f.svg,ext/noto/svg/emoji_u1f58d.svg,ext/noto/svg/emoji_u1f3b1.svg,ext/noto/svg/emoji_u1f3bf.svg,ext/noto/svg/emoji_u1f3b8.svg,ext/noto/svg/emoji_u1f3be.svg,ext/noto/svg/emoji_u1f3ae.svg,ext/noto/svg/emoji_u1f3a8.svg,ext/noto/svg/emoji_u1f354.svg,ext/noto/svg/emoji_u1f355.svg,ext/noto/svg/emoji_u1f363.svg,ext/noto/svg/emoji_u1f32d.svg,ext/noto/svg/emoji_u1f35d.svg,ext/noto/svg/emoji_u1f32e.svg,res/img/default/popup/good01.svg,res/img/default/popup/minus01.svg</dct:source>
+        <dct:source>res/img/background/banners/quizz.svg,res/img/asset/misc/house*.svg,ext/noto/svg/emoji_u1f468_1f3fc_200d_1f692.svg,ext/noto/svg/emoji_u1f469_1f3fe_200d_1f373.svg,ext/noto/svg/emoji_u1f469_1f3fb_200d_1f3a4.svg,ext/noto/svg/emoji_u1f468_1f3fe_200d_1f3a8.svg,ext/noto/svg/emoji_u1f468_200d_1f680.svg,ext/noto/svg/emoji_u1f469_200d_1f3ed.svg,ext/noto/svg/emoji_u1f40e.svg,ext/noto/svg/emoji_u1f415.svg,ext/noto/svg/emoji_u1f408.svg,ext/noto/svg/emoji_u1f407.svg,ext/noto/svg/emoji_u1f422.svg,ext/noto/svg/emoji_u1f426.svg,res/img/asset/misc/op*.svg,res/img/background/landscape/a_country02.svg,res/img/icon/tab/tab00.svg,res/img/asset/fx/target02.svg,res/img/asset/fx/target01.svg,ext/noto/svg/emoji_u2b50.svg,ext/noto/svg/emoji_u1f50d.svg,ext/noto/svg/emoji_u2753.svg,ext/noto/svg/emoji_u1f58b.svg,ext/noto/svg/emoji_u270f.svg,ext/noto/svg/emoji_u1f58d.svg,ext/noto/svg/emoji_u1f3b1.svg,ext/noto/svg/emoji_u1f3bf.svg,ext/noto/svg/emoji_u1f3b8.svg,ext/noto/svg/emoji_u1f3be.svg,ext/noto/svg/emoji_u1f3ae.svg,ext/noto/svg/emoji_u1f3a8.svg,ext/noto/svg/emoji_u1f354.svg,ext/noto/svg/emoji_u1f355.svg,ext/noto/svg/emoji_u1f363.svg,ext/noto/svg/emoji_u1f32d.svg,ext/noto/svg/emoji_u1f35d.svg,ext/noto/svg/emoji_u1f32e.svg,res/img/default/popup/good01.svg,res/img/default/popup/minus01.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description rdf:about="urn:activity:robot">
         <dct:title xml:lang="fr-FR">Robot</dct:title>
         <dct:abstract xml:lang="fr-FR">Avec cette activité de programmation, l'utilisateur doit trouver la bonne séquence d'instructions pour amener le ou les robots vers leur case d'arrivée respective.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Diriger un ou plusieurs robots vers leur case d'arrivée respective. Utiliser les actions proposées dans le code source en les faisant glisser vers les différentes fonctions. Enfin, lancer le programme grâce au bouton de lecture situé en bas de l'écran.[br]La note finale dépend du nombre d'indices utilisés.","legend":{"actions":"Actions","f01":"Avancer d'une case","b01":"Reculer d'une case","turnleft":"Tourner à gauche","turnright":"Tourner à droite","nothing":"Ne rien faire","inv":"Inverser les commandes","num":"Changer la valeur de l'écran suivant la dalle","nums":"Changer la valeur de l'écran","numplus":"Ajouter 1 à la valeur de l'écran","numminus":"Enlever 1 à la valeur de l'écran","color":"Eclairer la lampe","notcolor":"Eteindre la lampe","fct1":"Appeler la fonction 1","fct2":"Appeler la fonction 2","tests":"Tests","ifeq":"Tester la valeur de la dalle","ifnoteq":"Tester une différence de valeur","iflcolor":"Tester l'éclairage de la lampe","iflnotcolor":"Tester le non-éclairage de la lampe","ifcolor":"Tester la couleur de la dalle","ifnotcolor":"Tester une différence de couleur","ifnums":"Tester la valeur de l'écran","ifnotnums":"Tester une non-valeur de l'écran","ifinvert":"Tester l'inversion des commandes","ifnotend":"Tester l'arrivée","loops":"Boucles","xnums":"De 2 à 5 fois","xnum":"Suivant la valeur de l'écran","whilelcolor":"Tant que la lampe est allumée","whilelnotcolor":"Tant que la lampe est éteinte","whilecolor":"Tant que la couleur de la dalle correspond","whilenotcolor":"Tant que la couleur de la dalle ne correspond pas","whilenotend":"Tant que la dalle n'est pas celle d'arrivée"},"tipc1":"Afficher le premier indice","tipc2":"Afficher le deuxième indice","tipc3":"Afficher le troisième indice","tipcc":"Un indice coûte 1 point sur la note finale, souhaitez-vous continuer ?"]]></dct:description>
-        <dct:source>res/img/banners/robot.svg,res/img/background/gears01.svg,res/img/background/asset/robot01.svg,res/img/tileset/iso/robot/,res/img/tileset/iso/set1/,res/img/action/,res/img/icon/cell/cell01.svg,res/img/asset/misc/goal01.svg,res/img/control/,res/img/effects/alertrobot01.svg,res/img/icon/skill/minus01.svg,res/img/icon/skill/plus01.svg,res/img/asset/fx/target03.svg,res/img/background/landscape/grayboard01.svg,res/img/help/robot/htomain01.svg,res/img/help/robot/hrun01.svg</dct:source>
+        <dct:source>res/img/background/banners/robot.svg,res/img/background/a_gears01.svg,res/img/background/asset/robot01.svg,res/img/tileset/iso/robot/,res/img/tileset/iso/set1/,res/img/icon/action/,res/img/icon/cell/cell01.svg,res/img/asset/misc/goal01.svg,res/img/control/,res/img/effects/alertrobot01.svg,res/img/icon/skill/minus01.svg,res/img/icon/skill/plus01.svg,res/img/asset/fx/target03.svg,res/img/background/landscape/c_gray01.svg,res/img/help/robot/htomain01.svg,res/img/help/robot/hrun01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:sequence">
         <dct:title xml:lang="fr-FR">Séquence</dct:title>
         <dct:abstract xml:lang="fr-FR">Une série de questions est posée au joueur qui doit y répondre rapidement.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["timeattack":"Chronométré"]]></dct:description>
-        <dct:source>res/img/banners/sequence.svg,res/img/asset/misc/pocketwatch01.svg</dct:source>
+        <dct:source>res/img/background/banners/sequence.svg,res/img/asset/misc/pocketwatch01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:shop">
         <dct:title xml:lang="fr-FR">Ma petite boutique</dct:title>
         <dct:abstract xml:lang="fr-FR">Gérer une petite boutique en payant les fournisseurs, en facturant les clients et en rendant la monnaie.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Gérer votre petite boutique en payant vos fournisseurs, en facturant vos clients et en leur rendant correctement la monnaie.","payed":"Réglée","tr1":["Cela vous fera X sous.","Alors, cela fait X sous.","Vous en avez pour X sous.","Voila... cela fait X sous.","X sous, s'il vous plaît."],"tr2":["Cela vous fera X sous et Y centimes.","Alors, cela fait X sous et Y centimes.","Vous en avez pour X sous et Y centimes.","X sous et Y centimes.","X sous et Y centimes, s'il vous plaît."],"hcal":"La [b]calculatrice[/b] permet de rédiger la note d'un client en entrant les prix demandés.","hwal":"Ce bouton permet de faire apparaître ou disparaître le [b]tirroir-caisse[/b] dans lequel se trouve l'argent de notre petit commerce.","hcha":"Ce bouton permet de faire apparaître et disparaître le [b]monnayeur[/b].","hske":"Pour certains calculs un peu complexes, il est utile de disposer d'un [b]calepin[/b] pour y noter certaines opérations.","hwar":"Ces fonctionnalités ne sont pas forcément toutes disponibles à chaque niveau.[br][b]Cliquez[/b] pour fermer cette fenêtre.","hpfac":"Les [b]factures[/b] doivent être [b]réglées[/b] en déposant la somme demandée dans la [red]zone de transaction[/red].","hpinv":"La [b]note[/b] des clients représente l'ensemble des montants des marchandises achetées par ces derniers. Les opérations doivent être calculées manuellement.","hpmon":"Le [b]tiroir-caisse[/b] est l'endroit où est stocké l'argent du commerce. Les pièces et les billets peuvent être déplacés vers le [red]monnayeur[/red] ou la [red]zone de transaction[/red].","hpwal":"La [b]zone de transaction[/b] est l'espace de paiement des factures, du règlement des clients et du rendu de la monnaie.","hpcha":"Le [b]monnayeur[/b] permet de faire de la monnaie en [b]changeant[/b] une valeur en une somme de valeurs [red]plus petites[/red]."]]></dct:description>
-        <dct:source>res/img/banners/operation.svg,res/img/background/landscape/shop01.svg,res/img/svginventoryicons/food/,res/img/svginventoryicons/drink/,res/img/svginventoryicons/misc/,res/img/svginventoryicons/tool/,res/img/svginventoryicons/pencil/,res/img/svginventoryicons/vegetable/,res/img/coin/,res/img/icon/tab/tab00.svg,res/img/ppvc/postman01.svg,res/img/ppvc/cyclist01.svg,res/img/ppvc/weirdo01.svg,res/img/ppvc/geek01.svg,res/img/ppvc/worker01.svg,res/img/ppvc/pop01.svg,res/img/ppvc/girl01.svg,res/img/ppvc/lizzie01.svg,res/img/ppvc/lottie01.svg,res/img/svginventoryicons/book/sketchbook01.svg,res/img/coin/coin1.svg,res/img/coin/coins.svg,res/img/svginventoryicons/hardware/calculator01.svg,res/img/background/shop/,res/img/asset/fx/dialog02.svg,res/img/asset/fx/dialog03.svg</dct:source>
+        <dct:source>res/img/background/banners/operation.svg,res/img/background/landscape/a_shop01.svg,res/img/svginventoryicons/food/,res/img/svginventoryicons/drink/,res/img/svginventoryicons/misc/,res/img/svginventoryicons/tool/,res/img/svginventoryicons/pencil/,res/img/svginventoryicons/vegetable/,res/img/coin/,res/img/icon/tab/tab00.svg,res/img/ppvc/postman01.svg,res/img/ppvc/cyclist01.svg,res/img/ppvc/weirdo01.svg,res/img/ppvc/geek01.svg,res/img/ppvc/worker01.svg,res/img/ppvc/pop01.svg,res/img/ppvc/girl01.svg,res/img/ppvc/lizzie01.svg,res/img/ppvc/lottie01.svg,res/img/svginventoryicons/book/sketchbook01.svg,res/img/coin/coin1.svg,res/img/coin/coins.svg,res/img/svginventoryicons/hardware/calculator01.svg,res/img/background/asset/sp_*.svg,res/img/asset/fx/dialog02.svg,res/img/asset/fx/dialog03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:sokoban">
         <dct:title xml:lang="fr-FR">Sokoban</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu classique du sokoban où l'on doit déplacer, grâce à un ou plusieurs robots, différentes boites vers leur zone de livraison.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["lmoves":"mouvements","lpushes":"poussées"]]></dct:description>
-        <dct:source>res/img/banners/sokoban.svg,res/img/tileset/iso/object/,res/img/tileset/iso/robot/,res/img/tileset/iso/set1/,res/img/background/asset/robot02.svg,res/img/background/landscape/blueboard01.svg,res/img/asset/misc/goal02.svg,res/img/asset/misc/goal01.svg</dct:source>
+        <dct:source>res/img/background/banners/sokoban.svg,res/img/tileset/iso/object/,res/img/tileset/iso/robot/,res/img/tileset/iso/set1/,res/img/background/asset/robot02.svg,res/img/background/landscape/c_blue01.svg,res/img/asset/misc/goal02.svg,res/img/asset/misc/goal01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:sorting">
@@ -268,7 +268,7 @@
         <dct:abstract xml:lang="fr-FR">Les éléments proposés par l'exercice doivent être classés suivant une consigne donnée.</dct:abstract>
         <dct:description xml:lang="en-US"><![CDATA[]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA["editor":{"e_import":"Importer/Exporter","e_toedit":"Retour vers l'éditeur","eph_nbpages":"Nombre de pages affichées si différent du nombre définies","eph_nbelts":"Nombre d'éléments choisis aléatoirement par page","eph_exercice":"Ennoncé (facultatif) de l'exercice.","eph_size":"Taille de la police","eph_space":"Largeur de l'élément à gauche","e_match":"Mode correspondance","e_sort":"Mode tri"}]]></dct:description>
-        <dct:source>res/img/banners/sorting.svg,res/img/background/landscape/redcarpet01.svg</dct:source>
+        <dct:source>res/img/background/banners/sorting.svg,res/img/background/landscape/c_red02.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description rdf:about="urn:activity:stories">
@@ -282,21 +282,21 @@
         <dct:title xml:lang="fr-FR">Sudoku</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de logique où le joueur doit combiner un certain nombre d'éléments de façon à ce que chaque colonne, chaque ligne et chaque sous ensemble ne contiennent aucun doublon.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["help":"L'opération coûte 1 point sur la note finale. Voulez-vous surligner les propositions erronées ?"]]></dct:description>
-        <dct:source>res/img/banners/sudoku.svg,ext/noto/svg/emoji_u1f58b.svg,ext/noto/svg/emoji_u270f.svg,ext/noto/svg/emoji_u1f58d.svg,res/img/asset/fx/target*.svg,res/img/icon/tab/tab00.svg,res/img/background/landscape/brownboard01.svg</dct:source>
+        <dct:source>res/img/background/banners/sudoku.svg,ext/noto/svg/emoji_u1f58b.svg,ext/noto/svg/emoji_u270f.svg,ext/noto/svg/emoji_u1f58d.svg,res/img/asset/fx/target*.svg,res/img/icon/tab/tab00.svg,res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:toggleswitch">
         <dct:title xml:lang="fr-FR">Pointe et clique</dct:title>
         <dct:abstract xml:lang="fr-FR">L'activité propose un certains nombres d'éléments dynamiques dont il est possible de changer l'état par simple clic, le but étant de répondre aux contraintes imposées par l'exercice.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["label_search":"Cherche et trouve","label_diff7":"7 différences"]]></dct:description>
-        <dct:source>res/img/banners/toggleswitch.svg,res/img/banners/search.svg,res/img/banners/diff7.svg,res/img/asset/misc/pocketwatch01.svg</dct:source>
+        <dct:source>res/img/background/banners/toggleswitch.svg,res/img/background/banners/search.svg,res/img/background/banners/diff7.svg,res/img/asset/misc/pocketwatch01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:trafficjam">
         <dct:title xml:lang="fr-FR">Embouteillages</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de logique où le joueur doit déplacer certains objets dynamiques pour extraire l'élément de couleur rouge.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Déplacer les différents véhicules pour permettre au kart de Tux le manchot d'atteindre la sortie.","guidegen":"Déplacer les différents objets afin d'atteindre les objectifs fixés par l'énoncé.","mlabel":"Mouvements","olabel":"Objectif","clabel":"Annuler"]]></dct:description>
-        <dct:source>res/img/banners/trafficjam.svg,res/img/tileset/ortho/traffic/,res/img/asset/misc/goal01.svg,res/img/svginventoryicons/misc/pressure01.svg,res/img/background/landscape/blueboard01.svg</dct:source>
+        <dct:source>res/img/background/banners/trafficjam.svg,res/img/tileset/ortho/traffic/,res/img/asset/misc/goal01.svg,res/img/svginventoryicons/misc/pressure01.svg,res/img/background/landscape/c_blue01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:where">
@@ -306,14 +306,14 @@
         <dct:abstract xml:lang="fr-FR">L'utilisateur doit déplacer le ou les éléments dynamiques au plus près de l'emplacement demandé.</dct:abstract>
         <dct:description xml:lang="en-US"><![CDATA["guide":"TO DO"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Déplacer le ou les éléments dynamiques pour répondre au mieux au problème proposé. Appuyer sur le bouton en bas à gauche pour valider la proposition."]]></dct:description>
-        <dct:source>res/img/banners/where.svg</dct:source>
+        <dct:source>res/img/background/banners/where.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:wordmix">
         <dct:title xml:lang="fr-FR">Mots mêlés</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu d'observation où le joueur doit retrouver des mots au sein d'une grille de lettres.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"En maintenant la pression du doigt ou de la souris, tracer une ligne pour identifier les mots demandés par l'exercice."]]></dct:description>
-        <dct:source>res/img/banners/wordmix.svg</dct:source>
+        <dct:source>res/img/background/banners/wordmix.svg</dct:source>
     </rdf:Description>
 
 </rdf:RDF>

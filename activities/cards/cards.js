@@ -6,7 +6,7 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        back        : "res/img/cards/00back02.svg",            // Back image
+        back        : "res/img/asset/cards/00back02.svg",            // Back image
         font        : 1, 
         debug       : true                                     // Debug mode
     };
@@ -396,7 +396,7 @@
                         card.$html = $("<div class='card' id='"+card.id+"'><div class='back'>"+
                                        "<img src='"+settings.back+"' alt=''/></div><div class='front'></div></div>");
                         if (typeof(card.value) != 'undefined') {
-                            card.$html.find(".front").append("<img src='res/img/cards/"+values[card.value%13]+
+                            card.$html.find(".front").append("<img src='res/img/asset/cards/"+values[card.value%13]+
                                               colors[Math.floor(card.value/13)]+".svg' alt=''/>");
                         }
                         else if (typeof(card.label) != 'undefined') {
@@ -457,7 +457,7 @@
                     fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
                     pos     : [_data.pos[0], _data.pos[1]],
                     cards   : [],
-                    bg      : _data.background?_data.background:"res/img/cards/00drop01.svg",
+                    bg      : _data.background?_data.background:"res/img/asset/cards/00drop01.svg",
                     accept  : _data.accept,
                     first   : _data.first,
                     pick    : _data.pick,

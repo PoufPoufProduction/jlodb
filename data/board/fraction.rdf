@@ -6,14 +6,14 @@
     <rdf:Description>
         <dct:identifier>4a</dct:identifier>
         <dct:title xml:lang="fr-FR">Remplir suivant des proportions données une toile 4x4.</dct:title>
-        <dct:description><![CDATA["errratio":2,"grid":true,"brushesfont":0,"brushes":[{"bitmap":[3,3]}],"colorsfont":1.6,"chart":[{"rgb":[255,0,0],"content":"res/img/default/pattern/whitegrid03.svg"},{"rgb":[0,255,0],"content":"res/img/default/pattern/blackdots02.svg"},{"rgb":[0,0,255],"content":"res/img/default/pattern/whitegrid02.svg"},{"rgb":[255,255,255],"content":"res/img/default/pattern/steel02.svg"}],"colors":[0,1,2],"size":[4,4],"init":"3333333333333333","background":"res/img/background/landscape/redsplash01.svg","nbsteps":1,"scorearg":[0,4,0,0],"scorefct":"function($this,_result,_arg){ var nb=[0,0,0,0,0], ret=''; _arg.push(16-_arg[0]-_arg[1]-_arg[2]-_arg[3]); for (var i in _result) { var id=4; if (_result[i].color && _result[i].color.rgb) { var r=_result[i].color.rgb; if (r[0]) { if (!r[1]) { id=0; } } else { id=(r[1]?1:2); } } nb[id]++; ret+=((nb[id]>_arg[id])?'0':'1'); } return ret; }"]]></dct:description>
+        <dct:description><![CDATA["errratio":2,"grid":true,"brushesfont":0,"brushes":[{"bitmap":[3,3]}],"colorsfont":1.6,"chart":[{"rgb":[255,0,0],"content":"res/img/default/pattern/whitegrid03.svg"},{"rgb":[0,255,0],"content":"res/img/default/pattern/blackdots02.svg"},{"rgb":[0,0,255],"content":"res/img/default/pattern/whitegrid02.svg"},{"rgb":[255,255,255],"content":"res/img/default/pattern/steel02.svg"}],"colors":[0,1,2],"size":[4,4],"init":"3333333333333333","background":"res/img/background/landscape/c_red03.svg","nbsteps":1,"scorearg":[0,4,0,0],"scorefct":"function($this,_result,_arg){ var nb=[0,0,0,0,0], ret=''; _arg.push(16-_arg[0]-_arg[1]-_arg[2]-_arg[3]); for (var i in _result) { var id=4; if (_result[i].color && _result[i].color.rgb) { var r=_result[i].color.rgb; if (r[0]) { if (!r[1]) { id=0; } } else { id=(r[1]?1:2); } } nb[id]++; ret+=((nb[id]>_arg[id])?'0':'1'); } return ret; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Remplissez[/b] le plateau suivant les proportions données[br][br][space][icon][img]res/img/asset/colors/green.svg[/img][/icon][mult]1/4[/mult]"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>6a</dct:alternative>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -27,7 +27,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>6a</dct:alternative>
         <dct:relation>4a</dct:relation>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -41,21 +41,21 @@
         <dct:type>2</dct:type>
         <dct:alternative>6a</dct:alternative>
         <dct:relation>4a</dct:relation>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
 
 	
     <rdf:Description>
         <dct:identifier>6a</dct:identifier>
         <dct:title xml:lang="fr-FR">Remplir suivant des proportions données une toile 6x6.</dct:title>
-        <dct:description><![CDATA["grid":true,"brushesfont":0,"brushes":[{"bitmap":[7,7,7,7,7,7]}],"colorsfont":1.6,"chart":[{"rgb":[255,0,0],"content":"res/img/default/pattern/whitegrid03.svg"},{"rgb":[0,255,0],"content":"res/img/default/pattern/blackdots02.svg"},{"rgb":[0,0,255],"content":"res/img/default/pattern/whitegrid02.svg"},{"rgb":[255,255,255],"content":"res/img/default/pattern/steel02.svg"}],"colors":[0,1,2],"size":[6,6],"init":"333333333333333333333333333333333333","background":"res/img/background/landscape/redsplash01.svg","nbsteps":1,"scorearg":[18,0,0,0],"scorefct":"function($this,_result,_arg){ var nb=[0,0,0,0,0], ret=''; _arg.push(36-_arg[0]-_arg[1]-_arg[2]-_arg[3]); for (var i in _result) { var id=4; if (_result[i].color && _result[i].color.rgb) { var r=_result[i].color.rgb; if (r[0]) { if (!r[1]) { id=0; } } else { id=(r[1]?1:2); } } nb[id]++; ret+=((nb[id]>_arg[id])?'0':'1'); } return ret; }"]]></dct:description>
+        <dct:description><![CDATA["grid":true,"brushesfont":0,"brushes":[{"bitmap":[7,7,7,7,7,7]}],"colorsfont":1.6,"chart":[{"rgb":[255,0,0],"content":"res/img/default/pattern/whitegrid03.svg"},{"rgb":[0,255,0],"content":"res/img/default/pattern/blackdots02.svg"},{"rgb":[0,0,255],"content":"res/img/default/pattern/whitegrid02.svg"},{"rgb":[255,255,255],"content":"res/img/default/pattern/steel02.svg"}],"colors":[0,1,2],"size":[6,6],"init":"333333333333333333333333333333333333","background":"res/img/background/landscape/c_red03.svg","nbsteps":1,"scorearg":[18,0,0,0],"scorefct":"function($this,_result,_arg){ var nb=[0,0,0,0,0], ret=''; _arg.push(36-_arg[0]-_arg[1]-_arg[2]-_arg[3]); for (var i in _result) { var id=4; if (_result[i].color && _result[i].color.rgb) { var r=_result[i].color.rgb; if (r[0]) { if (!r[1]) { id=0; } } else { id=(r[1]?1:2); } } nb[id]++; ret+=((nb[id]>_arg[id])?'0':'1'); } return ret; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Remplissez[/b] le plateau suivant les proportions données[br][br][space][icon][img]res/img/asset/colors/red.svg[/img][/icon][mult]1/2[/mult]"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>6a</dct:alternative>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
 	
 	
@@ -70,7 +70,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>6a</dct:alternative>
         <dct:relation>6a</dct:relation>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -84,7 +84,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>6a</dct:alternative>
         <dct:relation>6a</dct:relation>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -98,7 +98,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>6a</dct:alternative>
         <dct:relation>6a</dct:relation>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
 	
     <rdf:Description>
@@ -112,7 +112,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>6a</dct:alternative>
         <dct:relation>6a</dct:relation>
-        <dct:source>res/img/background/landscape/redsplash01.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_red03.svg</dct:source>
     </rdf:Description>
 	
 	

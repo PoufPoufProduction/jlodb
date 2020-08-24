@@ -7,14 +7,14 @@
     <rdf:Description>
         <dct:identifier>a01</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateurs sont 4.</dct:title>
-        <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[4]},{"id":"square2x2","det":4,"dets":[4]}],"ggg":1,"background":"res/img/background/landscape/grayboard01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,_s,_id){var val=_s.gg[Math.floor(Math.random()*_s.gg.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*d*_s.ggg)+1; } while(val.det*n/d==_s.scorearg); return {'scorearg':val.det*n/d,'canvas':val.id,'txt':{'f3label':n.toString()+'/'+d.toString()}};}","scorefct":"function($this,_result,_arg){var ret='',nb=0; for (var i=0;i<_result.length;i++) { var r; if (_result[i]=='1') { nb++; r=(nb>arg)?'x':_result[i]; } else { r=(i-nb>=_result.length-arg)?'x':_result[i]; } ret+=r; } return ret; }","number":5]]></dct:description>
+        <dct:description><![CDATA["gg":[{"id":"circle4","det":4,"dets":[4]},{"id":"square2x2","det":4,"dets":[4]}],"ggg":1,"background":"res/img/background/landscape/c_gray01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,_s,_id){var val=_s.gg[Math.floor(Math.random()*_s.gg.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*d*_s.ggg)+1; } while(val.det*n/d==_s.scorearg); return {'scorearg':val.det*n/d,'canvas':val.id,'txt':{'f3label':n.toString()+'/'+d.toString()}};}","scorefct":"function($this,_result,_arg){var ret='',nb=0; for (var i=0;i<_result.length;i++) { var r; if (_result[i]=='1') { nb++; r=(nb>arg)?'x':_result[i]; } else { r=(i-nb>=_result.length-arg)?'x':_result[i]; } ret+=r; } return ret; }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction demandée[/red]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>a01</dct:alternative>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -28,7 +28,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 
@@ -42,7 +42,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 
@@ -56,7 +56,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 
@@ -70,7 +70,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -84,7 +84,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 
@@ -98,7 +98,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -112,7 +112,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -127,7 +127,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -141,7 +141,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -155,7 +155,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -169,7 +169,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -183,7 +183,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -197,7 +197,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -211,7 +211,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -225,7 +225,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 
@@ -241,7 +241,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 
@@ -255,7 +255,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -269,7 +269,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -283,7 +283,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -297,7 +297,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -311,7 +311,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -325,7 +325,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -339,7 +339,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -353,7 +353,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -367,7 +367,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a01</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -375,14 +375,14 @@
     <rdf:Description>
         <dct:identifier>a50</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 10, pour que la part de cases rouges soit égale à une fraction décimale donnée.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gg":[{"id":"square1x10","det":10,"dets":[10],"max":1,"min":1},{"id":"square1x10x2","det":10,"dets":[10],"max":2,"min":11},{"id":"square1x10x2","det":10,"dets":[10],"max":2,"min":1},{"id":"square1x10x3","det":10,"dets":[10],"max":3,"min":21},{"id":"square1x10x3","det":10,"dets":[10],"max":3,"min":11}],"gen":"function($this,_s,_i){var val=pick(_s.gg),d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d*val.max-(val.min)))+val.min; } while(val.det*n/d==_s.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var ret='',nb=0; for (var i=0;i<_result.length;i++) { var r; if (_result[i]=='1') { nb++; r=(nb>arg)?'x':_result[i]; } else { r=(i-nb>=_result.length-arg)?'x':_result[i]; } ret+=r; } return ret; }","number":6,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/c_gray01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gg":[{"id":"square1x10","det":10,"dets":[10],"max":1,"min":1},{"id":"square1x10x2","det":10,"dets":[10],"max":2,"min":11},{"id":"square1x10x2","det":10,"dets":[10],"max":2,"min":1},{"id":"square1x10x3","det":10,"dets":[10],"max":3,"min":21},{"id":"square1x10x3","det":10,"dets":[10],"max":3,"min":11}],"gen":"function($this,_s,_i){var val=pick(_s.gg),d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d*val.max-(val.min)))+val.min; } while(val.det*n/d==_s.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var ret='',nb=0; for (var i=0;i<_result.length;i++) { var r; if (_result[i]=='1') { nb++; r=(nb>arg)?'x':_result[i]; } else { r=(i-nb>=_result.length-arg)?'x':_result[i]; } ret+=r; } return ret; }","number":6,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>a01</dct:alternative>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 	
@@ -396,7 +396,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a50</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
 	
@@ -410,7 +410,7 @@
         <dct:type>1</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:relation>a50</dct:relation>
-        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/c_gray01.svg,res/img/desktop/fraction03.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -422,14 +422,14 @@
     <rdf:Description>
         <dct:identifier>ff24a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier avec plusieurs couleurs, les cases d'un objet divisé en 24, en suivant les consignes proposées.</dct:title>
-        <dct:description><![CDATA["scorearg":[[0,6,12,6]],"background":"res/img/background/landscape/yellowboard02.svg","svgclass":"withsource","remove":true,"url":"res/img/desktop/fraction03.svg","data":[{"toggle":true},{"toggle":true},{"toggle":true}],"canvas":"square6x4","selected":0,"scorefct":"function($this,_r,_a){ var g='',nb=[0,0,0,0]; for (var i=0;i<_r.length;i++) { var v=_r[i]; if ( (v=='0'&&(++nb[1]>_a[1])) || (v=='1'&&(++nb[2]>_a[2])) || (v=='3'&&(++nb[3]>_a[3])) || (v==' '&&(++nb[0]>_a[0]))) { g+='x'; } else { g+=v; } } return g;}"]]></dct:description>
+        <dct:description><![CDATA["scorearg":[[0,6,12,6]],"background":"res/img/background/landscape/c_yellow04.svg","svgclass":"withsource","remove":true,"url":"res/img/desktop/fraction03.svg","data":[{"toggle":true},{"toggle":true},{"toggle":true}],"canvas":"square6x4","selected":0,"scorefct":"function($this,_r,_a){ var g='',nb=[0,0,0,0]; for (var i=0;i<_r.length;i++) { var v=_r[i]; if ( (v=='0'&&(++nb[1]>_a[1])) || (v=='1'&&(++nb[2]>_a[2])) || (v=='3'&&(++nb[3]>_a[3])) || (v==' '&&(++nb[0]>_a[0]))) { g+='x'; } else { g+=v; } } return g;}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Le quart de ce rectangle","La moitié de ce rectangle","Le quart de ce rectangle","24"],"exercice":"[b]Coloriez[/b] en respectant les consignes de haut en bas.","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ff24a</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/fraction03.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -444,7 +444,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ff24a</dct:alternative>
         <dct:relation>ff24a</dct:relation>
-        <dct:source>res/img/desktop/fraction03.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/fraction03.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -459,7 +459,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>ff24a</dct:alternative>
         <dct:relation>ff24a</dct:relation>
-        <dct:source>res/img/desktop/fraction03.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/fraction03.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     
@@ -475,7 +475,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>ff24a</dct:alternative>
         <dct:relation>ff24a</dct:relation>
-        <dct:source>res/img/desktop/fraction03.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+        <dct:source>res/img/desktop/fraction03.svg,res/img/background/landscape/c_yellow04.svg</dct:source>
 		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
     </rdf:Description>
     

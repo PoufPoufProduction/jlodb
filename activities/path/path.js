@@ -40,8 +40,8 @@
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<div class='small'>$1</div>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1.svg'/></div>",
 		"\\\[icon ([^\\\]]+)]([^\\\[]+)\\\[/icon\\\]",         "<div class='icon' style='font-size:$1em;float:left'><img src='$2.svg'/></div>",
-        "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/action/$1.svg'/></div>",
-        "\\\[a2\\\]([^\\\[]+)\\\[/a2\\\]",          "<div class='icon' style='float:left;margin:.1em;font-size:4em;'><img src='res/img/action/$1.svg'/></div>"
+        "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/icon/action/$1.svg'/></div>",
+        "\\\[a2\\\]([^\\\[]+)\\\[/a2\\\]",          "<div class='icon' style='float:left;margin:.1em;font-size:4em;'><img src='res/img/icon/action/$1.svg'/></div>"
     ];
 
     // private methods
