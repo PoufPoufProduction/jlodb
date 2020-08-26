@@ -13,7 +13,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -26,6 +26,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -38,19 +39,20 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ad</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée d'un circuit en escalier.</dct:title>
         <dct:description><![CDATA["board":[[51,1,1],[1,1,0],[2,0,0]],"robots":[{"origin":[2,0,2],"code":[2,4,0],"actions":["f01","f01","turnleft","turnright","fct1","fct1"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisées plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]turnright[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]fct1[/a][a]fct1[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]turnright[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]fct1[/a][a]fct1[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -63,183 +65,215 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>af</dct:identifier>
         <dct:title xml:lang="fr-FR">En mutualisant certaines action grâce à la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,1,0],[476,1,0],[0,1,1],[0,0,2]],"robots":[{"origin":[0,0,0],"code":[18,12,0],"actions":["f01","f01","f01","f01","f01","turnleft","turnright","fct1","fct1"]}],"padding":0]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisées plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]turnright[/a][a]f01[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]fct1[/a][a]f01[/a][a]turnleft[/a][a]fct1[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]turnright[/a][a]f01[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]fct1[/a][a]f01[/a][a]turnleft[/a][a]fct1[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ag</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[20,1,1,9,2]],"robots":[{"origin":[2,0,2],"code":[18,12,0],"actions":["f01","turnleft","x2","x2","fct1","fct1"]}]]]></dct:description>
+        <dct:description><![CDATA["board":[[20,1,1,9,2]],"robots":[{"origin":[2,0,2],"code":[18,12,0],"actions":["f01","turnleft","turnleft","x2","x2","fct1","fct1"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]x2[/a][a]f01[/a][/code]","Le programme [b]principal[/b] devrait être:[code][a]fct1[/a][a]turnleft[/a][a]turnleft[/a][a]x2[/a][a]fct1[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ah</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,1,1,1,0,0,2],[1,473,0,1,0,0,1],[1,0,0,1,0,473,1],[1,0,0,1,1,1,1]],"robots":[{"origin":[0,3,3],"code":[18,12,0],"actions":["f01","fct1","fct1","fct1","turnright","turnright","turnright","x2","x2","x3","x3"]}],"padding":6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]x3[/a][a]f01[/a][a]turnright[/a][/code]","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]x3[/a][a]fct1[/a][a]x2[/a][a]turnleft[/a][a]fct1[/a][a1]x2[/a1][a2]turnleft[/a2][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ai</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,1],[1,1,1],[1,0,2],[1,0,0],[1,0,0]],"robots":[{"origin":[0,4,3],"code":[18,12,0],"actions":["f01","f01","f01","b01","b01","turnright","turnleft","fct1","fct1","fct1","fct1"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]f01[/a][/code]","Le programme [b]principal[/b] devrait être :[code][a]fct1[/a][a]f01[/a][a]turnright[/a][a]fct1[/a][a]turnleft[/a][a]b01[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>aj</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[463,461,1,1,1],[471,1,1,0,1],[1,1,473,1,1],[1,0,2,1,0]],"robots":[{"origin":[0,3,3],"code":[18,12,0],"actions":["f01","f01","turnright","turnright","turnright","turnleft","x2","x3","fct1","fct1","fct1"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","La fonction F1 devrait contenir le code suivant :[code][a]f01[/a][a]turnright[/a][a]f01[/a][a]turnleft[/a][/code]","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]fct1[/a][a]turnright[/a][a]fct1[/a][a]turnright[/a][a]x2[/a][a]fct1[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ak</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,1,1,1,0,0],[0,452,1,0,1,0,0],[1,1,1,0,1,1,1],[1,0,0,0,0,0,1],[1,1,1,0,2,1,1]],"robots":[{"origin":[2,4,2],"code":[18,12,0],"actions":["f01","f01","f01","x2","x2","x2","x3","fct1","turnright","turnright","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]fct1[/a][/code]","La fonction F1 devrait commencer ainsi :[code][a]x2[/a][a]f01[/a][a]turnright[/a][a]x2[/a][a]f01[/a][a1]turnright[/a1][a2]x2[/a2][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>al</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[1,1,20,51,0],[1,0,1,1,1],[1,0,0,0,1],[1,1,1,0,1],[51,0,1,1,1],[0,0,9,0,0],[0,0,2,0,0]],"robots":[{"origin":[2,4,3],"code":[18,12,0],"actions":["f01","f01","f01","f01","f01","f01","b01","b01","fct1","fct1","x3","turnright","turnright","turnright","turnleft","turnleft"]}]]]></dct:description>
+        <dct:description><![CDATA["board":[[1,1,20,51,0],[1,0,1,1,1],[1,0,0,0,1],[1,1,1,0,1],[51,0,1,1,1],[0,0,9,0,0],[0,0,2,0,0]],"robots":[{"origin":[2,4,3],"code":[18,12,0],"actions":["f01","f01","f01","f01","f01","f01","b01","b01","fct1","fct1","x3","turnright","turnright","turnright","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit effectuer une boucle qui se compose de 2 parties identiques.","Le programme [b]principal[/b] devrait être :[code][a]fct1[/a][a]fct1[/a][a]b01[/a][a]b01[/a][/code]","La fonction F1 devrait commencer ainsi :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]f01[/a][a]turnright[/a][a1]x3[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>am</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,120,0,0],[0,453,9,0,0],[20,1,1,109,220],[0,0,209,0,0],[0,0,2,0,0]],"robots":[{"origin":[2,2,2],"code":[18,12,0],"actions":["f01","f01","f01","f01","turnright","b01","b01","b01","b01","b01","fct1","x3"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour appuyer sur les différents boutons, le robot doit effectuer 3 aller-retours.","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]fct1[/a][a]f01[/a][a]f01[/a][/code]","La fonction F1 devrait être :[code][a]f01[/a][a]f01[/a][a]b01[/a][a]b01[/a][a]turnright[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>an</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[120,1,1,0,0],[0,0,1,0,0],[101,109,1,309,2],[101,0,209,0,0],[220,0,201,201,320]],"robots":[{"origin":[2,2,3],"code":[18,12,0],"actions":["f01","f01","f01","b01","b01","x2","x2","x2","x2","x2","x3","fct1","turnright","turnleft","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour appuyer sur les différents boutons, le robot doit effectuer 3 aller-retours.","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]fct1[/a][a]x2[/a][a]f01[/a][/code]","La fonction F1 devrait commencer ainsi :[code][a]x2[/a][a]f01[/a][a]turnleft[/a][a]x2[/a][a]f01[/a][a1]x2[/a1][a2]b01[/a2][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ao</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[0,476,1,1,1,476,0,0,0],[0,476,1,0,1,476,0,0,0],[473,476,1,0,1,1,1,1,1],[476,476,1,0,0,0,0,0,1],[1,9,1,9,2,0,1,1,1],[1,0,0,0,0,0,1,0,0],[1,1,1,1,1,0,1,0,0],[0,0,0,0,1,0,1,0,0],[0,0,0,0,1,20,1,0,0]],"robots":[{"origin":[2,4,3],"code":[18,12,0],"actions":["f01","f01","f01","f01","f01","x2","x2","x2","x4","x4","fct1","turnright","turnright","turnright","turnleft"]}]]]></dct:description>
+        <dct:description><![CDATA["board":[[0,476,1,1,1,476,0,0,0],[0,476,1,0,1,476,0,0,0],[473,476,1,0,1,1,1,1,1],[476,476,1,0,0,0,0,0,1],[1,9,1,9,2,0,1,1,1],[1,0,0,0,0,0,1,0,0],[1,1,1,1,1,0,1,0,0],[0,0,0,0,1,0,1,0,0],[0,0,0,0,1,20,1,0,0]],"robots":[{"origin":[2,4,3],"code":[18,12,0],"actions":["f01","f01","f01","f01","x2","x2","x2","x4","x4","fct1","turnright","turnright","turnright","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","Le programme [b]principal[/b] devrait être :[code][a]x4[/a][a]fct1[/a][a]turnright[/a][a]x2[/a][a]f01[/a][/code]","La fonction F1 devrait commencer ainsi :[code][a]x4[/a][a]f01[/a][a]turnright[/a][a]x2[/a][a]f01[/a][a1]turnright[/a1][a2]x2[/a2][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
        <rdf:Description>
         <dct:identifier>ap</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,0,51,0,201,2],[1,0,0,0,209,0],[1,20,0,220,201,0],[9,0,120,0,201,0],[101,101,101,109,201,0]],"robots":[{"origin":[0,0,1],"code":[18,12,0],"actions":["f01","f01","f01","b01","b01","turnleft","turnleft","turnright","x2","x2","x3","fct1"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour appuyer sur les différents boutons, le robot doit effectuer 3 fois les mêmes actions.","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]fct1[/a][a]b01[/a][/code]","La fonction F1 devrait commencer ainsi :[code][a]x2[/a][a]f01[/a][a]turnleft[/a][a]f01[/a][a]b01[/a][a1]turnright[/a1][a2]x2[/a2][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>aq</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[9,109,209,309,2],[5,0,0,0,0],[5,1,1,1,101],[301,0,20,0,101],[301,320,0,120,101],[301,0,220,0,101],[301,201,201,201,201]],"robots":[{"origin":[0,2,0],"code":[18,12,0],"actions":["f01","f01","f01","f01","b01","x2","x2","x4","x4","fct1","turnright","turnright","turnleft","turnleft","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour appuyer sur les différents boutons, le robot doit effectuer 4 fois les mêmes actions.","Le programme [b]principal[/b] devrait être :[code][a]x4[/a][a]fct1[/a][a]x4[/a][a]f01[/a][/code]","La fonction F1 devrait commencer ainsi :[code][a]x2[/a][a]f01[/a][a]turnright[/a][a]f01[/a][a]b01[/a][a1]turnleft[/a1][a2]x2[/a2][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ar</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,0,0,0,656,9,20],[0,0,0,0,0,9,9,16],[0,0,0,0,9,9,15,1],[0,0,0,9,9,14,1,0],[0,0,9,9,13,1,0,0],[0,9,9,12,1,0,0,0],[2,9,11,1,0,0,0,0],[0,10,1,0,0,0,0,0]],"robots":[{"origin":[1,7,0],"code":[18,12,0],"actions":["f01","f01","f01","fct1","fct1","f01","xnum","xnum","turnright","turnleft","turnleft","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]xnum[/a][a]fct1[/a][a]turnleft[/a][a]f01[/a][a]turnleft[/a][a1]xnum[/a1][a2]fct1[/a2][/code]","La fonction F1 devrait être :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]turnright[/a][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>as</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[120,0,220,0,320,0,20,0,0],[101,109,201,209,301,309,1,9,2]],"robots":[{"origin":[0,1,3],"code":[18,12,0],"actions":["f01","f01","b01","fct1","x2","x4","turnright","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour appuyer sur les différents boutons, le robot doit effectuer 4 fois les mêmes actions.","Le programme [b]principal[/b] devrait être :[code][a]x4[/a][a]fct1[/a][/code]","La fonction F1 devrait être :[code][a]f01[/a][a]b01[/a][a]turnright[/a][a]x2[/a][a]f01[/a][a]turnleft[/a][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>at</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[120,0,0,0,320,0,0,0,0],[101,109,201,209,301,309,1,9,2],[0,0,220,0,0,0,20,0,0]],"robots":[{"origin":[0,1,3],"code":[18,12,0],"actions":["f01","f01","f01","b01","b01","f01","fct1","x2","x2","x2","turnright","turnright","turnright","turnleft","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour appuyer sur les différents boutons, le robot doit effectuer 2 fois les mêmes actions.","Le programme [b]principal[/b] devrait être :[code][a]x2[/a][a]fct1[/a][/code]","La fonction F1 devrait commencer ainsi :[code][a]f01[/a][a]b01[/a][a]turnright[/a][a]x2[/a][a]f01[/a][a1]turnright[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>au</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant la fonction F1, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,1,1,1,1,2,8],[1,0,1,0,1,474,0],[1,6,1,6,1,0,0]],"robots":[{"origin":[0,2,3],"code":[18,12,12],"actions":["f01","fct1","x2","x2","x3","x3","x4","x4","x5","x5","turnright"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Une fonction permet de [b]regrouper[/b] une série d'instructions utilisée plusieurs fois.","Le programme [b]principal[/b] devrait être :[code][a]x5[/a][a]x2[/a][a]fct1[/a][/code]","La fonction F1 devrait être :[code][a]x2[/a][a]f01[/a][a]f01[/a][a]turnright[/a][/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <!-- F1/MAIN pre-filled -->
@@ -254,7 +288,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -266,6 +300,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -277,6 +312,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -288,6 +324,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -299,6 +336,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -310,6 +348,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -321,6 +360,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
 
@@ -333,6 +373,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -344,6 +385,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -355,6 +397,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -366,6 +409,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -377,6 +421,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -388,6 +433,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -399,6 +445,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -410,6 +457,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <!-- F2: b[a-z] -->
@@ -423,6 +471,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -434,6 +483,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -445,6 +495,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -456,6 +507,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -467,6 +519,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <!-- F1 calls F2: c[a-z] -->
@@ -481,7 +534,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">tutoriel,fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -493,6 +546,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -504,6 +558,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -515,6 +570,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -526,6 +582,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -537,6 +594,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -548,6 +606,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -559,6 +618,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -570,6 +630,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -581,6 +642,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -592,6 +654,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>5</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -603,6 +666,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
 
@@ -617,6 +681,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -628,6 +693,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -639,6 +705,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -650,6 +717,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -661,6 +729,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -672,6 +741,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -683,6 +753,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -694,6 +765,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -705,6 +777,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -716,6 +789,7 @@
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">fonction</dct:coverage>
     </rdf:Description>
 
 
