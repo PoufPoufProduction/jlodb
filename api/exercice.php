@@ -104,6 +104,12 @@ if (!$error) {
             else { $where.=" (`Exercice_Id`='".$_GET["id"]."' OR `Exercice_Variant`='".$_GET["id"]."')"; }
         }
     }
+    
+    // THE REFERENCE
+    if (array_key_exists("title",$_GET)) {
+        if (strlen($where)) { $where.=" AND"; }
+        $where.= " `Exercice_Title` LIKE '%".$_GET["title"]."%'";
+    }
 
     // COUNT THE NUMBER OF MATCHING EXERCICES (WITHOU ORDER, LIMIT NOR ALTERNATIVE GROUP)
     $sql = "SELECT COUNT(*) FROM `".$_SESSION['prefix']."exercice`";

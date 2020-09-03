@@ -1,24 +1,18 @@
 #jbrowser                               { font-size:1em; display:none; height:100%; }
-#jbrowser .tab                          { font-size:1em; height:3.8em; float:left; border-radius:.2em;
-                                          overflow:hidden; margin:.05em 0 .05em .05em; background-color: #DDD;}
+#jbrowser .tab                          { font-size:1em; height:3.8em; float:left; border-radius:.2em; overflow:hidden; margin:.05em 0 .05em .05em; background-color: #DDD;}
 #jbrowser .tab div.icon.s               { background-color:#222; }
 #jbrowser .tab div.elt                  { font-size:1em; float:left; }
-#jbrowser .tab div.icon                 { padding:.06em; border-radius:.2em; width:1em; height:1em;
-                                          overflow:hidden; cursor:pointer; float:left; }
-
-#jbrowser .brtoggle						{ text-align:center; cursor:pointer;
-										  background-color:black; color:white; opacity:0.2; }
+#jbrowser .tab div.icon                 { padding:.06em; border-radius:.2em; width:1em; height:1em; overflow:hidden; cursor:pointer; float:left; }
+#jbrowser .brtoggle						{ text-align:center; cursor:pointer; background-color:black; color:white; opacity:0.2; }
 #jbrowser .brtoggle.s					{ background-color:red; opacity:1; }
-										  
 #jbrowser #brargs                       { width:72%; font-size:.4em; height:9.6em; position:relative; }
-#jbrowser .brinput                      {  width:45%; height:1.2em; background-color:#888;
-										  margin:.1em 0 0 2%; color:white; border:0; border-radius:.2em;
-										  padding-left:2%; float:left; font-size:1em;}
+#jbrowser .brinput                      { width:45%; height:1.2em; background-color:#888;  margin:.1em 0 0 2%; color:white; border:0; border-radius:.2em; padding-left:2%; float:left; font-size:1em;}
 #jbrowser input.brinput					{ width:40%; border-radius:.2em 0 0 .2em; }
+#jbrowser input.brinput.brlarge         { width:89%; }
 #jbrowser .brdel						{ width:5%; height:1.2em; background-color:#333; float:left; border-radius:0 .2em .2em 0; margin-top:.1em; cursor:pointer; }
 #jbrowser #bractivities					{ width:47%; }
 
-#jbrowser #brargs #brcount				{ float:right; margin-right:2%; font-size:2.8em; }
+#jbrowser #brargs #brcount				{ float:right; margin-right:25%; margin-top:12%; font-size:2.5em; }
 
 #jbrowser #brargs .brparam				{ margin-top:.2em; }
 #jbrowser #brargs .brparam>*			{ float:left; }

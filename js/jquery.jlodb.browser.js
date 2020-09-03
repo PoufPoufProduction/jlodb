@@ -219,6 +219,10 @@
                 //GET THE REFERENCE
                 var ref=$this.find("#reference").val();
                 if (ref) { ref = "&reference="+ref; }
+                
+                 //GET THE DEFINITION
+                var title=$this.find("#brtitle").val();
+                if (title) { title="&title="+encodeURIComponent(title); }
 
                 //GET THE ORDER
                 var order="&by="+$this.find("#s1").val()+"&order="+$this.find("#s2").val();
@@ -230,9 +234,10 @@
                 if (number==500) { number=""; } else { number="&limit="+number; }
 
                 // TEST THE ALT
+                if (id.length || title.length) { $this.find("#bralt").removeClass("s"); }
                 var alt=$this.find("#bralt").hasClass("s")?"":"&alt=1";
 
-                var args = activities+classification+sliders+id+tags+ref+order+number+alt;
+                var args = activities+classification+sliders+id+tags+ref+title+order+number+alt;
                 if (args.length) { args = args.substr(1); }
 				
                 //SEND THE REQUEST AND SHOW THE RESULTS

@@ -22,6 +22,10 @@
 		<input class="brinput" type="text" id="tags" onkeyup="$(this).closest('.browser').browser('update');" placeholder="Tag"/>
 		<div class="brdel" onclick="$(this).prev().val('');$(this).closest('.browser').browser('update');"><img src="res/img/default/white/delete.svg" alt=""/></div>
 		
+		<input class="brinput brlarge" type="text" id="brtitle" onkeyup="$(this).closest('.browser').browser('update');" placeholder="Définition"/>
+		<div class="brdel" onclick="$(this).prev().val('');$(this).closest('.browser').browser('update');"><img src="res/img/default/white/delete.svg" alt=""/></div>
+
+
 		<div style="clear:both;"></div>
 		
 		<div id="brcount">0</div>
