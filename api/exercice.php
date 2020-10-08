@@ -108,7 +108,8 @@ if (!$error) {
     // THE REFERENCE
     if (array_key_exists("title",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
-        $where.= " `Exercice_Title` LIKE '%".$_GET["title"]."%'";
+        $title=str_replace("'", "\'", $_GET["title"]);
+        $where.= " `Exercice_Title` LIKE '%".$title."%'";
     }
 
     // COUNT THE NUMBER OF MATCHING EXERCICES (WITHOU ORDER, LIMIT NOR ALTERNATIVE GROUP)
