@@ -8,11 +8,11 @@
     <rdf:Description>
         <dct:identifier>20a</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire, additionner, multiplier jusqu'à 5 et diviser par 2, sans contrainte de temps, des valeurs comprises entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2]},"number":15,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_i) { var val=[function() { return Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1])+'+'+Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); }, function() { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return (a+b)+'-'+b; }, function() { return Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1])+'*'+Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); }, function() { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return (a*b)+'/'+b; }], v=Math.floor(Math.random()*val.length); return val[v]();}","font":2,"class":"h12"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2],"mo":false},"number":15,"regexp": { "output": "\\\\?" },"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_i) { var val=[function(_m) { var a = Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1]), b = Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); return (_m==0?a+'+'+b: (_m==1?['?+'+b+'='+(a+b),a]:[a+'+?='+(a+b),b])); }, function(_m) { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return (_m==0?(a+b)+'-'+b: (_m==1?['?-'+b+'='+a,(a+b)]:[(a+b)+'-?='+a,b])); }, function(_m) { var a=Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1]), b = Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); return (_m==0?[a+jlo.mult+b,a*b]: (_m==1?['?'+jlo.mult+b+'='+(a*b),a]:[a+jlo.mult+'?='+(a*b),b])); }, function(_m) { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return (_m==0?[(a*b)+jlo.div+b,a]: (_m==1?['?'+jlo.div+b+'='+a,(a*b)]:[(a*b)+jlo.div+'?='+a,b])); }], v=Math.floor(Math.random()*val.length); return val[v](_s.gg.mo?(Math.random()>0.5?1:2):0);}","font":2,"class":"h12"]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>20a</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
@@ -21,12 +21,36 @@
         <dct:identifier>20au</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire, additionner, multiplier jusqu'à 5 et diviser par 2, en moins de 5 secondes par opération, des valeurs comprises entre 1 et 10.</dct:title>
         <dct:description><![CDATA["time":5,"timemode":true]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>20a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:relation>20a</dct:relation>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>100a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Soustraire, additionner, multiplier et diviser, sans contrainte de temps, des valeurs comprises entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"ad":[47,3,47,3],"su":[47,3,47,3],"mu":[10,1,9,1],"di":[9,2,9,2],"mo":false},"font":1.4]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>20a</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:relation>20a</dct:relation>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>100i</dct:identifier>
+        <dct:title xml:lang="fr-FR">Soustraire, additionner, multiplier et diviser, sans contrainte de temps, des valeurs comprises entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"ad":[47,3,47,3],"su":[47,3,47,3],"mu":[10,1,10,1],"di":[9,2,8,2],"mo":true},"font":1.4]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>20a</dct:alternative>
         <dct:relation>20a</dct:relation>
     </rdf:Description>
 	
