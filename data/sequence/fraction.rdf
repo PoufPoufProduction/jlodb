@@ -985,15 +985,264 @@
 
     <rdf:Description>
         <dct:identifier>d01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Ecrire, sans contrainte de temps, chaque fraction décimale sous forme d'un nombre en écriture décimale.</dct:title>
-        <dct:description><![CDATA["input":{"digit":4,"speed":5000},"decimal":true,"gen":"function(){ var decs=[10,100,1000],a=Math.floor(Math.random()*1000)+1,b=decs[Math.floor(Math.random()*decs.length)], ret=a+\\\"/\\\"+b; return [ret, a/b];}","class":"h12 alpha blank","font":1]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[0],"f":false,"m":2},"start":20,"input":{"digit":4,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"decimal":true,"gen":"function($this,_s,_i){ var decs=[[10,[1,10,10,100,100]],[100,[1,10,10]],[1000,[1]]],d=decs[Math.floor(Math.random()*_s.gg.m)],b=d[0],a=(Math.floor(Math.random()*pick(decs)[0])+1)/(_s.gg.f?pick(d[1]):1), ret,v,c=pick(_s.gg.q),s=4; if (c==0) { ret='[math '+s+']'+a+' '+b+' /[/math]'; v=(Math.round(1000*a/b)/1000); }  if (c==1) { ret='[math '+s+']'+a+' '+b+' / ... =[/math]'; v=(Math.round(1000*a/b)/1000); } if (c==2) { ret='[math '+s+']'+'...'+' '+b+' / '+(Math.round(1000*a/b)/1000)+' =[/math]'; v=a; } if (c==3) { ret='[math '+s+']'+a+' '+'...'+' / '+(Math.round(1000*a/b)/1000)+' =[/math]'; v=b; } return [ret, v];}","class":"h60 p05 alpha blank","font":0.3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Donnez[/b] la valeur demandée."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>d01</dct:alternative>
-		<dct:coverage xml:lang="fr-FR">fraction</dct:coverage>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[1],"f":false,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[2],"f":false,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[3],"f":false,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[1,2,3],"f":false,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>d06</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[0],"f":true,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d07</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[1],"f":true,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d08</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[2],"f":true,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d09</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[3],"f":true,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes et centièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[1,2,3],"f":true,"m":2}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d11</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[0],"f":false,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d12</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[1],"f":false,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d13</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[2],"f":false,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d14</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[3],"f":false,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d15</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction entière en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[1,2,3],"f":false,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>d16</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[0],"f":true,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d17</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[1],"f":true,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d18</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[2],"f":true,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d19</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[3],"f":true,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d20</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'égalité décimale avec fraction en dixièmes, centièmes et millièmes.</dct:title>
+        <dct:description><![CDATA["gg":{"q":[1,2,3],"f":true,"m":3}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:coverage xml:lang="fr-FR">fraction,décimal</dct:coverage>
+    </rdf:Description>
+    
     
     
 </rdf:RDF>

@@ -102,8 +102,19 @@ jtools = {
 			}
 		}
 		
-		var vRatio = 5;
 		var vValue = "";
+		
+		// NUMBER
+		
+		var vMath = RegExp("\\\[n\\\]([^\\\[]+)\\\[/n\\\]","g");
+		for (var j=0; j<5; j++)  {
+			var val = vMath.exec(vTxt);
+			if (val) { vTxt = vTxt.replace(val[0], jtools.num.tostr(val[1])); }
+		}
+		
+		// MATHEMATIC WRITING
+		
+		var vRatio = 5;
 		
 		var vMath = RegExp("\\\[math\\\]([^\\\[]+)\\\[/math\\\]","g");
 		var val = vMath.exec(vTxt);
@@ -119,7 +130,7 @@ jtools = {
 			var tree = jtools.math.pol2tree(vValue);
 			var svg = jtools.math.tree2svg(tree);
 			var ratio = (1*svg.size[0])/(vRatio*svg.size[1]);
-			vTxt = vTxt.replace(vMath,"<div class='t_svg'><div style='height:100%;width:"+Math.min(100,ratio*100)+"%'>"+svg.svg+"</div></div>");
+			vTxt = vTxt.replace(vMath,"<div class='t_svg'><div style='overflow:visible;height:100%;width:"+Math.min(100,ratio*100)+"%'>"+svg.svg+"</div></div>");
 		}
 		
         return vTxt;
@@ -325,11 +336,14 @@ jtools = {
 			var size = [ svg.si[0]*jtools.math.svg.font[0], (svg.si[1]+svg.si[2])*jtools.math.svg.font[1] ];
 			var id = (_args&&_args.id)?_args.id:"jmath";
 			return { size:size,
-				svg: "<svg xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' height:'100%' "+
+				svg: "<svg style='overflow:visible;' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' height:'100%' "+
 					"viewBox='0 0 "+size[0]+" "+size[1]+"' id='"+id+"'>"+
 					"<def><style>"+
 						"svg#"+id+" text { font-family: monospace; font-size:"+jtools.math.svg.font[1]+"px; }"+
+						".good svg#"+id+" text { fill: green; } .wrong svg#"+id+" text { fill: red; }" +
 						"svg#"+id+" path { fill:none; stroke-width:0.75; stroke:black; }"+
+						".good svg#"+id+" path { stroke:green; }"+
+						".wrong svg#"+id+" path { stroke:red; }"+
 					"</style></def>"+
 					(_args&&_args.bg ?"<rect x='0' y='0' width='"+size[0]+"' height='"+size[1]+"' style='fill:"+_args.bg+";'/>":"")+
 					svg.svg+

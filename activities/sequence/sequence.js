@@ -413,7 +413,7 @@
                             value = settings.questions[settings.it].response[0];
                         }
 
-                        $(vQuestion).html($(vQuestion).html().replace(vReg, value));
+                        $(vQuestion).html($(vQuestion).html().replace(vReg, jtools.num.tostr(value)));
                     }
                     $(vQuestion).removeClass("select").addClass(vRet?"good":"wrong");
 

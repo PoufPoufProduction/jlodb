@@ -387,7 +387,7 @@
                 $this.find(".t").each(function(index) {
                     var value = settings.current.t[index];
                     if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
-                    if (settings.current.t && settings.current.t.length>index) { $(this).text(value); }});
+                    if (settings.current.t && settings.current.t.length>index) { $(this).html(value); }});
                 helpers.fill($this);
             }
 			
