@@ -1,22 +1,31 @@
 <div>
 
-    <div id="cd_board"></div>
+	<div id="cd_left">
+		<div id="cd_header"><div></div></div>
+		<div id="cd_board"></div>
+	</div>
 
     <div id="cd_menu">
         <div id="cd_title"></div>
         <div id="cd_ex"><div></div></div>
         <div id="cd_def"></div>
-        <div id="cd_but">
-            <div class="cd_bg s">
-                <div class="icon" ontouchstart="$(this).closest('.crossword').crossword('mode',this,true);event.preventDefault();"
+        <div id="cd_help" class="cd_buttons">
+            <div class="g_button" id="cd_hcheck"
+				ontouchstart="$(this).closest('.crossword').crossword('show','check',this);event.preventDefault();"
+                onclick="$(this).closest('.crossword').crossword('show','check',this);">
+                <img src="res/img/svginventoryicons/pencil/marker03.svg" alt=""/></div>
+            <div class="g_button" id="cd_hhint"
+				ontouchstart="$(this).closest('.crossword').crossword('show','hint',this);event.preventDefault();"
+                onclick="$(this).closest('.crossword').crossword('show','hint',this);">
+                <img src="res/img/svginventoryicons/tool/bulb01.svg" alt=""/></div>
+        </div>
+        <div id="cd_mode" class="cd_buttons">
+            <div class="g_button s" ontouchstart="$(this).closest('.crossword').crossword('mode',this,true);event.preventDefault();"
                                   onclick="$(this).closest('.crossword').crossword('mode',this,true);">
-                    <img src="res/img/svginventoryicons/pencil/pen01.svg" alt=""/></div>
-            </div>
-            <div class="cd_bg">
-                <div class="icon" ontouchstart="$(this).closest('.crossword').crossword('mode',this,false);event.preventDefault();"
+                <img src="res/img/svginventoryicons/pencil/pen01.svg" alt=""/></div>
+            <div class="g_button" ontouchstart="$(this).closest('.crossword').crossword('mode',this,false);event.preventDefault();"
                                   onclick="$(this).closest('.crossword').crossword('mode',this,false);">
-                    <img src="res/img/svginventoryicons/pencil/pencil01.svg" alt=""/></div>
-            </div>
+                <img src="res/img/svginventoryicons/pencil/pencil01.svg" alt=""/></div>
         </div>
 		<div id="cd_filler"></div>
         <div id="cd_in">
@@ -244,6 +253,24 @@
             </div>
         </div>
     </div>
+	
+	<div id="cdhelp" class="g_mask g_hint"><div>
+		<div class="g_hintlabel">
+			<div id="cdcheck" class="cdhelplabel"></div>
+			<div id="cdhint" class="cdhelplabel"></div>
+		</div>
+		<div>
+			<div class="icon"
+ontouchstart="$(this).closest('.crossword').crossword('help');event.preventDefault();"
+onclick="$(this).closest('.crossword').crossword('help');">
+					<img src="res/img/default/icon/valid01.svg" alt=""/></div>
+			<div class="icon"
+ontouchstart="$(this).closest('.crossword').find('#cd_help>div').removeClass('s');$(this).closest('.g_mask').hide();event.preventDefault();"
+onclick="$(this).closest('.crossword').find('#cd_help>div').removeClass('s');$(this).closest('.g_mask').hide();">
+					<img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+		</div>
+		<div id="g_minus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+	</div></div>
 
     <div id="g_submit" ontouchstart="$(this).closest('.crossword').crossword('valid');event.preventDefault();"
                      onclick="$(this).closest('.crossword').crossword('valid');">
